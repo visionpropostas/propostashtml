@@ -1,0 +1,990 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Proposta Living Unique | Vision Tecnologia</title>
+    <meta name="description" content="Projeto de Segurança Integrada e Infraestrutura - Living Unique Saúde.">
+    <meta name="theme-color" content="#0F172A">
+    
+    <!-- Fonts & Icons -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@700;800&family=Quicksand:wght@500;600;700&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: { 
+                        sans: ['"Outfit"', 'sans-serif'],
+                        logo: ['"League Spartan"', 'sans-serif'],
+                        tech: ['"Quicksand"', 'sans-serif']
+                    },
+                    colors: {
+                        brand: {
+                            yellow: '#b9880e', 
+                            goldLight: '#FFDE59', 
+                            goldDark: '#BA8500',  
+                            black: '#0a0a0a', /* Preto puro */
+                            dark: '#020617',
+                            surface: '#1E293B',
+                        }
+                    },
+                    boxShadow: {
+                        'glow': '0 0 20px rgba(185, 136, 14, 0.15)',
+                        'glow-strong': '0 0 40px rgba(185, 136, 14, 0.3)',
+                        'glass': '0 8px 32px 0 rgba(31, 38, 135, 0.07)',
+                        '3d-dark': '0 25px 50px -12px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(255,255,255,0.1) inset',
+                        'elegant': '0 20px 40px -5px rgba(0, 0, 0, 0.1), 0 10px 20px -5px rgba(0, 0, 0, 0.04)'
+                    },
+                    animation: {
+                        'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #020617; }
+        ::-webkit-scrollbar-thumb { background: #334155; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #b9880e; }
+        
+        .bg-grid-pattern {
+            background-image: linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+                              linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+            background-size: 40px 40px;
+        }
+
+        .text-gold-shine {
+            background: linear-gradient(to right, #b9880e 20%, #FFDE59 50%, #b9880e 80%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-size: 200% auto;
+            animation: shine 4s linear infinite;
+        }
+        @keyframes shine {
+            to { background-position: 200% center; }
+        }
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease-out;
+        }
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Glassmorphism Containers */
+        .glass-container {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+        }
+
+        /* Card Espelhado/Glass para Texto */
+        .glass-text-box {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(200, 200, 200, 0.5); /* Borda fina solicitada */
+            box-shadow: 0 20px 40px -10px rgba(0,0,0,0.05);
+        }
+
+        /* Card Glass para Google Reviews */
+        .glass-review {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+        }
+        
+        /* Table Styles - Alto Contraste */
+        .tech-table { width: 100%; border-collapse: separate; border-spacing: 0; font-size: 0.95rem; }
+        .tech-table th { color: #b9880e; text-align: left; padding: 16px; text-transform: uppercase; font-size: 0.75rem; letter-spacing: 0.05em; border-bottom: 1px solid rgba(255,255,255,0.1); background: rgba(0,0,0,0.2); }
+        .tech-table td { padding: 16px; border-bottom: 1px solid rgba(255,255,255,0.03); color: #e2e8f0; }
+        .tech-table tr:last-child td { border-bottom: none; }
+        .tech-table tr:hover td { background-color: rgba(255,255,255,0.02); }
+        
+        .qty-badge { background: rgba(185, 136, 14, 0.15); color: #FFDE59; font-weight: bold; padding: 4px 10px; border-radius: 6px; font-size: 0.8rem; border: 1px solid rgba(185, 136, 14, 0.3); text-align: center; display: inline-block; min-width: 40px; }
+
+        /* Icon Hover Transitions */
+        .icon-box:hover .icon-bg { background-color: #b9880e; }
+        .icon-box:hover .icon-svg { color: #0F172A; }
+        .icon-bg, .icon-svg { transition: all 0.3s ease; }
+
+        /* Image Mask for Gradient Fade */
+        .mask-gradient {
+            mask-image: linear-gradient(to bottom, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 100%);
+            -webkit-mask-image: linear-gradient(to bottom, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 100%);
+        }
+
+        @media print {
+            .no-print { display: none !important; }
+            body { background: white; color: black; }
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-700 antialiased selection:bg-brand-yellow selection:text-brand-black overflow-x-hidden">
+
+    <!-- Navbar -->
+    <nav class="fixed w-full z-50 top-0 bg-brand-black/95 backdrop-blur-xl border-b border-white/5 transition-all duration-300 shadow-lg no-print">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
+            <div class="flex justify-between h-20 items-center">
+                <div class="flex flex-col items-stretch leading-none select-none cursor-pointer group z-10">
+                    <div class="relative flex items-baseline">
+                        <span class="font-logo font-bold text-[2rem] text-gold-shine lowercase tracking-[-0.08em] leading-[0.8]">vısıon</span>
+                        <span class="text-[0.5rem] text-[#b9880e] font-bold ml-0.5 self-end mb-1">®</span>
+                    </div>
+                    <div class="font-tech text-[0.6rem] font-bold text-slate-400 lowercase flex justify-between px-0.5 group-hover:text-brand-yellow transition-colors -mt-1">
+                        <span>p</span><span>r</span><span>o</span><span>p</span><span>o</span><span>s</span><span>t</span><span>a</span><span>s</span>
+                    </div>
+                </div>
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="#diagnostico" class="text-sm font-medium text-slate-300 hover:text-brand-yellow transition-colors">Diagnóstico</a>
+                    <a href="#solucao" class="text-sm font-medium text-slate-300 hover:text-brand-yellow transition-colors">Solução</a>
+                    <a href="#bom" class="text-sm font-medium text-slate-300 hover:text-brand-yellow transition-colors">Equipamentos</a>
+                    <a href="#investimento" class="text-sm font-medium text-slate-300 hover:text-brand-yellow transition-colors">Investimento</a>
+                </div>
+                <div class="hidden md:flex items-center space-x-6 z-10">
+                    <a href="#investimento" class="bg-brand-yellow hover:bg-white hover:text-brand-black text-brand-black px-6 py-2.5 rounded-full text-sm font-bold shadow-glow transition-all">
+                        Aprovar
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- CAPA -->
+    <header class="bg-brand-black pt-32 pb-24 relative overflow-hidden text-white min-h-[85vh] flex flex-col justify-center items-center text-center">
+        <!-- Background Imagem com Fade -->
+        <div class="absolute inset-0 z-0">
+            <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=2070&auto=format&fit=crop" alt="Edifício Moderno" class="w-full h-full object-cover opacity-10 mask-gradient">
+            <div class="absolute inset-0 bg-gradient-to-b from-transparent to-brand-black"></div>
+        </div>
+        
+        <div class="bg-grid-pattern absolute inset-0 opacity-10 pointer-events-none z-0"></div>
+        <!-- Brilho estático Ajustado para ser mais escuro/neutro -->
+        <div class="absolute top-0 right-0 w-[600px] h-[600px] bg-brand-yellow rounded-full blur-[400px] opacity-10 pointer-events-none"></div>
+        <div class="absolute bottom-0 left-0 w-[500px] h-[500px] bg-neutral-900 rounded-full blur-[300px] opacity-10 pointer-events-none"></div>
+        
+        <div class="max-w-4xl mx-auto px-4 relative z-10">
+            <div class="reveal active">
+                <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-brand-yellow/30 bg-black/40 text-brand-yellow text-xs font-bold uppercase tracking-widest mb-8 backdrop-blur-md">
+                    Referência: Diagnóstico 20/01/2026
+                </div>
+                
+                <h1 class="text-4xl md:text-6xl font-extrabold mb-6 leading-tight tracking-tight drop-shadow-2xl">
+                    Projeto de Segurança <br>
+                    <span class="text-gold-shine">Integrada & Infraestrutura</span>
+                </h1>
+                
+                <h2 class="text-xl md:text-2xl text-white font-light mb-10 max-w-2xl mx-auto">
+                    Condomínio Living Unique Saúde
+                </h2>
+            </div>
+
+            <!-- Dados do Cliente Centralizados -->
+            <div class="bg-white/5 backdrop-blur-md border border-white/10 p-1 rounded-2xl max-w-4xl mx-auto reveal active" style="transition-delay: 200ms;">
+                <div class="bg-brand-black/50 rounded-xl p-6 grid grid-cols-1 md:grid-cols-4 gap-6 items-center text-center md:text-left">
+                    <div class="border-b md:border-b-0 md:border-r border-white/10 pb-4 md:pb-0 md:pr-4">
+                        <p class="text-[10px] text-slate-500 uppercase tracking-widest font-bold mb-1">A/C</p>
+                        <p class="text-base font-bold text-white">Sra. Ana & Conselho</p>
+                    </div>
+                    <div class="border-b md:border-b-0 md:border-r border-white/10 pb-4 md:pb-0 md:pr-4">
+                        <p class="text-[10px] text-slate-500 uppercase tracking-widest font-bold mb-1">Local</p>
+                        <p class="text-xs font-bold text-white leading-tight">Av. Afonso Mariano Fagundes, 417 - Vila da Saúde - SP</p>
+                    </div>
+                    <div class="border-b md:border-b-0 md:border-r border-white/10 pb-4 md:pb-0 md:pr-4">
+                        <p class="text-[10px] text-slate-500 uppercase tracking-widest font-bold mb-1">Data</p>
+                        <p class="text-base font-bold text-brand-yellow">28/01/2026</p>
+                    </div>
+                     <div class="text-center text-xs text-slate-400 font-mono">
+                        Prop #3223
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="bg-slate-50">
+        
+        <!-- 1. DIAGNÓSTICO -->
+        <section id="diagnostico" class="py-24 relative bg-white border-b border-slate-200">
+            <div class="max-w-5xl mx-auto px-4">
+                
+                <!-- Introduction Card -->
+                <div class="reveal mb-16">
+                    <div class="glass-text-box p-10 rounded-3xl relative overflow-hidden">
+                        <!-- Blur laranja discreto canto superior direito -->
+                        <div class="absolute -top-10 -right-10 w-40 h-40 bg-orange-400 rounded-full blur-3xl opacity-20 pointer-events-none"></div>
+                        
+                        <div class="relative z-10 prose prose-lg text-slate-600 leading-relaxed max-w-none">
+                            <h3 class="text-3xl font-bold text-slate-900 mb-6 border-l-4 border-brand-yellow pl-4">Introdução e Diagnóstico</h3>
+                            <p class="mb-4">
+                                O <strong>Living Unique</strong> é um empreendimento de arquitetura sofisticada e alto padrão. No entanto, após análise técnica <em>in loco</em> e validação das plantas entregues pela construtora Cyrela, identificamos uma lacuna crítica entre a estética do prédio e a infraestrutura de segurança entregue.
+                            </p>
+                            <p class="mb-6">
+                                Diferente das áreas sociais decoradas, os 3 subsolos de garagem e o perímetro do condomínio foram entregues "crus", <strong>sem a tubulação necessária</strong> para passagem de cabos de dados e segurança.
+                            </p>
+                            
+                            <div class="p-6 bg-white/80 rounded-xl border-l-4 border-slate-800 border border-slate-100 shadow-sm">
+                                <h4 class="font-bold text-slate-800 mb-2">A Abordagem Vision:</h4>
+                                <p class="text-sm m-0">
+                                    Muitas empresas de segurança cometeriam o erro de orçar apenas as câmeras, gerando "Aditivos de Obra" surpresa no futuro. Nossa proposta é <strong>"Turnkey" (Chave na Mão)</strong>. Consideramos toda a <strong>Obra Civil de Infraestrutura Aparente</strong> necessária. Vamos construir a "Rodovia Digital" do condomínio.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Pontos Críticos (Alertas Visuais Elegantes) -->
+                <div class="grid md:grid-cols-2 gap-8 reveal">
+                    <div class="relative bg-white border border-red-100 p-8 rounded-2xl shadow-lg hover:shadow-xl transition-shadow overflow-hidden group">
+                        <div class="absolute left-0 top-0 bottom-0 w-1.5 bg-red-500"></div>
+                        <div class="absolute -right-6 -top-6 w-24 h-24 bg-red-500/10 rounded-full blur-xl group-hover:bg-red-500/20 transition-all"></div>
+                        
+                        <div class="relative z-10">
+                            <div class="flex items-center gap-3 mb-4">
+                                <div class="p-2 bg-red-50 rounded-lg text-red-600">
+                                    <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/></svg>
+                                </div>
+                                <h4 class="text-red-700 font-bold uppercase text-xs tracking-wider">Ponto Crítico 01</h4>
+                            </div>
+                            <h3 class="text-xl font-bold text-slate-800 mb-3">Risco de Colisão Frontal</h3>
+                            <p class="text-slate-600 text-sm leading-relaxed">
+                                O portão único de veículos na <strong>Av. Afonso Mariano Fagundes</strong> exige, obrigatoriamente, um sistema de <strong>semáforo automatizado</strong> com laço indutivo para organizar o fluxo e evitar acidentes.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="relative bg-white border border-red-100 p-8 rounded-2xl shadow-lg hover:shadow-xl transition-shadow overflow-hidden group">
+                         <div class="absolute left-0 top-0 bottom-0 w-1.5 bg-red-500"></div>
+                         <div class="absolute -right-6 -top-6 w-24 h-24 bg-red-500/10 rounded-full blur-xl group-hover:bg-red-500/20 transition-all"></div>
+                        
+                         <div class="relative z-10">
+                            <div class="flex items-center gap-3 mb-4">
+                                <div class="p-2 bg-red-50 rounded-lg text-red-600">
+                                    <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"/></svg>
+                                </div>
+                                <h4 class="text-red-700 font-bold uppercase text-xs tracking-wider">Ponto Crítico 02</h4>
+                            </div>
+                            <h3 class="text-xl font-bold text-slate-800 mb-3">Ausência de Tubulação</h3>
+                            <p class="text-slate-600 text-sm leading-relaxed">
+                                3 Subsolos de garagem sem interligação. Exige obra civil aparente (inclusa nesta proposta) para viabilizar o monitoramento sem quebrar a estrutura.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 2. DETALHAMENTO TÉCNICO -->
+        <section id="solucao" class="py-24 bg-slate-50">
+            <div class="max-w-6xl mx-auto px-4">
+                <div class="text-center mb-16 reveal">
+                    <span class="text-brand-yellow font-bold tracking-widest uppercase text-xs">Escopo Técnico</span>
+                    <h2 class="text-3xl font-bold text-slate-900 mt-2">Detalhamento por Disciplina</h2>
+                    <p class="text-slate-500 mt-2 text-sm">Valores inclusos na proposta global.</p>
+                </div>
+
+                <div class="grid gap-8 reveal">
+                    
+                    <!-- Box 1 -->
+                    <div class="bg-white p-8 rounded-2xl border border-slate-200 shadow-sm flex flex-col md:flex-row gap-8 hover:border-brand-yellow/50 transition-colors group cursor-default">
+                        <div class="md:w-1/3 flex flex-col justify-between">
+                            <div>
+                                <div class="w-14 h-14 bg-brand-yellow/10 rounded-xl flex items-center justify-center text-brand-yellow mb-4 group-hover:bg-brand-yellow group-hover:text-brand-black transition-colors icon-bg">
+                                    <svg class="w-8 h-8 icon-svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z"/></svg>
+                                </div>
+                                <h3 class="text-xl font-bold text-slate-900">Videomonitoramento Inteligente</h3>
+                                <p class="text-xs text-slate-500 mt-2 font-bold uppercase tracking-wider">68 Câmeras IP</p>
+                            </div>
+                            <div class="mt-6">
+                                <p class="text-xs text-slate-400 uppercase font-bold">Investimento</p>
+                                <p class="text-2xl font-bold text-slate-800">R$ 86.500</p>
+                            </div>
+                        </div>
+                        <div class="md:w-2/3 space-y-4 text-slate-600 text-sm leading-relaxed border-l border-slate-100 pl-8">
+                            <p>Não instalamos apenas câmeras; instalamos sensores de comportamento. O projeto contempla <strong>68 Câmeras IP</strong> eliminando pontos cegos.</p>
+                            
+                            <!-- Nota de Atenção -->
+                            <div class="bg-amber-50 border border-amber-200 text-amber-800 px-4 py-3 rounded-lg mb-4 text-xs">
+                                <strong>Nota:</strong> Este escopo não contempla as câmeras internas dos Halls de Apartamentos (estimadas em 3 por andar), sendo um item opcional para expansão futura.
+                            </div>
+
+                            <ul class="grid md:grid-cols-2 gap-4">
+                                <li class="flex items-start gap-2">
+                                    <span class="text-brand-yellow text-lg">▹</span>
+                                    <span><strong>Inteligência Perimetral (4MP):</strong> IA que diferencia Humanos/Veículos, reduzindo alarmes falsos em 95%.</span>
+                                </li>
+                                <li class="flex items-start gap-2">
+                                    <span class="text-brand-yellow text-lg">▹</span>
+                                    <span><strong>Visão Noturna "Starlight":</strong> Imagem colorida ou nítida mesmo em subsolos escuros.</span>
+                                </li>
+                                <li class="flex items-start gap-2">
+                                    <span class="text-brand-yellow text-lg">▹</span>
+                                    <span><strong>Elevadores Sem Cabo:</strong> Rádios Digitais 5.8GHz. Adeus à quebra de cabo viajante.</span>
+                                </li>
+                                <li class="flex items-start gap-2">
+                                    <span class="text-brand-yellow text-lg">▹</span>
+                                    <span><strong>Storage 40TB:</strong> 4 HDs WD Purple para retenção segura de imagens.</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Box 2 -->
+                    <div class="bg-white p-8 rounded-2xl border border-slate-200 shadow-sm flex flex-col md:flex-row gap-8 hover:border-brand-yellow/50 transition-colors group cursor-default">
+                        <div class="md:w-1/3 flex flex-col justify-between">
+                            <div>
+                                <div class="w-14 h-14 bg-brand-yellow/10 rounded-xl flex items-center justify-center text-brand-yellow mb-4 group-hover:bg-brand-yellow group-hover:text-brand-black transition-colors icon-bg">
+                                    <svg class="w-8 h-8 icon-svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"/></svg>
+                                </div>
+                                <h3 class="text-xl font-bold text-slate-900">Infraestrutura Industrial</h3>
+                                <p class="text-xs text-slate-500 mt-2 font-bold uppercase tracking-wider">O Diferencial Vision</p>
+                            </div>
+                            <div class="mt-6">
+                                <p class="text-xs text-slate-400 uppercase font-bold">Investimento</p>
+                                <p class="text-2xl font-bold text-slate-800">R$ 70.000</p>
+                            </div>
+                        </div>
+                        <div class="md:w-2/3 space-y-4 text-slate-600 text-sm leading-relaxed border-l border-slate-100 pl-8">
+                            <p>A solução estética para a falta de tubulação. Adotaremos o padrão industrial de <strong>Eletrodutos Galvanizados a Fogo</strong>.</p>
+                            <ul class="grid md:grid-cols-2 gap-4">
+                                <li class="flex items-start gap-2">
+                                    <span class="text-brand-yellow text-lg">▹</span>
+                                    <span><strong>Por que Galvanizado?</strong> Estética moderna (industrial), não propaga chamas e oferece proteção mecânica total.</span>
+                                </li>
+                                <li class="flex items-start gap-2">
+                                    <span class="text-brand-yellow text-lg">▹</span>
+                                    <span><strong>Cabeamento 100% Cobre:</strong> Garantia de uso de cabos CAT6 Homologados (sem alumínio). Evita oxidação.</span>
+                                </li>
+                                <li class="flex items-start gap-2">
+                                    <span class="text-brand-yellow text-lg">▹</span>
+                                    <span><strong>Racks Outdoor IP55:</strong> Switches blindados contra poeira de escapamento e umidade nas garagens.</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Box 3 -->
+                    <div class="bg-white p-8 rounded-2xl border border-slate-200 shadow-sm flex flex-col md:flex-row gap-8 hover:border-brand-yellow/50 transition-colors group cursor-default">
+                        <div class="md:w-1/3 flex flex-col justify-between">
+                            <div>
+                                <div class="w-14 h-14 bg-brand-yellow/10 rounded-xl flex items-center justify-center text-brand-yellow mb-4 group-hover:bg-brand-yellow group-hover:text-brand-black transition-colors icon-bg">
+                                    <svg class="w-8 h-8 icon-svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4"/></svg>
+                                </div>
+                                <h3 class="text-xl font-bold text-slate-900">Gestão de Acesso e Tráfego</h3>
+                                <p class="text-xs text-slate-500 mt-2 font-bold uppercase tracking-wider">Anticolisão + Facial</p>
+                            </div>
+                            <div class="mt-6">
+                                <p class="text-xs text-slate-400 uppercase font-bold">Investimento</p>
+                                <p class="text-2xl font-bold text-slate-800">R$ 33.500</p>
+                            </div>
+                        </div>
+                        <div class="md:w-2/3 space-y-4 text-slate-600 text-sm leading-relaxed border-l border-slate-100 pl-8">
+                            <p><strong>Solução:</strong> Leitores Faciais, Antenas Veiculares UHF, Semáforos Inteligentes, Eletroímãs e Software.</p>
+                            <ul class="grid md:grid-cols-2 gap-4">
+                                <li class="flex items-start gap-2"><span>•</span> Semáforo Inteligente (Laço Indutivo)</li>
+                                <li class="flex items-start gap-2"><span>•</span> 06 Leitores Faciais IP65 (Social/Serviço)</li>
+                                <li class="flex items-start gap-2"><span>•</span> 04 Antenas Veiculares UHF (2 Ent + 2 Sai)</li>
+                                <li class="flex items-start gap-2"><span>•</span> Software de Gestão e Clausura</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Box 4 -->
+                    <div class="bg-white p-8 rounded-2xl border border-slate-200 shadow-sm flex flex-col md:flex-row gap-8 hover:border-brand-yellow/50 transition-colors group cursor-default">
+                        <div class="md:w-1/3 flex flex-col justify-between">
+                            <div>
+                                <div class="w-14 h-14 bg-brand-yellow/10 rounded-xl flex items-center justify-center text-brand-yellow mb-4 group-hover:bg-brand-yellow group-hover:text-brand-black transition-colors icon-bg">
+                                    <svg class="w-8 h-8 icon-svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+                                </div>
+                                <h3 class="text-xl font-bold text-slate-900">Energia e Backup</h3>
+                                <p class="text-xs text-slate-500 mt-2 font-bold uppercase tracking-wider">Sustentação</p>
+                            </div>
+                            <div class="mt-6">
+                                <p class="text-xs text-slate-400 uppercase font-bold">Investimento</p>
+                                <p class="text-2xl font-bold text-slate-800">R$ 17.000</p>
+                            </div>
+                        </div>
+                        <div class="md:w-2/3 space-y-4 text-slate-600 text-sm leading-relaxed border-l border-slate-100 pl-8">
+                            <p><strong>Solução:</strong> Nobreaks Senoidais e Banco de Baterias para manter o sistema online.</p>
+                            <ul class="grid md:grid-cols-2 gap-4">
+                                <li class="flex items-start gap-2"><span>•</span> Nobreak Senoidal 3000VA (Central)</li>
+                                <li class="flex items-start gap-2"><span>•</span> Banco de Baterias Estacionárias</li>
+                                <li class="flex items-start gap-2"><span>•</span> Nobreaks Distribuídos (Andares)</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                     <!-- Box 5 -->
+                    <div class="bg-white p-8 rounded-2xl border border-slate-200 shadow-sm flex flex-col md:flex-row gap-8 hover:border-brand-yellow/50 transition-colors group cursor-default">
+                        <div class="md:w-1/3 flex flex-col justify-between">
+                            <div>
+                                <div class="w-14 h-14 bg-brand-yellow/10 rounded-xl flex items-center justify-center text-brand-yellow mb-4 group-hover:bg-brand-yellow group-hover:text-brand-black transition-colors icon-bg">
+                                    <svg class="w-8 h-8 icon-svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+                                </div>
+                                <h3 class="text-xl font-bold text-slate-900">Proteção Perimetral</h3>
+                                <p class="text-xs text-slate-500 mt-1 font-bold uppercase tracking-wider">Barreira Física</p>
+                            </div>
+                            <div class="mt-4">
+                                <p class="text-xs text-slate-400 uppercase font-bold">Investimento</p>
+                                <p class="text-2xl font-bold text-slate-800">R$ 8.000</p>
+                            </div>
+                        </div>
+                        <div class="md:w-2/3 space-y-3 text-slate-600 text-sm leading-relaxed border-l border-slate-100 pl-6">
+                            <p><strong>Solução:</strong> Cerca Elétrica Industrial e Sensores de Barreira.</p>
+                            <ul class="grid md:grid-cols-2 gap-3">
+                                <li class="flex items-start gap-2"><span>•</span> Cerca Elétrica Industrial 18.000V</li>
+                                <li class="flex items-start gap-2"><span>•</span> Sensores IVA (Barreira Virtual)</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                 
+                 <div class="mt-8 text-center text-slate-500 text-xs">
+                    *Valores contemplam a solução completa (Fornecimento + Instalação + Configuração + Garantia On-Site).
+                 </div>
+            </div>
+        </section>
+
+        <!-- 3. LISTA MESTRA (BOM) - ESTILO VIDRO/ESPELHADO (Sem Modelos) -->
+        <section id="bom" class="py-24 bg-brand-black relative overflow-hidden">
+             <div class="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')] opacity-10"></div>
+             <div class="max-w-5xl mx-auto px-4 relative z-10">
+                 <div class="text-center mb-16 reveal">
+                    <span class="text-brand-yellow font-bold tracking-widest uppercase text-xs">Bill of Materials</span>
+                    <h2 class="text-3xl font-bold text-white mt-2">Lista Mestra de Equipamentos</h2>
+                    <p class="text-slate-400 mt-2">Clique para expandir os detalhes de cada disciplina.</p>
+                </div>
+
+                <div class="space-y-4 reveal">
+                    
+                    <!-- Accordion Item 1 -->
+                    <details class="group glass-container rounded-xl overflow-hidden cursor-pointer transition-all duration-300 hover:shadow-glow">
+                        <summary class="flex justify-between items-center p-5 bg-white/5 hover:bg-white/10 transition-colors backdrop-blur-sm border-b border-white/5">
+                            <div class="flex items-center gap-3">
+                                <svg class="w-6 h-6 text-brand-yellow" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z"/></svg>
+                                <span class="font-bold text-white text-lg">Sistema de CFTV IP (68 Câmeras + Gravação)</span>
+                            </div>
+                            <span class="text-brand-yellow transition-transform group-open:rotate-180">▼</span>
+                        </summary>
+                        <div class="p-5 bg-white/5">
+                            <table class="tech-table">
+                                <thead><tr><th class="w-20 text-center">Qtd</th><th>Descrição</th></tr></thead>
+                                <tbody>
+                                    <tr><td class="text-center"><span class="qty-badge">09</span></td><td>Câmera IP Bullet 4MP Varifocal (IA)</td></tr>
+                                    <tr><td class="text-center"><span class="qty-badge">24</span></td><td>Câmera Bullet IP 2MP (Full HD) IR 30m</td></tr>
+                                    <tr><td class="text-center"><span class="qty-badge">35</span></td><td>Câmera Dome IP 2MP (Full HD) Indoor</td></tr>
+                                    <tr><td class="text-center"><span class="qty-badge">02</span></td><td>Gravador NVR 32 Canais 4K (H.265+)</td></tr>
+                                    <tr><td class="text-center"><span class="qty-badge">01</span></td><td>Gravador NVR 08 Canais (Backup/Redundância)</td></tr>
+                                    <tr><td class="text-center"><span class="qty-badge">04</span></td><td>HD Sata 10TB WD Purple (Vigilância 24/7)</td></tr>
+                                    <tr><td class="text-center"><span class="qty-badge">05</span></td><td>Par de Rádio Enlace 5GHz (Elevadores)</td></tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </details>
+
+                    <!-- Accordion Item 2 -->
+                    <details class="group glass-container rounded-xl overflow-hidden cursor-pointer transition-all duration-300 hover:shadow-glow">
+                        <summary class="flex justify-between items-center p-5 bg-white/5 hover:bg-white/10 transition-colors backdrop-blur-sm border-b border-white/5">
+                            <div class="flex items-center gap-3">
+                                <svg class="w-6 h-6 text-brand-yellow" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/></svg>
+                                <span class="font-bold text-white text-lg">Infraestrutura de Rede & Civil</span>
+                            </div>
+                            <span class="text-brand-yellow transition-transform group-open:rotate-180">▼</span>
+                        </summary>
+                        <div class="p-5 bg-white/5">
+                             <table class="tech-table">
+                                <thead><tr><th class="w-20 text-center">Qtd</th><th>Descrição</th></tr></thead>
+                                <tbody>
+                                    <tr><td class="text-center"><span class="qty-badge">01</span></td><td>Switch Core 24 Portas Gigabit Gerenciável</td></tr>
+                                    <tr><td class="text-center"><span class="qty-badge">06</span></td><td>Switch PoE 8 Portas + 2 Uplink Gigabit</td></tr>
+                                    <tr><td class="text-center"><span class="qty-badge">06</span></td><td>Rack Outdoor 5U (Blindado IP55)</td></tr>
+                                    <tr><td class="text-center"><span class="qty-badge">18</span></td><td>Caixa Cabo de Rede CAT6 100% Cobre</td></tr>
+                                    <tr><td class="text-center"><span class="qty-badge">250</span></td><td>Barra Eletroduto Galvanizado 3/4" (3m)</td></tr>
+                                    <tr><td class="text-center"><span class="qty-badge">50</span></td><td>Barra Eletroduto Galvanizado 1" (3m)</td></tr>
+                                    <tr><td class="text-center"><span class="qty-badge">Verba</span></td><td>Acessórios: Curvas, Luvas, Abraçadeiras</td></tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </details>
+
+                    <!-- Accordion Item 3 -->
+                    <details class="group glass-container rounded-xl overflow-hidden cursor-pointer transition-all duration-300 hover:shadow-glow">
+                        <summary class="flex justify-between items-center p-5 bg-white/5 hover:bg-white/10 transition-colors backdrop-blur-sm border-b border-white/5">
+                            <div class="flex items-center gap-3">
+                                <svg class="w-6 h-6 text-brand-yellow" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/></svg>
+                                <span class="font-bold text-white text-lg">Controle de Acesso (Veicular/Facial)</span>
+                            </div>
+                            <span class="text-brand-yellow transition-transform group-open:rotate-180">▼</span>
+                        </summary>
+                        <div class="p-5 bg-white/5">
+                             <table class="tech-table">
+                                <thead><tr><th class="w-20 text-center">Qtd</th><th>Descrição</th></tr></thead>
+                                <tbody>
+                                    <tr><td class="text-center"><span class="qty-badge">06</span></td><td>Controlador Facial IP65 Externo</td></tr>
+                                    <tr><td class="text-center"><span class="qty-badge">01</span></td><td>Módulo Guarita IP (Controladora)</td></tr>
+                                    <tr><td class="text-center"><span class="qty-badge">04</span></td><td>Antena Veicular UHF Longo Alcance</td></tr>
+                                    <tr><td class="text-center"><span class="qty-badge">200</span></td><td>Tag Veicular Adesivo (UHF)</td></tr>
+                                    <tr><td class="text-center"><span class="qty-badge">01</span></td><td>Kit Gestão Portão (Semáforo + Módulo)</td></tr>
+                                    <tr><td class="text-center"><span class="qty-badge">02</span></td><td>Sensor de Piso (Laço Indutivo)</td></tr>
+                                    <tr><td class="text-center"><span class="qty-badge">08</span></td><td>Módulos de Integração (Solenoides)</td></tr>
+                                    <tr><td class="text-center"><span class="qty-badge">01</span></td><td>Software de Gestão</td></tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </details>
+
+                    <!-- Accordion Item 4 -->
+                    <details class="group glass-container rounded-xl overflow-hidden cursor-pointer transition-all duration-300 hover:shadow-glow">
+                        <summary class="flex justify-between items-center p-5 bg-white/5 hover:bg-white/10 transition-colors backdrop-blur-sm border-b border-white/5">
+                            <div class="flex items-center gap-3">
+                                <svg class="w-6 h-6 text-brand-yellow" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+                                <span class="font-bold text-white text-lg">Perímetro & Energia</span>
+                            </div>
+                            <span class="text-brand-yellow transition-transform group-open:rotate-180">▼</span>
+                        </summary>
+                        <div class="p-5 bg-white/5">
+                             <table class="tech-table">
+                                <thead><tr><th class="w-20 text-center">Qtd</th><th>Descrição</th></tr></thead>
+                                <tbody>
+                                    <tr><td class="text-center"><span class="qty-badge">01</span></td><td>Eletrificador Industrial High Power</td></tr>
+                                    <tr><td class="text-center"><span class="qty-badge">150m</span></td><td>Hastes de Alumínio + Fio Inox</td></tr>
+                                    <tr><td class="text-center"><span class="qty-badge">06</span></td><td>Sensor IVA Duplo Feixe (Barreira)</td></tr>
+                                    <tr><td class="text-center"><span class="qty-badge">01</span></td><td>Central Monitorada Smart + Sirene</td></tr>
+                                    <tr><td class="text-center"><span class="qty-badge">01</span></td><td>Nobreak Senoidal 3000VA (Rack Central)</td></tr>
+                                    <tr><td class="text-center"><span class="qty-badge">02</span></td><td>Bateria Estacionária 60Ah</td></tr>
+                                    <tr><td class="text-center"><span class="qty-badge">05</span></td><td>Nobreak Interativo 1200VA (Racks Andares)</td></tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </details>
+                </div>
+             </div>
+        </section>
+
+        <!-- 3. METODOLOGIA (White Glove) -->
+         <section class="py-20 bg-white border-b border-slate-200">
+            <div class="max-w-5xl mx-auto px-4">
+                 <div class="reveal">
+                     <div class="text-center mb-12">
+                         <span class="text-brand-yellow font-bold uppercase tracking-widest text-xs">Execução</span>
+                         <h2 class="text-3xl font-bold text-slate-900 mt-2">Padrão "White Glove"</h2>
+                         <p class="text-slate-600 mt-2 max-w-2xl mx-auto">
+                             Protocolos rigorosos para minimizar impacto em condomínios habitados.
+                         </p>
+                     </div>
+                     
+                     <div class="grid md:grid-cols-3 gap-6">
+                         <!-- Card 1 -->
+                         <div class="glass-container p-6 rounded-2xl bg-white border border-slate-200 shadow-sm overflow-hidden group hover:shadow-md transition-all">
+                             <div class="relative z-10 text-center">
+                                 <div class="w-12 h-12 mx-auto bg-brand-yellow/10 rounded-full flex items-center justify-center text-brand-yellow text-xl mb-4">🧹</div>
+                                 <h4 class="font-bold text-slate-900 mb-2">Limpeza Industrial</h4>
+                                 <p class="text-sm text-slate-600">Uso de aspiradores durante a furação. O ambiente é entregue mais limpo do que encontrado.</p>
+                             </div>
+                         </div>
+                         
+                         <!-- Card 2 -->
+                         <div class="glass-container p-6 rounded-2xl bg-white border border-slate-200 shadow-sm overflow-hidden group hover:shadow-md transition-all">
+                             <div class="relative z-10 text-center">
+                                 <div class="w-12 h-12 mx-auto bg-brand-yellow/10 rounded-full flex items-center justify-center text-brand-yellow text-xl mb-4">👷</div>
+                                 <h4 class="font-bold text-slate-900 mb-2">Identificação</h4>
+                                 <p class="text-sm text-slate-600">Equipe uniformizada, com crachá e EPIs completos.</p>
+                             </div>
+                         </div>
+                         
+                         <!-- Card 3 -->
+                         <div class="glass-container p-6 rounded-2xl bg-white border border-slate-200 shadow-sm overflow-hidden group hover:shadow-md transition-all">
+                             <div class="relative z-10 text-center">
+                                 <div class="w-12 h-12 mx-auto bg-brand-yellow/10 rounded-full flex items-center justify-center text-brand-yellow text-xl mb-4">📄</div>
+                                 <h4 class="font-bold text-slate-900 mb-2">As-Built</h4>
+                                 <p class="text-sm text-slate-600">Entrega da planta final atualizada com todo o mapeamento.</p>
+                             </div>
+                         </div>
+                     </div>
+                 </div>
+            </div>
+         </section>
+
+        <!-- 4. INVESTIMENTO (Opções) -->
+        <section id="investimento" class="py-24 bg-slate-50 relative">
+            <div class="max-w-7xl mx-auto px-4 relative z-10">
+                <div class="text-center mb-16 reveal">
+                    <h2 class="text-3xl md:text-5xl font-bold text-slate-900 mb-4">Opções de Investimento</h2>
+                    <p class="text-slate-500 text-lg">
+                        Valor Total do Projeto (Turnkey): <strong>R$ 215.000</strong>
+                    </p>
+                </div>
+
+                <div class="grid lg:grid-cols-3 gap-6 items-stretch reveal">
+                    
+                    <!-- Vision Rental (Opção 1 - ESQUERDA) -->
+                    <div class="bg-white border border-slate-200 p-8 rounded-2xl flex flex-col hover:border-brand-yellow transition-all hover:-translate-y-1">
+                        <div class="mb-6">
+                            <h3 class="text-xl font-bold text-slate-800">Vision Rental™</h3>
+                            <p class="text-sm text-brand-yellow font-bold mt-2">HaaS (Hardware as a Service)</p>
+                        </div>
+                         <div class="space-y-4 flex-1 text-sm text-slate-600">
+                            <div class="flex justify-between border-b border-slate-100 pb-2">
+                                <span>Entrada</span><span class="font-bold">R$ 0,00</span>
+                            </div>
+                            <div class="flex justify-between border-b border-slate-100 pb-2">
+                                <span>Mensalidade</span><span class="font-bold text-lg text-slate-800">R$ 6.927</span>
+                            </div>
+                             
+                             <ul class="mt-6 space-y-4 text-xs font-bold uppercase tracking-wide text-slate-700">
+                                <li class="flex flex-col gap-1">
+                                    <div class="flex items-center gap-2">
+                                        <svg class="w-4 h-4 text-brand-yellow" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"/></svg>
+                                        <strong class="text-sm">Zero Capex</strong>
+                                        <span class="text-slate-500 font-normal normal-case">(Sem investimento inicial)</span>
+                                    </div>
+                                </li>
+                                <li class="flex flex-col gap-1">
+                                    <div class="flex items-center gap-2">
+                                        <svg class="w-4 h-4 text-brand-yellow" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"/></svg>
+                                        <strong class="text-sm">Garantia Perpétua</strong>
+                                        <span class="text-slate-500 font-normal normal-case">(Vitalícia enquanto ativo)</span>
+                                    </div>
+                                </li>
+                                <li class="flex flex-col gap-1">
+                                    <div class="flex items-center gap-2">
+                                        <svg class="w-4 h-4 text-brand-yellow" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"/></svg>
+                                        <strong class="text-sm">Manutenção Inclusa</strong>
+                                        <span class="text-slate-500 font-normal normal-case">(Preventiva + corretiva)</span>
+                                    </div>
+                                </li>
+                                <li class="flex flex-col gap-1">
+                                    <div class="flex items-center gap-2">
+                                        <svg class="w-4 h-4 text-brand-yellow" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"/></svg>
+                                        <strong class="text-sm">Tech Refresh</strong>
+                                        <span class="text-slate-500 font-normal normal-case">(Upgrade automático)</span>
+                                    </div>
+                                </li>
+                                <li class="flex flex-col gap-1">
+                                    <div class="flex items-center gap-2">
+                                        <svg class="w-4 h-4 text-brand-yellow" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"/></svg>
+                                        <strong class="text-sm">Substitui Manutenção</strong>
+                                        <span class="text-slate-500 font-normal normal-case">(All-in-one)</span>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                         <a href="https://proposta.visionsp.com.br/vision-rental/" target="_blank" class="mt-8 block w-full border-2 border-brand-yellow text-brand-yellow font-bold py-3 rounded-xl hover:bg-brand-yellow hover:text-white transition-all text-center">
+                            Entender Vision Rental
+                        </a>
+                    </div>
+                    
+                    <!-- Faturamento (Opção 2 - CENTRAL) -->
+                    <div class="bg-white border-2 border-brand-yellow p-8 rounded-2xl flex flex-col hover:border-brand-yellow/80 transition-all hover:-translate-y-1 relative group shadow-glow">
+                         <div class="absolute top-0 right-0 bg-brand-yellow text-brand-black text-[10px] font-bold px-4 py-1.5 rounded-bl-xl z-20">RECOMENDADO</div>
+                        
+                        <div class="mb-6">
+                            <h3 class="text-xl font-bold text-slate-700">Faturamento Direto</h3>
+                            <p class="text-sm text-slate-500 mt-2">Pagamento parcelado direto.</p>
+                        </div>
+                        <div class="space-y-4 flex-1 text-sm text-slate-600">
+                            <div class="flex justify-between border-b border-slate-100 pb-2">
+                                <span>Entrada</span><span class="font-bold">R$ 21.500</span>
+                            </div>
+                            <div class="flex justify-between border-b border-slate-100 pb-2">
+                                <span>Parcelas</span><span class="font-bold">9x R$ 21.500</span>
+                            </div>
+                            <div class="flex justify-between border-b border-slate-100 pb-2">
+                                <span>Total</span><span class="font-bold">R$ 215.000</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span>Vencimentos</span><span class="font-bold">Mensal (10x)</span>
+                            </div>
+                            
+                            <div class="text-xs text-slate-400 text-center italic">*Sujeito à análise de crédito</div>
+
+                            <!-- Box Manutenção -->
+                            <div class="mt-4 p-4 bg-slate-50 rounded-lg border border-slate-300 relative">
+                                <div class="flex items-center gap-2 mb-1">
+                                    <span class="text-slate-600 font-bold uppercase text-xs">Contrato de Manutenção Premium</span>
+                                </div>
+                                <div class="flex items-baseline gap-1 mb-2">
+                                    <span class="text-slate-800 text-lg font-bold">R$ 2.950</span>
+                                    <span class="text-xs text-slate-500">/mês</span>
+                                </div>
+                                <p class="text-[10px] text-slate-500 leading-tight mb-2">Recomendado para garantir a longevidade do sistema desde o primeiro dia.</p>
+                                <ul class="text-[10px] text-slate-600 space-y-1">
+                                    <li class="flex items-center gap-1"><span class="text-brand-yellow">✓</span> Visitas Quinzenais</li>
+                                    <li class="flex items-center gap-1"><span class="text-brand-yellow">✓</span> Limpeza Técnica</li>
+                                    <li class="flex items-center gap-1"><span class="text-brand-yellow">✓</span> SLA Prioritário</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <a href="https://wa.me/5511930816696?text=Quero%20saber%20mais%20sobre%20o%20parcelamento%20em%2010x" class="mt-8 block w-full bg-brand-yellow text-brand-black font-bold py-3 rounded-xl hover:bg-white hover:text-black transition-all text-center shadow-md">
+                            Solicitar Parcelamento
+                        </a>
+                    </div>
+
+                    <!-- Obra Acelerada (Opção 3 - DIREITA) -->
+                    <div class="bg-brand-black border border-slate-700 p-8 rounded-2xl flex flex-col shadow-2xl relative transform md:scale-95 z-0 overflow-hidden">
+                         <div class="absolute inset-0 bg-brand-yellow/5 opacity-50 pointer-events-none"></div>
+
+                        <div class="mb-6 relative z-10">
+                            <h3 class="text-3xl font-bold text-white">Obra Acelerada</h3>
+                            <p class="text-sm text-brand-yellow mt-2 font-bold">Melhor Preço Global (À vista)</p>
+                        </div>
+                        
+                        <div class="space-y-4 flex-1 text-sm text-slate-300 relative z-10">
+                            <!-- Payment Terms -->
+                            <div class="flex justify-between border-b border-white/10 pb-2">
+                                <span>Ato (50%)</span><span class="font-bold text-white">R$ 98.900</span>
+                            </div>
+                            <div class="flex justify-between border-b border-white/10 pb-2">
+                                <span>Entrega (50%)</span><span class="font-bold text-white">R$ 98.900</span>
+                            </div>
+                            
+                            <!-- Total Price -->
+                            <div class="flex justify-between items-center py-4">
+                                <span class="text-slate-300">Total Final</span>
+                                <div class="text-right">
+                                    <span class="block text-3xl font-bold text-white">R$ 197.800</span>
+                                    <div class="inline-block bg-brand-yellow/20 border border-brand-yellow text-brand-yellow text-[10px] font-bold px-2 py-0.5 rounded mt-1 shadow-[0_0_10px_rgba(185,136,14,0.4)]">
+                                        ECONOMIA DE R$ 17.200
+                                    </div>
+                                </div>
+                            </div>
+
+                           <!-- Box Manutenção -->
+                            <div class="mt-4 p-4 bg-white/5 rounded-lg border border-white/10 relative">
+                                <div class="flex items-center gap-2 mb-1">
+                                    <span class="text-brand-yellow font-bold uppercase text-xs">Contrato de Manutenção Premium</span>
+                                </div>
+                                <div class="flex items-baseline gap-1 mb-2">
+                                    <span class="text-white text-lg font-bold">R$ 2.950</span>
+                                    <span class="text-[10px] text-slate-400">/mês</span>
+                                </div>
+                                <ul class="text-[10px] text-slate-400 space-y-1">
+                                    <li class="flex items-center gap-1"><span class="text-brand-yellow">✓</span> Visitas Quinzenais</li>
+                                    <li class="flex items-center gap-1"><span class="text-brand-yellow">✓</span> Limpeza Técnica</li>
+                                    <li class="flex items-center gap-1"><span class="text-brand-yellow">✓</span> SLA Prioritário</li>
+                                </ul>
+                            </div>
+                        </div>
+                        
+                        <a href="https://wa.me/5511930816696?text=Quero%20aproveitar%20o%20desconto%20da%20Obra%20Acelerada" class="mt-8 block w-full border border-white/20 text-white font-bold py-4 rounded-xl hover:bg-white hover:text-black transition-all text-center relative z-10">
+                            Quero aproveitar o Desconto
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SEÇÃO: Contrato de Manutenção (Vision Care) -->
+        <section id="manutencao" class="py-20 bg-slate-900 border-t border-white/10 relative overflow-hidden">
+             <div class="absolute top-0 left-0 w-[500px] h-[500px] bg-brand-yellow rounded-full blur-[300px] opacity-5 pointer-events-none"></div>
+             <div class="max-w-5xl mx-auto px-4 relative z-10">
+                 <div class="text-center mb-12 reveal">
+                     <span class="text-brand-yellow font-bold uppercase tracking-widest text-xs">Pós-Obra</span>
+                     <h2 class="text-3xl font-bold text-white mt-2">Contrato de Manutenção Premium</h2>
+                     <p class="text-slate-400 mt-2">O segredo para um sistema que dura 10 anos.</p>
+                 </div>
+
+                 <div class="bg-white/5 border border-white/10 rounded-2xl p-8 backdrop-blur-sm reveal">
+                     <div class="grid md:grid-cols-2 gap-8 items-center">
+                         <div>
+                             <h3 class="text-2xl font-bold text-white mb-4">Plano de Operação e Confiabilidade</h3>
+                             <p class="text-slate-300 mb-6 leading-relaxed">
+                                 Mais do que consertar quando quebra, nosso foco é garantir que não quebre. O condomínio ganha <strong>tranquilidade</strong>.
+                             </p>
+                             <div class="text-3xl font-bold text-brand-yellow mb-2">R$ 2.950<span class="text-sm font-normal text-white ml-1">/mês</span></div>
+                             <p class="text-xs text-slate-500 mb-6">(Incluso no Vision Rental)</p>
+                         </div>
+                         
+                         <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                             <!-- Item 1 -->
+                             <div class="flex items-center gap-3">
+                                 <div class="w-8 h-8 rounded-lg bg-brand-yellow/10 flex items-center justify-center text-brand-yellow">
+                                     <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
+                                 </div>
+                                 <span class="text-sm text-slate-300">Visitas quinzenais</span>
+                             </div>
+                              <!-- Item 2 -->
+                             <div class="flex items-center gap-3">
+                                 <div class="w-8 h-8 rounded-lg bg-brand-yellow/10 flex items-center justify-center text-brand-yellow">
+                                     <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+                                 </div>
+                                 <span class="text-sm text-slate-300">SLA / Prioridade</span>
+                             </div>
+                              <!-- Item 3 -->
+                             <div class="flex items-center gap-3">
+                                 <div class="w-8 h-8 rounded-lg bg-brand-yellow/10 flex items-center justify-center text-brand-yellow">
+                                     <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                                 </div>
+                                 <span class="text-sm text-slate-300">Checklist + Relatório</span>
+                             </div>
+                              <!-- Item 4 -->
+                             <div class="flex items-center gap-3">
+                                 <div class="w-8 h-8 rounded-lg bg-brand-yellow/10 flex items-center justify-center text-brand-yellow">
+                                     <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.384-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"/></svg>
+                                 </div>
+                                 <span class="text-sm text-slate-300">Limpeza Técnica</span>
+                             </div>
+                              <!-- Item 5 -->
+                             <div class="flex items-center gap-3">
+                                 <div class="w-8 h-8 rounded-lg bg-brand-yellow/10 flex items-center justify-center text-brand-yellow">
+                                     <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h14M5 12a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v4a2 2 0 01-2 2M5 12a2 2 0 00-2 2v4a2 2 0 002 2h14a2 2 0 002-2v-4a2 2 0 00-2-2m-2-4h.01M17 16h.01"/></svg>
+                                 </div>
+                                 <span class="text-sm text-slate-300">Saúde de Gravação</span>
+                             </div>
+                              <!-- Item 6 -->
+                             <div class="flex items-center gap-3">
+                                 <div class="w-8 h-8 rounded-lg bg-brand-yellow/10 flex items-center justify-center text-brand-yellow">
+                                     <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+                                 </div>
+                                 <span class="text-sm text-slate-300">Ajustes de IA</span>
+                             </div>
+                         </div>
+                     </div>
+                 </div>
+             </div>
+        </section>
+
+        <!-- 5. POR QUE VISION + PROVA SOCIAL -->
+        <section class="py-24 bg-white relative">
+            <div class="max-w-4xl mx-auto px-4">
+                 <div class="text-center mb-16 reveal">
+                     <h2 class="text-3xl font-bold text-slate-900 mb-4">O Parceiro Ideal para o Living Unique</h2>
+                     <p class="text-slate-500 max-w-2xl mx-auto">
+                         Mais do que tecnologia, entregamos compromisso e engenharia de verdade.
+                     </p>
+                 </div>
+
+                 <div class="grid md:grid-cols-3 gap-8 text-center reveal mb-16">
+                     <div>
+                         <div class="w-16 h-16 mx-auto bg-slate-50 rounded-full flex items-center justify-center mb-4">
+                             <svg class="w-8 h-8 text-brand-black" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/></svg>
+                         </div>
+                         <h3 class="font-bold text-slate-900 mb-2">Especialistas em SP</h3>
+                         <p class="text-sm text-slate-600">Atendemos os condomínios mais exigentes de São Paulo. Sabemos trabalhar em ambientes habitados.</p>
+                     </div>
+                     <div>
+                         <div class="w-16 h-16 mx-auto bg-slate-50 rounded-full flex items-center justify-center mb-4">
+                             <svg class="w-8 h-8 text-brand-black" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+                         </div>
+                         <h3 class="font-bold text-slate-900 mb-2">Engenharia Própria</h3>
+                         <p class="text-sm text-slate-600">Sem terceirizados desqualificados. Nossa equipe é treinada, uniformizada e segue protocolos rígidos.</p>
+                     </div>
+                     <div>
+                         <div class="w-16 h-16 mx-auto bg-slate-50 rounded-full flex items-center justify-center mb-4">
+                             <svg class="w-8 h-8 text-brand-black" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M14.828 14.828a4 4 0 01-5.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                         </div>
+                         <h3 class="font-bold text-slate-900 mb-2">Parceria de Longo Prazo</h3>
+                         <p class="text-sm text-slate-600">Não vendemos e sumimos. Nosso foco é a manutenção e a operação contínua do sistema.</p>
+                     </div>
+                 </div>
+
+                 <!-- Google Review Card -->
+                 <div class="glass-review rounded-2xl p-8 flex flex-col md:flex-row items-center justify-between gap-6 hover:shadow-glow transition-shadow bg-slate-900">
+                    <div class="flex items-center gap-6">
+                        <div class="w-16 h-16 bg-white rounded-full flex items-center justify-center p-2 shadow-lg">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/c/c1/Google_%22G%22_logo.svg" alt="Google" class="w-full h-full">
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-white text-2xl">Excelência Comprovada</h4>
+                            <p class="text-brand-yellow text-sm font-medium">Líder em Avaliações no Google</p>
+                        </div>
+                    </div>
+                    
+                    <div class="flex flex-col items-center md:items-end">
+                        <div class="flex gap-1 mb-2">
+                            <span class="text-brand-yellow text-2xl">★</span>
+                            <span class="text-brand-yellow text-2xl">★</span>
+                            <span class="text-brand-yellow text-2xl">★</span>
+                            <span class="text-brand-yellow text-2xl">★</span>
+                            <span class="text-brand-yellow text-2xl">★</span>
+                        </div>
+                        <p class="text-white font-bold text-xl">5.0 - Excelente</p>
+                        <p class="text-xs text-slate-400 mt-1">Baseado em <strong>117 avaliações</strong> de clientes reais</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-brand-black text-slate-400 py-12 border-t border-white/10 no-print">
+        <div class="max-w-4xl mx-auto px-4 text-center">
+            <div class="flex flex-col items-center justify-center gap-0 mb-8">
+                <div class="relative flex items-baseline leading-none">
+                    <span class="font-logo font-bold text-[2.5rem] text-gold-shine lowercase tracking-[-0.08em] leading-none">vısıon</span>
+                    <span class="text-[0.6rem] text-[#b9880e] font-bold ml-0.5 self-end mb-1">®</span>
+                </div>
+                <!-- Subtitulo Logo Rodapé (Ajustado) -->
+                <div class="font-tech text-[0.6rem] font-light text-white lowercase tracking-[0.4em] ml-1 -mt-2">
+                    tecnologia
+                </div>
+            </div>
+            
+            <div class="text-center mt-6">
+                <p class="font-bold text-white text-lg">Equipe de Projetos Especiais</p>
+                <p class="text-sm text-slate-500">Vision Tecnologia e Segurança</p>
+                <p class="text-xs text-slate-600 mt-1">diretoria@visionsp.com.br</p>
+            </div>
+            
+            <p class="text-xs text-slate-600 max-w-lg mx-auto mt-8">
+                Esta proposta é confidencial e válida por 15 dias. Todos os direitos reservados à Vision Tecnologia e Segurança.
+            </p>
+        </div>
+    </footer>
+
+    <!-- Whatsapp Floating Button -->
+    <a href="https://wa.me/5511930816696?text=Ola,%20aprovamos%20a%20proposta%20do%20Living%20Unique"
+       target="_blank"
+       id="whatsapp-btn"
+       class="fixed bottom-6 right-6 z-50 bg-[#25D366] text-white p-3 rounded-full shadow-lg hover:scale-110 hover:bg-[#20b858] transition-all duration-300 group flex items-center gap-2 overflow-hidden translate-y-20 opacity-0 no-print"
+       aria-label="Falar no WhatsApp">
+        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.008-.57-.008-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
+        </svg>
+        <span class="max-w-0 overflow-hidden group-hover:max-w-xs transition-all duration-500 ease-in-out whitespace-nowrap text-sm font-bold pl-0 group-hover:pl-2">Falar agora</span>
+    </a>
+
+    <script>
+        // Reveal Animation Script
+        window.addEventListener('scroll', reveal);
+        function reveal() {
+            var reveals = document.querySelectorAll('.reveal');
+            for (var i = 0; i < reveals.length; i++) {
+                var windowHeight = window.innerHeight;
+                var elementTop = reveals[i].getBoundingClientRect().top;
+                var elementVisible = 100;
+                if (elementTop < windowHeight - elementVisible) {
+                    reveals[i].classList.add('active');
+                }
+            }
+        }
+        
+        // Whatsapp Button Reveal Logic
+        window.addEventListener('scroll', function() {
+            var whatsappBtn = document.getElementById('whatsapp-btn');
+            if (whatsappBtn) {
+                if (window.scrollY > 300) {
+                    whatsappBtn.classList.add('visible');
+                    whatsappBtn.classList.remove('translate-y-20', 'opacity-0');
+                } else {
+                    whatsappBtn.classList.remove('visible');
+                    whatsappBtn.classList.add('translate-y-20', 'opacity-0');
+                }
+            }
+        });
+
+        // Trigger reveal on load
+        reveal(); 
+    </script>
+</body>
+</html>

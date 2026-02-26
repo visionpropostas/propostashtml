@@ -1,0 +1,589 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth overflow-hidden" id="html-root">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Proposta Vision Enterprise | Valor Investimentos</title>
+    <meta name="description" content="Projeto de Engenharia de Segurança - Valor Investimentos SP">
+    <meta name="theme-color" content="#b9880e">
+    
+    <!-- Fonts & Icons -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@700;800&family=Quicksand:wght@500;600;700&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    
+    <!-- Google Analytics 4 -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-KTGEL92B0F"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-KTGEL92B0F');
+    </script>
+
+    <!-- Microsoft Clarity -->
+    <script type="text/javascript">
+        (function(c,l,a,r,i,t,y){
+            c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+            t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+            y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+        })(window, document, "clarity", "script", "vifq10es5o");
+    </script>
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: { 
+                        sans: ['"Outfit"', 'sans-serif'],
+                        logo: ['"League Spartan"', 'sans-serif'],
+                        tech: ['"Quicksand"', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            yellow: '#b9880e', 
+                            goldLight: '#FFDE59', 
+                            goldDark: '#BA8500',  
+                            black: '#09090b', 
+                            dark: '#000000',
+                            surface: '#18181b', 
+                            gray: '#27272a', 
+                        },
+                    },
+                    boxShadow: {
+                        'glow': '0 0 20px rgba(185, 136, 14, 0.15)',
+                        'glow-strong': '0 0 40px rgba(185, 136, 14, 0.3)',
+                        'glass': '0 8px 32px 0 rgba(0, 0, 0, 0.3)',
+                        'green-glow': '0 0 20px rgba(16, 185, 129, 0.4)',
+                    },
+                    animation: {
+                        'slide-up': 'slideUp 0.8s ease-out forwards',
+                        'pulse-gold': 'pulseGold 2s infinite',
+                        'shake': 'shake 0.5s cubic-bezier(.36,.07,.19,.97) both',
+                        'fade-in': 'fadeIn 0.5s ease-out forwards',
+                    },
+                    keyframes: {
+                        slideUp: {
+                            '0%': { opacity: '0', transform: 'translateY(20px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' },
+                        },
+                        fadeIn: {
+                            '0%': { opacity: '0' },
+                            '100%': { opacity: '1' },
+                        },
+                        pulseGold: {
+                            '0%, 100%': { boxShadow: '0 0 0 0 rgba(185, 136, 14, 0.4)' },
+                            '50%': { boxShadow: '0 0 0 10px rgba(185, 136, 14, 0)' },
+                        },
+                        shake: {
+                            '10%, 90%': { transform: 'translate3d(-1px, 0, 0)' },
+                            '20%, 80%': { transform: 'translate3d(2px, 0, 0)' },
+                            '30%, 50%, 70%': { transform: 'translate3d(-4px, 0, 0)' },
+                            '40%, 60%': { transform: 'translate3d(4px, 0, 0)' }
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #f9fafb; }
+        ::-webkit-scrollbar-thumb { background: #d1d5db; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #b9880e; }
+        
+        .text-gold-shine {
+            background: linear-gradient(to right, #b9880e 20%, #FFDE59 50%, #b9880e 80%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-size: 200% auto;
+            animation: shine 4s linear infinite;
+        }
+        @keyframes shine { to { background-position: 200% center; } }
+        
+        .bg-grid { 
+            background-image: linear-gradient(rgba(185, 136, 14, 0.03) 1px, transparent 1px), 
+                              linear-gradient(90deg, rgba(185, 136, 14, 0.03) 1px, transparent 1px); 
+            background-size: 40px 40px; 
+        }
+        
+        .card-hover { transition: all 0.3s ease; }
+        .card-hover:hover { 
+            transform: translateY(-5px); 
+            box-shadow: 0 20px 40px -10px rgba(185,136,14,0.2); 
+        }
+        
+        /* Lock Screen Input */
+        .lock-input {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: #b9880e;
+            font-family: 'League Spartan', sans-serif;
+            font-size: 1.5rem;
+            text-align: center;
+            outline: none;
+            transition: all 0.3s;
+            letter-spacing: 0.2em;
+            border-radius: 12px;
+        }
+        .lock-input:focus {
+            border-color: #b9880e;
+            background: rgba(255, 255, 255, 0.08);
+            box-shadow: 0 0 15px rgba(185, 136, 14, 0.2);
+        }
+        .lock-input::placeholder {
+            color: #52525b;
+            font-size: 0.9rem;
+            font-family: 'Outfit', sans-serif;
+            font-weight: 300;
+            letter-spacing: normal;
+        }
+
+        .reveal { opacity: 0; transform: translateY(30px); transition: all 0.8s ease-out; }
+        .reveal.active { opacity: 1; transform: translateY(0); }
+        
+        @media print {
+            #lock-screen, #navbar, #whatsapp-link, .no-print { display: none !important; }
+            body { background: white; color: black; }
+            .reveal { opacity: 1 !important; transform: none !important; }
+        }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800 antialiased overflow-x-hidden">
+
+    <!-- LOCK SCREEN -->
+    <div id="lock-screen" class="fixed inset-0 z-[100] bg-[#09090b] flex flex-col items-center justify-center text-center p-4 transition-opacity duration-700 ease-out">
+        <div class="bg-grid absolute inset-0 opacity-10 pointer-events-none"></div>
+        
+        <div class="relative flex flex-col items-center justify-center mb-8 z-10">
+            <div class="relative flex items-baseline leading-none">
+                <span class="font-logo font-bold text-[3.5rem] md:text-[6rem] text-gold-shine lowercase tracking-[-0.08em]">vısıon</span>
+                <span class="text-[0.8rem] md:text-[1.2rem] text-[#b9880e] font-bold ml-1 self-end mb-3">®</span>
+            </div>
+            <div class="font-tech text-[0.9rem] md:text-[1.2rem] font-light text-zinc-500 lowercase tracking-[0.4em] -mt-5">enterprise</div>
+        </div>
+        
+        <div class="w-full max-w-md space-y-6 z-10" id="lock-content">
+            <div class="text-center space-y-2">
+                <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-brand-yellow/30 bg-brand-yellow/10 mb-4">
+                    <i data-lucide="lock" class="w-4 h-4 text-brand-yellow"></i>
+                    <span class="text-brand-yellow text-xs font-bold uppercase tracking-widest">Documento Confidencial</span>
+                </div>
+                <h2 class="text-white font-bold text-2xl">Valor Investimentos - SP</h2>
+                <p class="text-zinc-400 text-sm">Escopo de Engenharia de Segurança</p>
+            </div>
+            
+            <div class="relative">
+                <input type="password" id="password-input" class="lock-input w-full py-4 px-4" placeholder="SENHA" autocomplete="off">
+                <p id="error-msg" class="text-red-500 text-xs mt-2 hidden font-bold">❌ Acesso negado.</p>
+            </div>
+            
+            <button onclick="checkPassword()" class="w-full bg-brand-yellow hover:bg-brand-goldLight text-black font-bold py-4 rounded-xl transition-all shadow-glow flex items-center justify-center gap-2 group">
+                <i data-lucide="shield-check" class="w-5 h-5"></i>
+                <span>Acessar Documento</span>
+                <i data-lucide="arrow-right" class="w-4 h-4 group-hover:translate-x-1 transition-transform"></i>
+            </button>
+        </div>
+    </div>
+
+    <!-- NAVBAR COM EFEITO GLASS CLARO -->
+    <nav id="navbar" class="fixed w-full z-50 top-0 bg-white/80 backdrop-blur-md border-b border-gray-200/50 shadow-sm transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-20 items-center">
+                <div class="flex flex-col items-start cursor-pointer">
+                    <span class="font-logo font-bold text-2xl text-gold-shine lowercase tracking-tight leading-none">vısıon</span>
+                    <span class="font-tech text-[0.6rem] font-bold text-gray-600 lowercase tracking-[0.3em] -mt-2">enterprise</span>
+                </div>
+                <div class="hidden md:flex items-center space-x-6 text-sm font-medium text-gray-600">
+                    <a href="#contexto" class="hover:text-brand-yellow transition-colors">Contexto</a>
+                    <a href="#solucao" class="hover:text-brand-yellow transition-colors">Engenharia</a>
+                    <a href="#metodologia" class="hover:text-brand-yellow transition-colors">Cronograma</a>
+                    <a href="#investimento" class="hover:text-brand-yellow transition-colors">Investimento</a>
+                </div>
+                <a href="#investimento" class="bg-brand-yellow text-black px-6 py-2.5 rounded-full text-xs font-bold uppercase tracking-wide hover:bg-brand-goldLight transition-all shadow-md hover:shadow-glow">
+                    Aprovar
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- HERO SECTION -->
+    <header class="pt-32 pb-20 relative overflow-hidden bg-white">
+        <div class="bg-grid absolute inset-0 opacity-40"></div>
+        <div class="absolute inset-0 bg-gradient-to-b from-transparent via-white/50 to-white"></div>
+        
+        <div class="max-w-6xl mx-auto px-4 relative z-10">
+            <div class="text-center space-y-6 animate-slide-up">
+                <div class="inline-flex items-center gap-2 px-5 py-2 rounded-full border border-brand-yellow/30 bg-brand-yellow/10 text-brand-yellow text-[10px] font-bold uppercase tracking-widest">
+                    <i data-lucide="briefcase" class="w-4 h-4"></i>
+                    PROJETO DE ENGENHARIA DE SEGURANÇA
+                </div>
+                
+                <h1 class="text-4xl md:text-6xl lg:text-7xl font-bold text-gray-900 leading-tight">
+                    Controle de Acesso Corporativo:<br>
+                    <span class="text-gold-shine">Fluidez & Barreira</span>
+                </h1>
+                
+                <p class="text-xl md:text-2xl text-gray-600 max-w-4xl mx-auto font-light">
+                    Um ecossistema de acesso facial integrado à nuvem, desenhado para a arquitetura da nova unidade <strong class="text-gray-900">Valor Investimentos - SP</strong>.
+                </p>
+
+                <div class="flex flex-col sm:flex-row gap-4 justify-center items-center pt-6">
+                    <a href="#solucao" class="inline-flex items-center gap-2 bg-brand-yellow text-black px-8 py-4 rounded-full font-bold hover:bg-brand-goldLight transition-all shadow-lg hover:shadow-glow transform hover:scale-105">
+                        <i data-lucide="layers" class="w-5 h-5"></i>
+                        Visualizar Escopo Técnico
+                        <i data-lucide="arrow-down" class="w-4 h-4"></i>
+                    </a>
+                </div>
+            </div>
+
+            <div class="mt-16 grid grid-cols-2 md:grid-cols-4 gap-6 max-w-5xl mx-auto">
+                <div class="bg-white rounded-xl p-6 shadow-md border border-gray-200 text-center reveal">
+                    <i data-lucide="scan-face" class="w-10 h-10 text-brand-yellow mx-auto mb-3"></i>
+                    <div class="text-3xl font-bold text-gray-900">0.2s</div>
+                    <div class="text-sm text-gray-600">Velocidade Leitura</div>
+                </div>
+                <div class="bg-white rounded-xl p-6 shadow-md border border-gray-200 text-center reveal" style="animation-delay: 100ms;">
+                    <i data-lucide="lock" class="w-10 h-10 text-brand-yellow mx-auto mb-3"></i>
+                    <div class="text-3xl font-bold text-gray-900">150kg</div>
+                    <div class="text-sm text-gray-600">Força de Retenção</div>
+                </div>
+                <div class="bg-white rounded-xl p-6 shadow-md border border-gray-200 text-center reveal" style="animation-delay: 200ms;">
+                    <i data-lucide="battery-charging" class="w-10 h-10 text-brand-yellow mx-auto mb-3"></i>
+                    <div class="text-3xl font-bold text-gray-900">24h</div>
+                    <div class="text-sm text-gray-600">Autonomia Backup</div>
+                </div>
+                <div class="bg-white rounded-xl p-6 shadow-md border border-gray-200 text-center reveal" style="animation-delay: 300ms;">
+                    <i data-lucide="network" class="w-10 h-10 text-brand-yellow mx-auto mb-3"></i>
+                    <div class="text-3xl font-bold text-gray-900">Cloud</div>
+                    <div class="text-sm text-gray-600">Base Sincronizada</div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- CONTEXTO E DIAGNÓSTICO -->
+    <section id="contexto" class="py-20 bg-gray-100 border-b border-gray-200">
+        <div class="max-w-6xl mx-auto px-4">
+            <div class="grid md:grid-cols-2 gap-16 items-center reveal">
+                <div>
+                    <span class="text-brand-yellow font-bold uppercase tracking-widest text-xs">O Cenário</span>
+                    <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mt-2 mb-6">Hub de Negócios</h2>
+                    <p class="text-gray-700 leading-relaxed mb-6">
+                        A unidade de São Paulo não é apenas um escritório; é um hub estratégico. A exigência é replicar a inteligência da base de dados já existente na nuvem, garantindo que o acesso seja, literalmente, a face do colaborador.
+                    </p>
+                    
+                    <div class="bg-white p-6 rounded-xl border-l-4 border-brand-yellow shadow-sm mt-8">
+                        <h4 class="font-bold text-gray-900 mb-2">Engenharia "Invisível"</h4>
+                        <p class="text-sm text-gray-700">
+                            Identificamos o ponto crítico: a <strong>infraestrutura deve ser invisível</strong>. Com o piso elevado e o carpete prestes a ser instalado, a intervenção será cirúrgica. Toda a lógica de cabeamento correrá pelos "bastidores" do piso técnico, centralizando a energia no CPD.
+                        </p>
+                    </div>
+                </div>
+                
+                <div class="relative h-[400px] rounded-2xl overflow-hidden shadow-2xl group reveal">
+                    <img src="https://images.unsplash.com/photo-1497215728101-856f4ea42174?q=80&w=2070&auto=format&fit=crop" alt="Corporate" class="w-full h-full object-cover grayscale opacity-80 transition-all duration-700 group-hover:grayscale-0">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent flex items-end p-8">
+                        <p class="text-white text-sm italic">"Segurança de alto padrão está na robustez do que está escondido nas paredes e no piso."</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- HARDWARE -->
+    <section id="solucao" class="py-20 bg-white">
+        <div class="max-w-6xl mx-auto px-4">
+            <div class="text-center mb-16 reveal">
+                <span class="text-brand-yellow font-bold uppercase tracking-widest text-xs">O Hardware</span>
+                <h2 class="text-3xl md:text-5xl font-bold text-gray-900 mt-2">Tecnologia Especificada</h2>
+                <p class="text-gray-600 mt-3">Pilares da Solução de Acesso</p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Card 1 -->
+                <div class="product-card reveal">
+                    <div class="h-48 bg-gray-50 flex items-center justify-center p-6">
+                        <img src="https://res.cloudinary.com/dptcuckhf/image/upload/v1770745467/ss-3532-mf-w-frontal_2_c82tua.png" alt="Facial" class="h-full object-contain">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-lg font-bold text-gray-900 mb-2">Intelbras SS 3532 (Facial)</h3>
+                        <p class="text-sm text-gray-600 mb-4 leading-relaxed">
+                            Leitura de profundidade real (anti-foto). Este terminal conversa nativamente com o ecossistema multi-unidades da Valor. Seu funcionário de Vitória acessa SP sem burocracia.
+                        </p>
+                        <div class="inline-flex items-center gap-1 px-2 py-1 bg-gray-100 rounded text-[10px] font-bold text-gray-600 border border-gray-200">
+                            <i data-lucide="check" class="w-3 h-3 text-green-600"></i> 4 UNIDADES
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 2 (DESTAQUE) -->
+                <div class="bg-white rounded-2xl p-6 border-2 border-brand-yellow shadow-xl transform md:-translate-y-4 reveal" style="animation-delay: 100ms;">
+                    <div class="absolute top-4 right-4 text-brand-yellow animate-pulse">●</div>
+                    <div class="h-48 flex items-center justify-center mb-4">
+                        <img src="https://res.cloudinary.com/dptcuckhf/image/upload/v1770745467/MH_104_MOLA_A%C3%89REA_mvjqbm.jpg" alt="Mola" class="h-full object-contain mix-blend-multiply filter brightness-90">
+                    </div>
+                    <h3 class="text-lg font-bold text-gray-900 mb-1">Mola Hidráulica P4</h3>
+                    <p class="text-xs text-brand-yellow font-bold uppercase tracking-widest mb-3">Diferencial Vision (O Pulo do Gato)</p>
+                    <p class="text-sm text-gray-700 leading-relaxed mb-4">
+                        Aqui nos separamos do mercado. Substituímos as molas padrão (que deixam a porta "boba") pela <strong>Série Industrial Potência 4</strong>. Garante que a porta vença a pressão do ar condicionado e o eletroímã tranque sempre.
+                    </p>
+                     <div class="inline-flex items-center gap-1 px-2 py-1 bg-brand-yellow/10 rounded text-[10px] font-bold text-brand-yellow border border-brand-yellow/20">
+                        <i data-lucide="check" class="w-3 h-3"></i> 4 UNIDADES
+                    </div>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="product-card reveal" style="animation-delay: 200ms;">
+                    <div class="h-48 bg-gray-50 flex items-center justify-center p-6">
+                        <img src="https://res.cloudinary.com/dptcuckhf/image/upload/v1770745467/bt_3000_in-02_0_hufak8.png" alt="Botoeira" class="h-full object-contain">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-lg font-bold text-gray-900">Botoeira Inox BT 3000</h3>
+                        <p class="text-sm text-gray-600 mt-2">Acabamento premium que não amarela. Autonomia energética via CPD com fontes centralizadas e baterias.</p>
+                        <div class="inline-flex items-center gap-1 px-2 py-1 bg-gray-100 rounded text-[10px] font-bold text-gray-600 border border-gray-200 mt-4">
+                            <i data-lucide="check" class="w-3 h-3 text-green-600"></i> 4 UNIDADES
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- VISION CARE (NOVA SEÇÃO) -->
+    <section id="vision-care" class="py-20 bg-gray-100 border-t border-gray-200">
+        <div class="max-w-4xl mx-auto px-4 reveal">
+            <div class="text-center mb-10">
+                <span class="text-brand-yellow font-bold uppercase tracking-widest text-xs">Sustentação Operacional</span>
+                <h2 class="text-3xl font-bold text-gray-900 mt-2">Vision Care Corporate</h2>
+                <p class="text-gray-600 mt-2">Garantia de que a tecnologia nunca pare.</p>
+            </div>
+            
+            <div class="bg-white rounded-2xl p-8 border border-gray-200 shadow-lg flex flex-col md:flex-row gap-8 items-center">
+                <div class="flex-1 space-y-4">
+                    <p class="text-gray-700 leading-relaxed">
+                        Para um ambiente corporativo de alto fluxo, a manutenção preventiva é vital. O Vision Care inclui:
+                    </p>
+                    <ul class="space-y-3">
+                        <li class="flex items-center gap-3 text-sm text-gray-600">
+                            <i data-lucide="clock" class="w-5 h-5 text-brand-yellow"></i>
+                            <strong>SLA Prioritário:</strong> Atendimento "fura-fila" em caso de pane.
+                        </li>
+                        <li class="flex items-center gap-3 text-sm text-gray-600">
+                            <i data-lucide="refresh-cw" class="w-5 h-5 text-brand-yellow"></i>
+                            <strong>Atualizações:</strong> Updates de firmware e segurança facial.
+                        </li>
+                        <li class="flex items-center gap-3 text-sm text-gray-600">
+                            <i data-lucide="shield-check" class="w-5 h-5 text-brand-yellow"></i>
+                            <strong>Gestão de Garantia:</strong> Troca expressa de equipamentos.
+                        </li>
+                    </ul>
+                </div>
+                <div class="flex flex-col items-center justify-center p-6 bg-gray-50 rounded-xl border border-gray-100 w-full md:w-auto min-w-[200px]">
+                    <span class="text-xs text-gray-500 uppercase tracking-widest">Valor Mensal</span>
+                    <span class="text-3xl font-bold text-gray-900 my-2">R$ 490,00</span>
+                    <span class="text-[10px] bg-brand-yellow/10 text-brand-yellow px-2 py-1 rounded font-bold">Opcional Recomendado</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- METODOLOGIA -->
+    <section id="metodologia" class="py-20 bg-white">
+        <div class="max-w-4xl mx-auto px-4 reveal">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold text-gray-900">Cronograma de Ataque</h2>
+                <p class="text-gray-600 mt-2">Execução coordenada com a obra civil</p>
+            </div>
+
+            <div class="space-y-8 relative">
+                <div class="absolute left-[27px] top-0 bottom-0 w-0.5 bg-gray-200"></div>
+                
+                <div class="flex gap-8 relative">
+                    <div class="w-14 h-14 rounded-full bg-brand-yellow flex items-center justify-center text-black font-bold text-xl shadow-lg z-10 flex-shrink-0">1</div>
+                    <div class="bg-gray-50 p-6 rounded-xl shadow-sm border border-gray-200 flex-1">
+                        <h4 class="text-lg font-bold text-gray-900 mb-1">Infraestrutura Pré-Carpete <span class="text-xs bg-red-100 text-red-600 px-2 py-0.5 rounded ml-2 font-bold">CRÍTICO</span></h4>
+                        <p class="text-sm text-gray-600">Passagem de todo o cabeamento estruturado via piso elevado e fixação das bases antes do fechamento do piso.</p>
+                    </div>
+                </div>
+
+                <div class="flex gap-8 relative">
+                    <div class="w-14 h-14 rounded-full bg-white border-4 border-brand-yellow flex items-center justify-center text-gray-900 font-bold text-xl shadow-lg z-10 flex-shrink-0">2</div>
+                    <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-200 flex-1">
+                        <h4 class="text-lg font-bold text-gray-900 mb-1">Instalação de Ativos</h4>
+                        <p class="text-sm text-gray-600">Montagem dos leitores faciais, eletroímãs e ajuste fino das molas hidráulicas.</p>
+                    </div>
+                </div>
+
+                <div class="flex gap-8 relative">
+                    <div class="w-14 h-14 rounded-full bg-white border-4 border-gray-300 flex items-center justify-center text-gray-500 font-bold text-xl shadow-lg z-10 flex-shrink-0">3</div>
+                    <div class="bg-gray-50 p-6 rounded-xl shadow-sm border border-gray-200 flex-1">
+                        <h4 class="text-lg font-bold text-gray-900 mb-1">Start-up & Treinamento</h4>
+                        <p class="text-sm text-gray-600">Configuração da base de dados e treinamento "White Glove" para a recepção (cadastro e gestão).</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- INVESTIMENTO (CLEAN CORPORATE) -->
+    <section id="investimento" class="py-24 bg-white relative">
+        <div class="max-w-5xl mx-auto px-4 reveal">
+            <div class="text-center mb-16">
+                <span class="text-brand-yellow font-bold uppercase tracking-widest text-xs">Transparência</span>
+                <h2 class="text-3xl md:text-5xl font-bold text-gray-900 mt-2">Resumo do Investimento</h2>
+            </div>
+
+            <div class="bg-white border border-gray-200 rounded-3xl overflow-hidden shadow-2xl relative">
+                
+                <!-- Tabela de Itens -->
+                <div class="p-8 md:p-12">
+                    <div class="space-y-8">
+                        <div class="flex flex-col md:flex-row justify-between md:items-center border-b border-gray-100 pb-8">
+                            <div>
+                                <h4 class="text-lg font-bold text-gray-900 mb-2">Kit Hardware (4 Portas)</h4>
+                                <p class="text-sm text-gray-500 max-w-xl">4x Faciais SS 3532, 4x Kits Eletroímã 150kgf, 4x Molas MH104 P4, Fontes e Baterias Estacionárias.</p>
+                            </div>
+                            <div class="mt-4 md:mt-0">
+                                <span class="bg-gray-100 text-gray-600 px-3 py-1 rounded text-xs font-mono font-bold">Item 01</span>
+                            </div>
+                        </div>
+
+                        <div class="flex flex-col md:flex-row justify-between md:items-center border-b border-gray-100 pb-8">
+                            <div>
+                                <h4 class="text-lg font-bold text-gray-900 mb-2">Infraestrutura Oculta</h4>
+                                <p class="text-sm text-gray-500 max-w-xl">Cabeamento Estruturado, Fontes, Baterias & Infraestrutura de Piso Elevado.</p>
+                            </div>
+                            <div class="mt-4 md:mt-0">
+                                <span class="bg-gray-100 text-gray-600 px-3 py-1 rounded text-xs font-mono font-bold">Item 02</span>
+                            </div>
+                        </div>
+
+                        <div class="flex flex-col md:flex-row justify-between md:items-center">
+                            <div>
+                                <h4 class="text-lg font-bold text-gray-900 mb-2">Serviços Especializados</h4>
+                                <p class="text-sm text-gray-500 max-w-xl">Instalação, Configuração de Banco de Dados e Treinamento White Glove.</p>
+                            </div>
+                            <div class="mt-4 md:mt-0">
+                                <span class="bg-gray-100 text-gray-600 px-3 py-1 rounded text-xs font-mono font-bold">Item 03</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Seletor Vision Care -->
+                <div class="bg-gray-50 p-8 border-t border-gray-200">
+                    <label class="flex items-center justify-between cursor-pointer group p-2 rounded-xl hover:bg-white transition-colors">
+                        <div class="flex items-center gap-4">
+                            <div class="relative">
+                                <input type="checkbox" id="care-toggle" class="peer sr-only" onchange="updateTotal()">
+                                <div class="w-6 h-6 rounded border-2 border-gray-300 peer-checked:bg-brand-yellow peer-checked:border-brand-yellow flex items-center justify-center transition-all bg-white shadow-sm">
+                                    <i data-lucide="check" class="w-4 h-4 text-black hidden peer-checked:block"></i>
+                                </div>
+                            </div>
+                            <div>
+                                <span class="text-gray-900 text-sm font-bold block group-hover:text-brand-yellow transition-colors">Adicionar Vision Care</span>
+                                <span class="text-gray-500 text-xs">Manutenção mensal preventiva e suporte 24h</span>
+                            </div>
+                        </div>
+                        <span class="text-brand-yellow font-bold text-sm bg-brand-yellow/10 px-3 py-1 rounded-full">+ R$ 490/mês</span>
+                    </label>
+                </div>
+
+                <!-- Total e CTA -->
+                <div class="bg-white p-8 md:p-12 flex flex-col md:flex-row items-center justify-between gap-8 border-t border-gray-200">
+                    <div class="text-center md:text-left">
+                        <p class="text-gray-400 font-bold uppercase tracking-widest text-xs mb-1">Valor Total do Projeto</p>
+                        <p class="text-5xl font-extrabold text-gray-900 tracking-tight">R$ 16.890,<small class="text-2xl">00</small></p>
+                        <p class="text-sm text-gray-500 mt-3 font-medium">50% no Aceite (Reserva) + 50% na Entrega</p>
+                        <p id="care-msg" class="text-xs text-brand-yellow font-bold mt-2 hidden flex items-center justify-center md:justify-start gap-1 bg-brand-yellow/10 py-1 px-3 rounded-full inline-flex">
+                            <i data-lucide="shield-check" class="w-3 h-3"></i>
+                            + R$ 490,00/mês (Vision Care)
+                        </p>
+                    </div>
+                    
+                    <a href="https://wa.me/5511930816696?text=Ola,%20aprovamos%20o%20projeto%20Valor%20Investimentos" id="whatsapp-link" class="bg-emerald-600 text-white hover:bg-emerald-500 font-bold py-5 px-12 rounded-2xl transition-all shadow-green-glow transform hover:scale-105 flex items-center gap-3 text-lg">
+                        <i data-lucide="check-circle" class="w-6 h-6"></i>
+                        <span>APROVAR PROJETO</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="bg-zinc-950 py-16 text-center border-t border-zinc-900">
+        <div class="max-w-4xl mx-auto px-4">
+            <h3 class="text-xl font-bold text-white mb-4">Próximos Passos</h3>
+            <p class="text-zinc-500 mb-8 max-w-lg mx-auto leading-relaxed">
+                Devido à janela de instalação do carpete, reservamos uma pré-agenda da equipe de infraestrutura para as próximas 48 horas.
+            </p>
+            
+            <div class="flex flex-col items-center justify-center gap-0 mb-4 opacity-50">
+                <div class="relative flex items-baseline leading-none">
+                    <span class="font-logo font-bold text-[2rem] text-white lowercase tracking-[-0.08em] leading-none">vısıon</span>
+                    <span class="text-[0.6rem] text-white font-bold ml-0.5 self-end mb-1">®</span>
+                </div>
+                <div class="font-tech text-[0.6rem] font-bold text-zinc-500 lowercase tracking-[0.4em] ml-1 -mt-1">
+                    tecnologia
+                </div>
+            </div>
+            
+            <p class="text-xs text-zinc-700 uppercase tracking-widest font-bold">Engenharia de Segurança</p>
+        </div>
+    </footer>
+
+    <script>
+        // Init Icons
+        lucide.createIcons();
+
+        // Lock Screen Logic
+        const accessCodes = ["valor2026", "vision2620"];
+        function checkPassword() {
+            const input = document.getElementById('password-input');
+            const errorMsg = document.getElementById('error-msg');
+            const lockScreen = document.getElementById('lock-screen');
+            if(accessCodes.includes(input.value.toLowerCase())) {
+                lockScreen.style.opacity = '0';
+                setTimeout(() => {
+                    lockScreen.style.display = 'none';
+                    document.getElementById('html-root').classList.remove('overflow-hidden');
+                }, 700);
+            } else {
+                errorMsg.classList.remove('hidden');
+                setTimeout(() => errorMsg.classList.add('hidden'), 2000);
+            }
+        }
+        
+        document.getElementById('password-input').addEventListener("keypress", (e) => e.key === "Enter" && checkPassword());
+
+        // Update Link Logic
+        function updateTotal() {
+            const toggle = document.getElementById('care-toggle');
+            const btn = document.getElementById('whatsapp-link');
+            const msg = document.getElementById('care-msg');
+            
+            if (toggle.checked) {
+                msg.classList.remove('hidden');
+                btn.href = "https://wa.me/5511930816696?text=Ola,%20aprovamos%20o%20Projeto%20Valor%20COM%20VISION%20CARE";
+                btn.innerHTML = `<i data-lucide="check-circle" class="w-6 h-6"></i><span>APROVAR COM MANUTENÇÃO</span>`;
+                lucide.createIcons();
+            } else {
+                msg.classList.add('hidden');
+                btn.href = "https://wa.me/5511930816696?text=Ola,%20aprovamos%20o%20projeto%20Valor%20Investimentos";
+                btn.innerHTML = `<i data-lucide="check-circle" class="w-6 h-6"></i><span>APROVAR PROJETO</span>`;
+                lucide.createIcons();
+            }
+        }
+
+        // Scroll Animation
+        window.addEventListener('scroll', () => {
+            document.querySelectorAll('.reveal').forEach(el => {
+                if (el.getBoundingClientRect().top < window.innerHeight - 100) el.classList.add('active');
+            });
+        });
+    </script>
+</body>
+</html>

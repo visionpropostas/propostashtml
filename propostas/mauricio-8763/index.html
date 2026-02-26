@@ -1,0 +1,710 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Proposta Smart Entry | Vision Tecnologia</title>
+    <meta name="description" content="Projeto de Modernização de Acesso - Mauricio Ranzani.">
+    <meta name="theme-color" content="#0F172A">
+    
+    <!-- Fonts & Icons -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@700;800&family=Quicksand:wght@500;600;700&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: { 
+                        sans: ['"Outfit"', 'sans-serif'],
+                        logo: ['"League Spartan"', 'sans-serif'],
+                        tech: ['"Quicksand"', 'sans-serif'],
+                        visy: ['"Outfit"', 'sans-serif']
+                    },
+                    colors: {
+                        brand: {
+                            yellow: '#b9880e', 
+                            goldLight: '#FFDE59', 
+                            goldDark: '#BA8500',  
+                            black: '#0a0a0a',
+                            dark: '#020617',
+                            surface: '#1E293B',
+                        },
+                        visy: {
+                            primary: '#6366f1',
+                            secondary: '#a855f7'
+                        }
+                    },
+                    boxShadow: {
+                        'glow': '0 0 20px rgba(185, 136, 14, 0.15)',
+                        'glow-strong': '0 0 40px rgba(185, 136, 14, 0.3)',
+                        'glass': '0 8px 32px 0 rgba(31, 38, 135, 0.07)',
+                        'hero-curve': '0 20px 50px -10px rgba(0, 0, 0, 0.8)',
+                    },
+                    animation: {
+                        'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #020617; }
+        ::-webkit-scrollbar-thumb { background: #334155; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #b9880e; }
+        
+        .bg-grid-pattern {
+            background-image: linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+                              linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+            background-size: 40px 40px;
+        }
+
+        .text-gold-shine {
+            background: linear-gradient(to right, #b9880e 20%, #FFDE59 50%, #b9880e 80%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-size: 200% auto;
+            animation: shine 4s linear infinite;
+        }
+        @keyframes shine {
+            to { background-position: 200% center; }
+        }
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease-out;
+        }
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Glassmorphism Containers */
+        .glass-container {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+        }
+
+        .glass-text-box {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.8);
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Card Glass para Google Reviews */
+        .glass-review {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+        }
+        
+        .mask-gradient {
+            mask-image: linear-gradient(to bottom, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 100%);
+            -webkit-mask-image: linear-gradient(to bottom, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 100%);
+        }
+
+        /* Icon Hover Transitions */
+        .icon-box:hover .icon-bg { background-color: #b9880e; }
+        .icon-box:hover .icon-svg { color: #0F172A; }
+        .icon-bg, .icon-svg { transition: all 0.3s ease; }
+
+        /* Color Picker Active State */
+        .color-option.active {
+            border-color: #b9880e;
+            transform: scale(1.2);
+            box-shadow: 0 0 10px rgba(185, 136, 14, 0.4);
+        }
+
+        @media print {
+            .no-print { display: none !important; }
+            body { background: white; color: black; }
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-700 antialiased selection:bg-brand-yellow selection:text-brand-black overflow-x-hidden">
+
+    <!-- Navbar -->
+    <nav class="fixed w-full z-50 top-0 bg-brand-black/95 backdrop-blur-xl border-b border-white/5 transition-all duration-300 shadow-lg no-print">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
+            <div class="flex justify-between h-20 items-center">
+                <div class="flex flex-col items-stretch leading-none select-none cursor-pointer group z-10">
+                    <div class="relative flex items-baseline">
+                        <span class="font-logo font-bold text-[2rem] text-gold-shine lowercase tracking-[-0.08em] leading-[0.8]">vısıon</span>
+                        <span class="text-[0.5rem] text-[#b9880e] font-bold ml-0.5 self-end mb-1">®</span>
+                    </div>
+                    <div class="font-tech text-[0.6rem] font-bold text-slate-400 lowercase flex justify-between px-0.5 group-hover:text-brand-yellow transition-colors -mt-1">
+                        <span>h</span><span>o</span><span>m</span><span>e</span>
+                    </div>
+                </div>
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="#diagnostico" class="text-sm font-medium text-slate-300 hover:text-brand-yellow transition-colors">Conceito</a>
+                    <a href="#solucao" class="text-sm font-medium text-slate-300 hover:text-brand-yellow transition-colors">Diferenciais</a>
+                    <a href="#investimento" class="text-sm font-medium text-slate-300 hover:text-brand-yellow transition-colors">Opções</a>
+                </div>
+                <div class="hidden md:flex items-center space-x-6 z-10">
+                    <a href="#investimento" class="bg-brand-yellow hover:bg-white hover:text-brand-black text-brand-black px-6 py-2.5 rounded-full text-sm font-bold shadow-glow transition-all">
+                        Reservar Data
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- CAPA (HEADER) -->
+    <!-- Adicionei shadow-hero-curve para destacar o arredondamento -->
+    <header class="bg-brand-black pt-32 pb-32 relative z-10 overflow-hidden text-white min-h-[85vh] flex flex-col justify-center items-center text-center rounded-b-[1.5rem] shadow-hero-curve border-b border-white/5">
+        <!-- Background Imagem com Fade -->
+        <div class="absolute inset-0 z-0">
+            <!-- Imagem escura de pessoa abrindo a porta -->
+            <img src="https://images.unsplash.com/photo-1516455590571-18256e5bb9ff?q=80&w=2084&auto=format&fit=crop" alt="Pessoa abrindo porta" class="w-full h-full object-cover opacity-20 mask-gradient">
+            <!-- Gradiente ajustado para ser mais profundo e escurecer até o total -->
+            <div class="absolute inset-0 bg-gradient-to-b from-black/80 via-black/60 to-brand-black"></div>
+        </div>
+        
+        <div class="bg-grid-pattern absolute inset-0 opacity-10 pointer-events-none z-0"></div>
+        <!-- Brilho estático -->
+        <div class="absolute top-0 right-0 w-[600px] h-[600px] bg-brand-yellow rounded-full blur-[400px] opacity-10 pointer-events-none"></div>
+        
+        <div class="max-w-4xl mx-auto px-4 relative z-10">
+            <div class="reveal active">
+                <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-brand-yellow/30 bg-black/40 text-brand-yellow text-xs font-bold uppercase tracking-widest mb-8 backdrop-blur-md">
+                    Projeto Residencial Exclusivo
+                </div>
+                
+                <h1 class="text-4xl md:text-6xl font-extrabold mb-6 leading-tight tracking-tight drop-shadow-2xl">
+                    Acesso Inteligente <br>
+                    <span class="text-gold-shine">& Design Moderno</span>
+                </h1>
+                
+                <h2 class="text-xl md:text-2xl text-white font-light mb-10 max-w-2xl mx-auto">
+                    Transformando a entrada do seu apartamento em uma experiência de segurança e sofisticação.
+                </h2>
+            </div>
+
+            <!-- Dados do Cliente Centralizados -->
+            <div class="bg-white/5 backdrop-blur-md border border-white/10 p-1 rounded-2xl max-w-4xl mx-auto reveal active" style="transition-delay: 200ms;">
+                <div class="bg-brand-black/50 rounded-xl p-6 grid grid-cols-1 md:grid-cols-4 gap-6 items-center text-center md:text-left">
+                    <div class="border-b md:border-b-0 md:border-r border-white/10 pb-4 md:pb-0 md:pr-4">
+                        <p class="text-[10px] text-slate-500 uppercase tracking-widest font-bold mb-1">Cliente</p>
+                        <p class="text-base font-bold text-white">Mauricio Ranzani</p>
+                    </div>
+                    <div class="border-b md:border-b-0 md:border-r border-white/10 pb-4 md:pb-0 md:pr-4">
+                        <p class="text-[10px] text-slate-500 uppercase tracking-widest font-bold mb-1">Localização</p>
+                        <p class="text-xs font-bold text-white leading-tight">CEP 09175-450 - SP</p>
+                    </div>
+                    <div class="border-b md:border-b-0 md:border-r border-white/10 pb-4 md:pb-0 md:pr-4">
+                        <p class="text-[10px] text-slate-500 uppercase tracking-widest font-bold mb-1">Data</p>
+                        <p class="text-base font-bold text-brand-yellow">29/01/2026</p>
+                    </div>
+                      <div class="text-center text-xs text-slate-400 font-mono">
+                        Ref #Smart-Entry
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="bg-slate-50">
+        
+        <!-- 1. DIAGNÓSTICO -->
+        <section id="diagnostico" class="pt-48 pb-24 -mt-20 relative z-0 bg-slate-100 border-b border-slate-200">
+            <div class="max-w-5xl mx-auto px-4">
+                
+                <!-- Introduction Card -->
+                <div class="reveal mb-16">
+                    <div class="glass-text-box p-10 rounded-3xl relative overflow-hidden">
+                        <div class="absolute -top-10 -right-10 w-40 h-40 bg-orange-400 rounded-full blur-3xl opacity-20 pointer-events-none"></div>
+                        
+                        <div class="relative z-10 prose prose-lg text-slate-600 leading-relaxed max-w-none">
+                            <h3 class="text-3xl font-bold text-slate-900 mb-6 border-l-4 border-brand-yellow pl-4">Diagnóstico e Conceito</h3>
+                            <p class="mb-4">
+                                Mauricio, analisando as informações e a estrutura da sua porta atual (madeira comum), identificamos o cenário ideal para uma <strong>modernização completa</strong>.
+                            </p>
+                            <p class="mb-6">
+                                A sua decisão por um sistema de <strong>Embutir</strong> foi perfeita. Diferente dos modelos de sobrepor (que mantêm a maçaneta antiga e geram poluição visual), o sistema de embutir substitui todo o conjunto mecânico. O resultado é uma estética limpa, minimalista e infinitamente mais segura.
+                            </p>
+                            
+                            <div class="p-6 bg-slate-50 rounded-xl border-l-4 border-slate-800 border border-slate-200 shadow-inner">
+                                <h4 class="font-bold text-slate-800 mb-2">A Abordagem Vision:</h4>
+                                <p class="text-sm m-0">
+                                    Não vendemos apenas a fechadura na caixa. Nossa proposta contempla a <strong>Experiência Turnkey</strong>: o equipamento certo, adaptado perfeitamente à espessura e batente da sua porta, instalado com precisão milimétrica para garantir fechamento suave e vedação acústica correta.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Pontos de Valor -->
+                <div class="grid md:grid-cols-2 gap-8 reveal">
+                    <div class="bg-white p-8 rounded-2xl shadow-lg border border-slate-100 flex gap-4 items-start">
+                        <div class="p-3 bg-brand-yellow/10 rounded-lg text-brand-yellow shrink-0">
+                            <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/></svg>
+                        </div>
+                        <div>
+                            <h4 class="text-lg font-bold text-slate-800 mb-2">Design Integrado</h4>
+                            <p class="text-sm text-slate-600">Eliminação total das chaves físicas e da maçaneta mecânica antiga. A porta ganha um visual "clean" e sofisticado.</p>
+                        </div>
+                    </div>
+
+                    <div class="bg-white p-8 rounded-2xl shadow-lg border border-slate-100 flex gap-4 items-start">
+                        <div class="p-3 bg-brand-yellow/10 rounded-lg text-brand-yellow shrink-0">
+                            <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/></svg>
+                        </div>
+                        <div>
+                            <h4 class="text-lg font-bold text-slate-800 mb-2">Travamento Automático</h4>
+                            <p class="text-sm text-slate-600">Nunca mais tenha a dúvida "será que tranquei a porta?". Ao encostar, o sistema trava os pinos de segurança automaticamente.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 2. DETALHAMENTO TÉCNICO -->
+        <section id="solucao" class="py-24 bg-slate-50">
+            <div class="max-w-6xl mx-auto px-4">
+                <div class="text-center mb-16 reveal flex flex-col items-center">
+                    <img src="https://res.cloudinary.com/dptcuckhf/image/upload/v1769716069/yale-logo-1_ky2dgm.png" alt="Yale Logo" class="h-10 mb-6 opacity-80">
+                    <span class="text-brand-yellow font-bold tracking-widest uppercase text-xs">A Escolha Certa</span>
+                    <h2 class="text-3xl font-bold text-slate-900 mt-2">Tecnologia & Expertise</h2>
+                    <p class="text-slate-500 mt-2 text-sm">O casamento perfeito entre Hardware robusto e Instalação de Elite.</p>
+                </div>
+
+                <div class="grid gap-8 reveal">
+                    <!-- Box 1 -->
+                    <div class="bg-white p-8 rounded-2xl border border-slate-200 shadow-sm flex flex-col md:flex-row gap-8 hover:border-brand-yellow/50 transition-colors group cursor-default icon-box">
+                        <div class="md:w-1/3 flex flex-col justify-between">
+                            <div>
+                                <div class="w-14 h-14 bg-brand-yellow/10 rounded-xl flex items-center justify-center text-brand-yellow mb-4 icon-bg">
+                                    <svg class="w-8 h-8 icon-svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                                </div>
+                                <h3 class="text-xl font-bold text-slate-900">Yale de Embutir</h3>
+                                <p class="text-xs text-slate-500 mt-2 font-bold uppercase tracking-wider">A Referência Mundial</p>
+                            </div>
+                        </div>
+                        <div class="md:w-2/3 space-y-4 text-slate-600 text-sm leading-relaxed border-l border-slate-100 pl-8">
+                            <p>Selecionamos o modelo da Yale (grupo ASSA ABLOY), líder mundial em fechaduras. Robustez mecânica superior e design minimalista.</p>
+                            <ul class="grid md:grid-cols-2 gap-4">
+                                <li class="flex items-start gap-2">
+                                    <span class="text-brand-yellow text-lg">▹</span>
+                                    <span><strong>Biometria Avançada:</strong> Leitor no punho da maçaneta. Abra a porta em um movimento natural.</span>
+                                </li>
+                                <li class="flex items-start gap-2">
+                                    <span class="text-brand-yellow text-lg">▹</span>
+                                    <span><strong>Múltiplos Acessos:</strong> Senha numérica, Tag de proximidade e Chave de segurança.</span>
+                                </li>
+                                <li class="flex items-start gap-2">
+                                    <span class="text-brand-yellow text-lg">▹</span>
+                                    <span><strong>Garantia Estendida:</strong> Instalando com a Vision, você garante <strong>4 Anos</strong> no produto.</span>
+                                </li>
+                                <li class="flex items-start gap-2">
+                                    <span class="text-brand-yellow text-lg">▹</span>
+                                    <span><strong>Design Elegante:</strong> Disponível em acabamento Preto Fosco, Prata ou Branco.</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Box 2 -->
+                    <div class="bg-white p-8 rounded-2xl border border-slate-200 shadow-sm flex flex-col md:flex-row gap-8 hover:border-brand-yellow/50 transition-colors group cursor-default icon-box">
+                        <div class="md:w-1/3 flex flex-col justify-between">
+                            <div>
+                                <div class="w-14 h-14 bg-brand-yellow/10 rounded-xl flex items-center justify-center text-brand-yellow mb-4 icon-bg">
+                                    <svg class="w-8 h-8 icon-svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"/></svg>
+                                </div>
+                                <h3 class="text-xl font-bold text-slate-900">Instalação White Glove</h3>
+                                <p class="text-xs text-slate-500 mt-2 font-bold uppercase tracking-wider">Expertise Comprovada</p>
+                            </div>
+                        </div>
+                        <div class="md:w-2/3 space-y-4 text-slate-600 text-sm leading-relaxed border-l border-slate-100 pl-8">
+                            <p>Instalar uma fechadura de embutir exige precisão. Um erro milimétrico pode comprometer a porta. Por isso, só alocamos nossos melhores especialistas.</p>
+                            <ul class="grid md:grid-cols-2 gap-4">
+                                <li class="flex items-start gap-2">
+                                    <span class="text-brand-yellow text-lg">▹</span>
+                                    <span><strong>11 Anos de Experiência:</strong> Nossos técnicos possuem mais de uma década de mercado. Não é teste, é certeza.</span>
+                                </li>
+                                <li class="flex items-start gap-2">
+                                    <span class="text-brand-yellow text-lg">▹</span>
+                                    <span><strong>Limpeza Absoluta:</strong> Uso de aspiradores industriais durante a furação para zero poeira.</span>
+                                </li>
+                                <li class="flex items-start gap-2">
+                                    <span class="text-brand-yellow text-lg">▹</span>
+                                    <span><strong>Garantia de Serviço:</strong> 1 Ano completo de garantia sobre a instalação.</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Seção de Vídeo (NOVA) -->
+        <section class="py-16 bg-slate-100 border-y border-slate-200">
+            <div class="max-w-4xl mx-auto px-4 text-center reveal">
+                <div class="inline-block bg-brand-yellow/10 text-brand-yellow text-xs font-bold px-3 py-1 rounded-full uppercase tracking-widest mb-4">Veja em Ação</div>
+                <h2 class="text-2xl font-bold text-slate-900 mb-8">Conveniência no dia a dia</h2>
+                
+                <div class="relative w-full max-w-[350px] mx-auto aspect-[9/16] rounded-2xl overflow-hidden shadow-2xl border-4 border-white">
+                    <iframe 
+                        class="absolute inset-0 w-full h-full" 
+                        src="https://www.youtube.com/embed/TfqAzedHmuI?autoplay=0&loop=1&rel=0" 
+                        title="Yale Fechadura Digital" 
+                        frameborder="0" 
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                        allowfullscreen>
+                    </iframe>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. INVESTIMENTO (Opções) -->
+        <section id="investimento" class="py-24 bg-brand-black relative overflow-hidden">
+             <div class="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')] opacity-10"></div>
+            <div class="max-w-5xl mx-auto px-4 relative z-10">
+                <div class="text-center mb-16 reveal">
+                    <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">Escolha sua Experiência</h2>
+                    <p class="text-slate-400 text-lg">
+                        Qualidade Yale em dois níveis de interação.
+                    </p>
+                </div>
+
+                <div class="grid md:grid-cols-2 gap-8 items-start justify-center max-w-5xl mx-auto reveal">
+                    
+                    <!-- OPÇÃO 1: ESSENTIAL (Yale Comum) -->
+                    <div class="bg-white border border-slate-200 p-8 rounded-2xl flex flex-col hover:border-brand-yellow transition-all shadow-xl relative group h-full">
+                        
+                         <!-- Imagem do Produto -->
+                        <div class="w-full h-64 mb-6 flex items-center justify-center p-4">
+                             <img id="img-essential" src="https://res.cloudinary.com/dptcuckhf/image/upload/v1769716458/Fechadura_Digital_YMC_420W_Sem_Hub__preto_fosco_dxjmaq.png" 
+                                  alt="Yale de Embutir" 
+                                  class="h-full object-contain drop-shadow-2xl transition-all duration-500 transform group-hover:scale-105">
+                        </div>
+
+                        <div class="mb-4">
+                            <div class="text-xs font-bold text-slate-500 uppercase tracking-widest mb-2">Opção Recomendada</div>
+                            <h3 class="text-2xl font-bold text-slate-800">Yale de Embutir</h3>
+                            <p class="text-sm text-slate-500 mt-2">Segurança máxima em modo offline.</p>
+                        </div>
+
+                         <!-- Cores Disponíveis (Interativo) -->
+                        <div class="flex items-center gap-3 mb-6">
+                            <span class="text-[10px] uppercase font-bold text-slate-400">Selecione a cor:</span>
+                            <button onclick="changeColor('essential', 'black')" class="color-option active w-6 h-6 rounded-full bg-[#1a1a1a] border-2 border-slate-200 focus:outline-none transition-transform hover:scale-110" title="Preto Fosco"></button>
+                            <button onclick="changeColor('essential', 'silver')" class="color-option w-6 h-6 rounded-full bg-[#e2e2e2] border-2 border-slate-300 focus:outline-none transition-transform hover:scale-110" title="Prata"></button>
+                            <button onclick="changeColor('essential', 'white')" class="color-option w-6 h-6 rounded-full bg-[#f8f8f8] border-2 border-slate-200 focus:outline-none transition-transform hover:scale-110" title="Branca"></button>
+                        </div>
+                        
+                         <div class="space-y-4 flex-1 text-sm text-slate-600 mb-8">
+                            <ul class="space-y-3">
+                                <li class="flex items-center gap-2"><svg class="w-5 h-5 text-brand-yellow" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg> Biometria, Senha e Tag</li>
+                                <li class="flex items-center gap-2"><svg class="w-5 h-5 text-brand-yellow" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg> Maçaneta Reversível Robusta</li>
+                                <li class="flex items-center gap-2"><svg class="w-5 h-5 text-brand-yellow" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg> Instalação de Especialista (11 Anos)</li>
+                                <li class="flex items-center gap-2"><svg class="w-5 h-5 text-brand-yellow" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg> <strong>Garantia Estendida: 4 Anos</strong></li>
+                            </ul>
+                        </div>
+
+                        <div class="border-t border-slate-100 pt-6 mt-auto">
+                            <!-- Preço Invertido (Parcelado em Destaque) -->
+                            <div class="flex flex-col items-end mb-4">
+                                <span class="text-xs text-slate-400 font-bold uppercase tracking-wider mb-1">Investimento</span>
+                                <div class="flex items-baseline gap-1">
+                                    <span class="text-lg text-slate-500 font-medium">12x</span>
+                                    <span class="text-4xl font-extrabold text-slate-900">R$ 183,39</span>
+                                </div>
+                                <span class="text-sm text-slate-500 font-medium mt-1">ou R$ 1.834 à vista</span>
+                            </div>
+                            
+                            <a href="https://wa.me/5511930816696?text=Ola,%20aprovamos%20a%20Yale%20Offline" class="mt-2 block w-full bg-brand-black text-white font-bold py-4 rounded-xl hover:bg-slate-800 transition-all text-center">
+                                Aprovar Yale de Embutir
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- OPÇÃO 2: UPGRADE (Yale Connect) -->
+                    <div class="bg-gradient-to-br from-brand-black to-slate-900 border border-brand-yellow/30 p-8 rounded-2xl flex flex-col hover:border-brand-yellow transition-all transform md:scale-105 shadow-[0_0_30px_rgba(185,136,14,0.15)] relative z-10 group h-full">
+                        <div class="absolute top-4 right-4 bg-brand-yellow text-brand-black text-[10px] font-bold px-3 py-1 rounded-full">CONECTADA</div>
+                        
+                        <!-- Imagem do Produto -->
+                        <div class="w-full h-64 mb-6 flex items-center justify-center p-4 relative">
+                             <!-- Wi-Fi Icon Badge (Movido pra cima: -top-4) -->
+                             <div class="absolute -top-2 left-0 bg-white/10 backdrop-blur-md px-3 py-1 rounded-full flex items-center gap-2 border border-white/10 z-20 shadow-lg">
+                                 <svg class="w-4 h-4 text-brand-yellow" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.111 16.404a5.5 5.5 0 017.778 0M12 20h.01m-7.08-7.071c3.904-3.905 10.236-3.905 14.141 0M1.394 9.393c5.857-5.857 15.355-5.857 21.213 0"/></svg>
+                                 <span class="text-[10px] font-bold text-white uppercase">App Control</span>
+                             </div>
+                             <img id="img-connect" src="https://res.cloudinary.com/dptcuckhf/image/upload/v1769713365/Fechadura_Digital_YMC_420W_com_Zigbee_integrado___Kit_Conectividade__Preto_fosco_fabsws.png" 
+                                  alt="Yale de Embutir Connect" 
+                                  class="h-full object-contain drop-shadow-[0_20px_20px_rgba(0,0,0,0.5)] transition-all duration-500 transform group-hover:scale-105">
+                        </div>
+
+                        <div class="mb-4">
+                            <div class="text-xs font-bold text-brand-yellow uppercase tracking-widest mb-2">Upgrade Tecnológico</div>
+                            <h3 class="text-2xl font-bold text-white">Yale de Embutir Connect</h3>
+                            <p class="text-sm text-slate-400 mt-2">O mesmo modelo, agora com superpoderes.</p>
+                        </div>
+                        
+                         <!-- Cores Disponíveis (Interativo) -->
+                         <div class="flex items-center gap-3 mb-6">
+                            <span class="text-[10px] uppercase font-bold text-slate-500">Selecione a cor:</span>
+                            <button onclick="changeColor('connect', 'black')" class="color-option active w-6 h-6 rounded-full bg-[#1a1a1a] border-2 border-slate-600 focus:outline-none transition-transform hover:scale-110" title="Preto Fosco"></button>
+                            <button onclick="changeColor('connect', 'silver')" class="color-option w-6 h-6 rounded-full bg-[#e2e2e2] border-2 border-slate-600 focus:outline-none transition-transform hover:scale-110" title="Prata"></button>
+                            <button onclick="changeColor('connect', 'white')" class="color-option w-6 h-6 rounded-full bg-[#f8f8f8] border-2 border-slate-600 focus:outline-none transition-transform hover:scale-110" title="Branca"></button>
+                        </div>
+
+                         <div class="space-y-4 flex-1 text-sm text-slate-300 mb-8">
+                            <p class="text-xs italic text-brand-yellow mb-2">Tudo da anterior +</p>
+                            <ul class="space-y-3">
+                                <li class="flex items-center gap-2"><svg class="w-5 h-5 text-brand-yellow" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg> <strong>Abertura Remota</strong> (Abra de onde estiver)</li>
+                                <li class="flex items-center gap-2"><svg class="w-5 h-5 text-brand-yellow" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg> Relatório de Acesso no App</li>
+                                <li class="flex items-center gap-2"><svg class="w-5 h-5 text-brand-yellow" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg> <strong>Garantia Estendida Vision (4 Anos)</strong></li>
+                                <li class="flex items-center gap-2"><svg class="w-5 h-5 text-brand-yellow" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg> Módulo Zigbee + Hub Inclusos</li>
+                            </ul>
+                        </div>
+
+                        <div class="border-t border-white/10 pt-6 mt-auto">
+                            <!-- Preço Invertido (Parcelado em Destaque) -->
+                            <div class="flex flex-col items-end mb-4">
+                                <span class="text-xs text-slate-400 font-bold uppercase tracking-wider mb-1">Investimento</span>
+                                <div class="flex items-baseline gap-1">
+                                    <span class="text-lg text-slate-400 font-medium">12x</span>
+                                    <span class="text-4xl font-extrabold text-white">R$ 207,68</span>
+                                </div>
+                                <span class="text-sm text-slate-400 font-medium mt-1">ou R$ 2.077 à vista</span>
+                            </div>
+
+                            <a href="https://wa.me/5511930816696?text=Ola,%20aprovamos%20a%20Yale%20Connect" class="mt-2 block w-full bg-brand-yellow text-brand-black font-bold py-4 rounded-xl hover:bg-white transition-all text-center shadow-glow">
+                                Aprovar Yale Connect
+                            </a>
+                        </div>
+                    </div>
+
+                </div>
+                
+                <!-- AR Experience Section -->
+                <div class="mt-16 reveal">
+                    <div class="max-w-2xl mx-auto glass-container p-1 rounded-2xl bg-gradient-to-r from-brand-black to-slate-900 border border-white/10 shadow-glow">
+                        <div class="bg-black/40 rounded-xl p-8 flex flex-col md:flex-row items-center gap-8 text-center md:text-left">
+                            <div class="shrink-0 bg-white p-2 rounded-lg shadow-lg">
+                                <img src="https://res.cloudinary.com/dptcuckhf/image/upload/v1769716688/Realidade_virtual_Yale_420w_iopezr.png" alt="QR Code Realidade Aumentada" class="w-32 h-32 object-contain">
+                            </div>
+                            <div>
+                                <h3 class="text-xl font-bold text-white mb-2 flex items-center justify-center md:justify-start gap-2">
+                                    <svg class="w-6 h-6 text-brand-yellow" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 10l-2 1m0 0l-2-1m2 1v2.5M20 7l-2 1m2-1l-2-1m2 1v2.5M14 4l-2-1-2 1M4 7l2-1M4 7l2 1M4 7v2.5M12 21l-2-1m2 1l2-1m-2 1v-2.5M6 18l-2-1v-2.5M18 18l2-1v-2.5"/></svg>
+                                    Veja em Realidade Aumentada
+                                </h3>
+                                <p class="text-sm text-slate-400 mb-4">
+                                    Não consegue imaginar como ficará na sua porta? Escaneie o QR Code com a câmera do seu celular e projete a fechadura no seu ambiente agora mesmo.
+                                </p>
+                                <span class="text-xs font-bold text-brand-yellow border border-brand-yellow/30 px-3 py-1 rounded-full bg-brand-yellow/10">Tecnologia 3D Vision</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- 4. POR QUE VISION (REFORMULADO) -->
+        <section class="py-24 bg-white relative">
+            <div class="max-w-6xl mx-auto px-4">
+                 <div class="text-center mb-16 reveal">
+                     <h2 class="text-3xl font-bold text-slate-900 mb-4">Por que contratar a Vision?</h2>
+                     <p class="text-slate-500 max-w-2xl mx-auto text-lg">
+                         A fechadura você encontra em qualquer lugar. A <strong>paz de espírito</strong> de uma instalação perfeita e garantia real, só aqui.
+                     </p>
+                 </div>
+
+                 <div class="grid md:grid-cols-3 gap-8 reveal mb-16">
+                     <!-- Card 1 -->
+                     <div class="p-8 bg-slate-50 rounded-2xl border border-slate-100 hover:shadow-lg transition-all group">
+                         <div class="w-14 h-14 bg-brand-black text-white rounded-xl flex items-center justify-center text-2xl mb-6 group-hover:bg-brand-yellow group-hover:text-brand-black transition-colors">
+                            🏆
+                         </div>
+                         <h3 class="text-xl font-bold text-slate-900 mb-3">11 Anos de Experiência</h3>
+                         <p class="text-slate-600 text-sm leading-relaxed">
+                             Não enviamos "instaladores de aplicativo". Nossos técnicos são funcionários de carreira da Vision, com mais de uma década de experiência em portas de alto padrão. Sabemos lidar com imprevistos.
+                         </p>
+                     </div>
+
+                     <!-- Card 2 -->
+                     <div class="p-8 bg-slate-50 rounded-2xl border border-slate-100 hover:shadow-lg transition-all group">
+                        <div class="w-14 h-14 bg-brand-black text-white rounded-xl flex items-center justify-center text-2xl mb-6 group-hover:bg-brand-yellow group-hover:text-brand-black transition-colors">
+                           🛡️
+                        </div>
+                        <h3 class="text-xl font-bold text-slate-900 mb-3">Garantia Vision 4 Anos</h3>
+                        <p class="text-slate-600 text-sm leading-relaxed">
+                            A garantia padrão de mercado é de 1 ano. Confiamos tanto na nossa instalação e no produto que estendemos para <strong>4 anos no produto</strong> e 1 ano total no serviço. Se der problema, nós resolvemos.
+                        </p>
+                    </div>
+
+                    <!-- Card 3 -->
+                    <div class="p-8 bg-slate-50 rounded-2xl border border-slate-100 hover:shadow-lg transition-all group">
+                        <div class="w-14 h-14 bg-brand-black text-white rounded-xl flex items-center justify-center text-2xl mb-6 group-hover:bg-brand-yellow group-hover:text-brand-black transition-colors">
+                           🤝
+                        </div>
+                        <h3 class="text-xl font-bold text-slate-900 mb-3">Pós-Venda Real</h3>
+                        <p class="text-slate-600 text-sm leading-relaxed">
+                            Não desaparecemos após o pagamento. Temos sede própria, suporte via WhatsApp dedicado e corpo técnico pronto para atender. Você compra um relacionamento de longo prazo.
+                        </p>
+                    </div>
+                 </div>
+
+                 <!-- Google Review Card -->
+                 <div class="glass-review rounded-2xl p-8 flex flex-col md:flex-row items-center justify-between gap-6 hover:shadow-glow transition-shadow bg-slate-900">
+                    <div class="flex items-center gap-6">
+                        <div class="w-16 h-16 bg-white rounded-full flex items-center justify-center p-2 shadow-lg">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/c/c1/Google_%22G%22_logo.svg" alt="Google" class="w-full h-full">
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-white text-2xl">Excelência Comprovada</h4>
+                            <p class="text-brand-yellow text-sm font-medium">Líder em Avaliações no Google</p>
+                        </div>
+                    </div>
+                    
+                    <div class="flex flex-col items-center md:items-end">
+                        <div class="flex gap-1 mb-2">
+                            <span class="text-brand-yellow text-2xl">★</span>
+                            <span class="text-brand-yellow text-2xl">★</span>
+                            <span class="text-brand-yellow text-2xl">★</span>
+                            <span class="text-brand-yellow text-2xl">★</span>
+                            <span class="text-brand-yellow text-2xl">★</span>
+                        </div>
+                        <p class="text-white font-bold text-xl">5.0 - Excelente</p>
+                        <p class="text-xs text-slate-400 mt-1">Baseado em clientes reais</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-brand-black text-slate-400 py-12 border-t border-white/10 no-print">
+        <div class="max-w-4xl mx-auto px-4 text-center">
+            <div class="flex flex-col items-center justify-center gap-0 mb-8">
+                <div class="relative flex items-baseline leading-none">
+                    <span class="font-logo font-bold text-[2.5rem] text-gold-shine lowercase tracking-[-0.08em] leading-none">vısıon</span>
+                    <span class="text-[0.6rem] text-[#b9880e] font-bold ml-0.5 self-end mb-1">®</span>
+                </div>
+                <div class="font-tech text-[0.6rem] font-light text-white lowercase tracking-[0.4em] ml-1 -mt-2">
+                    tecnologia
+                </div>
+            </div>
+            
+            <p class="text-xs text-slate-600 max-w-lg mx-auto mt-8">
+                Esta proposta é válida por 7 dias. Valores sujeitos a alteração sem aviso prévio.
+            </p>
+            
+            <!-- MARCA D'ÁGUA VISY -->
+            <div class="mt-8 pt-8 border-t border-white/5 flex flex-col items-center justify-center">
+                <a href="https://visy.netlify.app/" target="_blank" class="group flex items-center gap-2 opacity-50 hover:opacity-100 transition-opacity">
+                    <span class="text-[10px] uppercase tracking-widest text-slate-500 group-hover:text-visy-primary transition-colors">Powered by</span>
+                    <div class="flex items-center gap-1.5">
+                        <div class="relative w-4 h-4 flex items-center justify-center">
+                            <div class="absolute w-full h-full border border-visy-primary/50 rounded-sm transform rotate-45 group-hover:rotate-90 transition-all duration-700 ease-out"></div>
+                            <div class="relative w-1 h-1 bg-white rounded-full"></div>
+                        </div>
+                        <span class="font-visy font-bold text-white text-sm tracking-wide group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-visy-primary group-hover:to-visy-secondary transition-all duration-500">visy</span>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Whatsapp Floating Button -->
+    <a href="https://wa.me/5511930816696?text=Ola,%20quero%20agendar%20a%20instalacao"
+       target="_blank"
+       id="whatsapp-btn"
+       class="fixed bottom-6 right-6 z-50 bg-[#25D366] text-white p-3 rounded-full shadow-lg hover:scale-110 hover:bg-[#20b858] transition-all duration-300 group flex items-center gap-2 overflow-hidden translate-y-20 opacity-0 no-print"
+       aria-label="Falar no WhatsApp">
+        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.008-.57-.008-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
+        </svg>
+        <span class="max-w-0 overflow-hidden group-hover:max-w-xs transition-all duration-500 ease-in-out whitespace-nowrap text-sm font-bold pl-0 group-hover:pl-2">Falar agora</span>
+    </a>
+
+    <script>
+        // Image Data Store
+        const productImages = {
+            essential: {
+                black: 'https://res.cloudinary.com/dptcuckhf/image/upload/v1769716458/Fechadura_Digital_YMC_420W_Sem_Hub__preto_fosco_dxjmaq.png',
+                silver: 'https://res.cloudinary.com/dptcuckhf/image/upload/v1769716458/Fechadura_Digital_YMC_420W_Sem_Hub__Prata_jun0cc.png',
+                white: 'https://res.cloudinary.com/dptcuckhf/image/upload/v1769716458/Fechadura_Digital_YMC_420W_Sem_Hub__branca_-removebg-preview_vvkyxx.png'
+            },
+            connect: {
+                black: 'https://res.cloudinary.com/dptcuckhf/image/upload/v1769713365/Fechadura_Digital_YMC_420W_com_Zigbee_integrado___Kit_Conectividade__Preto_fosco_fabsws.png',
+                silver: 'https://res.cloudinary.com/dptcuckhf/image/upload/v1769712885/Fechadura_Digital_YMC_420W_com_Zigbee_integrado___Kit_Conectividade_tbvxhe.png',
+                white: 'https://res.cloudinary.com/dptcuckhf/image/upload/v1769713365/Fechadura_Digital_YMC_420W_com_Zigbee_integrado___Kit_Conectividade__Branca_-_fwx507.png'
+            }
+        };
+
+        // Color Changer Function
+        function changeColor(model, color) {
+            // Update Image
+            const imgElement = document.getElementById(`img-${model}`);
+            if (imgElement && productImages[model][color]) {
+                imgElement.style.opacity = '0'; // Fade out
+                setTimeout(() => {
+                    imgElement.src = productImages[model][color];
+                    imgElement.style.opacity = '1'; // Fade in
+                }, 200);
+            }
+
+            // Update Active Button State
+            // Find the container for this model
+            const container = imgElement.closest('.group');
+            // Find buttons within this container
+            const buttons = container.querySelectorAll('.color-option');
+            
+            buttons.forEach(btn => {
+                // Reset all buttons in this group
+                btn.classList.remove('active');
+                
+                // Set active if it matches the color clicked
+                // Using simple title check or index logic
+                // Since I passed specific colors, I can check the onclick attribute or title
+                if (btn.getAttribute('onclick').includes(`'${color}'`)) {
+                    btn.classList.add('active');
+                }
+            });
+        }
+
+        // Reveal Animation Script
+        window.addEventListener('scroll', reveal);
+        function reveal() {
+            var reveals = document.querySelectorAll('.reveal');
+            for (var i = 0; i < reveals.length; i++) {
+                var windowHeight = window.innerHeight;
+                var elementTop = reveals[i].getBoundingClientRect().top;
+                var elementVisible = 100;
+                if (elementTop < windowHeight - elementVisible) {
+                    reveals[i].classList.add('active');
+                }
+            }
+        }
+        
+        // Whatsapp Button Reveal Logic
+        window.addEventListener('scroll', function() {
+            var whatsappBtn = document.getElementById('whatsapp-btn');
+            if (whatsappBtn) {
+                if (window.scrollY > 300) {
+                    whatsappBtn.classList.add('visible');
+                    whatsappBtn.classList.remove('translate-y-20', 'opacity-0');
+                } else {
+                    whatsappBtn.classList.remove('visible');
+                    whatsappBtn.classList.add('translate-y-20', 'opacity-0');
+                }
+            }
+        });
+
+        // Trigger reveal on load
+        reveal(); 
+    </script>
+</body>
+</html>

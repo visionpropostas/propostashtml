@@ -1,0 +1,685 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth overflow-hidden" id="html-root">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Proposta Vision Home | Adriana</title>
+    <meta name="description" content="Projeto de Segurança Residencial Sob Medida">
+    <meta name="theme-color" content="#b9880e">
+    
+    <!-- Fonts & Icons -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@700;800&family=Quicksand:wght@500;600;700&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: { 
+                        sans: ['"Outfit"', 'sans-serif'],
+                        logo: ['"League Spartan"', 'sans-serif'],
+                        tech: ['"Quicksand"', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            yellow: '#b9880e', 
+                            goldLight: '#FFDE59', 
+                            goldDark: '#BA8500',  
+                            black: '#09090b', 
+                            dark: '#000000',
+                            surface: '#18181b', 
+                            gray: '#27272a', 
+                        },
+                    },
+                    boxShadow: {
+                        'glow': '0 0 20px rgba(185, 136, 14, 0.15)',
+                        'glow-strong': '0 0 40px rgba(185, 136, 14, 0.3)',
+                        'glass': '0 8px 32px 0 rgba(0, 0, 0, 0.3)',
+                    },
+                    animation: {
+                        'slide-up': 'slideUp 0.8s ease-out forwards',
+                        'fade-in': 'fadeIn 1s ease-out forwards',
+                    },
+                    keyframes: {
+                        slideUp: {
+                            '0%': { opacity: '0', transform: 'translateY(20px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' },
+                        },
+                        fadeIn: {
+                            '0%': { opacity: '0' },
+                            '100%': { opacity: '1' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #f9fafb; }
+        ::-webkit-scrollbar-thumb { background: #d1d5db; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #b9880e; }
+        
+        .text-gold-shine {
+            background: linear-gradient(to right, #b9880e 20%, #FFDE59 50%, #b9880e 80%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-size: 200% auto;
+            animation: shine 4s linear infinite;
+        }
+        @keyframes shine { to { background-position: 200% center; } }
+        
+        .bg-grid { 
+            background-image: linear-gradient(rgba(185, 136, 14, 0.03) 1px, transparent 1px), 
+                              linear-gradient(90deg, rgba(185, 136, 14, 0.03) 1px, transparent 1px); 
+            background-size: 40px 40px; 
+        }
+        
+        .card-hover { transition: all 0.3s ease; }
+        .card-hover:hover { 
+            transform: translateY(-5px); 
+            box-shadow: 0 20px 40px -10px rgba(185,136,14,0.2); 
+        }
+        
+        /* Lock Screen Input */
+        .lock-input {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: #b9880e;
+            font-family: 'League Spartan', sans-serif;
+            font-size: 1.5rem;
+            text-align: center;
+            outline: none;
+            transition: all 0.3s;
+            letter-spacing: 0.2em;
+            border-radius: 12px;
+        }
+        .lock-input:focus {
+            border-color: #b9880e;
+            background: rgba(255, 255, 255, 0.08);
+            box-shadow: 0 0 15px rgba(185, 136, 14, 0.2);
+        }
+        .lock-input::placeholder {
+            color: #52525b;
+            font-size: 0.9rem;
+            font-family: 'Outfit', sans-serif;
+            font-weight: 300;
+            letter-spacing: normal;
+        }
+
+        .reveal { opacity: 0; transform: translateY(30px); transition: all 0.8s ease-out; }
+        .reveal.active { opacity: 1; transform: translateY(0); }
+
+        .product-card {
+            background: white;
+            border: 1px solid #e5e7eb;
+            border-radius: 16px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+        .product-card:hover {
+            border-color: #b9880e;
+            box-shadow: 0 10px 30px rgba(185, 136, 14, 0.15);
+            transform: translateY(-5px);
+        }
+
+        .navbar-solid {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid #e5e7eb;
+        }
+
+        /* Toggle Switch Customization */
+        .toggle-checkbox:checked {
+            right: 0;
+            border-color: #b9880e;
+        }
+        .toggle-checkbox:checked + .toggle-label {
+            background-color: #b9880e;
+        }
+        
+        @media print {
+            #lock-screen, #navbar, #whatsapp-link, .no-print { display: none !important; }
+            body { background: white; color: black; }
+            .reveal { opacity: 1 !important; transform: none !important; }
+        }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800 antialiased overflow-x-hidden">
+
+    <!-- LOCK SCREEN -->
+    <div id="lock-screen" class="fixed inset-0 z-[100] bg-[#09090b] flex flex-col items-center justify-center text-center p-4 transition-opacity duration-700 ease-out">
+        <div class="bg-grid absolute inset-0 opacity-10 pointer-events-none"></div>
+        
+        <div class="relative flex flex-col items-center justify-center mb-8 z-10">
+            <div class="relative flex items-baseline leading-none">
+                <span class="font-logo font-bold text-[3.5rem] md:text-[6rem] text-gold-shine lowercase tracking-[-0.08em]">vısıon</span>
+                <span class="text-[0.8rem] md:text-[1.2rem] text-[#b9880e] font-bold ml-1 self-end mb-3">®</span>
+            </div>
+            <div class="font-tech text-[0.9rem] md:text-[1.2rem] font-light text-zinc-500 lowercase tracking-[0.4em] -mt-5">home safe</div>
+        </div>
+        
+        <div class="w-full max-w-md space-y-6 z-10" id="lock-content">
+            <div class="text-center space-y-2">
+                <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-brand-yellow/30 bg-brand-yellow/10 mb-4">
+                    <i data-lucide="lock" class="w-4 h-4 text-brand-yellow"></i>
+                    <span class="text-brand-yellow text-xs font-bold uppercase tracking-widest">Acesso Restrito</span>
+                </div>
+                <h2 class="text-white font-bold text-2xl">Projeto Residencial Adriana</h2>
+                <p class="text-zinc-400 text-sm">São Paulo - SP • Revisão 2.2</p>
+                <p class="text-zinc-500 text-xs mt-2">ID-VISION-HM-26.01</p>
+            </div>
+            
+            <div class="relative">
+                <input type="password" id="password-input" class="lock-input w-full py-4 px-4" placeholder="SENHA DE ACESSO" autocomplete="off">
+                <p id="error-msg" class="text-red-500 text-xs mt-2 hidden font-bold">❌ Acesso negado. Tente 'vision' ou 'adriana'.</p>
+            </div>
+            
+            <button onclick="checkPassword()" class="w-full bg-brand-yellow hover:bg-brand-goldLight text-black font-bold py-4 rounded-xl transition-all shadow-glow flex items-center justify-center gap-2 group">
+                <i data-lucide="shield-check" class="w-5 h-5"></i>
+                <span>Visualizar Proposta</span>
+                <i data-lucide="arrow-right" class="w-4 h-4 group-hover:translate-x-1 transition-transform"></i>
+            </button>
+        </div>
+    </div>
+
+    <!-- NAVBAR -->
+    <nav id="navbar" class="fixed w-full z-50 top-0 transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-20 items-center">
+                <div class="flex flex-col items-start cursor-pointer">
+                    <span class="font-logo font-bold text-2xl text-gold-shine lowercase tracking-tight leading-none">vısıon</span>
+                    <span class="font-tech text-[0.6rem] font-bold text-gray-600 lowercase tracking-[0.3em] -mt-2">home safe</span>
+                </div>
+                <div class="hidden md:flex items-center space-x-6 text-sm font-medium text-gray-600">
+                    <a href="#contexto" class="hover:text-brand-yellow transition-colors">O Desafio</a>
+                    <a href="#solucao" class="hover:text-brand-yellow transition-colors">Tecnologia</a>
+                    <a href="#vision-care" class="hover:text-brand-yellow transition-colors">Vision Care</a>
+                    <a href="#investimento" class="hover:text-brand-yellow transition-colors">Opções</a>
+                </div>
+                <a href="#investimento" class="bg-brand-yellow text-black px-6 py-2.5 rounded-full text-xs font-bold uppercase tracking-wide hover:bg-brand-goldLight transition-all shadow-md hover:shadow-glow">
+                    Ver Opções
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- HERO SECTION -->
+    <header class="pt-32 pb-20 relative overflow-hidden bg-white">
+        <div class="bg-grid absolute inset-0 opacity-40"></div>
+        <div class="absolute inset-0 bg-gradient-to-b from-transparent via-white/50 to-white"></div>
+        
+        <div class="max-w-6xl mx-auto px-4 relative z-10">
+            <div class="text-center space-y-6 animate-slide-up">
+                <div class="inline-flex items-center gap-2 px-5 py-2 rounded-full border border-brand-yellow/30 bg-brand-yellow/10 text-brand-yellow text-[10px] font-bold uppercase tracking-widest">
+                    <i data-lucide="shield" class="w-4 h-4"></i>
+                    Segurança Sob Medida | São Paulo
+                </div>
+                
+                <h1 class="text-4xl md:text-6xl lg:text-7xl font-bold text-gray-900 leading-tight">
+                    Segurança Residencial<br>
+                    <span class="text-gold-shine">Inteligente</span>
+                </h1>
+                
+                <p class="text-xl md:text-2xl text-brand-yellow font-semibold max-w-3xl mx-auto">
+                    Projeto Especial: Adriana
+                </p>
+
+                <p class="text-base md:text-lg text-gray-600 max-w-4xl mx-auto leading-relaxed font-light">
+                    Alternativas estratégicas para proteger sua família sem abrir mão da qualidade técnica. Selecionamos 3 cenários para equilibrar proteção e investimento.
+                </p>
+            </div>
+
+            <div class="mt-16 grid grid-cols-2 md:grid-cols-4 gap-6 max-w-5xl mx-auto">
+                <div class="bg-white rounded-xl p-6 shadow-md border border-gray-200 text-center reveal">
+                    <i data-lucide="layers" class="w-10 h-10 text-brand-yellow mx-auto mb-3"></i>
+                    <div class="text-3xl font-bold text-gray-900">3</div>
+                    <div class="text-sm text-gray-600">Opções de Projeto</div>
+                </div>
+                <div class="bg-white rounded-xl p-6 shadow-md border border-gray-200 text-center reveal" style="animation-delay: 100ms;">
+                    <i data-lucide="eye" class="w-10 h-10 text-brand-yellow mx-auto mb-3"></i>
+                    <div class="text-3xl font-bold text-gray-900">HD</div>
+                    <div class="text-sm text-gray-600">Alta Resolução</div>
+                </div>
+                <div class="bg-white rounded-xl p-6 shadow-md border border-gray-200 text-center reveal" style="animation-delay: 200ms;">
+                    <i data-lucide="bell-ring" class="w-10 h-10 text-brand-yellow mx-auto mb-3"></i>
+                    <div class="text-3xl font-bold text-gray-900">24h</div>
+                    <div class="text-sm text-gray-600">Alarme Monitorado</div>
+                </div>
+                <div class="bg-white rounded-xl p-6 shadow-md border border-gray-200 text-center reveal" style="animation-delay: 300ms;">
+                    <i data-lucide="smartphone" class="w-10 h-10 text-brand-yellow mx-auto mb-3"></i>
+                    <div class="text-3xl font-bold text-gray-900">App</div>
+                    <div class="text-sm text-gray-600">Controle Total</div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- CONTEXTO E DESAFIO -->
+    <section id="contexto" class="py-20 bg-gray-50">
+        <div class="max-w-6xl mx-auto px-4">
+            <div class="text-center mb-12 reveal">
+                <span class="text-brand-yellow font-bold uppercase tracking-widest text-xs">O Cenário</span>
+                <h2 class="text-3xl md:text-5xl font-bold text-gray-900 mt-2">Proteção vs Orçamento</h2>
+                <p class="text-gray-600 mt-3 max-w-3xl mx-auto">Encontrar o equilíbrio ideal entre segurança máxima e viabilidade financeira.</p>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+                <div class="space-y-6 reveal">
+                    <p class="text-gray-700 leading-relaxed">
+                        Entendemos a necessidade de ajustar o investimento. Por isso, apresentamos <strong>3 alternativas técnicas</strong>: desde a proteção máxima (Premium) até a proteção essencial contra intrusão, passando por uma opção híbrida com excelente custo-benefício.
+                    </p>
+
+                    <div class="bg-white rounded-xl p-6 border-l-4 border-brand-yellow shadow-md">
+                        <h4 class="font-bold text-gray-900 mb-4 flex items-center gap-2">
+                            <i data-lucide="check-circle-2" class="w-5 h-5 text-brand-yellow"></i>
+                            Destaques do Projeto:
+                        </h4>
+                        <ul class="space-y-3 text-sm text-gray-700">
+                            <li class="flex items-start gap-2">
+                                <i data-lucide="check" class="w-4 h-4 text-brand-yellow mt-0.5 flex-shrink-0"></i>
+                                <span>Opção Premium com Câmeras <strong>Full HD</strong> Coloridas</span>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <i data-lucide="check" class="w-4 h-4 text-brand-yellow mt-0.5 flex-shrink-0"></i>
+                                <span>Opção Híbrida para máximo Custo-Benefício</span>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <i data-lucide="check" class="w-4 h-4 text-brand-yellow mt-0.5 flex-shrink-0"></i>
+                                <span>Manutenção Preventiva Inclusa (Vision Care)</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-2 gap-6 reveal">
+                    <div class="bg-white rounded-2xl p-8 shadow-lg text-center border-t-4 border-brand-yellow card-hover">
+                        <i data-lucide="video" class="w-12 h-12 text-brand-yellow mx-auto mb-3"></i>
+                        <div class="text-2xl font-bold text-gray-900 mb-1">Vídeo</div>
+                        <div class="text-sm text-gray-600">Registro de<br>eventos</div>
+                    </div>
+                    <div class="bg-white rounded-2xl p-8 shadow-lg text-center border-t-4 border-brand-yellow card-hover">
+                        <i data-lucide="siren" class="w-12 h-12 text-brand-yellow mx-auto mb-3"></i>
+                        <div class="text-2xl font-bold text-gray-900 mb-1">Alarme</div>
+                        <div class="text-sm text-gray-600">Disparo de<br>sirene</div>
+                    </div>
+                    <div class="bg-white rounded-2xl p-8 shadow-lg text-center border-t-4 border-brand-yellow card-hover">
+                        <i data-lucide="wifi" class="w-12 h-12 text-brand-yellow mx-auto mb-3"></i>
+                        <div class="text-2xl font-bold text-gray-900 mb-1">Sem Fio</div>
+                        <div class="text-sm text-gray-600">Instalação<br>Limpa</div>
+                    </div>
+                    <div class="bg-white rounded-2xl p-8 shadow-lg text-center border-t-4 border-brand-yellow card-hover">
+                        <i data-lucide="shield-check" class="w-12 h-12 text-brand-yellow mx-auto mb-3"></i>
+                        <div class="text-2xl font-bold text-gray-900 mb-1">Garantia</div>
+                        <div class="text-sm text-gray-600">Equipamentos<br>Intelbras</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SOLUÇÃO (Foco na Híbrida) -->
+    <section id="solucao" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="text-center mb-12 reveal">
+                <span class="text-brand-yellow font-bold uppercase tracking-widest text-xs">Recomendação Técnica</span>
+                <h2 class="text-3xl md:text-5xl font-bold text-gray-900 mt-2">Sistema Híbrido Inteligente</h2>
+                <p class="text-gray-600 mt-3">A combinação perfeita entre monitoramento visual e proteção perimetral.</p>
+            </div>
+
+            <!-- Produto Destaque -->
+            <div class="product-card reveal max-w-4xl mx-auto shadow-2xl border-2 border-brand-yellow">
+                <div class="grid md:grid-cols-2">
+                    <div class="bg-gray-50 flex items-center justify-center p-12 relative">
+                        <div class="absolute top-4 left-4 bg-brand-yellow text-black text-[10px] font-bold px-3 py-1 rounded-full">RECOMENDADO</div>
+                        <div class="text-6xl">⚖️</div>
+                    </div>
+                    <div class="p-8 md:p-12 flex flex-col justify-center">
+                        <h3 class="text-2xl font-bold text-gray-900 mb-2">Kit Câmeras HD + Alarme</h3>
+                        <p class="text-xs text-brand-yellow font-bold uppercase tracking-wider mb-6">Opção Custo-Benefício</p>
+                        
+                        <p class="text-gray-600 mb-6 leading-relaxed">
+                            A combinação inteligente para reduzir custos sem perder segurança. Trocamos as câmeras Full Color por <strong>modelos HD</strong> e o alarme premium por um sistema padrão confiável. Você mantém a gravação de imagens e o disparo de sirene, com um investimento muito menor.
+                        </p>
+
+                        <div class="space-y-3 mb-6 text-sm text-gray-700">
+                            <div class="flex items-center gap-3">
+                                <div class="bg-brand-yellow/10 p-2 rounded-full"><i data-lucide="video" class="w-4 h-4 text-brand-yellow"></i></div>
+                                <span><strong>3x Câmeras HD:</strong> Gravação e visualização remota</span>
+                            </div>
+                            <div class="flex items-center gap-3">
+                                <div class="bg-brand-yellow/10 p-2 rounded-full"><i data-lucide="shield" class="w-4 h-4 text-brand-yellow"></i></div>
+                                <span><strong>Sirene Anti-Sabotagem:</strong> Proteção contra corte de fios</span>
+                            </div>
+                            <div class="flex items-center gap-3">
+                                <div class="bg-brand-yellow/10 p-2 rounded-full"><i data-lucide="radio" class="w-4 h-4 text-brand-yellow"></i></div>
+                                <span><strong>8x Sensores:</strong> Proteção de portas e janelas</span>
+                            </div>
+                            <div class="flex items-center gap-3">
+                                <div class="bg-brand-yellow/10 p-2 rounded-full"><i data-lucide="hard-drive" class="w-4 h-4 text-brand-yellow"></i></div>
+                                <span><strong>DVR 1TB:</strong> Gravação contínua das imagens</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- VISION CARE -->
+    <section id="vision-care" class="py-20 bg-gray-50 relative overflow-hidden">
+        <div class="bg-grid absolute inset-0 opacity-20 pointer-events-none"></div>
+        <div class="max-w-6xl mx-auto px-4 relative z-10">
+            <div class="text-center mb-12 reveal">
+                <span class="text-brand-yellow font-bold uppercase tracking-widest text-xs">Módulo de Sustentação</span>
+                <h2 class="text-3xl md:text-5xl font-bold text-gray-900 mt-2">Vision Care Home</h2>
+                <p class="text-gray-600 mt-3">Seguro de funcionalidade para a sua tranquilidade</p>
+            </div>
+
+            <div class="bg-white rounded-3xl p-8 shadow-xl border border-gray-200 reveal">
+                <div class="grid md:grid-cols-2 gap-10 items-center">
+                    <div>
+                        <p class="text-gray-700 leading-relaxed mb-6">
+                            Sabemos que equipamentos eletrônicos demandam cuidado. Para evitar visitas técnicas avulsas (que acabam custando mais caro), criamos o <strong class="text-brand-yellow">Vision Care</strong>.
+                        </p>
+                        <p class="text-gray-600 text-sm mb-6">
+                            É o nosso contrato de manutenção preventiva. Nós agendamos visitas periódicas para <strong>limpar lentes, testar sensores e atualizar o sistema</strong>, garantindo que tudo funcione quando você mais precisar.
+                        </p>
+                        
+                        <div class="space-y-4">
+                            <div class="flex items-start gap-4 p-4 bg-gray-50 rounded-xl border border-gray-100 hover:border-brand-yellow transition-all">
+                                <div class="bg-brand-yellow/10 p-2 rounded-lg flex-shrink-0">
+                                    <i data-lucide="zap" class="w-6 h-6 text-brand-yellow"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-gray-900 text-sm">Prevenção Real</h4>
+                                    <p class="text-xs text-gray-600">Evita falhas de bateria ou sujeira nas câmeras.</p>
+                                </div>
+                            </div>
+
+                            <div class="flex items-start gap-4 p-4 bg-gray-50 rounded-xl border border-gray-100 hover:border-brand-yellow transition-all">
+                                <div class="bg-brand-yellow/10 p-2 rounded-lg flex-shrink-0">
+                                    <i data-lucide="activity" class="w-6 h-6 text-brand-yellow"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-gray-900 text-sm">Economia Inteligente</h4>
+                                    <p class="text-xs text-gray-600">Sai mais barato do que pagar visitas técnicas de emergência.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="bg-gray-900 rounded-2xl p-8 text-center text-white relative overflow-hidden">
+                        <div class="absolute top-0 right-0 w-40 h-40 bg-brand-yellow/20 rounded-full blur-3xl -mr-10 -mt-10"></div>
+                        
+                        <i data-lucide="shield-check" class="w-16 h-16 text-brand-yellow mx-auto mb-4"></i>
+                        <h3 class="text-2xl font-bold mb-2">Manutenção Preventiva</h3>
+                        <p class="text-sm text-gray-400 mb-6">Tenha um técnico à disposição da sua família.</p>
+                        
+                        <!-- Value changed to white -->
+                        <div class="text-4xl font-extrabold text-white mb-2">R$ 250<span class="text-sm font-normal">/mês</span></div>
+                        
+                        <div class="flex items-center justify-center bg-white/5 p-4 rounded-lg border border-white/10 mt-6 gap-4">
+                            <span class="text-sm font-bold text-white">Adicionar às propostas?</span>
+                            <div class="relative inline-block w-12 h-6 align-middle select-none transition duration-200 ease-in">
+                                <input type="checkbox" name="toggle" id="care-toggle" class="toggle-checkbox absolute block w-6 h-6 rounded-full bg-white border-4 appearance-none cursor-pointer border-gray-700 transition-all duration-300" onchange="updateTotal()"/>
+                                <label for="care-toggle" class="toggle-label block overflow-hidden h-6 rounded-full bg-gray-700 cursor-pointer"></label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- INVESTIMENTO (3 Opções) -->
+    <section id="investimento" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="text-center mb-12 reveal">
+                <span class="text-brand-yellow font-bold uppercase tracking-widest text-xs">Cenários de Investimento</span>
+                <h2 class="text-3xl md:text-5xl font-bold text-gray-900 mt-2">Escolha sua Proteção</h2>
+                <p class="text-gray-600 mt-3">3 Opções desenhadas para sua necessidade.</p>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 items-start reveal">
+                
+                <!-- OPÇÃO 1: PREMIUM -->
+                <div class="bg-gray-900 text-white rounded-3xl p-8 border border-gray-800 shadow-2xl relative overflow-hidden group hover:-translate-y-2 transition-transform duration-300">
+                    <div class="absolute top-0 right-0 w-32 h-32 bg-brand-yellow/10 rounded-full blur-3xl -mr-10 -mt-10"></div>
+                    <div class="absolute top-0 right-0 bg-brand-yellow text-black text-[10px] font-bold px-3 py-1 rounded-bl-xl z-10">PREMIUM</div>
+                    
+                    <h3 class="text-2xl font-bold text-brand-yellow mb-2">Segurança Total</h3>
+                    <p class="text-xs text-gray-400 mb-6 uppercase tracking-widest">Full HD + Full Color</p>
+                    
+                    <div class="mb-8">
+                        <div class="flex items-baseline gap-1">
+                            <span class="text-lg text-gray-500 font-bold">12x</span>
+                            <span class="text-5xl font-extrabold text-white tracking-tight">R$ 633</span>
+                        </div>
+                        <p class="text-sm text-gray-500 mt-2">ou R$ 6.997 à vista</p>
+                        <!-- Vision Care Display -->
+                        <p id="rec-opt1" class="hidden text-sm text-brand-yellow font-bold mt-2 animate-pulse">+ R$ 250/mês (Vision Care)</p>
+                    </div>
+
+                    <ul class="space-y-3 text-sm text-gray-400 mb-8 border-t border-gray-800 pt-6">
+                        <li class="flex items-start gap-2"><i data-lucide="check" class="w-4 h-4 text-brand-yellow mt-0.5"></i> 3x Câmeras Full Color (Full HD)</li>
+                        <li class="flex items-start gap-2"><i data-lucide="check" class="w-4 h-4 text-brand-yellow mt-0.5"></i> Alarme 100% Sem Fio</li>
+                        <li class="flex items-start gap-2"><i data-lucide="check" class="w-4 h-4 text-brand-yellow mt-0.5"></i> Instalação Limpa</li>
+                        <li class="flex items-start gap-2"><i data-lucide="check" class="w-4 h-4 text-brand-yellow mt-0.5"></i> Bateria Longa Duração</li>
+                    </ul>
+
+                    <a href="#" id="link-opt1" target="_blank" class="block w-full bg-brand-yellow text-black font-bold py-4 rounded-xl text-center hover:bg-brand-goldLight transition-colors">
+                        APROVAR PREMIUM
+                    </a>
+                </div>
+
+                <!-- OPÇÃO 2: HÍBRIDA (RECOMENDADA) -->
+                <div class="bg-white rounded-3xl p-8 border-2 border-brand-yellow shadow-2xl relative overflow-hidden group hover:-translate-y-2 transition-transform duration-300 transform scale-105 z-10">
+                    <div class="absolute top-0 right-0 bg-brand-yellow text-black text-[10px] font-bold px-3 py-1 rounded-bl-xl z-10">RECOMENDADO</div>
+                    
+                    <h3 class="text-2xl font-bold text-gray-900 mb-2">Sistema Híbrido</h3>
+                    <p class="text-xs text-brand-yellow mb-6 uppercase tracking-widest font-bold">Custo-Benefício Ideal</p>
+                    
+                    <div class="mb-8">
+                        <div class="flex items-baseline gap-1">
+                            <span class="text-lg text-gray-400 font-bold">12x</span>
+                            <span class="text-5xl font-extrabold text-gray-900 tracking-tight">R$ 496</span>
+                        </div>
+                        <p class="text-sm text-gray-500 mt-2">ou R$ 5.490 à vista</p>
+                        <!-- Vision Care Display -->
+                        <p id="rec-opt2" class="hidden text-sm text-brand-yellow font-bold mt-2 animate-pulse">+ R$ 250/mês (Vision Care)</p>
+                    </div>
+
+                    <ul class="space-y-3 text-sm text-gray-600 mb-8 border-t border-gray-100 pt-6">
+                        <li class="flex items-start gap-2"><i data-lucide="check" class="w-4 h-4 text-brand-yellow mt-0.5"></i> 3x Câmeras HD 720p</li>
+                        <li class="flex items-start gap-2"><i data-lucide="check" class="w-4 h-4 text-brand-yellow mt-0.5"></i> Central de Alarme</li>
+                        <li class="flex items-start gap-2"><i data-lucide="shield-check" class="w-4 h-4 text-brand-yellow mt-0.5"></i> <strong>Sirene Anti-Sabotagem</strong></li>
+                        <li class="flex items-start gap-2"><i data-lucide="check" class="w-4 h-4 text-brand-yellow mt-0.5"></i> 8x Sensores Sem Fio</li>
+                        <li class="flex items-start gap-2"><i data-lucide="check" class="w-4 h-4 text-brand-yellow mt-0.5"></i> DVR 1TB Incluso</li>
+                    </ul>
+
+                    <a href="#" id="link-opt2" target="_blank" class="block w-full bg-brand-yellow text-black font-bold py-4 rounded-xl text-center hover:bg-brand-goldLight transition-colors shadow-glow">
+                        APROVAR HÍBRIDA
+                    </a>
+                </div>
+
+                <!-- OPÇÃO 3: ALARME -->
+                <div class="bg-white rounded-3xl p-8 border border-gray-200 shadow-xl relative overflow-hidden group hover:-translate-y-2 transition-transform duration-300 opacity-90 hover:opacity-100">
+                    <div class="absolute top-0 right-0 bg-gray-100 text-gray-500 text-[10px] font-bold px-3 py-1 rounded-bl-xl z-10">BÁSICO</div>
+                    
+                    <h3 class="text-2xl font-bold text-gray-700 mb-2">Apenas Alarme</h3>
+                    <p class="text-xs text-gray-400 mb-6 uppercase tracking-widest">Foco em Intrusão</p>
+                    
+                    <div class="mb-8">
+                        <div class="flex items-baseline gap-1">
+                            <span class="text-lg text-gray-400 font-bold">12x</span>
+                            <span class="text-5xl font-extrabold text-gray-700 tracking-tight">R$ 392</span>
+                        </div>
+                        <p class="text-sm text-gray-500 mt-2">ou R$ 4.300 à vista</p>
+                        <!-- Vision Care Display -->
+                        <p id="rec-opt3" class="hidden text-sm text-brand-yellow font-bold mt-2 animate-pulse">+ R$ 250/mês (Vision Care)</p>
+                    </div>
+
+                    <ul class="space-y-3 text-sm text-gray-500 mb-8 border-t border-gray-100 pt-6">
+                        <li class="flex items-start gap-2"><i data-lucide="check" class="w-4 h-4 text-gray-400 mt-0.5"></i> Central de Alarme</li>
+                        <li class="flex items-start gap-2"><i data-lucide="check" class="w-4 h-4 text-gray-400 mt-0.5"></i> 8x Sensores Abertura</li>
+                        <li class="flex items-start gap-2"><i data-lucide="check" class="w-4 h-4 text-gray-400 mt-0.5"></i> 2x Controles Remotos</li>
+                        <li class="flex items-start gap-2 text-red-400"><i data-lucide="x" class="w-4 h-4 mt-0.5"></i> Sem Câmeras</li>
+                    </ul>
+
+                    <a href="#" id="link-opt3" target="_blank" class="block w-full border-2 border-gray-200 text-gray-500 font-bold py-4 rounded-xl text-center hover:border-brand-yellow hover:text-brand-yellow transition-colors">
+                        APROVAR BÁSICO
+                    </a>
+                </div>
+
+            </div>
+            
+            <p class="text-center text-xs text-gray-600 mt-12">
+                Condições: Pagamento facilitado no cartão. Instalação sujeita a disponibilidade de agenda.
+            </p>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="bg-[#09090b] text-zinc-500 text-sm py-12 border-t border-white/5">
+        <div class="max-w-6xl mx-auto px-4">
+            <div class="flex flex-col items-center text-center space-y-4">
+                <div class="flex flex-col items-center">
+                    <span class="font-logo font-bold text-3xl text-gold-shine lowercase tracking-tight leading-none">vısıon</span>
+                    <span class="font-tech text-[0.7rem] font-bold text-zinc-500 lowercase tracking-[0.3em] -mt-2">home safe</span>
+                </div>
+                
+                <p class="text-zinc-400">VISION TECNOLOGIA © 2026. Todos os direitos reservados.</p>
+                <p class="text-zinc-600 text-xs uppercase tracking-wider">RESIDENTIAL PROJECT | ID-VISION-HM-26.01</p>
+                
+                <div class="pt-4">
+                    <button onclick="window.print()" class="text-xs border border-zinc-700 text-zinc-500 px-4 py-2 rounded hover:text-brand-yellow hover:border-brand-yellow transition-colors flex items-center gap-2">
+                        <i data-lucide="download" class="w-3 h-3"></i>
+                        Salvar PDF
+                    </button>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Initialize Lucide Icons
+        lucide.createIcons();
+
+        // Lock Screen Logic
+        const accessCodes = ["vision", "adriana", "admin"];
+        function checkPassword() {
+            const input = document.getElementById('password-input');
+            if(accessCodes.includes(input.value.toLowerCase())) {
+                document.getElementById('lock-screen').style.opacity = '0';
+                setTimeout(() => {
+                    document.getElementById('lock-screen').style.display = 'none';
+                    document.getElementById('html-root').classList.remove('overflow-hidden');
+                }, 700);
+            } else {
+                document.getElementById('error-msg').classList.remove('hidden');
+                setTimeout(() => {
+                    document.getElementById('error-msg').classList.add('hidden');
+                }, 3000);
+            }
+        }
+        
+        document.getElementById('password-input').addEventListener("keypress", function(event) {
+            if (event.key === "Enter") {
+                checkPassword();
+            }
+        });
+
+        // Dynamic Link Logic (All Options)
+        function updateTotal() {
+            const toggle = document.getElementById('care-toggle');
+            
+            // Buttons
+            const btn1 = document.getElementById('link-opt1');
+            const btn2 = document.getElementById('link-opt2');
+            const btn3 = document.getElementById('link-opt3');
+            
+            // Recurring Text Elements
+            const rec1 = document.getElementById('rec-opt1');
+            const rec2 = document.getElementById('rec-opt2');
+            const rec3 = document.getElementById('rec-opt3');
+            
+            // Base URL
+            let baseUrl = "https://wa.me/5511930816696"; // Gabriel Number
+            
+            if (toggle.checked) {
+                // Show Recurring Text
+                rec1.classList.remove('hidden');
+                rec2.classList.remove('hidden');
+                rec3.classList.remove('hidden');
+                
+                // Com Vision Care Links
+                btn1.href = `${baseUrl}?text=${encodeURIComponent("Olá Gabriel, aprovo a Opção 1 (Premium) COM Vision Care.")}`;
+                btn1.innerText = "APROVAR PREMIUM + CARE";
+                
+                btn2.href = `${baseUrl}?text=${encodeURIComponent("Olá Gabriel, aprovo a Opção 2 (Híbrida) COM Vision Care.")}`;
+                btn2.innerText = "APROVAR HÍBRIDA + CARE";
+                
+                btn3.href = `${baseUrl}?text=${encodeURIComponent("Olá Gabriel, aprovo a Opção 3 (Alarme) COM Vision Care.")}`;
+                btn3.innerText = "APROVAR BÁSICO + CARE";
+            } else {
+                // Hide Recurring Text
+                rec1.classList.add('hidden');
+                rec2.classList.add('hidden');
+                rec3.classList.add('hidden');
+                
+                // Sem Vision Care Links
+                btn1.href = `${baseUrl}?text=${encodeURIComponent("Olá Gabriel, aprovo a Opção 1 (Premium).")}`;
+                btn1.innerText = "APROVAR PREMIUM";
+                
+                btn2.href = `${baseUrl}?text=${encodeURIComponent("Olá Gabriel, aprovo a Opção 2 (Híbrida).")}`;
+                btn2.innerText = "APROVAR HÍBRIDA";
+                
+                btn3.href = `${baseUrl}?text=${encodeURIComponent("Olá Gabriel, aprovo a Opção 3 (Alarme).")}`;
+                btn3.innerText = "APROVAR BÁSICO";
+            }
+        }
+
+        // Initialize links
+        updateTotal();
+
+        // Navbar Background on Scroll
+        window.addEventListener('scroll', () => {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('navbar-solid');
+            } else {
+                navbar.classList.remove('navbar-solid');
+            }
+
+            // Reveal animations
+            document.querySelectorAll('.reveal').forEach(el => {
+                if (el.getBoundingClientRect().top < window.innerHeight - 100) {
+                    el.classList.add('active');
+                }
+            });
+        });
+
+        // Smooth Scroll for Anchor Links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if(target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        setTimeout(() => {
+            lucide.createIcons();
+        }, 500);
+    </script>
+</body>
+</html>

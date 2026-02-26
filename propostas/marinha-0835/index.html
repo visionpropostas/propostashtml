@@ -1,0 +1,1476 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth overflow-hidden" id="html-root">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Proposta Técnica DDNM | Vision Enterprise</title>
+    <meta name="description" content="Sistema de Monitoramento Crítico para Diretoria de Desenvolvimento Nuclear da Marinha">
+    <meta name="theme-color" content="#b9880e">
+    
+    <!-- Fonts & Icons -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@700;800&family=Quicksand:wght@500;600;700&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: { 
+                        sans: ['"Outfit"', 'sans-serif'],
+                        logo: ['"League Spartan"', 'sans-serif'],
+                        tech: ['"Quicksand"', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            yellow: '#b9880e', 
+                            goldLight: '#FFDE59', 
+                            goldDark: '#BA8500',  
+                            black: '#09090b', 
+                            dark: '#000000',
+                            surface: '#18181b', 
+                            gray: '#27272a', 
+                        },
+                    },
+                    boxShadow: {
+                        'glow': '0 0 20px rgba(185, 136, 14, 0.15)',
+                        'glow-strong': '0 0 40px rgba(185, 136, 14, 0.3)',
+                        'glass': '0 8px 32px 0 rgba(0, 0, 0, 0.3)',
+                    },
+                    animation: {
+                        'slide-up': 'slideUp 0.8s ease-out forwards',
+                        'fade-in': 'fadeIn 1s ease-out forwards',
+                    },
+                    keyframes: {
+                        slideUp: {
+                            '0%': { opacity: '0', transform: 'translateY(20px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' },
+                        },
+                        fadeIn: {
+                            '0%': { opacity: '0' },
+                            '100%': { opacity: '1' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #f9fafb; }
+        ::-webkit-scrollbar-thumb { background: #d1d5db; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #b9880e; }
+        
+        .text-gold-shine {
+            background: linear-gradient(to right, #b9880e 20%, #FFDE59 50%, #b9880e 80%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-size: 200% auto;
+            animation: shine 4s linear infinite;
+        }
+        @keyframes shine { to { background-position: 200% center; } }
+        
+        .bg-grid { 
+            background-image: linear-gradient(rgba(185, 136, 14, 0.03) 1px, transparent 1px), 
+                              linear-gradient(90deg, rgba(185, 136, 14, 0.03) 1px, transparent 1px); 
+            background-size: 40px 40px; 
+        }
+        
+        .card-hover { transition: all 0.3s ease; }
+        .card-hover:hover { 
+            transform: translateY(-5px); 
+            box-shadow: 0 20px 40px -10px rgba(185,136,14,0.2); 
+        }
+        
+        /* Lock Screen Input */
+        .lock-input {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: #b9880e;
+            font-family: 'League Spartan', sans-serif;
+            font-size: 1.5rem;
+            text-align: center;
+            outline: none;
+            transition: all 0.3s;
+            letter-spacing: 0.2em;
+            border-radius: 12px;
+        }
+        .lock-input:focus {
+            border-color: #b9880e;
+            background: rgba(255, 255, 255, 0.08);
+            box-shadow: 0 0 15px rgba(185, 136, 14, 0.2);
+        }
+        .lock-input::placeholder {
+            color: #52525b;
+            font-size: 0.9rem;
+            font-family: 'Outfit', sans-serif;
+            font-weight: 300;
+            letter-spacing: normal;
+        }
+
+        .reveal { opacity: 0; transform: translateY(30px); transition: all 0.8s ease-out; }
+        .reveal.active { opacity: 1; transform: translateY(0); }
+
+        .product-card {
+            background: white;
+            border: 1px solid #e5e7eb;
+            border-radius: 16px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+        .product-card:hover {
+            border-color: #b9880e;
+            box-shadow: 0 10px 30px rgba(185, 136, 14, 0.15);
+            transform: translateY(-5px);
+        }
+
+        .navbar-solid {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid #e5e7eb;
+        }
+        
+        @media print {
+            #lock-screen, #navbar, #whatsapp-link, .no-print { display: none !important; }
+            body { background: white; color: black; }
+            .reveal { opacity: 1 !important; transform: none !important; }
+        }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800 antialiased overflow-x-hidden">
+
+    <!-- LOCK SCREEN -->
+    <div id="lock-screen" class="fixed inset-0 z-[100] bg-[#09090b] flex flex-col items-center justify-center text-center p-4 transition-opacity duration-700 ease-out">
+        <div class="bg-grid absolute inset-0 opacity-10 pointer-events-none"></div>
+        
+        <div class="relative flex flex-col items-center justify-center mb-8 z-10">
+            <div class="relative flex items-baseline leading-none">
+                <span class="font-logo font-bold text-[3.5rem] md:text-[6rem] text-gold-shine lowercase tracking-[-0.08em]">vısıon</span>
+                <span class="text-[0.8rem] md:text-[1.2rem] text-[#b9880e] font-bold ml-1 self-end mb-3">®</span>
+            </div>
+            <!-- Ajustado para enterprise e aproximado -->
+            <div class="font-tech text-[0.9rem] md:text-[1.2rem] font-light text-zinc-500 lowercase tracking-[0.4em] -mt-5">enterprise</div>
+        </div>
+        
+        <div class="w-full max-w-md space-y-6 z-10" id="lock-content">
+            <div class="text-center space-y-2">
+                <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-brand-yellow/30 bg-brand-yellow/10 mb-4">
+                    <i data-lucide="lock" class="w-4 h-4 text-brand-yellow"></i>
+                    <span class="text-brand-yellow text-xs font-bold uppercase tracking-widest">Documento Confidencial</span>
+                </div>
+                <h2 class="text-white font-bold text-2xl">Projeto DDNM</h2>
+                <p class="text-zinc-400 text-sm">Diretoria de Desenvolvimento Nuclear da Marinha</p>
+                <p class="text-zinc-500 text-xs mt-2">ID-PATEC-PRJ-01.007</p>
+            </div>
+            
+            <div class="relative">
+                <input type="password" id="password-input" class="lock-input w-full py-4 px-4" placeholder="SENHA DE ACESSO" autocomplete="off">
+                <p id="error-msg" class="text-red-500 text-xs mt-2 hidden font-bold">❌ Acesso negado. Verifique a senha.</p>
+            </div>
+            
+            <button onclick="checkPassword()" class="w-full bg-brand-yellow hover:bg-brand-goldLight text-black font-bold py-4 rounded-xl transition-all shadow-glow flex items-center justify-center gap-2 group">
+                <i data-lucide="shield-check" class="w-5 h-5"></i>
+                <span>Acessar Documento Técnico</span>
+                <i data-lucide="arrow-right" class="w-4 h-4 group-hover:translate-x-1 transition-transform"></i>
+            </button>
+
+            <p class="text-zinc-600 text-xs text-center mt-4">
+                Documento técnico classificado • Acesso restrito
+            </p>
+        </div>
+    </div>
+
+    <!-- NAVBAR -->
+    <nav id="navbar" class="fixed w-full z-50 top-0 transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-20 items-center">
+                <div class="flex flex-col items-start cursor-pointer">
+                    <span class="font-logo font-bold text-2xl text-gold-shine lowercase tracking-tight leading-none">vısıon</span>
+                    <!-- Ajustado para enterprise e aproximado -->
+                    <span class="font-tech text-[0.6rem] font-bold text-gray-600 lowercase tracking-[0.3em] -mt-2">enterprise</span>
+                </div>
+                <div class="hidden md:flex items-center space-x-6 text-sm font-medium text-gray-600">
+                    <a href="#contexto" class="hover:text-brand-yellow transition-colors">Contexto</a>
+                    <a href="#solucao" class="hover:text-brand-yellow transition-colors">Solução</a>
+                    <a href="#hardware" class="hover:text-brand-yellow transition-colors">Hardware</a>
+                    <a href="#vision-care" class="hover:text-brand-yellow transition-colors">Vision Care</a>
+                    <a href="#investimento" class="hover:text-brand-yellow transition-colors">Investimento</a>
+                </div>
+                <a href="#investimento" class="bg-brand-yellow text-black px-6 py-2.5 rounded-full text-xs font-bold uppercase tracking-wide hover:bg-brand-goldLight transition-all shadow-md hover:shadow-glow">
+                    Aprovar Proposta
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- HERO SECTION -->
+    <header class="pt-32 pb-20 relative overflow-hidden bg-white">
+        <div class="bg-grid absolute inset-0 opacity-40"></div>
+        <div class="absolute inset-0 bg-gradient-to-b from-transparent via-white/50 to-white"></div>
+        
+        <div class="max-w-6xl mx-auto px-4 relative z-10">
+            <div class="text-center space-y-6 animate-slide-up">
+                <div class="inline-flex items-center gap-2 px-5 py-2 rounded-full border border-brand-yellow/30 bg-brand-yellow/10 text-brand-yellow text-[10px] font-bold uppercase tracking-widest">
+                    <i data-lucide="shield-alert" class="w-4 h-4"></i>
+                    Projeto de Engenharia de Segurança | ID-PATEC-PRJ-01.007
+                </div>
+                
+                <h1 class="text-4xl md:text-6xl lg:text-7xl font-bold text-gray-900 leading-tight">
+                    Sistema de Monitoramento Crítico<br>
+                    <span class="text-gold-shine">para Infraestrutura Nuclear</span>
+                </h1>
+                
+                <p class="text-xl md:text-2xl text-brand-yellow font-semibold max-w-3xl mx-auto">
+                    Diretoria de Desenvolvimento Nuclear da Marinha
+                </p>
+
+                <p class="text-base md:text-lg text-gray-600 max-w-4xl mx-auto leading-relaxed font-light">
+                    Um ecossistema unificado de inteligência artificial, reconhecimento facial e vídeo monitoramento de alta disponibilidade, projetado para atender aos mais rigorosos padrões de segurança da Marinha do Brasil.
+                </p>
+
+                <div class="flex flex-col sm:flex-row gap-4 justify-center items-center pt-6">
+                    <a href="#solucao" class="inline-flex items-center gap-2 bg-brand-yellow text-black px-8 py-4 rounded-full font-bold hover:bg-brand-goldLight transition-all shadow-lg hover:shadow-glow transform hover:scale-105">
+                        <i data-lucide="cpu" class="w-5 h-5"></i>
+                        Explorar Solução Técnica
+                        <i data-lucide="arrow-down" class="w-4 h-4"></i>
+                    </a>
+                    <a href="#investimento" class="inline-flex items-center gap-2 border-2 border-brand-yellow text-brand-yellow px-8 py-4 rounded-full font-bold hover:bg-brand-yellow hover:text-black transition-all">
+                        Ver Investimento
+                        <i data-lucide="file-text" class="w-4 h-4"></i>
+                    </a>
+                </div>
+            </div>
+
+            <div class="mt-16 grid grid-cols-2 md:grid-cols-4 gap-6 max-w-5xl mx-auto">
+                <div class="bg-white rounded-xl p-6 shadow-md border border-gray-200 text-center reveal">
+                    <i data-lucide="camera" class="w-10 h-10 text-brand-yellow mx-auto mb-3"></i>
+                    <div class="text-3xl font-bold text-gray-900">65</div>
+                    <div class="text-sm text-gray-600">Câmeras IP</div>
+                </div>
+                <div class="bg-white rounded-xl p-6 shadow-md border border-gray-200 text-center reveal" style="animation-delay: 100ms;">
+                    <i data-lucide="monitor" class="w-10 h-10 text-brand-yellow mx-auto mb-3"></i>
+                    <div class="text-3xl font-bold text-gray-900">4K</div>
+                    <div class="text-sm text-gray-600">Ultra HD</div>
+                </div>
+                <div class="bg-white rounded-xl p-6 shadow-md border border-gray-200 text-center reveal" style="animation-delay: 200ms;">
+                    <i data-lucide="brain" class="w-10 h-10 text-brand-yellow mx-auto mb-3"></i>
+                    <div class="text-3xl font-bold text-gray-900">IA</div>
+                    <div class="text-sm text-gray-600">Embarcada</div>
+                </div>
+                <div class="bg-white rounded-xl p-6 shadow-md border border-gray-200 text-center reveal" style="animation-delay: 300ms;">
+                    <i data-lucide="hard-drive" class="w-10 h-10 text-brand-yellow mx-auto mb-3"></i>
+                    <div class="text-3xl font-bold text-gray-900">30</div>
+                    <div class="text-sm text-gray-600">Dias Gravação</div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- CONTEXTO E DESAFIO -->
+    <section id="contexto" class="py-20 bg-gray-100">
+        <div class="max-w-6xl mx-auto px-4">
+            <div class="text-center mb-12 reveal">
+                <span class="text-brand-yellow font-bold uppercase tracking-widest text-xs">O Desafio</span>
+                <h2 class="text-3xl md:text-5xl font-bold text-gray-900 mt-2">Engenharia para Infraestrutura Crítica</h2>
+                <p class="text-gray-600 mt-3 max-w-3xl mx-auto">Infraestrutura crítica requer soluções extraordinárias</p>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+                <div class="space-y-6 reveal">
+                    <p class="text-gray-700 leading-relaxed">
+                        A <strong>Diretoria de Desenvolvimento Nuclear</strong> opera em um ambiente de máxima criticidade. Este projeto não é apenas sobre câmeras e gravadores — é sobre criar uma <strong class="text-brand-yellow">barreira tecnológica invisível, robusta e inteligente</strong>.
+                    </p>
+
+                    <div class="bg-white rounded-xl p-6 border-l-4 border-brand-yellow shadow-md">
+                        <h4 class="font-bold text-gray-900 mb-4 flex items-center gap-2">
+                            <i data-lucide="alert-triangle" class="w-5 h-5 text-brand-yellow"></i>
+                            Desafios Identificados
+                        </h4>
+                        <ul class="space-y-3 text-sm text-gray-700">
+                            <li class="flex items-start gap-2">
+                                <i data-lucide="check" class="w-4 h-4 text-brand-yellow mt-0.5 flex-shrink-0"></i>
+                                <span>Alta disponibilidade <strong>24/7/365</strong> sem falhas</span>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <i data-lucide="check" class="w-4 h-4 text-brand-yellow mt-0.5 flex-shrink-0"></i>
+                                <span>Reconhecimento facial em <strong>tempo real</strong></span>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <i data-lucide="check" class="w-4 h-4 text-brand-yellow mt-0.5 flex-shrink-0"></i>
+                                <span>Resistência a <strong>vandalismo (IK10)</strong> e <strong>intempéries (IP67)</strong></span>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <i data-lucide="check" class="w-4 h-4 text-brand-yellow mt-0.5 flex-shrink-0"></i>
+                                <span>Autonomia energética estendida <strong>(6-8 horas)</strong></span>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <i data-lucide="check" class="w-4 h-4 text-brand-yellow mt-0.5 flex-shrink-0"></i>
+                                <span>Conformidade com <strong>protocolos de segurança naval</strong></span>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <i data-lucide="check" class="w-4 h-4 text-brand-yellow mt-0.5 flex-shrink-0"></i>
+                                <span>Integração de <strong>65 pontos</strong> de monitoramento</span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="bg-gradient-to-r from-brand-yellow/10 to-transparent rounded-xl p-6 border border-brand-yellow/30">
+                        <p class="text-sm text-gray-700 italic">
+                            <i data-lucide="quote" class="w-5 h-5 text-brand-yellow inline mr-2"></i>
+                            "Em ambientes onde a segurança nacional está em jogo, cada componente deve ser pensado para <strong>nunca falhar</strong>."
+                        </p>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-2 gap-6 reveal">
+                    <div class="bg-white rounded-2xl p-8 shadow-lg text-center border-t-4 border-brand-yellow card-hover">
+                        <i data-lucide="shield" class="w-12 h-12 text-brand-yellow mx-auto mb-3"></i>
+                        <div class="text-4xl font-bold text-gray-900 mb-1">IK10</div>
+                        <div class="text-sm text-gray-600">Máxima Proteção<br>Anti-Vandalismo</div>
+                    </div>
+                    <div class="bg-white rounded-2xl p-8 shadow-lg text-center border-t-4 border-brand-yellow card-hover">
+                        <i data-lucide="droplet" class="w-12 h-12 text-brand-yellow mx-auto mb-3"></i>
+                        <div class="text-4xl font-bold text-gray-900 mb-1">IP67</div>
+                        <div class="text-sm text-gray-600">Proteção Total<br>Água/Poeira</div>
+                    </div>
+                    <div class="bg-white rounded-2xl p-8 shadow-lg text-center border-t-4 border-brand-yellow card-hover">
+                        <i data-lucide="zap" class="w-12 h-12 text-brand-yellow mx-auto mb-3"></i>
+                        <div class="text-4xl font-bold text-gray-900 mb-1">8h</div>
+                        <div class="text-sm text-gray-600">Autonomia<br>Energética</div>
+                    </div>
+                    <div class="bg-white rounded-2xl p-8 shadow-lg text-center border-t-4 border-brand-yellow card-hover">
+                        <i data-lucide="scan-face" class="w-12 h-12 text-brand-yellow mx-auto mb-3"></i>
+                        <div class="text-4xl font-bold text-gray-900 mb-1">200k</div>
+                        <div class="text-sm text-gray-600">Faces no<br>Banco de Dados</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ARQUITETURA DA SOLUÇÃO -->
+    <section id="solucao" class="py-20 bg-white">
+        <div class="max-w-6xl mx-auto px-4">
+            <div class="text-center mb-12 reveal">
+                <span class="text-brand-yellow font-bold uppercase tracking-widest text-xs">Arquitetura</span>
+                <h2 class="text-3xl md:text-5xl font-bold text-gray-900 mt-2">Solução Técnica Unificada</h2>
+                <p class="text-gray-600 mt-3 max-w-3xl mx-auto">Ecossistema 100% Intelbras + Parceiros Estratégicos</p>
+            </div>
+
+            <div class="bg-gradient-to-br from-gray-50 to-white rounded-3xl p-8 md:p-12 border border-gray-200 shadow-xl reveal">
+                <p class="text-gray-700 leading-relaxed mb-10 text-center max-w-4xl mx-auto">
+                    Diferente de projetos que misturam marcas e protocolos, a solução DDNM foi arquitetada para <strong class="text-brand-yellow">homogeneidade total</strong>. O ecossistema Intelbras garante comunicação nativa via protocolo proprietário <strong>Intelbras-1</strong> e <strong>ONVIF</strong>, eliminando latências e incompatibilidades.
+                </p>
+
+                <div class="grid md:grid-cols-5 gap-6">
+                    <div class="bg-white rounded-xl p-6 shadow-md border-2 border-gray-200 text-center hover:border-brand-yellow transition-all">
+                        <div class="w-16 h-16 bg-brand-yellow/10 rounded-full flex items-center justify-center mx-auto mb-4">
+                            <i data-lucide="camera" class="w-8 h-8 text-brand-yellow"></i>
+                        </div>
+                        <h4 class="font-bold text-gray-900 text-sm mb-1">Camada de Captura</h4>
+                        <p class="text-xs text-gray-600">65 Câmeras IP<br>4MP com IA</p>
+                    </div>
+
+                    <div class="bg-white rounded-xl p-6 shadow-md border-2 border-gray-200 text-center hover:border-brand-yellow transition-all">
+                        <div class="w-16 h-16 bg-brand-yellow/10 rounded-full flex items-center justify-center mx-auto mb-4">
+                            <i data-lucide="cpu" class="w-8 h-8 text-brand-yellow"></i>
+                        </div>
+                        <h4 class="font-bold text-gray-900 text-sm mb-1">Processamento</h4>
+                        <p class="text-xs text-gray-600">NVRs com<br>Deep Learning</p>
+                    </div>
+
+                    <div class="bg-white rounded-xl p-6 shadow-md border-2 border-gray-200 text-center hover:border-brand-yellow transition-all">
+                        <div class="w-16 h-16 bg-brand-yellow/10 rounded-full flex items-center justify-center mx-auto mb-4">
+                            <i data-lucide="database" class="w-8 h-8 text-brand-yellow"></i>
+                        </div>
+                        <h4 class="font-bold text-gray-900 text-sm mb-1">Armazenamento</h4>
+                        <p class="text-xs text-gray-600">Purple Drives<br>Surveillance</p>
+                    </div>
+
+                    <div class="bg-white rounded-xl p-6 shadow-md border-2 border-gray-200 text-center hover:border-brand-yellow transition-all">
+                        <div class="w-16 h-16 bg-brand-yellow/10 rounded-full flex items-center justify-center mx-auto mb-4">
+                            <i data-lucide="tv" class="w-8 h-8 text-brand-yellow"></i>
+                        </div>
+                        <h4 class="font-bold text-gray-900 text-sm mb-1">Visualização</h4>
+                        <p class="text-xs text-gray-600">Video Wall<br>4K (2×2)</p>
+                    </div>
+
+                    <div class="bg-white rounded-xl p-6 shadow-md border-2 border-gray-200 text-center hover:border-brand-yellow transition-all">
+                        <div class="w-16 h-16 bg-brand-yellow/10 rounded-full flex items-center justify-center mx-auto mb-4">
+                            <i data-lucide="zap" class="w-8 h-8 text-brand-yellow"></i>
+                        </div>
+                        <h4 class="font-bold text-gray-900 text-sm mb-1">Energia Crítica</h4>
+                        <p class="text-xs text-gray-600">Nobreaks<br>6-8h autonomia</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- HARDWARE - VITRINE -->
+    <section id="hardware" class="py-20 bg-gray-100">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="text-center mb-12 reveal">
+                <span class="text-brand-yellow font-bold uppercase tracking-widest text-xs">Especificações Técnicas</span>
+                <h2 class="text-3xl md:text-5xl font-bold text-gray-900 mt-2">A Tecnologia Escolhida</h2>
+                <p class="text-gray-600 mt-3">Componentes de engenharia para alta durabilidade</p>
+            </div>
+
+            <!-- Principais Produtos -->
+            <div class="grid md:grid-cols-3 gap-8 mb-12">
+                <!-- Câmera Interna -->
+                <div class="product-card reveal">
+                    <div class="h-56 bg-gray-50 flex items-center justify-center p-6 relative">
+                        <div class="absolute top-4 right-4 bg-brand-yellow text-black text-[10px] font-bold px-3 py-1 rounded-full">50 UNIDADES</div>
+                        <!-- Nova Imagem -->
+                        <img src="https://res.cloudinary.com/dptcuckhf/image/upload/v1770798971/VIP_5250_D_IA_persp-esq-1_dderic.png" alt="VIP 5440 D IA" class="h-full object-contain drop-shadow-xl hover:scale-110 transition-transform">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-lg font-bold text-gray-900 mb-1">Intelbras VIP 5440 D IA</h3>
+                        <p class="text-xs text-brand-yellow font-bold uppercase tracking-wider mb-4">Dome IP com Inteligência Artificial</p>
+                        <div class="space-y-2 mb-4 text-sm text-gray-700">
+                            <div class="flex items-center gap-2">
+                                <i data-lucide="check-circle" class="w-4 h-4 text-brand-yellow flex-shrink-0"></i>
+                                <span>4 Megapixels (2688×1520)</span>
+                            </div>
+                            <div class="flex items-center gap-2">
+                                <i data-lucide="check-circle" class="w-4 h-4 text-brand-yellow flex-shrink-0"></i>
+                                <span>Proteção IK10 + IP67</span>
+                            </div>
+                            <div class="flex items-center gap-2">
+                                <i data-lucide="check-circle" class="w-4 h-4 text-brand-yellow flex-shrink-0"></i>
+                                <span>IR Inteligente 40m</span>
+                            </div>
+                            <div class="flex items-center gap-2">
+                                <i data-lucide="check-circle" class="w-4 h-4 text-brand-yellow flex-shrink-0"></i>
+                                <span>Detecção Facial + IA</span>
+                            </div>
+                            <div class="flex items-center gap-2">
+                                <i data-lucide="check-circle" class="w-4 h-4 text-brand-yellow flex-shrink-0"></i>
+                                <span>H.265+ (economia 70%)</span>
+                            </div>
+                        </div>
+                        <div class="flex gap-2 flex-wrap">
+                            <span class="text-[10px] bg-brand-yellow/10 text-brand-yellow px-2 py-1 rounded-full font-bold">Anti-Vandalismo</span>
+                            <span class="text-[10px] bg-brand-yellow/10 text-brand-yellow px-2 py-1 rounded-full font-bold">Visão Noturna</span>
+                            <span class="text-[10px] bg-brand-yellow/10 text-brand-yellow px-2 py-1 rounded-full font-bold">IA Embarcada</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Câmera Externa -->
+                <div class="product-card reveal" style="animation-delay: 100ms;">
+                    <div class="h-56 bg-gray-50 flex items-center justify-center p-6 relative">
+                        <div class="absolute top-4 right-4 bg-brand-yellow text-black text-[10px] font-bold px-3 py-1 rounded-full">15 UNIDADES</div>
+                        <!-- Nova Imagem -->
+                        <img src="https://res.cloudinary.com/dptcuckhf/image/upload/v1770798970/Intelbras_VIP_5450_Z_TL_FT_i3cmos.png" alt="VIP 5450 Z TL FT" class="h-full object-contain drop-shadow-xl hover:scale-110 transition-transform">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-lg font-bold text-gray-900 mb-1">Intelbras VIP 5450 Z TL FT</h3>
+                        <p class="text-xs text-brand-yellow font-bold uppercase tracking-wider mb-4">Bullet Varifocal com Triple Light</p>
+                        <div class="space-y-2 mb-4 text-sm text-gray-700">
+                            <div class="flex items-center gap-2">
+                                <i data-lucide="check-circle" class="w-4 h-4 text-brand-yellow flex-shrink-0"></i>
+                                <span>Zoom Óptico 5x Motorizado</span>
+                            </div>
+                            <div class="flex items-center gap-2">
+                                <i data-lucide="check-circle" class="w-4 h-4 text-brand-yellow flex-shrink-0"></i>
+                                <span>Triple Light (IR + LED + Smart)</span>
+                            </div>
+                            <div class="flex items-center gap-2">
+                                <i data-lucide="check-circle" class="w-4 h-4 text-brand-yellow flex-shrink-0"></i>
+                                <span>Starlight (0.003 Lux)</span>
+                            </div>
+                            <div class="flex items-center gap-2">
+                                <i data-lucide="check-circle" class="w-4 h-4 text-brand-yellow flex-shrink-0"></i>
+                                <span>Auto Focus remoto</span>
+                            </div>
+                            <div class="flex items-center gap-2">
+                                <i data-lucide="check-circle" class="w-4 h-4 text-brand-yellow flex-shrink-0"></i>
+                                <span>IP67 + Corpo Metálico</span>
+                            </div>
+                        </div>
+                        <div class="flex gap-2 flex-wrap">
+                            <span class="text-[10px] bg-brand-yellow/10 text-brand-yellow px-2 py-1 rounded-full font-bold">Zoom 5x</span>
+                            <span class="text-[10px] bg-brand-yellow/10 text-brand-yellow px-2 py-1 rounded-full font-bold">Full Color 24h</span>
+                            <span class="text-[10px] bg-brand-yellow/10 text-brand-yellow px-2 py-1 rounded-full font-bold">Perímetro</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- NVR Enterprise - DESTAQUE -->
+                <div class="product-card reveal border-2 border-brand-yellow shadow-glow-strong" style="animation-delay: 200ms;">
+                    <div class="h-56 bg-gradient-to-br from-brand-yellow/5 to-brand-yellow/10 flex items-center justify-center p-6 relative">
+                        <div class="absolute top-4 right-4 bg-brand-yellow text-black text-[10px] font-bold px-3 py-1 rounded-full">2 UNIDADES</div>
+                        <div class="absolute top-4 left-4 bg-red-500 text-white text-[10px] font-bold px-3 py-1 rounded-full animate-pulse">CORE</div>
+                        <!-- Nova Imagem -->
+                        <img src="https://res.cloudinary.com/dptcuckhf/image/upload/v1770798971/Intelbras_iNVD_9132_PE_FT_iskkql.png" alt="NVR" class="h-full object-contain drop-shadow-2xl hover:scale-110 transition-transform">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-lg font-bold text-gray-900 mb-1">Intelbras iNVD 9132 PE FT</h3>
+                        <p class="text-xs text-brand-yellow font-bold uppercase tracking-wider mb-4">Gravador Enterprise com IA</p>
+                        <div class="space-y-2 mb-4 text-sm text-gray-700">
+                            <div class="flex items-center gap-2">
+                                <i data-lucide="check-circle" class="w-4 h-4 text-brand-yellow flex-shrink-0"></i>
+                                <span>32 Canais 4K</span>
+                            </div>
+                            <div class="flex items-center gap-2">
+                                <i data-lucide="check-circle" class="w-4 h-4 text-brand-yellow flex-shrink-0"></i>
+                                <span>Banco 200.000 faces</span>
+                            </div>
+                            <div class="flex items-center gap-2">
+                                <i data-lucide="check-circle" class="w-4 h-4 text-brand-yellow flex-shrink-0"></i>
+                                <span>Portas ePoE (até 800m)</span>
+                            </div>
+                            <div class="flex items-center gap-2">
+                                <i data-lucide="check-circle" class="w-4 h-4 text-brand-yellow flex-shrink-0"></i>
+                                <span>Busca InSearch (IA forense)</span>
+                            </div>
+                            <div class="flex items-center gap-2">
+                                <i data-lucide="check-circle" class="w-4 h-4 text-brand-yellow flex-shrink-0"></i>
+                                <span>4 Baías HD + Saída 4K</span>
+                            </div>
+                        </div>
+                        <div class="flex gap-2 flex-wrap">
+                            <span class="text-[10px] bg-brand-yellow text-black px-2 py-1 rounded-full font-bold">Reconhecimento Facial</span>
+                            <span class="text-[10px] bg-brand-yellow text-black px-2 py-1 rounded-full font-bold">Deep Learning</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Componentes Adicionais -->
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-6 reveal">
+                <div class="bg-white rounded-xl p-6 shadow-md border border-gray-200 text-center hover:border-brand-yellow transition-all">
+                    <i data-lucide="hard-drive" class="w-10 h-10 text-brand-yellow mx-auto mb-3"></i>
+                    <h4 class="font-bold text-gray-900 text-sm mb-1">WD Purple 10TB</h4>
+                    <p class="text-xs text-gray-600 mb-2">Surveillance Class</p>
+                    <span class="text-[10px] bg-gray-100 text-gray-700 px-2 py-1 rounded-full">5 unidades</span>
+                </div>
+
+                <div class="bg-white rounded-xl p-6 shadow-md border border-gray-200 text-center hover:border-brand-yellow transition-all">
+                    <i data-lucide="network" class="w-10 h-10 text-brand-yellow mx-auto mb-3"></i>
+                    <h4 class="font-bold text-gray-900 text-sm mb-1">Switch S3328G-PB</h4>
+                    <p class="text-xs text-gray-600 mb-2">24p PoE + 4 SFP+</p>
+                    <span class="text-[10px] bg-gray-100 text-gray-700 px-2 py-1 rounded-full">9 unidades</span>
+                </div>
+
+                <div class="bg-white rounded-xl p-6 shadow-md border border-gray-200 text-center hover:border-brand-yellow transition-all">
+                    <!-- Nova Imagem (usando como ícone ou background, mas mantendo o ícone para consistência) -->
+                    <!-- Para consistência visual com os outros cards pequenos, mantive o ícone, mas o card principal de video wall está abaixo -->
+                    <i data-lucide="tv-2" class="w-10 h-10 text-brand-yellow mx-auto mb-3"></i>
+                    <h4 class="font-bold text-gray-900 text-sm mb-1">Monitor MWL 7249</h4>
+                    <p class="text-xs text-gray-600 mb-2">49" Video Wall</p>
+                    <span class="text-[10px] bg-gray-100 text-gray-700 px-2 py-1 rounded-full">4 unidades</span>
+                </div>
+
+                <div class="bg-white rounded-xl p-6 shadow-md border border-gray-200 text-center hover:border-brand-yellow transition-all">
+                    <i data-lucide="pc-case" class="w-10 h-10 text-brand-yellow mx-auto mb-3"></i>
+                    <h4 class="font-bold text-gray-900 text-sm mb-1">Dell Precision 3460</h4>
+                    <p class="text-xs text-gray-600 mb-2">Workstation i7 + RTX</p>
+                    <span class="text-[10px] bg-gray-100 text-gray-700 px-2 py-1 rounded-full">1 unidade</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- DIFERENCIAIS TÉCNICOS -->
+    <section class="py-20 bg-white">
+        <div class="max-w-6xl mx-auto px-4">
+            <div class="text-center mb-12 reveal">
+                <span class="text-brand-yellow font-bold uppercase tracking-widest text-xs">Diferenciais</span>
+                <h2 class="text-3xl md:text-5xl font-bold text-gray-900 mt-2">Engenharia de Precisão</h2>
+                <p class="text-gray-600 mt-3">Por que esta solução é única</p>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-8">
+                <div class="bg-gray-50 rounded-2xl p-8 border border-gray-200 hover:border-brand-yellow transition-all reveal">
+                    <div class="w-16 h-16 bg-brand-yellow/10 rounded-xl flex items-center justify-center mb-6">
+                        <i data-lucide="network" class="w-8 h-8 text-brand-yellow"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">Homogeneidade de Protocolos</h3>
+                    <p class="text-gray-700 leading-relaxed">
+                        100% Intelbras elimina incompatibilidades. Comunicação nativa via protocolo proprietário + ONVIF garante <strong class="text-brand-yellow">zero latência</strong> e configuração simplificada de analíticos de vídeo.
+                    </p>
+                </div>
+
+                <div class="bg-gray-50 rounded-2xl p-8 border border-gray-200 hover:border-brand-yellow transition-all reveal" style="animation-delay: 100ms;">
+                    <div class="w-16 h-16 bg-brand-yellow/10 rounded-xl flex items-center justify-center mb-6">
+                        <i data-lucide="brain" class="w-8 h-8 text-brand-yellow"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">IA Distribuída (Edge + Core)</h3>
+                    <p class="text-gray-700 leading-relaxed">
+                        Inteligência na borda (câmeras VIP) + processamento Deep Learning no NVR. Reduz tráfego de rede e acelera detecção de eventos em <strong class="text-brand-yellow">até 10x</strong>.
+                    </p>
+                </div>
+
+                <div class="bg-gray-50 rounded-2xl p-8 border border-gray-200 hover:border-brand-yellow transition-all reveal" style="animation-delay: 200ms;">
+                    <div class="w-16 h-16 bg-brand-yellow/10 rounded-xl flex items-center justify-center mb-6">
+                        <i data-lucide="shield-check" class="w-8 h-8 text-brand-yellow"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">Proteção Máxima (IK10 + IP67)</h3>
+                    <p class="text-gray-700 leading-relaxed">
+                        Todas as câmeras certificadas para resistir a <strong class="text-brand-yellow">20 Joules de impacto</strong> (IK10) e imersão total (IP67). Preparadas para vandalismo e condições climáticas extremas.
+                    </p>
+                </div>
+
+                <div class="bg-gray-50 rounded-2xl p-8 border border-gray-200 hover:border-brand-yellow transition-all reveal" style="animation-delay: 300ms;">
+                    <div class="w-16 h-16 bg-brand-yellow/10 rounded-xl flex items-center justify-center mb-6">
+                        <i data-lucide="save" class="w-8 h-8 text-brand-yellow"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">Codec H.265+ (Economia 70%)</h3>
+                    <p class="text-gray-700 leading-relaxed">
+                        Compressão inteligente reduz consumo de armazenamento em <strong class="text-brand-yellow">até 70% vs H.264</strong>. Viabiliza 30 dias de gravação contínua com menos discos.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ENERGIA CRÍTICA -->
+    <section class="py-20 bg-gray-100">
+        <div class="max-w-6xl mx-auto px-4">
+            <div class="text-center mb-12 reveal">
+                <span class="text-brand-yellow font-bold uppercase tracking-widest text-xs">Infraestrutura</span>
+                <h2 class="text-3xl md:text-5xl font-bold text-gray-900 mt-2">Autonomia Energética Estendida</h2>
+                <p class="text-gray-600 mt-3">6 a 8 horas de operação ininterrupta</p>
+            </div>
+
+            <div class="bg-white rounded-2xl p-8 border-l-4 border-brand-yellow shadow-xl mb-10 reveal">
+                <p class="text-gray-700 leading-relaxed text-center">
+                    Em infraestruturas críticas, a energia é tão importante quanto os equipamentos. O projeto DDNM especifica autonomia de <strong class="text-brand-yellow">6-8 horas</strong> — um requisito atípico que exige <strong>engenharia de baterias em escala industrial</strong>.
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8 mb-10">
+                <div class="bg-white rounded-xl p-8 shadow-lg border border-gray-200 reveal">
+                    <div class="flex items-center gap-3 mb-4">
+                        <i data-lucide="battery-charging" class="w-10 h-10 text-brand-yellow"></i>
+                        <div>
+                            <h3 class="font-bold text-gray-900">Nobreak Sala Central</h3>
+                            <p class="text-xs text-gray-600">Dupla Conversão Online</p>
+                        </div>
+                    </div>
+                    <ul class="space-y-2 text-sm text-gray-700">
+                        <li><strong>Modelo:</strong> Intelbras DNB 6.0 kVA RT SB</li>
+                        <li><strong>Quantidade:</strong> 2 unidades</li>
+                        <li><strong>Baterias:</strong> 10 Módulos MB 1607 192V cada</li>
+                        <li><strong>Transferência:</strong> ZERO ms</li>
+                    </ul>
+                </div>
+
+                <div class="bg-white rounded-xl p-8 shadow-lg border border-gray-200 reveal" style="animation-delay: 100ms;">
+                    <div class="flex items-center gap-3 mb-4">
+                        <i data-lucide="plug-zap" class="w-10 h-10 text-brand-yellow"></i>
+                        <div>
+                            <h3 class="font-bold text-gray-900">Nobreaks Extensores</h3>
+                            <p class="text-xs text-gray-600">Proteção Distribuída</p>
+                        </div>
+                    </div>
+                    <ul class="space-y-2 text-sm text-gray-700">
+                        <li><strong>Modelo:</strong> Intelbras DNB 3.0 kVA RT</li>
+                        <li><strong>Quantidade:</strong> 7 unidades</li>
+                        <li><strong>Função:</strong> Switches e câmeras remotas</li>
+                        <li><strong>Formato:</strong> Rack 19" integrado</li>
+                    </ul>
+                </div>
+
+                <div class="bg-gradient-to-br from-brand-yellow/10 to-brand-yellow/5 rounded-xl p-8 shadow-lg border-2 border-brand-yellow reveal" style="animation-delay: 200ms;">
+                    <div class="flex items-center gap-3 mb-4">
+                        <i data-lucide="gauge" class="w-10 h-10 text-brand-yellow"></i>
+                        <div>
+                            <h3 class="font-bold text-gray-900">Dimensionamento</h3>
+                            <p class="text-xs text-gray-700">Cálculo de Engenharia</p>
+                        </div>
+                    </div>
+                    <ul class="space-y-2 text-sm text-gray-700">
+                        <li><strong>Carga Total:</strong> ~2000W (sala)</li>
+                        <li><strong>Total Baterias:</strong> 20 Módulos MB 1607</li>
+                        <li><strong>Peso Total:</strong> ~1 tonelada</li>
+                        <li><strong>Espaço:</strong> Racks dedicados</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="bg-amber-50 border-l-4 border-amber-500 rounded-xl p-6 reveal">
+                <div class="flex gap-3">
+                    <i data-lucide="alert-triangle" class="w-6 h-6 text-amber-600 flex-shrink-0"></i>
+                    <div>
+                        <h4 class="font-bold text-gray-900 mb-2">⚠️ Nota de Engenharia</h4>
+                        <p class="text-sm text-gray-700 leading-relaxed">
+                            A exigência de 6-8h de autonomia em baterias é logisticamente complexa (peso/espaço). A prática padrão para longas autonomias é <strong>Nobreak (30-60 min) + Gerador Diesel</strong>. A solução foi dimensionada conforme especificação, com ressalva para verificação de carga do piso e espaço físico.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- VIDEO WALL -->
+    <section class="py-20 bg-white">
+        <div class="max-w-6xl mx-auto px-4">
+            <div class="text-center mb-12 reveal">
+                <span class="text-brand-yellow font-bold uppercase tracking-widest text-xs">Sala de Controle</span>
+                <h2 class="text-3xl md:text-5xl font-bold text-gray-900 mt-2">Centro de Comando e Controle</h2>
+                <p class="text-gray-600 mt-3">Video Wall 4K + Workstation de Alta Performance</p>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+                <div class="space-y-6 reveal">
+                    <p class="text-gray-700 leading-relaxed">
+                        A sala de monitoramento é o ponto de convergência das informações. Um <strong class="text-brand-yellow">Video Wall 2×2 de 49 polegadas</strong> (resolução total 4K) garante visão panorâmica de todos os 65 pontos simultaneamente.
+                    </p>
+
+                    <div class="bg-gray-50 rounded-xl p-6 border border-gray-200">
+                        <h4 class="font-bold text-gray-900 mb-4 flex items-center gap-2">
+                            <i data-lucide="package" class="w-5 h-5 text-brand-yellow"></i>
+                            Componentes do Sistema
+                        </h4>
+                        <ul class="space-y-3 text-sm text-gray-700">
+                            <li class="flex items-start gap-2">
+                                <i data-lucide="check" class="w-4 h-4 text-brand-yellow mt-0.5 flex-shrink-0"></i>
+                                <span><strong>4x Monitores</strong> Intelbras MWL 7249 (borda 3.5mm, 24/7)</span>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <i data-lucide="check" class="w-4 h-4 text-brand-yellow mt-0.5 flex-shrink-0"></i>
+                                <span><strong>2x Decodificadores</strong> Intelbras DWL 7809 G2 (9 saídas HDMI)</span>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <i data-lucide="check" class="w-4 h-4 text-brand-yellow mt-0.5 flex-shrink-0"></i>
+                                <span><strong>1x Workstation</strong> Dell Precision 3460 (i7 13ª Gen + RTX A2000)</span>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <i data-lucide="check" class="w-4 h-4 text-brand-yellow mt-0.5 flex-shrink-0"></i>
+                                <span><strong>1x Monitor Operador</strong> Dell P2422H (23.8" ergonômico)</span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="bg-gradient-to-r from-brand-yellow/10 to-transparent rounded-xl p-6 border border-brand-yellow/30">
+                        <p class="text-sm text-gray-700 italic">
+                            <i data-lucide="lightbulb" class="w-5 h-5 text-brand-yellow inline mr-2"></i>
+                            Diferente de TVs comerciais, os monitores <strong>MWL 7249</strong> possuem painel IPS/DID com brilho de 500 nits e operação 24/7 sem burn-in.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="reveal">
+                    <div class="relative">
+                        <!-- Nova Imagem -->
+                        <img src="https://res.cloudinary.com/dptcuckhf/image/upload/v1770798970/MWL_7249_aibmyt.jpg" alt="Video Wall Control Room" class="rounded-2xl shadow-2xl">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent rounded-2xl flex items-end p-6">
+                            <div class="text-white">
+                                <p class="font-bold text-lg mb-1">Monitoramento 24/7</p>
+                                <p class="text-sm text-gray-300">Visão completa de todos os 65 pontos em tempo real</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- VISION CARE ENTERPRISE -->
+    <section id="vision-care" class="py-20 bg-gradient-to-br from-amber-50 to-yellow-50 relative overflow-hidden">
+        <div class="absolute top-0 right-0 w-96 h-96 bg-brand-yellow/10 rounded-full blur-3xl"></div>
+        <div class="absolute bottom-0 left-0 w-96 h-96 bg-brand-yellow/5 rounded-full blur-3xl"></div>
+        
+        <div class="max-w-6xl mx-auto px-4 relative z-10">
+            <div class="text-center mb-12 reveal">
+                <div class="inline-flex items-center gap-2 px-5 py-2 rounded-full border-2 border-brand-yellow bg-white text-brand-yellow text-xs font-bold uppercase tracking-widest mb-4">
+                    <i data-lucide="award" class="w-4 h-4"></i>
+                    Módulo de Sustentação Crítica
+                </div>
+                <h2 class="text-3xl md:text-5xl font-bold text-gray-900 mt-2">Vision Care Enterprise</h2>
+                <p class="text-xl text-gray-700 mt-3">O Seguro de Vida do Seu Sistema</p>
+            </div>
+
+            <div class="bg-white rounded-3xl p-10 shadow-2xl border-2 border-brand-yellow reveal">
+                <div class="text-center mb-10">
+                    <p class="text-gray-700 leading-relaxed max-w-4xl mx-auto">
+                        Infraestrutura crítica não tolera imprevistos. O <strong class="text-brand-yellow">Vision Care Enterprise</strong> é a garantia de que o sistema DDNM nunca ficará fora do ar, mesmo em cenários de falha de hardware, atualização de firmware ou incidentes ambientais.
+                    </p>
+                </div>
+
+                <div class="grid md:grid-cols-2 gap-12">
+                    <!-- Benefícios -->
+                    <div class="space-y-4">
+                        <h3 class="text-2xl font-bold text-gray-900 mb-6">Benefícios Inclusos</h3>
+                        
+                        <div class="flex gap-4 p-4 bg-gray-50 rounded-xl border border-gray-200 hover:border-brand-yellow transition-all">
+                            <div class="w-12 h-12 bg-brand-yellow/10 rounded-lg flex items-center justify-center flex-shrink-0">
+                                <i data-lucide="wrench" class="w-6 h-6 text-brand-yellow"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-gray-900 mb-1">Manutenção Ilimitada</h4>
+                                <p class="text-sm text-gray-600">Mão de obra técnica inclusa para qualquer chamado. Zero custos surpresa com visitas ou reparos.</p>
+                            </div>
+                        </div>
+
+                        <div class="flex gap-4 p-4 bg-gray-50 rounded-xl border border-gray-200 hover:border-brand-yellow transition-all">
+                            <div class="w-12 h-12 bg-brand-yellow/10 rounded-lg flex items-center justify-center flex-shrink-0">
+                                <i data-lucide="zap" class="w-6 h-6 text-brand-yellow"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-gray-900 mb-1">SLA Prioritário</h4>
+                                <p class="text-sm text-gray-600">Atendimento "fura-fila" em caso de pane no acesso. Técnico alocado em até 4 horas.</p>
+                            </div>
+                        </div>
+
+                        <div class="flex gap-4 p-4 bg-gray-50 rounded-xl border border-gray-200 hover:border-brand-yellow transition-all">
+                            <div class="w-12 h-12 bg-brand-yellow/10 rounded-lg flex items-center justify-center flex-shrink-0">
+                                <i data-lucide="shield-check" class="w-6 h-6 text-brand-yellow"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-gray-900 mb-1">Gestão de Garantia</h4>
+                                <p class="text-sm text-gray-600">Vision intermedia toda troca de equipamento defeituoso direto com fabricante. Você não lida com burocracia.</p>
+                            </div>
+                        </div>
+
+                        <div class="flex gap-4 p-4 bg-gray-50 rounded-xl border border-gray-200 hover:border-brand-yellow transition-all">
+                            <div class="w-12 h-12 bg-brand-yellow/10 rounded-lg flex items-center justify-center flex-shrink-0">
+                                <i data-lucide="activity" class="w-6 h-6 text-brand-yellow"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-gray-900 mb-1">Monitoramento Remoto</h4>
+                                <p class="text-sm text-gray-600">Health check mensal dos NVRs, switches e câmeras. Identificamos problemas antes que se tornem críticos.</p>
+                            </div>
+                        </div>
+
+                        <div class="flex gap-4 p-4 bg-gray-50 rounded-xl border border-gray-200 hover:border-brand-yellow transition-all">
+                            <div class="w-12 h-12 bg-brand-yellow/10 rounded-lg flex items-center justify-center flex-shrink-0">
+                                <i data-lucide="refresh-cw" class="w-6 h-6 text-brand-yellow"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-gray-900 mb-1">Atualizações de Firmware</h4>
+                                <p class="text-sm text-gray-600">Patches de segurança e atualizações de software aplicados pela Vision, testados em ambiente controlado.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Pricing Card -->
+                    <div class="flex flex-col justify-center">
+                        <div class="bg-gradient-to-br from-brand-yellow/5 to-brand-yellow/10 rounded-2xl p-8 border-2 border-brand-yellow shadow-glow-strong text-center">
+                            <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-brand-yellow text-black text-xs font-bold uppercase tracking-wider mb-6">
+                                <i data-lucide="star" class="w-4 h-4"></i>
+                                Essencial para Infraestruturas Críticas
+                            </div>
+                            
+                            <p class="text-sm text-gray-600 uppercase tracking-widest mb-2">Valor Mensal (Sustentação)</p>
+                            <div class="text-5xl md:text-6xl font-extrabold text-gray-900 mb-2">R$ 11.900</div>
+                            <p class="text-sm text-gray-600 mb-6">/mês</p>
+                            
+                            <div class="bg-white rounded-xl p-6 mb-6 text-left">
+                                <h5 class="font-bold text-gray-900 mb-3 text-sm">O que está incluso:</h5>
+                                <ul class="space-y-2 text-xs text-gray-700">
+                                    <li class="flex items-center gap-2">
+                                        <i data-lucide="check-circle" class="w-4 h-4 text-brand-yellow flex-shrink-0"></i>
+                                        <span>Manutenção preventiva trimestral</span>
+                                    </li>
+                                    <li class="flex items-center gap-2">
+                                        <i data-lucide="check-circle" class="w-4 h-4 text-brand-yellow flex-shrink-0"></i>
+                                        <span>Correções ilimitadas</span>
+                                    </li>
+                                    <li class="flex items-center gap-2">
+                                        <i data-lucide="check-circle" class="w-4 h-4 text-brand-yellow flex-shrink-0"></i>
+                                        <span>Substituição de peças em garantia</span>
+                                    </li>
+                                    <li class="flex items-center gap-2">
+                                        <i data-lucide="check-circle" class="w-4 h-4 text-brand-yellow flex-shrink-0"></i>
+                                        <span>Acesso remoto 24/7</span>
+                                    </li>
+                                    <li class="flex items-center gap-2">
+                                        <i data-lucide="check-circle" class="w-4 h-4 text-brand-yellow flex-shrink-0"></i>
+                                        <span>Relatórios mensais de saúde do sistema</span>
+                                    </li>
+                                </ul>
+                            </div>
+
+                            <p class="text-xs text-gray-600 italic">
+                                "Equivalente a menos de 3 visitas técnicas avulsas por mês"
+                            </p>
+                        </div>
+
+                        <p class="text-center text-sm text-gray-700 italic mt-6">
+                            <i data-lucide="quote" class="w-4 h-4 text-brand-yellow inline mr-1"></i>
+                            Em ambientes onde a segurança não pode falhar, o Vision Care não é opcional — é estratégico.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- TABELA TÉCNICA (BoM) -->
+    <section class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="text-center mb-12 reveal">
+                <span class="text-brand-yellow font-bold uppercase tracking-widest text-xs">Lista Completa</span>
+                <h2 class="text-3xl md:text-5xl font-bold text-gray-900 mt-2">Bill of Materials (BoM)</h2>
+                <p class="text-gray-600 mt-3">Especificação técnica consolidada de todos os equipamentos</p>
+            </div>
+
+            <div class="bg-gray-50 rounded-2xl p-6 md:p-8 border border-gray-200 shadow-lg reveal overflow-x-auto">
+                <table class="w-full text-sm">
+                    <thead>
+                        <tr class="border-b-2 border-brand-yellow">
+                            <th class="text-left py-3 px-4 font-bold text-gray-900">Item</th>
+                            <th class="text-left py-3 px-4 font-bold text-gray-900">Descrição</th>
+                            <th class="text-left py-3 px-4 font-bold text-gray-900">Modelo</th>
+                            <th class="text-left py-3 px-4 font-bold text-gray-900">Fabricante</th>
+                            <th class="text-center py-3 px-4 font-bold text-gray-900">Qtd</th>
+                        </tr>
+                    </thead>
+                    <tbody class="text-gray-700">
+                        <tr class="border-b border-gray-200 hover:bg-white transition-colors">
+                            <td class="py-3 px-4">1</td>
+                            <td class="py-3 px-4">Câmera Dome 4MP IA</td>
+                            <td class="py-3 px-4 font-mono text-xs">VIP 5440 D IA</td>
+                            <td class="py-3 px-4">Intelbras</td>
+                            <td class="py-3 px-4 text-center font-bold">50</td>
+                        </tr>
+                        <tr class="border-b border-gray-200 hover:bg-white transition-colors">
+                            <td class="py-3 px-4">2</td>
+                            <td class="py-3 px-4">Câmera Bullet 4MP Zoom 5x</td>
+                            <td class="py-3 px-4 font-mono text-xs">VIP 5450 Z TL FT</td>
+                            <td class="py-3 px-4">Intelbras</td>
+                            <td class="py-3 px-4 text-center font-bold">15</td>
+                        </tr>
+                        <tr class="border-b border-gray-200 hover:bg-white transition-colors bg-brand-yellow/5">
+                            <td class="py-3 px-4">3</td>
+                            <td class="py-3 px-4">NVR 32 Canais IA</td>
+                            <td class="py-3 px-4 font-mono text-xs">iNVD 9132 PE FT</td>
+                            <td class="py-3 px-4">Intelbras</td>
+                            <td class="py-3 px-4 text-center font-bold">2</td>
+                        </tr>
+                        <tr class="border-b border-gray-200 hover:bg-white transition-colors">
+                            <td class="py-3 px-4">4</td>
+                            <td class="py-3 px-4">HD Surveillance 10TB</td>
+                            <td class="py-3 px-4 font-mono text-xs">Purple WD102PURZ</td>
+                            <td class="py-3 px-4">Western Digital</td>
+                            <td class="py-3 px-4 text-center font-bold">5</td>
+                        </tr>
+                        <tr class="border-b border-gray-200 hover:bg-white transition-colors">
+                            <td class="py-3 px-4">5</td>
+                            <td class="py-3 px-4">Software VMS</td>
+                            <td class="py-3 px-4 font-mono text-xs">Defense IA</td>
+                            <td class="py-3 px-4">Intelbras</td>
+                            <td class="py-3 px-4 text-center font-bold">1</td>
+                        </tr>
+                        <tr class="border-b border-gray-200 hover:bg-white transition-colors bg-brand-yellow/5">
+                            <td class="py-3 px-4">6</td>
+                            <td class="py-3 px-4">Nobreak 6kVA Online</td>
+                            <td class="py-3 px-4 font-mono text-xs">DNB 6.0 kVA RT SB</td>
+                            <td class="py-3 px-4">Intelbras</td>
+                            <td class="py-3 px-4 text-center font-bold">2</td>
+                        </tr>
+                        <tr class="border-b border-gray-200 hover:bg-white transition-colors">
+                            <td class="py-3 px-4">7</td>
+                            <td class="py-3 px-4">Módulo Bateria 192V</td>
+                            <td class="py-3 px-4 font-mono text-xs">MB 1607 192V RT</td>
+                            <td class="py-3 px-4">Intelbras</td>
+                            <td class="py-3 px-4 text-center font-bold">20</td>
+                        </tr>
+                        <tr class="border-b border-gray-200 hover:bg-white transition-colors">
+                            <td class="py-3 px-4">8</td>
+                            <td class="py-3 px-4">Nobreak 3kVA Rack</td>
+                            <td class="py-3 px-4 font-mono text-xs">DNB 3.0 kVA RT</td>
+                            <td class="py-3 px-4">Intelbras</td>
+                            <td class="py-3 px-4 text-center font-bold">7</td>
+                        </tr>
+                        <tr class="border-b border-gray-200 hover:bg-white transition-colors">
+                            <td class="py-3 px-4">9</td>
+                            <td class="py-3 px-4">Estabilizador 1000VA</td>
+                            <td class="py-3 px-4 font-mono text-xs">ATTIV SENO 1000</td>
+                            <td class="py-3 px-4">Intelbras</td>
+                            <td class="py-3 px-4 text-center font-bold">3</td>
+                        </tr>
+                        <tr class="border-b border-gray-200 hover:bg-white transition-colors bg-brand-yellow/5">
+                            <td class="py-3 px-4">10</td>
+                            <td class="py-3 px-4">Switch PoE 24p + 4 SFP+</td>
+                            <td class="py-3 px-4 font-mono text-xs">S3328G-PB 370W</td>
+                            <td class="py-3 px-4">Intelbras</td>
+                            <td class="py-3 px-4 text-center font-bold">9</td>
+                        </tr>
+                        <tr class="border-b border-gray-200 hover:bg-white transition-colors">
+                            <td class="py-3 px-4">11</td>
+                            <td class="py-3 px-4">Monitor Video Wall 49"</td>
+                            <td class="py-3 px-4 font-mono text-xs">MWL 7249</td>
+                            <td class="py-3 px-4">Intelbras</td>
+                            <td class="py-3 px-4 text-center font-bold">4</td>
+                        </tr>
+                        <tr class="border-b border-gray-200 hover:bg-white transition-colors">
+                            <td class="py-3 px-4">12</td>
+                            <td class="py-3 px-4">Decodificador 9 Saídas</td>
+                            <td class="py-3 px-4 font-mono text-xs">DWL 7809 G2</td>
+                            <td class="py-3 px-4">Intelbras</td>
+                            <td class="py-3 px-4 text-center font-bold">2</td>
+                        </tr>
+                        <tr class="border-b border-gray-200 hover:bg-white transition-colors">
+                            <td class="py-3 px-4">13</td>
+                            <td class="py-3 px-4">Workstation</td>
+                            <td class="py-3 px-4 font-mono text-xs">Precision 3460 SFF</td>
+                            <td class="py-3 px-4">Dell</td>
+                            <td class="py-3 px-4 text-center font-bold">1</td>
+                        </tr>
+                        <tr class="border-b border-gray-200 hover:bg-white transition-colors">
+                            <td class="py-3 px-4">14</td>
+                            <td class="py-3 px-4">Monitor Operador 23.8"</td>
+                            <td class="py-3 px-4 font-mono text-xs">P2422H</td>
+                            <td class="py-3 px-4">Dell</td>
+                            <td class="py-3 px-4 text-center font-bold">1</td>
+                        </tr>
+                        <tr class="border-b border-gray-200 hover:bg-white transition-colors">
+                            <td class="py-3 px-4">15</td>
+                            <td class="py-3 px-4">Rack Servidor 44U</td>
+                            <td class="py-3 px-4 font-mono text-xs">44U x 1070mm</td>
+                            <td class="py-3 px-4">Intelbras</td>
+                            <td class="py-3 px-4 text-center font-bold">1</td>
+                        </tr>
+                        <tr class="border-b border-gray-200 hover:bg-white transition-colors">
+                            <td class="py-3 px-4">16</td>
+                            <td class="py-3 px-4">Rack Extensor 16U</td>
+                            <td class="py-3 px-4 font-mono text-xs">RPD 16U</td>
+                            <td class="py-3 px-4">Intelbras</td>
+                            <td class="py-3 px-4 text-center font-bold">5</td>
+                        </tr>
+                        <tr class="border-b border-gray-200 hover:bg-white transition-colors">
+                            <td class="py-3 px-4">17</td>
+                            <td class="py-3 px-4">PDU Rack 8 Tomadas</td>
+                            <td class="py-3 px-4 font-mono text-xs">EPR 208</td>
+                            <td class="py-3 px-4">Intelbras</td>
+                            <td class="py-3 px-4 text-center font-bold">5</td>
+                        </tr>
+                        <tr class="border-b border-gray-200 hover:bg-white transition-colors">
+                            <td class="py-3 px-4">18</td>
+                            <td class="py-3 px-4">Patch Panel Cat6 24p</td>
+                            <td class="py-3 px-4 font-mono text-xs">PP 624</td>
+                            <td class="py-3 px-4">Intelbras</td>
+                            <td class="py-3 px-4 text-center font-bold">1</td>
+                        </tr>
+                        <tr class="border-b border-gray-200 hover:bg-white transition-colors">
+                            <td class="py-3 px-4">19</td>
+                            <td class="py-3 px-4">Conversor WDM Gigabit</td>
+                            <td class="py-3 px-4 font-mono text-xs">KGSD 1120 A+B</td>
+                            <td class="py-3 px-4">Intelbras</td>
+                            <td class="py-3 px-4 text-center font-bold">8</td>
+                        </tr>
+                        <tr class="border-b border-gray-200 hover:bg-white transition-colors">
+                            <td class="py-3 px-4">20</td>
+                            <td class="py-3 px-4">DPS Protetor Surto</td>
+                            <td class="py-3 px-4 font-mono text-xs">Front V</td>
+                            <td class="py-3 px-4">Clamper</td>
+                            <td class="py-3 px-4 text-center font-bold">5</td>
+                        </tr>
+                        <tr class="border-b border-gray-200 hover:bg-white transition-colors">
+                            <td class="py-3 px-4">21</td>
+                            <td class="py-3 px-4">Disjuntor DDR</td>
+                            <td class="py-3 px-4 font-mono text-xs">Acti9</td>
+                            <td class="py-3 px-4">Schneider</td>
+                            <td class="py-3 px-4 text-center font-bold">5</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="text-center mt-8">
+                <a href="#investimento" class="inline-flex items-center gap-2 text-brand-yellow border-2 border-brand-yellow px-6 py-3 rounded-full font-bold hover:bg-brand-yellow hover:text-black transition-all">
+                    <i data-lucide="calculator" class="w-5 h-5"></i>
+                    Ver Investimento Total
+                    <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- INVESTIMENTO -->
+    <section id="investimento" class="py-20 bg-gray-100">
+        <div class="max-w-4xl mx-auto px-4">
+            <div class="text-center mb-12 reveal">
+                <span class="text-brand-yellow font-bold uppercase tracking-widest text-xs">Proposta Comercial</span>
+                <h2 class="text-3xl md:text-5xl font-bold text-gray-900 mt-2">Investimento do Projeto</h2>
+                <p class="text-gray-600 mt-3">Hardware + Instalação + Engenharia Completa</p>
+            </div>
+
+            <div class="bg-white rounded-3xl p-8 md:p-12 border-2 border-brand-yellow shadow-2xl reveal">
+                <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-8 pb-8 border-b-2 border-gray-200">
+                    <div>
+                        <h3 class="text-2xl md:text-3xl font-bold text-gray-900">Pacote Global DDNM</h3>
+                        <p class="text-sm text-brand-yellow mt-1 font-bold">Solução Turn-Key com Instalação White Glove</p>
+                    </div>
+                    <div class="text-right mt-4 md:mt-0">
+                        <p class="text-xs text-gray-600 uppercase tracking-wider">Investimento Único</p>
+                        <!-- Preço Atualizado -->
+                        <p class="text-4xl md:text-5xl font-extrabold text-gray-900">R$ 898.650</p>
+                        <p class="text-xs text-gray-600 mt-1">50% Aceite + 50% Entrega</p>
+                    </div>
+                </div>
+
+                <div class="grid md:grid-cols-2 gap-6 mb-8">
+                    <div>
+                        <h4 class="font-bold text-gray-900 mb-4 flex items-center gap-2">
+                            <i data-lucide="package-check" class="w-5 h-5 text-brand-yellow"></i>
+                            Incluído no Investimento
+                        </h4>
+                        <ul class="space-y-2 text-sm text-gray-700">
+                            <li class="flex items-start gap-2">
+                                <i data-lucide="check" class="w-4 h-4 text-brand-yellow mt-0.5 flex-shrink-0"></i>
+                                <span>65 Câmeras IP (50 internas + 15 externas)</span>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <i data-lucide="check" class="w-4 h-4 text-brand-yellow mt-0.5 flex-shrink-0"></i>
+                                <span>2 NVRs Enterprise com IA</span>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <i data-lucide="check" class="w-4 h-4 text-brand-yellow mt-0.5 flex-shrink-0"></i>
+                                <span>Video Wall 4K completo (4 monitores)</span>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <i data-lucide="check" class="w-4 h-4 text-brand-yellow mt-0.5 flex-shrink-0"></i>
+                                <span>Infraestrutura de rede (9 switches PoE)</span>
+                            </li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h4 class="font-bold text-gray-900 mb-4 flex items-center gap-2">
+                            <i data-lucide="shield" class="w-5 h-5 text-brand-yellow"></i>
+                            Serviços Inclusos
+                        </h4>
+                        <ul class="space-y-2 text-sm text-gray-700">
+                            <li class="flex items-start gap-2">
+                                <i data-lucide="check" class="w-4 h-4 text-brand-yellow mt-0.5 flex-shrink-0"></i>
+                                <span>Sistema de energia crítica (nobreaks + baterias)</span>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <i data-lucide="check" class="w-4 h-4 text-brand-yellow mt-0.5 flex-shrink-0"></i>
+                                <span>Instalação e comissionamento</span>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <i data-lucide="check" class="w-4 h-4 text-brand-yellow mt-0.5 flex-shrink-0"></i>
+                                <span>Treinamento operacional (8h)</span>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <i data-lucide="check" class="w-4 h-4 text-brand-yellow mt-0.5 flex-shrink-0"></i>
+                                <span>Garantia fabricante (12 meses)</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="bg-gradient-to-r from-brand-yellow/5 to-transparent rounded-xl p-6 border border-brand-yellow/30 mb-8">
+                    <label class="cursor-pointer group flex justify-between items-center">
+                        <div class="flex items-center gap-4">
+                            <input type="checkbox" id="care-toggle" class="peer sr-only" onchange="updateTotal()">
+                            <div class="w-6 h-6 rounded border-2 border-gray-400 peer-checked:bg-brand-yellow peer-checked:border-brand-yellow flex items-center justify-center transition-all">
+                                <i data-lucide="check" class="w-4 h-4 text-white hidden peer-checked:block"></i>
+                            </div>
+                            <div>
+                                <span class="text-base font-bold text-gray-900 block">Adicionar Vision Care Enterprise</span>
+                                <span class="text-sm text-gray-600">Manutenção mensal e suporte prioritário</span>
+                            </div>
+                        </div>
+                        <span class="text-lg font-bold text-brand-yellow">+ R$ 11.900/mês</span>
+                    </label>
+                </div>
+
+                <a href="https://wa.me/5511930816696?text=Olá,%20gostaria%20de%20aprovar%20o%20Projeto%20DDNM" id="whatsapp-link" class="block w-full bg-brand-yellow text-black font-bold py-5 rounded-2xl text-center text-lg transition-all hover:bg-brand-goldLight shadow-glow-strong transform hover:scale-[1.02] flex items-center justify-center gap-3">
+                    <i data-lucide="check-circle" class="w-6 h-6"></i>
+                    <span id="cta-text">Aprovar Proposta Técnica</span>
+                    <i data-lucide="arrow-right" class="w-5 h-5"></i>
+                </a>
+
+                <p class="text-center text-xs text-gray-600 mt-6">
+                    Condições comerciais: Validade 30 dias • Projeto sujeito a visita técnica para confirmação de escopo
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- CRONOGRAMA -->
+    <section class="py-20 bg-white">
+        <div class="max-w-6xl mx-auto px-4">
+            <div class="text-center mb-12 reveal">
+                <span class="text-brand-yellow font-bold uppercase tracking-widest text-xs">Implantação</span>
+                <h2 class="text-3xl md:text-5xl font-bold text-gray-900 mt-2">Cronograma de Execução</h2>
+                <p class="text-gray-600 mt-3">Do aceite à operação plena em 90 dias</p>
+            </div>
+
+            <div class="relative">
+                <div class="absolute left-1/2 transform -translate-x-1/2 w-1 h-full bg-brand-yellow/30"></div>
+                
+                <div class="space-y-12">
+                    <!-- Fase 1 -->
+                    <div class="relative reveal">
+                        <div class="flex items-center">
+                            <div class="w-1/2 pr-8 text-right">
+                                <div class="bg-white rounded-xl p-6 shadow-lg border border-gray-200 inline-block">
+                                    <span class="text-brand-yellow text-xs font-bold uppercase tracking-wider">Semana 1-2</span>
+                                    <h3 class="text-xl font-bold text-gray-900 mt-1">Planejamento</h3>
+                                    <ul class="text-sm text-gray-700 mt-3 space-y-1 text-left">
+                                        <li>• Aceite da proposta</li>
+                                        <li>• Visita técnica detalhada</li>
+                                        <li>• Projeto executivo de cabeamento</li>
+                                        <li>• Validação de quadros elétricos</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="absolute left-1/2 transform -translate-x-1/2 w-12 h-12 bg-brand-yellow rounded-full flex items-center justify-center z-10">
+                                <i data-lucide="clipboard-check" class="w-6 h-6 text-black"></i>
+                            </div>
+                            <div class="w-1/2 pl-8"></div>
+                        </div>
+                    </div>
+
+                    <!-- Fase 2 -->
+                    <div class="relative reveal">
+                        <div class="flex items-center">
+                            <div class="w-1/2 pr-8"></div>
+                            <div class="absolute left-1/2 transform -translate-x-1/2 w-12 h-12 bg-brand-yellow rounded-full flex items-center justify-center z-10">
+                                <i data-lucide="truck" class="w-6 h-6 text-black"></i>
+                            </div>
+                            <div class="w-1/2 pl-8">
+                                <div class="bg-white rounded-xl p-6 shadow-lg border border-gray-200 inline-block">
+                                    <span class="text-brand-yellow text-xs font-bold uppercase tracking-wider">Semana 3-4</span>
+                                    <h3 class="text-xl font-bold text-gray-900 mt-1">Aquisição</h3>
+                                    <ul class="text-sm text-gray-700 mt-3 space-y-1">
+                                        <li>• Emissão de pedidos aos fabricantes</li>
+                                        <li>• Logística e recebimento de equipamentos</li>
+                                        <li>• Inspeção de qualidade</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Fase 3 -->
+                    <div class="relative reveal">
+                        <div class="flex items-center">
+                            <div class="w-1/2 pr-8 text-right">
+                                <div class="bg-white rounded-xl p-6 shadow-lg border border-gray-200 inline-block">
+                                    <span class="text-brand-yellow text-xs font-bold uppercase tracking-wider">Semana 5-10</span>
+                                    <h3 class="text-xl font-bold text-gray-900 mt-1">Instalação</h3>
+                                    <ul class="text-sm text-gray-700 mt-3 space-y-1 text-left">
+                                        <li>• Passagem de cabos estruturados</li>
+                                        <li>• Montagem de racks e infraestrutura</li>
+                                        <li>• Instalação física de câmeras</li>
+                                        <li>• Configuração de switches e nobreaks</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="absolute left-1/2 transform -translate-x-1/2 w-12 h-12 bg-brand-yellow rounded-full flex items-center justify-center z-10">
+                                <i data-lucide="wrench" class="w-6 h-6 text-black"></i>
+                            </div>
+                            <div class="w-1/2 pl-8"></div>
+                        </div>
+                    </div>
+
+                    <!-- Fase 4 -->
+                    <div class="relative reveal">
+                        <div class="flex items-center">
+                            <div class="w-1/2 pr-8"></div>
+                            <div class="absolute left-1/2 transform -translate-x-1/2 w-12 h-12 bg-brand-yellow rounded-full flex items-center justify-center z-10">
+                                <i data-lucide="settings" class="w-6 h-6 text-black"></i>
+                            </div>
+                            <div class="w-1/2 pl-8">
+                                <div class="bg-white rounded-xl p-6 shadow-lg border border-gray-200 inline-block">
+                                    <span class="text-brand-yellow text-xs font-bold uppercase tracking-wider">Semana 11-12</span>
+                                    <h3 class="text-xl font-bold text-gray-900 mt-1">Comissionamento</h3>
+                                    <ul class="text-sm text-gray-700 mt-3 space-y-1">
+                                        <li>• Configuração de NVRs e gravadores</li>
+                                        <li>• Cadastro de faces no banco de dados</li>
+                                        <li>• Testes de analíticos de vídeo (IA)</li>
+                                        <li>• Calibração do Video Wall</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Fase 5 -->
+                    <div class="relative reveal">
+                        <div class="flex items-center">
+                            <div class="w-1/2 pr-8 text-right">
+                                <div class="bg-gradient-to-r from-brand-yellow/10 to-brand-yellow/5 rounded-xl p-6 shadow-lg border-2 border-brand-yellow inline-block">
+                                    <span class="text-brand-yellow text-xs font-bold uppercase tracking-wider">Semana 13</span>
+                                    <h3 class="text-xl font-bold text-gray-900 mt-1">Homologação & Go-Live</h3>
+                                    <ul class="text-sm text-gray-700 mt-3 space-y-1 text-left">
+                                        <li>• Treinamento operacional (8h)</li>
+                                        <li>• Testes de aceitação (FAT)</li>
+                                        <li>• Entrega de manuais e documentação</li>
+                                        <li>• Sistema em operação plena ✓</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="absolute left-1/2 transform -translate-x-1/2 w-12 h-12 bg-brand-yellow rounded-full flex items-center justify-center z-10 animate-pulse">
+                                <i data-lucide="rocket" class="w-6 h-6 text-black"></i>
+                            </div>
+                            <div class="w-1/2 pl-8"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- POR QUE VISION -->
+    <section class="py-20 bg-gray-100">
+        <div class="max-w-6xl mx-auto px-4">
+            <div class="text-center mb-12 reveal">
+                <span class="text-brand-yellow font-bold uppercase tracking-widest text-xs">Confiança</span>
+                <h2 class="text-3xl md:text-5xl font-bold text-gray-900 mt-2">Por Que Confiar na Vision Enterprise</h2>
+                <p class="text-gray-600 mt-3">Expertise em infraestruturas críticas</p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8 mb-12">
+                <div class="bg-white rounded-2xl p-8 shadow-lg text-center border-t-4 border-brand-yellow card-hover reveal">
+                    <i data-lucide="trophy" class="w-16 h-16 text-brand-yellow mx-auto mb-4"></i>
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">Experiência</h3>
+                    <!-- Texto de Experiência Atualizado -->
+                    <p class="text-gray-700 leading-relaxed">
+                        11 anos de experiência, mais de 1500 projetos entregues com excelência técnica em diversos setores da economia.
+                    </p>
+                </div>
+
+                <div class="bg-white rounded-2xl p-8 shadow-lg text-center border-t-4 border-brand-yellow card-hover reveal" style="animation-delay: 100ms;">
+                    <i data-lucide="award" class="w-16 h-16 text-brand-yellow mx-auto mb-4"></i>
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">Certificações</h3>
+                    <p class="text-gray-700 leading-relaxed">
+                        Equipe técnica certificada <strong>Intelbras, ABNT NBR</strong>, e treinamento em sistemas de alta disponibilidade.
+                    </p>
+                </div>
+
+                <div class="bg-white rounded-2xl p-8 shadow-lg text-center border-t-4 border-brand-yellow card-hover reveal" style="animation-delay: 200ms;">
+                    <i data-lucide="headset" class="w-16 h-16 text-brand-yellow mx-auto mb-4"></i>
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">Suporte</h3>
+                    <p class="text-gray-700 leading-relaxed">
+                        Central de atendimento <strong>24/7</strong> com SLA de resposta em até 4 horas para clientes Vision Care Enterprise.
+                    </p>
+                </div>
+            </div>
+
+            <div class="text-center reveal">
+                <p class="text-2xl md:text-3xl font-bold text-gray-900 mb-8">
+                    "Não somos apenas integradores.<br>
+                    <span class="text-gold-shine">Somos arquitetos de segurança.</span>"
+                </p>
+                <a href="#investimento" class="inline-flex items-center gap-2 bg-brand-yellow text-black px-10 py-4 rounded-full font-bold text-lg hover:bg-brand-goldLight transition-all shadow-glow-strong transform hover:scale-105">
+                    <i data-lucide="shield-check" class="w-6 h-6"></i>
+                    Aprovar Proposta
+                    <i data-lucide="arrow-right" class="w-5 h-5"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="bg-[#09090b] text-zinc-500 text-sm py-12 border-t border-white/5">
+        <div class="max-w-6xl mx-auto px-4">
+            <div class="flex flex-col items-center text-center space-y-4">
+                <div class="flex flex-col items-center">
+                    <span class="font-logo font-bold text-3xl text-gold-shine lowercase tracking-tight leading-none">vısıon</span>
+                    <!-- Ajustado para enterprise e aproximado -->
+                    <span class="font-tech text-[0.7rem] font-bold text-zinc-500 lowercase tracking-[0.3em] -mt-2">enterprise</span>
+                </div>
+                
+                <p class="text-zinc-400">VISION TECNOLOGIA © 2026. Todos os direitos reservados.</p>
+                <p class="text-zinc-600 text-xs uppercase tracking-wider">CONFIDENTIAL DOCUMENT | ID-PATEC-PRJ-01.007</p>
+                
+                <!-- Redes sociais e links removidos -->
+                
+                <!-- CNPJ Adicionado -->
+                <p class="text-zinc-500 text-xs">CNPJ: 62.117.013/0001-00</p>
+
+                <!-- Botão Salvar PDF -->
+                <div class="pt-4">
+                    <button onclick="window.print()" class="text-xs border border-zinc-700 text-zinc-500 px-4 py-2 rounded hover:text-brand-yellow hover:border-brand-yellow transition-colors flex items-center gap-2">
+                        <i data-lucide="download" class="w-3 h-3"></i>
+                        Salvar PDF
+                    </button>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Initialize Lucide Icons
+        lucide.createIcons();
+
+        // Lock Screen Logic
+        const accessCodes = ["ddnm2026", "marinha2026"];
+        function checkPassword() {
+            const input = document.getElementById('password-input');
+            if(accessCodes.includes(input.value.toLowerCase())) {
+                document.getElementById('lock-screen').style.opacity = '0';
+                setTimeout(() => {
+                    document.getElementById('lock-screen').style.display = 'none';
+                    document.getElementById('html-root').classList.remove('overflow-hidden');
+                }, 700);
+            } else {
+                document.getElementById('error-msg').classList.remove('hidden');
+                setTimeout(() => {
+                    document.getElementById('error-msg').classList.add('hidden');
+                }, 3000);
+            }
+        }
+        
+        document.getElementById('password-input').addEventListener("keypress", function(event) {
+            if (event.key === "Enter") {
+                checkPassword();
+            }
+        });
+
+        // Update WhatsApp Link Based on Vision Care Selection
+        function updateTotal() {
+            const toggle = document.getElementById('care-toggle');
+            const btn = document.getElementById('whatsapp-link');
+            const ctaText = document.getElementById('cta-text');
+            
+            if (toggle.checked) {
+                btn.href = "https://wa.me/5511930816696?text=Olá,%20gostaria%20de%20aprovar%20o%20Projeto%20DDNM%20COM%20VISION%20CARE%20ENTERPRISE%20(R$%2011.900/mês)";
+                ctaText.textContent = "Aprovar com Vision Care";
+            } else {
+                btn.href = "https://wa.me/5511930816696?text=Olá,%20gostaria%20de%20aprovar%20o%20Projeto%20DDNM";
+                ctaText.textContent = "Aprovar Proposta Técnica";
+            }
+        }
+
+        // Navbar Background on Scroll
+        window.addEventListener('scroll', () => {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('navbar-solid');
+            } else {
+                navbar.classList.remove('navbar-solid');
+            }
+
+            // Reveal animations
+            document.querySelectorAll('.reveal').forEach(el => {
+                if (el.getBoundingClientRect().top < window.innerHeight - 100) {
+                    el.classList.add('active');
+                }
+            });
+        });
+
+        // Smooth Scroll for Anchor Links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if(target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Re-initialize icons after dynamic content load
+        setTimeout(() => {
+            lucide.createIcons();
+        }, 500);
+    </script>
+</body>
+</html>

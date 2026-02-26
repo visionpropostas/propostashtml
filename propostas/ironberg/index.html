@@ -1,0 +1,622 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth overflow-hidden" id="html-root">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Proposta Vision | Ironberg Alphaville</title>
+    <meta name="description" content="Projeto de Controle de Acesso Corporativo - Ironberg Alphaville">
+    <meta name="theme-color" content="#b9880e">
+    
+    <!-- Fonts & Icons -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@700;800&family=Quicksand:wght@500;600;700&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    
+    <!-- Google Analytics 4 -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-KTGEL92B0F"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-KTGEL92B0F');
+    </script>
+
+    <!-- Microsoft Clarity -->
+    <script type="text/javascript">
+        (function(c,l,a,r,i,t,y){
+            c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+            t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+            y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+        })(window, document, "clarity", "script", "vifq10es5o");
+    </script>
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: { 
+                        sans: ['"Outfit"', 'sans-serif'],
+                        logo: ['"League Spartan"', 'sans-serif'],
+                        tech: ['"Quicksand"', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            yellow: '#b9880e', 
+                            goldLight: '#FFDE59', 
+                            goldDark: '#BA8500',  
+                            black: '#09090b', 
+                            dark: '#000000',
+                            surface: '#18181b', 
+                            gray: '#27272a', 
+                        },
+                    },
+                    boxShadow: {
+                        'glow': '0 0 20px rgba(185, 136, 14, 0.15)',
+                        'glow-strong': '0 0 40px rgba(185, 136, 14, 0.3)',
+                        'glass': '0 8px 32px 0 rgba(0, 0, 0, 0.3)',
+                    },
+                    animation: {
+                        'slide-up': 'slideUp 0.8s ease-out forwards',
+                        'pulse-gold': 'pulseGold 2s infinite',
+                        'shake': 'shake 0.5s cubic-bezier(.36,.07,.19,.97) both',
+                        'fade-in': 'fadeIn 0.5s ease-out forwards',
+                    },
+                    keyframes: {
+                        slideUp: {
+                            '0%': { opacity: '0', transform: 'translateY(20px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' },
+                        },
+                        fadeIn: {
+                            '0%': { opacity: '0' },
+                            '100%': { opacity: '1' },
+                        },
+                        pulseGold: {
+                            '0%, 100%': { boxShadow: '0 0 0 0 rgba(185, 136, 14, 0.4)' },
+                            '50%': { boxShadow: '0 0 0 10px rgba(185, 136, 14, 0)' },
+                        },
+                        shake: {
+                            '10%, 90%': { transform: 'translate3d(-1px, 0, 0)' },
+                            '20%, 80%': { transform: 'translate3d(2px, 0, 0)' },
+                            '30%, 50%, 70%': { transform: 'translate3d(-4px, 0, 0)' },
+                            '40%, 60%': { transform: 'translate3d(4px, 0, 0)' }
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #f9fafb; }
+        ::-webkit-scrollbar-thumb { background: #d1d5db; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #b9880e; }
+        
+        .text-gold-shine {
+            background: linear-gradient(to right, #b9880e 20%, #FFDE59 50%, #b9880e 80%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-size: 200% auto;
+            animation: shine 4s linear infinite;
+        }
+        @keyframes shine { to { background-position: 200% center; } }
+        
+        .bg-grid { 
+            background-image: linear-gradient(rgba(185, 136, 14, 0.03) 1px, transparent 1px), 
+                              linear-gradient(90deg, rgba(185, 136, 14, 0.03) 1px, transparent 1px); 
+            background-size: 40px 40px; 
+        }
+        
+        .card-hover { transition: all 0.3s ease; }
+        .card-hover:hover { 
+            transform: translateY(-5px); 
+            box-shadow: 0 20px 40px -10px rgba(185,136,14,0.2); 
+        }
+        
+        /* Lock Screen Input */
+        .lock-input {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: #b9880e;
+            font-family: 'League Spartan', sans-serif;
+            font-size: 1.5rem;
+            text-align: center;
+            outline: none;
+            transition: all 0.3s;
+            letter-spacing: 0.2em;
+            border-radius: 12px;
+        }
+        .lock-input:focus {
+            border-color: #b9880e;
+            background: rgba(255, 255, 255, 0.08);
+            box-shadow: 0 0 15px rgba(185, 136, 14, 0.2);
+        }
+        .lock-input.error {
+            border-color: #ef4444 !important;
+            box-shadow: 0 0 15px rgba(239, 68, 68, 0.3) !important;
+            animation: shake 0.5s cubic-bezier(.36,.07,.19,.97) both;
+        }
+        .lock-input::placeholder {
+            color: #52525b;
+            font-size: 0.9rem;
+            font-family: 'Outfit', sans-serif;
+            font-weight: 300;
+            letter-spacing: normal;
+        }
+
+        .reveal { opacity: 0; transform: translateY(30px); transition: all 0.8s ease-out; }
+        .reveal.active { opacity: 1; transform: translateY(0); }
+
+        .navbar-solid {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid #e5e7eb;
+        }
+        
+        .product-card {
+            background: white;
+            border: 1px solid #e5e7eb;
+            border-radius: 16px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+        .product-card:hover {
+            border-color: #b9880e;
+            box-shadow: 0 10px 40px -10px rgba(185,136,14,0.15);
+            transform: translateY(-5px);
+        }
+        
+        @media print {
+            #lock-screen, #navbar, #whatsapp-link, .no-print { display: none !important; }
+            body { background: white; color: black; }
+            .reveal { opacity: 1 !important; transform: none !important; }
+        }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800 antialiased overflow-x-hidden">
+
+    <!-- LOCK SCREEN -->
+    <div id="lock-screen" class="fixed inset-0 z-[100] bg-[#09090b] flex flex-col items-center justify-center text-center p-4 transition-opacity duration-700 ease-out">
+        <div class="bg-grid absolute inset-0 opacity-10 pointer-events-none"></div>
+        
+        <div class="relative flex flex-col items-center justify-center mb-8 z-10">
+            <div class="relative flex items-baseline leading-none">
+                <span class="font-logo font-bold text-[3.5rem] md:text-[6rem] text-gold-shine lowercase tracking-[-0.08em]">vısıon</span>
+                <span class="text-[0.8rem] md:text-[1.2rem] text-[#b9880e] font-bold ml-1 self-end mb-3">®</span>
+            </div>
+            <div class="font-tech text-[0.9rem] md:text-[1.2rem] font-light text-zinc-500 lowercase tracking-[0.4em] -mt-5">enterprise</div>
+        </div>
+        
+        <div class="w-full max-w-md space-y-6 z-10" id="lock-content">
+            <div class="text-center space-y-2">
+                <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-brand-yellow/30 bg-brand-yellow/10 mb-4">
+                    <i data-lucide="lock" class="w-4 h-4 text-brand-yellow"></i>
+                    <span class="text-brand-yellow text-xs font-bold uppercase tracking-widest">Documento Confidencial</span>
+                </div>
+                <h2 class="text-white font-bold text-2xl">Ironberg Alphaville</h2>
+                <p class="text-zinc-400 text-sm">Controle de Acesso - Salas de Vidro</p>
+            </div>
+            
+            <div class="relative">
+                <input type="password" id="password-input" class="lock-input w-full py-4 px-4" placeholder="SENHA" autocomplete="off" oninput="resetError()">
+                <p id="error-msg" class="text-red-500 text-xs mt-2 hidden font-bold">❌ Acesso negado.</p>
+            </div>
+            
+            <button onclick="checkPassword()" class="w-full bg-brand-yellow hover:bg-brand-goldLight text-black font-bold py-4 rounded-xl transition-all shadow-glow flex items-center justify-center gap-2 group">
+                <i data-lucide="shield-check" class="w-5 h-5"></i>
+                <span>Acessar Documento</span>
+                <i data-lucide="arrow-right" class="w-4 h-4 group-hover:translate-x-1 transition-transform"></i>
+            </button>
+        </div>
+    </div>
+
+    <!-- NAVBAR -->
+    <nav id="navbar" class="fixed w-full z-50 top-0 bg-white/80 backdrop-blur-md border-b border-gray-200/50 shadow-sm transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-20 items-center">
+                <div class="flex flex-col items-start cursor-pointer">
+                    <span class="font-logo font-bold text-2xl text-gold-shine lowercase tracking-tight leading-none">vısıon</span>
+                    <span class="font-tech text-[0.6rem] font-bold text-gray-600 lowercase tracking-[0.3em] -mt-2">business</span>
+                </div>
+                <div class="hidden md:flex items-center space-x-6 text-sm font-medium text-gray-600">
+                    <a href="#contexto" class="hover:text-brand-yellow transition-colors">Diagnóstico</a>
+                    <a href="#solucao" class="hover:text-brand-yellow transition-colors">Tecnologia</a>
+                    <a href="#investimento" class="hover:text-brand-yellow transition-colors">Opções</a>
+                </div>
+                <a href="#investimento" class="bg-brand-yellow text-black px-6 py-2.5 rounded-full text-xs font-bold uppercase tracking-wide hover:bg-brand-goldLight transition-all shadow-md hover:shadow-glow">
+                    Aprovar Proposta
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- HERO SECTION -->
+    <header class="pt-32 pb-20 relative overflow-hidden bg-white">
+        <div class="bg-grid absolute inset-0 opacity-40"></div>
+        <div class="absolute inset-0 bg-gradient-to-b from-transparent via-white/50 to-white"></div>
+        
+        <div class="max-w-6xl mx-auto px-4 relative z-10">
+            <div class="text-center space-y-6 animate-slide-up">
+                <div class="inline-flex items-center gap-2 px-5 py-2 rounded-full border border-brand-yellow/30 bg-brand-yellow/10 text-brand-yellow text-[10px] font-bold uppercase tracking-widest">
+                    <i data-lucide="zap" class="w-4 h-4"></i>
+                    PROPOSTA FAST-TRACK #VB-IRON-001
+                </div>
+                
+                <h1 class="text-4xl md:text-6xl lg:text-7xl font-bold text-gray-900 leading-tight">
+                    Controle de Acesso com o<br>
+                    <span class="text-gold-shine">DNA Ironberg</span>
+                </h1>
+                
+                <p class="text-xl md:text-2xl text-gray-600 max-w-4xl mx-auto font-light leading-relaxed">
+                    Tecnologia que impõe respeito. Soluções desenhadas para a sofisticação da unidade Alphaville.
+                </p>
+
+                <div class="flex flex-col sm:flex-row gap-4 justify-center items-center pt-6">
+                    <a href="#solucao" class="inline-flex items-center gap-2 bg-brand-yellow text-black px-8 py-4 rounded-full font-bold hover:bg-brand-goldLight transition-all shadow-lg hover:shadow-glow transform hover:scale-105">
+                        <i data-lucide="layers" class="w-5 h-5"></i>
+                        Visualizar Escopo Técnico
+                        <i data-lucide="arrow-down" class="w-4 h-4"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- DIAGNÓSTICO -->
+    <section id="contexto" class="py-20 bg-gray-50 border-b border-gray-200">
+        <div class="max-w-6xl mx-auto px-4">
+            <div class="grid md:grid-cols-2 gap-16 items-center reveal">
+                <div>
+                    <span class="text-brand-yellow font-bold uppercase tracking-widest text-xs">Diagnóstico</span>
+                    <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mt-2 mb-6">O Desafio do Vidro</h2>
+                    <p class="text-gray-700 leading-relaxed mb-6">
+                        Instalar segurança em portas de vidro é um desafio de engenharia. Na Ironberg, identificamos dois riscos críticos na demanda atual:
+                    </p>
+                    
+                    <div class="space-y-4">
+                        <div class="bg-white p-5 rounded-xl border-l-4 border-red-500 shadow-sm hover:shadow-md transition-shadow">
+                            <h4 class="font-bold text-gray-900 mb-2 flex items-center gap-2">
+                                <i data-lucide="battery-warning" class="w-5 h-5 text-red-500"></i>
+                                O Apagão de Acessos
+                            </h4>
+                            <p class="text-sm text-gray-600">
+                                Fechaduras a pilha são para residências. Em fluxo comercial (30+ acessos/dia), a troca constante gera vulnerabilidade e risco de porta travada.
+                            </p>
+                        </div>
+                        <div class="bg-white p-5 rounded-xl border-l-4 border-zinc-800 shadow-sm hover:shadow-md transition-shadow">
+                            <h4 class="font-bold text-gray-900 mb-2 flex items-center gap-2">
+                                <i data-lucide="eye-off" class="w-5 h-5 text-zinc-800"></i>
+                                Gestão Cega
+                            </h4>
+                            <p class="text-sm text-gray-600">
+                                Fechaduras simples não geram dados. Se houver um incidente, você não saberá quem entrou e quando. O controle é apenas físico.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="relative h-[500px] rounded-2xl overflow-hidden shadow-2xl group reveal">
+                    <img src="https://images.unsplash.com/photo-1577412647305-991150c7d163?q=80&w=1974&auto=format&fit=crop" alt="Ambiente Ironberg" class="w-full h-full object-cover grayscale opacity-90 transition-all duration-700 group-hover:grayscale-0 group-hover:scale-105">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent flex items-end p-8">
+                        <p class="text-white text-sm italic font-light">"Em vidro, a infraestrutura deve ser invisível. Menos é mais."</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- VIDEO EXPERIENCE -->
+    <section class="py-20 bg-black text-white relative overflow-hidden">
+         <div class="bg-grid absolute inset-0 opacity-10 pointer-events-none"></div>
+         <div class="max-w-4xl mx-auto px-4 text-center relative z-10 reveal">
+            <span class="text-brand-yellow font-bold uppercase tracking-widest text-xs">Experience</span>
+            <h2 class="text-3xl font-bold text-white mt-2 mb-8">Performance na Prática</h2>
+            
+            <div class="aspect-[9/16] w-full max-w-sm mx-auto rounded-2xl overflow-hidden shadow-2xl border-4 border-zinc-800 bg-black relative group cursor-pointer hover:border-brand-yellow transition-all">
+                <!-- Video Embed -->
+                <iframe class="w-full h-full" src="https://www.youtube.com/embed/1dvh4e3mdL8?rel=0&controls=0&showinfo=0&loop=1" title="Controle de Acesso Intelbras" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+            </div>
+            <p class="mt-4 text-sm text-zinc-400 font-mono">Controlador Facial Intelbras em Ação (0.2s)</p>
+         </div>
+    </section>
+
+    <!-- HARDWARE -->
+    <section id="solucao" class="py-20 bg-white">
+        <div class="max-w-6xl mx-auto px-4">
+            <div class="text-center mb-16 reveal">
+                <span class="text-brand-yellow font-bold uppercase tracking-widest text-xs">O Hardware</span>
+                <h2 class="text-3xl md:text-5xl font-bold text-gray-900 mt-2">Duas Rotas Técnicas</h2>
+                <p class="text-gray-600 mt-3">Da praticidade sem fios à robustez corporativa.</p>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-12">
+                <!-- Opção 1: MFR 4000 -->
+                <div class="product-card reveal">
+                    <div class="h-64 bg-gray-50 flex items-center justify-center p-8 relative">
+                        <div class="absolute top-4 right-4 bg-gray-200 text-gray-600 text-[10px] font-bold px-3 py-1 rounded-full z-20">OPÇÃO 1 (SLIM)</div>
+                        <img src="https://res.cloudinary.com/dptcuckhf/image/upload/v1769198131/MFR_4000_rlc5ve.png" alt="MFR 4000" class="h-full object-contain">
+                    </div>
+                    <div class="p-8">
+                        <h3 class="text-xl font-bold text-gray-900 mb-2">Fechadura Digital MFR 4000</h3>
+                        <p class="text-xs text-brand-yellow font-bold uppercase tracking-wider mb-4">Linha Biométrica Sem Fio</p>
+                        
+                        <p class="text-sm text-gray-600 mb-6 leading-relaxed">
+                            Ideal para quem busca instalação rápida e sem infraestrutura elétrica. Fixação por pressão no vidro (sem furos).
+                        </p>
+
+                        <div class="space-y-3">
+                            <div class="flex items-start gap-3">
+                                <div class="p-1.5 bg-gray-100 rounded text-gray-600"><i data-lucide="fingerprint" class="w-4 h-4"></i></div>
+                                <div>
+                                    <strong class="text-sm text-gray-900 block">Acesso Híbrido</strong>
+                                    <span class="text-xs text-gray-500">Biometria e Senha Numérica.</span>
+                                </div>
+                            </div>
+                            <div class="flex items-start gap-3">
+                                <div class="p-1.5 bg-gray-100 rounded text-gray-600"><i data-lucide="maximize" class="w-4 h-4"></i></div>
+                                <div>
+                                    <strong class="text-sm text-gray-900 block">Design Clean</strong>
+                                    <span class="text-xs text-gray-500">Visual discreto e moderno.</span>
+                                </div>
+                            </div>
+                            <div class="flex items-start gap-3">
+                                <div class="p-1.5 bg-red-50 rounded text-red-500"><i data-lucide="battery-warning" class="w-4 h-4"></i></div>
+                                <div>
+                                    <strong class="text-sm text-red-600 block">Alerta: Pilhas</strong>
+                                    <span class="text-xs text-gray-500">Exige troca regular (Autonomia limitada).</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Opção 2: Facial Enterprise -->
+                <div class="product-card border-2 border-brand-yellow shadow-xl reveal" style="animation-delay: 100ms;">
+                    <div class="h-64 bg-white flex items-center justify-center p-8 relative">
+                        <div class="absolute top-4 right-4 bg-brand-yellow text-black text-[10px] font-bold px-3 py-1 rounded-full z-20">RECOMENDADO</div>
+                        <img src="https://res.cloudinary.com/dptcuckhf/image/upload/v1770745467/ss-3532-mf-w-frontal_2_c82tua.png" alt="Facial" class="h-full object-contain mix-blend-multiply">
+                    </div>
+                    <div class="p-8 bg-zinc-900 text-white">
+                        <h3 class="text-xl font-bold text-white mb-2">Controlador Facial IA</h3>
+                        <p class="text-xs text-brand-yellow font-bold uppercase tracking-wider mb-4">Padrão Corporativo (Elétrico)</p>
+                        
+                        <p class="text-sm text-gray-300 mb-6 leading-relaxed">
+                            A solução definitiva. Zero toque, gestão de dados completa e autonomia elétrica (nobreak).
+                        </p>
+
+                        <div class="space-y-3">
+                            <div class="flex items-start gap-3">
+                                <div class="p-1.5 bg-brand-yellow/20 rounded text-brand-yellow"><i data-lucide="scan-face" class="w-4 h-4"></i></div>
+                                <div>
+                                    <strong class="text-sm text-white block">Leitura 3D (0.2s)</strong>
+                                    <span class="text-xs text-gray-400">Funciona com máscara/óculos. Higiene total.</span>
+                                </div>
+                            </div>
+                            <div class="flex items-start gap-3">
+                                <div class="p-1.5 bg-brand-yellow/20 rounded text-brand-yellow"><i data-lucide="zap" class="w-4 h-4"></i></div>
+                                <div>
+                                    <strong class="text-sm text-white block">100% Online</strong>
+                                    <span class="text-xs text-gray-400">Ligado na energia com Nobreak (Não para nunca).</span>
+                                </div>
+                            </div>
+                            <div class="flex items-start gap-3">
+                                <div class="p-1.5 bg-brand-yellow/20 rounded text-brand-yellow"><i data-lucide="database" class="w-4 h-4"></i></div>
+                                <div>
+                                    <strong class="text-sm text-white block">Gestão de Dados</strong>
+                                    <span class="text-xs text-gray-400">Saiba quem entrou e que horas entrou.</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- INVESTIMENTO -->
+    <section id="investimento" class="py-24 bg-gray-50 border-t border-gray-200">
+        <div class="max-w-6xl mx-auto px-4 reveal">
+            <div class="text-center mb-16">
+                <span class="text-brand-yellow font-bold uppercase tracking-widest text-xs">Tomada de Decisão</span>
+                <h2 class="text-3xl md:text-5xl font-bold text-gray-900 mt-2">Investimento do Projeto</h2>
+                <p class="text-gray-600 mt-3">Escolha entre flexibilidade básica ou robustez corporativa.</p>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-8 items-center max-w-5xl mx-auto">
+                
+                <!-- OPÇÃO 1: BÁSICO -->
+                <div class="bg-white border border-gray-200 rounded-3xl p-8 relative overflow-hidden group hover:-translate-y-2 transition-transform shadow-lg">
+                    <div class="absolute top-0 right-0 bg-gray-100 text-gray-500 text-[10px] font-bold px-3 py-1 rounded-bl-xl z-10">PILHAS</div>
+                    
+                    <h3 class="text-xl font-bold text-gray-700 mb-2">Kit Biométrico Slim</h3>
+                    <p class="text-xs text-gray-400 mb-6 uppercase tracking-widest">Acesso Básico (Sem Fios)</p>
+                    
+                    <div class="mb-6">
+                        <div class="flex items-baseline gap-1">
+                            <span class="text-sm text-gray-400 font-bold">R$</span>
+                            <span class="text-4xl font-extrabold text-gray-700 tracking-tight">2.450,00</span>
+                        </div>
+                        <p class="text-[11px] text-gray-400 mt-1 line-through">De: R$ 2.900,00</p>
+                    </div>
+
+                    <ul class="space-y-3 text-sm text-gray-500 mb-8 border-t border-gray-100 pt-6">
+                        <li class="flex items-start gap-2"><i data-lucide="check" class="w-4 h-4 text-gray-400 mt-0.5"></i> Fechadura Digital (Vidro)</li>
+                        <li class="flex items-start gap-2"><i data-lucide="check" class="w-4 h-4 text-gray-400 mt-0.5"></i> Instalação por pressão</li>
+                        <li class="flex items-start gap-2 text-red-400"><i data-lucide="alert-triangle" class="w-4 h-4 mt-0.5"></i> <strong>Risco:</strong> Funciona a Pilhas</li>
+                        <li class="flex items-start gap-2 text-red-400"><i data-lucide="x" class="w-4 h-4 mt-0.5"></i> <strong>Risco:</strong> Sem gestão de dados</li>
+                    </ul>
+
+                    <a href="https://wa.me/5511945931528?text=Ola,%20quero%20aprovar%20a%20Opcao%201%20(Basica)" class="block w-full border-2 border-gray-200 text-gray-500 font-bold py-3 rounded-xl text-center hover:border-gray-400 hover:text-gray-700 transition-colors">
+                        Selecionar Básico
+                    </a>
+                </div>
+
+                <!-- OPÇÃO 2: ENTERPRISE (RECOMENDADA) -->
+                <div class="bg-zinc-900 text-white rounded-3xl p-10 border-2 border-brand-yellow shadow-2xl relative overflow-hidden group transform md:scale-105 z-10">
+                    <div class="absolute top-0 right-0 w-40 h-40 bg-brand-yellow/10 rounded-full blur-3xl -mr-10 -mt-10"></div>
+                    <div class="absolute top-0 right-0 bg-brand-yellow text-black text-[10px] font-bold px-3 py-1 rounded-bl-xl z-10">PADRÃO IRONBERG</div>
+                    
+                    <h3 class="text-2xl font-bold text-white mb-2">Kit Facial Enterprise</h3>
+                    <p class="text-xs text-brand-yellow mb-6 uppercase tracking-widest">Solução Definitiva (Elétrica)</p>
+                    
+                    <div class="mb-6">
+                        <div class="flex items-baseline gap-1">
+                            <span class="text-sm text-zinc-500 font-bold">R$</span>
+                            <span class="text-5xl font-extrabold text-white tracking-tight">4.650,00</span>
+                        </div>
+                        <p class="text-[11px] text-zinc-500 mt-1 line-through">De: R$ 5.200,00</p>
+                    </div>
+
+                    <ul class="space-y-3 text-sm text-gray-300 mb-8 border-t border-zinc-800 pt-6">
+                        <li class="flex items-start gap-2"><i data-lucide="check-circle" class="w-4 h-4 text-brand-yellow mt-0.5"></i> <strong>Facial IA + Eletroímã</strong></li>
+                        <li class="flex items-start gap-2"><i data-lucide="check-circle" class="w-4 h-4 text-brand-yellow mt-0.5"></i> <strong>Nobreak Integrado</strong> (Zero risco)</li>
+                        <li class="flex items-start gap-2"><i data-lucide="check-circle" class="w-4 h-4 text-brand-yellow mt-0.5"></i> Gestão de Horários/Usuários</li>
+                        <li class="flex items-start gap-2"><i data-lucide="check-circle" class="w-4 h-4 text-brand-yellow mt-0.5"></i> Instalação Especializada em Vidro</li>
+                    </ul>
+                    
+                    <!-- Toggle Care Interno -->
+                    <div class="mb-6 p-3 bg-white/5 rounded-lg border border-white/10">
+                        <label class="flex items-center justify-between cursor-pointer">
+                            <span class="text-xs font-bold text-zinc-300">Incluir Vision Care (+R$ 190/mês)</span>
+                            <input type="checkbox" id="care-toggle" class="accent-brand-yellow w-4 h-4" onchange="updateEnterpriseLink()">
+                        </label>
+                    </div>
+
+                    <a href="https://wa.me/5511945931528?text=Ola,%20aprovado%20o%20Kit%20Facial%20Enterprise" id="enterprise-link" class="block w-full bg-brand-yellow text-black font-bold py-4 rounded-xl text-center hover:bg-white transition-colors shadow-glow text-lg">
+                        APROVAR RECOMENDADA
+                    </a>
+                </div>
+
+            </div>
+            
+            <p class="text-center text-xs text-gray-500 mt-12 max-w-2xl mx-auto">
+                NOTA: O ponto de energia elétrica deve ser disponibilizado próximo à porta pelo cliente para a Opção 2. Instalação Vision inclusa para Alphaville.
+            </p>
+        </div>
+    </section>
+    
+    <!-- FAQ -->
+    <section class="py-16 bg-white border-t border-gray-200">
+        <div class="max-w-3xl mx-auto px-4">
+             <div class="text-center mb-8">
+                <h3 class="text-2xl font-bold text-gray-900">Dúvidas Frequentes</h3>
+            </div>
+            <div class="space-y-4">
+                <details class="bg-gray-50 border border-gray-200 rounded-lg p-4 cursor-pointer group">
+                    <summary class="font-bold text-gray-800 flex justify-between items-center list-none">Se acabar a energia, fico trancado? <i data-lucide="chevron-down" class="w-4 h-4 group-open:rotate-180 transition-transform"></i></summary>
+                    <div class="text-sm text-gray-600 mt-2 pt-2 border-t border-gray-200">
+                        Na Opção 2 (Enterprise), o sistema possui Nobreak que segura a operação por horas. Se a bateria acabar totalmente, a porta destrava automaticamente (norma de segurança). Na Opção 1, é bateria de pilha, se acabar, tem chave de emergência ou bateria externa.
+                    </div>
+                </details>
+                <details class="bg-gray-50 border border-gray-200 rounded-lg p-4 cursor-pointer group">
+                    <summary class="font-bold text-gray-800 flex justify-between items-center list-none">A instalação quebra o vidro? <i data-lucide="chevron-down" class="w-4 h-4 group-open:rotate-180 transition-transform"></i></summary>
+                    <div class="text-sm text-gray-600 mt-2 pt-2 border-t border-gray-200">
+                        Não. Utilizamos suportes especiais em "U" de alta pressão, desenhados especificamente para portas de vidro temperado, sem necessidade de furos ou cortes no vidro, preservando a estética.
+                    </div>
+                </details>
+                 <details class="bg-gray-50 border border-gray-200 rounded-lg p-4 cursor-pointer group">
+                    <summary class="font-bold text-gray-800 flex justify-between items-center list-none">Qual a garantia? <i data-lucide="chevron-down" class="w-4 h-4 group-open:rotate-180 transition-transform"></i></summary>
+                    <div class="text-sm text-gray-600 mt-2 pt-2 border-t border-gray-200">
+                        1 Ano de Garantia total (Equipamentos + Instalação). Com o Vision Care, você tem suporte contínuo e extensão de garantia de mão de obra.
+                    </div>
+                </details>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="bg-zinc-950 py-12 text-center border-t border-zinc-900">
+        <div class="max-w-4xl mx-auto px-4">
+            <p class="text-zinc-500 mb-2">Vision Tecnologia - Engenharia de Segurança</p>
+            <p class="text-xs text-zinc-700 uppercase tracking-widest">ALPHAVILLE | JARDINS | SP CAPITAL</p>
+        </div>
+    </footer>
+
+    <script>
+        // Init Icons
+        lucide.createIcons();
+
+        // Lock Screen Logic
+        const accessCode = "ironberg2026";
+        const adminCode = "vision2620"; 
+        
+        function checkPassword() {
+            const input = document.getElementById('password-input');
+            const val = input.value.toLowerCase();
+            const errorMsg = document.getElementById('error-msg');
+            const lockScreen = document.getElementById('lock-screen');
+            const htmlRoot = document.getElementById('html-root');
+
+            if(val === accessCode || val === adminCode) {
+                // Tracking
+                if(typeof gtag !== 'undefined') {
+                    gtag('event', 'unlock_proposal', {
+                        'event_category': 'engagement',
+                        'event_label': 'Ironberg Alphaville',
+                        'value': 4650.00
+                    });
+                }
+                
+                lockScreen.style.opacity = '0';
+                setTimeout(() => {
+                    lockScreen.style.display = 'none';
+                    htmlRoot.classList.remove('overflow-hidden');
+                }, 700);
+            } else {
+                input.classList.add('error');
+                errorMsg.classList.remove('hidden');
+                
+                setTimeout(() => {
+                   input.classList.remove('error'); 
+                }, 500);
+            }
+        }
+        
+        // Reset Error on Input
+        function resetError() {
+            document.getElementById('error-msg').classList.add('hidden');
+            document.getElementById('password-input').classList.remove('error');
+        }
+        
+        document.getElementById('password-input').addEventListener("keypress", (e) => e.key === "Enter" && checkPassword());
+
+        // Enterprise Link Logic
+        function updateEnterpriseLink() {
+            const toggle = document.getElementById('care-toggle');
+            const link = document.getElementById('enterprise-link');
+            const baseText = "Ola,%20aprovado%20o%20KIT%20FACIAL%20ENTERPRISE";
+            
+            if(toggle.checked) {
+                link.href = `https://wa.me/5511945931528?text=${baseText}%20COM%20VISION%20CARE`;
+                link.innerText = "APROVAR COM MANUTENÇÃO";
+                
+                // Tracking Upsell
+                if(typeof gtag !== 'undefined') {
+                     gtag('event', 'activate_upsell', {
+                        'event_category': 'interaction',
+                        'event_label': 'Vision Care',
+                        'value': 190.00
+                    });
+                }
+
+            } else {
+                link.href = `https://wa.me/5511945931528?text=${baseText}`;
+                link.innerText = "APROVAR RECOMENDADA";
+            }
+        }
+
+        // Navbar Scroll Effect
+        window.addEventListener('scroll', () => {
+            const navbar = document.getElementById('navbar');
+            
+            // Reveal animations
+            document.querySelectorAll('.reveal').forEach(el => {
+                if (el.getBoundingClientRect().top < window.innerHeight - 100) {
+                    el.classList.add('active');
+                }
+            });
+        });
+    </script>
+</body>
+</html>

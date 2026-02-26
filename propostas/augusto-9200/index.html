@@ -1,0 +1,841 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Proposta Vision Business | Av. Paulista</title>
+  <meta name="description" content="Proposta técnica e comercial — Vision Business (Projeto Av. Paulista)" />
+  <meta name="theme-color" content="#b9880e"/>
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@700;800&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Tailwind + Icons -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Outfit', 'sans-serif'],
+            logo: ['League Spartan', 'sans-serif'],
+          },
+          colors: {
+            brand: {
+              gold: '#b9880e',
+              goldLight: '#FFDE59',
+              ink: '#0b0b0f',
+              slate: '#121218',
+              line: '#26262f',
+            }
+          },
+          boxShadow: {
+            soft: '0 12px 40px rgba(0,0,0,.10)',
+            gold: '0 0 0 1px rgba(185,136,14,.35), 0 18px 55px rgba(185,136,14,.18)',
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    /* Scrollbar suave */
+    ::-webkit-scrollbar { width: 10px; }
+    ::-webkit-scrollbar-track { background: #f3f4f6; }
+    ::-webkit-scrollbar-thumb { background: #d1d5db; border-radius: 999px; }
+    ::-webkit-scrollbar-thumb:hover { background: #b9880e; }
+
+    /* Shine (Estilo Intenso) */
+    .gold-shine {
+        background: linear-gradient(to right, #b9880e 20%, #FFDE59 50%, #b9880e 80%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-size: 200% auto;
+        animation: shine 4s linear infinite;
+    }
+    @keyframes shine { to { background-position: 200% center; } }
+
+    /* Reveal */
+    .reveal { opacity: 0; transform: translateY(16px); transition: all .7s ease; }
+    .reveal.active { opacity: 1; transform: translateY(0); }
+
+    /* Placeholder de imagem */
+    .img-ph {
+      border: 1px dashed rgba(185,136,14,.45);
+      background: linear-gradient(180deg, rgba(185,136,14,.08), rgba(0,0,0,.02));
+    }
+    
+    /* Image Fit */
+    .product-img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+        transition: transform 0.3s ease;
+    }
+    .product-card:hover .product-img {
+        transform: scale(1.05);
+    }
+  </style>
+</head>
+
+<body class="bg-white text-gray-900 antialiased overflow-hidden">
+
+  <!-- ===== LOCK SCREEN (Executivo) ===== -->
+  <div id="lock" class="fixed inset-0 z-[100] bg-brand-ink text-white flex items-center justify-center p-6 transition-opacity duration-500">
+    <div class="w-full max-w-md">
+      <div class="text-center">
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-white/10 bg-white/5 text-xs tracking-widest uppercase text-white/80">
+          <i data-lucide="shield" class="w-4 h-4 text-brand-gold"></i>
+          Documento confidencial
+        </div>
+
+        <div class="mt-8">
+          <!-- Logo Ajustada -->
+          <div class="font-logo text-7xl leading-none lowercase gold-shine tracking-[-0.08em]">vısıon</div>
+          <div class="text-[11px] tracking-[0.45em] uppercase text-white/50 -mt-3 ml-1">business</div>
+        </div>
+
+        <div class="mt-8 space-y-1">
+          <div class="text-lg font-semibold">Projeto Corporativo — Escritório Augusto</div>
+          <div class="text-sm text-white/60">Av. Paulista • São Paulo</div>
+          <div class="text-xs text-white/35">ID: ID-VISION-PAULISTA-0226</div>
+        </div>
+      </div>
+
+      <div class="mt-10 space-y-4">
+        <div class="space-y-2">
+            <label class="block text-[10px] text-white/30 uppercase tracking-[0.2em] text-center">Senha de acesso</label>
+            <input id="pass" type="password" autocomplete="off"
+            class="w-full rounded-2xl px-4 py-4 bg-white/5 border border-white/10 focus:outline-none focus:ring-1 focus:ring-brand-gold/40 tracking-[0.25em] text-center font-semibold text-brand-gold placeholder-white/20"
+            placeholder="••••••••" />
+        </div>
+        <p id="lockErr" class="hidden text-xs text-red-400 font-semibold text-center">Acesso negado.</p>
+
+        <button id="btnUnlock"
+          class="w-full rounded-2xl py-4 bg-brand-gold text-black font-bold hover:bg-brand-goldLight transition shadow-gold flex items-center justify-center gap-2 transform active:scale-95 duration-200">
+          <i data-lucide="key-round" class="w-5 h-5"></i>
+          Acessar Proposta
+        </button>
+
+        <p class="text-[11px] text-white/20 text-center pt-4">
+          Ambiente seguro Vision Business
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== NAV ===== -->
+  <nav id="nav" class="sticky top-0 z-50 bg-white/85 backdrop-blur border-b border-gray-100">
+    <div class="max-w-7xl mx-auto px-4 py-4 flex items-center justify-between">
+      <a href="#topo" class="flex items-end gap-2 group">
+        <div>
+          <!-- Logo Nav Ajustada -->
+          <div class="font-logo text-4xl lowercase leading-none gold-shine tracking-[-0.08em]">vısıon</div>
+          <div class="text-[10px] tracking-[0.35em] uppercase text-gray-500 -mt-1.5 ml-0.5">business</div>
+        </div>
+        <span class="hidden sm:inline text-xs text-gray-500 pb-1 opacity-0 group-hover:opacity-100 transition-opacity">| Proposta executiva</span>
+      </a>
+
+      <div class="hidden md:flex items-center gap-6 text-sm text-gray-600">
+        <a class="hover:text-brand-gold" href="#diagnostico">Diagnóstico</a>
+        <a class="hover:text-brand-gold" href="#solucao">Solução</a>
+        <a class="hover:text-brand-gold" href="#processo">Processo</a>
+        <a class="hover:text-brand-gold" href="#investimento">Investimento</a>
+        <a class="hover:text-brand-gold" href="#faq">FAQ</a>
+      </div>
+
+      <div class="flex items-center gap-3">
+        <a href="https://wa.me/5511945931528?text=Olá,%20quero%20aprovar%20o%20projeto%20Paulista%20(ID-VISION-PAULISTA-0226)."
+          class="hidden sm:inline-flex items-center gap-2 rounded-full px-4 py-2 border border-brand-gold/30 text-brand-gold font-semibold hover:bg-brand-gold/10 transition">
+          <i data-lucide="message-circle" class="w-4 h-4"></i>
+          WhatsApp
+        </a>
+
+        <a href="#investimento"
+          class="inline-flex items-center gap-2 rounded-full px-5 py-2.5 bg-brand-gold text-black font-bold hover:bg-brand-goldLight transition shadow-soft">
+          Aprovar
+          <i data-lucide="arrow-right" class="w-4 h-4"></i>
+        </a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ===== HERO ===== -->
+  <header id="topo" class="relative overflow-hidden">
+    <!-- Fundo -->
+    <div class="absolute inset-0">
+      <img class="w-full h-full object-cover opacity-[0.10] grayscale"
+        src="https://images.unsplash.com/photo-1520607162513-77705c0f0d4a?auto=format&fit=crop&w=1920&q=80"
+        alt="Ambiente corporativo" />
+      <div class="absolute inset-0 bg-gradient-to-b from-white via-white/95 to-white"></div>
+    </div>
+
+    <div class="relative max-w-7xl mx-auto px-4 py-16 md:py-24">
+      <div class="grid lg:grid-cols-12 gap-10 items-center">
+        <div class="lg:col-span-7 space-y-6 reveal">
+          <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-brand-gold/10 border border-brand-gold/20 text-xs font-bold tracking-widest uppercase text-brand-gold">
+            <i data-lucide="sparkles" class="w-4 h-4"></i>
+            Engenharia de confiança • Proposta executiva
+          </div>
+
+          <h1 class="text-4xl md:text-6xl font-extrabold leading-tight">
+            Segurança que você <span class="gold-shine">não vê</span>,<br class="hidden sm:block"/>
+            mas <span class="gold-shine">sente</span> todos os dias.
+          </h1>
+
+          <p class="text-lg md:text-xl text-gray-700 leading-relaxed">
+            Projeto IP corporativo para <strong>Escritório Augusto (Av. Paulista)</strong>, desenhado para
+            proteger patrimônio e rotina — sem poluir a estética do teto aberto.
+          </p>
+
+          <div class="grid sm:grid-cols-3 gap-4 pt-2">
+            <div class="rounded-2xl border border-gray-100 p-5 shadow-soft">
+              <div class="text-xs text-gray-500">Entrega</div>
+              <div class="text-lg font-bold">Infra + instalação</div>
+              <div class="text-sm text-gray-600 mt-1">Padrão “white glove” Vision</div>
+            </div>
+            <div class="rounded-2xl border border-gray-100 p-5 shadow-soft">
+              <div class="text-xs text-gray-500">Objetivo</div>
+              <div class="text-lg font-bold">Controle total</div>
+              <div class="text-sm text-gray-600 mt-1">Mobile + gravação confiável</div>
+            </div>
+            <div class="rounded-2xl border border-gray-100 p-5 shadow-soft">
+              <div class="text-xs text-gray-500">Prazo</div>
+              <div class="text-lg font-bold">Agenda rápida</div>
+              <div class="text-sm text-gray-600 mt-1">Alocação por janela</div>
+            </div>
+          </div>
+
+          <div class="flex flex-col sm:flex-row gap-3 pt-4">
+            <a href="#investimento"
+              class="inline-flex items-center justify-center gap-2 rounded-2xl px-6 py-4 bg-brand-gold text-black font-extrabold hover:bg-brand-goldLight transition shadow-gold">
+              <i data-lucide="check-circle" class="w-5 h-5"></i>
+              Ver investimento e aprovar
+            </a>
+            <a href="#diagnostico"
+              class="inline-flex items-center justify-center gap-2 rounded-2xl px-6 py-4 border border-gray-200 font-bold text-gray-800 hover:bg-gray-50 transition">
+              Entender o diagnóstico
+              <i data-lucide="arrow-down" class="w-4 h-4"></i>
+            </a>
+          </div>
+
+          <!-- Validade -->
+          <div class="text-xs text-gray-500 pt-2">
+            Referência: <strong>Proposta Técnica #VB-PAULISTA-0226</strong> • Validade: <strong>15 dias</strong>
+          </div>
+        </div>
+
+        <div class="lg:col-span-5 reveal">
+          <div class="rounded-3xl border border-gray-100 bg-white shadow-soft overflow-hidden">
+            <div class="p-6 border-b border-gray-100">
+              <div class="flex items-center justify-between">
+                <div>
+                  <div class="text-xs text-gray-500">Resumo do projeto</div>
+                  <div class="text-xl font-extrabold">Escopo em 60 segundos</div>
+                </div>
+                <div class="w-10 h-10 rounded-2xl bg-brand-gold/10 border border-brand-gold/20 flex items-center justify-center">
+                  <i data-lucide="clipboard-check" class="w-5 h-5 text-brand-gold"></i>
+                </div>
+              </div>
+            </div>
+
+            <div class="p-6 space-y-4">
+              <div class="flex gap-3">
+                <i data-lucide="camera" class="w-5 h-5 text-brand-gold mt-0.5"></i>
+                <div>
+                  <div class="font-bold">CFTV IP com visão noturna real</div>
+                  <div class="text-sm text-gray-600">Imagem útil para auditoria e investigação.</div>
+                </div>
+              </div>
+              <div class="flex gap-3">
+                <i data-lucide="network" class="w-5 h-5 text-brand-gold mt-0.5"></i>
+                <div>
+                  <div class="font-bold">Rede dedicada (sem “derrubar o Wi‑Fi”)</div>
+                  <div class="text-sm text-gray-600">Vídeo trafega em via exclusiva, com estabilidade.</div>
+                </div>
+              </div>
+              <div class="flex gap-3">
+                <i data-lucide="wrench" class="w-5 h-5 text-brand-gold mt-0.5"></i>
+                <div>
+                  <div class="font-bold">Infra aparente com estética industrial</div>
+                  <div class="text-sm text-gray-600">Tubulação alinhada e acabamento limpo.</div>
+                </div>
+              </div>
+
+              <div class="rounded-2xl p-4 bg-gray-50 border border-gray-100">
+                <div class="text-xs text-gray-500">Próximo passo</div>
+                <div class="font-extrabold">Aprovar e agendar instalação</div>
+                <div class="text-sm text-gray-600 mt-1">A equipe é alocada por janela de agenda.</div>
+              </div>
+
+              <a href="https://wa.me/5511945931528?text=Olá,%20quero%20agendar%20uma%20call%20rápida%20sobre%20o%20projeto%20Paulista%20(ID-VISION-PAULISTA-0226)."
+                class="inline-flex w-full items-center justify-center gap-2 rounded-2xl px-6 py-4 border border-brand-gold/30 text-brand-gold font-extrabold hover:bg-brand-gold/10 transition">
+                <i data-lucide="phone-call" class="w-5 h-5"></i>
+                Agendar 10 min no WhatsApp
+              </a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </header>
+
+  <!-- ===== DIAGNÓSTICO ===== -->
+  <section id="diagnostico" class="py-16 md:py-24 bg-gray-50 border-y border-gray-100">
+    <div class="max-w-7xl mx-auto px-4">
+      <div class="max-w-3xl reveal">
+        <div class="text-xs font-bold tracking-widest uppercase text-brand-gold">Diagnóstico</div>
+        <h2 class="text-3xl md:text-5xl font-extrabold mt-2">O risco não é “não ter câmera”.</h2>
+        <p class="text-lg text-gray-700 mt-4 leading-relaxed">
+          O risco é ter uma instalação que compromete a estética, falha na rede e gera
+          imagens sem valor quando realmente importa.
+        </p>
+      </div>
+
+      <div class="grid lg:grid-cols-12 gap-8 mt-12 items-start">
+        <div class="lg:col-span-7 space-y-4 reveal">
+          <div class="rounded-3xl bg-white border border-gray-100 shadow-soft p-6">
+            <div class="flex items-start gap-3">
+              <div class="w-10 h-10 rounded-2xl bg-red-50 border border-red-100 flex items-center justify-center">
+                <i data-lucide="alert-triangle" class="w-5 h-5 text-red-600"></i>
+              </div>
+              <div>
+                <div class="text-lg font-extrabold">“Teia de aranha” em teto aberto</div>
+                <p class="text-gray-700 mt-1">
+                  Em laje nervurada, fios soltos e abraçadeiras plásticas viram poluição visual imediata
+                  — o ambiente “premium” perde valor na hora.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="rounded-3xl bg-white border border-gray-100 shadow-soft p-6">
+            <div class="flex items-start gap-3">
+              <div class="w-10 h-10 rounded-2xl bg-orange-50 border border-orange-100 flex items-center justify-center">
+                <i data-lucide="wifi-off" class="w-5 h-5 text-orange-600"></i>
+              </div>
+              <div>
+                <div class="text-lg font-extrabold">Vídeo brigando com o tráfego do escritório</div>
+                <p class="text-gray-700 mt-1">
+                  Sem segmentação e PoE bem dimensionado, o CFTV vira o “culpado” por lentidão,
+                  quedas e instabilidade.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="rounded-3xl bg-white border border-gray-100 shadow-soft p-6">
+            <div class="flex items-start gap-3">
+              <div class="w-10 h-10 rounded-2xl bg-brand-gold/10 border border-brand-gold/20 flex items-center justify-center">
+                <i data-lucide="file-check-2" class="w-5 h-5 text-brand-gold"></i>
+              </div>
+              <div>
+                <div class="text-lg font-extrabold">Imagem precisa ser “prova”, não enfeite</div>
+                <p class="text-gray-700 mt-1">
+                  O sistema precisa entregar <strong>rastreamento</strong>, <strong>continuidade</strong> e
+                  <strong>clareza</strong> — inclusive em baixa luz.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="lg:col-span-5 reveal">
+          <!-- IMAGEM: antes/depois -->
+          <div class="rounded-3xl overflow-hidden border border-brand-gold/20 shadow-gold p-6 min-h-[320px] flex flex-col justify-center bg-gray-100">
+            <div class="flex items-center gap-2 text-brand-gold font-extrabold mb-4">
+              <i data-lucide="image" class="w-5 h-5"></i>
+              Referência Estética
+            </div>
+            <!-- Imagem de infra -->
+            <img src="https://res.cloudinary.com/dptcuckhf/image/upload/v1770981420/eletroduto-aparente-2_yj5ua7.jpg" alt="Exemplo de Infraestrutura" class="w-full h-48 object-cover rounded-xl shadow-sm">
+            <p class="text-sm text-gray-700 mt-4 text-center">
+              Padrão de acabamento industrial que será aplicado.
+            </p>
+          </div>
+
+          <div class="mt-6 rounded-3xl bg-white border border-gray-100 shadow-soft p-6">
+            <div class="text-xs text-gray-500">Reciprocidade</div>
+            <div class="text-lg font-extrabold">Diagnóstico técnico incluído</div>
+            <p class="text-sm text-gray-600 mt-1">
+              Esta proposta já embute o tempo de visita, análise e desenho do escopo — para você decidir com segurança.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== SOLUÇÃO (CARDS EXPANDIDOS) ===== -->
+  <section id="solucao" class="py-16 md:py-24 bg-white">
+    <div class="max-w-7xl mx-auto px-4">
+      <div class="max-w-3xl reveal">
+        <div class="text-xs font-bold tracking-widest uppercase text-brand-gold">Solução</div>
+        <h2 class="text-3xl md:text-5xl font-extrabold mt-2">Tecnologia traduzida para benefício real.</h2>
+        <p class="text-lg text-gray-700 mt-4 leading-relaxed">
+          Aqui você não compra “spec”. Você compra previsibilidade, estética e suporte — com engenharia por trás.
+        </p>
+      </div>
+
+      <!-- Cards com Imagens Reais (Grid de 5 itens) -->
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-4 mt-12">
+        <!-- CÂMERA -->
+        <div class="rounded-3xl border border-gray-100 shadow-soft overflow-hidden reveal product-card hover:border-brand-gold/30 transition-colors bg-white">
+          <div class="h-40 flex items-center justify-center p-4 bg-gray-50">
+            <img src="https://res.cloudinary.com/dptcuckhf/image/upload/v1770981167/vip-1230-d-g5-front-1_df8d6l.png" alt="Câmera Dome" class="product-img">
+          </div>
+          <div class="p-5">
+            <div class="text-base font-extrabold">05× Câmeras IP Dome</div>
+            <p class="text-xs text-gray-600 mt-1">Discretas no teto, fortes na evidência.</p>
+            <ul class="text-xs text-gray-700 mt-3 space-y-1.5">
+              <li class="flex gap-2"><i data-lucide="check" class="w-3 h-3 text-brand-gold mt-0.5"></i>Resolução Full HD Real</li>
+              <li class="flex gap-2"><i data-lucide="check" class="w-3 h-3 text-brand-gold mt-0.5"></i>Visão Noturna Inteligente</li>
+              <li class="flex gap-2"><i data-lucide="check" class="w-3 h-3 text-brand-gold mt-0.5"></i>Lente Grande Angular</li>
+              <li class="flex gap-2"><i data-lucide="check" class="w-3 h-3 text-brand-gold mt-0.5"></i>WDR p/ Contra Luz</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- NVR -->
+        <div class="rounded-3xl border border-gray-100 shadow-soft overflow-hidden reveal product-card hover:border-brand-gold/30 transition-colors bg-white">
+          <div class="h-40 flex items-center justify-center p-4 bg-gray-50">
+            <img src="https://res.cloudinary.com/dptcuckhf/image/upload/v1770981166/nvd-1408-esquerda_znmlxz.png" alt="NVR" class="product-img">
+          </div>
+          <div class="p-5">
+            <div class="text-base font-extrabold">01× Gravador NVR</div>
+            <p class="text-xs text-gray-600 mt-1">O “cérebro” que garante continuidade.</p>
+            <ul class="text-xs text-gray-700 mt-3 space-y-1.5">
+              <li class="flex gap-2"><i data-lucide="check" class="w-3 h-3 text-brand-gold mt-0.5"></i>Gestão Centralizada</li>
+              <li class="flex gap-2"><i data-lucide="check" class="w-3 h-3 text-brand-gold mt-0.5"></i>Acesso Remoto P2P</li>
+              <li class="flex gap-2"><i data-lucide="check" class="w-3 h-3 text-brand-gold mt-0.5"></i>Busca Inteligente</li>
+              <li class="flex gap-2"><i data-lucide="check" class="w-3 h-3 text-brand-gold mt-0.5"></i>Compressão H.265+</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- SWITCH -->
+        <div class="rounded-3xl border border-gray-100 shadow-soft overflow-hidden reveal product-card hover:border-brand-gold/30 transition-colors bg-white">
+          <div class="h-40 flex items-center justify-center p-4 bg-gray-50">
+            <img src="https://res.cloudinary.com/dptcuckhf/image/upload/v1770981167/s1010f-p-front_vplwq9.png" alt="Switch PoE" class="product-img">
+          </div>
+          <div class="p-5">
+            <div class="text-base font-extrabold">01× Switch PoE</div>
+            <p class="text-xs text-gray-600 mt-1">Organização e estabilidade em um cabo.</p>
+            <ul class="text-xs text-gray-700 mt-3 space-y-1.5">
+              <li class="flex gap-2"><i data-lucide="check" class="w-3 h-3 text-brand-gold mt-0.5"></i>Tecnologia PoE+ (250m)</li>
+              <li class="flex gap-2"><i data-lucide="check" class="w-3 h-3 text-brand-gold mt-0.5"></i>Proteção Surtos 15kV</li>
+              <li class="flex gap-2"><i data-lucide="check" class="w-3 h-3 text-brand-gold mt-0.5"></i>Priorização de Vídeo</li>
+              <li class="flex gap-2"><i data-lucide="check" class="w-3 h-3 text-brand-gold mt-0.5"></i>Rede Limpa e Segura</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- HD WD -->
+        <div class="rounded-3xl border border-gray-100 shadow-soft overflow-hidden reveal product-card hover:border-brand-gold/30 transition-colors bg-white">
+          <div class="h-40 flex items-center justify-center p-4 bg-gray-50">
+            <img src="https://res.cloudinary.com/dptcuckhf/image/upload/v1770981166/180_hd_1tb_wd_purple_surveillance_3_5_sata_iii_6gb_s_5400rpm_cache_64mb_wd10purz_25944474_2_b704042e5fa3f3028ce34fe08d083d04_h9i2hj.webp" alt="HD WD Purple" class="product-img">
+          </div>
+          <div class="p-5">
+            <div class="text-base font-extrabold">01× HD WD Purple</div>
+            <p class="text-xs text-gray-600 mt-1">A imagem está lá quando você precisa.</p>
+            <ul class="text-xs text-gray-700 mt-3 space-y-1.5">
+              <li class="flex gap-2"><i data-lucide="check" class="w-3 h-3 text-brand-gold mt-0.5"></i>Tecnologia AllFrame</li>
+              <li class="flex gap-2"><i data-lucide="check" class="w-3 h-3 text-brand-gold mt-0.5"></i>Projetado para 24/7</li>
+              <li class="flex gap-2"><i data-lucide="check" class="w-3 h-3 text-brand-gold mt-0.5"></i>Integridade de Dados</li>
+              <li class="flex gap-2"><i data-lucide="check" class="w-3 h-3 text-brand-gold mt-0.5"></i>Baixo Aquecimento</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- NOBREAK (NOVO) -->
+        <div class="rounded-3xl border border-gray-100 shadow-soft overflow-hidden reveal product-card hover:border-brand-gold/30 transition-colors bg-white">
+          <div class="h-40 flex items-center justify-center p-4 bg-gray-50">
+            <img src="https://res.cloudinary.com/dptcuckhf/image/upload/v1770981166/nobreak_attiv_600_bi_capa_1_uyzwmo.png" alt="Nobreak" class="product-img">
+          </div>
+          <div class="p-5">
+            <div class="text-base font-extrabold">01× Nobreak Intelbras</div>
+            <p class="text-xs text-gray-600 mt-1">Segurança elétrica essencial.</p>
+            <ul class="text-xs text-gray-700 mt-3 space-y-1.5">
+              <li class="flex gap-2"><i data-lucide="check" class="w-3 h-3 text-brand-gold mt-0.5"></i>6 Níveis de Proteção</li>
+              <li class="flex gap-2"><i data-lucide="check" class="w-3 h-3 text-brand-gold mt-0.5"></i>Reinício Automático</li>
+              <li class="flex gap-2"><i data-lucide="check" class="w-3 h-3 text-brand-gold mt-0.5"></i>Bateria Longa Vida</li>
+              <li class="flex gap-2"><i data-lucide="check" class="w-3 h-3 text-brand-gold mt-0.5"></i>Filtro de Linha</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- Infra “white glove” -->
+      <div class="mt-12 grid lg:grid-cols-12 gap-8 items-center">
+        <div class="lg:col-span-7 reveal">
+          <div class="rounded-3xl border border-gray-100 shadow-soft p-8">
+            <div class="flex items-center gap-3">
+              <div class="w-11 h-11 rounded-2xl bg-brand-gold/10 border border-brand-gold/20 flex items-center justify-center">
+                <i data-lucide="wrench" class="w-6 h-6 text-brand-gold"></i>
+              </div>
+              <div>
+                <div class="text-xs text-gray-500">Instalação</div>
+                <div class="text-2xl font-extrabold">White Glove Vision</div>
+              </div>
+            </div>
+
+            <p class="text-gray-700 mt-5 leading-relaxed">
+              Infraestrutura aparente não é “deixar fio aparecendo”. É <strong>desenho de rota</strong>,
+              <strong>alinhamento</strong> e <strong>acabamento</strong> para que a instalação pareça parte do projeto arquitetônico.
+            </p>
+
+            <div class="grid sm:grid-cols-3 gap-3 mt-6">
+              <div class="rounded-2xl bg-gray-50 border border-gray-100 p-4">
+                <div class="font-bold">Rota planejada</div>
+                <div class="text-sm text-gray-600 mt-1">Sem improviso em cima da hora.</div>
+              </div>
+              <div class="rounded-2xl bg-gray-50 border border-gray-100 p-4">
+                <div class="font-bold">Fixação correta</div>
+                <div class="text-sm text-gray-600 mt-1">Concreto, altura, carga e segurança.</div>
+              </div>
+              <div class="rounded-2xl bg-gray-50 border border-gray-100 p-4">
+                <div class="font-bold">Entrega limpa</div>
+                <div class="text-sm text-gray-600 mt-1">Ambiente final pronto para uso.</div>
+              </div>
+            </div>
+
+            <div class="mt-6 text-sm text-gray-600">
+              <span class="font-bold text-gray-900">Inclui:</span> configuração mobile, testes, checklist de entrega e treinamento rápido.
+            </div>
+          </div>
+        </div>
+
+        <div class="lg:col-span-5 reveal">
+          <div class="rounded-3xl overflow-hidden shadow-gold h-[320px] relative group">
+            <img src="https://res.cloudinary.com/dptcuckhf/image/upload/v1770981420/eletroduto-aparente-2_yj5ua7.jpg" alt="Infraestrutura Galvanizada" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+            <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-6">
+                <div class="text-white font-bold flex items-center gap-2">
+                    <i data-lucide="check-circle" class="w-4 h-4 text-brand-gold"></i>
+                    Padrão de Acabamento
+                </div>
+                <div class="text-white/70 text-xs mt-1">Infraestrutura aparente galvanizada</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ===== PROCESSO ===== -->
+  <section id="processo" class="py-16 md:py-24 bg-gray-50 border-y border-gray-100">
+    <div class="max-w-7xl mx-auto px-4">
+      <div class="max-w-3xl reveal">
+        <div class="text-xs font-bold tracking-widest uppercase text-brand-gold">Processo</div>
+        <h2 class="text-3xl md:text-5xl font-extrabold mt-2">Da aprovação à entrega, sem surpresa.</h2>
+        <p class="text-lg text-gray-700 mt-4 leading-relaxed">
+          Transparência radical: o cliente sabe o que vai acontecer, quando e como.
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-4 gap-6 mt-12">
+        <div class="rounded-3xl bg-white border border-gray-100 shadow-soft p-6 reveal">
+          <div class="w-10 h-10 rounded-2xl bg-brand-gold/10 border border-brand-gold/20 flex items-center justify-center">
+            <i data-lucide="check" class="w-5 h-5 text-brand-gold"></i>
+          </div>
+          <div class="mt-4 font-extrabold">1) Aprovação</div>
+          <p class="text-sm text-gray-600 mt-1">Confirmação do escopo e janela de agenda.</p>
+        </div>
+        <div class="rounded-3xl bg-white border border-gray-100 shadow-soft p-6 reveal">
+          <div class="w-10 h-10 rounded-2xl bg-brand-gold/10 border border-brand-gold/20 flex items-center justify-center">
+            <i data-lucide="ruler" class="w-5 h-5 text-brand-gold"></i>
+          </div>
+          <div class="mt-4 font-extrabold">2) Execução limpa</div>
+          <p class="text-sm text-gray-600 mt-1">Infra aparente com acabamento e alinhamento.</p>
+        </div>
+        <div class="rounded-3xl bg-white border border-gray-100 shadow-soft p-6 reveal">
+          <div class="w-10 h-10 rounded-2xl bg-brand-gold/10 border border-brand-gold/20 flex items-center justify-center">
+            <i data-lucide="settings" class="w-5 h-5 text-brand-gold"></i>
+          </div>
+          <div class="mt-4 font-extrabold">3) Configuração</div>
+          <p class="text-sm text-gray-600 mt-1">Acesso mobile, perfis e testes de gravação.</p>
+        </div>
+        <div class="rounded-3xl bg-white border border-gray-100 shadow-soft p-6 reveal">
+          <div class="w-10 h-10 rounded-2xl bg-brand-gold/10 border border-brand-gold/20 flex items-center justify-center">
+            <i data-lucide="graduation-cap" class="w-5 h-5 text-brand-gold"></i>
+          </div>
+          <div class="mt-4 font-extrabold">4) Treinamento</div>
+          <p class="text-sm text-gray-600 mt-1">Entrega orientada e checklist final.</p>
+        </div>
+      </div>
+
+      <div class="mt-10 rounded-3xl border border-brand-gold/20 bg-white shadow-gold p-8 reveal">
+        <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-6">
+          <div>
+            <div class="text-xs text-gray-500">Escopo (transparência)</div>
+            <div class="text-2xl font-extrabold">O que está incluso e o que não está.</div>
+            <p class="text-gray-700 mt-2">
+              Se surgir necessidade fora do previsto, comunicamos <strong>antes</strong>. Sem surpresa na fatura final.
+            </p>
+          </div>
+          <a href="#investimento"
+            class="inline-flex items-center justify-center gap-2 rounded-2xl px-6 py-4 bg-brand-gold text-black font-extrabold hover:bg-brand-goldLight transition">
+            Ver investimento
+            <i data-lucide="arrow-right" class="w-5 h-5"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== INVESTIMENTO ===== -->
+  <section id="investimento" class="py-16 md:py-24 bg-brand-ink text-white">
+    <div class="max-w-7xl mx-auto px-4">
+      <div class="max-w-3xl reveal">
+        <div class="text-xs font-bold tracking-widest uppercase text-brand-gold">Investimento</div>
+        <h2 class="text-3xl md:text-5xl font-extrabold mt-2">Valor do projeto (com instalação).</h2>
+        <p class="text-lg text-white/70 mt-4 leading-relaxed">
+          Você não está comprando equipamento. Está comprando <strong>resultado</strong>, <strong>estética</strong> e <strong>continuidade</strong>.
+        </p>
+      </div>
+
+      <!-- Urgência sutil -->
+      <div class="mt-10 rounded-3xl border border-white/10 bg-white/5 p-6 reveal">
+        <div class="flex items-start gap-3">
+          <i data-lucide="clock" class="w-6 h-6 text-brand-gold mt-0.5"></i>
+          <div>
+            <div class="font-extrabold">Agenda por janela</div>
+            <div class="text-sm text-white/70 mt-1">
+              A alocação da equipe depende de agenda. A aprovação garante prioridade na próxima janela disponível.
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="grid lg:grid-cols-2 gap-6 mt-10">
+        <!-- À vista -->
+        <div class="rounded-3xl bg-white text-gray-900 p-8 shadow-soft reveal">
+          <div class="flex items-center justify-between">
+            <div>
+              <div class="text-xs text-gray-500">Opção 1</div>
+              <div class="text-2xl font-extrabold">À vista (PIX/transferência)</div>
+            </div>
+            <div class="px-3 py-1 rounded-full bg-brand-gold/10 border border-brand-gold/20 text-brand-gold text-xs font-extrabold">
+              Condição preferencial
+            </div>
+          </div>
+
+          <div class="mt-6">
+            <div class="text-sm text-gray-500">Investimento</div>
+            <div class="text-5xl font-extrabold text-brand-gold mt-1">R$ 6.400</div>
+            <!-- Texto Editado -->
+            <div class="text-xs text-gray-400 mt-2 font-bold text-brand-gold">50% sinal, restante na entrega.</div>
+          </div>
+
+          <div class="mt-6 flex flex-col gap-3">
+            <a href="https://wa.me/5511945931528?text=Olá,%20aprovo%20o%20projeto%20Paulista%20à%20vista%20(ID-VISION-PAULISTA-0226).%20Podemos%20agendar?"
+               class="rounded-2xl px-6 py-4 bg-brand-gold text-black font-extrabold text-center hover:bg-brand-goldLight transition shadow-gold">
+              Aprovar à vista no WhatsApp
+            </a>
+            <a href="#escopo"
+               class="rounded-2xl px-6 py-4 border border-gray-200 font-bold text-center hover:bg-gray-50 transition">
+              Ver escopo detalhado
+            </a>
+          </div>
+        </div>
+
+        <!-- Parcelado -->
+        <div class="rounded-3xl border border-white/10 bg-white/5 p-8 reveal">
+          <div class="text-xs text-white/60">Opção 2</div>
+          <div class="text-2xl font-extrabold">Cartão de crédito</div>
+          <p class="text-sm text-white/70 mt-2">Fluxo de caixa preservado, com previsibilidade.</p>
+
+          <div class="mt-6">
+            <div class="text-sm text-white/60">Parcelamento</div>
+            <div class="text-4xl font-extrabold mt-1">12× R$ 562,50</div>
+            <div class="text-xs text-white/50 mt-2">Total: R$ 6.750,00 (sem juros).</div>
+          </div>
+
+          <div class="mt-6 rounded-2xl border border-white/10 bg-black/20 p-5">
+            <div class="text-xs text-white/60">Facilitador</div>
+            <div class="font-extrabold mt-1">Mensalidade equivalente a um custo operacional pequeno.</div>
+            <div class="text-sm text-white/70 mt-1">
+              A pergunta não é “se vale”. É: <strong>vale adiar</strong> a segurança do escritório por isso?
+            </div>
+          </div>
+
+          <a href="https://wa.me/5511945931528?text=Olá,%20aprovo%20o%20projeto%20Paulista%20parcelado%20(ID-VISION-PAULISTA-0226).%20Podemos%20agendar?"
+             class="mt-6 block rounded-2xl px-6 py-4 border border-white/15 font-extrabold text-center hover:bg-white/10 transition">
+            Aprovar parcelado no WhatsApp
+          </a>
+        </div>
+      </div>
+
+      <!-- Escopo + garantias -->
+      <div id="escopo" class="grid lg:grid-cols-2 gap-6 mt-10">
+        <div class="rounded-3xl border border-white/10 bg-white/5 p-8 reveal">
+          <div class="flex items-center gap-3">
+            <i data-lucide="list-checks" class="w-6 h-6 text-brand-gold"></i>
+            <div class="text-2xl font-extrabold">Incluído</div>
+          </div>
+          <ul class="mt-5 space-y-2 text-sm text-white/75">
+            <li class="flex gap-2"><i data-lucide="check" class="w-4 h-4 text-brand-gold mt-0.5"></i> Fornecimento e instalação dos itens</li>
+            <li class="flex gap-2"><i data-lucide="check" class="w-4 h-4 text-brand-gold mt-0.5"></i> Infra aparente com acabamento (padrão Vision)</li>
+            <li class="flex gap-2"><i data-lucide="check" class="w-4 h-4 text-brand-gold mt-0.5"></i> Configuração mobile + testes</li>
+            <li class="flex gap-2"><i data-lucide="check" class="w-4 h-4 text-brand-gold mt-0.5"></i> Treinamento e entrega orientada</li>
+          </ul>
+        </div>
+
+        <div class="rounded-3xl border border-white/10 bg-white/5 p-8 reveal">
+          <div class="flex items-center gap-3">
+            <i data-lucide="file-warning" class="w-6 h-6 text-brand-gold"></i>
+            <div class="text-2xl font-extrabold">Não incluído (sob orçamento)</div>
+          </div>
+          <ul class="mt-5 space-y-2 text-sm text-white/75">
+            <li class="flex gap-2"><i data-lucide="minus" class="w-4 h-4 text-brand-gold mt-0.5"></i> Obra civil (quebra, pintura, alvenaria)</li>
+            <li class="flex gap-2"><i data-lucide="minus" class="w-4 h-4 text-brand-gold mt-0.5"></i> Ponto elétrico 110/220V no local do rack (se inexistente)</li>
+          </ul>
+          <p class="text-sm text-white/60 mt-5">
+            Transparência total: qualquer necessidade fora do previsto será aprovada antes de executar.
+          </p>
+        </div>
+      </div>
+
+      <div class="mt-10 rounded-3xl bg-white text-gray-900 p-8 shadow-soft reveal">
+        <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-6">
+          <div>
+            <div class="text-xs text-gray-500">Garantias Vision Business</div>
+            <div class="text-2xl font-extrabold">Você não fica sozinho depois da instalação.</div>
+            <div class="mt-4 grid sm:grid-cols-3 gap-3">
+              <div class="rounded-2xl border border-gray-100 p-4">
+                <div class="font-extrabold flex items-center gap-2"><i data-lucide="shield-check" class="w-4 h-4 text-brand-gold"></i> 12 meses</div>
+                <div class="text-sm text-gray-600 mt-1">Mão de obra + equipamentos</div>
+              </div>
+              <div class="rounded-2xl border border-gray-100 p-4">
+                <div class="font-extrabold flex items-center gap-2"><i data-lucide="message-circle" class="w-4 h-4 text-brand-gold"></i> Suporte</div>
+                <div class="text-sm text-gray-600 mt-1">WhatsApp prioritário</div>
+              </div>
+              <div class="rounded-2xl border border-gray-100 p-4">
+                <div class="font-extrabold flex items-center gap-2"><i data-lucide="badge-check" class="w-4 h-4 text-brand-gold"></i> Entrega</div>
+                <div class="text-sm text-gray-600 mt-1">Checklist e testes</div>
+              </div>
+            </div>
+          </div>
+
+          <a href="https://wa.me/5511945931528?text=Olá,%20pode%20me%20enviar%20o%20contrato%20digital%20do%20projeto%20Paulista%20(ID-VISION-PAULISTA-0226)?"
+             class="inline-flex items-center justify-center gap-2 rounded-2xl px-6 py-4 bg-brand-gold text-black font-extrabold hover:bg-brand-goldLight transition shadow-gold">
+            <i data-lucide="file-signature" class="w-5 h-5"></i>
+            Solicitar contrato digital
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== FAQ ===== -->
+  <section id="faq" class="py-16 md:py-24 bg-white">
+    <div class="max-w-7xl mx-auto px-4">
+      <div class="max-w-3xl reveal">
+        <div class="text-xs font-bold tracking-widest uppercase text-brand-gold">FAQ</div>
+        <h2 class="text-3xl md:text-5xl font-extrabold mt-2">Perguntas frequentes</h2>
+        <p class="text-lg text-gray-700 mt-4">O objetivo é você decidir com clareza.</p>
+      </div>
+
+      <div class="mt-10 grid lg:grid-cols-2 gap-6">
+        <details class="rounded-3xl border border-gray-100 shadow-soft p-6 reveal">
+          <summary class="font-extrabold cursor-pointer">Quanto tempo leva a instalação?</summary>
+          <!-- Prazo Atualizado -->
+          <p class="text-gray-700 mt-3">
+            Para este escopo, estimamos <strong>3 a 5 dias úteis</strong> para execução completa (infra + equipamentos), com impacto mínimo na operação.
+          </p>
+        </details>
+
+        <details class="rounded-3xl border border-gray-100 shadow-soft p-6 reveal">
+          <summary class="font-extrabold cursor-pointer">Posso expandir depois?</summary>
+          <p class="text-gray-700 mt-3">
+            Sim. O sistema é desenhado para crescer, mantendo padrão de rede e organização da infraestrutura.
+          </p>
+        </details>
+
+        <details class="rounded-3xl border border-gray-100 shadow-soft p-6 reveal">
+          <summary class="font-extrabold cursor-pointer">E se algum equipamento falhar?</summary>
+          <p class="text-gray-700 mt-3">
+            Você tem cobertura de garantia e suporte. Se quiser, podemos incluir um plano de sustentação (Vision Care).
+          </p>
+        </details>
+
+        <details class="rounded-3xl border border-gray-100 shadow-soft p-6 reveal">
+          <summary class="font-extrabold cursor-pointer">Isso vai “estragar” a estética do teto aberto?</summary>
+          <p class="text-gray-700 mt-3">
+            Não. A proposta foi desenhada justamente para que a infraestrutura aparente seja parte do visual industrial,
+            com alinhamento e acabamento.
+          </p>
+        </details>
+      </div>
+
+      <div class="mt-10 rounded-3xl border border-brand-gold/20 bg-brand-gold/10 p-8 reveal">
+        <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-6">
+          <div>
+            <div class="text-2xl font-extrabold">Pronto para iniciar?</div>
+            <p class="text-gray-700 mt-2">Para agilizar o processo, a aprovação é feita diretamente via WhatsApp. Assim que recebermos o "ok", já reservamos sua janela de instalação.</p>
+          </div>
+          <a href="https://wa.me/5511945931528?text=Olá,%20aprovo%20o%20projeto%20Paulista%20(ID-VISION-PAULISTA-0226).%20Quais%20os%20próximos%20passos%20para%20agendar?"
+             class="inline-flex items-center justify-center gap-2 rounded-2xl px-6 py-4 bg-brand-gold text-black font-extrabold hover:bg-brand-goldLight transition shadow-gold">
+            Aprovar agora
+            <i data-lucide="arrow-right" class="w-5 h-5"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="bg-gray-50 border-t border-gray-100">
+    <div class="max-w-7xl mx-auto px-4 py-10 text-center">
+      <div class="font-logo text-4xl lowercase gold-shine tracking-[-0.08em]">vısıon</div>
+      <div class="text-[11px] tracking-[0.45em] uppercase text-gray-500 -mt-1.5 ml-0.5">business</div>
+      <div class="mt-3 text-xs text-gray-500">
+        ID: ID-VISION-PAULISTA-0226 • Proposta executiva • Vision Business
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    lucide.createIcons();
+
+    // ===== LOCK =====
+    const lock = document.getElementById('lock');
+    const pass = document.getElementById('pass');
+    const lockErr = document.getElementById('lockErr');
+    const btnUnlock = document.getElementById('btnUnlock');
+
+    const accessCodes = ["vision1302"];
+
+    function unlock() {
+      const v = (pass.value || "").toLowerCase().trim();
+      if (accessCodes.includes(v)) {
+        lock.style.opacity = "0";
+        setTimeout(() => lock.remove(), 350);
+        document.body.classList.remove('overflow-hidden');
+      } else {
+        lockErr.classList.remove('hidden');
+        setTimeout(() => lockErr.classList.add('hidden'), 2500);
+      }
+    }
+
+    btnUnlock.addEventListener('click', unlock);
+    pass.addEventListener('keydown', (e) => { if (e.key === 'Enter') unlock(); });
+
+    // ===== REVEAL =====
+    const els = () => document.querySelectorAll('.reveal');
+    const reveal = () => {
+      els().forEach(el => {
+        const rect = el.getBoundingClientRect();
+        if (rect.top < window.innerHeight - 90) el.classList.add('active');
+      });
+    };
+    window.addEventListener('scroll', reveal);
+    window.addEventListener('load', reveal);
+  </script>
+</body>
+</html>

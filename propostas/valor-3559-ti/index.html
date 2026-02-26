@@ -1,0 +1,1164 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth overflow-hidden h-screen" id="html-root">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Proposta de TI Gerenciada | Valor Investimentos – Vision Tecnologia</title>
+    <meta name="description" content="Proposta técnica e comercial de suporte e gestão de TI para a Valor Investimentos – Vision Tecnologia">
+    <meta name="theme-color" content="#b9880e">
+
+    <!-- Fonts & Icons -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@700;800&family=Quicksand:wght@500;600;700&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <!-- Google Analytics 4 -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-KTGEL92B0F"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-KTGEL92B0F');
+    </script>
+
+    <!-- Microsoft Clarity -->
+    <script type="text/javascript">
+        (function(c,l,a,r,i,t,y){
+            c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+            t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+            y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+        })(window, document, "clarity", "script", "vifq10es5o");
+    </script>
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"Outfit"', 'sans-serif'],
+                        logo: ['"League Spartan"', 'sans-serif'],
+                        tech: ['"Quicksand"', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            yellow: '#b9880e',
+                            goldLight: '#FFDE59',
+                            goldDark: '#8a6208',
+                            black: '#09090b',
+                        }
+                    },
+                    boxShadow: {
+                        'glass': '0 4px 24px 0 rgba(0,0,0,0.04)',
+                        'premium': '0 16px 50px -10px rgba(0,0,0,0.08)',
+                        'premium-card': '0 16px 50px -10px rgba(0, 0, 0, 0.08)',
+                        'glow': '0 0 20px rgba(185,136,14,0.15)',
+                        'glow-md': '0 0 35px rgba(185,136,14,0.25)',
+                    },
+                    animation: {
+                        'slide-up': 'slideUp 0.9s cubic-bezier(0.16,1,0.3,1) forwards',
+                        'float': 'float 6s ease-in-out infinite',
+                        'fade-in': 'fadeIn 0.6s ease forwards',
+                        'shine-pulse': 'shinePulse 3s ease-in-out infinite',
+                    },
+                    keyframes: {
+                        slideUp: {
+                            '0%': { opacity: '0', transform: 'translateY(40px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' }
+                        },
+                        float: {
+                            '0%,100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-12px)' }
+                        },
+                        fadeIn: {
+                            '0%': { opacity: '0' },
+                            '100%': { opacity: '1' }
+                        },
+                        shinePulse: {
+                            '0%,100%': { opacity: '0.6' },
+                            '50%': { opacity: '1' }
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: #f9fafb; }
+        ::-webkit-scrollbar-thumb { background: #d1d5db; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #b9880e; }
+
+        .text-gold-shine {
+            background: linear-gradient(to right, #b9880e 20%, #FFDE59 50%, #b9880e 80%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-size: 200% auto;
+            animation: shine 4s linear infinite;
+        }
+        @keyframes shine { to { background-position: 200% center; } }
+
+        .bg-grid {
+            background-image: linear-gradient(rgba(185,136,14,0.04) 1px, transparent 1px),
+                              linear-gradient(90deg, rgba(185,136,14,0.04) 1px, transparent 1px);
+            background-size: 40px 40px;
+        }
+        .bg-dots {
+            background-image: radial-gradient(#b9880e 1.2px, transparent 1.2px);
+            background-size: 22px 22px;
+            opacity: 0.035;
+        }
+
+        .lock-input {
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.1);
+            color: #b9880e;
+            font-family: 'League Spartan', sans-serif;
+            font-size: 1.5rem;
+            text-align: center;
+            outline: none;
+            transition: all 0.3s;
+            letter-spacing: 0.2em;
+            border-radius: 14px;
+        }
+        .lock-input:focus {
+            border-color: #b9880e;
+            background: rgba(255,255,255,0.08);
+            box-shadow: 0 0 20px rgba(185,136,14,0.25);
+        }
+        .lock-input::placeholder {
+            color: #52525b;
+            font-size: 0.85rem;
+            font-family: 'Outfit', sans-serif;
+            font-weight: 300;
+            letter-spacing: normal;
+        }
+
+        .reveal { opacity: 0; transform: translateY(30px); transition: all 0.8s cubic-bezier(0.16,1,0.3,1); }
+        .reveal.active { opacity: 1; transform: translateY(0); }
+
+        .tab-btn.active {
+            background: #b9880e;
+            color: #fff;
+            box-shadow: 0 4px 14px rgba(185,136,14,0.35);
+        }
+        .tab-btn { transition: all 0.25s; }
+
+        .tab-panel { display: none; }
+        .tab-panel.active { display: block; animation: fadeIn 0.4s ease; }
+
+        .service-card:hover { transform: translateY(-4px); box-shadow: 0 20px 40px -8px rgba(0,0,0,0.1); }
+        .service-card { transition: all 0.3s cubic-bezier(0.4,0,0.2,1); }
+
+        .price-badge {
+            background: linear-gradient(135deg, #b9880e, #FFDE59);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .tier-card { transition: all 0.3s cubic-bezier(0.4,0,0.2,1); }
+        .tier-card:hover { transform: scale(1.01); }
+        .tier-card.featured { border: 2px solid #b9880e; }
+
+        .accordion-content { max-height: 0; overflow: hidden; transition: max-height 0.45s cubic-bezier(0.4,0,0.2,1); }
+        .accordion-item.open .accordion-content { max-height: 600px; }
+        .accordion-item.open .acc-arrow { transform: rotate(180deg); }
+        .acc-arrow { transition: transform 0.3s; }
+
+        @media print {
+            #lock-screen, #navbar, #cta-float { display: none !important; }
+            .reveal { opacity: 1 !important; transform: none !important; }
+        }
+
+        .shine-border {
+            position: relative;
+        }
+        .shine-border::before {
+            content: '';
+            position: absolute;
+            inset: -1px;
+            border-radius: inherit;
+            background: linear-gradient(135deg, #b9880e, #FFDE59, #b9880e);
+            background-size: 200%;
+            animation: shine 3s linear infinite;
+            z-index: -1;
+        }
+
+        .counter-num { font-variant-numeric: tabular-nums; }
+    </style>
+</head>
+<body class="bg-[#fafafa] text-gray-800 antialiased selection:bg-brand-yellow selection:text-white overflow-hidden h-screen">
+
+<!-- ===================== LOCK SCREEN ===================== -->
+<div id="lock-screen" class="fixed inset-0 z-[100] bg-[#09090b] flex flex-col items-center justify-center text-center p-4 transition-opacity duration-700 ease-out touch-none" style="overscroll-behavior: none;">
+    <div class="bg-grid absolute inset-0 opacity-10 pointer-events-none"></div>
+    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-brand-yellow/5 rounded-full blur-[100px] pointer-events-none"></div>
+
+    <!-- Logo -->
+    <div class="relative flex flex-col items-center mb-10 z-10">
+        <div class="relative flex items-baseline leading-none">
+            <span class="font-logo font-bold text-[5.5rem] md:text-[6rem] text-gold-shine lowercase tracking-[-0.05em] leading-none">vısıon</span>
+            <span class="absolute -right-5 top-4 text-[1.1rem] text-brand-yellow font-bold">®</span>
+        </div>
+        <span class="font-tech text-[1.1rem] font-bold text-zinc-500 lowercase -mt-4 ml-2.5 text-center w-full" style="letter-spacing:0.53em;">tecnologia</span>
+    </div>
+
+    <div class="w-full max-w-sm space-y-5 z-10">
+        <div class="space-y-1.5">
+            <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-brand-yellow/30 bg-brand-yellow/10 mb-3">
+                <i data-lucide="lock" class="w-3.5 h-3.5 text-brand-yellow"></i>
+                <span class="text-brand-yellow text-[10px] font-bold uppercase tracking-widest">Proposta Confidencial</span>
+            </div>
+            <h2 class="text-white font-bold text-2xl">Valor Investimentos</h2>
+            <p class="text-zinc-400 text-sm">A/C Raphael Fedak — Proposta Técnica de TI Gerenciada</p>
+        </div>
+
+        <div>
+            <!-- SENHA CONFIGURADA: valor2026 -->
+            <input type="password" id="password-input" class="lock-input w-full py-4 px-4" placeholder="SENHA DE ACESSO" autocomplete="off" onkeydown="if(event.key==='Enter') checkPassword()">
+            <p id="error-msg" class="text-red-400 text-xs mt-2 hidden">
+                <span class="flex items-center justify-center gap-1"><i data-lucide="x-circle" class="w-4 h-4"></i> Credencial inválida.</span>
+            </p>
+        </div>
+
+        <button onclick="checkPassword()" class="w-full bg-brand-yellow hover:bg-brand-goldLight text-black font-bold py-4 rounded-2xl transition-all shadow-glow flex items-center justify-center gap-2 group relative overflow-hidden">
+            <div class="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-300 rounded-2xl"></div>
+            <i data-lucide="shield-check" class="w-5 h-5 relative z-10"></i>
+            <span class="relative z-10 text-sm uppercase tracking-widest">Acessar Proposta</span>
+            <i data-lucide="arrow-right" class="w-4 h-4 relative z-10 group-hover:translate-x-1 transition-transform"></i>
+        </button>
+
+        <p class="text-zinc-600 text-xs">Documento restrito · Válido por 15 dias · Vision Tecnologia © 2026</p>
+    </div>
+</div>
+
+<!-- ===================== NAVBAR ===================== -->
+<nav id="navbar" class="fixed w-full z-50 top-0 bg-white/90 backdrop-blur-xl border-b border-gray-200/50 shadow-sm transition-all duration-300">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-between h-20 items-center">
+            <div class="flex flex-col items-center justify-center cursor-pointer">
+                <div class="relative flex items-baseline leading-none">
+                    <span class="font-logo font-bold text-[2.6rem] text-gold-shine lowercase tracking-[-0.05em] leading-none">vısıon</span>
+                    <span class="absolute -right-2.5 top-1.5 text-[0.6rem] text-brand-yellow font-bold">®</span>
+                </div>
+                <span class="font-tech text-[0.6rem] font-bold text-gray-400 lowercase -mt-2 ml-1.5" style="letter-spacing:0.53em;">tecnologia</span>
+            </div>
+            <div class="hidden md:flex items-center space-x-7 text-xs font-semibold text-gray-500 uppercase tracking-wider">
+                <a href="#diagnostico" class="hover:text-brand-yellow transition-colors">Diagnóstico</a>
+                <a href="#servicos" class="hover:text-brand-yellow transition-colors">Serviços</a>
+                <a href="#mercado" class="hover:text-brand-yellow transition-colors">Mercado</a>
+                <a href="#investimento" class="hover:text-brand-yellow transition-colors">Proposta</a>
+            </div>
+            <a href="#investimento" class="bg-zinc-900 text-white px-5 py-2.5 rounded-full text-[10px] font-bold uppercase tracking-widest hover:bg-brand-yellow hover:text-black transition-all shadow-md">
+                Ver Proposta
+            </a>
+        </div>
+    </div>
+</nav>
+
+<!-- ===================== HERO COM VÍDEO ===================== -->
+<header class="pt-32 pb-20 lg:pt-40 relative overflow-hidden bg-white">
+    <div class="absolute inset-0 bg-tech-pattern pointer-events-none"></div>
+    <div class="absolute right-0 top-0 -translate-y-1/4 translate-x-1/4 w-[800px] h-[800px] bg-brand-yellow/5 rounded-full blur-[120px] pointer-events-none"></div>
+    
+    <div class="max-w-7xl mx-auto px-4 relative z-10">
+        <div class="flex flex-col lg:flex-row items-center gap-12 lg:gap-16">
+            
+            <!-- Coluna Texto -->
+            <div class="w-full lg:w-1/2 text-center lg:text-left animate-slide-up">
+                <div class="inline-flex items-center gap-2 px-5 py-2 rounded-full border border-brand-yellow/30 bg-brand-yellow/5 text-brand-yellow text-[10px] font-bold uppercase tracking-widest mb-8 mx-auto lg:mx-0">
+                    <i data-lucide="cpu" class="w-4 h-4"></i>
+                    PROPOSTA TÉCNICA #VT-2026-VALOR | VALIDADE: 15 DIAS
+                </div>
+                
+                <h1 class="text-4xl md:text-5xl lg:text-6xl font-extrabold text-gray-900 leading-[1.05] tracking-tight mb-6">
+                    Sua TI no <span class="text-gold-shine">piloto automático.</span><br>
+                    <span class="text-gray-400 font-light text-3xl md:text-4xl lg:text-5xl mt-2 block">Sem surpresas. Sem paradas.</span>
+                </h1>
+                
+                <h2 class="text-base md:text-lg text-gray-500 max-w-xl mx-auto lg:mx-0 font-medium mt-6 leading-relaxed">
+                    Gestão proativa de TI para a <strong class="text-gray-800">Valor Investimentos</strong> — monitoramos, protegemos e mantemos seu parque de <strong class="text-gray-800">34 estações de trabalho</strong> e infraestrutura AWS funcionando no máximo desempenho, 24/7.
+                </h2>
+            </div>
+
+            <!-- Coluna Vídeo -->
+            <div class="w-full lg:w-1/2 mt-4 lg:mt-0 reveal animate-slide-up" style="animation-delay: 200ms;">
+                <div class="relative w-full rounded-[2rem] shadow-[0_20px_50px_-10px_rgba(0,0,0,0.3)] border-[3px] border-brand-yellow/80 group hover:shadow-[0_25px_60px_-10px_rgba(0,0,0,0.4)] transition-shadow duration-500 bg-black">
+                    <div class="relative w-full aspect-video rounded-[1.8rem] overflow-hidden bg-black shadow-inner">
+                        <video id="vision-video" class="w-full h-full object-cover cursor-pointer opacity-90" autoplay muted loop playsinline>
+                            <source src="https://res.cloudinary.com/dptcuckhf/video/upload/v1771711323/Vict%C3%B3ria_-_Vision_gdqnrk.mp4" type="video/mp4">
+                            Seu navegador não suporta o formato de vídeo.
+                        </video>
+
+                        <div id="unmute-overlay" class="absolute inset-0 bg-black/50 backdrop-blur-sm flex flex-col items-center justify-center cursor-pointer transition-opacity duration-500 z-10 hover:bg-black/40">
+                            <div class="bg-brand-yellow text-black font-bold px-6 py-3 md:px-8 md:py-4 rounded-full flex items-center gap-2 md:gap-3 shadow-glow animate-pulse transform group-hover:scale-105 transition-all">
+                                <i data-lucide="volume-2" class="w-5 h-5 md:w-6 md:h-6"></i>
+                                <span class="text-xs md:text-sm tracking-wide uppercase">Clique para Ouvir</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Floating Quick Stats -->
+        <div class="mt-16 lg:mt-24 grid grid-cols-2 md:grid-cols-4 gap-5 max-w-4xl mx-auto reveal">
+            <div class="bg-white rounded-2xl p-6 shadow-glass border border-gray-100 text-center hover:border-brand-yellow/40 transition-all animate-float" style="animation-delay:0s;">
+                <div class="w-10 h-10 bg-brand-yellow/10 rounded-xl flex items-center justify-center mx-auto mb-3">
+                    <i data-lucide="monitor" class="w-5 h-5 text-brand-yellow"></i>
+                </div>
+                <div class="text-3xl font-extrabold text-gray-900 counter-num" data-target="34">0</div>
+                <div class="text-xs text-gray-500 font-medium mt-1 uppercase tracking-wider">Estações</div>
+            </div>
+            <div class="bg-white rounded-2xl p-6 shadow-glass border border-gray-100 text-center hover:border-brand-yellow/40 transition-all animate-float" style="animation-delay:0.8s;">
+                <div class="w-10 h-10 bg-brand-yellow/10 rounded-xl flex items-center justify-center mx-auto mb-3">
+                    <i data-lucide="cloud" class="w-5 h-5 text-brand-yellow"></i>
+                </div>
+                <div class="text-3xl font-extrabold text-gray-900">AWS</div>
+                <div class="text-xs text-gray-500 font-medium mt-1 uppercase tracking-wider">Cloud Monitorada</div>
+            </div>
+            <div class="bg-white rounded-2xl p-6 shadow-glass border border-gray-100 text-center hover:border-brand-yellow/40 transition-all animate-float" style="animation-delay:0.4s;">
+                <div class="w-10 h-10 bg-brand-yellow/10 rounded-xl flex items-center justify-center mx-auto mb-3">
+                    <i data-lucide="clock" class="w-5 h-5 text-brand-yellow"></i>
+                </div>
+                <div class="text-3xl font-extrabold text-gray-900">4h</div>
+                <div class="text-xs text-gray-500 font-medium mt-1 uppercase tracking-wider">SLA Emergencial</div>
+            </div>
+            <div class="bg-white rounded-2xl p-6 shadow-glass border border-gray-100 text-center hover:border-brand-yellow/40 transition-all animate-float" style="animation-delay:1.2s;">
+                <div class="w-10 h-10 bg-brand-yellow/10 rounded-xl flex items-center justify-center mx-auto mb-3">
+                    <i data-lucide="shield-check" class="w-5 h-5 text-brand-yellow"></i>
+                </div>
+                <div class="text-3xl font-extrabold text-gray-900">∞</div>
+                <div class="text-xs text-gray-500 font-medium mt-1 uppercase tracking-wider">Chamados Remotos</div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- ===================== DIAGNÓSTICO DO PARQUE ===================== -->
+<section id="diagnostico" class="py-28 bg-[#f8f9fa] border-y border-gray-200/60 relative">
+    <div class="max-w-7xl mx-auto px-4">
+        <div class="text-center mb-16 reveal">
+            <span class="text-brand-yellow font-bold uppercase tracking-widest text-xs">Raio-X do Parque Tecnológico</span>
+            <h2 class="text-3xl md:text-5xl font-bold text-gray-900 mt-3 leading-tight">O que encontramos ao <br class="hidden md:block">analisar seus equipamentos</h2>
+            <p class="text-gray-500 mt-5 max-w-2xl mx-auto text-lg leading-relaxed">Antes de apresentar qualquer proposta, nossa equipe analisou o inventário completo da Valor Investimentos. Aqui está o que identificamos:</p>
+        </div>
+
+        <!-- Inventário Visual -->
+        <div class="grid md:grid-cols-2 gap-8 mb-16 reveal">
+            <!-- Notebooks -->
+            <div class="bg-white rounded-[2rem] p-8 shadow-premium border border-gray-100 relative overflow-hidden group hover:-translate-y-1 transition-transform duration-300">
+                <div class="absolute top-0 right-0 w-40 h-40 bg-brand-yellow/5 rounded-full blur-3xl group-hover:bg-brand-yellow/8 transition-colors"></div>
+                <div class="flex items-start justify-between mb-6 relative z-10">
+                    <div class="w-14 h-14 bg-brand-yellow/10 rounded-2xl flex items-center justify-center">
+                        <i data-lucide="laptop" class="w-7 h-7 text-brand-yellow"></i>
+                    </div>
+                    <span class="text-5xl font-extrabold text-gray-100">24</span>
+                </div>
+                <h3 class="text-xl font-bold text-gray-900 mb-2 relative z-10">Notebooks</h3>
+                <p class="text-gray-500 text-sm mb-5 relative z-10">70% do parque · Maioria HP e Dell · Windows 10/11</p>
+                <div class="space-y-3 relative z-10">
+                    <div class="flex items-center justify-between text-sm">
+                        <span class="text-gray-600 flex items-center gap-2"><i data-lucide="check" class="w-3.5 h-3.5 text-brand-yellow"></i> HP 246 G7 / 250 G8</span>
+                        <span class="bg-brand-yellow/10 text-brand-goldDark text-xs font-bold px-3 py-1 rounded-full">14 un.</span>
+                    </div>
+                    <div class="flex items-center justify-between text-sm">
+                        <span class="text-gray-600 flex items-center gap-2"><i data-lucide="check" class="w-3.5 h-3.5 text-brand-yellow"></i> Dell Vostro / Latitude</span>
+                        <span class="bg-brand-yellow/10 text-brand-goldDark text-xs font-bold px-3 py-1 rounded-full">7 un.</span>
+                    </div>
+                    <div class="flex items-center justify-between text-sm">
+                        <span class="text-gray-600 flex items-center gap-2"><i data-lucide="check" class="w-3.5 h-3.5 text-brand-yellow"></i> Dell Inspiron (legados)</span>
+                        <span class="bg-orange-50 text-orange-600 text-xs font-bold px-3 py-1 rounded-full">3 un. ⚠</span>
+                    </div>
+                </div>
+                <div class="mt-5 p-3 bg-orange-50 rounded-xl border border-orange-100 flex items-start gap-2 relative z-10">
+                    <i data-lucide="alert-triangle" class="w-4 h-4 text-orange-500 shrink-0 mt-0.5"></i>
+                    <p class="text-xs text-orange-700"><strong>Atenção:</strong> 3 Inspiron com Core i3-7020U são gargalos de produtividade. Recomendamos plano de substituição.</p>
+                </div>
+            </div>
+
+            <!-- Desktops -->
+            <div class="bg-white rounded-[2rem] p-8 shadow-premium border border-gray-100 relative overflow-hidden group hover:-translate-y-1 transition-transform duration-300">
+                <div class="absolute top-0 right-0 w-40 h-40 bg-blue-50 rounded-full blur-3xl"></div>
+                <div class="flex items-start justify-between mb-6 relative z-10">
+                    <div class="w-14 h-14 bg-blue-50 rounded-2xl flex items-center justify-center">
+                        <i data-lucide="monitor" class="w-7 h-7 text-blue-500"></i>
+                    </div>
+                    <span class="text-5xl font-extrabold text-gray-100">10</span>
+                </div>
+                <h3 class="text-xl font-bold text-gray-900 mb-2 relative z-10">Desktops</h3>
+                <p class="text-gray-500 text-sm mb-5 relative z-10">30% do parque · Dell e HP · Estações fixas</p>
+                <div class="space-y-3 relative z-10">
+                    <div class="flex items-center justify-between text-sm">
+                        <span class="text-gray-600 flex items-center gap-2"><i data-lucide="check" class="w-3.5 h-3.5 text-blue-400"></i> Dell OptiPlex 3060/3080</span>
+                        <span class="bg-blue-50 text-blue-600 text-xs font-bold px-3 py-1 rounded-full">7 un.</span>
+                    </div>
+                    <div class="flex items-center justify-between text-sm">
+                        <span class="text-gray-600 flex items-center gap-2"><i data-lucide="check" class="w-3.5 h-3.5 text-blue-400"></i> HP ProDesk 400 G6</span>
+                        <span class="bg-blue-50 text-blue-600 text-xs font-bold px-3 py-1 rounded-full">3 un.</span>
+                    </div>
+                </div>
+                <div class="mt-5 p-3 bg-green-50 rounded-xl border border-green-100 flex items-start gap-2 relative z-10">
+                    <i data-lucide="check-circle-2" class="w-4 h-4 text-green-600 shrink-0 mt-0.5"></i>
+                    <p class="text-xs text-green-700"><strong>Boas notícias:</strong> Desktops em bom estado. OptiPlex é linha corporativa robusta com excelente longevidade.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Infra Cloud + Security Overview -->
+        <div class="grid md:grid-cols-3 gap-6 reveal">
+            <div class="bg-white rounded-2xl p-6 shadow-glass border border-gray-100 hover:border-brand-yellow/30 transition-all">
+                <div class="w-10 h-10 bg-orange-50 rounded-xl flex items-center justify-center mb-4">
+                    <i data-lucide="cloud-lightning" class="w-5 h-5 text-orange-500"></i>
+                </div>
+                <h4 class="font-bold text-gray-900 mb-2">Infraestrutura AWS</h4>
+                <p class="text-sm text-gray-500 leading-relaxed">Servidores 100% em nuvem Amazon Web Services. Monitoraremos diariamente a integridade dos backups e a saúde dos serviços cloud.</p>
+            </div>
+            <div class="bg-white rounded-2xl p-6 shadow-glass border border-gray-100 hover:border-brand-yellow/30 transition-all">
+                <div class="w-10 h-10 bg-red-50 rounded-xl flex items-center justify-center mb-4">
+                    <i data-lucide="shield-alert" class="w-5 h-5 text-red-500"></i>
+                </div>
+                <h4 class="font-bold text-gray-900 mb-2">Segurança Heterogênea</h4>
+                <p class="text-sm text-gray-500 leading-relaxed">Identificamos uso misto de Kaspersky, McAfee e Defender. Sem padronização e EDR ativo, máquinas ficam expostas a brechas de segurança.</p>
+            </div>
+            <div class="bg-white rounded-2xl p-6 shadow-glass border border-gray-100 hover:border-brand-yellow/30 transition-all">
+                <div class="w-10 h-10 bg-purple-50 rounded-xl flex items-center justify-center mb-4">
+                    <i data-lucide="git-branch" class="w-5 h-5 text-purple-500"></i>
+                </div>
+                <h4 class="font-bold text-gray-900 mb-2">Atualizações Inconsistentes</h4>
+                <p class="text-sm text-gray-500 leading-relaxed">Mix de Windows 10 e 11 em diferentes builds. Patches críticos de segurança podem não estar aplicados em todas as estações.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ===================== SERVIÇOS (TABS DE SUCESSO) ===================== -->
+<section id="servicos" class="py-28 bg-white relative overflow-hidden">
+    <div class="absolute inset-0 bg-dots pointer-events-none"></div>
+    <div class="max-w-7xl mx-auto px-4 relative z-10">
+        <div class="text-center mb-16 reveal">
+            <span class="text-brand-yellow font-bold uppercase tracking-widest text-xs">O que está incluso no pacote</span>
+            <h2 class="text-3xl md:text-5xl font-bold text-gray-900 mt-3">Gestão completa, de ponta a ponta</h2>
+            <p class="text-gray-500 mt-4 max-w-2xl mx-auto text-lg">Cada serviço foi desenhado para eliminar um risco específico que identificamos no seu ambiente. Nada de pacote genérico.</p>
+        </div>
+
+        <!-- Tabs de Categoria -->
+        <div class="flex flex-wrap justify-center gap-3 mb-12 reveal">
+            <button class="tab-btn active px-5 py-2.5 rounded-full text-sm font-semibold border border-gray-200 bg-white text-gray-600" onclick="switchTab('rotina', this)">
+                🔧 Rotina & Manutenção
+            </button>
+            <button class="tab-btn px-5 py-2.5 rounded-full text-sm font-semibold border border-gray-200 bg-white text-gray-600" onclick="switchTab('seguranca', this)">
+                🛡️ Segurança
+            </button>
+            <button class="tab-btn px-5 py-2.5 rounded-full text-sm font-semibold border border-gray-200 bg-white text-gray-600" onclick="switchTab('infraestrutura', this)">
+                🌐 Infraestrutura & Cloud
+            </button>
+            <button class="tab-btn px-5 py-2.5 rounded-full text-sm font-semibold border border-gray-200 bg-white text-gray-600" onclick="switchTab('estrategia', this)">
+                📊 Consultoria vCIO
+            </button>
+        </div>
+
+        <!-- Tab: Rotina -->
+        <div id="tab-rotina" class="tab-panel active">
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div class="service-card bg-white rounded-2xl p-7 border border-gray-100 shadow-glass">
+                    <div class="w-12 h-12 bg-amber-50 rounded-2xl flex items-center justify-center mb-5">
+                        <i data-lucide="cpu" class="w-6 h-6 text-amber-600"></i>
+                    </div>
+                    <h3 class="font-bold text-gray-900 text-lg mb-3">Análise de Hardware</h3>
+                    <p class="text-gray-500 text-sm leading-relaxed mb-4">Verificação completa de saúde dos componentes físicos: temperatura do processador, saúde do HD/SSD, uso de memória RAM e estado das baterias dos notebooks.</p>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="text-[10px] font-bold bg-amber-50 text-amber-700 px-2.5 py-1 rounded-full">CPU & GPU</span>
+                        <span class="text-[10px] font-bold bg-amber-50 text-amber-700 px-2.5 py-1 rounded-full">HD/SSD</span>
+                        <span class="text-[10px] font-bold bg-amber-50 text-amber-700 px-2.5 py-1 rounded-full">RAM</span>
+                    </div>
+                </div>
+                <div class="service-card bg-white rounded-2xl p-7 border border-gray-100 shadow-glass">
+                    <div class="w-12 h-12 bg-green-50 rounded-2xl flex items-center justify-center mb-5">
+                        <i data-lucide="trash-2" class="w-6 h-6 text-green-600"></i>
+                    </div>
+                    <h3 class="font-bold text-gray-900 text-lg mb-3">Limpeza de Temporários</h3>
+                    <p class="text-gray-500 text-sm leading-relaxed mb-4">Remoção de arquivos temporários, cache acumulado, lixo do sistema e bloatwares que travam o computador. Resultado: máquinas mais rápidas do dia para a noite.</p>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="text-[10px] font-bold bg-green-50 text-green-700 px-2.5 py-1 rounded-full">Temp & Cache</span>
+                        <span class="text-[10px] font-bold bg-green-50 text-green-700 px-2.5 py-1 rounded-full">Registro</span>
+                    </div>
+                </div>
+                <div class="service-card bg-white rounded-2xl p-7 border border-gray-100 shadow-glass">
+                    <div class="w-12 h-12 bg-blue-50 rounded-2xl flex items-center justify-center mb-5">
+                        <i data-lucide="activity" class="w-6 h-6 text-blue-600"></i>
+                    </div>
+                    <h3 class="font-bold text-gray-900 text-lg mb-3">Monitoramento RMM 24/7</h3>
+                    <p class="text-gray-500 text-sm leading-relaxed mb-4">Agente instalado em todas as 34 máquinas. Alertas automáticos antes de um problema acontecer: disco cheio, superaquecimento, memória crítica.</p>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="text-[10px] font-bold bg-blue-50 text-blue-700 px-2.5 py-1 rounded-full">Tempo Real</span>
+                        <span class="text-[10px] font-bold bg-blue-50 text-blue-700 px-2.5 py-1 rounded-full">Alertas Precoces</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Tab: Segurança -->
+        <div id="tab-seguranca" class="tab-panel">
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div class="service-card bg-white rounded-2xl p-7 border border-gray-100 shadow-glass">
+                    <div class="w-12 h-12 bg-red-50 rounded-2xl flex items-center justify-center mb-5">
+                        <i data-lucide="shield" class="w-6 h-6 text-red-500"></i>
+                    </div>
+                    <h3 class="font-bold text-gray-900 text-lg mb-3">Gestão de Antivírus / EDR</h3>
+                    <p class="text-gray-500 text-sm leading-relaxed mb-4">Padronizamos e gerenciamos centralmente a proteção de endpoint. Fim da bagunça de marcas. Uma plataforma, visibilidade total contra Ransomwares.</p>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="text-[10px] font-bold bg-red-50 text-red-600 px-2.5 py-1 rounded-full">Centralizado</span>
+                        <span class="text-[10px] font-bold bg-red-50 text-red-600 px-2.5 py-1 rounded-full">EDR</span>
+                    </div>
+                </div>
+                <div class="service-card bg-white rounded-2xl p-7 border border-gray-100 shadow-glass">
+                    <div class="w-12 h-12 bg-purple-50 rounded-2xl flex items-center justify-center mb-5">
+                        <i data-lucide="refresh-ccw" class="w-6 h-6 text-purple-600"></i>
+                    </div>
+                    <h3 class="font-bold text-gray-900 text-lg mb-3">Gestão de Patches</h3>
+                    <p class="text-gray-500 text-sm leading-relaxed mb-4">Atualizações críticas do Windows e softwares aplicadas de forma controlada. Mantemos todas as máquinas na build mais segura, sem impactar a produtividade.</p>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="text-[10px] font-bold bg-purple-50 text-purple-700 px-2.5 py-1 rounded-full">Windows Update</span>
+                        <span class="text-[10px] font-bold bg-purple-50 text-purple-700 px-2.5 py-1 rounded-full">Automação</span>
+                    </div>
+                </div>
+                <div class="service-card bg-white rounded-2xl p-7 border border-gray-100 shadow-glass">
+                    <div class="w-12 h-12 bg-orange-50 rounded-2xl flex items-center justify-center mb-5">
+                        <i data-lucide="lock" class="w-6 h-6 text-orange-600"></i>
+                    </div>
+                    <h3 class="font-bold text-gray-900 text-lg mb-3">Conformidade LGPD</h3>
+                    <p class="text-gray-500 text-sm leading-relaxed mb-4">Como assessoria de investimentos, vocês lidam com dados sensíveis de clientes. Adequamos as configurações do sistema para apoiar a conformidade com a LGPD.</p>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="text-[10px] font-bold bg-orange-50 text-orange-700 px-2.5 py-1 rounded-full">LGPD</span>
+                        <span class="text-[10px] font-bold bg-orange-50 text-orange-700 px-2.5 py-1 rounded-full">Dados Sensíveis</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Tab: Infraestrutura -->
+        <div id="tab-infraestrutura" class="tab-panel">
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div class="service-card bg-white rounded-2xl p-7 border border-gray-100 shadow-glass">
+                    <div class="w-12 h-12 bg-cyan-50 rounded-2xl flex items-center justify-center mb-5">
+                        <i data-lucide="flame" class="w-6 h-6 text-cyan-600"></i>
+                    </div>
+                    <h3 class="font-bold text-gray-900 text-lg mb-3">Gestão de Firewall</h3>
+                    <p class="text-gray-500 text-sm leading-relaxed mb-4">Check-up e gestão de segurança da borda da rede local. Regras atualizadas, monitoramento de acessos indevidos e bloqueio de ameaças externas.</p>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="text-[10px] font-bold bg-cyan-50 text-cyan-700 px-2.5 py-1 rounded-full">Borda</span>
+                        <span class="text-[10px] font-bold bg-cyan-50 text-cyan-700 px-2.5 py-1 rounded-full">Bloqueios</span>
+                    </div>
+                </div>
+                <div class="service-card bg-white rounded-2xl p-7 border border-gray-100 shadow-glass">
+                    <div class="w-12 h-12 bg-teal-50 rounded-2xl flex items-center justify-center mb-5">
+                        <i data-lucide="wifi" class="w-6 h-6 text-teal-600"></i>
+                    </div>
+                    <h3 class="font-bold text-gray-900 text-lg mb-3">Teste de Link e Wi-Fi</h3>
+                    <p class="text-gray-500 text-sm leading-relaxed mb-4">Monitoramento contínuo do link de internet e dos Access Points. Identificamos latência e quedas antes que elas atrapalhem as operações dos seus traders.</p>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="text-[10px] font-bold bg-teal-50 text-teal-700 px-2.5 py-1 rounded-full">Uptime</span>
+                        <span class="text-[10px] font-bold bg-teal-50 text-teal-700 px-2.5 py-1 rounded-full">Estabilidade</span>
+                    </div>
+                </div>
+                <div class="service-card bg-white rounded-2xl p-7 border border-gray-100 shadow-glass">
+                    <div class="w-12 h-12 bg-indigo-50 rounded-2xl flex items-center justify-center mb-5">
+                        <i data-lucide="cloud-cog" class="w-6 h-6 text-indigo-600"></i>
+                    </div>
+                    <h3 class="font-bold text-gray-900 text-lg mb-3">Monitoramento AWS & Backup</h3>
+                    <p class="text-gray-500 text-sm leading-relaxed mb-4">Verificação diária dos backups dos servidores na Amazon Web Services. Garantimos que seus dados estão íntegros e recuperáveis quando você precisar.</p>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="text-[10px] font-bold bg-indigo-50 text-indigo-700 px-2.5 py-1 rounded-full">AWS S3</span>
+                        <span class="text-[10px] font-bold bg-indigo-50 text-indigo-700 px-2.5 py-1 rounded-full">Disaster Recovery</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Tab: Estratégia -->
+        <div id="tab-estrategia" class="tab-panel">
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div class="service-card bg-white rounded-2xl p-7 border border-gray-100 shadow-glass">
+                    <div class="w-12 h-12 bg-yellow-50 rounded-2xl flex items-center justify-center mb-5">
+                        <i data-lucide="bar-chart-2" class="w-6 h-6 text-yellow-600"></i>
+                    </div>
+                    <h3 class="font-bold text-gray-900 text-lg mb-3">Relatório Mensal de Saúde</h3>
+                    <p class="text-gray-500 text-sm leading-relaxed mb-4">Todo mês você recebe um relatório executivo: quantos chamados abertos, saúde geral do parque, alertas detectados e ações realizadas. Total transparência.</p>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="text-[10px] font-bold bg-yellow-50 text-yellow-700 px-2.5 py-1 rounded-full">Transparência</span>
+                        <span class="text-[10px] font-bold bg-yellow-50 text-yellow-700 px-2.5 py-1 rounded-full">Executivo</span>
+                    </div>
+                </div>
+                <div class="service-card bg-white rounded-2xl p-7 border border-gray-100 shadow-glass">
+                    <div class="w-12 h-12 bg-pink-50 rounded-2xl flex items-center justify-center mb-5">
+                        <i data-lucide="refresh-cw" class="w-6 h-6 text-pink-600"></i>
+                    </div>
+                    <h3 class="font-bold text-gray-900 text-lg mb-3">Lifecycle de Hardware</h3>
+                    <p class="text-gray-500 text-sm leading-relaxed mb-4">Planejamos com você quando e o que substituir. Sem surpresas, sem gasto desnecessário. Exemplo: os 3 Inspiron com Core i3-7020U precisam entrar no plano de renovação.</p>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="text-[10px] font-bold bg-pink-50 text-pink-700 px-2.5 py-1 rounded-full">Consultoria vCIO</span>
+                        <span class="text-[10px] font-bold bg-pink-50 text-pink-700 px-2.5 py-1 rounded-full">Planejamento</span>
+                    </div>
+                </div>
+                <div class="service-card bg-white rounded-2xl p-7 border border-gray-100 shadow-glass">
+                    <div class="w-12 h-12 bg-brand-yellow/10 rounded-2xl flex items-center justify-center mb-5">
+                        <i data-lucide="headphones" class="w-6 h-6 text-brand-yellow"></i>
+                    </div>
+                    <h3 class="font-bold text-gray-900 text-lg mb-3">Help Desk Ilimitado</h3>
+                    <p class="text-gray-500 text-sm leading-relaxed mb-4">Suporte remoto sem limite de chamados para toda a equipe. Office, e-mail, impressoras, travamentos, instalar programas — a gente resolve de forma ágil.</p>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="text-[10px] font-bold bg-brand-yellow/10 text-brand-goldDark px-2.5 py-1 rounded-full">Ilimitado</span>
+                        <span class="text-[10px] font-bold bg-brand-yellow/10 text-brand-goldDark px-2.5 py-1 rounded-full">Remoto</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<!-- ===================== COMPARATIVO DE MERCADO E MATEMÁTICA ===================== -->
+<section id="mercado" class="py-28 bg-[#f8f9fa] border-y border-gray-200/60">
+    <div class="max-w-5xl mx-auto px-4">
+        <div class="text-center mb-16 reveal">
+            <span class="text-brand-yellow font-bold uppercase tracking-widest text-xs">Transparência Total</span>
+            <h2 class="text-3xl md:text-5xl font-bold text-gray-900 mt-3">O que o mercado cobra.<br>O que a Vision entrega.</h2>
+            <p class="text-gray-500 mt-5 max-w-xl mx-auto text-lg">Para que você saiba exatamente o que está recebendo e o valor real do investimento gerencial.</p>
+        </div>
+
+        <!-- NOVO DESIGN: TABELA RESPONSIVA GRID (RESOLVE PROBLEMA MOBILE) -->
+        <div class="bg-white rounded-2xl shadow-premium-card border border-gray-100 reveal mt-12 relative overflow-hidden">
+            <div class="absolute top-0 right-0 w-64 h-64 bg-brand-yellow/5 rounded-full blur-3xl pointer-events-none"></div>
+            
+            <h3 class="font-bold text-gray-900 text-xl md:text-2xl mb-8 text-center relative z-10 pt-8 px-4">
+                O Abismo entre o "Suporte Básico" e a <span class="text-brand-yellow">Engenharia Vision</span>
+            </h3>
+
+            <!-- Componente Grid Responsivo Mobile-First -->
+            <div class="relative z-10 pb-8 px-4 md:px-8">
+                <!-- Desktop Header -->
+                <div class="hidden md:grid grid-cols-3 bg-gray-50 rounded-t-xl border-b border-gray-200">
+                    <div class="py-4 px-6 font-bold text-gray-700">Indicador Operacional</div>
+                    <div class="py-4 px-6 font-bold text-gray-500 text-center">Mercado Tradicional</div>
+                    <div class="py-4 px-6 bg-brand-yellow/10 font-bold text-brand-goldDark text-center rounded-tr-xl text-lg">TI Gerenciada Vision</div>
+                </div>
+
+                <!-- Rows Container -->
+                <div class="flex flex-col gap-4 md:gap-0">
+                    
+                    <!-- Row 1 -->
+                    <div class="bg-white border border-gray-100 md:border-0 md:border-b md:border-gray-100 rounded-2xl md:rounded-none p-5 md:p-0 grid grid-cols-1 md:grid-cols-3 shadow-sm md:shadow-none items-center">
+                        <div class="font-bold text-gray-900 md:text-gray-800 text-center md:text-left text-lg md:text-sm mb-4 md:mb-0 md:py-5 md:px-6 border-b border-gray-100 md:border-0 pb-3 md:pb-0">Modelo de Atuação</div>
+                        <div class="grid grid-cols-2 md:grid-cols-2 md:col-span-2 gap-4 md:gap-0 h-full">
+                            <div class="flex flex-col items-center justify-center md:py-5 md:px-4">
+                                <span class="md:hidden text-[10px] font-bold uppercase tracking-widest text-gray-400 mb-2">Mercado</span>
+                                <span class="bg-red-50 text-red-600 px-3 py-1.5 rounded-lg text-xs font-bold text-center w-full">Reativo</span>
+                            </div>
+                            <div class="flex flex-col items-center justify-center md:py-5 md:px-4 md:bg-brand-yellow/5">
+                                <span class="md:hidden text-[10px] font-bold uppercase tracking-widest text-brand-goldDark mb-2">Vision</span>
+                                <span class="bg-emerald-50 text-emerald-600 px-3 py-1.5 rounded-lg text-xs font-bold text-center w-full">Proativo (24/7)</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Row 2 -->
+                    <div class="bg-white border border-gray-100 md:border-0 md:border-b md:border-gray-100 rounded-2xl md:rounded-none p-5 md:p-0 grid grid-cols-1 md:grid-cols-3 shadow-sm md:shadow-none items-center">
+                        <div class="font-bold text-gray-900 md:text-gray-800 text-center md:text-left text-lg md:text-sm mb-4 md:mb-0 md:py-5 md:px-6 border-b border-gray-100 md:border-0 pb-3 md:pb-0">Previsibilidade Financeira</div>
+                        <div class="grid grid-cols-2 md:grid-cols-2 md:col-span-2 gap-4 md:gap-0 h-full">
+                            <div class="flex flex-col items-center justify-center md:py-5 md:px-4">
+                                <span class="md:hidden text-[10px] font-bold uppercase tracking-widest text-gray-400 mb-2">Mercado</span>
+                                <span class="text-gray-500 text-sm font-medium text-center">Surpresa (Hora)</span>
+                            </div>
+                            <div class="flex flex-col items-center justify-center md:py-5 md:px-4 md:bg-brand-yellow/5">
+                                <span class="md:hidden text-[10px] font-bold uppercase tracking-widest text-brand-goldDark mb-2">Vision</span>
+                                <span class="text-gray-900 font-bold text-sm text-center">Fixo e Travado</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Row 3 -->
+                    <div class="bg-white border border-gray-100 md:border-0 md:border-b md:border-gray-100 rounded-2xl md:rounded-none p-5 md:p-0 grid grid-cols-1 md:grid-cols-3 shadow-sm md:shadow-none items-center">
+                        <div class="font-bold text-gray-900 md:text-gray-800 text-center md:text-left text-lg md:text-sm mb-4 md:mb-0 md:py-5 md:px-6 border-b border-gray-100 md:border-0 pb-3 md:pb-0">Tempo de Resposta</div>
+                        <div class="grid grid-cols-2 md:grid-cols-2 md:col-span-2 gap-4 md:gap-0 h-full">
+                            <div class="flex flex-col items-center justify-center md:py-5 md:px-4">
+                                <span class="md:hidden text-[10px] font-bold uppercase tracking-widest text-gray-400 mb-2">Mercado</span>
+                                <span class="text-gray-500 text-sm font-medium text-center">24 a 48 horas</span>
+                            </div>
+                            <div class="flex flex-col items-center justify-center md:py-5 md:px-4 md:bg-brand-yellow/5">
+                                <span class="md:hidden text-[10px] font-bold uppercase tracking-widest text-brand-goldDark mb-2">Vision</span>
+                                <span class="text-gray-900 font-bold text-sm text-center">SLA de 4 horas</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Row 4 -->
+                    <div class="bg-white border border-gray-100 md:border-0 md:border-b md:border-gray-100 rounded-2xl md:rounded-none p-5 md:p-0 grid grid-cols-1 md:grid-cols-3 shadow-sm md:shadow-none items-center">
+                        <div class="font-bold text-gray-900 md:text-gray-800 text-center md:text-left text-lg md:text-sm mb-4 md:mb-0 md:py-5 md:px-6 border-b border-gray-100 md:border-0 pb-3 md:pb-0">Custo de Visita Local</div>
+                        <div class="grid grid-cols-2 md:grid-cols-2 md:col-span-2 gap-4 md:gap-0 h-full">
+                            <div class="flex flex-col items-center justify-center md:py-5 md:px-4">
+                                <span class="md:hidden text-[10px] font-bold uppercase tracking-widest text-gray-400 mb-2">Mercado</span>
+                                <span class="text-gray-500 text-sm font-medium text-center">Cobrada à parte</span>
+                            </div>
+                            <div class="flex flex-col items-center justify-center md:py-5 md:px-4 md:bg-brand-yellow/5">
+                                <span class="md:hidden text-[10px] font-bold uppercase tracking-widest text-brand-goldDark mb-2">Vision</span>
+                                <span class="text-gray-900 font-bold text-sm text-center">Inclusa (Sem taxa)</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Row 5 -->
+                    <div class="bg-white border border-gray-100 md:border-0 rounded-2xl md:rounded-none p-5 md:p-0 grid grid-cols-1 md:grid-cols-3 shadow-sm md:shadow-none items-center md:rounded-b-xl">
+                        <div class="font-bold text-gray-900 md:text-gray-800 text-center md:text-left text-lg md:text-sm mb-4 md:mb-0 md:py-5 md:px-6 border-b border-gray-100 md:border-0 pb-3 md:pb-0">Consultoria Executiva</div>
+                        <div class="grid grid-cols-2 md:grid-cols-2 md:col-span-2 gap-4 md:gap-0 h-full">
+                            <div class="flex flex-col items-center justify-center md:py-5 md:px-4">
+                                <span class="md:hidden text-[10px] font-bold uppercase tracking-widest text-gray-400 mb-2">Mercado</span>
+                                <i data-lucide="x" class="w-5 h-5 text-red-300"></i>
+                            </div>
+                            <div class="flex flex-col items-center justify-center md:py-5 md:px-4 md:bg-brand-yellow/5 md:rounded-br-xl">
+                                <span class="md:hidden text-[10px] font-bold uppercase tracking-widest text-brand-goldDark mb-2">Vision</span>
+                                <i data-lucide="check-circle-2" class="w-5 h-5 text-brand-yellow"></i>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<!-- ===================== PROPOSTA COMERCIAL (ESCOLHA) ===================== -->
+<section id="investimento" class="py-28 bg-white relative overflow-hidden">
+    <div class="absolute inset-0 bg-dots pointer-events-none"></div>
+    <div class="max-w-6xl mx-auto px-4 relative z-10">
+        <div class="text-center mb-16 reveal">
+            <span class="text-brand-yellow font-bold uppercase tracking-widest text-xs">Escolha o Modelo Ideal</span>
+            <h2 class="text-3xl md:text-5xl font-bold text-gray-900 mt-3">Duas formas de trabalhar<br>com a Vision</h2>
+            <p class="text-gray-500 mt-4 max-w-xl mx-auto text-lg">Sem burocracia. Você escolhe o modelo que faz mais sentido pro seu momento.</p>
+        </div>
+
+        <div class="grid lg:grid-cols-2 gap-8 reveal">
+
+            <!-- OPÇÃO A: Sob Demanda -->
+            <div class="tier-card bg-white rounded-[2rem] p-10 border border-gray-200 shadow-glass relative overflow-hidden flex flex-col">
+                <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-gray-200 to-gray-300 rounded-t-[2rem]"></div>
+                <div class="mb-8">
+                    <div class="flex items-center gap-3 mb-4">
+                        <div class="w-11 h-11 bg-gray-100 rounded-xl flex items-center justify-center">
+                            <i data-lucide="clock" class="w-5 h-5 text-gray-500"></i>
+                        </div>
+                        <div>
+                            <p class="text-[10px] font-bold uppercase tracking-widest text-gray-400">Opção A</p>
+                            <h3 class="font-bold text-gray-900 text-lg">Suporte Sob Demanda</h3>
+                        </div>
+                    </div>
+                    <p class="text-gray-500 text-sm leading-relaxed">Ideal para necessidades pontuais. A Vision atua apenas quando acionada (Break-Fix). Sem mensalidade, sem compromisso.</p>
+                </div>
+
+                <div class="mb-8">
+                    <p class="text-xs text-gray-400 uppercase tracking-widest font-bold mb-2">Faturamento Variável</p>
+                    <div class="flex items-end gap-2">
+                        <span class="text-4xl font-extrabold text-gray-900">R$ 180</span>
+                        <span class="text-gray-400 font-medium mb-1">– R$ 430</span>
+                    </div>
+                    <p class="text-sm text-gray-500 mt-1">Remote R$ 180/h <span class="text-gray-400">| Visita R$ 430</span></p>
+                </div>
+
+                <div class="space-y-3 mb-8 flex-1">
+                    <h4 class="font-semibold text-gray-700 text-sm uppercase tracking-wider mb-3">O que está incluso:</h4>
+                    <div class="flex items-start gap-3 p-3 bg-gray-50 rounded-xl">
+                        <i data-lucide="check" class="w-4 h-4 text-emerald-500 shrink-0 mt-0.5"></i>
+                        <p class="text-sm text-gray-600">Serviços sob demanda (Vírus, Rede, Instalações)</p>
+                    </div>
+                    <div class="flex items-start gap-3 p-3 bg-gray-50 rounded-xl">
+                        <i data-lucide="check" class="w-4 h-4 text-emerald-500 shrink-0 mt-0.5"></i>
+                        <p class="text-sm text-gray-600">SLA de resposta: até 24h úteis</p>
+                    </div>
+                    
+                    <div class="flex items-start gap-3 p-3 border-t border-gray-100 mt-4">
+                        <i data-lucide="x" class="w-4 h-4 text-red-400 shrink-0 mt-0.5"></i>
+                        <p class="text-sm text-gray-400">Sem monitoramento preventivo</p>
+                    </div>
+                    <div class="flex items-start gap-3 p-3 border-t border-gray-100">
+                        <i data-lucide="x" class="w-4 h-4 text-red-400 shrink-0 mt-0.5"></i>
+                        <p class="text-sm text-gray-400">Sem gestão de backups na AWS</p>
+                    </div>
+                </div>
+
+                <div class="p-5 bg-red-50/50 rounded-xl border border-red-100 mb-6 mt-auto">
+                    <p class="text-xs text-red-600 flex items-start gap-2 leading-relaxed">
+                        <i data-lucide="calculator" class="w-5 h-5 shrink-0 mt-0.5 text-red-500"></i>
+                        <span><strong>A Matemática do Risco:</strong> Se as 34 máquinas gerarem apenas 10 chamados remotos (R$ 1.800) e 2 presenciais (R$ 860) no mês, o custo atinge <strong>R$ 2.660,00</strong> — apenas para "apagar incêndios".</span>
+                    </p>
+                </div>
+
+                <a href="https://wa.me/5511930816696?text=Ola,%20vamos%20seguir%20com%20o%20Suporte%20Sob%20Demanda%20na%20Valor%20Investimentos." target="_blank" class="w-full border-2 border-gray-200 text-gray-700 font-bold py-4 rounded-2xl flex items-center justify-center gap-2 hover:border-gray-400 transition-all text-sm uppercase tracking-widest mt-auto">
+                    Optar por Suporte Avulso
+                </a>
+            </div>
+
+            <!-- OPÇÃO B: Mensal MSP (DESTAQUE) -->
+            <div class="tier-card featured bg-white rounded-[2rem] p-10 shadow-glow-md relative overflow-hidden flex flex-col">
+                <div class="absolute top-0 left-0 w-full h-1.5 bg-gradient-to-r from-brand-yellow to-brand-goldLight rounded-t-[2rem]"></div>
+                <div class="absolute top-4 right-4">
+                    <span class="bg-brand-yellow text-black text-[10px] font-extrabold px-4 py-1.5 rounded-full uppercase tracking-widest shadow-glow">Recomendado Vision</span>
+                </div>
+
+                <div class="mb-8">
+                    <div class="flex items-center gap-3 mb-4">
+                        <div class="w-11 h-11 bg-brand-yellow/10 rounded-xl flex items-center justify-center">
+                            <i data-lucide="rocket" class="w-5 h-5 text-brand-yellow"></i>
+                        </div>
+                        <div>
+                            <p class="text-[10px] font-bold uppercase tracking-widest text-brand-yellow">Opção B — Previsibilidade 100%</p>
+                            <h3 class="font-bold text-gray-900 text-lg">TI Gerenciada (MSP)</h3>
+                        </div>
+                    </div>
+                    <p class="text-gray-500 text-sm leading-relaxed">Nós assumimos a TI. Sua equipe foca no negócio. A Vision assume a responsabilidade total pela disponibilidade tecnológica e segurança dos dados.</p>
+                </div>
+
+                <div class="mb-8">
+                    <p class="text-xs text-gray-400 uppercase tracking-widest font-bold mb-2">Investimento Fixo Mensal</p>
+                    <div class="flex items-start gap-3">
+                        <div>
+                            <div class="flex items-end gap-2">
+                                <span class="text-5xl font-extrabold text-gray-900">R$&nbsp;4.760</span>
+                            </div>
+                            <p class="text-sm text-gray-500 mt-1">por mês, tudo incluso <span class="line-through text-gray-300">R$ 6.560</span></p>
+                        </div>
+                    </div>
+                    <div class="mt-4 inline-flex items-center gap-2 px-4 py-2 bg-emerald-50 border border-emerald-100 rounded-xl">
+                        <i data-lucide="trending-down" class="w-4 h-4 text-emerald-600"></i>
+                        <p class="text-xs text-emerald-700 font-semibold">Economia real de R$ 1.800/mês</p>
+                    </div>
+                </div>
+
+                <div class="space-y-3 mb-8 flex-1">
+                    <h4 class="font-semibold text-gray-700 text-sm uppercase tracking-wider mb-3">A Cobertura Premium:</h4>
+                    <div class="flex items-start gap-3 p-3 bg-brand-yellow/5 rounded-xl border border-brand-yellow/10">
+                        <i data-lucide="check-circle-2" class="w-4 h-4 text-emerald-500 shrink-0 mt-0.5"></i>
+                        <p class="text-sm text-gray-700"><strong>Monitoramento 24/7 (RMM)</strong> nas 34 máquinas.</p>
+                    </div>
+                    <div class="flex items-start gap-3 p-3 bg-brand-yellow/5 rounded-xl border border-brand-yellow/10">
+                        <i data-lucide="check-circle-2" class="w-4 h-4 text-emerald-500 shrink-0 mt-0.5"></i>
+                        <p class="text-sm text-gray-700"><strong>Suporte Remoto Ilimitado (Help Desk)</strong>. Sem surpresas na fatura.</p>
+                    </div>
+                    <div class="flex items-start gap-3 p-3 bg-brand-yellow/5 rounded-xl border border-brand-yellow/10">
+                        <i data-lucide="check-circle-2" class="w-4 h-4 text-emerald-500 shrink-0 mt-0.5"></i>
+                        <p class="text-sm text-gray-700"><strong>Manutenção Preventiva</strong> mensal em background.</p>
+                    </div>
+                    <div class="flex items-start gap-3 p-3 bg-brand-yellow/5 rounded-xl border border-brand-yellow/10">
+                        <i data-lucide="check-circle-2" class="w-4 h-4 text-emerald-500 shrink-0 mt-0.5"></i>
+                        <p class="text-sm text-gray-700"><strong>Gestão de Infra:</strong> Firewall local e Backups na AWS.</p>
+                    </div>
+                    <div class="flex items-start gap-3 p-3 bg-brand-yellow/5 rounded-xl border border-brand-yellow/10">
+                        <i data-lucide="check-circle-2" class="w-4 h-4 text-emerald-500 shrink-0 mt-0.5"></i>
+                        <p class="text-sm text-gray-700"><strong>Visita Presencial:</strong> 1 Visita mensal de check-up inclusa.</p>
+                    </div>
+                    <div class="flex items-start gap-3 p-3 bg-brand-yellow/5 rounded-xl border border-brand-yellow/10">
+                        <i data-lucide="check-circle-2" class="w-4 h-4 text-emerald-500 shrink-0 mt-0.5"></i>
+                        <p class="text-sm text-gray-700"><strong>SLA Prioridade Máxima:</strong> Emergências em até 4 horas.</p>
+                    </div>
+                </div>
+
+                <a href="https://wa.me/5511930816696?text=Ola,%20vamos%20iniciar%20a%20TI%20Gerenciada%20na%20Valor%20Investimentos." target="_blank" class="w-full bg-brand-yellow hover:bg-brand-goldLight text-black font-bold py-4 rounded-2xl flex items-center justify-center gap-2 transition-all shadow-glow-md text-sm uppercase tracking-widest group relative overflow-hidden mt-auto">
+                    <div class="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-300 rounded-2xl"></div>
+                    <i data-lucide="rocket" class="w-5 h-5 relative z-10"></i>
+                    <span class="relative z-10">Aprovar TI Gerenciada</span>
+                    <i data-lucide="arrow-right" class="w-4 h-4 relative z-10 group-hover:translate-x-1 transition-transform"></i>
+                </a>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<!-- ===================== ONBOARDING: OS PRIMEIROS 30 DIAS ===================== -->
+<section class="py-24 bg-[#f8f9fa] relative overflow-hidden">
+    <div class="max-w-5xl mx-auto px-4 reveal">
+        <div class="text-center mb-16">
+            <span class="text-brand-yellow font-bold uppercase tracking-widest text-xs">O Início da Parceria</span>
+            <h2 class="text-3xl md:text-4xl font-extrabold text-gray-900 mt-3 tracking-tight">Onboarding: Os Primeiros 30 Dias</h2>
+            <p class="text-gray-500 mt-4 max-w-2xl mx-auto text-lg leading-relaxed">
+                Se você optar pela TI Gerenciada (Opção 2), iniciaremos o processo de transição na próxima semana, seguindo este fluxo estruturado e silencioso:
+            </p>
+        </div>
+
+        <div class="relative max-w-3xl mx-auto mt-12">
+            <div class="absolute left-8 md:left-1/2 top-0 bottom-0 w-1 bg-gray-200 transform md:-translate-x-1/2 rounded-full"></div>
+            
+            <div class="space-y-12">
+                <!-- Step 1 -->
+                <div class="relative flex items-center md:justify-center">
+                    <div class="w-16 h-16 bg-white border-4 border-gray-100 rounded-full flex items-center justify-center z-10 shrink-0 text-gray-900 font-black text-xl shadow-sm">1</div>
+                    <div class="ml-6 md:ml-0 md:absolute md:w-[45%] md:left-0 md:pr-12 md:text-right bg-white md:bg-transparent p-5 md:p-0 rounded-2xl shadow-sm md:shadow-none border md:border-none border-gray-100">
+                        <h4 class="text-lg font-bold text-gray-900">Reunião de Kickoff</h4>
+                        <p class="text-sm text-gray-500 mt-2 leading-relaxed">Alinhamento de acessos, senhas do Firewall, console da AWS e apresentação da equipe técnica aos seus gestores.</p>
+                    </div>
+                </div>
+                <!-- Step 2 -->
+                <div class="relative flex items-center md:justify-center">
+                    <div class="w-16 h-16 bg-white border-4 border-gray-100 rounded-full flex items-center justify-center z-10 shrink-0 text-gray-900 font-black text-xl shadow-sm">2</div>
+                    <div class="ml-6 md:ml-0 md:absolute md:w-[45%] md:right-0 md:pl-12 md:text-left bg-white md:bg-transparent p-5 md:p-0 rounded-2xl shadow-sm md:shadow-none border md:border-none border-gray-100">
+                        <h4 class="text-lg font-bold text-gray-900">Inventário e Auditoria</h4>
+                        <p class="text-sm text-gray-500 mt-2 leading-relaxed">Mapeamento físico de todos os Optiplex 3060 e notebooks HP. Avaliação da saúde atual e vulnerabilidades imediatas.</p>
+                    </div>
+                </div>
+                <!-- Step 3 -->
+                <div class="relative flex items-center md:justify-center">
+                    <div class="w-16 h-16 bg-white border-4 border-gray-100 rounded-full flex items-center justify-center z-10 shrink-0 text-gray-900 font-black text-xl shadow-sm">3</div>
+                    <div class="ml-6 md:ml-0 md:absolute md:w-[45%] md:left-0 md:pr-12 md:text-right bg-white md:bg-transparent p-5 md:p-0 rounded-2xl shadow-sm md:shadow-none border md:border-none border-gray-100">
+                        <h4 class="text-lg font-bold text-gray-900">Deploy Silencioso</h4>
+                        <p class="text-sm text-gray-500 mt-2 leading-relaxed">Instalação dos agentes RMM e padronização do Antivírus em background, sem interromper o trabalho da sua equipe de investimentos.</p>
+                    </div>
+                </div>
+                <!-- Step 4 -->
+                <div class="relative flex items-center md:justify-center">
+                    <div class="w-16 h-16 bg-brand-yellow border-4 border-brand-yellow/30 rounded-full flex items-center justify-center z-10 shrink-0 text-black font-black text-xl shadow-md">
+                        <i data-lucide="check" class="w-6 h-6"></i>
+                    </div>
+                    <div class="ml-6 md:ml-0 md:absolute md:w-[45%] md:right-0 md:pl-12 md:text-left bg-white md:bg-transparent p-5 md:p-0 rounded-2xl shadow-sm md:shadow-none border md:border-none border-gray-100">
+                        <h4 class="text-lg font-bold text-brand-goldDark">Go-Live e Monitoramento</h4>
+                        <p class="text-sm text-gray-700 font-medium mt-2 leading-relaxed">Sua infraestrutura 100% visível nos nossos painéis e seus colaboradores com suporte livre para abrir chamados sem custos extras.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ===================== FAQ ===================== -->
+<section class="py-24 bg-white border-t border-gray-200/60">
+    <div class="max-w-3xl mx-auto px-4">
+        <div class="text-center mb-14 reveal">
+            <span class="text-brand-yellow font-bold uppercase tracking-widest text-xs">Tire suas Dúvidas</span>
+            <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mt-3">Perguntas Frequentes</h2>
+        </div>
+        <div class="space-y-4 reveal" id="accordion">
+            <div class="accordion-item bg-white rounded-2xl border border-gray-100 shadow-glass overflow-hidden">
+                <button onclick="toggleAccordion(this)" class="w-full flex items-center justify-between p-6 text-left font-semibold text-gray-800">
+                    <span>Como funciona o atendimento ilimitado no modelo Gerenciado?</span>
+                    <i data-lucide="chevron-down" class="w-5 h-5 text-gray-400 acc-arrow shrink-0"></i>
+                </button>
+                <div class="accordion-content">
+                    <p class="px-6 pb-6 text-gray-500 text-sm leading-relaxed">Qualquer usuário da Valor Investimentos poderá acionar nosso suporte remoto (via portal, e-mail ou WhatsApp) para resolver problemas do dia a dia (impressora não funciona, e-mail travado, lentidão, formatação). Nossa equipe atende e você não paga nenhum centavo a mais por isso, independente do volume de chamados.</p>
+                </div>
+            </div>
+            <div class="accordion-item bg-white rounded-2xl border border-gray-100 shadow-glass overflow-hidden">
+                <button onclick="toggleAccordion(this)" class="w-full flex items-center justify-between p-6 text-left font-semibold text-gray-800">
+                    <span>A Vision vai hospedar meus servidores AWS?</span>
+                    <i data-lucide="chevron-down" class="w-5 h-5 text-gray-400 acc-arrow shrink-0"></i>
+                </button>
+                <div class="accordion-content">
+                    <p class="px-6 pb-6 text-gray-500 text-sm leading-relaxed">Não. A infraestrutura na nuvem continua na conta AWS da Valor Investimentos (vocês mantêm total propriedade). O que a Vision faz é gerenciar: acompanhamos os alertas, garantimos que os backups estão sendo feitos sem erros e monitoramos o tráfego do Firewall local que se conecta a essa nuvem.</p>
+                </div>
+            </div>
+            <div class="accordion-item bg-white rounded-2xl border border-gray-100 shadow-glass overflow-hidden">
+                <button onclick="toggleAccordion(this)" class="w-full flex items-center justify-between p-6 text-left font-semibold text-gray-800">
+                    <span>As licenças de Antivírus e Windows estão inclusas na mensalidade?</span>
+                    <i data-lucide="chevron-down" class="w-5 h-5 text-gray-400 acc-arrow shrink-0"></i>
+                </button>
+                <div class="accordion-content">
+                    <p class="px-6 pb-6 text-gray-500 text-sm leading-relaxed">Neste escopo, fornecemos a gestão e a aplicação das atualizações de segurança (Patches via RMM). O custo de aquisição ou renovação de licenças de Antivírus Corporativo (como Kaspersky ou McAfee) ou licenciamento Microsoft será faturado de forma transparente como custo de software, caso as máquinas atuais não possuam.</p>
+                </div>
+            </div>
+            <div class="accordion-item bg-white rounded-2xl border border-gray-100 shadow-glass overflow-hidden">
+                <button onclick="toggleAccordion(this)" class="w-full flex items-center justify-between p-6 text-left font-semibold text-gray-800">
+                    <span>Qual o prazo mínimo de contrato?</span>
+                    <i data-lucide="chevron-down" class="w-5 h-5 text-gray-400 acc-arrow shrink-0"></i>
+                </button>
+                <div class="accordion-content">
+                    <p class="px-6 pb-6 text-gray-500 text-sm leading-relaxed">Trabalhamos com contrato de 12 meses, que é o modelo padrão do mercado MSP. Isso nos permite oferecer o desconto de ecossistema e garantir a qualidade do serviço com planejamento. Em casos especiais, podemos avaliar contratos de 6 meses com ajuste de valor.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ===================== FOOTER CENTRALIZADO PADRÃO VISION ===================== -->
+<footer class="bg-[#09090b] py-16 text-center border-t border-zinc-900 group">
+    <div class="max-w-4xl mx-auto px-4">
+        
+        <div class="flex flex-col items-center justify-center leading-none opacity-40 group-hover:opacity-100 transition-opacity duration-500 cursor-default mb-10">
+            <div class="flex flex-col items-center">
+                <div class="relative flex items-baseline leading-none">
+                    <span class="font-logo font-bold text-[3.5rem] text-white lowercase tracking-[-0.05em] leading-none">vısıon</span>
+                    <span class="absolute -right-3.5 top-2.5 text-[0.75rem] text-brand-yellow font-bold">®</span>
+                </div>
+                <span class="font-tech text-[0.75rem] font-bold text-zinc-500 lowercase -mt-3 ml-1.5 text-center w-full" style="letter-spacing: 0.53em;">tecnologia</span>
+            </div>
+        </div>
+
+        <div class="text-zinc-500 text-xs md:text-sm leading-relaxed space-y-1 mb-8 opacity-60">
+            <p>Av. Paulista, 1636 - Sala 1504 | Bela Vista, São Paulo SP - CEP 01310-200</p>
+            <p>CNPJ: 62.117.013/0001-00</p>
+        </div>
+
+        <div class="inline-flex items-center justify-center gap-2 border border-zinc-800 bg-zinc-900/50 px-5 py-2.5 rounded-full mb-6 shadow-sm">
+            <i data-lucide="lock" class="w-3.5 h-3.5 text-brand-yellow"></i>
+            <span class="text-[10px] md:text-xs text-zinc-400 uppercase tracking-widest font-bold">Documento Confidencial</span>
+        </div>
+        
+        <p class="text-[10px] text-zinc-700 uppercase tracking-widest font-bold mt-6">Engenharia de Infraestrutura e TI Gerenciada (MSP)</p>
+    </div>
+</footer>
+
+<!-- ===================== CTA FLUTUANTE ===================== -->
+<div id="cta-float" class="fixed bottom-6 right-6 z-40 hidden md:block">
+    <a href="https://wa.me/5511930816696?text=Ola,%20vamos%20iniciar%20a%20TI%20Gerenciada%20na%20Valor%20Investimentos." target="_blank" class="flex items-center gap-3 bg-brand-yellow text-black font-bold px-6 py-4 rounded-full shadow-glow-md hover:shadow-glow transition-all group">
+        <i data-lucide="rocket" class="w-5 h-5"></i>
+        <span class="text-sm tracking-wide uppercase">Aprovar MSP</span>
+        <i data-lucide="arrow-right" class="w-4 h-4 group-hover:translate-x-1 transition-transform"></i>
+    </a>
+</div>
+
+<!-- ===================== SCRIPTS ===================== -->
+<script>
+    // INIT LUCIDE
+    lucide.createIcons();
+
+    // LOCK SCREEN + FORMSUBMIT
+    function checkPassword() {
+        const input = document.getElementById('password-input').value;
+        const errorMsg = document.getElementById('error-msg');
+        
+        // Senhas configuradas
+        if (input.toUpperCase() === 'VALOR2026' || input.toUpperCase() === 'VISION' || input.toUpperCase() === 'TI2026') {
+            const lockScreen = document.getElementById('lock-screen');
+            lockScreen.style.opacity = '0';
+
+            // Start Video
+            const video = document.getElementById("vision-video");
+            if (video && video.paused) {
+                video.muted = true;
+                video.play().catch(e => {});
+            }
+
+            // Envio silencioso do alerta de acesso
+            fetch('https://formsubmit.co/ajax/diretoria@visionsp.com.br', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+                body: JSON.stringify({
+                    Aviso: "🚨 PROPOSTA DE TI ABERTA!",
+                    Cliente: "Valor Investimentos (Raphael Fedak)", 
+                    SenhaUsada: input,
+                    Hora: new Date().toLocaleString('pt-BR')
+                })
+            }).catch(error => console.log('Log de acesso registrado.'));
+
+            setTimeout(() => { 
+                lockScreen.style.display = 'none'; 
+                const htmlRoot = document.getElementById('html-root');
+                if(htmlRoot) {
+                    htmlRoot.classList.remove('overflow-hidden', 'h-screen');
+                    htmlRoot.classList.add('overflow-x-hidden');
+                }
+                document.body.classList.remove('overflow-hidden', 'h-screen');
+            }, 700);
+        } else {
+            errorMsg.classList.remove('hidden');
+            document.getElementById('password-input').style.borderColor = 'rgba(239,68,68,0.5)';
+            setTimeout(() => {
+                errorMsg.classList.add('hidden');
+                document.getElementById('password-input').style.borderColor = '';
+            }, 3000);
+        }
+    }
+
+    // REVEAL ON SCROLL
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('active');
+            }
+        });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+    // ANIMATE COUNTERS
+    function animateCounter(el, target) {
+        let current = 0;
+        const increment = Math.ceil(target / 40);
+        const interval = setInterval(() => {
+            current = Math.min(current + increment, target);
+            el.textContent = current;
+            if (current === target) clearInterval(interval);
+        }, 40);
+    }
+    const counterObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const el = entry.target;
+                const target = parseInt(el.getAttribute('data-target'));
+                animateCounter(el, target);
+                counterObserver.unobserve(el);
+            }
+        });
+    }, { threshold: 0.5 });
+    document.querySelectorAll('[data-target]').forEach(el => counterObserver.observe(el));
+
+    // TABS
+    function switchTab(tabName, btn) {
+        document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+        document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+        document.getElementById('tab-' + tabName).classList.add('active');
+        btn.classList.add('active');
+    }
+
+    // ACCORDION
+    function toggleAccordion(btn) {
+        const item = btn.parentElement;
+        const isOpen = item.classList.contains('open');
+        document.querySelectorAll('.accordion-item').forEach(i => i.classList.remove('open'));
+        if (!isOpen) item.classList.add('open');
+        lucide.createIcons();
+    }
+
+    // NAVBAR E CTA SCROLL
+    window.addEventListener('scroll', () => {
+        const navbar = document.getElementById('navbar');
+        const ctaFloat = document.getElementById('cta-float');
+        
+        if (window.scrollY > 50) {
+            navbar.classList.add('shadow-md');
+        } else {
+            navbar.classList.remove('shadow-md');
+        }
+
+        if (window.scrollY > 400) {
+            ctaFloat.classList.remove('hidden');
+        } else {
+            ctaFloat.classList.add('hidden');
+        }
+    });
+
+    // VIDEO UNMUTE
+    document.addEventListener("DOMContentLoaded", function() {
+        const video = document.getElementById("vision-video");
+        const overlay = document.getElementById("unmute-overlay");
+        
+        if (video && overlay) {
+            overlay.addEventListener("click", function(e) {
+                e.stopPropagation(); 
+                video.muted = false;
+                video.loop = false; 
+                video.currentTime = 0;
+                video.play();
+                overlay.style.opacity = "0";
+                setTimeout(() => { overlay.style.display = "none"; }, 500); 
+            });
+
+            video.addEventListener("click", function() {
+                if (overlay.style.display === "none") {
+                    if (video.paused) { video.play(); } else { video.pause(); }
+                }
+            });
+        }
+    });
+</script>
+</body>
+</html>

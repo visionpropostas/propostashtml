@@ -1,0 +1,1065 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth overflow-hidden h-screen" id="html-root">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projeto de Acesso Corporativo | Gabriel – Vision Business</title>
+    <meta name="description" content="Proposta técnica e comercial de acesso corporativo inteligente para seu escritório – Vision Tecnologia">
+    <meta name="theme-color" content="#b9880e">
+
+    <!-- Fonts & Icons -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@700;800&family=Quicksand:wght@500;600;700&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <!-- Google Analytics 4 -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-KTGEL92B0F"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-KTGEL92B0F');
+    </script>
+
+    <!-- Microsoft Clarity -->
+    <script type="text/javascript">
+        (function(c,l,a,r,i,t,y){
+            c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+            t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+            y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+        })(window, document, "clarity", "script", "vifq10es5o");
+    </script>
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"Outfit"', 'sans-serif'],
+                        logo: ['"League Spartan"', 'sans-serif'],
+                        tech: ['"Quicksand"', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            yellow: '#b9880e',
+                            goldLight: '#FFDE59',
+                            goldDark: '#8a6208',
+                            black: '#09090b',
+                        }
+                    },
+                    boxShadow: {
+                        'glass': '0 4px 24px 0 rgba(0,0,0,0.04)',
+                        'premium': '0 16px 50px -10px rgba(0,0,0,0.08)',
+                        'premium-card': '0 16px 50px -10px rgba(0, 0, 0, 0.08)',
+                        'glow': '0 0 20px rgba(185,136,14,0.15)',
+                        'glow-md': '0 0 35px rgba(185,136,14,0.25)',
+                    },
+                    animation: {
+                        'slide-up': 'slideUp 0.9s cubic-bezier(0.16,1,0.3,1) forwards',
+                        'float': 'float 6s ease-in-out infinite',
+                        'fade-in': 'fadeIn 0.6s ease forwards',
+                        'shine-pulse': 'shinePulse 3s ease-in-out infinite',
+                    },
+                    keyframes: {
+                        slideUp: {
+                            '0%': { opacity: '0', transform: 'translateY(40px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' }
+                        },
+                        float: {
+                            '0%,100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-12px)' }
+                        },
+                        fadeIn: {
+                            '0%': { opacity: '0' },
+                            '100%': { opacity: '1' }
+                        },
+                        shinePulse: {
+                            '0%,100%': { opacity: '0.6' },
+                            '50%': { opacity: '1' }
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: #f9fafb; }
+        ::-webkit-scrollbar-thumb { background: #d1d5db; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #b9880e; }
+
+        .text-gold-shine {
+            background: linear-gradient(to right, #b9880e 20%, #FFDE59 50%, #b9880e 80%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-size: 200% auto;
+            animation: shine 4s linear infinite;
+        }
+        @keyframes shine { to { background-position: 200% center; } }
+
+        .bg-grid {
+            background-image: linear-gradient(rgba(185,136,14,0.04) 1px, transparent 1px),
+                              linear-gradient(90deg, rgba(185,136,14,0.04) 1px, transparent 1px);
+            background-size: 40px 40px;
+        }
+        .bg-dots {
+            background-image: radial-gradient(#b9880e 1.2px, transparent 1.2px);
+            background-size: 22px 22px;
+            opacity: 0.035;
+        }
+
+        .lock-input {
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.1);
+            color: #b9880e;
+            font-family: 'League Spartan', sans-serif;
+            font-size: 1.5rem;
+            text-align: center;
+            outline: none;
+            transition: all 0.3s;
+            letter-spacing: 0.2em;
+            border-radius: 14px;
+        }
+        .lock-input:focus {
+            border-color: #b9880e;
+            background: rgba(255,255,255,0.08);
+            box-shadow: 0 0 20px rgba(185,136,14,0.25);
+        }
+        .lock-input::placeholder {
+            color: #52525b;
+            font-size: 0.85rem;
+            font-family: 'Outfit', sans-serif;
+            font-weight: 300;
+            letter-spacing: normal;
+        }
+
+        .reveal { opacity: 0; transform: translateY(30px); transition: all 0.8s cubic-bezier(0.16,1,0.3,1); }
+        .reveal.active { opacity: 1; transform: translateY(0); }
+
+        .service-card:hover { transform: translateY(-4px); box-shadow: 0 20px 40px -8px rgba(0,0,0,0.1); }
+        .service-card { transition: all 0.3s cubic-bezier(0.4,0,0.2,1); }
+
+        .tier-card { transition: all 0.3s cubic-bezier(0.4,0,0.2,1); }
+        .tier-card:hover { transform: scale(1.01); }
+        .tier-card.featured { border: 2px solid #b9880e; }
+
+        .accordion-content { max-height: 0; overflow: hidden; transition: max-height 0.45s cubic-bezier(0.4,0,0.2,1); }
+        .accordion-item.open .accordion-content { max-height: 600px; }
+        .accordion-item.open .acc-arrow { transform: rotate(180deg); }
+        .acc-arrow { transition: transform 0.3s; }
+
+        @media print {
+            #lock-screen, #navbar, #cta-float { display: none !important; }
+            .reveal { opacity: 1 !important; transform: none !important; }
+        }
+
+        .counter-num { font-variant-numeric: tabular-nums; }
+    </style>
+</head>
+<body class="bg-[#fafafa] text-gray-800 antialiased selection:bg-brand-yellow selection:text-white overflow-hidden h-screen">
+
+<!-- ===================== LOCK SCREEN ===================== -->
+<div id="lock-screen" class="fixed inset-0 z-[100] bg-[#09090b] flex flex-col items-center justify-center text-center p-4 transition-opacity duration-700 ease-out touch-none" style="overscroll-behavior: none;">
+    <div class="bg-grid absolute inset-0 opacity-10 pointer-events-none"></div>
+    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-brand-yellow/5 rounded-full blur-[100px] pointer-events-none"></div>
+
+    <!-- Logo -->
+    <div class="relative flex flex-col items-center mb-10 z-10">
+        <div class="relative flex items-baseline leading-none">
+            <span class="font-logo font-bold text-[5.5rem] md:text-[6rem] text-gold-shine lowercase tracking-[-0.05em] leading-none">vısıon</span>
+            <span class="absolute -right-5 top-4 text-[1.1rem] text-brand-yellow font-bold">®</span>
+        </div>
+        <span class="font-tech text-[1.1rem] font-bold text-zinc-500 lowercase -mt-4 ml-2.5 text-center w-full" style="letter-spacing:0.53em;">business</span>
+    </div>
+
+    <div class="w-full max-w-sm space-y-5 z-10">
+        <div class="space-y-1.5">
+            <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-brand-yellow/30 bg-brand-yellow/10 mb-3">
+                <i data-lucide="lock" class="w-3.5 h-3.5 text-brand-yellow"></i>
+                <span class="text-brand-yellow text-[10px] font-bold uppercase tracking-widest">Proposta Confidencial</span>
+            </div>
+            <h2 class="text-white font-bold text-2xl">Acesso Corporativo</h2>
+            <p class="text-zinc-400 text-sm">A/C Gabriel — Engenharia Vision Business</p>
+        </div>
+
+        <div>
+            <!-- SENHA CONFIGURADA: gabriel2026 -->
+            <input type="password" id="password-input" class="lock-input w-full py-4 px-4" placeholder="SENHA DE ACESSO" autocomplete="off" onkeydown="if(event.key==='Enter') checkPassword()">
+            <p id="error-msg" class="text-red-400 text-xs mt-2 hidden">
+                <span class="flex items-center justify-center gap-1"><i data-lucide="x-circle" class="w-4 h-4"></i> Credencial inválida.</span>
+            </p>
+        </div>
+
+        <button onclick="checkPassword()" class="w-full bg-brand-yellow hover:bg-brand-goldLight text-black font-bold py-4 rounded-2xl transition-all shadow-glow flex items-center justify-center gap-2 group relative overflow-hidden">
+            <div class="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-300 rounded-2xl"></div>
+            <i data-lucide="shield-check" class="w-5 h-5 relative z-10"></i>
+            <span class="relative z-10 text-sm uppercase tracking-widest">Acessar Proposta</span>
+            <i data-lucide="arrow-right" class="w-4 h-4 relative z-10 group-hover:translate-x-1 transition-transform"></i>
+        </button>
+
+        <p class="text-zinc-600 text-xs">Documento restrito · Válido por 30 dias · Vision Tecnologia © 2026</p>
+    </div>
+</div>
+
+<!-- ===================== NAVBAR ===================== -->
+<nav id="navbar" class="fixed w-full z-50 top-0 bg-white/90 backdrop-blur-xl border-b border-gray-200/50 shadow-sm transition-all duration-300">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-between h-20 items-center">
+            <div class="flex flex-col items-center justify-center cursor-pointer">
+                <div class="relative flex items-baseline leading-none">
+                    <span class="font-logo font-bold text-[2.6rem] text-gold-shine lowercase tracking-[-0.05em] leading-none">vısıon</span>
+                    <span class="absolute -right-2.5 top-1.5 text-[0.6rem] text-brand-yellow font-bold">®</span>
+                </div>
+                <span class="font-tech text-[0.6rem] font-bold text-gray-400 lowercase -mt-2 ml-1.5" style="letter-spacing:0.53em;">business</span>
+            </div>
+            <div class="hidden md:flex items-center space-x-7 text-xs font-semibold text-gray-500 uppercase tracking-wider">
+                <a href="#diagnostico" class="hover:text-brand-yellow transition-colors">Diagnóstico</a>
+                <a href="#demonstracao" class="hover:text-brand-yellow transition-colors">Demonstração</a>
+                <a href="#solucao" class="hover:text-brand-yellow transition-colors">A Solução</a>
+                <a href="#investimento" class="hover:text-brand-yellow transition-colors">Investimento</a>
+            </div>
+            <a href="#investimento" class="bg-zinc-900 text-white px-5 py-2.5 rounded-full text-[10px] font-bold uppercase tracking-widest hover:bg-brand-yellow hover:text-black transition-all shadow-md">
+                Ver Proposta
+            </a>
+        </div>
+    </div>
+</nav>
+
+<!-- ===================== HERO ===================== -->
+<header class="pt-32 pb-20 lg:pt-40 relative overflow-hidden bg-white">
+    <div class="absolute inset-0 bg-tech-pattern pointer-events-none"></div>
+    <div class="absolute right-0 top-0 -translate-y-1/4 translate-x-1/4 w-[800px] h-[800px] bg-brand-yellow/5 rounded-full blur-[120px] pointer-events-none"></div>
+    
+    <div class="max-w-7xl mx-auto px-4 relative z-10">
+        <div class="flex flex-col lg:flex-row items-center gap-12 lg:gap-16">
+            
+            <!-- Coluna Texto -->
+            <div class="w-full lg:w-1/2 text-center lg:text-left animate-slide-up">
+                <div class="inline-flex items-center gap-2 px-5 py-2 rounded-full border border-brand-yellow/30 bg-brand-yellow/5 text-brand-yellow text-[10px] font-bold uppercase tracking-widest mb-8 mx-auto lg:mx-0">
+                    <i data-lucide="cpu" class="w-4 h-4"></i>
+                    PROPOSTA TÉCNICA #VB-2026-0219 | VALIDADE: 30 DIAS
+                </div>
+                
+                <h1 class="text-4xl md:text-5xl lg:text-6xl font-extrabold text-gray-900 leading-[1.05] tracking-tight mb-6">
+                    A primeira impressão do seu escritório elevada ao nível máximo de <span class="text-gold-shine">segurança e design.</span><br>
+                </h1>
+                
+                <h2 class="text-base md:text-lg text-gray-500 max-w-xl mx-auto lg:mx-0 font-medium mt-6 leading-relaxed">
+                    Projeto Executivo de Acesso Corporativo — O fim das chaves perdidas e o controle absoluto de quem entra na sua empresa. Engenharia Vision Business.
+                </h2>
+            </div>
+
+            <!-- Coluna Vídeo Corporativo -->
+            <div class="w-full lg:w-1/2 mt-4 lg:mt-0 reveal animate-slide-up" style="animation-delay: 200ms;">
+                <div class="relative w-full rounded-[2rem] shadow-[0_20px_50px_-10px_rgba(0,0,0,0.3)] border-[3px] border-brand-yellow/80 group hover:shadow-[0_25px_60px_-10px_rgba(0,0,0,0.4)] transition-shadow duration-500 bg-black">
+                    <div class="relative w-full aspect-video rounded-[1.8rem] overflow-hidden bg-black shadow-inner flex items-center justify-center">
+                        <video id="vision-video" class="w-full h-full object-cover cursor-pointer opacity-90" autoplay muted loop playsinline>
+                            <source src="https://res.cloudinary.com/dptcuckhf/video/upload/v1771711323/Vict%C3%B3ria_-_Vision_gdqnrk.mp4" type="video/mp4">
+                            Seu navegador não suporta o formato de vídeo.
+                        </video>
+                        <div id="unmute-overlay" class="absolute inset-0 bg-black/50 backdrop-blur-sm flex flex-col items-center justify-center cursor-pointer transition-opacity duration-500 z-10 hover:bg-black/40">
+                            <div class="bg-brand-yellow text-black font-bold px-6 py-3 md:px-8 md:py-4 rounded-full flex items-center gap-2 md:gap-3 shadow-glow animate-pulse transform group-hover:scale-105 transition-all">
+                                <i data-lucide="volume-2" class="w-5 h-5 md:w-6 md:h-6"></i>
+                                <span class="text-xs md:text-sm tracking-wide uppercase">Clique para Ouvir</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Floating Quick Stats -->
+        <div class="mt-16 lg:mt-24 grid grid-cols-2 md:grid-cols-4 gap-5 max-w-4xl mx-auto reveal">
+            <div class="bg-white rounded-2xl p-6 shadow-glass border border-gray-100 text-center hover:border-brand-yellow/40 transition-all animate-float" style="animation-delay:0s;">
+                <div class="w-10 h-10 bg-brand-yellow/10 rounded-xl flex items-center justify-center mx-auto mb-3">
+                    <i data-lucide="users" class="w-5 h-5 text-brand-yellow"></i>
+                </div>
+                <div class="text-3xl font-extrabold text-gray-900 counter-num" data-target="20">0</div>
+                <div class="text-xs text-gray-500 font-medium mt-1 uppercase tracking-wider">Colaboradores</div>
+            </div>
+            <div class="bg-white rounded-2xl p-6 shadow-glass border border-gray-100 text-center hover:border-brand-yellow/40 transition-all animate-float" style="animation-delay:0.4s;">
+                <div class="w-10 h-10 bg-brand-yellow/10 rounded-xl flex items-center justify-center mx-auto mb-3">
+                    <i data-lucide="key-off" class="w-5 h-5 text-brand-yellow"></i>
+                </div>
+                <div class="text-3xl font-extrabold text-gray-900">0</div>
+                <div class="text-xs text-gray-500 font-medium mt-1 uppercase tracking-wider">Chaves Físicas</div>
+            </div>
+            <div class="bg-white rounded-2xl p-6 shadow-glass border border-gray-100 text-center hover:border-brand-yellow/40 transition-all animate-float" style="animation-delay:0.8s;">
+                <div class="w-10 h-10 bg-brand-yellow/10 rounded-xl flex items-center justify-center mx-auto mb-3">
+                    <i data-lucide="focus" class="w-5 h-5 text-brand-yellow"></i>
+                </div>
+                <div class="text-3xl font-extrabold text-gray-900">100%</div>
+                <div class="text-xs text-gray-500 font-medium mt-1 uppercase tracking-wider">Foco da Equipe</div>
+            </div>
+            <div class="bg-white rounded-2xl p-6 shadow-glass border border-gray-100 text-center hover:border-brand-yellow/40 transition-all animate-float" style="animation-delay:1.2s;">
+                <div class="w-10 h-10 bg-brand-yellow/10 rounded-xl flex items-center justify-center mx-auto mb-3">
+                    <i data-lucide="credit-card" class="w-5 h-5 text-brand-yellow"></i>
+                </div>
+                <div class="text-3xl font-extrabold text-gray-900">6x</div>
+                <div class="text-xs text-gray-500 font-medium mt-1 uppercase tracking-wider">Sem Juros</div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- ===================== DIAGNÓSTICO DO PARQUE ===================== -->
+<section id="diagnostico" class="py-28 bg-[#f8f9fa] border-y border-gray-200/60 relative">
+    <div class="max-w-7xl mx-auto px-4">
+        <div class="text-center mb-16 reveal">
+            <span class="text-brand-yellow font-bold uppercase tracking-widest text-xs">O Diagnóstico Consultivo</span>
+            <h2 class="text-3xl md:text-5xl font-bold text-gray-900 mt-3 leading-tight">Por que o modelo tradicional <br class="hidden md:block">não acompanha seu crescimento?</h2>
+            <p class="text-gray-500 mt-5 max-w-3xl mx-auto text-lg leading-relaxed">
+                Gabriel, um escritório com 20 colaboradores em fase de expansão possui uma dinâmica muito específica. O fluxo de entrada e saída pela manhã, as pausas para almoço e a recepção ocasional de visitantes exigem um sistema que seja, ao mesmo tempo, extremamente rápido para a equipe e muito apresentável para os clientes. 
+                <br><br>
+                Sistemas de interfone convencionais ou fechaduras simples não acompanham esse ritmo. Identificamos dois pontos de atenção críticos:
+            </p>
+        </div>
+
+        <!-- Riscos Visuais -->
+        <div class="grid md:grid-cols-2 gap-8 mb-16 reveal">
+            
+            <!-- Risco 1 -->
+            <div class="bg-white rounded-[2rem] p-10 shadow-premium border border-gray-100 relative overflow-hidden group hover:-translate-y-1 transition-transform duration-300 flex flex-col">
+                <div class="absolute top-0 right-0 w-40 h-40 bg-red-50 rounded-full blur-3xl transition-colors"></div>
+                <div class="flex items-start justify-between mb-6 relative z-10">
+                    <div class="w-14 h-14 bg-red-50 rounded-2xl flex items-center justify-center">
+                        <i data-lucide="key-round" class="w-7 h-7 text-red-500"></i>
+                    </div>
+                </div>
+                <h3 class="text-xl font-bold text-gray-900 mb-4 relative z-10 flex items-center gap-2">
+                    <i data-lucide="alert-triangle" class="w-5 h-5 text-red-500"></i>
+                    A Vulnerabilidade das Chaves
+                </h3>
+                <p class="text-gray-600 text-sm mb-6 relative z-10 leading-relaxed">
+                    <strong>O Problema:</strong> Em uma equipe em crescimento, usar chaves físicas, senhas ou cartões (TAGs) é um risco constante. Chaves são copiadas, senhas são compartilhadas e cartões são perdidos. Quando um colaborador é desligado, a segurança do escritório inteiro fica comprometida.
+                </p>
+                <div class="mt-auto p-4 bg-emerald-50 rounded-xl border border-emerald-100 flex items-start gap-3 relative z-10">
+                    <i data-lucide="scan-face" class="w-5 h-5 text-emerald-600 shrink-0 mt-0.5"></i>
+                    <p class="text-sm text-emerald-800"><strong>A Solução Vision:</strong> Seu rosto é a sua chave. O acesso é intransferível, auditável e impossível de ser fraudado ou esquecido em casa.</p>
+                </div>
+            </div>
+
+            <!-- Risco 2 -->
+            <div class="bg-white rounded-[2rem] p-10 shadow-premium border border-gray-100 relative overflow-hidden group hover:-translate-y-1 transition-transform duration-300 flex flex-col">
+                <div class="absolute top-0 right-0 w-40 h-40 bg-orange-50 rounded-full blur-3xl transition-colors"></div>
+                <div class="flex items-start justify-between mb-6 relative z-10">
+                    <div class="w-14 h-14 bg-orange-50 rounded-2xl flex items-center justify-center">
+                        <i data-lucide="clock" class="w-7 h-7 text-orange-500"></i>
+                    </div>
+                </div>
+                <h3 class="text-xl font-bold text-gray-900 mb-4 relative z-10 flex items-center gap-2">
+                    <i data-lucide="alert-triangle" class="w-5 h-5 text-orange-500"></i>
+                    Interrupção de Produtividade
+                </h3>
+                <p class="text-gray-600 text-sm mb-6 relative z-10 leading-relaxed">
+                    <strong>O Problema:</strong> Receber visitantes ou entregadores batendo na porta interrompe o foco da equipe. Se não há um sistema visual claro de quem está do lado de fora, a segurança e a concentração da empresa ficam vulneráveis.
+                </p>
+                <div class="mt-auto p-4 bg-emerald-50 rounded-xl border border-emerald-100 flex items-start gap-3 relative z-10">
+                    <i data-lucide="video" class="w-5 h-5 text-emerald-600 shrink-0 mt-0.5"></i>
+                    <p class="text-sm text-emerald-800"><strong>A Solução Vision:</strong> Triagem visual em alta definição antes de liberar qualquer acesso, mantendo a equipe focada e o ambiente protegido.</p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<!-- ===================== YOUTUBE SHORTS DEMO ===================== -->
+<section id="demonstracao" class="py-24 bg-[#09090b] relative overflow-hidden">
+    <div class="bg-dots absolute inset-0 opacity-10 pointer-events-none"></div>
+    <div class="max-w-6xl mx-auto px-4 relative z-10 flex flex-col md:flex-row items-center gap-12">
+        
+        <div class="w-full md:w-1/2 text-center md:text-left reveal">
+            <span class="text-brand-yellow font-bold uppercase tracking-widest text-xs">Demonstração Prática</span>
+            <h2 class="text-3xl md:text-5xl font-bold text-white mt-3 leading-tight">Acesso facial em <br><span class="text-gold-shine">milissegundos</span></h2>
+            <p class="text-gray-400 mt-5 text-lg leading-relaxed">
+                Assista a um breve vídeo mostrando como a tecnologia de reconhecimento facial transforma a experiência de entrada no seu escritório. Rápido, sem toques e totalmente seguro, elevando a percepção de valor dos seus clientes logo na porta.
+            </p>
+            <div class="mt-8 flex items-center justify-center md:justify-start gap-4">
+                <div class="flex items-center gap-2 text-sm text-gray-300 bg-white/5 border border-white/10 px-4 py-2 rounded-full">
+                    <i data-lucide="sun" class="w-4 h-4 text-brand-yellow"></i> Funciona no escuro
+                </div>
+                <div class="flex items-center gap-2 text-sm text-gray-300 bg-white/5 border border-white/10 px-4 py-2 rounded-full">
+                    <i data-lucide="zap" class="w-4 h-4 text-brand-yellow"></i> Antifraude
+                </div>
+            </div>
+        </div>
+
+        <div class="w-full md:w-1/2 flex justify-center reveal">
+            <!-- Mockup Container for YouTube Shorts -->
+            <div class="relative w-[280px] md:w-[320px] aspect-[9/16] rounded-[2.5rem] border-[6px] border-zinc-800 shadow-glow-md overflow-hidden bg-black transform hover:scale-[1.02] transition-transform duration-500">
+                <!-- Notch detail -->
+                <div class="absolute top-0 inset-x-0 h-6 bg-zinc-800 rounded-b-xl w-32 mx-auto z-20"></div>
+                <iframe 
+                    width="100%" 
+                    height="100%" 
+                    src="https://www.youtube.com/embed/1dvh4e3mdL8?autoplay=0&controls=0&rel=0" 
+                    title="Demonstração Fechadura Facial Vision" 
+                    frameborder="0" 
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                    allowfullscreen
+                    class="relative z-10"
+                    style="border-radius: 2rem;">
+                </iframe>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ===================== A SOLUÇÃO TÉCNICA ===================== -->
+<section id="solucao" class="py-28 bg-white relative overflow-hidden">
+    <div class="absolute top-0 right-0 w-[500px] h-[500px] bg-brand-yellow/5 rounded-full blur-[100px] pointer-events-none"></div>
+    <div class="max-w-7xl mx-auto px-4 relative z-10">
+        <div class="text-center mb-16 reveal">
+            <span class="text-brand-yellow font-bold uppercase tracking-widest text-xs">Engenharia de Acesso</span>
+            <h2 class="text-3xl md:text-5xl font-bold text-gray-900 mt-3">A Solução Técnica</h2>
+            <p class="text-gray-500 mt-4 max-w-2xl mx-auto text-lg">Desenhamos duas arquiteturas de segurança para o seu escritório. Ambas entregam o mais alto padrão estético, mas com propostas de infraestrutura diferentes.</p>
+        </div>
+
+        <div class="grid lg:grid-cols-2 gap-8 mb-16 reveal">
+            
+            <!-- OPÇÃO 1: PREMIUM -->
+            <div class="bg-white rounded-3xl p-8 md:p-10 shadow-glow-md border-2 border-brand-yellow relative overflow-hidden flex flex-col">
+                <div class="absolute top-0 right-0 bg-brand-yellow text-black text-[10px] font-bold px-4 py-1.5 rounded-bl-xl uppercase tracking-widest">
+                    A Solução do Vídeo
+                </div>
+                
+                <div class="mb-8">
+                    <div class="w-14 h-14 bg-brand-yellow/10 rounded-2xl flex items-center justify-center mb-5">
+                        <i data-lucide="rocket" class="w-7 h-7 text-brand-yellow"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-gray-900 mb-2">Ecossistema Premium Vision</h3>
+                    <p class="text-gray-500 text-sm">A estrutura definitiva para os próximos 10 anos. Alta performance e energia ininterrupta.</p>
+                </div>
+
+                <div class="space-y-6 flex-1">
+                    <div class="flex gap-4">
+                        <i data-lucide="scan-face" class="w-6 h-6 text-brand-yellow shrink-0"></i>
+                        <div>
+                            <h4 class="font-bold text-gray-900 text-sm">Terminal de Reconhecimento Facial</h4>
+                            <p class="text-sm text-gray-600 mt-1 leading-relaxed">Leitura ultrarrápida (em milissegundos). O colaborador não precisa tocar em nada; basta olhar para a tela. Funciona no escuro, com óculos ou máscara. Traz um status de empresa "Série A" logo na porta de entrada.</p>
+                        </div>
+                    </div>
+                    <div class="flex gap-4">
+                        <i data-lucide="monitor" class="w-6 h-6 text-brand-yellow shrink-0"></i>
+                        <div>
+                            <h4 class="font-bold text-gray-900 text-sm">Monitor Interno de Videoporteiro</h4>
+                            <p class="text-sm text-gray-600 mt-1 leading-relaxed">Uma tela elegante instalada no interior do escritório. Tocou na porta? Vocês veem a imagem nítida do visitante, conversam por áudio limpo e destravam a porta com um toque na tela.</p>
+                        </div>
+                    </div>
+                    <div class="flex gap-4">
+                        <i data-lucide="magnet" class="w-6 h-6 text-brand-yellow shrink-0"></i>
+                        <div>
+                            <h4 class="font-bold text-gray-900 text-sm">Kit Eletroímã de Alta Força</h4>
+                            <p class="text-sm text-gray-600 mt-1 leading-relaxed">Uma trava magnética industrial que garante que a porta não seja arrombada. Alimentação elétrica constante por cabeamento estruturado (não usa baterias).</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- OPÇÃO 2: SMART CORPORATE -->
+            <div class="bg-white rounded-3xl p-8 md:p-10 shadow-glass border border-gray-200 relative overflow-hidden flex flex-col hover:border-brand-yellow/50 transition-all">
+                <div class="mb-8">
+                    <div class="w-14 h-14 bg-gray-100 rounded-2xl flex items-center justify-center mb-5">
+                        <i data-lucide="fingerprint" class="w-7 h-7 text-gray-600"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-gray-900 mb-2">Smart Corporate</h3>
+                    <p class="text-gray-500 text-sm">Alta tecnologia integrada, desenhada para se encaixar no seu orçamento inicial.</p>
+                </div>
+
+                <div class="space-y-6 flex-1">
+                    <div class="flex gap-4">
+                        <i data-lucide="lock" class="w-6 h-6 text-gray-700 shrink-0"></i>
+                        <div>
+                            <h4 class="font-bold text-gray-900 text-sm">Fechadura Digital All-in-One</h4>
+                            <p class="text-sm text-gray-600 mt-1 leading-relaxed">Uma fechadura corporativa robusta que já possui o leitor facial integrado nela mesma, além de leitor de digital e senha. Conta com um visor interno para ver quem está tocando a campainha integrada.</p>
+                        </div>
+                    </div>
+                    <div class="flex gap-4 p-4 bg-gray-50 rounded-xl">
+                        <i data-lucide="battery-charging" class="w-6 h-6 text-emerald-600 shrink-0"></i>
+                        <div>
+                            <h4 class="font-bold text-gray-900 text-sm">Por que o investimento é menor?</h4>
+                            <p class="text-sm text-gray-600 mt-1 leading-relaxed">Ela é alimentada por bateria recarregável (dura em média 3 a 4 meses pelo volume da sua equipe) e não exige passagem de cabos complexos pela parede, tornando a instalação muito mais rápida e dispensando o monitor na mesa.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Nota de Escopo Transparência Total -->
+        <div class="max-w-4xl mx-auto bg-[#f8f9fa] rounded-2xl p-6 md:p-8 border border-gray-200 reveal">
+            <h4 class="font-bold text-gray-900 text-center uppercase tracking-widest text-sm mb-6">Nota de Escopo com Transparência Total</h4>
+            <div class="grid md:grid-cols-2 gap-6">
+                <div>
+                    <div class="flex items-center gap-2 mb-3">
+                        <i data-lucide="check-circle-2" class="w-5 h-5 text-emerald-500"></i>
+                        <h5 class="font-bold text-gray-900">INCLUÍDO</h5>
+                    </div>
+                    <ul class="space-y-2 text-sm text-gray-600">
+                        <li>• Fornecimento dos equipamentos originais</li>
+                        <li>• Instalação com acabamento fino</li>
+                        <li>• Configuração dos administradores</li>
+                        <li>• Cadastramento inicial da equipe</li>
+                        <li>• Treinamento de uso</li>
+                    </ul>
+                </div>
+                <div>
+                    <div class="flex items-center gap-2 mb-3">
+                        <i data-lucide="x-circle" class="w-5 h-5 text-red-400"></i>
+                        <h5 class="font-bold text-gray-900">NÃO INCLUÍDO</h5>
+                    </div>
+                    <ul class="space-y-2 text-sm text-gray-600">
+                        <li>• Adequações de marcenaria complexa</li>
+                        <li>• Adequações de serralheria fora do padrão</li>
+                        <li class="italic text-xs mt-2 text-gray-500">* Se for necessário, sempre avisamos antes de iniciar a obra.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<!-- ===================== COMPARATIVO DE MERCADO ===================== -->
+<section class="py-28 bg-[#f8f9fa] border-y border-gray-200/60">
+    <div class="max-w-5xl mx-auto px-4">
+        <div class="text-center mb-16 reveal">
+            <span class="text-brand-yellow font-bold uppercase tracking-widest text-xs">Transparência Total</span>
+            <h2 class="text-3xl md:text-5xl font-bold text-gray-900 mt-3">O modelo comum vs <br>A Engenharia Vision.</h2>
+            <p class="text-gray-500 mt-5 max-w-xl mx-auto text-lg">Para que você saiba exatamente o impacto de elevar o nível de controle do seu escritório.</p>
+        </div>
+
+        <div class="bg-white rounded-2xl shadow-premium-card border border-gray-100 reveal mt-12 relative overflow-hidden">
+            <div class="absolute top-0 right-0 w-64 h-64 bg-brand-yellow/5 rounded-full blur-3xl pointer-events-none"></div>
+            
+            <h3 class="font-bold text-gray-900 text-xl md:text-2xl mb-8 text-center relative z-10 pt-8 px-4">
+                O Abismo entre "Chaves Comuns" e o <span class="text-brand-yellow">Acesso Facial Vision</span>
+            </h3>
+
+            <!-- Componente Grid Responsivo Mobile-First -->
+            <div class="relative z-10 pb-8 px-4 md:px-8">
+                <!-- Desktop Header -->
+                <div class="hidden md:grid grid-cols-3 bg-gray-50 rounded-t-xl border-b border-gray-200">
+                    <div class="py-4 px-6 font-bold text-gray-700">Indicador Operacional</div>
+                    <div class="py-4 px-6 font-bold text-gray-500 text-center">Controle Tradicional</div>
+                    <div class="py-4 px-6 bg-brand-yellow/10 font-bold text-brand-goldDark text-center rounded-tr-xl text-lg">Acesso Vision</div>
+                </div>
+
+                <!-- Rows Container -->
+                <div class="flex flex-col gap-4 md:gap-0">
+                    
+                    <!-- Row 1 -->
+                    <div class="bg-white border border-gray-100 md:border-0 md:border-b md:border-gray-100 rounded-2xl md:rounded-none p-5 md:p-0 grid grid-cols-1 md:grid-cols-3 shadow-sm md:shadow-none items-center">
+                        <div class="font-bold text-gray-900 md:text-gray-800 text-center md:text-left text-lg md:text-sm mb-4 md:mb-0 md:py-5 md:px-6 border-b border-gray-100 md:border-0 pb-3 md:pb-0">Credenciais</div>
+                        <div class="grid grid-cols-2 md:grid-cols-2 md:col-span-2 gap-4 md:gap-0 h-full">
+                            <div class="flex flex-col items-center justify-center md:py-5 md:px-4">
+                                <span class="md:hidden text-[10px] font-bold uppercase tracking-widest text-gray-400 mb-2">Comum</span>
+                                <span class="text-gray-500 text-sm font-medium text-center">Chaves, TAGs, Senhas</span>
+                            </div>
+                            <div class="flex flex-col items-center justify-center md:py-5 md:px-4 md:bg-brand-yellow/5">
+                                <span class="md:hidden text-[10px] font-bold uppercase tracking-widest text-brand-goldDark mb-2">Vision</span>
+                                <span class="bg-emerald-50 text-emerald-600 px-3 py-1.5 rounded-lg text-xs font-bold text-center w-full">Biometria Facial (Intransferível)</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Row 2 -->
+                    <div class="bg-white border border-gray-100 md:border-0 md:border-b md:border-gray-100 rounded-2xl md:rounded-none p-5 md:p-0 grid grid-cols-1 md:grid-cols-3 shadow-sm md:shadow-none items-center">
+                        <div class="font-bold text-gray-900 md:text-gray-800 text-center md:text-left text-lg md:text-sm mb-4 md:mb-0 md:py-5 md:px-6 border-b border-gray-100 md:border-0 pb-3 md:pb-0">Gestão de Desligamentos</div>
+                        <div class="grid grid-cols-2 md:grid-cols-2 md:col-span-2 gap-4 md:gap-0 h-full">
+                            <div class="flex flex-col items-center justify-center md:py-5 md:px-4">
+                                <span class="md:hidden text-[10px] font-bold uppercase tracking-widest text-gray-400 mb-2">Comum</span>
+                                <span class="text-gray-500 text-sm font-medium text-center">Trocar miolo / senhas</span>
+                            </div>
+                            <div class="flex flex-col items-center justify-center md:py-5 md:px-4 md:bg-brand-yellow/5">
+                                <span class="md:hidden text-[10px] font-bold uppercase tracking-widest text-brand-goldDark mb-2">Vision</span>
+                                <span class="text-gray-900 font-bold text-sm text-center">Remoção em 1 clique</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Row 3 -->
+                    <div class="bg-white border border-gray-100 md:border-0 md:border-b md:border-gray-100 rounded-2xl md:rounded-none p-5 md:p-0 grid grid-cols-1 md:grid-cols-3 shadow-sm md:shadow-none items-center">
+                        <div class="font-bold text-gray-900 md:text-gray-800 text-center md:text-left text-lg md:text-sm mb-4 md:mb-0 md:py-5 md:px-6 border-b border-gray-100 md:border-0 pb-3 md:pb-0">Triagem de Visitantes</div>
+                        <div class="grid grid-cols-2 md:grid-cols-2 md:col-span-2 gap-4 md:gap-0 h-full">
+                            <div class="flex flex-col items-center justify-center md:py-5 md:px-4">
+                                <span class="md:hidden text-[10px] font-bold uppercase tracking-widest text-gray-400 mb-2">Comum</span>
+                                <span class="text-gray-500 text-sm font-medium text-center">Porta fechada (Cega)</span>
+                            </div>
+                            <div class="flex flex-col items-center justify-center md:py-5 md:px-4 md:bg-brand-yellow/5">
+                                <span class="md:hidden text-[10px] font-bold uppercase tracking-widest text-brand-goldDark mb-2">Vision</span>
+                                <span class="text-gray-900 font-bold text-sm text-center">Visualização Alta Definição</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Row 4 -->
+                    <div class="bg-white border border-gray-100 md:border-0 rounded-2xl md:rounded-none p-5 md:p-0 grid grid-cols-1 md:grid-cols-3 shadow-sm md:shadow-none items-center md:rounded-b-xl">
+                        <div class="font-bold text-gray-900 md:text-gray-800 text-center md:text-left text-lg md:text-sm mb-4 md:mb-0 md:py-5 md:px-6 border-b border-gray-100 md:border-0 pb-3 md:pb-0">Design e Status</div>
+                        <div class="grid grid-cols-2 md:grid-cols-2 md:col-span-2 gap-4 md:gap-0 h-full">
+                            <div class="flex flex-col items-center justify-center md:py-5 md:px-4">
+                                <span class="md:hidden text-[10px] font-bold uppercase tracking-widest text-gray-400 mb-2">Comum</span>
+                                <span class="text-gray-500 text-sm font-medium text-center">Interfone padrão de plástico</span>
+                            </div>
+                            <div class="flex flex-col items-center justify-center md:py-5 md:px-4 md:bg-brand-yellow/5 md:rounded-br-xl">
+                                <span class="md:hidden text-[10px] font-bold uppercase tracking-widest text-brand-goldDark mb-2">Vision</span>
+                                <span class="text-gray-900 font-bold text-sm text-center">Visual Premium (Série A)</span>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ===================== INVESTIMENTO ===================== -->
+<section id="investimento" class="py-28 bg-white relative overflow-hidden">
+    <div class="max-w-6xl mx-auto px-4 relative z-10">
+        <div class="text-center mb-16 reveal">
+            <span class="text-brand-yellow font-bold uppercase tracking-widest text-xs">Investimento do Projeto</span>
+            <h2 class="text-3xl md:text-5xl font-bold text-gray-900 mt-3">Apresentação dos Pacotes</h2>
+            <p class="text-gray-500 mt-4 max-w-xl mx-auto text-lg">Para que a segurança corporativa não pese no fluxo de caixa da empresa.</p>
+        </div>
+
+        <div class="grid lg:grid-cols-2 gap-8 reveal">
+
+            <!-- OPÇÃO 2: SMART CORPORATE -->
+            <div class="tier-card bg-white rounded-[2rem] p-10 border border-gray-200 shadow-glass relative overflow-hidden flex flex-col">
+                <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-gray-200 to-gray-300 rounded-t-[2rem]"></div>
+                <div class="mb-8">
+                    <p class="text-[10px] font-bold uppercase tracking-widest text-gray-400 mb-2">Opção 2</p>
+                    <h3 class="font-bold text-gray-900 text-2xl">Smart Corporate</h3>
+                    <p class="text-gray-500 text-sm mt-2 leading-relaxed">Exatamente dentro da faixa de investimento que você solicitou, focada em agilidade e design.</p>
+                </div>
+
+                <div class="mb-8 p-6 bg-gray-50 rounded-2xl">
+                    <p class="text-xs text-gray-500 uppercase tracking-widest font-bold mb-2">Parcelamento Sem Juros</p>
+                    <div class="flex items-end gap-2">
+                        <span class="text-3xl font-bold text-gray-600">6x</span>
+                        <span class="text-5xl font-extrabold text-gray-900">R$ 565</span>
+                    </div>
+                    <p class="text-sm text-gray-600 mt-3 font-medium">Ou R$ 3.220,50 à vista no PIX (5% OFF)<br><span class="text-xs text-gray-400 font-normal">Valor base: R$ 3.390,00</span></p>
+                </div>
+
+                <div class="space-y-3 mb-8 flex-1">
+                    <div class="flex items-start gap-3 p-3 bg-white border border-gray-100 rounded-xl shadow-sm">
+                        <i data-lucide="check" class="w-4 h-4 text-emerald-500 shrink-0 mt-0.5"></i>
+                        <p class="text-sm text-gray-600">Fechadura Digital com Leitor Facial</p>
+                    </div>
+                    <div class="flex items-start gap-3 p-3 bg-white border border-gray-100 rounded-xl shadow-sm">
+                        <i data-lucide="check" class="w-4 h-4 text-emerald-500 shrink-0 mt-0.5"></i>
+                        <p class="text-sm text-gray-600">Instalação e Configuração</p>
+                    </div>
+                    <div class="flex items-start gap-3 p-3 bg-white border border-gray-100 rounded-xl shadow-sm">
+                        <i data-lucide="check" class="w-4 h-4 text-emerald-500 shrink-0 mt-0.5"></i>
+                        <p class="text-sm text-gray-600">Operação via Bateria Recarregável</p>
+                    </div>
+                </div>
+
+                <a href="https://wa.me/5511930816696?text=Olá,%20vamos%20seguir%20com%20a%20Opção%202%20(Smart%20Corporate)%20para%20o%20escritório!" target="_blank" class="w-full border-2 border-gray-200 text-gray-700 font-bold py-4 rounded-2xl flex items-center justify-center gap-2 hover:border-gray-400 transition-all text-sm uppercase tracking-widest mt-auto">
+                    Aprovar Smart Corporate
+                </a>
+            </div>
+
+            <!-- OPÇÃO 1: PREMIUM VISION (DESTAQUE) -->
+            <div class="tier-card featured bg-white rounded-[2rem] p-10 shadow-glow-md relative overflow-hidden flex flex-col">
+                <div class="absolute top-0 left-0 w-full h-1.5 bg-gradient-to-r from-brand-yellow to-brand-goldLight rounded-t-[2rem]"></div>
+                <div class="absolute top-4 right-4">
+                    <span class="bg-brand-yellow text-black text-[10px] font-extrabold px-4 py-1.5 rounded-full uppercase tracking-widest shadow-glow">A Recomendação</span>
+                </div>
+
+                <div class="mb-8">
+                    <p class="text-[10px] font-bold uppercase tracking-widest text-brand-yellow mb-2">Opção 1 (O Vídeo)</p>
+                    <h3 class="font-bold text-gray-900 text-2xl">Premium Vision</h3>
+                    <p class="text-gray-500 text-sm mt-2 leading-relaxed">O ecossistema completo. A solução definitiva de longo prazo, status Série A e energia ininterrupta.</p>
+                </div>
+
+                <div class="mb-8 p-6 bg-brand-yellow/5 border border-brand-yellow/20 rounded-2xl">
+                    <p class="text-xs text-brand-goldDark uppercase tracking-widest font-bold mb-2">Parcelamento Sem Juros</p>
+                    <div class="flex items-end gap-2">
+                        <span class="text-3xl font-bold text-gray-700">6x</span>
+                        <span class="text-5xl font-extrabold text-gray-900">R$ 981<span class="text-3xl">,66</span></span>
+                    </div>
+                    <p class="text-sm text-gray-700 mt-3 font-medium">Ou R$ 5.595,50 à vista no PIX (5% OFF)<br><span class="text-xs text-gray-500 font-normal">Valor base: R$ 5.890,00</span></p>
+                </div>
+
+                <div class="space-y-3 mb-8 flex-1">
+                    <div class="flex items-start gap-3 p-3 bg-white border border-gray-100 rounded-xl shadow-sm">
+                        <i data-lucide="check-circle-2" class="w-4 h-4 text-emerald-500 shrink-0 mt-0.5"></i>
+                        <p class="text-sm text-gray-700"><strong>Terminal de Reconhecimento Facial</strong></p>
+                    </div>
+                    <div class="flex items-start gap-3 p-3 bg-white border border-gray-100 rounded-xl shadow-sm">
+                        <i data-lucide="check-circle-2" class="w-4 h-4 text-emerald-500 shrink-0 mt-0.5"></i>
+                        <p class="text-sm text-gray-700"><strong>Monitor Interno de Triagem de Vídeo</strong></p>
+                    </div>
+                    <div class="flex items-start gap-3 p-3 bg-white border border-gray-100 rounded-xl shadow-sm">
+                        <i data-lucide="check-circle-2" class="w-4 h-4 text-emerald-500 shrink-0 mt-0.5"></i>
+                        <p class="text-sm text-gray-700"><strong>Fechadura Magnética Alta Força</strong></p>
+                    </div>
+                    <div class="flex items-start gap-3 p-3 bg-white border border-gray-100 rounded-xl shadow-sm">
+                        <i data-lucide="check-circle-2" class="w-4 h-4 text-emerald-500 shrink-0 mt-0.5"></i>
+                        <p class="text-sm text-gray-700"><strong>Cabeamento e Energia Estruturada</strong></p>
+                    </div>
+                </div>
+
+                <a href="https://wa.me/5511930816696?text=Olá,%20vamos%20fazer%20o%20certo!%20Aprovo%20a%20Opção%201%20(Premium%20Vision)%20para%20o%20escritório." target="_blank" class="w-full bg-brand-yellow hover:bg-brand-goldLight text-black font-bold py-4 rounded-2xl flex items-center justify-center gap-2 transition-all shadow-glow-md text-sm uppercase tracking-widest group relative overflow-hidden mt-auto">
+                    <div class="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-300 rounded-2xl"></div>
+                    <i data-lucide="shield-check" class="w-5 h-5 relative z-10"></i>
+                    <span class="relative z-10">Aprovar Premium Vision</span>
+                    <i data-lucide="arrow-right" class="w-4 h-4 relative z-10 group-hover:translate-x-1 transition-transform"></i>
+                </a>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<!-- ===================== ONBOARDING ===================== -->
+<section class="py-24 bg-[#f8f9fa] relative overflow-hidden">
+    <div class="max-w-5xl mx-auto px-4 reveal">
+        <div class="text-center mb-16">
+            <span class="text-brand-yellow font-bold uppercase tracking-widest text-xs">O Início da Parceria</span>
+            <h2 class="text-3xl md:text-4xl font-extrabold text-gray-900 mt-3 tracking-tight">Onboarding: Instalação e Entrega</h2>
+            <p class="text-gray-500 mt-4 max-w-2xl mx-auto text-lg leading-relaxed">
+                Ao aprovar o projeto, iniciaremos o processo de transição de forma rápida e silenciosa, garantindo que o seu escritório não pare durante a execução.
+            </p>
+        </div>
+
+        <div class="relative max-w-3xl mx-auto mt-12">
+            <div class="absolute left-8 md:left-1/2 top-0 bottom-0 w-1 bg-gray-200 transform md:-translate-x-1/2 rounded-full"></div>
+            
+            <div class="space-y-12">
+                <!-- Step 1 -->
+                <div class="relative flex items-center md:justify-center">
+                    <div class="w-16 h-16 bg-white border-4 border-gray-100 rounded-full flex items-center justify-center z-10 shrink-0 text-gray-900 font-black text-xl shadow-sm">1</div>
+                    <div class="ml-6 md:ml-0 md:absolute md:w-[45%] md:left-0 md:pr-12 md:text-right bg-white md:bg-transparent p-5 md:p-0 rounded-2xl shadow-sm md:shadow-none border md:border-none border-gray-100">
+                        <h4 class="text-lg font-bold text-gray-900">Reunião de Kickoff</h4>
+                        <p class="text-sm text-gray-500 mt-2 leading-relaxed">Alinhamento das regras de acesso, horários de funcionamento da porta e coleta das faces da equipe gestora.</p>
+                    </div>
+                </div>
+                <!-- Step 2 -->
+                <div class="relative flex items-center md:justify-center">
+                    <div class="w-16 h-16 bg-white border-4 border-gray-100 rounded-full flex items-center justify-center z-10 shrink-0 text-gray-900 font-black text-xl shadow-sm">2</div>
+                    <div class="ml-6 md:ml-0 md:absolute md:w-[45%] md:right-0 md:pl-12 md:text-left bg-white md:bg-transparent p-5 md:p-0 rounded-2xl shadow-sm md:shadow-none border md:border-none border-gray-100">
+                        <h4 class="text-lg font-bold text-gray-900">Instalação Silenciosa</h4>
+                        <p class="text-sm text-gray-500 mt-2 leading-relaxed">Fixação dos equipamentos e passagem de cabeamento (na Opção 1) realizadas com alto padrão de acabamento e mínima interferência no ambiente de trabalho.</p>
+                    </div>
+                </div>
+                <!-- Step 3 -->
+                <div class="relative flex items-center md:justify-center">
+                    <div class="w-16 h-16 bg-white border-4 border-gray-100 rounded-full flex items-center justify-center z-10 shrink-0 text-gray-900 font-black text-xl shadow-sm">3</div>
+                    <div class="ml-6 md:ml-0 md:absolute md:w-[45%] md:left-0 md:pr-12 md:text-right bg-white md:bg-transparent p-5 md:p-0 rounded-2xl shadow-sm md:shadow-none border md:border-none border-gray-100">
+                        <h4 class="text-lg font-bold text-gray-900">Cadastramento Total</h4>
+                        <p class="text-sm text-gray-500 mt-2 leading-relaxed">Registro guiado de todos os 20 colaboradores no sistema facial. Processo que leva menos de 1 minuto por pessoa.</p>
+                    </div>
+                </div>
+                <!-- Step 4 -->
+                <div class="relative flex items-center md:justify-center">
+                    <div class="w-16 h-16 bg-brand-yellow border-4 border-brand-yellow/30 rounded-full flex items-center justify-center z-10 shrink-0 text-black font-black text-xl shadow-md">
+                        <i data-lucide="check" class="w-6 h-6"></i>
+                    </div>
+                    <div class="ml-6 md:ml-0 md:absolute md:w-[45%] md:right-0 md:pl-12 md:text-left bg-white md:bg-transparent p-5 md:p-0 rounded-2xl shadow-sm md:shadow-none border md:border-none border-gray-100">
+                        <h4 class="text-lg font-bold text-brand-goldDark">Go-Live e Operação</h4>
+                        <p class="text-sm text-gray-700 font-medium mt-2 leading-relaxed">As chaves são aposentadas. O escritório passa a operar com o novo fluxo de entrada corporativo 100% autônomo.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ===================== VISION CARE & VEREDITO ===================== -->
+<section id="visioncare" class="py-24 bg-white relative overflow-hidden">
+    <div class="max-w-5xl mx-auto px-4 reveal">
+        
+        <!-- VISION CARE -->
+        <div class="bg-gradient-to-br from-[#09090b] to-[#18181b] rounded-3xl p-8 md:p-12 mb-16 shadow-2xl relative overflow-hidden text-center md:text-left flex flex-col md:flex-row items-center gap-8 md:gap-12">
+            <div class="absolute top-0 right-0 w-64 h-64 bg-brand-yellow/10 rounded-full blur-3xl pointer-events-none"></div>
+            
+            <div class="w-20 h-20 md:w-24 md:h-24 bg-brand-yellow/10 rounded-full flex items-center justify-center shrink-0 shadow-glow">
+                <i data-lucide="activity" class="w-10 h-10 md:w-12 md:h-12 text-brand-yellow"></i>
+            </div>
+            
+            <div class="flex-1">
+                <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-brand-yellow/30 bg-brand-yellow/10 mb-4">
+                    <i data-lucide="award" class="w-3.5 h-3.5 text-brand-yellow"></i>
+                    <span class="text-brand-yellow text-[10px] font-bold uppercase tracking-widest">Sustentação Operacional</span>
+                </div>
+                <h3 class="text-2xl md:text-3xl font-bold text-white mb-3">Vision Care <span class="text-gray-400 text-sm font-normal block md:inline mt-1 md:mt-0">(Recomendado para Opção 1)</span></h3>
+                <p class="text-gray-400 text-sm md:text-base leading-relaxed mb-4 max-w-2xl">
+                    Equipamentos de segurança empresarial não podem parar. A Vision assume a manutenção preventiva (ajuste de eletroímã, atualização do software facial) e garante <strong>visitas corretivas ilimitadas sem cobrar taxa de deslocamento</strong>. É o seguro de vida do acesso da sua empresa.
+                </p>
+            </div>
+
+            <div class="text-center md:text-right shrink-0 bg-white/5 p-6 rounded-2xl border border-white/10 backdrop-blur-md">
+                <p class="text-[10px] text-gray-400 uppercase tracking-widest font-bold mb-1">Valor Fixo</p>
+                <div class="text-3xl font-bold text-brand-yellow mb-1">R$ 150<span class="text-lg text-brand-yellow/80">/mês</span></div>
+                <p class="text-xs text-gray-500">Sem surpresas</p>
+            </div>
+        </div>
+
+        <!-- O VEREDITO -->
+        <div class="max-w-3xl mx-auto text-center mt-20">
+            <span class="text-brand-yellow font-bold uppercase tracking-widest text-xs">Facilitação e Próximo Passo</span>
+            <h2 class="text-3xl md:text-4xl font-extrabold text-gray-900 mt-3 tracking-tight mb-8">💡 O Veredito do Consultor</h2>
+            
+            <div class="bg-[#f8f9fa] rounded-[2rem] p-8 md:p-12 border border-gray-200 shadow-glass text-left relative">
+                <i data-lucide="quote" class="absolute top-8 left-8 w-12 h-12 text-gray-200 opacity-50"></i>
+                <p class="text-gray-700 text-lg leading-relaxed relative z-10 indent-8 mb-6">
+                    A <strong>Opção 2</strong> resolve o seu problema imediato com muita elegância e fica exatamente no valor que você buscou.
+                </p>
+                <p class="text-gray-700 text-lg leading-relaxed relative z-10 mb-8">
+                    Porém, se o fluxo de caixa permitir o parcelamento da <strong>Opção 1</strong>, ela é o melhor movimento estratégico. Como sua empresa está crescendo, um sistema ligado diretamente na energia (sem depender de recarregar baterias) e com um monitor dedicado para triagem de visitantes oferece uma paz de espírito que se paga logo nos primeiros meses de uso.
+                </p>
+                
+                <div class="pt-8 border-t border-gray-200 text-center">
+                    <p class="font-bold text-gray-900 text-lg mb-6">Qual das duas arquiteturas faz mais sentido para o seu escritório hoje?</p>
+                    <a href="https://wa.me/5511930816696?text=Olá,%20vi%20a%20proposta!%20Vamos%20definir%20o%20projeto." target="_blank" class="inline-flex items-center gap-3 bg-brand-yellow text-black font-bold px-8 py-4 rounded-full shadow-glow-md hover:shadow-glow transition-all group">
+                        <i data-lucide="message-circle" class="w-5 h-5"></i>
+                        <span class="text-sm tracking-wide uppercase">Me confirmando, já travo a agenda!</span>
+                        <i data-lucide="arrow-right" class="w-4 h-4 group-hover:translate-x-1 transition-transform"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<!-- ===================== FAQ ===================== -->
+<section class="py-24 bg-white border-t border-gray-200/60">
+    <div class="max-w-3xl mx-auto px-4">
+        <div class="text-center mb-14 reveal">
+            <span class="text-brand-yellow font-bold uppercase tracking-widest text-xs">Tire suas Dúvidas</span>
+            <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mt-3">Perguntas Frequentes</h2>
+        </div>
+        <div class="space-y-4 reveal" id="accordion">
+            <div class="accordion-item bg-white rounded-2xl border border-gray-100 shadow-glass overflow-hidden">
+                <button onclick="toggleAccordion(this)" class="w-full flex items-center justify-between p-6 text-left font-semibold text-gray-800">
+                    <span>Como funciona a entrada de visitantes que não têm a face cadastrada?</span>
+                    <i data-lucide="chevron-down" class="w-5 h-5 text-gray-400 acc-arrow shrink-0"></i>
+                </button>
+                <div class="accordion-content">
+                    <p class="px-6 pb-6 text-gray-500 text-sm leading-relaxed">Em ambas as opções, os dispositivos possuem um botão de campainha tátil na tela. O visitante toca o sino, e a equipe de dentro visualiza a pessoa (pelo monitor de mesa ou visor da fechadura) antes de destrancar a porta com segurança.</p>
+                </div>
+            </div>
+            <div class="accordion-item bg-white rounded-2xl border border-gray-100 shadow-glass overflow-hidden">
+                <button onclick="toggleAccordion(this)" class="w-full flex items-center justify-between p-6 text-left font-semibold text-gray-800">
+                    <span>E se acabar a energia no escritório? A porta fica trancada?</span>
+                    <i data-lucide="chevron-down" class="w-5 h-5 text-gray-400 acc-arrow shrink-0"></i>
+                </button>
+                <div class="accordion-content">
+                    <p class="px-6 pb-6 text-gray-500 text-sm leading-relaxed">A Opção 1 (Premium) utiliza eletroímã, que entra em modo "Fail-Safe" — ou seja, na falta de energia ele solta a porta automaticamente para evitar aprisionamento, podendo também ser ligado a um No-Break para continuar trancado. Já a Opção 2 possui bateria recarregável própria, continuando em funcionamento normal mesmo sem luz no prédio.</p>
+                </div>
+            </div>
+            <div class="accordion-item bg-white rounded-2xl border border-gray-100 shadow-glass overflow-hidden">
+                <button onclick="toggleAccordion(this)" class="w-full flex items-center justify-between p-6 text-left font-semibold text-gray-800">
+                    <span>O reconhecimento facial funciona no escuro ou com o colaborador de óculos?</span>
+                    <i data-lucide="chevron-down" class="w-5 h-5 text-gray-400 acc-arrow shrink-0"></i>
+                </button>
+                <div class="accordion-content">
+                    <p class="px-6 pb-6 text-gray-500 text-sm leading-relaxed">Sim. Os terminais da Vision utilizam mapeamento tridimensional com feixes de infravermelho. Isso significa que ele lê a profundidade do rosto, e não apenas uma "foto". Funciona perfeitamente em ambientes sem luz e mesmo com o uso de óculos de grau ou máscaras de proteção.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ===================== FOOTER CENTRALIZADO ===================== -->
+<footer class="bg-[#09090b] py-16 text-center border-t border-zinc-900 group">
+    <div class="max-w-4xl mx-auto px-4">
+        
+        <div class="flex flex-col items-center justify-center leading-none opacity-40 group-hover:opacity-100 transition-opacity duration-500 cursor-default mb-10">
+            <div class="flex flex-col items-center">
+                <div class="relative flex items-baseline leading-none">
+                    <span class="font-logo font-bold text-[3.5rem] text-white lowercase tracking-[-0.05em] leading-none">vısıon</span>
+                    <span class="absolute -right-3.5 top-2.5 text-[0.75rem] text-brand-yellow font-bold">®</span>
+                </div>
+                <span class="font-tech text-[0.75rem] font-bold text-zinc-500 lowercase -mt-3 ml-1.5 text-center w-full" style="letter-spacing: 0.53em;">business</span>
+            </div>
+        </div>
+
+        <div class="text-zinc-500 text-xs md:text-sm leading-relaxed space-y-1 mb-8 opacity-60">
+            <p>Av. Paulista, 1636 - Sala 1504 | Bela Vista, São Paulo SP - CEP 01310-200</p>
+            <p>CNPJ: 62.117.013/0001-00</p>
+        </div>
+
+        <div class="inline-flex items-center justify-center gap-2 border border-zinc-800 bg-zinc-900/50 px-5 py-2.5 rounded-full mb-6 shadow-sm">
+            <i data-lucide="lock" class="w-3.5 h-3.5 text-brand-yellow"></i>
+            <span class="text-[10px] md:text-xs text-zinc-400 uppercase tracking-widest font-bold">Documento Confidencial</span>
+        </div>
+        
+        <p class="text-[10px] text-zinc-700 uppercase tracking-widest font-bold mt-6">ID-VISION-BUSINESS-26.02</p>
+    </div>
+</footer>
+
+<!-- ===================== CTA FLUTUANTE ===================== -->
+<div id="cta-float" class="fixed bottom-6 right-6 z-40 hidden md:block">
+    <a href="https://wa.me/5511930816696?text=Olá,%20vi%20a%20proposta!%20Vamos%20definir%20o%20projeto." target="_blank" class="flex items-center gap-3 bg-brand-yellow text-black font-bold px-6 py-4 rounded-full shadow-glow-md hover:shadow-glow transition-all group">
+        <i data-lucide="message-circle" class="w-5 h-5"></i>
+        <span class="text-sm tracking-wide uppercase">Falar com Consultor</span>
+        <i data-lucide="arrow-right" class="w-4 h-4 group-hover:translate-x-1 transition-transform"></i>
+    </a>
+</div>
+
+<!-- ===================== SCRIPTS ===================== -->
+<script>
+    // INIT LUCIDE
+    lucide.createIcons();
+
+    // LOCK SCREEN + STATICFORMS
+    function checkPassword() {
+        const input = document.getElementById('password-input').value;
+        const errorMsg = document.getElementById('error-msg');
+        
+        // Senha configurada para o Gabriel
+        if (input.toUpperCase() === 'GABRIEL2026' || input.toUpperCase() === 'VISION') {
+            const lockScreen = document.getElementById('lock-screen');
+            lockScreen.style.opacity = '0';
+
+            // Start Video
+            const video = document.getElementById("vision-video");
+            if (video && video.paused) {
+                video.muted = true;
+                video.play().catch(e => {});
+            }
+
+            // Envio silencioso do alerta de acesso via StaticForms
+            fetch('https://api.staticforms.dev/submit', {
+                method: 'POST',
+                headers: { 
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json'
+                },
+                body: JSON.stringify({
+                    accessKey: "sf_077ej49gjha153gk3m6ceecf", // Chave da sua conta
+                    apiKey: "sf_077ej49gjha153gk3m6ceecf", // Adicionado fallback para apiKey conforme documentação
+                    subject: "🚨 ALERTA: Proposta Acessada (Gabriel)",
+                    name: "Sistema Vision",
+                    email: "diretoria@visionsp.com.br", // Email que preencherá o "Reply-To"
+                    message: `O cliente acabou de abrir a proposta!\n\n👤 Cliente: Gabriel - Acesso Corporativo\n🔑 Senha Utilizada: ${input}\n🕒 Horário: ${new Date().toLocaleString('pt-BR')}`
+                })
+            }).catch(error => console.log('Log de acesso registrado.'));
+
+            setTimeout(() => { 
+                lockScreen.style.display = 'none'; 
+                const htmlRoot = document.getElementById('html-root');
+                if(htmlRoot) {
+                    htmlRoot.classList.remove('overflow-hidden', 'h-screen');
+                    htmlRoot.classList.add('overflow-x-hidden');
+                }
+                document.body.classList.remove('overflow-hidden', 'h-screen');
+            }, 700);
+        } else {
+            errorMsg.classList.remove('hidden');
+            document.getElementById('password-input').style.borderColor = 'rgba(239,68,68,0.5)';
+            setTimeout(() => {
+                errorMsg.classList.add('hidden');
+                document.getElementById('password-input').style.borderColor = '';
+            }, 3000);
+        }
+    }
+
+    // REVEAL ON SCROLL
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('active');
+            }
+        });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+    // ANIMATE COUNTERS
+    function animateCounter(el, target) {
+        let current = 0;
+        // Ajuste de velocidade baseado no target (20 e 100 sáo números pequenos/médios)
+        const increment = Math.ceil(target / 40) > 0 ? Math.ceil(target / 40) : 1; 
+        const interval = setInterval(() => {
+            current = Math.min(current + increment, target);
+            el.textContent = current + (el.textContent.includes('%') ? '%' : ''); // Preserva o % se existir no target incial, embora aqui seja setado via HTML depois.
+            
+            // Re-aplicando formatações visuais se necessário (no caso, o % está no HTML fixo em alguns, mas gerado no data-target não tem. Tratando o 100%)
+            if(target === 100) el.textContent = current + '%';
+
+            if (current === target) clearInterval(interval);
+        }, 30);
+    }
+    const counterObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const el = entry.target;
+                const targetText = el.textContent; // pega texto inicial
+                const target = parseInt(el.getAttribute('data-target'));
+                
+                // Trata elementos não-numéricos ou específicos (como ∞)
+                if(!isNaN(target)) {
+                     el.textContent = '0';
+                     animateCounter(el, target);
+                }
+                counterObserver.unobserve(el);
+            }
+        });
+    }, { threshold: 0.5 });
+    document.querySelectorAll('[data-target]').forEach(el => counterObserver.observe(el));
+
+
+    // NAVBAR E CTA SCROLL
+    window.addEventListener('scroll', () => {
+        const navbar = document.getElementById('navbar');
+        const ctaFloat = document.getElementById('cta-float');
+        
+        if (window.scrollY > 50) {
+            navbar.classList.add('shadow-md');
+        } else {
+            navbar.classList.remove('shadow-md');
+        }
+
+        if (window.scrollY > 400) {
+            ctaFloat.classList.remove('hidden');
+        } else {
+            ctaFloat.classList.add('hidden');
+        }
+    });
+
+    // ACCORDION
+    function toggleAccordion(btn) {
+        const item = btn.parentElement;
+        const isOpen = item.classList.contains('open');
+        document.querySelectorAll('.accordion-item').forEach(i => i.classList.remove('open'));
+        if (!isOpen) item.classList.add('open');
+        lucide.createIcons();
+    }
+
+    // VIDEO UNMUTE
+    document.addEventListener("DOMContentLoaded", function() {
+        const video = document.getElementById("vision-video");
+        const overlay = document.getElementById("unmute-overlay");
+        
+        if (video && overlay) {
+            overlay.addEventListener("click", function(e) {
+                e.stopPropagation(); 
+                video.muted = false;
+                video.loop = false; 
+                video.currentTime = 0;
+                video.play();
+                overlay.style.opacity = "0";
+                setTimeout(() => { overlay.style.display = "none"; }, 500); 
+            });
+
+            video.addEventListener("click", function() {
+                if (overlay.style.display === "none") {
+                    if (video.paused) { video.play(); } else { video.pause(); }
+                }
+            });
+        }
+    });
+</script>
+</body>
+</html>

@@ -1,0 +1,1032 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth overflow-hidden" id="html-root">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Proposta Vision Business | Condomínio Vivacor</title>
+    <meta name="description" content="Estudo de Viabilidade Técnica - Controle de Acesso Vivacor.">
+    <meta name="theme-color" content="#09090b">
+    
+    <!-- Fonts & Icons -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@700;800&family=Quicksand:wght@500;600;700&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: { 
+                        sans: ['"Outfit"', 'sans-serif'],
+                        logo: ['"League Spartan"', 'sans-serif'],
+                        tech: ['"Quicksand"', 'sans-serif'],
+                        visy: ['"Outfit"', 'sans-serif']
+                    },
+                    colors: {
+                        brand: {
+                            yellow: '#b9880e', 
+                            goldLight: '#FFDE59', 
+                            goldDark: '#BA8500',  
+                            black: '#09090b', /* Zinc 950 */
+                            dark: '#000000',
+                            surface: '#18181b', /* Zinc 900 */
+                            gray: '#27272a', /* Zinc 800 */
+                        },
+                        visy: {
+                            primary: '#6366f1',
+                            secondary: '#a855f7'
+                        }
+                    },
+                    boxShadow: {
+                        'glow': '0 0 20px rgba(185, 136, 14, 0.15)',
+                        'glow-strong': '0 0 40px rgba(185, 136, 14, 0.3)',
+                        'glass': '0 8px 32px 0 rgba(0, 0, 0, 0.3)',
+                        'hero-curve': '0 20px 50px -10px rgba(0, 0, 0, 0.9)',
+                    },
+                    animation: {
+                        'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                        'slide-in': 'slideIn 0.3s ease-out forwards',
+                        'fade-in': 'fadeIn 0.5s ease-out forwards',
+                        'scan-beam': 'scanBeam 2s ease-in-out infinite',
+                    },
+                    keyframes: {
+                        slideIn: {
+                            '0%': { opacity: '0', transform: 'translateX(-10px)' },
+                            '100%': { opacity: '1', transform: 'translateX(0)' },
+                        },
+                        fadeIn: {
+                            '0%': { opacity: '0', transform: 'translateY(10px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' },
+                        },
+                        scanBeam: {
+                            '0%, 100%': { opacity: '0' },
+                            '50%': { opacity: '0.8' }
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #09090b; }
+        ::-webkit-scrollbar-thumb { background: #3f3f46; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #b9880e; }
+        
+        .bg-grid-pattern {
+            background-image: linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+                              linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+            background-size: 40px 40px;
+        }
+
+        .text-gold-shine {
+            background: linear-gradient(to right, #b9880e 20%, #FFDE59 50%, #b9880e 80%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-size: 200% auto;
+            animation: shine 4s linear infinite;
+            filter: drop-shadow(0 0 1px rgba(185, 136, 14, 0.3));
+        }
+
+        .bg-gold-shine {
+            background: linear-gradient(to right, #b9880e 0%, #FFDE59 50%, #b9880e 100%);
+            background-size: 200% auto;
+            animation: shine 3s linear infinite;
+            color: #09090b;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+        
+        @keyframes shine {
+            to { background-position: 200% center; }
+        }
+        
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease-out;
+        }
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .glass-text-box {
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(228, 228, 231, 0.8);
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Card Glass */
+        .glass-review {
+            background: rgba(24, 24, 27, 0.6);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+        }
+
+        .mask-gradient {
+            mask-image: linear-gradient(to bottom, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 100%);
+            -webkit-mask-image: linear-gradient(to bottom, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 100%);
+        }
+
+        /* Border Fade Effect */
+        .border-fade-silver {
+            position: relative;
+        }
+        .border-fade-silver::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, rgba(255,255,255,0.6) 0%, rgba(255,255,255,0) 50%, rgba(255,255,255,0.6) 100%);
+            pointer-events: none;
+        }
+        
+        /* New Premium Gold Border */
+        .border-premium-gold {
+            position: relative;
+        }
+        .border-premium-gold::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border-radius: 1rem; 
+            padding: 1px; 
+            background: linear-gradient(45deg, #b9880e, #FFDE59, #5a4205, #b9880e); 
+            -webkit-mask: 
+               linear-gradient(#fff 0 0) content-box, 
+               linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor;
+            mask-composite: exclude;
+            opacity: 0.8;
+            pointer-events: none;
+        }
+
+        /* Toggle Switch Styles */
+        .toggle-checkbox:checked {
+            right: 0;
+            border-color: #b9880e;
+        }
+        .toggle-checkbox:checked + .toggle-label {
+            background-color: #b9880e;
+        }
+        .toggle-checkbox:checked + .toggle-label:before {
+            transform: translateX(100%);
+        }
+        
+        .addon-enter {
+            animation: slideDownFade 0.3s ease-out forwards;
+        }
+        @keyframes slideDownFade {
+            from { opacity: 0; transform: translateY(-10px); height: 0; }
+            to { opacity: 1; transform: translateY(0); height: auto; }
+        }
+        
+        /* Accordion Style for FAQ */
+        details > summary {
+            list-style: none;
+        }
+        details > summary::-webkit-details-marker {
+            display: none;
+        }
+
+        /* Whatsapp Button Animation */
+        .whatsapp-pulse {
+            box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7);
+            animation: whatsapp-pulse 1.5s infinite cubic-bezier(0.66, 0, 0, 1);
+        }
+        @keyframes whatsapp-pulse {
+            to {
+                box-shadow: 0 0 0 20px rgba(37, 211, 102, 0);
+            }
+        }
+        
+        /* Lock Screen Input - Redesigned */
+        .lock-input {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: #b9880e;
+            font-family: 'League Spartan', sans-serif;
+            font-size: 1.5rem;
+            text-align: center;
+            outline: none;
+            transition: all 0.3s;
+            letter-spacing: 0.2em;
+            border-radius: 12px;
+        }
+        .lock-input:focus {
+            border-color: #b9880e;
+            background: rgba(255, 255, 255, 0.08);
+            box-shadow: 0 0 15px rgba(185, 136, 14, 0.2);
+        }
+        .lock-input::placeholder {
+            color: #52525b;
+            font-size: 0.9rem;
+            font-family: 'Outfit', sans-serif;
+            font-weight: 300;
+            letter-spacing: normal;
+        }
+
+        /* Lock Animation Classes */
+        .lock-shackle {
+            transform-origin: 12px 10px;
+            transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .unlocked .lock-shackle {
+            transform: rotate(-45deg) translateY(-2px);
+        }
+        .unlocked .lock-body {
+            fill: #22c55e;
+            stroke: #22c55e;
+        }
+        .unlocked .lock-circle {
+            border-color: #22c55e;
+            background-color: rgba(34, 197, 94, 0.1);
+        }
+
+        /* Carousel Styles */
+        .carousel-container {
+            position: relative;
+            overflow: hidden;
+            border-radius: 1rem;
+        }
+        .carousel-slides {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+        }
+        .carousel-slide {
+            min-width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 2rem;
+            background: #f8fafc;
+        }
+        .carousel-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background-color: #d4d4d8;
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+        .carousel-dot.active {
+            background-color: #b9880e;
+            width: 24px;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body class="bg-zinc-50 text-zinc-700 antialiased selection:bg-brand-yellow selection:text-brand-black overflow-x-hidden">
+
+    <!-- LOCK SCREEN -->
+    <div id="lock-screen" class="fixed inset-0 z-[100] bg-zinc-950 flex flex-col items-center justify-center text-center p-4 transition-opacity duration-700 ease-out">
+        <div class="bg-grid-pattern absolute inset-0 opacity-10 pointer-events-none z-0"></div>
+        <div class="absolute top-0 right-0 w-[500px] h-[500px] bg-brand-yellow rounded-full blur-[400px] opacity-10 pointer-events-none"></div>
+
+        <div class="relative flex flex-col items-center justify-center gap-0 mb-10 z-10 mt-[-5vh]">
+            <div class="relative flex items-baseline leading-none">
+                <span class="font-logo font-bold text-[2.5rem] md:text-[4rem] text-gold-shine lowercase tracking-[-0.08em] leading-none">vısıon</span>
+                <span class="text-[0.6rem] md:text-[0.8rem] text-[#b9880e] font-bold ml-1 self-end mb-1 md:mb-2">®</span>
+            </div>
+            <div class="font-tech text-[0.6rem] md:text-[0.9rem] font-light text-zinc-500 lowercase tracking-[0.4em] ml-1 -mt-2 md:-mt-3">
+                business
+            </div>
+        </div>
+        
+        <div class="w-full max-w-xs space-y-6 z-10" id="lock-content">
+            <!-- Cadeado Animado -->
+            <div id="lock-icon-container" class="w-16 h-16 border-2 border-white/10 rounded-full flex items-center justify-center mx-auto text-brand-yellow mb-6 transition-all duration-500 lock-circle bg-white/5">
+                <svg id="lock-svg" class="w-8 h-8 transition-colors duration-500" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path class="lock-shackle" d="M7 11V7a5 5 0 0 1 10 0v4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    <rect class="lock-body transition-colors duration-500" x="3" y="11" width="18" height="11" rx="2" ry="2" stroke="currentColor" stroke-width="2" fill="none"/>
+                    <path class="lock-body transition-colors duration-500" d="M12 16v2" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                </svg>
+            </div>
+
+            <div class="space-y-1">
+                <h2 class="text-white font-bold text-xl tracking-tight">Área Restrita</h2>
+                <p class="text-zinc-500 text-sm font-light">Acesso exclusivo Condomínio Vivacor.</p>
+            </div>
+            
+            <div class="relative group pt-2">
+                <input type="password" id="password-input" class="lock-input w-full py-3 px-4" placeholder="Chave de Acesso" autocomplete="off">
+                <p id="error-msg" class="text-red-500 text-xs mt-3 hidden font-bold">Acesso negado.</p>
+            </div>
+            
+            <button onclick="checkPassword()" class="w-full bg-brand-yellow hover:bg-white text-brand-black hover:text-black font-bold py-3.5 rounded-xl transition-all duration-300 shadow-glow flex items-center justify-center gap-2 transform hover:scale-[1.02]">
+                <span>Acessar Projeto</span>
+                <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"/></svg>
+            </button>
+            
+            <p class="text-[10px] text-zinc-600 mt-6 font-mono opacity-60">
+                Encrypted by Vision Security®
+            </p>
+        </div>
+    </div>
+
+    <!-- Navbar -->
+    <nav class="fixed w-full z-50 top-0 bg-brand-black/95 backdrop-blur-xl border-b border-white/5 transition-all duration-300 shadow-lg no-print">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
+            <div class="flex justify-between h-20 items-center">
+                <div class="flex flex-col items-stretch leading-none select-none cursor-pointer group z-10">
+                    <div class="relative flex items-baseline">
+                        <span class="font-logo font-bold text-[2rem] text-gold-shine lowercase tracking-[-0.08em] leading-[0.8]">vısıon</span>
+                        <span class="text-[0.5rem] text-[#b9880e] font-bold ml-0.5 self-end mb-1">®</span>
+                    </div>
+                    <div class="font-tech text-[0.6rem] font-bold text-zinc-400 lowercase flex justify-between px-0.5 group-hover:text-brand-yellow transition-colors -mt-1 tracking-widest">
+                        <span>b</span><span>u</span><span>s</span><span>i</span><span>n</span><span>e</span><span>s</span><span>s</span>
+                    </div>
+                </div>
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="#diagnostico" class="text-sm font-medium text-zinc-300 hover:text-brand-yellow transition-colors">A Geometria</a>
+                    <a href="#solucao" class="text-sm font-medium text-zinc-300 hover:text-brand-yellow transition-colors">Eclusa Inteligente</a>
+                    <a href="#investimento" class="text-sm font-medium text-zinc-300 hover:text-brand-yellow transition-colors">Investimento</a>
+                </div>
+                <div class="hidden md:flex items-center space-x-6 z-10">
+                    <a href="#investimento" class="bg-brand-yellow hover:bg-white hover:text-brand-black text-brand-black px-6 py-2.5 rounded-full text-sm font-bold shadow-glow transition-all">
+                        Ver Análise
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- CAPA (HERO) -->
+    <header class="bg-brand-black pt-32 pb-32 relative z-10 overflow-hidden text-white min-h-[85vh] flex flex-col justify-center items-center text-center rounded-b-[1.5rem] shadow-hero-curve border-fade-silver">
+        <div class="absolute inset-0 z-0">
+            <!-- Imagem Estacionamento/Rampa -->
+            <img src="https://images.unsplash.com/photo-1621929747188-0b4dc28498d2?q=80&w=2072&auto=format&fit=crop" alt="Rampa de Acesso" class="w-full h-full object-cover opacity-20 mask-gradient">
+            <div class="absolute inset-0 bg-gradient-to-b from-black/80 via-black/60 to-brand-black"></div>
+        </div>
+        
+        <div class="bg-grid-pattern absolute inset-0 opacity-10 pointer-events-none z-0"></div>
+        
+        <div class="max-w-5xl mx-auto px-4 relative z-10">
+            <div class="reveal active">
+                <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-brand-yellow/30 bg-black/40 text-brand-yellow text-xs font-bold uppercase tracking-widest mb-8 backdrop-blur-md">
+                    Projeto de Acesso #Vivacor_Final
+                </div>
+                
+                <h1 class="text-4xl md:text-6xl font-extrabold mb-6 leading-tight tracking-tight drop-shadow-2xl">
+                    Estudo de Viabilidade <br>
+                    <span class="text-gold-shine">Técnica: Rampa Dupla</span>
+                </h1>
+                
+                <h2 class="text-xl md:text-2xl text-zinc-300 font-light mb-10 max-w-3xl mx-auto leading-relaxed">
+                    Solução definitiva de alto tráfego com Inteligência Artificial. Acesso fluido, sem paradas e sem "malabarismos" para o morador.
+                </h2>
+            </div>
+
+            <!-- Dados do Cliente -->
+            <div class="bg-white/5 backdrop-blur-md border border-white/10 p-1 rounded-2xl max-w-4xl mx-auto reveal active" style="transition-delay: 200ms;">
+                <div class="bg-brand-black/50 rounded-xl p-6 grid grid-cols-1 md:grid-cols-3 gap-6 items-center text-center md:text-left">
+                    <div class="border-b md:border-b-0 md:border-r border-white/10 pb-4 md:pb-0 md:pr-4">
+                        <p class="text-[10px] text-zinc-500 uppercase tracking-widest font-bold mb-1">Condomínio</p>
+                        <p class="text-base font-bold text-white">Vivacor</p>
+                    </div>
+                    <div class="border-b md:border-b-0 md:border-r border-white/10 pb-4 md:pb-0 md:pr-4">
+                        <p class="text-[10px] text-zinc-500 uppercase tracking-widest font-bold mb-1">Cenário</p>
+                        <p class="text-xs font-bold text-white leading-tight">Clausura de Rampa Dupla</p>
+                    </div>
+                    <div class="pb-0 md:pr-4">
+                        <p class="text-[10px] text-zinc-500 uppercase tracking-widest font-bold mb-1">A/C</p>
+                        <p class="text-base font-bold text-brand-yellow">Rogério</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="bg-zinc-50">
+        
+        <!-- 1. DIAGNÓSTICO -->
+        <section id="diagnostico" class="pt-48 pb-24 -mt-20 relative z-0 bg-zinc-100 border-b border-zinc-200">
+            <div class="max-w-6xl mx-auto px-4">
+                
+                <div class="grid md:grid-cols-2 gap-12 reveal items-start">
+                    <!-- Coluna do Problema -->
+                    <div class="flex flex-col justify-center">
+                        <h3 class="text-2xl font-bold text-zinc-900 mb-4 border-l-4 border-red-500 pl-4">A Barreira dos 1,5 Metros</h3>
+                        <p class="text-zinc-600 mb-4 leading-relaxed">
+                            Avaliamos o uso de Controladores Faciais padrão de mercado (tipo tablet). Para pedestres, são excelentes. Para veículos, eles geram um problema operacional grave.
+                        </p>
+                        <p class="text-zinc-600 mb-4 leading-relaxed">
+                            Esses equipamentos leem a no máximo 1,5m. Como não temos espaço para uma "ilha central" na rampa do Vivacor, o equipamento ficaria na parede lateral.
+                        </p>
+                        
+                        <div class="bg-white p-6 rounded-xl border border-red-100 shadow-sm mt-4">
+                            <h4 class="font-bold text-red-600 mb-3 flex items-center gap-2">
+                                <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/></svg>
+                                O Resultado na Prática:
+                            </h4>
+                            <p class="text-sm text-zinc-600 leading-relaxed">
+                                O motorista teria que "colar" o carro na parede, soltar o cinto e se debruçar para ser lido. Isso trava a entrada e gera risco de colisão.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Coluna da Solução -->
+                    <div class="glass-text-box p-8 rounded-2xl relative overflow-hidden flex flex-col justify-center">
+                        <div class="absolute -top-10 -right-10 w-40 h-40 bg-brand-yellow rounded-full blur-3xl opacity-10 pointer-events-none"></div>
+                        <h3 class="text-2xl font-bold text-zinc-900 mb-4 border-l-4 border-brand-yellow pl-4">Solução: VIP 9660 ULTRA</h3>
+                        <p class="text-zinc-600 mb-4 leading-relaxed">
+                            Para resolver isso, especificamos a <strong>Câmera VIP 9660 Ultra</strong>. É um equipamento de tráfego (Smart City) com IA embarcada que funciona como um "Porteiro de Longo Alcance".
+                        </p>
+                        
+                        <ul class="space-y-4 mt-4 text-sm text-zinc-600">
+                            <li class="flex items-start gap-3">
+                                <span class="text-brand-yellow font-bold text-lg">✓</span>
+                                <div><strong>Longo Alcance:</strong> Captura o rosto do motorista a metros de distância, sem precisar parar totalmente o carro.</div>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <span class="text-brand-yellow font-bold text-lg">✓</span>
+                                <div><strong>Dupla Checagem:</strong> Faz reconhecimento facial E leitura de placa (LPR) simultaneamente.</div>
+                            </li>
+                             <li class="flex items-start gap-3">
+                                <span class="text-brand-yellow font-bold text-lg">✓</span>
+                                <div><strong>Zero Malabarismo:</strong> O morador entra naturalmente, como em um pedágio automático.</div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- 2. SIMULADOR VISUAL (SVG ANIMADO - Eclusa V2.2) -->
+        <section id="solucao" class="py-24 bg-brand-black text-white relative overflow-hidden">
+             <div class="absolute inset-0 bg-grid-pattern opacity-10 pointer-events-none z-0"></div>
+            <div class="max-w-6xl mx-auto px-4 relative z-10">
+                <div class="text-center mb-16 reveal">
+                    <span class="text-brand-yellow font-bold tracking-widest uppercase text-xs">Simulação Operacional</span>
+                    <h2 class="text-3xl font-bold text-white mt-2">O Fluxo da Eclusa</h2>
+                    <p class="text-zinc-400 mt-2 text-sm">Entenda como a dupla validação protege o condomínio.</p>
+                </div>
+
+                <div class="max-w-4xl mx-auto bg-zinc-900 border border-zinc-800 rounded-2xl p-6 shadow-2xl relative overflow-hidden">
+                     <!-- Top Status Bar -->
+                     <div class="absolute top-6 right-6 z-20">
+                        <div id="status-badge" class="bg-black/80 backdrop-blur-md border border-white/10 text-brand-yellow px-4 py-2 rounded-full text-xs font-mono flex items-center gap-2 shadow-lg transition-all duration-300">
+                             <div id="status-light" class="w-2 h-2 rounded-full bg-brand-yellow animate-pulse"></div>
+                             <span id="system-status">SISTEMA PRONTO</span>
+                        </div>
+                     </div>
+
+                    <!-- SVG Scene (Eclusa) -->
+                    <svg viewBox="0 0 800 350" class="w-full h-auto rounded-lg">
+                         <!-- Environment -->
+                        <rect x="0" y="0" width="800" height="350" fill="#18181b" /> <!-- Zinc 900 base -->
+                        
+                        <!-- Road (Flat then Ramp Down) -->
+                        <path d="M0,280 L600,280 L800,380" stroke="#333" stroke-width="60" /> <!-- Road -->
+                        <line x1="0" y1="280" x2="600" y2="280" stroke="#444" stroke-width="2" stroke-dasharray="20,20" /> <!-- Marker 1 -->
+                        <line x1="600" y1="280" x2="800" y2="380" stroke="#444" stroke-width="2" stroke-dasharray="20,20" /> <!-- Marker 2 -->
+
+                        <!-- Walls/Structure of Eclusa -->
+                        <path d="M250,150 L550,150" stroke="#52525b" stroke-width="4" /> <!-- Back Wall -->
+                        <rect x="240" y="140" width="20" height="150" fill="#3f3f46" /> <!-- Left Pillar -->
+                        <rect x="540" y="140" width="20" height="150" fill="#3f3f46" /> <!-- Right Pillar -->
+
+                        <!-- Gate 1 (Left) - Basculante -->
+                        <g id="gate1-group" transform="translate(260, 150)">
+                            <rect x="-5" y="0" width="10" height="130" fill="#71717a" /> <!-- Motor/Rail -->
+                            <!-- Gate Panel -->
+                            <g id="gate1-panel" transform="translate(0, 0)">
+                                <rect x="0" y="0" width="10" height="130" fill="#27272a" stroke="#ef4444" stroke-width="2" />
+                                <line x1="2" y1="20" x2="8" y2="20" stroke="#52525b" />
+                                <line x1="2" y1="40" x2="8" y2="40" stroke="#52525b" />
+                                <line x1="2" y1="60" x2="8" y2="60" stroke="#52525b" />
+                                <line x1="2" y1="80" x2="8" y2="80" stroke="#52525b" />
+                                <line x1="2" y1="100" x2="8" y2="100" stroke="#52525b" />
+                            </g>
+                        </g>
+
+                        <!-- Gate 2 (Right) - Basculante -->
+                        <g id="gate2-group" transform="translate(560, 150)">
+                            <rect x="-5" y="0" width="10" height="130" fill="#71717a" />
+                             <!-- Gate Panel -->
+                             <g id="gate2-panel" transform="translate(0, 0)">
+                                <rect x="0" y="0" width="10" height="130" fill="#27272a" stroke="#ef4444" stroke-width="2" />
+                                <line x1="2" y1="20" x2="8" y2="20" stroke="#52525b" />
+                                <line x1="2" y1="40" x2="8" y2="40" stroke="#52525b" />
+                                <line x1="2" y1="60" x2="8" y2="60" stroke="#52525b" />
+                                <line x1="2" y1="80" x2="8" y2="80" stroke="#52525b" />
+                                <line x1="2" y1="100" x2="8" y2="100" stroke="#52525b" />
+                            </g>
+                        </g>
+
+                        <!-- Tag Reader (Before Gate 1 - Top) -->
+                        <g transform="translate(255, 120)"> <!-- Top of Gate 1 structure area -->
+                            <rect x="0" y="0" width="20" height="20" rx="2" fill="#27272a" stroke="#52525b" />
+                            <circle id="tag-signal" cx="10" cy="10" r="10" fill="none" stroke="#22c55e" stroke-width="2" opacity="0" />
+                        </g>
+
+                        <!-- Camera VIP 9660 (Attached to Gate 2 Structure - Pointing Left) -->
+                        <g transform="translate(540, 200)"> 
+                            <!-- Real Camera Image (No Rotation needed as image perspective is used, placed on left side of pillar) -->
+                            <image href="https://res.cloudinary.com/dptcuckhf/image/upload/v1770669798/vip-9460-ultra-ia-ft-persp-esq_qsmlm0.png" x="-40" y="0" width="45" height="45" /> 
+                            <!-- Beam pointing Left -->
+                            <path id="cam-beam" d="M-10,20 L-150,80 L-10,100 Z" fill="url(#beam-gradient)" opacity="0" />
+                        </g>
+
+                        <!-- Car (Sports Sedan Shape) -->
+                        <g id="car-group" transform="translate(-150, 260)">
+                            <!-- Shadow -->
+                             <ellipse cx="60" cy="15" rx="70" ry="10" fill="black" opacity="0.5" />
+                            <!-- Wheels -->
+                            <circle cx="25" cy="15" r="10" fill="#18181b" stroke="#3f3f46" stroke-width="2" />
+                            <circle cx="95" cy="15" r="10" fill="#18181b" stroke="#3f3f46" stroke-width="2" />
+                            <!-- Body -->
+                            <path d="M0,10 L120,10 L115,0 L90,-15 L30,-15 L10,0 L0,10 Z" fill="#3b82f6" />
+                             <!-- Window -->
+                            <path d="M35,-12 L85,-12 L105,0 L15,0 Z" fill="#93c5fd" />
+                        </g>
+
+                        <!-- Gradients -->
+                        <defs>
+                            <linearGradient id="beam-gradient" x1="1" x2="0" y1="0.5" y2="0.5">
+                                <stop offset="0%" stop-color="#b9880e" stop-opacity="0.6"/>
+                                <stop offset="100%" stop-color="#b9880e" stop-opacity="0"/>
+                            </linearGradient>
+                        </defs>
+                    </svg>
+
+                    <div class="flex justify-center mt-6">
+                        <button onclick="animateEntry()" class="bg-brand-yellow hover:bg-white text-black font-bold px-10 py-3 rounded-full transition-all shadow-glow flex items-center gap-2">
+                            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                            INICIAR SIMULAÇÃO
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Timeline Steps -->
+                <div class="max-w-4xl mx-auto mt-12 relative">
+                    <!-- Line connector -->
+                    <div class="hidden md:block absolute top-1/2 left-0 w-full h-0.5 bg-zinc-800 -z-0"></div>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-4 gap-6 relative z-10">
+                        <div class="bg-zinc-900 border border-zinc-800 p-6 rounded-2xl text-center shadow-lg transition-transform hover:-translate-y-2 relative group">
+                             <div class="w-10 h-10 bg-zinc-800 text-brand-yellow rounded-full flex items-center justify-center font-bold mx-auto mb-4 text-sm border border-zinc-700 group-hover:bg-brand-yellow group-hover:text-black transition-colors">1</div>
+                             <h4 class="text-white font-bold text-sm mb-2">Aproximação</h4>
+                             <p class="text-xs text-zinc-400 leading-relaxed">Leitura de TAG e abertura imediata do Portão 1 (Externo).</p>
+                        </div>
+                         <div class="bg-zinc-900 border border-zinc-800 p-6 rounded-2xl text-center shadow-lg transition-transform hover:-translate-y-2 relative group">
+                             <div class="w-10 h-10 bg-zinc-800 text-brand-yellow rounded-full flex items-center justify-center font-bold mx-auto mb-4 text-sm border border-zinc-700 group-hover:bg-brand-yellow group-hover:text-black transition-colors">2</div>
+                             <h4 class="text-white font-bold text-sm mb-2">Clausura (Eclusa)</h4>
+                             <p class="text-xs text-zinc-400 leading-relaxed">Carro entra. Portão 1 fecha. Veículo contido na zona de segurança.</p>
+                        </div>
+                         <div class="bg-zinc-900 border border-zinc-800 p-6 rounded-2xl text-center shadow-lg transition-transform hover:-translate-y-2 relative group">
+                             <div class="w-10 h-10 bg-zinc-800 text-brand-yellow rounded-full flex items-center justify-center font-bold mx-auto mb-4 text-sm border border-zinc-700 group-hover:bg-brand-yellow group-hover:text-black transition-colors">3</div>
+                             <h4 class="text-white font-bold text-sm mb-2">IA Check</h4>
+                             <p class="text-xs text-zinc-400 leading-relaxed">Câmera VIP valida Rosto e Placa simultaneamente.</p>
+                        </div>
+                         <div class="bg-zinc-900 border border-zinc-800 p-6 rounded-2xl text-center shadow-lg transition-transform hover:-translate-y-2 relative group">
+                             <div class="w-10 h-10 bg-zinc-800 text-brand-yellow rounded-full flex items-center justify-center font-bold mx-auto mb-4 text-sm border border-zinc-700 group-hover:bg-brand-yellow group-hover:text-black transition-colors">4</div>
+                             <h4 class="text-white font-bold text-sm mb-2">Acesso</h4>
+                             <p class="text-xs text-zinc-400 leading-relaxed">Portão 2 abre. Entrada liberada em 0,3s.</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- 3. INTELIGÊNCIA EMBARCADA (GALERIA) -->
+        <section id="tecnologia" class="py-24 bg-white">
+            <div class="max-w-6xl mx-auto px-4">
+                <div class="text-center mb-16 reveal">
+                    <span class="text-brand-yellow font-bold tracking-widest uppercase text-xs">O Cérebro da Operação</span>
+                    <h2 class="text-3xl font-bold text-zinc-900 mt-2">Tecnologia VIP 9460 Ultra</h2>
+                    <p class="text-zinc-500 mt-2 text-sm">A câmera que pensa. Veja o que ela enxerga.</p>
+                </div>
+
+                <div class="grid md:grid-cols-2 gap-8 reveal">
+                    <!-- Feature Principal (Software View) -->
+                    <div class="relative group rounded-2xl overflow-hidden shadow-2xl border border-zinc-200 h-[450px]">
+                        <img src="https://res.cloudinary.com/dptcuckhf/image/upload/v1770669798/reconhecimento-facial-com-metadados-vip-9460-ultra-ia-ft_nwnsdt.jpg" alt="Visão de Metadados" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+                        <div class="absolute bottom-0 left-0 w-full bg-gradient-to-t from-black/90 via-black/60 to-transparent p-8">
+                             <h4 class="text-white font-bold text-xl mb-2 flex items-center gap-2">
+                                <svg class="w-5 h-5 text-brand-yellow" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.828 14.828a4 4 0 01-5.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                                Metadados em Tempo Real
+                             </h4>
+                             <p class="text-xs text-zinc-300 leading-relaxed">
+                                A câmera não grava apenas vídeo. Ela extrai dados: Sexo, Idade, Expressão Facial, Óculos, Máscara e Placa do veículo. Tudo processado na borda.
+                             </p>
+                        </div>
+                    </div>
+
+                    <!-- Hardware Gallery (Carousel) -->
+                    <div class="bg-zinc-50 rounded-2xl border border-zinc-200 relative overflow-hidden group h-[450px]">
+                        <div class="absolute top-4 left-4 bg-white/80 backdrop-blur px-3 py-1 rounded-lg text-[10px] font-bold text-zinc-600 uppercase z-10">Hardware Robusto</div>
+                        
+                        <div class="carousel-container h-full w-full">
+                            <div class="carousel-slides h-full" id="hardware-carousel">
+                                <div class="carousel-slide">
+                                    <img src="https://res.cloudinary.com/dptcuckhf/image/upload/v1770669798/vip-9460-ultra-ia-ft-persp-esq_qsmlm0.png" alt="VIP 9460 Perspectiva" class="max-h-72 object-contain drop-shadow-2xl">
+                                </div>
+                                <div class="carousel-slide">
+                                    <img src="https://res.cloudinary.com/dptcuckhf/image/upload/v1770669798/vip-9460-ultra-ia-ft-perfil-esq_jol3te.png" alt="VIP 9460 Perfil" class="max-h-72 object-contain drop-shadow-2xl">
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Controls -->
+                        <button onclick="prevSlide()" class="absolute left-4 top-1/2 -translate-y-1/2 w-10 h-10 bg-white/90 rounded-full flex items-center justify-center text-zinc-800 shadow-lg hover:bg-brand-yellow transition-colors z-20">
+                            ‹
+                        </button>
+                        <button onclick="nextSlide()" class="absolute right-4 top-1/2 -translate-y-1/2 w-10 h-10 bg-white/90 rounded-full flex items-center justify-center text-zinc-800 shadow-lg hover:bg-brand-yellow transition-colors z-20">
+                            ›
+                        </button>
+                        
+                        <!-- Dots -->
+                        <div class="absolute bottom-6 left-1/2 -translate-x-1/2 flex gap-2 z-20">
+                            <div class="carousel-dot active" onclick="goToSlide(0)" id="dot-0"></div>
+                            <div class="carousel-dot" onclick="goToSlide(1)" id="dot-1"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. ESCOPO DO PROJETO -->
+        <section id="escopo" class="py-24 bg-zinc-50 border-t border-zinc-200">
+            <div class="max-w-6xl mx-auto px-4">
+                <div class="text-center mb-16 reveal">
+                    <span class="text-brand-yellow font-bold tracking-widest uppercase text-xs">O que está incluso</span>
+                    <h2 class="text-3xl font-bold text-zinc-900 mt-2">Itens do Projeto</h2>
+                    <p class="text-zinc-500 mt-2 text-sm">Hardware de Elite para Eclusa Inteligente.</p>
+                </div>
+
+                <div class="grid md:grid-cols-3 gap-6 reveal">
+                    <!-- Item 1 -->
+                    <div class="bg-white p-6 rounded-2xl border border-zinc-200 group hover:border-brand-yellow transition-all hover:-translate-y-1 relative overflow-hidden shadow-sm">
+                        <!-- QTY Badge -->
+                         <div class="absolute top-4 right-4 bg-brand-yellow/10 border border-brand-yellow/20 text-[10px] font-bold px-2 py-1 rounded text-brand-yellow">PARA CLAUSURA</div>
+
+                        <div class="w-12 h-12 bg-zinc-50 text-zinc-700 rounded-xl flex items-center justify-center text-brand-yellow mb-4 shadow-inner group-hover:bg-brand-yellow group-hover:text-white transition-colors">
+                            <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/></svg>
+                        </div>
+                        <h4 class="font-bold text-zinc-900 mb-2">Câmera VIP 9460 Ultra</h4>
+                        <p class="text-xs text-zinc-600 leading-relaxed mb-3">O "Porteiro Eletrônico" da Eclusa. Reconhece quem está dentro do carro preso entre os portões.</p>
+                        <p class="text-[10px] uppercase font-bold text-zinc-400 border-t border-zinc-100 pt-2">Função: Validação Final</p>
+                    </div>
+                    
+                    <!-- Item 2 -->
+                    <div class="bg-white p-6 rounded-2xl border border-zinc-200 group hover:border-brand-yellow transition-all hover:-translate-y-1 shadow-sm">
+                        <div class="w-12 h-12 bg-zinc-50 text-zinc-700 rounded-xl flex items-center justify-center text-brand-yellow mb-4 shadow-inner group-hover:bg-brand-yellow group-hover:text-white transition-colors">
+                            <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M8.111 16.404a5.5 5.5 0 017.778 0M12 20h.01m-7.08-7.071c3.904-3.905 10.236-3.905 14.141 0M1.394 9.393c5.857-5.857 15.355-5.857 21.213 0"/></svg>
+                        </div>
+                        <h4 class="font-bold text-zinc-900 mb-2">Antena UHF (Tag Veicular)</h4>
+                        <p class="text-xs text-zinc-600 leading-relaxed mb-3">Responsável pela abertura ágil do primeiro portão, tirando o carro da rua rapidamente.</p>
+                        <p class="text-[10px] uppercase font-bold text-zinc-400 border-t border-zinc-100 pt-2">Função: Entrada Rápida</p>
+                    </div>
+                    
+                    <!-- Item 3 -->
+                    <div class="bg-white p-6 rounded-2xl border border-zinc-200 group hover:border-brand-yellow transition-all hover:-translate-y-1 shadow-sm">
+                        <div class="w-12 h-12 bg-zinc-50 text-zinc-700 rounded-xl flex items-center justify-center text-brand-yellow mb-4 shadow-inner group-hover:bg-brand-yellow group-hover:text-white transition-colors">
+                            <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M5 12h14M5 12a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 01-2 2M5 12a2 2 0 00-2 2v4a2 2 0 002 2h14a2 2 0 002-2v-4a2 2 0 00-2-2m-2-4h.01M17 16h.01"/></svg>
+                        </div>
+                        <h4 class="font-bold text-zinc-900 mb-2">NVR Inteligente (Safe Box)</h4>
+                        <p class="text-xs text-zinc-600 leading-relaxed mb-3">Fica protegido na guarita. Centraliza cadastros e backups, garantindo segurança se vandalizarem a rua.</p>
+                        <p class="text-[10px] uppercase font-bold text-zinc-400 border-t border-zinc-100 pt-2">Função: Cérebro do Sistema</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. INVESTIMENTO -->
+        <section id="investimento" class="py-24 bg-white relative">
+            <div class="max-w-4xl mx-auto px-4 relative z-10">
+                <!-- VISION CARE CARD (BEFORE PRICE) -->
+                <div class="bg-zinc-50 border-2 border-brand-yellow/30 p-8 rounded-2xl shadow-lg mb-12 flex flex-col md:flex-row items-center gap-8 relative overflow-hidden transform hover:-translate-y-1 transition-all">
+                    <div class="absolute top-0 left-0 w-2 h-full bg-brand-yellow"></div>
+                    
+                    <div class="flex-1">
+                         <h3 class="text-xl font-bold text-zinc-900 mb-2 flex items-center gap-2">
+                             🛡️ Vision Care <span class="text-[10px] font-bold bg-white text-zinc-500 px-2 py-0.5 rounded uppercase tracking-wider border border-zinc-200">Manutenção Preventiva</span>
+                         </h3>
+                         <p class="text-sm text-zinc-600 mb-4">
+                             <strong>"Sistemas de Tráfego exigem Calibração."</strong> A poeira da garagem afeta a lente LPR. O contrato inclui limpeza mensal, calibração de IA e SLA prioritário.
+                         </p>
+                    </div>
+                    
+                    <div class="flex flex-col gap-3">
+                         <!-- Toggle Vision Care -->
+                        <label class="flex items-center justify-between cursor-pointer p-3 rounded-xl bg-white hover:bg-zinc-100 transition-colors border border-zinc-200 shadow-sm w-full md:w-64">
+                            <div class="flex flex-col mr-4">
+                                <span class="text-xs font-bold text-zinc-800">Incluir Vision Care</span>
+                                <span class="text-[10px] text-zinc-500">Garante a longevidade</span>
+                            </div>
+                            <div class="flex items-center gap-3">
+                                <span class="text-xs font-bold text-brand-yellow">+ R$ 490/mês</span>
+                                <div class="relative">
+                                    <input type="checkbox" class="sr-only peer" onchange="updateTotal(this)">
+                                    <div class="w-11 h-6 bg-zinc-300 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-brand-yellow"></div>
+                                </div>
+                            </div>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- CARD ÚNICO DE INVESTIMENTO -->
+                <div class="text-center mb-10 reveal">
+                    <h2 class="text-3xl font-bold text-zinc-900 mb-4">Investimento do Projeto</h2>
+                </div>
+
+                <div class="bg-brand-black text-white border border-zinc-700 p-10 rounded-3xl shadow-2xl relative z-20 overflow-hidden hover:shadow-glow transition-shadow max-w-xl mx-auto">
+                    <div class="absolute inset-0 bg-brand-yellow/5 pointer-events-none"></div>
+                    <div class="absolute top-0 right-0 bg-gold-shine text-[10px] font-bold px-6 py-2 rounded-bl-2xl font-logo tracking-widest">SOLUÇÃO VIP</div>
+                    
+                    <div class="mb-8 relative z-10 text-center">
+                        <h3 class="text-3xl font-bold text-white">Eclusa Inteligente</h3>
+                        <p class="text-sm text-brand-yellow mt-2">VIP 9460 Ultra + NVR + Antena UHF.</p>
+                    </div>
+                    
+                    <!-- Bloco de Preço -->
+                    <div class="border-t border-white/10 pt-8 relative z-10 text-center">
+                        <p class="text-xs text-zinc-400 uppercase tracking-widest mb-2">Investimento Total</p>
+                        <div class="flex items-baseline justify-center gap-2 mb-2">
+                            <span class="text-xl font-bold text-zinc-500">R$</span>
+                            <span class="text-6xl font-extrabold text-white">26.900</span>
+                        </div>
+                        
+                        <!-- Valor Mensal Adicional (Dinâmico) -->
+                        <div id="monthly-display" class="hidden text-brand-yellow font-bold text-sm mb-6 animate-slide-in">
+                            + R$ 490,00 <span class="text-[10px] text-white/60 font-medium">/mês (Manutenção)</span>
+                        </div>
+                        
+                        <a href="https://wa.me/5511930816696?text=Ola,%20Gabriel%20aprovamos%20o%20Projeto%20Eclusa%20Vivacor%20VIP" id="link-btn" class="block w-full bg-brand-yellow hover:bg-white text-brand-black font-bold py-4 rounded-xl transition-all text-center shadow-glow transform hover:scale-[1.02] mt-8">
+                            Aprovar Projeto Eclusa
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- FAQ Section -->
+        <section class="py-16 bg-white border-t border-zinc-200">
+            <div class="max-w-4xl mx-auto px-4 reveal">
+                <div class="text-center mb-12">
+                    <span class="text-brand-yellow font-bold tracking-widest uppercase text-xs">Dúvidas Frequentes</span>
+                    <h2 class="text-3xl font-bold text-zinc-900 mt-2">Perguntas & Respostas</h2>
+                </div>
+                
+                <div class="space-y-4">
+                    <details class="bg-zinc-50 border border-zinc-200 rounded-xl overflow-hidden group">
+                        <summary class="flex justify-between items-center p-6 cursor-pointer list-none">
+                            <span class="font-bold text-zinc-800">Por que não usar um terminal facial comum?</span>
+                            <span class="transition group-open:rotate-180"><svg fill="none" height="24" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" width="24"><path d="M6 9l6 6 6-6"></path></svg></span>
+                        </summary>
+                        <div class="px-6 pb-6 text-sm text-zinc-600 leading-relaxed">
+                            Terminais comuns leem a apenas 1,5m de distância. Isso obrigaria o motorista a "colar" o carro na parede direita (onde seria instalado), soltar o cinto e se debruçar na janela. É desconfortável, lento e perigoso. A câmera VIP lê a longa distância, permitindo entrada fluida.
+                        </div>
+                    </details>
+                    <details class="bg-zinc-50 border border-zinc-200 rounded-xl overflow-hidden group">
+                        <summary class="flex justify-between items-center p-6 cursor-pointer list-none">
+                            <span class="font-bold text-zinc-800">Se quebrarem a câmera na rua, perco os dados?</span>
+                            <span class="transition group-open:rotate-180"><svg fill="none" height="24" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" width="24"><path d="M6 9l6 6 6-6"></path></svg></span>
+                        </summary>
+                        <div class="px-6 pb-6 text-sm text-zinc-600 leading-relaxed">
+                            Não. Por isso incluímos o NVR (Gravador) no projeto. Ele fica protegido dentro da guarita e centraliza todo o banco de dados. A câmera é apenas o "olho", o cérebro fica seguro.
+                        </div>
+                    </details>
+                    <details class="bg-zinc-50 border border-zinc-200 rounded-xl overflow-hidden group">
+                        <summary class="flex justify-between items-center p-6 cursor-pointer list-none">
+                            <span class="font-bold text-zinc-800">Como funciona o Vision Care?</span>
+                            <span class="transition group-open:rotate-180"><svg fill="none" height="24" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" width="24"><path d="M6 9l6 6 6-6"></path></svg></span>
+                        </summary>
+                        <div class="px-6 pb-6 text-sm text-zinc-600 leading-relaxed">
+                            É nosso contrato de manutenção. Câmeras de leitura de placa exigem lentes limpas e foco perfeito. Com a poeira da garagem, a limpeza mensal é crítica para evitar falhas de leitura. Além disso, garante atendimento prioritário.
+                        </div>
+                    </details>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-brand-black text-zinc-400 py-12 border-t border-white/10 no-print">
+        <div class="max-w-4xl mx-auto px-4 text-center">
+            <div class="flex flex-col items-center justify-center gap-0 mb-8">
+                <div class="relative flex items-baseline leading-none">
+                    <span class="font-logo font-bold text-[2.5rem] text-gold-shine lowercase tracking-[-0.08em] leading-none">vısıon</span>
+                    <span class="text-[0.6rem] text-[#b9880e] font-bold ml-0.5 self-end mb-1">®</span>
+                </div>
+                <div class="font-tech text-[0.6rem] font-light text-white lowercase tracking-[0.4em] ml-1 -mt-2">
+                    business
+                </div>
+            </div>
+            
+            <p class="text-xs text-zinc-600 max-w-lg mx-auto mt-8 mb-4 font-bold tracking-widest text-brand-yellow/50">
+                PROPOSTA CONFIDENCIAL
+            </p>
+
+            <div class="text-[10px] text-zinc-500 space-y-1">
+                <p>Vision Tecnologia e Segurança</p>
+                <p>Todos os direitos reservados</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Animation Logic for SVG
+        function animateEntry() {
+            const statusEl = document.getElementById('system-status');
+            const statusLight = document.getElementById('status-light');
+            const statusBadge = document.getElementById('status-badge');
+            
+            const car = document.getElementById('car-group');
+            const gate1_panel = document.getElementById('gate1-panel'); // Animate the panel
+            const gate2_panel = document.getElementById('gate2-panel'); // Animate the panel
+            const beam = document.getElementById('cam-beam');
+            const tagSignal = document.getElementById('tag-signal');
+            
+            // Reset
+            statusEl.innerText = "AGUARDANDO VEÍCULO...";
+            statusEl.className = "text-brand-yellow font-bold";
+            statusLight.className = "w-2 h-2 rounded-full bg-brand-yellow animate-pulse";
+            statusBadge.className = "bg-black/80 backdrop-blur-md border border-white/10 text-brand-yellow px-4 py-2 rounded-full text-xs font-mono flex items-center gap-2 shadow-lg";
+
+            car.style.transition = "none";
+            car.style.transform = "translate(-150px, 260px)"; // Reset car pos
+            
+            // Close Gates (Translate Y down to 0 from open state)
+            gate1_panel.style.transition = "none";
+            gate1_panel.style.transform = "translateY(0)"; 
+            
+            gate2_panel.style.transition = "none";
+            gate2_panel.style.transform = "translateY(0)";
+            
+            beam.style.opacity = "0";
+            tagSignal.style.opacity = "0";
+            
+            car.offsetHeight; /* trigger reflow */
+            
+            // 1. Car approaches Gate 1 (Fast)
+            setTimeout(() => {
+                car.style.transition = "transform 1.5s ease-out";
+                car.style.transform = "translate(100px, 260px)"; 
+                statusEl.innerText = "LENDO TAG...";
+            }, 100);
+            
+            // 2. Tag Read & Gate 1 Open (Lift Up)
+            setTimeout(() => {
+                tagSignal.style.transition = "opacity 0.2s";
+                tagSignal.style.opacity = "1";
+                setTimeout(() => { tagSignal.style.opacity = "0"; }, 500);
+
+                gate1_panel.style.transition = "transform 0.8s ease-in-out";
+                gate1_panel.style.transform = "translateY(-120px)"; // Lift Gate
+            }, 1600);
+
+            // 3. Car enters Eclusa
+            setTimeout(() => {
+                car.style.transition = "transform 1.5s linear";
+                car.style.transform = "translate(380px, 260px)"; // Move to middle
+                statusEl.innerText = "ENTRANDO NA ECLUSA...";
+            }, 2200);
+
+            // 4. Gate 1 Close & Car Stop
+            setTimeout(() => {
+                gate1_panel.style.transform = "translateY(0)"; // Close gate 1
+                statusEl.innerText = "VALIDANDO FACE/PLACA...";
+                beam.style.opacity = "0.6"; // Camera beam on
+            }, 3800);
+
+            // 5. Success & Gate 2 Open
+            setTimeout(() => {
+                beam.style.opacity = "0";
+                statusEl.innerText = "ACESSO LIBERADO";
+                statusEl.className = "text-green-400 font-bold";
+                statusLight.className = "w-2 h-2 rounded-full bg-green-500 shadow-[0_0_10px_#22c55e]";
+                statusBadge.className = "bg-green-900/50 backdrop-blur-md border border-green-500/30 text-green-400 px-4 py-2 rounded-full text-xs font-mono flex items-center gap-2 shadow-lg";
+                
+                gate2_panel.style.transition = "transform 0.8s ease-in-out";
+                gate2_panel.style.transform = "translateY(-120px)"; // Open gate 2
+            }, 5500);
+
+             // 6. Car Exits (Down the ramp)
+            setTimeout(() => {
+                car.style.transition = "transform 2s cubic-bezier(0.5, 0, 0.5, 1)"; // Start slight accel then linear
+                // New logic: Move X forward AND Move Y down (simulate slope)
+                // X: 900 (far right)
+                // Y: 400 (down from 260)
+                car.style.transform = "translate(900px, 400px)"; 
+            }, 6100);
+
+            // Reset text
+            setTimeout(() => {
+                statusEl.innerText = "SISTEMA PRONTO";
+                statusEl.className = "text-brand-yellow font-bold";
+                statusLight.className = "w-2 h-2 rounded-full bg-brand-yellow animate-pulse";
+                statusBadge.className = "bg-black/80 backdrop-blur-md border border-white/10 text-brand-yellow px-4 py-2 rounded-full text-xs font-mono flex items-center gap-2 shadow-lg";
+                
+                gate2_panel.style.transform = "translateY(0)"; // Reset gate 2
+            }, 8500);
+        }
+
+        function updateTotal(checkbox) {
+            const isChecked = checkbox.checked;
+            const displayEl = document.getElementById('monthly-display');
+            const linkEl = document.getElementById('link-btn');
+            
+            const baseLink = "https://wa.me/5511930816696?text=Ola,%20Gabriel%20aprovamos%20o%20Projeto%20Eclusa%20Vivacor%20VIP";
+            
+            if (isChecked) {
+                displayEl.classList.remove('hidden');
+                linkEl.href = `${baseLink}%20COM%20VISION%20CARE`;
+            } else {
+                displayEl.classList.add('hidden');
+                linkEl.href = baseLink;
+            }
+        }
+
+        // Carousel Logic
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.carousel-slide');
+        const dots = document.querySelectorAll('.carousel-dot');
+        const carouselTrack = document.getElementById('hardware-carousel');
+
+        function updateCarousel() {
+            carouselTrack.style.transform = `translateX(-${currentSlide * 100}%)`;
+            dots.forEach((dot, index) => {
+                if (index === currentSlide) {
+                    dot.classList.add('active');
+                } else {
+                    dot.classList.remove('active');
+                }
+            });
+        }
+
+        function nextSlide() {
+            currentSlide = (currentSlide + 1) % slides.length;
+            updateCarousel();
+        }
+
+        function prevSlide() {
+            currentSlide = (currentSlide - 1 + slides.length) % slides.length;
+            updateCarousel();
+        }
+
+        function goToSlide(index) {
+            currentSlide = index;
+            updateCarousel();
+        }
+
+        // Lock Screen Logic
+        const accessCode = "rogerio2026"; 
+        const lockScreen = document.getElementById('lock-screen');
+        const passwordInput = document.getElementById('password-input');
+        const errorMsg = document.getElementById('error-msg');
+        const htmlRoot = document.getElementById('html-root');
+        const lockSvg = document.getElementById('lock-svg');
+
+        function checkPassword() {
+            if(passwordInput.value.toLowerCase() === accessCode.toLowerCase()) {
+                lockSvg.parentElement.classList.add('unlocked');
+                setTimeout(() => {
+                    lockScreen.style.opacity = '0';
+                    setTimeout(() => {
+                        lockScreen.style.display = 'none';
+                        htmlRoot.classList.remove('overflow-hidden');
+                    }, 700);
+                }, 500);
+            } else {
+                errorMsg.classList.remove('hidden');
+                const content = document.getElementById('lock-content');
+                content.classList.remove('animate-shake');
+                void content.offsetWidth;
+                content.classList.add('animate-shake');
+            }
+        }
+        
+        passwordInput.addEventListener("keypress", function(event) {
+            if (event.key === "Enter") {
+                checkPassword();
+            }
+        });
+
+        // Reveal Animation
+        window.addEventListener('scroll', reveal);
+        function reveal() {
+            var reveals = document.querySelectorAll('.reveal');
+            for (var i = 0; i < reveals.length; i++) {
+                var windowHeight = window.innerHeight;
+                var elementTop = reveals[i].getBoundingClientRect().top;
+                var elementVisible = 100;
+                if (elementTop < windowHeight - elementVisible) {
+                    reveals[i].classList.add('active');
+                }
+            }
+        }
+        reveal(); 
+    </script>
+</body>
+</html>

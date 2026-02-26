@@ -1,0 +1,549 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Proposta Comercial | Vision Tecnologia</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@700;800&family=Quicksand:wght@500;600;700&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: { 
+                        sans: ['"Outfit"', 'sans-serif'],
+                        logo: ['"League Spartan"', 'sans-serif'],
+                        tech: ['"Quicksand"', 'sans-serif']
+                    },
+                    colors: {
+                        brand: {
+                            yellow: '#b9880e', 
+                            goldLight: '#FFDE59', 
+                            goldDark: '#BA8500',  
+                            black: '#0F172A',
+                            dark: '#020617',
+                            surface: '#F8FAFC',
+                            accent: '#F59E0B'
+                        }
+                    },
+                    boxShadow: {
+                        'soft': '0 20px 40px -10px rgba(0,0,0,0.05)',
+                        'glow': '0 0 30px rgba(185, 136, 14, 0.4)',
+                        'card-hover': '0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)'
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #f1f1f1; }
+        ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
+        
+        .section-center-line::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 4px;
+            background: #b9880e;
+            margin: 1.5rem auto 0;
+            border-radius: 2px;
+        }
+
+        .hover-border-yellow {
+            transition: all 0.3s ease;
+            border: 1px solid transparent;
+        }
+        .hover-border-yellow:hover {
+            border-color: #b9880e;
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px -10px rgba(185, 136, 14, 0.2);
+        }
+
+        /* Bordas Gradientes */
+        .border-gradient-gold-light {
+            position: relative;
+            background: linear-gradient(#fff, #fff) padding-box,
+                        linear-gradient(180deg, #FFDE59 0%, #BA8500 100%) border-box;
+            border: 2px solid transparent;
+            border-radius: 1.5rem;
+        }
+        .border-gradient-gold-dark {
+            position: relative;
+            background: linear-gradient(#0F172A, #0F172A) padding-box,
+                        linear-gradient(180deg, #FFDE59 0%, #BA8500 100%) border-box;
+            border: 2px solid transparent;
+            border-radius: 1.5rem;
+        }
+        
+        .benefit-list li {
+            position: relative;
+            padding-left: 2rem;
+            margin-bottom: 0.75rem;
+            text-align: left;
+        }
+        .benefit-list li::before {
+            content: '✓';
+            position: absolute;
+            left: 0.5rem;
+            color: #b9880e;
+            font-weight: bold;
+        }
+        .benefit-list-gray li::before { color: #64748b; }
+
+        /* Estilos para as Abas Interativas */
+        .tab-btn.active {
+            background-color: #b9880e;
+            color: #0F172A;
+            border-color: #b9880e;
+        }
+        .tab-content {
+            display: none;
+            animation: fadeIn 0.5s ease-in-out;
+        }
+        .tab-content.active {
+            display: block;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-700 antialiased selection:bg-brand-yellow selection:text-brand-black">
+
+    <!-- Navbar -->
+    <nav class="fixed w-full z-50 top-0 bg-white/70 backdrop-blur-xl border-b border-white/40 transition-all duration-300 shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-20 items-center">
+                <div class="flex flex-col items-stretch leading-none select-none cursor-pointer group">
+                    <span class="font-logo font-bold text-[2.5rem] text-[#b9880e] lowercase tracking-[-0.08em] transition-colors leading-[0.8]">vısıon</span>
+                    <div class="font-tech text-[0.6rem] font-bold text-slate-600 lowercase flex justify-between px-0.5 group-hover:text-black transition-colors -mt-1">
+                        <span>t</span><span>e</span><span>c</span><span>n</span><span>o</span><span>l</span><span>o</span><span>g</span><span>i</span><span>a</span>
+                    </div>
+                </div>
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="#diagnostico" class="text-sm font-medium text-slate-600 hover:text-brand-black transition-colors">Diagnóstico</a>
+                    <a href="#analise" class="text-sm font-medium text-slate-600 hover:text-brand-black transition-colors">Análise Técnica</a>
+                    <a href="#investimento" class="text-sm font-medium text-slate-600 hover:text-brand-black transition-colors">Investimento</a>
+                </div>
+                <a href="#investimento" class="bg-brand-black hover:bg-slate-800 text-white px-6 py-2.5 rounded-full text-sm font-bold shadow-lg transition-all transform hover:-translate-y-0.5 hover:shadow-xl">
+                    Aprovar Proposta
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="bg-brand-black pt-32 pb-24 relative overflow-hidden text-white text-center rounded-b-[2rem] md:rounded-b-[2.5rem] shadow-2xl z-20">
+        <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[500px] bg-brand-yellow rounded-full blur-[200px] opacity-10 pointer-events-none"></div>
+        <div class="max-w-4xl mx-auto px-4 relative z-10">
+            <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-slate-700 bg-slate-800/50 text-brand-yellow text-xs font-bold uppercase tracking-wider mb-8 shadow-lg backdrop-blur-sm">
+                <span class="w-2 h-2 rounded-full bg-brand-yellow animate-pulse"></span> Proposta Comercial 2026
+            </div>
+            <h1 class="text-5xl md:text-7xl font-extrabold mb-8 leading-tight tracking-tight">
+                Projeto de Segurança <br>
+                <span class="text-transparent bg-clip-text bg-gradient-to-r from-brand-goldLight to-brand-yellow">Escritório Integrado</span>
+            </h1>
+            <p class="text-slate-400 text-lg md:text-xl max-w-2xl mx-auto mb-12 leading-relaxed">
+                Soluções focadas em resolver a vulnerabilidade da porta e garantir monitoramento inteligente.
+                <br><span class="text-sm text-slate-500">Vila Olímpia, SP</span>
+            </p>
+            <div class="bg-white/5 backdrop-blur-md border border-white/10 rounded-2xl p-6 grid grid-cols-1 md:grid-cols-3 gap-8 text-left max-w-3xl mx-auto">
+                <div><p class="text-[10px] text-slate-400 uppercase font-bold tracking-wider mb-1">Cliente</p><p class="font-semibold text-lg text-white">Monica</p></div>
+                <div class="md:border-l border-white/10 md:pl-8"><p class="text-[10px] text-slate-400 uppercase font-bold tracking-wider mb-1">Data Emissão</p><p class="text-brand-yellow font-semibold text-lg">23 de Janeiro</p><p class="text-xs text-slate-400">Ano 2026</p></div>
+                <div class="md:border-l border-white/10 md:pl-8"><p class="text-[10px] text-slate-400 uppercase font-bold tracking-wider mb-1">Responsável</p><p class="font-semibold text-lg text-white">Gabriel Nascimento</p><p class="text-xs text-slate-400">Vision Tecnologia</p></div>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <!-- 1. Diagnóstico -->
+        <section id="diagnostico" class="py-24 bg-white relative">
+            <div class="max-w-7xl mx-auto px-4">
+                <div class="text-center mb-16">
+                    <h2 class="text-4xl font-bold text-slate-900 section-center-line">Relatório da Visita Técnica</h2>
+                    <p class="text-slate-500 mt-6 max-w-2xl mx-auto text-lg">
+                        Identificamos vulnerabilidades críticas na porta de entrada e a necessidade de monitoramento discreto para o ambiente corporativo.
+                    </p>
+                </div>
+
+                <div class="space-y-6" id="problem-list">
+                    <!-- Solução Porta (Fechadura Smart) -->
+                    <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm hover:shadow-card-hover transition-all grid md:grid-cols-[300px_1fr] gap-6 items-center group hover-border-yellow">
+                        <div class="h-48 rounded-xl overflow-hidden relative">
+                            <!-- Link da Fechadura Smart - Foto Inicial -->
+                            <img src="https://res.cloudinary.com/dptcuckhf/image/upload/v1769198131/MFR_4000_rlc5ve.png" alt="Fechadura Smart" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700">
+                            <div class="absolute bottom-2 right-2 bg-brand-black text-white text-[10px] font-bold px-2 py-1 rounded">SOLUÇÃO DEFINITIVA</div>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-bold text-slate-900 mb-2">Modernização da Porta (MFR 4000)</h3>
+                            <p class="text-slate-600 mb-4">O sistema atual "Fail-Safe" deixa o escritório vulnerável sem energia. A <strong>Solução Vision</strong> é substituir o eletroímã por esta Fechadura Smart Biométrica, que opera com pilhas independentes da rede elétrica, garantindo segurança total 24h.</p>
+                            <div class="flex gap-2">
+                                <span class="bg-green-100 text-green-700 px-3 py-1 rounded-full text-xs font-bold flex items-center gap-1">✓ Problema Resolvido</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Solução Câmeras (IMX C) -->
+                    <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm hover:shadow-card-hover transition-all grid md:grid-cols-[300px_1fr] gap-6 items-center group hover-border-yellow">
+                        <div class="h-48 rounded-xl overflow-hidden relative">
+                            <!-- Link da Câmera IMX C -->
+                            <img src="https://res.cloudinary.com/dptcuckhf/image/upload/v1769198131/c%C3%A2mera-interna-wi-fi-_full-_hd-imx-micro-sd-de-32-gb_vbc5vz.png" alt="Câmera IMX C" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700">
+                            <div class="absolute bottom-2 right-2 bg-brand-yellow text-brand-black text-[10px] font-bold px-2 py-1 rounded">DESIGN PREMIUM</div>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-bold text-slate-900 mb-2">Monitoramento sem Obra Civil</h3>
+                            <p class="text-slate-600 mb-4">Para preservar o acabamento fino e o gesso do escritório, utilizaremos estas câmeras inteligentes com IA. Elas dispensam infraestrutura pesada, possuem gravação interna e design que se integra à decoração.</p>
+                            <div class="flex gap-2">
+                                <span class="bg-blue-50 text-blue-600 px-3 py-1 rounded-full text-xs font-bold">Acabamento Fino</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 2. Análise Técnica Interativa -->
+        <section id="analise" class="py-24 bg-brand-black text-white relative overflow-hidden -mt-16 pt-32">
+            <div class="absolute top-0 right-0 w-[600px] h-[600px] bg-brand-yellow rounded-full blur-[200px] opacity-5 pointer-events-none"></div>
+
+            <div class="max-w-7xl mx-auto px-4 relative z-10">
+                <div class="text-center mb-12">
+                    <h2 class="text-4xl font-bold text-white section-center-line">Análise Técnica Detalhada</h2>
+                    <p class="text-slate-400 mt-6 text-lg">Clique nos botões abaixo para entender os benefícios de cada tecnologia.</p>
+                </div>
+
+                <!-- Tabs Navigation -->
+                <div class="flex justify-center gap-4 mb-12 flex-wrap">
+                    <button onclick="openTab('tab1')" id="btn-tab1" class="tab-btn active px-8 py-3 rounded-full border border-slate-700 text-sm font-bold uppercase tracking-wider transition-all hover:bg-slate-800 focus:outline-none">Câmeras com IA</button>
+                    <button onclick="openTab('tab2')" id="btn-tab2" class="tab-btn px-8 py-3 rounded-full border border-slate-700 text-sm font-bold uppercase tracking-wider transition-all hover:bg-slate-800 focus:outline-none">Backup de Energia</button>
+                    <button onclick="openTab('tab3')" id="btn-tab3" class="tab-btn px-8 py-3 rounded-full border border-slate-700 text-sm font-bold uppercase tracking-wider transition-all hover:bg-slate-800 focus:outline-none">Fechadura Smart</button>
+                </div>
+
+                <!-- Tab Content 1: Câmeras -->
+                <div id="tab1" class="tab-content active bg-slate-800/50 p-8 md:p-12 rounded-3xl border border-white/5 backdrop-blur-md">
+                    <div class="grid md:grid-cols-[1fr_300px] gap-8 items-center">
+                        <div>
+                            <h3 class="text-2xl font-bold text-brand-yellow mb-4">Inteligência Artificial e Discrição</h3>
+                            <p class="text-slate-300 mb-6 leading-relaxed">
+                                Selecionamos câmeras que vão muito além de apenas filmar. Elas funcionam como um <strong>segurança ativo</strong> dentro do escritório. O algoritmo embarcado ignora movimentos irrelevantes (como sombras ou insetos) e alerta apenas quando detecta humanos.
+                            </p>
+                            <ul class="space-y-4">
+                                <li class="flex items-start gap-3">
+                                    <div class="mt-1 text-brand-yellow">
+                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-5 h-5"><path stroke-linecap="round" stroke-linejoin="round" d="M15.75 6a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0ZM4.501 20.118a7.5 7.5 0 0 1 14.998 0A17.933 17.933 0 0 1 12 21.75c-2.676 0-5.216-.584-7.499-1.632Z" /></svg>
+                                    </div>
+                                    <div>
+                                        <h5 class="font-bold text-white">Detecção de Humanos</h5>
+                                        <p class="text-sm text-slate-400">Receba notificações no celular apenas quando alguém realmente entrar no ambiente.</p>
+                                    </div>
+                                </li>
+                                <li class="flex items-start gap-3">
+                                    <div class="mt-1 text-brand-yellow">
+                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-5 h-5"><path stroke-linecap="round" stroke-linejoin="round" d="M12 18.75a6 6 0 0 0 6-6v-1.5m-6 7.5a6 6 0 0 1-6-6v-1.5m6 7.5v3.75m-3.75 0h7.5M12 15.75a3 3 0 0 1-3-3V4.5a3 3 0 1 1 6 0v8.25a3 3 0 0 1-3 3Z" /></svg>
+                                    </div>
+                                    <div>
+                                        <h5 class="font-bold text-white">Áudio Bidirecional</h5>
+                                        <p class="text-sm text-slate-400">Escute o que acontece no escritório e fale através da câmera pelo App, ideal para gestão remota.</p>
+                                    </div>
+                                </li>
+                                <li class="flex items-start gap-3">
+                                    <div class="mt-1 text-brand-yellow">
+                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-5 h-5"><path stroke-linecap="round" stroke-linejoin="round" d="M20.25 6.375c0 2.278-3.694 4.125-8.25 4.125S3.75 8.653 3.75 6.375m16.5 0c0-2.278-3.694-4.125-8.25-4.125S3.75 4.097 3.75 6.375m16.5 0v11.25c0 2.278-3.694 4.125-8.25 4.125s-8.25-1.847-8.25-4.125V6.375m16.5 0v3.75m-16.5-3.75v3.75m16.5 0v3.75C20.25 16.153 16.556 18 12 18s-8.25-1.847-8.25-4.125v-3.75m16.5 0c0 2.278-3.694 4.125-8.25 4.125s-8.25-1.847-8.25-4.125" /></svg>
+                                    </div>
+                                    <div>
+                                        <h5 class="font-bold text-white">Gravador Interno (Sem DVR)</h5>
+                                        <p class="text-sm text-slate-400">Eliminamos a necessidade de caixas grandes de gravação. Tudo fica armazenado de forma segura e compacta.</p>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                        
+                        <!-- IMAGEM DA CÂMERA AQUI (Substituindo o App Integrado) -->
+                        <div class="h-full min-h-[250px] rounded-xl overflow-hidden relative group shadow-lg">
+                            <img src="https://res.cloudinary.com/dptcuckhf/image/upload/v1769198131/c%C3%A2mera-interna-wi-fi-_full-_hd-imx-micro-sd-de-32-gb_vbc5vz.png" alt="Câmera App" class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700">
+                            <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-6">
+                                <p class="text-white font-bold text-center">Design Minimalista & App</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tab Content 2: Backup -->
+                <div id="tab2" class="tab-content bg-slate-800/50 p-8 md:p-12 rounded-3xl border border-white/5 backdrop-blur-md">
+                    <div class="grid md:grid-cols-[1fr_300px] gap-8 items-center">
+                        <div>
+                            <h3 class="text-2xl font-bold text-brand-yellow mb-4">Continuidade do Negócio (Nobreak)</h3>
+                            <p class="text-slate-300 mb-6 leading-relaxed">
+                                Esta solução foca em <strong>mitigar o risco</strong> da fechadura atual. Instalamos uma fonte de alimentação ininterrupta específica para controle de acesso. Ela atua como um "pulmão" de energia para a porta.
+                            </p>
+                            <ul class="space-y-4">
+                                <li class="flex items-start gap-3">
+                                    <div class="mt-1 text-brand-yellow">
+                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-5 h-5"><path stroke-linecap="round" stroke-linejoin="round" d="m3.75 13.5 10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75Z" /></svg>
+                                    </div>
+                                    <div>
+                                        <h5 class="font-bold text-white">Autonomia de 4 a 5 Horas</h5>
+                                        <p class="text-sm text-slate-400">Em caso de blackout total, a porta permanece trancada magneticamente por várias horas.</p>
+                                    </div>
+                                </li>
+                                <li class="flex items-start gap-3">
+                                    <div class="mt-1 text-brand-yellow">
+                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-5 h-5"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75 11.25 15 15 9.75M21 12c0 1.268-.63 2.39-1.593 3.068a3.745 3.745 0 0 1-1.043 3.296 3.745 3.745 0 0 1-3.296 1.043A3.745 3.745 0 0 1 12 21c-1.268 0-2.39-.63-3.068-1.593a3.746 3.746 0 0 1-3.296-1.043 3.745 3.745 0 0 1-1.043-3.296A3.746 3.746 0 0 1 12 3c1.268 0 2.39.63 3.068 1.593a3.746 3.746 0 0 1 3.296 1.043 3.746 3.746 0 0 1 1.043 3.296A3.745 3.745 0 0 1 21 12Z" /></svg>
+                                    </div>
+                                    <div>
+                                        <h5 class="font-bold text-white">Proteção Elétrica</h5>
+                                        <p class="text-sm text-slate-400">Filtra oscilações da rede, protegendo a vida útil do eletroímã.</p>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="bg-slate-900 rounded-xl p-4 flex items-center justify-center h-full">
+                            <div class="text-center">
+                                <span class="text-4xl">🔋</span>
+                                <p class="text-sm font-bold text-white mt-2">Energia Garantida</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tab Content 3: Modernização -->
+                <div id="tab3" class="tab-content bg-slate-800/50 p-8 md:p-12 rounded-3xl border border-white/5 backdrop-blur-md">
+                    <div class="grid md:grid-cols-[1fr_300px] gap-8 items-center">
+                        <div>
+                            <h3 class="text-2xl font-bold text-brand-yellow mb-4">Independência e Modernidade (Smart)</h3>
+                            <p class="text-slate-300 mb-6 leading-relaxed">
+                                A solução definitiva. Substituímos o conceito antigo de eletroímã por uma mecânica motorizada inteligente que <strong>não depende de energia elétrica</strong>.
+                            </p>
+                            <ul class="space-y-4">
+                                <li class="flex items-start gap-3">
+                                    <div class="mt-1 text-brand-yellow">
+                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-5 h-5"><path stroke-linecap="round" stroke-linejoin="round" d="M10.5 19.5h3m-6.75 2.25h10.5a2.25 2.25 0 0 0 2.25-2.25v-15a2.25 2.25 0 0 0-2.25-2.25H6.75A2.25 2.25 0 0 0 4.5 4.5v15a2.25 2.25 0 0 0 2.25 2.25Z" /></svg>
+                                    </div>
+                                    <div>
+                                        <h5 class="font-bold text-white">Gestão Remota Total</h5>
+                                        <p class="text-sm text-slate-400">Abra a porta para um visitante, gere senhas temporárias e veja quem entrou, tudo pelo celular, de qualquer lugar.</p>
+                                    </div>
+                                </li>
+                                <li class="flex items-start gap-3">
+                                    <div class="mt-1 text-brand-yellow">
+                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-5 h-5"><path stroke-linecap="round" stroke-linejoin="round" d="M16.5 10.5V6.75a4.5 4.5 0 1 0-9 0v3.75m-.75 11.25h10.5a2.25 2.25 0 0 0 2.25-2.25v-6.75a2.25 2.25 0 0 0-2.25-2.25H6.75a2.25 2.25 0 0 0-2.25 2.25v6.75a2.25 2.25 0 0 0 2.25 2.25Z" /></svg>
+                                    </div>
+                                    <div>
+                                        <h5 class="font-bold text-white">Independência da Rede</h5>
+                                        <p class="text-sm text-slate-400">Funciona com 4 pilhas AA de longa duração. Se acabar a luz do prédio, sua porta continua trancada e operante.</p>
+                                    </div>
+                                </li>
+                                <li class="flex items-start gap-3">
+                                    <div class="mt-1 text-brand-yellow">
+                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-5 h-5"><path stroke-linecap="round" stroke-linejoin="round" d="M9.813 15.904 9 18.75l-.813-2.846a4.5 4.5 0 0 0-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 0 0 3.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 0 0 3.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 0 0-3.09 3.09ZM18.259 8.715 18 9.75l-.259-1.035a3.375 3.375 0 0 0-2.455-2.456L14.25 6l1.036-.259a3.375 3.375 0 0 0 2.455-2.456L18 2.25l.259 1.035a3.375 3.375 0 0 0 2.456 2.456L21.75 6l-1.035.259a3.375 3.375 0 0 0-2.456 2.456ZM16.894 20.567 16.5 21.75l-.394-1.183a2.25 2.25 0 0 0-1.423-1.423L13.5 18.75l1.183-.394a2.25 2.25 0 0 0 1.423-1.423l.394-1.183.394 1.183a2.25 2.25 0 0 0 1.423 1.423l1.183.394-1.183.394a2.25 2.25 0 0 0-1.423 1.423Z" /></svg>
+                                    </div>
+                                    <div>
+                                        <h5 class="font-bold text-white">Estética Superior</h5>
+                                        <p class="text-sm text-slate-400">Elimina a caixa do eletroímã e a fiação aparente, proporcionando um visual muito mais limpo para a entrada.</p>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                        
+                        <!-- IMAGEM DA FECHADURA AQUI (Substituindo Tecnologia de Ponta) -->
+                        <div class="h-full min-h-[250px] rounded-xl overflow-hidden relative group shadow-lg">
+                            <img src="https://res.cloudinary.com/dptcuckhf/image/upload/v1769198131/fechadura-digital-intelbras-mrf-4000-para-portas-de-vidro-desbloqueio-inteligente-3_jp8jeg.webp" alt="Fechadura MFR 4000" class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700">
+                            <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-6">
+                                <p class="text-white font-bold text-center">Biometria e Segurança</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. Investimento -->
+        <section id="investimento" class="py-24 bg-gradient-to-b from-white to-slate-100">
+            <div class="max-w-7xl mx-auto px-4">
+                <div class="text-center mb-16">
+                    <h2 class="text-4xl font-bold text-slate-900 section-center-line">Opções de Investimento</h2>
+                    <p class="text-slate-500 mt-6 text-lg">Compare e escolha a solução ideal para o momento do escritório.</p>
+                </div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 items-center">
+                    
+                    <!-- Opção 2: Funcional (Left Side) -->
+                    <div class="border-gradient-gold-light relative z-10 overflow-hidden group transform hover:scale-[1.02] transition-transform duration-300 flex flex-col p-1 shadow-xl bg-white h-[90%]">
+                        <div class="bg-white p-6 rounded-[1.3rem] flex flex-col h-full relative overflow-hidden">
+                             <div class="absolute top-0 right-0 bg-slate-100 text-slate-600 text-[10px] font-extrabold px-4 py-1 rounded-bl-lg tracking-wider">OPÇÃO 2</div>
+
+                            <div class="text-center relative z-10 mb-6">
+                                <h3 class="text-2xl font-bold text-slate-800 mb-2">Segurança Mantida</h3>
+                                <p class="text-xs text-slate-500 mb-6 h-8">Câmeras + Backup de Energia</p>
+                                
+                                <div class="flex flex-col items-center justify-center text-slate-800 mb-2">
+                                    <div class="flex items-baseline">
+                                        <span class="text-sm font-medium mr-1 text-slate-400">12x</span>
+                                        <span class="text-4xl font-extrabold tracking-tighter text-slate-800">R$ 313</span>
+                                    </div>
+                                    <span class="text-xs font-bold text-slate-500 block mt-1">ou R$ 3.400,00 à vista</span>
+                                </div>
+                            </div>
+
+                            <div class="text-left mb-auto">
+                                <ul class="text-sm text-slate-600 space-y-3 benefit-list">
+                                    <li>3x Câmeras Wi-Fi Inteligentes Full HD</li>
+                                    <li><strong>Fonte Carregadora + Bateria</strong></li>
+                                    <li>Proteção elétrica contra surtos</li>
+                                    <li>Autonomia de até 4h para a porta</li>
+                                    <li>Serviço completo de instalação elétrica</li>
+                                    <li>Configuração de App e Treinamento</li>
+                                </ul>
+                            </div>
+
+                            <div class="mt-8">
+                                <a href="https://wa.me/5511930816696?text=Olá Dayana, aprovo a Opção 2 (Segurança Mantida) de R$ 3.400,00" target="_blank" class="block w-full border-2 border-brand-yellow text-brand-yellow text-center font-bold py-3 rounded-xl hover:bg-brand-yellow hover:text-brand-black transition-all text-sm">
+                                    APROVAR OPÇÃO 2
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Opção 1: Recomendada (Center - Bigger) -->
+                    <div class="border-gradient-gold-dark relative z-20 text-white overflow-hidden group transform hover:scale-[1.03] transition-transform duration-300 flex flex-col p-1 shadow-2xl h-full order-first lg:order-none">
+                        <div class="bg-brand-black p-8 rounded-[1.3rem] flex flex-col h-full relative overflow-hidden">
+                            <!-- Shine -->
+                            <div class="absolute top-0 right-0 w-60 h-60 bg-brand-yellow/10 rounded-full blur-3xl -mr-10 -mt-10 group-hover:bg-brand-yellow/20 transition-all"></div>
+                            
+                            <div class="absolute top-0 right-0 bg-brand-yellow text-brand-black text-[10px] font-extrabold px-4 py-1 rounded-bl-lg tracking-wider shadow-lg">RECOMENDADO</div>
+                            
+                            <div class="text-center relative z-10 mb-6">
+                                <h3 class="text-2xl font-bold text-brand-yellow mb-2">Modernização Total</h3>
+                                <p class="text-xs text-slate-300 mb-6 h-8">Troca Total: Fechadura Smart + Câmeras</p>
+                                
+                                <div class="flex flex-col items-center justify-center text-white mb-2">
+                                    <div class="flex items-baseline">
+                                        <span class="text-sm font-medium mr-1 text-slate-400">12x</span>
+                                        <span class="text-5xl font-extrabold tracking-tighter">R$ 466</span>
+                                    </div>
+                                    <span class="text-xs font-bold text-brand-yellow bg-yellow-400/10 px-3 py-1 rounded-full mt-2">ou R$ 5.100,00 à vista</span>
+                                </div>
+                            </div>
+
+                            <div class="text-left mb-auto">
+                                <ul class="text-sm text-slate-300 benefit-list space-y-3">
+                                    <li><strong>3x Câmeras Wi-Fi Inteligentes Full HD</strong></li>
+                                    <li><strong>Fechadura Smart Biométrica</strong> (Vidro)</li>
+                                    <li><strong>Hub de Automação</strong> (Gestão Remota)</li>
+                                    <li>Independência total de energia (Pilhas)</li>
+                                    <li>Elimina chaves e fiação da porta</li>
+                                    <li>Serviço de instalação e acabamento</li>
+                                    <li>App único para Câmeras e Porta</li>
+                                </ul>
+                            </div>
+
+                            <div class="mt-8">
+                                <a href="https://wa.me/5511930816696?text=Olá Dayana, quero a Opção 1 (Modernização Total) de R$ 5.100,00" target="_blank" class="block w-full bg-gradient-to-r from-brand-goldLight to-brand-goldDark text-brand-black text-center font-bold py-4 rounded-xl hover:shadow-lg hover:shadow-yellow-500/30 hover:-translate-y-1 transition-all text-sm">
+                                    APROVAR OPÇÃO 1
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Opção 3: Básico (Right Side) -->
+                    <div class="bg-white p-1 rounded-3xl border border-slate-200 shadow-lg relative opacity-90 hover:opacity-100 transition-all duration-300 flex flex-col h-[90%] hover:-translate-y-1">
+                        <div class="bg-white p-6 rounded-[1.3rem] h-full flex flex-col">
+                            <div class="absolute top-0 right-0 bg-slate-100 text-slate-400 text-[10px] font-extrabold px-4 py-1 rounded-bl-lg tracking-wider">OPÇÃO 3</div>
+                            <div class="text-center relative z-10 mb-6">
+                                <h3 class="text-xl font-bold text-slate-700 mb-2">Básico</h3>
+                                <p class="text-xs text-slate-400 mb-6 h-8">Apenas Monitoramento (Sem mexer na porta)</p>
+                                
+                                <div class="flex flex-col items-center justify-center text-slate-800 mb-2">
+                                    <div class="flex items-baseline">
+                                        <span class="text-sm font-medium mr-1 text-slate-400">12x</span>
+                                        <span class="text-4xl font-extrabold tracking-tighter">R$ 215</span>
+                                    </div>
+                                    <span class="text-xs font-bold text-slate-500 block mt-1">ou R$ 2.350,00 à vista</span>
+                                </div>
+                            </div>
+
+                            <div class="text-left mb-auto">
+                                <ul class="text-sm text-slate-500 space-y-3 benefit-list benefit-list-gray">
+                                    <li>3x Câmeras Wi-Fi Inteligentes Full HD</li>
+                                    <li>3x Cartões de Memória 32GB</li>
+                                    <li>Instalação e Configuração das Câmeras</li>
+                                    <li>Treinamento de Uso</li>
+                                    <li class="text-red-400 font-bold decoration-slice" style="text-decoration: none;">Mantém risco da porta atual</li>
+                                </ul>
+                            </div>
+
+                            <div class="mt-8">
+                                <a href="https://wa.me/5511930816696?text=Olá Dayana, aprovo a Opção 3 (Apenas Câmeras) de R$ 2.350,00" target="_blank" class="block w-full border-2 border-slate-200 text-slate-500 text-center font-bold py-3 rounded-xl hover:border-slate-400 hover:text-slate-700 transition-all text-sm">
+                                    Aprovar Opção 3
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- Garantia Risco Zero -->
+        <section class="py-16 bg-slate-50 border-t border-slate-200">
+            <div class="max-w-4xl mx-auto px-4 text-center">
+                <div class="inline-block p-4 rounded-full bg-green-100 mb-6 animate-bounce">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-8 h-8 text-green-600"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75 11.25 15 15 9.75M21 12c0 1.268-.63 2.39-1.593 3.068a3.745 3.745 0 0 1-1.043 3.296 3.745 3.745 0 0 1-3.296 1.043A3.745 3.745 0 0 1 12 21c-1.268 0-2.39-.63-3.068-1.593a3.746 3.746 0 0 1-3.296-1.043 3.745 3.745 0 0 1-1.043-3.296A3.746 3.746 0 0 1 12 3c1.268 0 2.39.63 3.068 1.593a3.746 3.746 0 0 1 3.296 1.043 3.746 3.746 0 0 1 1.043 3.296A3.745 3.745 0 0 1 21 12Z" /></svg>
+                </div>
+                <h2 class="text-3xl font-extrabold text-slate-900 mb-4">SEU RISCO É ZERO!</h2>
+                <p class="text-lg text-slate-600 leading-relaxed max-w-2xl mx-auto">
+                    Damos uma garantia de <strong>12 meses de fábrica nos produtos</strong> e <strong>90 dias da instalação</strong>. Você pode usar à vontade, caso aconteça algum problema na instalação ou no produto, resolveremos sem custo algum em até 48h!
+                </p>
+                <div class="mt-8 flex justify-center gap-4">
+                    <img src="https://img.shields.io/badge/Garantia-12%20Meses-success?style=for-the-badge" alt="Garantia 12 Meses" class="h-8">
+                    <img src="https://img.shields.io/badge/Suporte-48h-blue?style=for-the-badge" alt="Suporte Rápido" class="h-8">
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer Corporativo -->
+    <footer class="bg-brand-black text-slate-400 py-16 border-t border-slate-800">
+        <div class="max-w-4xl mx-auto px-4 text-center">
+            <div class="flex items-center justify-center gap-3 mb-10">
+                <div class="flex flex-col items-stretch leading-none select-none cursor-pointer group">
+                    <span class="font-logo font-bold text-[3rem] text-white lowercase tracking-[-0.08em] group-hover:text-brand-yellow transition-colors leading-[0.8]">vısıon</span>
+                    <div class="font-tech text-[0.7rem] font-bold text-brand-yellow lowercase flex justify-between px-1 group-hover:text-white transition-colors -mt-1.5">
+                        <span>t</span><span>e</span><span>c</span><span>n</span><span>o</span><span>l</span><span>o</span><span>g</span><span>i</span><span>a</span>
+                    </div>
+                </div>
+            </div>
+            <div class="border-t border-slate-800 pt-8">
+                <p class="text-xs text-slate-600">
+                    &copy; 2026 Vision Tecnologia. Documento confidencial. Proposta válida por 30 dias.
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Função para alternar abas
+        function openTab(tabName) {
+            var i, tabContent, tabBtn;
+            tabContent = document.getElementsByClassName("tab-content");
+            for (i = 0; i < tabContent.length; i++) {
+                tabContent[i].style.display = "none";
+                tabContent[i].classList.remove("active");
+            }
+            tabBtn = document.getElementsByClassName("tab-btn");
+            for (i = 0; i < tabBtn.length; i++) {
+                tabBtn[i].classList.remove("active");
+            }
+            document.getElementById(tabName).style.display = "block";
+            setTimeout(() => {
+                document.getElementById(tabName).classList.add("active");
+            }, 10);
+            document.getElementById("btn-" + tabName).classList.add("active");
+        }
+    </script>
+
+</body>
+</html>

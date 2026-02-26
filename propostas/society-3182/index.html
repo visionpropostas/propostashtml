@@ -1,0 +1,559 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Proposta Vision Business | Society Segurança de Dados</title>
+    <meta name="description" content="Projeto de Controle de Acesso e Gestão de Fluxo - Society Segurança de Dados.">
+    <meta name="theme-color" content="#09090b">
+    
+    <!-- Fonts & Icons -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@700;800&family=Quicksand:wght@500;600;700&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: { 
+                        sans: ['"Outfit"', 'sans-serif'],
+                        logo: ['"League Spartan"', 'sans-serif'],
+                        tech: ['"Quicksand"', 'sans-serif'],
+                        visy: ['"Outfit"', 'sans-serif']
+                    },
+                    colors: {
+                        brand: {
+                            yellow: '#b9880e', 
+                            goldLight: '#FFDE59', 
+                            goldDark: '#BA8500',  
+                            black: '#09090b', /* Zinc 950 - Preto Neutro */
+                            dark: '#000000',
+                            surface: '#18181b', /* Zinc 900 */
+                            gray: '#27272a', /* Zinc 800 */
+                        },
+                        visy: {
+                            primary: '#6366f1',
+                            secondary: '#a855f7'
+                        }
+                    },
+                    boxShadow: {
+                        'glow': '0 0 20px rgba(185, 136, 14, 0.15)',
+                        'glow-strong': '0 0 40px rgba(185, 136, 14, 0.3)',
+                        'glass': '0 8px 32px 0 rgba(0, 0, 0, 0.3)',
+                        'hero-curve': '0 20px 50px -10px rgba(0, 0, 0, 0.9)',
+                    },
+                    animation: {
+                        'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #09090b; }
+        ::-webkit-scrollbar-thumb { background: #3f3f46; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #b9880e; }
+        
+        .bg-grid-pattern {
+            background-image: linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+                              linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+            background-size: 40px 40px;
+        }
+
+        .text-gold-shine {
+            background: linear-gradient(to right, #b9880e 20%, #FFDE59 50%, #b9880e 80%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-size: 200% auto;
+            animation: shine 4s linear infinite;
+        }
+        @keyframes shine {
+            to { background-position: 200% center; }
+        }
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease-out;
+        }
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Glassmorphism Containers */
+        .glass-container {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+        }
+
+        .glass-text-box {
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(228, 228, 231, 0.8);
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Card Glass para Google Reviews */
+        .glass-review {
+            background: rgba(24, 24, 27, 0.6); /* Zinc 900 com opacidade */
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+        }
+        
+        .mask-gradient {
+            mask-image: linear-gradient(to bottom, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 100%);
+            -webkit-mask-image: linear-gradient(to bottom, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 100%);
+        }
+
+        /* Icon Hover Transitions */
+        .icon-box:hover .icon-bg { background-color: #b9880e; }
+        .icon-box:hover .icon-svg { color: #09090b; }
+        .icon-bg, .icon-svg { transition: all 0.3s ease; }
+
+        @media print {
+            .no-print { display: none !important; }
+            body { background: white; color: black; }
+        }
+    </style>
+</head>
+<body class="bg-zinc-50 text-zinc-700 antialiased selection:bg-brand-yellow selection:text-brand-black overflow-x-hidden">
+
+    <!-- Navbar -->
+    <nav class="fixed w-full z-50 top-0 bg-brand-black/95 backdrop-blur-xl border-b border-white/5 transition-all duration-300 shadow-lg no-print">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
+            <div class="flex justify-between h-20 items-center">
+                <div class="flex flex-col items-stretch leading-none select-none cursor-pointer group z-10">
+                    <div class="relative flex items-baseline">
+                        <span class="font-logo font-bold text-[2rem] text-gold-shine lowercase tracking-[-0.08em] leading-[0.8]">vısıon</span>
+                        <span class="text-[0.5rem] text-[#b9880e] font-bold ml-0.5 self-end mb-1">®</span>
+                    </div>
+                    <div class="font-tech text-[0.6rem] font-bold text-zinc-400 lowercase flex justify-between px-0.5 group-hover:text-brand-yellow transition-colors -mt-1 tracking-widest">
+                        <span>b</span><span>u</span><span>s</span><span>i</span><span>n</span><span>e</span><span>s</span><span>s</span>
+                    </div>
+                </div>
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="#diagnostico" class="text-sm font-medium text-zinc-300 hover:text-brand-yellow transition-colors">Diagnóstico</a>
+                    <a href="#solucao" class="text-sm font-medium text-zinc-300 hover:text-brand-yellow transition-colors">Solução</a>
+                    <a href="#investimento" class="text-sm font-medium text-zinc-300 hover:text-brand-yellow transition-colors">Investimento</a>
+                </div>
+                <div class="hidden md:flex items-center space-x-6 z-10">
+                    <a href="#investimento" class="bg-brand-yellow hover:bg-white hover:text-brand-black text-brand-black px-6 py-2.5 rounded-full text-sm font-bold shadow-glow transition-all">
+                        Aprovar Projeto
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- CAPA (HERO) -->
+    <header class="bg-brand-black pt-32 pb-32 relative z-10 overflow-hidden text-white min-h-[85vh] flex flex-col justify-center items-center text-center rounded-b-[1.5rem] shadow-hero-curve border-b border-white/5">
+        <!-- Background Imagem com Fade -->
+        <div class="absolute inset-0 z-0">
+            <!-- Imagem corporativa moderna e escura (Data Center/Tech) -->
+            <img src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=2070&auto=format&fit=crop" alt="Ambiente Tecnológico Seguro" class="w-full h-full object-cover opacity-20 mask-gradient">
+            <div class="absolute inset-0 bg-gradient-to-b from-black/80 via-black/60 to-brand-black"></div>
+        </div>
+        
+        <div class="bg-grid-pattern absolute inset-0 opacity-10 pointer-events-none z-0"></div>
+        
+        <div class="max-w-5xl mx-auto px-4 relative z-10">
+            <div class="reveal active">
+                <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-brand-yellow/30 bg-black/40 text-brand-yellow text-xs font-bold uppercase tracking-widest mb-8 backdrop-blur-md">
+                    Projeto Corporativo #Society_Security_Update
+                </div>
+                
+                <h1 class="text-4xl md:text-6xl font-extrabold mb-6 leading-tight tracking-tight drop-shadow-2xl">
+                    Upgrade de Infraestrutura <br>
+                    <span class="text-gold-shine">& Controle Biométrico</span>
+                </h1>
+                
+                <h2 class="text-xl md:text-2xl text-zinc-300 font-light mb-10 max-w-3xl mx-auto leading-relaxed">
+                    Elimine a vulnerabilidade das chaves físicas e garanta governança total sobre quem entra e sai da Society.
+                </h2>
+            </div>
+
+            <!-- Dados do Cliente Centralizados -->
+            <div class="bg-white/5 backdrop-blur-md border border-white/10 p-1 rounded-2xl max-w-4xl mx-auto reveal active" style="transition-delay: 200ms;">
+                <div class="bg-brand-black/50 rounded-xl p-6 grid grid-cols-1 md:grid-cols-3 gap-6 items-center text-center md:text-left">
+                    <div class="border-b md:border-b-0 md:border-r border-white/10 pb-4 md:pb-0 md:pr-4">
+                        <p class="text-[10px] text-zinc-500 uppercase tracking-widest font-bold mb-1">Empresa</p>
+                        <p class="text-base font-bold text-white">Society Segurança de Dados</p>
+                    </div>
+                    <div class="border-b md:border-b-0 md:border-r border-white/10 pb-4 md:pb-0 md:pr-4">
+                        <p class="text-[10px] text-zinc-500 uppercase tracking-widest font-bold mb-1">A/C</p>
+                        <p class="text-xs font-bold text-white leading-tight">Barbara & Diretoria</p>
+                    </div>
+                    <div class="pb-0 md:pr-4">
+                        <p class="text-[10px] text-zinc-500 uppercase tracking-widest font-bold mb-1">Data</p>
+                        <p class="text-base font-bold text-brand-yellow">30/01/2026</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="bg-zinc-50">
+        
+        <!-- 1. DIAGNÓSTICO & STORYTELLING -->
+        <section id="diagnostico" class="pt-48 pb-24 -mt-20 relative z-0 bg-zinc-100 border-b border-zinc-200">
+            <div class="max-w-6xl mx-auto px-4">
+                
+                <div class="grid md:grid-cols-2 gap-12 reveal items-stretch">
+                    <!-- Coluna da Dor -->
+                    <div class="flex flex-col justify-center">
+                        <h3 class="text-2xl font-bold text-zinc-900 mb-4 border-l-4 border-red-500 pl-4">O Cenário Atual (Vulnerabilidade)</h3>
+                        <p class="text-zinc-600 mb-4 leading-relaxed">
+                            A Society lida com o ativo mais valioso do mundo: <strong>Dados</strong>. No entanto, o acesso físico à empresa ainda é analógico (chaves/tags).
+                        </p>
+                        <p class="text-zinc-600 mb-4 leading-relaxed">
+                            Com 30 colaboradores, a gestão de chaves é impossível. Se uma chave for copiada ou perdida, a segurança do perímetro físico — e dos servidores lá dentro — está comprometida.
+                        </p>
+                        <div class="bg-white p-6 rounded-xl border border-red-100 shadow-sm mt-4">
+                            <h4 class="font-bold text-red-600 mb-2 flex items-center gap-2">
+                                <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/></svg>
+                                Riscos Operacionais
+                            </h4>
+                            <ul class="space-y-2 text-sm text-zinc-600">
+                                <li class="flex items-start gap-2"><span>•</span> <strong>Recepção Cega:</strong> Falta validação visual antes da liberação.</li>
+                                <li class="flex items-start gap-2"><span>•</span> <strong>Sem Auditoria:</strong> Não há logs digitais de quem entrou e quando.</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Coluna do Alívio (Vision) -->
+                    <div class="glass-text-box p-8 rounded-2xl relative overflow-hidden flex flex-col justify-center">
+                        <div class="absolute -top-10 -right-10 w-40 h-40 bg-brand-yellow rounded-full blur-3xl opacity-10 pointer-events-none"></div>
+                        <h3 class="text-2xl font-bold text-zinc-900 mb-4 border-l-4 border-brand-yellow pl-4">Compliance Físico</h3>
+                        <p class="text-zinc-600 mb-4 leading-relaxed">
+                            Implementaremos uma camada de <strong>Segurança Lógica no mundo Físico</strong>. Substituímos o metal pelo algoritmo.
+                        </p>
+                        <p class="text-zinc-600 mb-6 leading-relaxed">
+                            O rosto do colaborador torna-se a credencial de acesso (incopiável). Isso gera logs de auditoria e elimina a necessidade de gestão de chaves.
+                        </p>
+                        
+                        <div class="flex items-center gap-3 bg-brand-yellow/10 p-4 rounded-lg border border-brand-yellow/20">
+                            <div class="text-brand-yellow text-2xl font-bold">📉</div>
+                            <div>
+                                <p class="text-xs font-bold text-brand-yellow uppercase tracking-wider">Cálculo de ROI</p>
+                                <p class="text-xs text-zinc-700 leading-tight mt-1">
+                                    30 funcionários x 2 min/dia perdidos com chaves = <strong>250 horas/ano jogadas fora</strong>. O sistema se paga em 14 meses apenas recuperando produtividade.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- 4. SOLUÇÃO TÉCNICA -->
+        <section id="solucao" class="py-24 bg-white">
+            <div class="max-w-6xl mx-auto px-4">
+                <div class="text-center mb-16 reveal">
+                    <span class="text-brand-yellow font-bold tracking-widest uppercase text-xs">Arquitetura</span>
+                    <h2 class="text-3xl font-bold text-zinc-900 mt-2">O Hardware da Solução</h2>
+                    <p class="text-zinc-500 mt-2 text-sm">Tecnologia Intelbras Enterprise.</p>
+                </div>
+
+                <div class="grid md:grid-cols-3 gap-6 reveal">
+                    <!-- Item 1 -->
+                    <div class="bg-zinc-50 p-8 rounded-2xl border border-zinc-200 group hover:border-brand-yellow transition-all hover:-translate-y-1">
+                        <div class="w-14 h-14 bg-white text-zinc-700 rounded-xl flex items-center justify-center text-2xl mb-6 shadow-sm group-hover:text-brand-yellow transition-colors">👤</div>
+                        <h4 class="font-bold text-zinc-900 mb-2">Terminal Facial Outdoor</h4>
+                        <p class="text-xs text-zinc-500 font-mono mb-3">Intelbras SS 3532</p>
+                        <p class="text-sm text-zinc-600 leading-relaxed">Leitura biométrica de alta precisão com proteção IP65 (sol/chuva). Possui <em>Liveness Check</em> (impossível burlar com foto de celular).</p>
+                    </div>
+                    <!-- Item 2 -->
+                    <div class="bg-zinc-50 p-8 rounded-2xl border border-zinc-200 group hover:border-brand-yellow transition-all hover:-translate-y-1">
+                        <div class="w-14 h-14 bg-white text-zinc-700 rounded-xl flex items-center justify-center text-2xl mb-6 shadow-sm group-hover:text-brand-yellow transition-colors">👁️</div>
+                        <h4 class="font-bold text-zinc-900 mb-2">Videoporteiro IP Integrado</h4>
+                        <p class="text-xs text-zinc-500 font-mono mb-3">Linha TVIP</p>
+                        <p class="text-sm text-zinc-600 leading-relaxed">O "olho" da empresa. Permite que a recepção visualize, converse e libere a entrada via tela touch, sem sair da mesa.</p>
+                    </div>
+                    <!-- Item 3 -->
+                    <div class="bg-zinc-50 p-8 rounded-2xl border border-zinc-200 group hover:border-brand-yellow transition-all hover:-translate-y-1">
+                        <div class="w-14 h-14 bg-white text-zinc-700 rounded-xl flex items-center justify-center text-2xl mb-6 shadow-sm group-hover:text-brand-yellow transition-colors">🧲</div>
+                        <h4 class="font-bold text-zinc-900 mb-2">Eletroímã Fail-Safe</h4>
+                        <p class="text-xs text-zinc-500 font-mono mb-3">Trava Magnética</p>
+                        <p class="text-sm text-zinc-600 leading-relaxed">Diferente de fechaduras elétricas que travam mecânicamente, garante abertura imediata em corte de energia (norma de bombeiros).</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SEÇÃO EXCLUSIVA: CREDENCIAIS CORPORATIVAS -->
+        <section class="py-20 bg-brand-surface text-white relative overflow-hidden">
+            <div class="absolute bottom-0 left-0 w-[500px] h-[500px] bg-brand-yellow rounded-full blur-[400px] opacity-5 pointer-events-none"></div>
+            
+            <div class="max-w-6xl mx-auto px-4 relative z-10">
+                <div class="text-center mb-16 reveal">
+                    <h2 class="text-3xl font-bold text-white mt-2">Por que a Vision Business?</h2>
+                </div>
+
+                <div class="grid md:grid-cols-3 gap-8 reveal">
+                    <div class="flex gap-4">
+                        <div class="w-12 h-12 rounded-full bg-white/10 flex items-center justify-center text-brand-yellow text-xl shrink-0">🏢</div>
+                        <div>
+                            <h4 class="font-bold text-white mb-2">Expertise B2B</h4>
+                            <p class="text-sm text-zinc-400 leading-relaxed">Atuamos em ambientes críticos. Nossos técnicos são certificados, uniformizados e seguem protocolos rígidos de silêncio e limpeza.</p>
+                        </div>
+                    </div>
+                    <div class="flex gap-4">
+                        <div class="w-12 h-12 rounded-full bg-white/10 flex items-center justify-center text-brand-yellow text-xl shrink-0">🔐</div>
+                        <div>
+                            <h4 class="font-bold text-white mb-2">LGPD Ready</h4>
+                            <p class="text-sm text-zinc-400 leading-relaxed">O sistema de reconhecimento facial armazena templates matemáticos (hash), não fotos, garantindo conformidade com a Lei Geral de Proteção de Dados.</p>
+                        </div>
+                    </div>
+                    <div class="flex gap-4">
+                        <div class="w-12 h-12 rounded-full bg-white/10 flex items-center justify-center text-brand-yellow text-xl shrink-0">📜</div>
+                        <div>
+                            <h4 class="font-bold text-white mb-2">Documentação & Garantia</h4>
+                            <p class="text-sm text-zinc-400 leading-relaxed">Entrega técnica com documentação fiscal integral (NFe de produtos e serviços) e garantia balcão de 1 ano. Jurídico aprovado.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Seção de Vídeo (Youtube Shorts) -->
+        <section class="py-16 bg-zinc-100 border-y border-zinc-200">
+            <div class="max-w-4xl mx-auto px-4 text-center reveal">
+                <div class="inline-block bg-brand-yellow/10 text-brand-yellow text-xs font-bold px-3 py-1 rounded-full uppercase tracking-widest mb-4">Veja em Ação</div>
+                <h2 class="text-2xl font-bold text-zinc-900 mb-8">Solução Instalada</h2>
+                
+                <div class="relative w-full max-w-[350px] mx-auto aspect-[9/16] rounded-2xl overflow-hidden shadow-2xl border-4 border-white">
+                    <iframe 
+                        class="absolute inset-0 w-full h-full" 
+                        src="https://www.youtube.com/embed/1dvh4e3mdL8?autoplay=0&loop=1&rel=0" 
+                        title="Controle de Acesso Vision" 
+                        frameborder="0" 
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                        allowfullscreen>
+                    </iframe>
+                </div>
+            </div>
+        </section>
+
+        <!-- 5. INVESTIMENTO -->
+        <section id="investimento" class="py-24 bg-zinc-50 relative">
+            <div class="max-w-7xl mx-auto px-4 relative z-10">
+                <div class="text-center mb-16 reveal">
+                    <h2 class="text-3xl font-bold text-zinc-900 mb-4">Investimento Estratégico</h2>
+                    <p class="text-zinc-500 text-lg">
+                        Opções desenhadas para eliminar o gargalo operacional.
+                    </p>
+                </div>
+
+                <div class="grid md:grid-cols-3 gap-6 items-center justify-center reveal">
+                    
+                    <!-- OPÇÃO 3: CONTROLE DE PERÍMETRO -->
+                    <div class="bg-white border border-zinc-200 p-6 rounded-2xl flex flex-col hover:border-zinc-300 transition-all shadow-sm">
+                        <div class="mb-4">
+                            <h3 class="text-xl font-bold text-zinc-700">Controle de Perímetro</h3>
+                            <p class="text-xs text-zinc-500 mt-2">Apenas Porta Externa.</p>
+                        </div>
+                        <div class="flex-1 text-sm text-zinc-600 mb-6 space-y-3">
+                            <p>Automatiza a entrada da rua. A porta interna permanece manual (chave), mantendo o gargalo operacional interno.</p>
+                            <ul class="space-y-2 text-xs text-zinc-500">
+                                <li class="flex items-center gap-2">✓ 1 Terminal Facial Externo</li>
+                                <li class="flex items-center gap-2">✓ 1 Eletroímã 150kg</li>
+                                <li class="flex items-center gap-2 text-red-400">✕ Porta Interna Manual</li>
+                            </ul>
+                        </div>
+                        <div class="border-t border-zinc-100 pt-4 text-center md:text-left">
+                            <div class="flex items-baseline gap-1 justify-center md:justify-start">
+                                <span class="text-sm font-bold text-zinc-400 mr-1">12x</span>
+                                <span class="text-3xl font-extrabold text-zinc-800">449,<span class="text-lg">96</span></span>
+                            </div>
+                            <div class="text-[10px] text-zinc-400 mt-1 font-medium bg-zinc-100 inline-block px-2 py-0.5 rounded">
+                                ou R$ 4.500 à vista
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- OPÇÃO 2: GESTÃO FUNCIONAL -->
+                    <div class="bg-white border border-zinc-200 p-6 rounded-2xl flex flex-col hover:border-zinc-300 transition-all shadow-sm">
+                        <div class="mb-4">
+                            <h3 class="text-xl font-bold text-zinc-700">Gestão Funcional</h3>
+                            <p class="text-xs text-zinc-500 mt-2">Acesso Facial Duplo (Sem Vídeo).</p>
+                        </div>
+                        <div class="flex-1 text-sm text-zinc-600 mb-6 space-y-3">
+                            <p>Focada em agilidade. Mantemos o reconhecimento facial nas duas portas (rua e interna), mas removemos a tela de vídeo da recepção.</p>
+                            <ul class="space-y-2 text-xs text-zinc-500">
+                                <li class="flex items-center gap-2">✓ 2 Terminais Faciais</li>
+                                <li class="flex items-center gap-2">✓ Travamento Duplo</li>
+                                <li class="flex items-center gap-2 text-red-400">✕ Sem Tela de Vídeo</li>
+                            </ul>
+                        </div>
+                        <div class="border-t border-zinc-100 pt-4 text-center md:text-left">
+                            <div class="flex items-baseline gap-1 justify-center md:justify-start">
+                                <span class="text-sm font-bold text-zinc-400 mr-1">12x</span>
+                                <span class="text-3xl font-extrabold text-zinc-800">564,<span class="text-lg">96</span></span>
+                            </div>
+                            <div class="text-[10px] text-zinc-400 mt-1 font-medium bg-zinc-100 inline-block px-2 py-0.5 rounded">
+                                ou R$ 5.650 à vista
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- OPÇÃO 1: ECOSSISTEMA TOTAL (DESTAQUE) -->
+                    <div class="bg-brand-black text-white border border-zinc-700 p-8 rounded-2xl flex flex-col transform md:scale-105 shadow-2xl relative z-20 overflow-hidden">
+                        <div class="absolute inset-0 bg-brand-yellow/5 pointer-events-none"></div>
+                        <div class="absolute top-0 right-0 bg-brand-yellow text-brand-black text-[10px] font-bold px-4 py-1 rounded-bl-xl">RECOMENDADO</div>
+                        
+                        <div class="mb-6 relative z-10">
+                            <h3 class="text-2xl font-bold text-white">Ecossistema Total</h3>
+                            <p class="text-sm text-brand-yellow mt-2">Vídeo, Voz e Facial nas 2 Portas.</p>
+                        </div>
+                        <div class="flex-1 text-sm text-zinc-300 mb-8 space-y-4 relative z-10">
+                            <p class="font-medium text-white">A Solução Definitiva. Controle biométrico na rua e na porta interna, integrado com estação de vídeo na recepção.</p>
+                            <ul class="space-y-3">
+                                <li class="flex items-center gap-2"><svg class="w-5 h-5 text-brand-yellow" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg> Segurança Máxima (2 Portas)</li>
+                                <li class="flex items-center gap-2"><svg class="w-5 h-5 text-brand-yellow" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg> Gestão Visual na Recepção</li>
+                                <li class="flex items-center gap-2"><svg class="w-5 h-5 text-brand-yellow" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg> Otimização Total do Fluxo</li>
+                            </ul>
+                        </div>
+                        <div class="border-t border-white/10 pt-6 relative z-10">
+                            <span class="text-xs text-zinc-400 font-bold uppercase tracking-wider">Investimento Corporativo</span>
+                            <div class="flex items-baseline gap-1 mt-1">
+                                <span class="text-lg font-bold text-zinc-500 mr-1">12x</span>
+                                <span class="text-5xl font-extrabold text-white">739,<span class="text-2xl">94</span></span>
+                            </div>
+                            <div class="text-xs text-zinc-400 mt-2 font-medium bg-white/10 inline-block px-3 py-1 rounded">
+                                ou R$ 7.400 à vista
+                            </div>
+                            
+                            <a href="https://wa.me/5524993081669?text=Ola,%20aprovamos%20a%20Opcao%20Ecossistema%20Total" class="mt-6 block w-full bg-brand-yellow text-brand-black font-bold py-4 rounded-xl hover:bg-white transition-all text-center shadow-glow">
+                                Aprovar Projeto Completo
+                            </a>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- SEÇÃO: VISION CARE (UPSELL) -->
+        <section class="py-16 bg-white border-t border-zinc-200">
+            <div class="max-w-4xl mx-auto px-4 reveal">
+                <div class="bg-zinc-50 rounded-2xl p-8 shadow-sm border border-brand-yellow/30 flex flex-col md:flex-row items-center gap-8 relative overflow-hidden">
+                    <div class="absolute top-0 right-0 bg-brand-yellow text-brand-black text-[10px] font-bold px-3 py-1 rounded-bl-lg">SLA CORPORATIVO</div>
+                    
+                    <div class="flex-1">
+                        <h3 class="text-2xl font-bold text-zinc-900 mb-2">Contrato Vision Care</h3>
+                        <p class="text-sm text-zinc-600 mb-4">
+                            Para a Society, <strong>"Sistema Parado" = Prejuízo</strong>. Garanta a continuidade operacional.
+                        </p>
+                        <ul class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-sm text-zinc-700">
+                            <li class="flex items-center gap-2"><span class="text-brand-yellow font-bold">✓</span> Suporte Remoto Ilimitado</li>
+                            <li class="flex items-center gap-2"><span class="text-brand-yellow font-bold">✓</span> Gestão de Cadastros</li>
+                            <li class="flex items-center gap-2"><span class="text-brand-yellow font-bold">✓</span> Manutenção Preventiva Trimestral</li>
+                            <li class="flex items-center gap-2"><span class="text-brand-yellow font-bold">✓</span> Prioridade de Atendimento</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="text-center md:text-right shrink-0">
+                        <p class="text-xs text-zinc-400 uppercase tracking-widest mb-1">Mensalidade</p>
+                        <p class="text-3xl font-bold text-zinc-900">R$ 250,00</p>
+                        <p class="text-[10px] text-zinc-500 mt-1 max-w-[150px] mx-auto md:ml-auto">
+                            (Blinda seu orçamento de manutenção contra imprevistos)
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-brand-black text-zinc-400 py-12 border-t border-white/10 no-print">
+        <div class="max-w-4xl mx-auto px-4 text-center">
+            <div class="flex flex-col items-center justify-center gap-0 mb-8">
+                <div class="relative flex items-baseline leading-none">
+                    <span class="font-logo font-bold text-[2.5rem] text-gold-shine lowercase tracking-[-0.08em] leading-none">vısıon</span>
+                    <span class="text-[0.6rem] text-[#b9880e] font-bold ml-0.5 self-end mb-1">®</span>
+                </div>
+                <div class="font-tech text-[0.6rem] font-light text-white lowercase tracking-[0.4em] ml-1 -mt-2">
+                    business
+                </div>
+            </div>
+            
+            <p class="text-xs text-zinc-600 max-w-lg mx-auto mt-8 mb-4">
+                Esta proposta corporativa é válida por 10 dias. Faturamento via Boleto ou Cartão de Crédito.
+            </p>
+
+            <div class="text-[10px] text-zinc-500 space-y-1">
+                <p>Vision Business Technology</p>
+                <p>Todos os direitos reservados</p>
+            </div>
+            
+            <!-- MARCA D'ÁGUA VISY -->
+            <div class="mt-8 pt-8 border-t border-white/5 flex flex-col items-center justify-center">
+                <a href="https://visy.netlify.app/" target="_blank" class="group flex items-center gap-2 opacity-50 hover:opacity-100 transition-opacity">
+                    <span class="text-[10px] uppercase tracking-widest text-zinc-500 group-hover:text-visy-primary transition-colors">Powered by</span>
+                    <div class="flex items-center gap-1.5">
+                        <div class="relative w-4 h-4 flex items-center justify-center">
+                            <div class="absolute w-full h-full border border-visy-primary/50 rounded-sm transform rotate-45 group-hover:rotate-90 transition-all duration-700 ease-out"></div>
+                            <div class="relative w-1 h-1 bg-white rounded-full"></div>
+                        </div>
+                        <span class="font-visy font-bold text-white text-sm tracking-wide group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-visy-primary group-hover:to-visy-secondary transition-all duration-500">visy</span>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Whatsapp Floating Button -->
+    <a href="https://wa.me/5524993081669?text=Ola,%20gostaria%20de%20falar%20sobre%20a%20proposta%20da%20Society"
+       target="_blank"
+       id="whatsapp-btn"
+       class="fixed bottom-6 right-6 z-50 bg-[#25D366] text-white p-3 rounded-full shadow-lg hover:scale-110 hover:bg-[#20b858] transition-all duration-300 group flex items-center gap-2 overflow-hidden translate-y-20 opacity-0 no-print"
+       aria-label="Falar no WhatsApp">
+        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.008-.57-.008-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
+        </svg>
+        <span class="max-w-0 overflow-hidden group-hover:max-w-xs transition-all duration-500 ease-in-out whitespace-nowrap text-sm font-bold pl-0 group-hover:pl-2">Falar agora</span>
+    </a>
+
+    <script>
+        // Reveal Animation Script
+        window.addEventListener('scroll', reveal);
+        function reveal() {
+            var reveals = document.querySelectorAll('.reveal');
+            for (var i = 0; i < reveals.length; i++) {
+                var windowHeight = window.innerHeight;
+                var elementTop = reveals[i].getBoundingClientRect().top;
+                var elementVisible = 100;
+                if (elementTop < windowHeight - elementVisible) {
+                    reveals[i].classList.add('active');
+                }
+            }
+        }
+        
+        // Whatsapp Button Reveal Logic
+        window.addEventListener('scroll', function() {
+            var whatsappBtn = document.getElementById('whatsapp-btn');
+            if (whatsappBtn) {
+                if (window.scrollY > 300) {
+                    whatsappBtn.classList.add('visible');
+                    whatsappBtn.classList.remove('translate-y-20', 'opacity-0');
+                } else {
+                    whatsappBtn.classList.remove('visible');
+                    whatsappBtn.classList.add('translate-y-20', 'opacity-0');
+                }
+            }
+        });
+
+        // Trigger reveal on load
+        reveal(); 
+    </script>
+</body>
+</html>

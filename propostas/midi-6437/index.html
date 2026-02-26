@@ -1,0 +1,842 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Proposta Vision Business | MIDI ZERO11</title>
+    <meta name="description" content="Projeto de Blindagem Visual & Gestão de Ativos - MIDI ZERO11.">
+    <meta name="theme-color" content="#09090b">
+    
+    <!-- Fonts & Icons -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@700;800&family=Quicksand:wght@500;600;700&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: { 
+                        sans: ['"Outfit"', 'sans-serif'],
+                        logo: ['"League Spartan"', 'sans-serif'],
+                        tech: ['"Quicksand"', 'sans-serif'],
+                        visy: ['"Outfit"', 'sans-serif']
+                    },
+                    colors: {
+                        brand: {
+                            yellow: '#b9880e', 
+                            goldLight: '#FFDE59', 
+                            goldDark: '#BA8500',  
+                            black: '#09090b', /* Zinc 950 */
+                            dark: '#000000',
+                            surface: '#18181b', /* Zinc 900 */
+                            gray: '#27272a', /* Zinc 800 */
+                        },
+                        visy: {
+                            primary: '#6366f1',
+                            secondary: '#a855f7'
+                        }
+                    },
+                    boxShadow: {
+                        'glow': '0 0 20px rgba(185, 136, 14, 0.15)',
+                        'glow-strong': '0 0 40px rgba(185, 136, 14, 0.3)',
+                        'glass': '0 8px 32px 0 rgba(0, 0, 0, 0.3)',
+                        'hero-curve': '0 20px 50px -10px rgba(0, 0, 0, 0.9)',
+                    },
+                    animation: {
+                        'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                        'slide-in': 'slideIn 0.3s ease-out forwards',
+                    },
+                    keyframes: {
+                        slideIn: {
+                            '0%': { opacity: '0', transform: 'translateX(-10px)' },
+                            '100%': { opacity: '1', transform: 'translateX(0)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #09090b; }
+        ::-webkit-scrollbar-thumb { background: #3f3f46; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #b9880e; }
+        
+        .bg-grid-pattern {
+            background-image: linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+                              linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+            background-size: 40px 40px;
+        }
+
+        .text-gold-shine {
+            background: linear-gradient(to right, #b9880e 20%, #FFDE59 50%, #b9880e 80%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-size: 200% auto;
+            animation: shine 4s linear infinite;
+            filter: drop-shadow(0 0 1px rgba(185, 136, 14, 0.3));
+        }
+
+        /* Novo: Efeito Gold Shine para Background (Badge) */
+        .bg-gold-shine {
+            background: linear-gradient(to right, #b9880e 0%, #FFDE59 50%, #b9880e 100%);
+            background-size: 200% auto;
+            animation: shine 3s linear infinite;
+            color: #09090b; /* Texto preto para contraste */
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+        
+        @keyframes shine {
+            to { background-position: 200% center; }
+        }
+        
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease-out;
+        }
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .glass-text-box {
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(228, 228, 231, 0.8);
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Card Glass para Google Reviews */
+        .glass-review {
+            background: rgba(24, 24, 27, 0.6);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+        }
+
+        .mask-gradient {
+            mask-image: linear-gradient(to bottom, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 100%);
+            -webkit-mask-image: linear-gradient(to bottom, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 100%);
+        }
+
+        /* Border Fade Effect */
+        .border-fade-silver {
+            position: relative;
+        }
+        .border-fade-silver::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, rgba(255,255,255,0.6) 0%, rgba(255,255,255,0) 50%, rgba(255,255,255,0.6) 100%);
+            pointer-events: none;
+        }
+
+        /* Toggle Switch Styles */
+        .toggle-checkbox:checked {
+            right: 0;
+            border-color: #b9880e;
+        }
+        .toggle-checkbox:checked + .toggle-label {
+            background-color: #b9880e;
+        }
+        .toggle-checkbox:checked + .toggle-label:before {
+            transform: translateX(100%);
+        }
+        
+        /* Addon Animation */
+        .addon-enter {
+            animation: slideDownFade 0.3s ease-out forwards;
+        }
+        @keyframes slideDownFade {
+            from { opacity: 0; transform: translateY(-10px); height: 0; }
+            to { opacity: 1; transform: translateY(0); height: auto; }
+        }
+        
+        .price-highlight {
+            animation: pulse-gold 0.5s ease-in-out;
+            color: #b9880e;
+        }
+        @keyframes pulse-gold {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); color: #b9880e; }
+            100% { transform: scale(1); }
+        }
+        
+        /* Accordion Style for FAQ */
+        details > summary {
+            list-style: none;
+        }
+        details > summary::-webkit-details-marker {
+            display: none;
+        }
+    </style>
+</head>
+<body class="bg-zinc-50 text-zinc-700 antialiased selection:bg-brand-yellow selection:text-brand-black overflow-x-hidden">
+
+    <!-- Navbar -->
+    <nav class="fixed w-full z-50 top-0 bg-brand-black/95 backdrop-blur-xl border-b border-white/5 transition-all duration-300 shadow-lg no-print">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
+            <div class="flex justify-between h-20 items-center">
+                <div class="flex flex-col items-stretch leading-none select-none cursor-pointer group z-10">
+                    <div class="relative flex items-baseline">
+                        <span class="font-logo font-bold text-[2rem] text-gold-shine lowercase tracking-[-0.08em] leading-[0.8]">vısıon</span>
+                        <span class="text-[0.5rem] text-[#b9880e] font-bold ml-0.5 self-end mb-1">®</span>
+                    </div>
+                    <div class="font-tech text-[0.6rem] font-bold text-zinc-400 lowercase flex justify-between px-0.5 group-hover:text-brand-yellow transition-colors -mt-1 tracking-widest">
+                        <span>b</span><span>u</span><span>s</span><span>i</span><span>n</span><span>e</span><span>s</span><span>s</span>
+                    </div>
+                </div>
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="#diagnostico" class="text-sm font-medium text-zinc-300 hover:text-brand-yellow transition-colors">Auditoria</a>
+                    <a href="#solucao" class="text-sm font-medium text-zinc-300 hover:text-brand-yellow transition-colors">Serviços</a>
+                    <a href="#investimento" class="text-sm font-medium text-zinc-300 hover:text-brand-yellow transition-colors">Investimento</a>
+                </div>
+                <div class="hidden md:flex items-center space-x-6 z-10">
+                    <a href="#investimento" class="bg-brand-yellow hover:bg-white hover:text-brand-black text-brand-black px-6 py-2.5 rounded-full text-sm font-bold shadow-glow transition-all">
+                        Aprovar Projeto
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- CAPA (HERO) -->
+    <header class="bg-brand-black pt-32 pb-32 relative z-10 overflow-hidden text-white min-h-[85vh] flex flex-col justify-center items-center text-center rounded-b-[1.5rem] shadow-hero-curve border-fade-silver">
+        <div class="absolute inset-0 z-0">
+            <!-- Imagem Fashion Retail Dark -->
+            <img src="https://images.unsplash.com/photo-1441986300917-64674bd600d8?q=80&w=2070&auto=format&fit=crop" alt="Loja de Grife" class="w-full h-full object-cover opacity-20 mask-gradient">
+            <div class="absolute inset-0 bg-gradient-to-b from-black/80 via-black/60 to-brand-black"></div>
+        </div>
+        
+        <div class="bg-grid-pattern absolute inset-0 opacity-10 pointer-events-none z-0"></div>
+        
+        <div class="max-w-5xl mx-auto px-4 relative z-10">
+            <div class="reveal active">
+                <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-brand-yellow/30 bg-black/40 text-brand-yellow text-xs font-bold uppercase tracking-widest mb-8 backdrop-blur-md">
+                    Diagnóstico Multi-Unidades #MidiZero11_Audit
+                </div>
+                
+                <h1 class="text-4xl md:text-6xl font-extrabold mb-6 leading-tight tracking-tight drop-shadow-2xl">
+                    Blindagem Visual <br>
+                    <span class="text-gold-shine">& Gestão de Ativos</span>
+                </h1>
+                
+                <h2 class="text-xl md:text-2xl text-zinc-300 font-light mb-10 max-w-3xl mx-auto leading-relaxed">
+                    Segurança de Grife para a MIDI ZERO11. Proteção integral do estoque à vitrine, sem comprometer a estética das lojas.
+                </h2>
+            </div>
+
+            <!-- Dados do Cliente -->
+            <div class="bg-white/5 backdrop-blur-md border border-white/10 p-1 rounded-2xl max-w-4xl mx-auto reveal active" style="transition-delay: 200ms;">
+                <div class="bg-brand-black/50 rounded-xl p-6 grid grid-cols-1 md:grid-cols-3 gap-6 items-center text-center md:text-left">
+                    <div class="border-b md:border-b-0 md:border-r border-white/10 pb-4 md:pb-0 md:pr-4">
+                        <p class="text-[10px] text-zinc-500 uppercase tracking-widest font-bold mb-1">Empresa</p>
+                        <p class="text-base font-bold text-white">MIDI ZERO11</p>
+                    </div>
+                    <div class="border-b md:border-b-0 md:border-r border-white/10 pb-4 md:pb-0 md:pr-4">
+                        <p class="text-[10px] text-zinc-500 uppercase tracking-widest font-bold mb-1">Unidades</p>
+                        <p class="text-xs font-bold text-white leading-tight">Jardins & Vila Nova</p>
+                    </div>
+                    <div class="pb-0 md:pr-4">
+                        <p class="text-[10px] text-zinc-500 uppercase tracking-widest font-bold mb-1">A/C</p>
+                        <p class="text-base font-bold text-brand-yellow">Talita</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="bg-zinc-50">
+        
+        <!-- 1. DIAGNÓSTICO -->
+        <section id="diagnostico" class="pt-48 pb-24 -mt-20 relative z-0 bg-zinc-100 border-b border-zinc-200">
+            <div class="max-w-6xl mx-auto px-4">
+                
+                <div class="grid md:grid-cols-2 gap-12 reveal items-start">
+                    <!-- Coluna da Dor -->
+                    <div class="flex flex-col justify-center">
+                        <h3 class="text-2xl font-bold text-zinc-900 mb-4 border-l-4 border-red-500 pl-4">Risco Oculto & Estética</h3>
+                        <p class="text-zinc-600 mb-4 leading-relaxed">
+                            A MIDI lida com itens de alto valor agregado e apelo visual. O sistema atual possui riscos graves: na Vila Nova, com as câmeras novas e legadas, teremos <strong>9 pontos de imagem</strong>.
+                        </p>
+                        <p class="text-zinc-600 mb-4 leading-relaxed">
+                            Orçamentos de mercado consideraram equipamentos de 8 canais — ou seja, uma câmera ficaria fisicamente desligada ("Ponto Cego Forçado").
+                        </p>
+                        <div class="bg-white p-6 rounded-xl border border-red-100 shadow-sm mt-2">
+                            <h4 class="font-bold text-red-600 mb-2 flex items-center gap-2">
+                                <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/></svg>
+                                Pontos Críticos
+                            </h4>
+                            <ul class="space-y-2 text-sm text-zinc-600">
+                                <li class="flex items-start gap-2"><span>•</span> <strong>Erro Matemático:</strong> Gravadores de 8 canais para 9 câmeras necessárias.</li>
+                                <li class="flex items-start gap-2"><span>•</span> <strong>Preservação (Jardins):</strong> Prédio antigo não aceita infraestrutura invasiva. Instalação ruim destrói a experiência.</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Coluna da Solução -->
+                    <div class="glass-text-box p-8 rounded-2xl relative overflow-hidden flex flex-col justify-center">
+                        <div class="absolute -top-10 -right-10 w-40 h-40 bg-brand-yellow rounded-full blur-3xl opacity-10 pointer-events-none"></div>
+                        <h3 class="text-2xl font-bold text-zinc-900 mb-4 border-l-4 border-brand-yellow pl-4">Boutique de Engenharia</h3>
+                        <p class="text-zinc-600 mb-4 leading-relaxed">
+                            Corrigimos o dimensionamento. Na Vila Nova, projetamos um servidor de <strong>16 Canais</strong>, garantindo que todas as 9 câmeras funcionem e deixando espaço para expansão.
+                        </p>
+                        <p class="text-zinc-600 mb-6 leading-relaxed">
+                            Nos Jardins, aplicaremos nossa metodologia <strong>White Glove</strong>: infraestrutura aparente com acabamento fino, respeitando a arquitetura vintage.
+                        </p>
+                        
+                        <div class="flex items-center gap-3 bg-brand-yellow/10 p-4 rounded-lg border border-brand-yellow/20">
+                            <!-- SVG Diamond -->
+                            <div class="text-brand-yellow text-2xl font-bold">
+                                <svg class="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.384-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"/></svg>
+                            </div>
+                            <div>
+                                <p class="text-xs font-bold text-brand-yellow uppercase tracking-wider">Resultado</p>
+                                <p class="text-xs text-zinc-700 leading-tight mt-1">
+                                    Segurança robusta que se "camufla" no design da loja, gerida por um único aplicativo (Unificação Total).
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- 3. SOLUÇÃO TÉCNICA (Escopo de Serviço) -->
+        <section id="solucao" class="py-24 bg-white">
+            <div class="max-w-6xl mx-auto px-4">
+                <div class="text-center mb-16 reveal">
+                    <span class="text-brand-yellow font-bold tracking-widest uppercase text-xs">Escopo do Serviço</span>
+                    <h2 class="text-3xl font-bold text-zinc-900 mt-2">Plano de Execução</h2>
+                    <p class="text-zinc-500 mt-2 text-sm">Integração de Tecnologia e Serviços Especializados.</p>
+                </div>
+
+                <div class="grid md:grid-cols-4 gap-6 reveal">
+                    <!-- Item 1: Gestão Unificada -->
+                    <div class="bg-zinc-50 p-6 rounded-2xl border border-zinc-200 group hover:border-brand-yellow transition-all hover:-translate-y-1 relative overflow-hidden">
+                        <!-- QTY Badge -->
+                        <div class="absolute top-4 right-4 bg-brand-yellow/10 border border-brand-yellow/20 text-[10px] font-bold px-2 py-1 rounded text-brand-yellow">QTD: 01 CENTRAL</div>
+                        
+                        <div class="w-12 h-12 bg-white text-zinc-700 rounded-xl flex items-center justify-center text-brand-yellow mb-4 shadow-sm group-hover:bg-brand-yellow group-hover:text-white transition-colors">
+                            <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"/></svg>
+                        </div>
+                        <h4 class="font-bold text-zinc-900 mb-2">Gestão Unificada de Imagens</h4>
+                        <p class="text-xs text-zinc-600 leading-relaxed mb-3">Configuração de servidor de alta capacidade para centralizar as duas unidades em uma única tela, eliminando "troca de login".</p>
+                        <p class="text-[10px] uppercase font-bold text-zinc-400 border-t border-zinc-200 pt-2">Equipamento: Gravador Digital 16 Canais</p>
+                    </div>
+                    
+                    <!-- Item 2: Monitoramento de Vendas -->
+                    <div class="bg-zinc-50 p-6 rounded-2xl border border-zinc-200 group hover:border-brand-yellow transition-all hover:-translate-y-1 relative overflow-hidden">
+                        <!-- QTY Badge -->
+                        <div class="absolute top-4 right-4 bg-brand-yellow/10 border border-brand-yellow/20 text-[10px] font-bold px-2 py-1 rounded text-brand-yellow">QTD: 16 CÂMERAS NOVAS</div>
+
+                        <div class="w-12 h-12 bg-white text-zinc-700 rounded-xl flex items-center justify-center text-brand-yellow mb-4 shadow-sm group-hover:bg-brand-yellow group-hover:text-white transition-colors">
+                            <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/></svg>
+                        </div>
+                        <h4 class="font-bold text-zinc-900 mb-2">Monitoramento de Vendas</h4>
+                        <p class="text-xs text-zinc-600 leading-relaxed mb-3">Posicionamento estratégico de lentes discretas para cobrir caixas e vitrines, focando em segurança e análise de fluxo.</p>
+                        <p class="text-[10px] uppercase font-bold text-zinc-400 border-t border-zinc-200 pt-2">Equipamento: Câmeras Full HD Intelbras</p>
+                    </div>
+                    
+                    <!-- Item 3: Auditoria de Legado -->
+                    <div class="bg-zinc-50 p-6 rounded-2xl border border-zinc-200 group hover:border-brand-yellow transition-all hover:-translate-y-1 relative overflow-hidden">
+                        <!-- QTY Badge -->
+                        <div class="absolute top-4 right-4 bg-brand-yellow/10 border border-brand-yellow/20 text-[10px] font-bold px-2 py-1 rounded text-brand-yellow">QTD: 03 CÂMERAS</div>
+
+                        <div class="w-12 h-12 bg-white text-zinc-700 rounded-xl flex items-center justify-center text-brand-yellow mb-4 shadow-sm group-hover:bg-brand-yellow group-hover:text-white transition-colors">
+                            <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/></svg>
+                        </div>
+                        <h4 class="font-bold text-zinc-900 mb-2">Auditoria de Legado</h4>
+                        <p class="text-xs text-zinc-600 leading-relaxed mb-3">Revisão técnica, cabeamento e reintegração das câmeras existentes na Vila Nova para compor o novo ecossistema.</p>
+                        <p class="text-[10px] uppercase font-bold text-zinc-400 border-t border-zinc-200 pt-2">Serviço: Recuperação de Hardware</p>
+                    </div>
+                    
+                    <!-- Item 4: Cabeamento Estruturado -->
+                    <div class="bg-zinc-50 p-6 rounded-2xl border border-zinc-200 group hover:border-brand-yellow transition-all hover:-translate-y-1 relative overflow-hidden">
+                        <!-- QTY Badge -->
+                        <div class="absolute top-4 right-4 bg-brand-yellow/10 border border-brand-yellow/20 text-[10px] font-bold px-2 py-1 rounded text-brand-yellow">QTD: 02 LOJAS</div>
+
+                        <div class="w-12 h-12 bg-white text-zinc-700 rounded-xl flex items-center justify-center text-brand-yellow mb-4 shadow-sm group-hover:bg-brand-yellow group-hover:text-white transition-colors">
+                            <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+                        </div>
+                        <h4 class="font-bold text-zinc-900 mb-2">Cabeamento Estruturado</h4>
+                        <p class="text-xs text-zinc-600 leading-relaxed mb-3">Organização completa de racks e infraestrutura para garantir estabilidade de imagem e estética limpa no escritório.</p>
+                        <p class="text-[10px] uppercase font-bold text-zinc-400 border-t border-zinc-200 pt-2">Material: Cabos 100% Cobre + Racks</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SEÇÃO: CREDENCIAIS -->
+        <section class="py-20 bg-brand-surface text-white relative overflow-hidden">
+            <div class="absolute bottom-0 left-0 w-[500px] h-[500px] bg-brand-yellow rounded-full blur-[400px] opacity-5 pointer-events-none"></div>
+            
+            <div class="max-w-6xl mx-auto px-4 relative z-10">
+                <div class="text-center mb-16 reveal">
+                    <h2 class="text-3xl font-bold text-white mt-2">Por que a Vision?</h2>
+                </div>
+
+                <div class="grid md:grid-cols-3 gap-8 reveal">
+                    <div class="flex gap-4">
+                        <div class="w-12 h-12 rounded-full bg-white/10 flex items-center justify-center text-brand-yellow text-xl shrink-0">
+                            <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"/></svg>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-white mb-2">Expertise em Varejo</h4>
+                            <p class="text-sm text-zinc-400 leading-relaxed">Entendemos que a loja não pode parar. Instalação silenciosa e organizada para impactar minimamente a operação.</p>
+                        </div>
+                    </div>
+                    <div class="flex gap-4">
+                        <div class="w-12 h-12 rounded-full bg-white/10 flex items-center justify-center text-brand-yellow text-xl shrink-0">
+                            <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.384-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"/></svg>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-white mb-2">Instalação White Glove</h4>
+                            <p class="text-sm text-zinc-400 leading-relaxed">Instalação limpa e organizada, com acabamento impecável. Respeitamos a arquitetura da loja e não deixamos 'varal de fios' aparente.</p>
+                        </div>
+                    </div>
+                    <div class="flex gap-4">
+                        <div class="w-12 h-12 rounded-full bg-white/10 flex items-center justify-center text-brand-yellow text-xl shrink-0">
+                            <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v13m0-13V6a2 2 0 112 2h-2zm0 0V5.5A2.5 2.5 0 109.5 8H12zm-7 4h14M5 12a2 2 0 110-4h14a2 2 0 110 4M5 12v7a2 2 0 002 2h10a2 2 0 002-2v-7"/></svg>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-white mb-2">Garantia Real</h4>
+                            <p class="text-sm text-zinc-400 leading-relaxed">1 Ano de Garantia Balcão em equipamentos e mão de obra, com suporte técnico especializado.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SEÇÃO: VISION CARE INFO (Design Premium) -->
+        <section class="py-16 bg-white border-t border-zinc-200">
+            <div class="max-w-5xl mx-auto px-4 reveal">
+                <div class="bg-zinc-50 rounded-2xl p-8 shadow-md border border-brand-yellow/30 flex flex-col md:flex-row gap-8 relative overflow-hidden transition-all duration-300 hover:shadow-lg">
+                    <div class="absolute top-0 right-0 bg-brand-yellow text-brand-black text-[10px] font-bold px-3 py-1 rounded-bl-lg shadow-sm">OPCIONAL RECOMENDADO</div>
+                    
+                    <div class="flex-1">
+                        <h3 class="text-2xl font-bold text-zinc-900 mb-2 flex items-center gap-2">
+                            Vision Care
+                            <span class="text-xs font-normal text-brand-yellow border border-brand-yellow px-2 py-0.5 rounded-full bg-white/50">Continuidade Operacional</span>
+                        </h3>
+                        <p class="text-sm text-zinc-600 mb-6 max-w-xl">
+                            "O Seguro dos Seus Equipamentos". Para lojas de alto fluxo, a manutenção preventiva é vital. Ative nos planos abaixo para garantir:
+                        </p>
+                        
+                        <!-- Lista de Benefícios (Em Cards Visuais) -->
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                            <!-- Card Benefício 1 -->
+                            <div class="flex items-start gap-3 p-3 bg-white rounded-lg border border-zinc-200 shadow-sm">
+                                <div class="bg-brand-yellow/10 p-2 rounded-md text-brand-yellow font-bold text-lg">
+                                    <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
+                                </div>
+                                <div>
+                                    <strong class="text-xs uppercase tracking-wide text-zinc-800">Check-up de Gravação</strong>
+                                    <p class="text-[11px] text-zinc-500 mt-0.5">Auditoria remota para garantir que as imagens estão sendo salvas.</p>
+                                </div>
+                            </div>
+                            
+                            <!-- Card Benefício 2 -->
+                            <div class="flex items-start gap-3 p-3 bg-white rounded-lg border border-zinc-200 shadow-sm">
+                                <div class="bg-brand-yellow/10 p-2 rounded-md text-brand-yellow font-bold text-lg">
+                                    <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.384-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"/></svg>
+                                </div>
+                                <div>
+                                    <strong class="text-xs uppercase tracking-wide text-zinc-800">Limpeza Técnica</strong>
+                                    <p class="text-[11px] text-zinc-500 mt-0.5">Limpeza mensal de lentes e organização de racks.</p>
+                                </div>
+                            </div>
+
+                            <!-- Card Benefício 3 -->
+                            <div class="flex items-start gap-3 p-3 bg-white rounded-lg border border-zinc-200 shadow-sm">
+                                <div class="bg-brand-yellow/10 p-2 rounded-md text-brand-yellow font-bold text-lg">
+                                    <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+                                </div>
+                                <div>
+                                    <strong class="text-xs uppercase tracking-wide text-zinc-800">Prioridade SLA</strong>
+                                    <p class="text-[11px] text-zinc-500 mt-0.5">Atendimento "fura-fila" em caso de pane no sistema.</p>
+                                </div>
+                            </div>
+
+                            <!-- Card Benefício 4 -->
+                            <div class="flex items-start gap-3 p-3 bg-white rounded-lg border border-zinc-200 shadow-sm">
+                                <div class="bg-brand-yellow/10 p-2 rounded-md text-brand-yellow font-bold text-lg">
+                                    <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                                </div>
+                                <div>
+                                    <strong class="text-xs uppercase tracking-wide text-zinc-800">Economia Real</strong>
+                                    <p class="text-[11px] text-zinc-500 mt-0.5">Preventiva custa 40% menos que chamados corretivos avulsos.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 5. INVESTIMENTO (COM SELETOR DE VISION CARE NOS CARDS) -->
+        <section id="investimento" class="py-24 bg-zinc-50 relative">
+            <div class="max-w-7xl mx-auto px-4 relative z-10">
+                <div class="text-center mb-16 reveal">
+                    <h2 class="text-3xl font-bold text-zinc-900 mb-4">Estratégia Combo</h2>
+                    <p class="text-zinc-500 text-lg max-w-2xl mx-auto">
+                        A Opção 3 ativa nossa "Logística Sequencial", gerando economia de escala.
+                    </p>
+                </div>
+
+                <div class="grid md:grid-cols-3 gap-6 items-start justify-center reveal">
+                    
+                    <!-- OPÇÃO 1: JARDINS -->
+                    <div class="bg-white border border-zinc-200 p-6 rounded-2xl flex flex-col h-full hover:border-zinc-300 transition-all shadow-sm opacity-90 hover:opacity-100 group">
+                        <div class="mb-4">
+                            <h3 class="text-xl font-bold text-zinc-700">Apenas Jardins</h3>
+                            <p class="text-xs text-zinc-500 mt-2">Segurança Total no Prédio Antigo.</p>
+                        </div>
+                        <div class="flex-1 text-sm text-zinc-600 mb-6 space-y-3">
+                            <ul class="space-y-2 text-xs text-zinc-500">
+                                <li class="flex items-center gap-2">✓ 10 Câmeras</li>
+                                <li class="flex items-center gap-2">✓ Infraestrutura Predial</li>
+                                <li class="flex items-center gap-2">✓ Rack Organizador</li>
+                            </ul>
+                        </div>
+                        
+                        <!-- Toggle Vision Care Interno -->
+                        <div class="mb-4 pt-4 border-t border-zinc-100">
+                            <label class="flex items-center cursor-pointer gap-3">
+                                <div class="relative">
+                                    <input type="checkbox" class="sr-only peer" onchange="toggleCare('jardins', this, 390)">
+                                    <div class="w-9 h-5 bg-zinc-300 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-4 after:w-4 after:transition-all peer-checked:bg-brand-yellow"></div>
+                                </div>
+                                <span class="text-xs font-bold text-zinc-500">Incluir Vision Care</span>
+                            </label>
+                        </div>
+
+                        <!-- Bloco de Preço -->
+                        <div class="pt-2">
+                            <div class="flex items-end justify-between">
+                                <div class="flex items-baseline gap-1">
+                                    <span class="text-sm font-bold text-zinc-400 mr-1">4x</span>
+                                    <span class="text-3xl font-extrabold text-zinc-800">2.607,00</span>
+                                </div>
+                                <!-- Valor Mensal Vision Care (Oculto por padrão) -->
+                                <div id="care-display-jardins" class="hidden text-brand-yellow font-bold text-sm mb-1 text-right animate-slide-in">
+                                    + R$ 390 <span class="text-[10px] text-zinc-400 font-medium text-brand-yellow/80">/mês</span>
+                                </div>
+                            </div>
+                            <div class="text-xs text-zinc-400 mt-1 font-medium">
+                                ou R$ 9.906,60 à vista (5% OFF)
+                            </div>
+                            <a href="https://wa.me/5511930816696?text=Ola,%20Talita%20aprovou%20Jardins" id="link-jardins" class="mt-4 block w-full bg-transparent border-2 border-zinc-300 text-zinc-600 font-bold py-3 rounded-xl hover:border-zinc-800 hover:text-zinc-900 transition-all text-center text-sm">
+                                Aprovar Jardins
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- OPÇÃO 2: VILA NOVA -->
+                    <div class="bg-white border border-zinc-200 p-6 rounded-2xl flex flex-col h-full hover:border-zinc-300 transition-all shadow-sm opacity-90 hover:opacity-100 group">
+                        <div class="mb-4">
+                            <h3 class="text-xl font-bold text-zinc-700">Apenas Vila Nova</h3>
+                            <p class="text-xs text-zinc-500 mt-2">Correção Técnica & Expansão.</p>
+                        </div>
+                        <div class="flex-1 text-sm text-zinc-600 mb-6 space-y-3">
+                            <ul class="space-y-2 text-xs text-zinc-500">
+                                <li class="flex items-center gap-2">✓ DVR 16 Canais (Suporta 9 Cams)</li>
+                                <li class="flex items-center gap-2">✓ 6 Câmeras Novas</li>
+                                <li class="flex items-center gap-2">✓ Integração das 3 Atuais</li>
+                            </ul>
+                        </div>
+
+                        <!-- Toggle Vision Care Interno -->
+                        <div class="mb-4 pt-4 border-t border-zinc-100">
+                            <label class="flex items-center cursor-pointer gap-3">
+                                <div class="relative">
+                                    <input type="checkbox" class="sr-only peer" onchange="toggleCare('vila', this, 390)">
+                                    <div class="w-9 h-5 bg-zinc-300 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-4 after:w-4 after:transition-all peer-checked:bg-brand-yellow"></div>
+                                </div>
+                                <span class="text-xs font-bold text-zinc-500">Incluir Vision Care</span>
+                            </label>
+                        </div>
+
+                        <!-- Bloco de Preço -->
+                        <div class="pt-2">
+                            <div class="flex items-end justify-between">
+                                <div class="flex items-baseline gap-1">
+                                    <span class="text-sm font-bold text-zinc-400 mr-1">4x</span>
+                                    <span class="text-3xl font-extrabold text-zinc-800">2.097,00</span>
+                                </div>
+                                <!-- Valor Mensal Vision Care -->
+                                <div id="care-display-vila" class="hidden text-brand-yellow font-bold text-sm mb-1 text-right animate-slide-in">
+                                    + R$ 390 <span class="text-[10px] text-zinc-400 font-medium text-brand-yellow/80">/mês</span>
+                                </div>
+                            </div>
+                            <div class="text-xs text-zinc-400 mt-1 font-medium">
+                                ou R$ 7.968,60 à vista (5% OFF)
+                            </div>
+                            <a href="https://wa.me/5511930816696?text=Ola,%20Talita%20aprovou%20Vila%20Nova" id="link-vila" class="mt-4 block w-full bg-transparent border-2 border-zinc-300 text-zinc-600 font-bold py-3 rounded-xl hover:border-zinc-800 hover:text-zinc-900 transition-all text-center text-sm">
+                                Aprovar Vila Nova
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- OPÇÃO 3: VISION DUO (DESTAQUE) -->
+                    <div class="bg-brand-black text-white border border-zinc-700 p-8 rounded-2xl flex flex-col h-full shadow-2xl relative z-20 overflow-hidden hover:shadow-glow transition-shadow relative group transform md:scale-105">
+                        <div class="absolute inset-0 bg-brand-yellow/5 pointer-events-none"></div>
+                        <!-- EFEITO GOLD SHINE NO SELO -->
+                        <div class="absolute top-0 right-0 bg-gold-shine text-[10px] font-bold px-4 py-1 rounded-bl-xl font-logo tracking-widest">RECOMENDADA</div>
+                        
+                        <div class="mb-6 relative z-10">
+                            <h3 class="text-2xl font-bold text-white">Pacote Vision Duo</h3>
+                            <p class="text-sm text-brand-yellow mt-2">Logística Unificada = Desconto.</p>
+                        </div>
+                        <div class="flex-1 text-sm text-zinc-300 mb-8 space-y-4 relative z-10">
+                            <p class="font-medium text-white">Ao realizarmos as duas obras em sequência, diluímos custos.</p>
+                            <ul class="space-y-3">
+                                <li class="flex items-center gap-2"><svg class="w-5 h-5 text-brand-yellow" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg> <strong>Solução Completa (2 Lojas)</strong></li>
+                                <li class="flex items-center gap-2"><svg class="w-5 h-5 text-brand-yellow" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg> Economia de R$ 2.201,00</li>
+                                <li class="flex items-center gap-2"><svg class="w-5 h-5 text-brand-yellow" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg> Unificação de Sistema</li>
+                            </ul>
+                        </div>
+
+                        <!-- Toggle Vision Care Interno -->
+                        <div class="mb-6 pt-4 border-t border-white/10 relative z-10">
+                            <label class="flex items-center cursor-pointer gap-3">
+                                <div class="relative">
+                                    <input type="checkbox" class="sr-only peer" onchange="toggleCare('duo', this, 690)">
+                                    <div class="w-9 h-5 bg-zinc-600 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-4 after:w-4 after:transition-all peer-checked:bg-brand-yellow"></div>
+                                </div>
+                                <div>
+                                    <span class="block text-xs font-bold text-white">Incluir Vision Care (Combo)</span>
+                                    <span class="text-[10px] text-brand-yellow line-through decoration-white/50 mr-1">R$ 850</span>
+                                    <span class="text-[10px] text-brand-yellow font-bold">R$ 690/mês</span>
+                                </div>
+                            </label>
+                        </div>
+
+                        <!-- Bloco de Preço -->
+                        <div class="border-t border-white/10 pt-6 relative z-10 mt-auto">
+                            <div class="flex items-end justify-between">
+                                <div class="flex items-baseline gap-1 mt-1">
+                                    <span class="text-lg font-bold text-zinc-500 mr-1">4x</span>
+                                    <span class="text-5xl font-extrabold text-white">4.153,75</span>
+                                </div>
+                                <!-- Valor Mensal Vision Care -->
+                                <div id="care-display-duo" class="hidden text-brand-yellow font-bold text-sm mb-2 text-right animate-slide-in">
+                                    + R$ 690 <span class="text-[10px] text-white/60 font-medium text-brand-yellow/80">/mês</span>
+                                </div>
+                            </div>
+                            <div class="text-xs text-zinc-400 mt-2 font-medium bg-white/10 inline-block px-3 py-1 rounded cash-display" id="cash-duo" data-base="15784.25">
+                                ou R$ 15.784,25 à vista (5% OFF)
+                            </div>
+                            
+                            <a href="https://wa.me/5511930816696?text=Ola,%20Talita%20aprovou%20o%20Pacote%20Vision%20Duo" id="link-duo" class="mt-6 block w-full bg-brand-yellow text-brand-black font-bold py-4 rounded-xl hover:bg-white transition-all text-center shadow-glow">
+                                Aprovar Pacote Duo
+                            </a>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- FAQ Section -->
+        <section class="py-16 bg-zinc-100 border-t border-zinc-200">
+            <div class="max-w-4xl mx-auto px-4 reveal">
+                <div class="text-center mb-12">
+                    <span class="text-brand-yellow font-bold tracking-widest uppercase text-xs">Dúvidas Frequentes</span>
+                    <h2 class="text-3xl font-bold text-zinc-900 mt-2">Perguntas & Respostas</h2>
+                </div>
+                
+                <div class="space-y-4">
+                    <!-- Q1 -->
+                    <details class="bg-white border border-zinc-200 rounded-xl overflow-hidden group">
+                        <summary class="flex justify-between items-center p-6 cursor-pointer list-none">
+                            <span class="font-bold text-zinc-800">A instalação vai atrapalhar o funcionamento da loja?</span>
+                            <span class="transition group-open:rotate-180">
+                                <svg fill="none" height="24" shape-rendering="geometricPrecision" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewBox="0 0 24 24" width="24"><path d="M6 9l6 6 6-6"></path></svg>
+                            </span>
+                        </summary>
+                        <div class="px-6 pb-6 text-sm text-zinc-600 leading-relaxed">
+                            Não. Nossa equipe segue protocolos de instalação silenciosa e organizada. Trabalhamos de forma setorizada para não impactar o atendimento ao cliente, e se necessário, podemos agendar horários alternativos.
+                        </div>
+                    </details>
+
+                    <!-- Q2 -->
+                    <details class="bg-white border border-zinc-200 rounded-xl overflow-hidden group">
+                        <summary class="flex justify-between items-center p-6 cursor-pointer list-none">
+                            <span class="font-bold text-zinc-800">Consigo ver as duas lojas ao mesmo tempo no celular?</span>
+                            <span class="transition group-open:rotate-180">
+                                <svg fill="none" height="24" shape-rendering="geometricPrecision" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewBox="0 0 24 24" width="24"><path d="M6 9l6 6 6-6"></path></svg>
+                            </span>
+                        </summary>
+                        <div class="px-6 pb-6 text-sm text-zinc-600 leading-relaxed">
+                            Sim. O sistema proposto unifica as imagens no aplicativo Intelbras iSIC. Você terá uma grade visual com as câmeras dos Jardins e da Vila Nova na mesma tela, sem precisar fazer logoff/login.
+                        </div>
+                    </details>
+
+                    <!-- Q3 -->
+                    <details class="bg-white border border-zinc-200 rounded-xl overflow-hidden group">
+                        <summary class="flex justify-between items-center p-6 cursor-pointer list-none">
+                            <span class="font-bold text-zinc-800">O que acontece se a internet da loja cair?</span>
+                            <span class="transition group-open:rotate-180">
+                                <svg fill="none" height="24" shape-rendering="geometricPrecision" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewBox="0 0 24 24" width="24"><path d="M6 9l6 6 6-6"></path></svg>
+                            </span>
+                        </summary>
+                        <div class="px-6 pb-6 text-sm text-zinc-600 leading-relaxed">
+                            O sistema de segurança é híbrido. Mesmo sem internet, o DVR continua gravando localmente no HD interno. Assim que a conexão voltar, você poderá acessar as gravações do período offline.
+                        </div>
+                    </details>
+
+                    <!-- Q4 -->
+                    <details class="bg-white border border-zinc-200 rounded-xl overflow-hidden group">
+                        <summary class="flex justify-between items-center p-6 cursor-pointer list-none">
+                            <span class="font-bold text-zinc-800">Como funciona a garantia?</span>
+                            <span class="transition group-open:rotate-180">
+                                <svg fill="none" height="24" shape-rendering="geometricPrecision" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewBox="0 0 24 24" width="24"><path d="M6 9l6 6 6-6"></path></svg>
+                            </span>
+                        </summary>
+                        <div class="px-6 pb-6 text-sm text-zinc-600 leading-relaxed">
+                            Oferecemos 1 ano de garantia total (equipamentos + mão de obra). Caso opte pelo plano Vision Care, essa cobertura se estende com manutenção preventiva mensal e troca expressa de equipamentos.
+                        </div>
+                    </details>
+
+                    <!-- Q5 -->
+                    <details class="bg-white border border-zinc-200 rounded-xl overflow-hidden group">
+                        <summary class="flex justify-between items-center p-6 cursor-pointer list-none">
+                            <span class="font-bold text-zinc-800">O cabeamento vai ficar aparente e feio?</span>
+                            <span class="transition group-open:rotate-180">
+                                <svg fill="none" height="24" shape-rendering="geometricPrecision" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewBox="0 0 24 24" width="24"><path d="M6 9l6 6 6-6"></path></svg>
+                            </span>
+                        </summary>
+                        <div class="px-6 pb-6 text-sm text-zinc-600 leading-relaxed">
+                            Jamais. Nossa metodologia "White Glove" foca na estética. Usamos tubulações de acabamento fino, canaletas discretas e organizadores de fios. Onde não for possível embutir, a infraestrutura será parte do design industrial/clean da loja.
+                        </div>
+                    </details>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-brand-black text-zinc-400 py-12 border-t border-white/10 no-print">
+        <div class="max-w-4xl mx-auto px-4 text-center">
+            <div class="flex flex-col items-center justify-center gap-0 mb-8">
+                <div class="relative flex items-baseline leading-none">
+                    <span class="font-logo font-bold text-[2.5rem] text-gold-shine lowercase tracking-[-0.08em] leading-none">vısıon</span>
+                    <span class="text-[0.6rem] text-[#b9880e] font-bold ml-0.5 self-end mb-1">®</span>
+                </div>
+                <div class="font-tech text-[0.6rem] font-light text-white lowercase tracking-[0.4em] ml-1 -mt-2">
+                    business
+                </div>
+            </div>
+            
+            <p class="text-xs text-zinc-600 max-w-lg mx-auto mt-8 mb-4">
+                Esta proposta é válida por 7 dias. Parcelamento via Cartão de Crédito.
+            </p>
+
+            <div class="text-[10px] text-zinc-500 space-y-1">
+                <p>Vision Tecnologia e Segurança</p>
+                <p>Todos os direitos reservados</p>
+            </div>
+            
+            <!-- MARCA D'ÁGUA VISY -->
+            <div class="mt-8 pt-8 border-t border-white/5 flex flex-col items-center justify-center">
+                <a href="https://visy.netlify.app/" target="_blank" class="group flex items-center gap-2 opacity-50 hover:opacity-100 transition-opacity">
+                    <span class="text-[10px] uppercase tracking-widest text-zinc-500 group-hover:text-visy-primary transition-colors">Powered by</span>
+                    <div class="flex items-center gap-1.5">
+                        <div class="relative w-4 h-4 flex items-center justify-center">
+                            <div class="absolute w-full h-full border border-visy-primary/50 rounded-sm transform rotate-45 group-hover:rotate-90 transition-all duration-700 ease-out"></div>
+                            <div class="relative w-1 h-1 bg-white rounded-full"></div>
+                        </div>
+                        <span class="font-visy font-bold text-white text-sm tracking-wide group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-visy-primary group-hover:to-visy-secondary transition-all duration-500">visy</span>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Whatsapp Floating Button -->
+    <a href="https://wa.me/5511930816696?text=Ola,%20Talita%20gostaria%20de%20falar%20sobre%20a%20proposta"
+       target="_blank"
+       id="whatsapp-btn"
+       class="fixed bottom-6 right-6 z-50 bg-[#25D366] text-white p-3 rounded-full shadow-lg hover:scale-110 hover:bg-[#20b858] transition-all duration-300 group flex items-center gap-2 overflow-hidden translate-y-20 opacity-0 no-print"
+       aria-label="Falar no WhatsApp">
+        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.008-.57-.008-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
+        </svg>
+        <span class="max-w-0 overflow-hidden group-hover:max-w-xs transition-all duration-500 ease-in-out whitespace-nowrap text-sm font-bold pl-0 group-hover:pl-2">Falar agora</span>
+    </a>
+
+    <script>
+        function toggleCare(type, checkbox, value) {
+            const isChecked = checkbox.checked;
+            
+            const linkEl = document.getElementById(`link-${type}`);
+            const careDisplay = document.getElementById(`care-display-${type}`);
+            
+            // Base Text for Link
+            let linkBaseText = "";
+            if(type === 'jardins') linkBaseText = "Ola,%20Talita%20aprovou%20Jardins";
+            if(type === 'vila') linkBaseText = "Ola,%20Talita%20aprovou%20Vila%20Nova";
+            if(type === 'duo') linkBaseText = "Ola,%20Talita%20aprovou%20o%20Pacote%20Vision%20Duo";
+
+            if(isChecked) {
+                // Update Link
+                linkEl.href = `https://wa.me/5511930816696?text=${linkBaseText}%20COM%20VISION%20CARE`;
+                
+                // Show Price Addon Display
+                if (careDisplay) {
+                    careDisplay.classList.remove('hidden');
+                }
+                
+            } else {
+                // Revert Link
+                linkEl.href = `https://wa.me/5511930816696?text=${linkBaseText}`;
+                
+                // Hide Price Addon Display
+                if (careDisplay) {
+                    careDisplay.classList.add('hidden');
+                }
+            }
+        }
+
+        // Reveal Animation Script
+        window.addEventListener('scroll', reveal);
+        function reveal() {
+            var reveals = document.querySelectorAll('.reveal');
+            for (var i = 0; i < reveals.length; i++) {
+                var windowHeight = window.innerHeight;
+                var elementTop = reveals[i].getBoundingClientRect().top;
+                var elementVisible = 100;
+                if (elementTop < windowHeight - elementVisible) {
+                    reveals[i].classList.add('active');
+                }
+            }
+        }
+        
+        // Whatsapp Button Reveal Logic
+        window.addEventListener('scroll', function() {
+            var whatsappBtn = document.getElementById('whatsapp-btn');
+            if (whatsappBtn) {
+                if (window.scrollY > 300) {
+                    whatsappBtn.classList.add('visible');
+                    whatsappBtn.classList.remove('translate-y-20', 'opacity-0');
+                } else {
+                    whatsappBtn.classList.remove('visible');
+                    whatsappBtn.classList.add('translate-y-20', 'opacity-0');
+                }
+            }
+        });
+
+        // Trigger reveal on load
+        reveal(); 
+    </script>
+</body>
+</html>

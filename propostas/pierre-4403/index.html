@@ -1,0 +1,744 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth overflow-hidden" id="html-root">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projeto Executivo | Condomínio Rudge Ramos - Vision</title>
+    <meta name="description" content="Projeto de Engenharia de Acesso para Condomínio Rudge Ramos">
+    <meta name="theme-color" content="#b9880e">
+    
+    <!-- Fonts & Icons -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@700;800&family=Quicksand:wght@500;600;700&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    
+    <!-- Google Analytics 4 -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-KTGEL92B0F"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-KTGEL92B0F');
+    </script>
+
+    <!-- Microsoft Clarity -->
+    <script type="text/javascript">
+        (function(c,l,a,r,i,t,y){
+            c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+            t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+            y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+        })(window, document, "clarity", "script", "vifq10es5o");
+    </script>
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: { 
+                        sans: ['"Outfit"', 'sans-serif'],
+                        logo: ['"League Spartan"', 'sans-serif'],
+                        tech: ['"Quicksand"', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            yellow: '#b9880e', 
+                            goldLight: '#FFDE59', 
+                            goldDark: '#BA8500',  
+                            black: '#09090b', 
+                            dark: '#000000',
+                            surface: '#18181b', 
+                            gray: '#27272a', 
+                        },
+                    },
+                    boxShadow: {
+                        'glow': '0 0 20px rgba(185, 136, 14, 0.15)',
+                        'glow-strong': '0 0 40px rgba(185, 136, 14, 0.3)',
+                        'glass': '0 8px 32px 0 rgba(0, 0, 0, 0.3)',
+                        'green-glow': '0 0 20px rgba(16, 185, 129, 0.4)',
+                        'red-glow': '0 0 20px rgba(220, 38, 38, 0.15)',
+                    },
+                    animation: {
+                        'slide-up': 'slideUp 0.8s ease-out forwards',
+                        'pulse-gold': 'pulseGold 2s infinite',
+                        'shake': 'shake 0.5s cubic-bezier(.36,.07,.19,.97) both',
+                        'fade-in': 'fadeIn 0.5s ease-out forwards',
+                    },
+                    keyframes: {
+                        slideUp: {
+                            '0%': { opacity: '0', transform: 'translateY(20px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' },
+                        },
+                        fadeIn: {
+                            '0%': { opacity: '0' },
+                            '100%': { opacity: '1' },
+                        },
+                        pulseGold: {
+                            '0%, 100%': { boxShadow: '0 0 0 0 rgba(185, 136, 14, 0.4)' },
+                            '50%': { boxShadow: '0 0 0 10px rgba(185, 136, 14, 0)' },
+                        },
+                        shake: {
+                            '10%, 90%': { transform: 'translate3d(-1px, 0, 0)' },
+                            '20%, 80%': { transform: 'translate3d(2px, 0, 0)' },
+                            '30%, 50%, 70%': { transform: 'translate3d(-4px, 0, 0)' },
+                            '40%, 60%': { transform: 'translate3d(4px, 0, 0)' }
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #f9fafb; }
+        ::-webkit-scrollbar-thumb { background: #d1d5db; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #b9880e; }
+        
+        .text-gold-shine {
+            background: linear-gradient(to right, #b9880e 20%, #FFDE59 50%, #b9880e 80%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-size: 200% auto;
+            animation: shine 4s linear infinite;
+        }
+        @keyframes shine { to { background-position: 200% center; } }
+        
+        .bg-grid { 
+            background-image: linear-gradient(rgba(185, 136, 14, 0.03) 1px, transparent 1px), 
+                              linear-gradient(90deg, rgba(185, 136, 14, 0.03) 1px, transparent 1px); 
+            background-size: 40px 40px; 
+        }
+        
+        .card-hover { transition: all 0.3s ease; }
+        .card-hover:hover { 
+            transform: translateY(-5px); 
+            box-shadow: 0 20px 40px -10px rgba(185,136,14,0.2); 
+        }
+        
+        /* Lock Screen Input */
+        .lock-input {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: #b9880e;
+            font-family: 'League Spartan', sans-serif;
+            font-size: 1.5rem;
+            text-align: center;
+            outline: none;
+            transition: all 0.3s;
+            letter-spacing: 0.2em;
+            border-radius: 12px;
+        }
+        .lock-input:focus {
+            border-color: #b9880e;
+            background: rgba(255, 255, 255, 0.08);
+            box-shadow: 0 0 15px rgba(185, 136, 14, 0.2);
+        }
+        .lock-input::placeholder {
+            color: #52525b;
+            font-size: 0.9rem;
+            font-family: 'Outfit', sans-serif;
+            font-weight: 300;
+            letter-spacing: normal;
+        }
+
+        .reveal { opacity: 0; transform: translateY(30px); transition: all 0.8s ease-out; }
+        .reveal.active { opacity: 1; transform: translateY(0); }
+        
+        @media print {
+            #lock-screen, #navbar, #whatsapp-link, .no-print { display: none !important; }
+            body { background: white; color: black; }
+            .reveal { opacity: 1 !important; transform: none !important; }
+        }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800 antialiased overflow-x-hidden">
+
+    <!-- LOCK SCREEN -->
+    <div id="lock-screen" class="fixed inset-0 z-[100] bg-[#09090b] flex flex-col items-center justify-center text-center p-4 transition-opacity duration-700 ease-out">
+        <div class="bg-grid absolute inset-0 opacity-10 pointer-events-none"></div>
+        
+        <div class="relative flex flex-col items-center justify-center mb-8 z-10">
+            <div class="relative flex items-baseline leading-none">
+                <span class="font-logo font-bold text-[3.5rem] md:text-[6rem] text-gold-shine lowercase tracking-[-0.08em]">vısıon</span>
+                <span class="text-[0.8rem] md:text-[1.2rem] text-[#b9880e] font-bold ml-1 self-end mb-3">®</span>
+            </div>
+            <div class="font-tech text-[0.9rem] md:text-[1.2rem] font-light text-zinc-500 lowercase tracking-[0.4em] -mt-5">tecnologia</div>
+        </div>
+        
+        <div class="w-full max-w-md space-y-6 z-10" id="lock-content">
+            <div class="text-center space-y-2">
+                <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-brand-yellow/30 bg-brand-yellow/10 mb-4">
+                    <i data-lucide="lock" class="w-4 h-4 text-brand-yellow"></i>
+                    <span class="text-brand-yellow text-xs font-bold uppercase tracking-widest">Acesso Restrito Assembleia</span>
+                </div>
+                <h2 class="text-white font-bold text-2xl">Condomínio Rudge Ramos</h2>
+                <p class="text-zinc-400 text-sm">Projeto Executivo de Segurança</p>
+            </div>
+            
+            <div class="relative">
+                <input type="password" id="password-input" class="lock-input w-full py-4 px-4" placeholder="SENHA" autocomplete="off">
+                <p id="error-msg" class="text-red-500 text-xs mt-2 hidden font-bold">❌ Acesso negado.</p>
+            </div>
+            
+            <button onclick="checkPassword()" class="w-full bg-brand-yellow hover:bg-brand-goldLight text-black font-bold py-4 rounded-xl transition-all shadow-glow flex items-center justify-center gap-2 group">
+                <i data-lucide="shield-check" class="w-5 h-5"></i>
+                <span>Acessar Documento</span>
+                <i data-lucide="arrow-right" class="w-4 h-4 group-hover:translate-x-1 transition-transform"></i>
+            </button>
+        </div>
+    </div>
+
+    <!-- NAVBAR -->
+    <nav id="navbar" class="fixed w-full z-50 top-0 bg-white/80 backdrop-blur-md border-b border-gray-200/50 shadow-sm transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-20 items-center">
+                <div class="flex flex-col items-start cursor-pointer">
+                    <span class="font-logo font-bold text-2xl text-gold-shine lowercase tracking-tight leading-none">vısıon</span>
+                    <span class="font-tech text-[0.6rem] font-bold text-gray-600 lowercase tracking-[0.3em] -mt-2">tecnologia</span>
+                </div>
+                <div class="hidden md:flex items-center space-x-6 text-sm font-medium text-gray-600">
+                    <a href="#contexto" class="hover:text-brand-yellow transition-colors">O Diagnóstico</a>
+                    <a href="#solucao" class="hover:text-brand-yellow transition-colors">Tecnologia</a>
+                    <a href="#escopo" class="hover:text-brand-yellow transition-colors">Escopo</a>
+                    <a href="#investimento" class="hover:text-brand-yellow transition-colors">Investimento</a>
+                </div>
+                <a href="#investimento" class="bg-brand-yellow text-black px-6 py-2.5 rounded-full text-xs font-bold uppercase tracking-wide hover:bg-brand-goldLight transition-all shadow-md hover:shadow-glow">
+                    Aprovar em Assembleia
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- HERO SECTION -->
+    <header class="pt-32 pb-20 relative overflow-hidden bg-white">
+        <div class="bg-grid absolute inset-0 opacity-40"></div>
+        <div class="absolute inset-0 bg-gradient-to-b from-transparent via-white/50 to-white"></div>
+        
+        <div class="max-w-6xl mx-auto px-4 relative z-10">
+            <div class="text-center space-y-6 animate-slide-up">
+                <div class="inline-flex items-center gap-2 px-5 py-2 rounded-full border border-brand-yellow/30 bg-brand-yellow/10 text-brand-yellow text-[10px] font-bold uppercase tracking-widest">
+                    <i data-lucide="shield" class="w-4 h-4"></i>
+                    PROJETO TÉCNICO #VB-2026-0219 | VALIDADE: 30 DIAS
+                </div>
+                
+                <h1 class="text-4xl md:text-6xl lg:text-7xl font-bold text-gray-900 leading-tight">
+                    Acesso Blindado e <span class="text-gold-shine">Inteligente:</span><br>
+                    <span class="text-2xl md:text-3xl lg:text-4xl text-gray-700 font-medium mt-3 block">O Fim das Portas Abertas e o Controle Total do Seu Condomínio</span>
+                </h1>
+                
+                <p class="text-sm md:text-base text-gray-500 max-w-2xl mx-auto font-light mt-4">
+                    Projeto Executivo de Engenharia de Acesso para Condomínio Rudge Ramos — Segurança, Durabilidade e Compliance.
+                </p>
+            </div>
+
+            <div class="mt-12 grid grid-cols-2 md:grid-cols-4 gap-6 max-w-5xl mx-auto">
+                <div class="bg-white rounded-xl p-6 shadow-md border border-gray-200 text-center reveal">
+                    <i data-lucide="scan-face" class="w-10 h-10 text-brand-yellow mx-auto mb-3"></i>
+                    <div class="text-3xl font-bold text-gray-900">3D</div>
+                    <div class="text-sm text-gray-600">Biometria Anti-Fake</div>
+                </div>
+                <div class="bg-white rounded-xl p-6 shadow-md border border-gray-200 text-center reveal" style="animation-delay: 100ms;">
+                    <i data-lucide="lock" class="w-10 h-10 text-brand-yellow mx-auto mb-3"></i>
+                    <div class="text-3xl font-bold text-gray-900">150kg</div>
+                    <div class="text-sm text-gray-600">Força de Retenção</div>
+                </div>
+                <div class="bg-white rounded-xl p-6 shadow-md border border-gray-200 text-center reveal" style="animation-delay: 200ms;">
+                    <i data-lucide="bell-ring" class="w-10 h-10 text-brand-yellow mx-auto mb-3"></i>
+                    <div class="text-3xl font-bold text-gray-900">Zero</div>
+                    <div class="text-sm text-gray-600">Portas Encostadas</div>
+                </div>
+                <div class="bg-white rounded-xl p-6 shadow-md border border-gray-200 text-center reveal" style="animation-delay: 300ms;">
+                    <i data-lucide="flame" class="w-10 h-10 text-brand-yellow mx-auto mb-3"></i>
+                    <div class="text-3xl font-bold text-gray-900">100%</div>
+                    <div class="text-sm text-gray-600">Compliance Bombeiros</div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- DIAGNÓSTICO -->
+    <section id="contexto" class="py-20 bg-gray-100 border-b border-gray-200">
+        <div class="max-w-6xl mx-auto px-4">
+            <div class="grid lg:grid-cols-2 gap-16 items-start reveal">
+                
+                <!-- A Raiz do Problema -->
+                <div>
+                    <span class="text-brand-yellow font-bold uppercase tracking-widest text-xs">O Cenário Atual</span>
+                    <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mt-2 mb-6">A Raiz do Problema</h2>
+                    <p class="text-gray-700 leading-relaxed mb-6">
+                        Durante nossa análise de risco e escuta ativa das necessidades do Condomínio Rudge Ramos, identificamos vulnerabilidades críticas que expõem os moradores diariamente:
+                    </p>
+
+                    <div class="space-y-4 mb-8">
+                        <div class="bg-white p-5 rounded-xl border-l-4 border-brand-yellow shadow-sm">
+                            <h4 class="font-bold text-gray-900 mb-2 flex items-center gap-2">
+                                <i data-lucide="door-open" class="w-5 h-5 text-brand-yellow"></i> A Cultura da "Porta Encostada"
+                            </h4>
+                            <p class="text-sm text-gray-700 leading-relaxed">O maior gargalo de segurança em condomínios não é o arrombamento, mas a porta que não fecha direito. Hoje, não há um sistema ativo de coibição. Uma porta aberta por descuido é um convite silencioso para invasores (o famoso golpe do "carona").</p>
+                        </div>
+
+                        <div class="bg-white p-5 rounded-xl border-l-4 border-brand-yellow shadow-sm">
+                            <h4 class="font-bold text-gray-900 mb-2 flex items-center gap-2">
+                                <i data-lucide="zap-off" class="w-5 h-5 text-brand-yellow"></i> Infraestrutura de Emergência Desconectada
+                            </h4>
+                            <p class="text-sm text-gray-700 leading-relaxed">A rota de fuga (porta de incêndio) precisa de segurança contra intrusos, mas não pode se tornar uma armadilha para os moradores em caso de sinistro. Falta integração inteligente com a central de alarme.</p>
+                        </div>
+
+                        <div class="bg-white p-5 rounded-xl border-l-4 border-brand-yellow shadow-sm">
+                            <h4 class="font-bold text-gray-900 mb-2 flex items-center gap-2">
+                                <i data-lucide="hammer" class="w-5 h-5 text-brand-yellow"></i> Mudança Iminente de Fachada
+                            </h4>
+                            <p class="text-sm text-gray-700 leading-relaxed">O condomínio passará por uma troca do portão frontal. Investir em um sistema rígido agora, que não preveja essa transição, resultaria em retrabalho e dinheiro jogado fora na readequação.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Alertas Visuais de Risco & Abordagem -->
+                <div class="space-y-8">
+                    <div class="bg-white rounded-2xl p-8 shadow-xl border border-gray-100">
+                        <h3 class="text-xl font-bold text-gray-900 mb-6 flex items-center gap-2">
+                            <i data-lucide="alert-triangle" class="w-6 h-6 text-red-500"></i> Alertas Visuais de Risco
+                        </h3>
+                        
+                        <div class="space-y-6">
+                            <div class="relative pl-6 border-l-2 border-red-500">
+                                <div class="absolute -left-[9px] top-1 bg-white p-1 rounded-full">
+                                    <div class="w-3 h-3 bg-red-500 rounded-full animate-pulse"></div>
+                                </div>
+                                <h4 class="text-red-600 font-bold mb-2">RISCO 1: O Invasor "Carona" e a Porta Aberta</h4>
+                                <p class="text-sm text-gray-600 leading-relaxed">
+                                    Em 90% dos furtos a condomínios de alto padrão no estado de São Paulo, o criminoso entra pela porta da frente. Eles aproveitam os 5 segundos em que a porta fica aberta após a passagem de um morador desatento. Sem um sistema de fechamento rápido e alerta sonoro, o condomínio conta apenas com a sorte.
+                                </p>
+                            </div>
+
+                            <div class="relative pl-6 border-l-2 border-red-500">
+                                <div class="absolute -left-[9px] top-1 bg-white p-1 rounded-full">
+                                    <div class="w-3 h-3 bg-red-500 rounded-full animate-pulse"></div>
+                                </div>
+                                <h4 class="text-red-600 font-bold mb-2">RISCO 2: Armadilha em Caso de Queda de Energia ou Incêndio</h4>
+                                <p class="text-sm text-gray-600 leading-relaxed">
+                                    Sistemas de baixo custo travam quando a energia cai ou não conversam com o alarme de incêndio. A consequência? Moradores presos durante uma emergência ou portas totalmente destrancadas e vulneráveis durante um apagão. A responsabilidade civil (e criminal) recai diretamente sobre a administração do condomínio.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="bg-zinc-950 rounded-2xl p-8 md:p-10 shadow-2xl border border-zinc-800 relative overflow-hidden group">
+                        <!-- Abstract glow de fundo -->
+                        <div class="absolute top-0 right-0 w-64 h-64 bg-brand-yellow/10 rounded-full blur-3xl -mr-20 -mt-20 pointer-events-none"></div>
+                        
+                        <div class="relative z-10">
+                            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-brand-yellow/30 bg-brand-yellow/10 text-brand-yellow text-[10px] font-bold uppercase tracking-widest mb-4">
+                                <i data-lucide="shield-check" class="w-3 h-3"></i> A Solução Definitiva
+                            </div>
+                            
+                            <h3 class="text-2xl md:text-3xl font-bold text-white mb-4">A Abordagem Vision Business</h3>
+                            <p class="text-sm text-zinc-400 mb-8 leading-relaxed">A engenharia da Vision Business não instala "fechaduras". Nós construímos ecossistemas de acesso. Nossa solução para a sua assembleia foi desenhada sobre <strong class="text-white">3 pilares irrevogáveis:</strong></p>
+                            
+                            <div class="space-y-4">
+                                <!-- Pilar 1 -->
+                                <div class="bg-zinc-900/80 border border-zinc-800 rounded-xl p-5 md:p-6 hover:border-brand-yellow/50 transition-colors shadow-sm">
+                                    <div class="flex items-center gap-4 mb-3">
+                                        <div class="w-10 h-10 rounded-lg bg-brand-yellow/10 text-brand-yellow flex items-center justify-center font-bold text-lg shrink-0 border border-brand-yellow/20">1</div>
+                                        <h4 class="font-bold text-white text-sm md:text-base leading-tight">TOLERÂNCIA ZERO PARA FALHAS HUMANAS</h4>
+                                    </div>
+                                    <p class="text-sm text-zinc-400 leading-relaxed pl-14">Implementaremos um sistema de sonorização inteligente. Se a porta de vidro ficar aberta além do tempo permitido, um alerta dispara. O sistema educa o usuário e protege o perímetro simultaneamente.</p>
+                                </div>
+
+                                <!-- Pilar 2 -->
+                                <div class="bg-zinc-900/80 border border-zinc-800 rounded-xl p-5 md:p-6 hover:border-brand-yellow/50 transition-colors shadow-sm">
+                                    <div class="flex items-center gap-4 mb-3">
+                                        <div class="w-10 h-10 rounded-lg bg-brand-yellow/10 text-brand-yellow flex items-center justify-center font-bold text-lg shrink-0 border border-brand-yellow/20">2</div>
+                                        <h4 class="font-bold text-white text-sm md:text-base leading-tight">FLUXO CONTÍNUO E SEM TOQUE</h4>
+                                    </div>
+                                    <p class="text-sm text-zinc-400 leading-relaxed pl-14">Esqueça chaves perdidas ou tags clonadas. O acesso principal será via biometria facial de alta velocidade, garantindo que apenas moradores e pessoas autorizadas entrem, sem formar filas.</p>
+                                </div>
+
+                                <!-- Pilar 3 -->
+                                <div class="bg-zinc-900/80 border border-zinc-800 rounded-xl p-5 md:p-6 hover:border-brand-yellow/50 transition-colors shadow-sm">
+                                    <div class="flex items-center gap-4 mb-3">
+                                        <div class="w-10 h-10 rounded-lg bg-brand-yellow/10 text-brand-yellow flex items-center justify-center font-bold text-lg shrink-0 border border-brand-yellow/20">3</div>
+                                        <h4 class="font-bold text-white text-sm md:text-base leading-tight">COMPLIANCE DE VIDA <span class="block text-[11px] text-brand-yellow font-normal mt-1 uppercase tracking-wider">(Segurança contra incêndio)</span></h4>
+                                    </div>
+                                    <p class="text-sm text-zinc-400 leading-relaxed pl-14">Nossa engenharia interligará a porta de emergência à central de incêndio do prédio. Em caso de disparo do alarme de fumaça, a porta é desmagnetizada instantaneamente, garantindo a evacuação segura e cumprindo as rigorosas normas do Corpo de Bombeiros.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- HARDWARE / SOLUÇÃO TÉCNICA -->
+    <section id="solucao" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="text-center mb-16 reveal">
+                <span class="text-brand-yellow font-bold uppercase tracking-widest text-xs">Especificação High-End</span>
+                <h2 class="text-3xl md:text-5xl font-bold text-gray-900 mt-2">Tecnologia Empregada</h2>
+                <p class="text-gray-600 mt-3 max-w-3xl mx-auto">Nós especificamos a linha robusta (High-End) para garantir que o sistema suporte o alto fluxo diário do condomínio sem desgastes precoces.</p>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-8">
+                
+                <!-- Card 1: Facial -->
+                <div class="product-card reveal flex flex-col group border border-gray-200 rounded-2xl overflow-hidden shadow-sm hover:shadow-glow transition-all">
+                    <div class="h-64 bg-gray-50 flex items-center justify-center p-6 border-b border-gray-100 relative">
+                        <img src="https://res.cloudinary.com/dptcuckhf/image/upload/v1770745467/ss-3532-mf-w-frontal_2_c82tua.png" alt="Leitor Facial 3D" class="h-full object-contain drop-shadow-lg group-hover:scale-105 transition-transform duration-500">
+                    </div>
+                    <div class="p-8 bg-white flex-1">
+                        <h3 class="text-xl font-bold text-gray-900 mb-4">Leitores de Reconhecimento Facial 3D com Tag</h3>
+                        <div class="space-y-4">
+                            <div>
+                                <h4 class="text-sm font-bold text-brand-yellow uppercase tracking-widest mb-1">O que isso significa para os moradores:</h4>
+                                <p class="text-sm text-gray-600 leading-relaxed">Acesso em milissegundos, mesmo usando máscara, óculos ou no escuro. Você não precisa procurar chaves na chuva ou com compras na mão. Para prestadores de serviço, o controle via Tag garante acesso restrito.</p>
+                            </div>
+                            <div class="bg-gray-50 p-4 rounded-lg border border-gray-100">
+                                <h4 class="text-xs font-bold text-gray-900 mb-1">Especificação técnica (para auditoria):</h4>
+                                <p class="text-xs text-gray-600 leading-relaxed">Leitor Facial Intelbras / Control iD anti-fake (não aceita fotos de celular para enganar o sistema), com grau de proteção para alto fluxo. Inclui grade antivandalismo externa (Entrada Principal e Incêndio).</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 2: Eletroímã -->
+                <div class="product-card reveal flex flex-col group border border-gray-200 rounded-2xl overflow-hidden shadow-sm hover:shadow-glow transition-all" style="animation-delay: 100ms;">
+                    <div class="h-64 bg-gray-50 flex items-center justify-center p-6 border-b border-gray-100 relative">
+                        <img src="https://res.cloudinary.com/dptcuckhf/image/upload/v1771011341/fe_20150_persp_esquerda_v2_mwjtp0.png" alt="Eletroímã 150kgf" class="h-full object-contain mix-blend-multiply filter brightness-95 group-hover:scale-105 transition-transform duration-500">
+                    </div>
+                    <div class="p-8 bg-white flex-1">
+                        <h3 class="text-xl font-bold text-gray-900 mb-4">Eletroímã de Alta Força Magnética (150 KGF)</h3>
+                        <div class="space-y-4">
+                            <div>
+                                <h4 class="text-sm font-bold text-brand-yellow uppercase tracking-widest mb-1">O que isso significa para o condomínio:</h4>
+                                <p class="text-sm text-gray-600 leading-relaxed">Uma vez fechada, a porta exige mais de 150 quilos de força bruta para ser arrombada. É o fim da fragilidade das fechaduras mecânicas tradicionais. Segurança magnética inquestionável para alto impacto.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 3: Sirene/Alerta -->
+                <div class="product-card reveal flex flex-col group border-2 border-brand-yellow rounded-2xl overflow-hidden shadow-md hover:shadow-glow transition-all relative" style="animation-delay: 200ms;">
+                    <div class="absolute top-4 right-4 text-brand-yellow animate-pulse"><i data-lucide="alert-circle" class="w-6 h-6"></i></div>
+                    <div class="h-64 bg-brand-yellow/5 flex items-center justify-center p-6 border-b border-brand-yellow/20 relative">
+                        <img src="https://res.cloudinary.com/dptcuckhf/image/upload/v1771602195/sir_1000_branca-04_llovnk.png" alt="Sirene Anti-esquecimento" class="h-full object-contain drop-shadow-md group-hover:scale-105 transition-transform duration-500">
+                    </div>
+                    <div class="p-8 bg-white flex-1">
+                        <h3 class="text-xl font-bold text-gray-900 mb-1">Módulo Anti-Esquecimento</h3>
+                        <p class="text-xs text-brand-yellow font-bold uppercase tracking-widest mb-4">Relé Temporizador + Sirene IPEC</p>
+                        <div class="space-y-4">
+                            <div>
+                                <h4 class="text-sm font-bold text-brand-yellow uppercase tracking-widest mb-1">O que isso significa para a rotina:</h4>
+                                <p class="text-sm text-gray-600 leading-relaxed">O fim da porta encostada. Passou do tempo limite pré-configurado? Um alerta sonoro pontual avisa que a porta precisa ser fechada, inibindo a distração e afastando curiosos de forma ativa e instantânea.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 4: Nobreak/Fonte -->
+                <div class="product-card reveal flex flex-col group border border-gray-200 rounded-2xl overflow-hidden shadow-sm hover:shadow-glow transition-all" style="animation-delay: 300ms;">
+                    <div class="h-64 bg-gray-50 flex items-center justify-center p-6 border-b border-gray-100 relative">
+                        <img src="https://res.cloudinary.com/dptcuckhf/image/upload/v1771601853/FlyerDigital_FA_1220_S_bateria_03-removebg-preview_bunqno.png" alt="Fonte com Bateria" class="h-full object-contain drop-shadow-lg group-hover:scale-105 transition-transform duration-500">
+                    </div>
+                    <div class="p-8 bg-white flex-1">
+                        <h3 class="text-xl font-bold text-gray-900 mb-1">Sistema de Energia Ininterrupta</h3>
+                        <p class="text-xs text-gray-500 font-bold uppercase tracking-widest mb-4">Fontes Flutuantes com Bateria</p>
+                        <div class="space-y-4">
+                            <div>
+                                <h4 class="text-sm font-bold text-brand-yellow uppercase tracking-widest mb-1">O que isso significa para a segurança:</h4>
+                                <p class="text-sm text-gray-600 leading-relaxed">Acabou a luz na rua? O condomínio não fica vulnerável. As baterias assumem o controle instantaneamente, mantendo o reconhecimento facial e as travas magnéticas operando normalmente por horas.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ESCOPO E TRANSPARÊNCIA -->
+    <section id="escopo" class="py-20 bg-gray-50 border-t border-gray-200">
+        <div class="max-w-5xl mx-auto px-4 reveal">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold text-gray-900">Nota de Escopo</h2>
+                <p class="text-gray-600 mt-2">Transparência total na entrega da solução.</p>
+            </div>
+
+            <div class="bg-white rounded-2xl shadow-sm border border-gray-200 overflow-hidden">
+                <div class="grid md:grid-cols-2 divide-y md:divide-y-0 md:divide-x divide-gray-200">
+                    
+                    <!-- Incluído -->
+                    <div class="p-8 md:p-10">
+                        <h4 class="font-bold text-gray-900 mb-6 flex items-center gap-2">
+                            <i data-lucide="check-circle-2" class="w-5 h-5 text-emerald-500"></i> INCLUÍDO neste projeto:
+                        </h4>
+                        <ul class="space-y-4">
+                            <li class="flex items-start gap-3 text-sm text-gray-600">
+                                <i data-lucide="check" class="w-4 h-4 text-emerald-500 mt-0.5 shrink-0"></i>
+                                <div class="flex-1">
+                                    <span class="font-bold text-gray-900">Cenário 1 (Entrada Principal):</span> 1x Leitor Facial 3D, 1x Eletroímã 150kgf, 1x Sirene Anti-Esquecimento com Relé e 1x Fonte c/ Bateria (Nobreak).
+                                </div>
+                            </li>
+                            <li class="flex items-start gap-3 text-sm text-gray-600">
+                                <i data-lucide="check" class="w-4 h-4 text-emerald-500 mt-0.5 shrink-0"></i>
+                                <div class="flex-1">
+                                    <span class="font-bold text-gray-900">Cenário 2 (Porta de Incêndio):</span> 1x Leitor Facial 3D, 1x Eletroímã 150kgf, 1x Fonte c/ Bateria e Integração imediata com a Central de Incêndio existente para desmagnetização em emergências.
+                                </div>
+                            </li>
+                            <li class="flex items-start gap-3 text-sm text-gray-600">
+                                <i data-lucide="check" class="w-4 h-4 text-emerald-500 mt-0.5 shrink-0"></i>
+                                <span>Cabeamento estruturado em rede Cat5e (110 metros totais).</span>
+                            </li>
+                            <li class="flex items-start gap-3 text-sm text-gray-600">
+                                <i data-lucide="check" class="w-4 h-4 text-emerald-500 mt-0.5 shrink-0"></i>
+                                <span>Preparação da infraestrutura prevendo a <strong>futura troca do portão principal</strong>.</span>
+                            </li>
+                            <li class="flex items-start gap-3 text-sm text-gray-600">
+                                <i data-lucide="check" class="w-4 h-4 text-emerald-500 mt-0.5 shrink-0"></i>
+                                <span><strong>Garantia Vision de 12 meses</strong> (mão de obra + equipamentos).</span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- Não Incluído -->
+                    <div class="p-8 md:p-10 bg-gray-50/50 flex flex-col justify-between">
+                        <div>
+                            <h4 class="font-bold text-gray-900 mb-6 flex items-center gap-2">
+                                <i data-lucide="x-circle" class="w-5 h-5 text-red-400"></i> NÃO INCLUÍDO <span class="text-xs font-normal text-gray-500">(pode ser adicionado sob orçamento):</span>
+                            </h4>
+                            <ul class="space-y-4">
+                                <li class="flex items-start gap-3 text-sm text-gray-600">
+                                    <i data-lucide="x" class="w-4 h-4 text-red-400 mt-0.5 shrink-0"></i>
+                                    <span>Adequação de serralheria ou vidraçaria fora do padrão atual.</span>
+                                </li>
+                                <li class="flex items-start gap-3 text-sm text-gray-600">
+                                    <i data-lucide="x" class="w-4 h-4 text-red-400 mt-0.5 shrink-0"></i>
+                                    <span>Obra civil (quebra de parede estrutural, pintura, alvenaria).</span>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="mt-8 p-5 bg-white rounded-xl border border-brand-yellow/30 shadow-sm text-sm text-gray-700 leading-relaxed border-l-4 border-l-brand-yellow">
+                            <strong>Transparência total:</strong> Nossa instalação é limpa e estética. Se identificarmos qualquer necessidade não prevista durante a execução, paralisamos e comunicamos a administração antes de gerar qualquer custo extra. <strong>Sem surpresas na fatura final.</strong>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- INVESTIMENTO E FECHAMENTO -->
+    <section id="investimento" class="py-24 bg-zinc-950 relative text-white">
+        <div class="max-w-6xl mx-auto px-4 reveal">
+            <div class="text-center mb-16">
+                <span class="text-brand-yellow font-bold uppercase tracking-widest text-xs">Aprovação em Assembleia</span>
+                <h2 class="text-3xl md:text-5xl font-bold mt-2">Contexto de Investimento</h2>
+                <p class="text-zinc-400 mt-4 max-w-3xl mx-auto text-sm md:text-base leading-relaxed">
+                    Um único furto em condomínio gera, além do trauma irreversível aos moradores, um custo de responsabilidade e depreciação imobiliária gigantesco. Sistemas de controle de acesso de alta durabilidade são investimentos que se pagam ao valorizar o metro quadrado do prédio e evitar a necessidade de contratação extra de vigilância presencial.
+                </p>
+            </div>
+
+            <div class="grid lg:grid-cols-12 gap-8">
+                
+                <!-- Coluna Principal: Investimento e CTA -->
+                <div class="lg:col-span-7 bg-zinc-900 border border-zinc-800 rounded-3xl overflow-hidden shadow-2xl flex flex-col">
+                    <div class="p-8 md:p-10 flex-1">
+                        <h3 class="text-xl font-bold text-white mb-8 border-b border-zinc-800 pb-4">Investimento do Projeto Vision <span class="text-xs text-zinc-500 font-normal ml-2 block sm:inline mt-2 sm:mt-0">(Cenário 1 Principal + Cenário 2 Incêndio)</span></h3>
+                        
+                        <div class="space-y-6">
+                            <!-- Opção Parcelada -->
+                            <div class="bg-zinc-800/50 border border-brand-yellow/50 rounded-2xl p-6 relative shadow-glow">
+                                <div class="absolute -top-3 left-6 bg-brand-yellow text-black text-[10px] font-bold uppercase tracking-widest px-3 py-1 rounded-full">
+                                    Recomendado para Rateio
+                                </div>
+                                <p class="text-zinc-400 font-bold uppercase tracking-widest text-xs mb-1">Opção 2: Parcelado em até 10x sem juros</p>
+                                <div class="flex items-baseline gap-2">
+                                    <span class="text-xl text-zinc-300 font-bold">10x de</span>
+                                    <span class="text-4xl md:text-5xl font-extrabold text-white tracking-tight">R$ 945,<small class="text-xl">00</small></span>
+                                </div>
+                                <p class="text-xs text-zinc-500 mt-2">No cartão de crédito sem juros. (Total: R$ 9.450,00)</p>
+                                
+                                <div class="mt-6 p-4 bg-brand-yellow/10 border border-brand-yellow/20 rounded-xl flex gap-3 items-start">
+                                    <i data-lucide="lightbulb" class="w-6 h-6 text-brand-yellow shrink-0 mt-0.5"></i>
+                                    <p class="text-sm text-zinc-300 leading-relaxed">
+                                        <strong class="text-brand-yellow">Facilitador Psicológico para a Assembleia:</strong><br> Se o condomínio optar pelo parcelamento, dividindo esse valor pelo número de apartamentos, o custo mensal por família é <strong>menor que uma única corrida curta de aplicativo</strong>. Pergunta para a assembleia: <em>Vale a pena o condomínio inteiro continuar dormindo com as portas vulneráveis por um valor tão pequeno per capita?</em>
+                                    </p>
+                                </div>
+                            </div>
+
+                            <!-- Opção à vista -->
+                            <div class="border border-zinc-800 rounded-2xl p-6 flex justify-between items-center">
+                                <div>
+                                    <p class="text-zinc-500 font-bold uppercase tracking-widest text-xs mb-1">Opção 1: À Vista</p>
+                                    <p class="text-xs text-zinc-500">PIX ou Transferência bancária</p>
+                                </div>
+                                <div class="text-right">
+                                    <span class="text-2xl font-bold text-white tracking-tight">R$ 8.590,<small class="text-sm">00</small></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="p-8 bg-zinc-950 border-t border-zinc-800">
+                        <a href="https://wa.me/5511930816696?text=Ola,%20a%20assembleia%20aprovou%20o%20projeto%20Rudge%20Ramos" id="whatsapp-link" class="w-full bg-emerald-600 text-white hover:bg-emerald-500 font-bold py-5 px-6 rounded-xl transition-all shadow-green-glow transform hover:scale-105 flex items-center justify-center gap-3 text-lg">
+                            <i data-lucide="check-circle" class="w-6 h-6"></i>
+                            <span>APROVAR PROJETO EM ASSEMBLEIA</span>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Coluna Secundária: Garantia e Care -->
+                <div class="lg:col-span-5 space-y-6 flex flex-col">
+                    
+                    <!-- Garantia -->
+                    <div class="bg-zinc-900 border border-zinc-800 rounded-3xl p-8 flex-1">
+                        <h3 class="text-lg font-bold text-white mb-6 flex items-center gap-2">
+                            <i data-lucide="shield" class="w-5 h-5 text-brand-yellow"></i> Garantia Vision Business
+                        </h3>
+                        <ul class="space-y-4">
+                            <li class="flex items-start gap-3 text-sm text-zinc-400">
+                                <i data-lucide="check" class="w-4 h-4 text-brand-yellow mt-0.5 shrink-0"></i>
+                                <span><strong>12 meses de mão de obra</strong> (qualquer comportamento anômalo, nossa equipe corrige sem custo de visita).</span>
+                            </li>
+                            <li class="flex items-start gap-3 text-sm text-zinc-400">
+                                <i data-lucide="check" class="w-4 h-4 text-brand-yellow mt-0.5 shrink-0"></i>
+                                <span><strong>Garantia de fábrica</strong> dos equipamentos assegurada.</span>
+                            </li>
+                            <li class="flex items-start gap-3 text-sm text-zinc-400">
+                                <i data-lucide="check" class="w-4 h-4 text-brand-yellow mt-0.5 shrink-0"></i>
+                                <span><strong>Suporte técnico remoto prioritário</strong> via WhatsApp.</span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- Vision Care -->
+                    <div class="bg-gradient-to-br from-zinc-900 to-zinc-950 border border-brand-yellow/20 rounded-3xl p-8 relative overflow-hidden">
+                        <div class="absolute top-0 right-0 p-4 opacity-10">
+                            <i data-lucide="shield-check" class="w-24 h-24 text-brand-yellow"></i>
+                        </div>
+                        
+                        <div class="relative z-10">
+                            <h3 class="text-lg font-bold text-white mb-1 flex items-center gap-2">
+                                Vision Care <span class="text-[10px] bg-brand-yellow/20 text-brand-yellow px-2 py-0.5 rounded uppercase font-bold tracking-widest ml-2">Recomendado</span>
+                            </h3>
+                            <p class="text-xs text-zinc-500 uppercase tracking-widest font-bold mb-4">Sustentação Tecnológica Opcional</p>
+
+                            <div class="space-y-4 mb-6">
+                                <div>
+                                    <h4 class="text-sm font-bold text-zinc-300 mb-1">O que é:</h4>
+                                    <p class="text-xs text-zinc-400 leading-relaxed">Um plano de sustentação mensal que garante que o sistema NUNCA falhe. Equipamentos de segurança em condomínios sofrem desgaste diário. O Vision Care é como ter um seguro de vida para a segurança eletrônica do prédio.</p>
+                                </div>
+                                
+                                <div>
+                                    <h4 class="text-sm font-bold text-zinc-300 mb-2">O que está incluso:</h4>
+                                    <ul class="space-y-2">
+                                        <li class="flex items-start gap-2 text-xs text-zinc-400">
+                                            <i data-lucide="check" class="w-3 h-3 text-emerald-500 mt-0.5 shrink-0"></i>
+                                            <span>Manutenção preventiva trimestral (ajuste de travas, limpeza de sensores).</span>
+                                        </li>
+                                        <li class="flex items-start gap-2 text-xs text-zinc-400">
+                                            <i data-lucide="check" class="w-3 h-3 text-emerald-500 mt-0.5 shrink-0"></i>
+                                            <span>Chamados corretivos ilimitados (qualquer problema, resolvemos sem taxa de visita).</span>
+                                        </li>
+                                        <li class="flex items-start gap-2 text-xs text-zinc-400">
+                                            <i data-lucide="check" class="w-3 h-3 text-emerald-500 mt-0.5 shrink-0"></i>
+                                            <span>Prioridade SLA (atendimento em até 4 horas).</span>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+
+                            <div class="bg-zinc-950 p-4 rounded-xl border border-zinc-800 mb-4">
+                                <p class="text-xs text-zinc-300 leading-relaxed">
+                                    <strong class="text-brand-yellow">Recomendação Vision:</strong> Para condomínios com alto fluxo, o Vision Care não é opcional — é estratégico. Evita paradas inesperadas e garante compliance contínuo.
+                                </p>
+                            </div>
+
+                            <label class="flex items-center justify-between cursor-pointer group bg-zinc-800 p-3 rounded-lg hover:bg-zinc-700 transition-colors">
+                                <div class="flex items-center gap-3">
+                                    <div class="relative">
+                                        <input type="checkbox" id="care-toggle" class="peer sr-only" onchange="updateTotal()">
+                                        <div class="w-5 h-5 rounded border-2 border-zinc-500 peer-checked:bg-brand-yellow peer-checked:border-brand-yellow flex items-center justify-center transition-all">
+                                            <i data-lucide="check" class="w-3 h-3 text-black hidden peer-checked:block"></i>
+                                        </div>
+                                    </div>
+                                    <span class="text-white text-sm font-bold">Adicionar à proposta</span>
+                                </div>
+                                <span class="text-brand-yellow font-bold text-sm bg-brand-yellow/10 px-3 py-1 rounded-full">+ R$ 290/mês</span>
+                            </label>
+
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="bg-black py-12 text-center border-t border-zinc-900">
+        <div class="max-w-4xl mx-auto px-4">
+            <div class="flex flex-col items-center justify-center gap-0 mb-4 opacity-50">
+                <div class="relative flex items-baseline leading-none">
+                    <span class="font-logo font-bold text-[2rem] text-white lowercase tracking-[-0.08em] leading-none">vısıon</span>
+                    <span class="text-[0.6rem] text-white font-bold ml-0.5 self-end mb-1">®</span>
+                </div>
+                <div class="font-tech text-[0.6rem] font-bold text-zinc-500 lowercase tracking-[0.4em] ml-1 -mt-1">
+                    tecnologia
+                </div>
+            </div>
+            
+            <p class="text-xs text-zinc-700 uppercase tracking-widest font-bold">Engenharia de Segurança de Alta Performance</p>
+        </div>
+    </footer>
+
+    <script>
+        // Init Icons
+        lucide.createIcons();
+
+        // Lock Screen Logic - Senha Rudge Ramos
+        const accessCodes = ["rudge2026", "vision2620"];
+        function checkPassword() {
+            const input = document.getElementById('password-input');
+            const errorMsg = document.getElementById('error-msg');
+            const lockScreen = document.getElementById('lock-screen');
+            if(accessCodes.includes(input.value.toLowerCase())) {
+                lockScreen.style.opacity = '0';
+                setTimeout(() => {
+                    lockScreen.style.display = 'none';
+                    document.getElementById('html-root').classList.remove('overflow-hidden');
+                }, 700);
+            } else {
+                errorMsg.classList.remove('hidden');
+                setTimeout(() => errorMsg.classList.add('hidden'), 2000);
+            }
+        }
+        
+        document.getElementById('password-input').addEventListener("keypress", (e) => e.key === "Enter" && checkPassword());
+
+        // Update Link Logic
+        function updateTotal() {
+            const toggle = document.getElementById('care-toggle');
+            const btn = document.getElementById('whatsapp-link');
+            
+            if (toggle.checked) {
+                btn.href = "https://wa.me/5511930816696?text=Ola,%20a%20assembleia%20aprovou%20o%20Projeto%20Rudge%20Ramos%20COM%20VISION%20CARE";
+                btn.innerHTML = `<i data-lucide="shield-check" class="w-6 h-6"></i><span>APROVAR COM VISION CARE</span>`;
+                lucide.createIcons();
+            } else {
+                btn.href = "https://wa.me/5511930816696?text=Ola,%20a%20assembleia%20aprovou%20o%20projeto%20Rudge%20Ramos";
+                btn.innerHTML = `<i data-lucide="check-circle" class="w-6 h-6"></i><span>APROVAR PROJETO EM ASSEMBLEIA</span>`;
+                lucide.createIcons();
+            }
+        }
+
+        // Scroll Animation
+        window.addEventListener('scroll', () => {
+            document.querySelectorAll('.reveal').forEach(el => {
+                if (el.getBoundingClientRect().top < window.innerHeight - 100) el.classList.add('active');
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,657 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth overflow-hidden" id="html-root">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Proposta Vision Home | Cecilia</title>
+    <meta name="description" content="Projeto de Monitoramento Assistivo Residencial">
+    <meta name="theme-color" content="#b9880e">
+    
+    <!-- Fonts & Icons -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@700;800&family=Quicksand:wght@500;600;700&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: { 
+                        sans: ['"Outfit"', 'sans-serif'],
+                        logo: ['"League Spartan"', 'sans-serif'],
+                        tech: ['"Quicksand"', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            yellow: '#b9880e', 
+                            goldLight: '#FFDE59', 
+                            goldDark: '#BA8500',  
+                            black: '#09090b', 
+                            dark: '#000000',
+                            surface: '#18181b', 
+                            gray: '#27272a', 
+                        },
+                    },
+                    boxShadow: {
+                        'glow': '0 0 20px rgba(185, 136, 14, 0.15)',
+                        'glow-strong': '0 0 40px rgba(185, 136, 14, 0.3)',
+                        'glass': '0 8px 32px 0 rgba(0, 0, 0, 0.3)',
+                    },
+                    animation: {
+                        'slide-up': 'slideUp 0.8s ease-out forwards',
+                        'fade-in': 'fadeIn 1s ease-out forwards',
+                    },
+                    keyframes: {
+                        slideUp: {
+                            '0%': { opacity: '0', transform: 'translateY(20px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' },
+                        },
+                        fadeIn: {
+                            '0%': { opacity: '0' },
+                            '100%': { opacity: '1' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #f9fafb; }
+        ::-webkit-scrollbar-thumb { background: #d1d5db; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #b9880e; }
+        
+        .text-gold-shine {
+            background: linear-gradient(to right, #b9880e 20%, #FFDE59 50%, #b9880e 80%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-size: 200% auto;
+            animation: shine 4s linear infinite;
+        }
+        @keyframes shine { to { background-position: 200% center; } }
+        
+        .bg-grid { 
+            background-image: linear-gradient(rgba(185, 136, 14, 0.03) 1px, transparent 1px), 
+                              linear-gradient(90deg, rgba(185, 136, 14, 0.03) 1px, transparent 1px); 
+            background-size: 40px 40px; 
+        }
+        
+        .card-hover { transition: all 0.3s ease; }
+        .card-hover:hover { 
+            transform: translateY(-5px); 
+            box-shadow: 0 20px 40px -10px rgba(185,136,14,0.2); 
+        }
+        
+        /* Lock Screen Input */
+        .lock-input {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: #b9880e;
+            font-family: 'League Spartan', sans-serif;
+            font-size: 1.5rem;
+            text-align: center;
+            outline: none;
+            transition: all 0.3s;
+            letter-spacing: 0.2em;
+            border-radius: 12px;
+        }
+        .lock-input:focus {
+            border-color: #b9880e;
+            background: rgba(255, 255, 255, 0.08);
+            box-shadow: 0 0 15px rgba(185, 136, 14, 0.2);
+        }
+        .lock-input::placeholder {
+            color: #52525b;
+            font-size: 0.9rem;
+            font-family: 'Outfit', sans-serif;
+            font-weight: 300;
+            letter-spacing: normal;
+        }
+
+        .reveal { opacity: 0; transform: translateY(30px); transition: all 0.8s ease-out; }
+        .reveal.active { opacity: 1; transform: translateY(0); }
+
+        .product-card {
+            background: white;
+            border: 1px solid #e5e7eb;
+            border-radius: 16px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+        .product-card:hover {
+            border-color: #b9880e;
+            box-shadow: 0 10px 30px rgba(185, 136, 14, 0.15);
+            transform: translateY(-5px);
+        }
+
+        .navbar-solid {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid #e5e7eb;
+        }
+
+        /* Toggle Switch Customization */
+        .toggle-checkbox:checked {
+            right: 0;
+            border-color: #b9880e;
+        }
+        .toggle-checkbox:checked + .toggle-label {
+            background-color: #b9880e;
+        }
+        
+        @media print {
+            #lock-screen, #navbar, #whatsapp-link, .no-print { display: none !important; }
+            body { background: white; color: black; }
+            .reveal { opacity: 1 !important; transform: none !important; }
+        }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800 antialiased overflow-x-hidden">
+
+    <!-- LOCK SCREEN -->
+    <div id="lock-screen" class="fixed inset-0 z-[100] bg-[#09090b] flex flex-col items-center justify-center text-center p-4 transition-opacity duration-700 ease-out">
+        <div class="bg-grid absolute inset-0 opacity-10 pointer-events-none"></div>
+        
+        <div class="relative flex flex-col items-center justify-center mb-8 z-10">
+            <div class="relative flex items-baseline leading-none">
+                <span class="font-logo font-bold text-[3.5rem] md:text-[6rem] text-gold-shine lowercase tracking-[-0.08em]">vısıon</span>
+                <span class="text-[0.8rem] md:text-[1.2rem] text-[#b9880e] font-bold ml-1 self-end mb-3">®</span>
+            </div>
+            <div class="font-tech text-[0.9rem] md:text-[1.2rem] font-light text-zinc-500 lowercase tracking-[0.4em] -mt-5">home safe</div>
+        </div>
+        
+        <div class="w-full max-w-md space-y-6 z-10" id="lock-content">
+            <div class="text-center space-y-2">
+                <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-brand-yellow/30 bg-brand-yellow/10 mb-4">
+                    <i data-lucide="lock" class="w-4 h-4 text-brand-yellow"></i>
+                    <span class="text-brand-yellow text-xs font-bold uppercase tracking-widest">Acesso Restrito</span>
+                </div>
+                <h2 class="text-white font-bold text-2xl">Projeto Residencial Cecilia</h2>
+                <p class="text-zinc-400 text-sm">São Paulo - SP • CEP 01244-001</p>
+                <p class="text-zinc-500 text-xs mt-2">ID-VISION-HM-26.02</p>
+            </div>
+            
+            <div class="relative">
+                <input type="password" id="password-input" class="lock-input w-full py-4 px-4" placeholder="SENHA DE ACESSO" autocomplete="off">
+                <p id="error-msg" class="text-red-500 text-xs mt-2 hidden font-bold">❌ Acesso negado. Tente 'vision' ou 'cecilia'.</p>
+            </div>
+            
+            <button onclick="checkPassword()" class="w-full bg-brand-yellow hover:bg-brand-goldLight text-black font-bold py-4 rounded-xl transition-all shadow-glow flex items-center justify-center gap-2 group">
+                <i data-lucide="shield-check" class="w-5 h-5"></i>
+                <span>Visualizar Proposta</span>
+                <i data-lucide="arrow-right" class="w-4 h-4 group-hover:translate-x-1 transition-transform"></i>
+            </button>
+        </div>
+    </div>
+
+    <!-- NAVBAR -->
+    <nav id="navbar" class="fixed w-full z-50 top-0 transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-20 items-center">
+                <div class="flex flex-col items-start cursor-pointer">
+                    <span class="font-logo font-bold text-2xl text-gold-shine lowercase tracking-tight leading-none">vısıon</span>
+                    <span class="font-tech text-[0.6rem] font-bold text-gray-600 lowercase tracking-[0.3em] -mt-2">home safe</span>
+                </div>
+                <div class="hidden md:flex items-center space-x-6 text-sm font-medium text-gray-600">
+                    <a href="#contexto" class="hover:text-brand-yellow transition-colors">O Desafio</a>
+                    <a href="#solucao" class="hover:text-brand-yellow transition-colors">Tecnologia</a>
+                    <a href="#vision-care" class="hover:text-brand-yellow transition-colors">Vision Care</a>
+                    <a href="#investimento" class="hover:text-brand-yellow transition-colors">Investimento</a>
+                </div>
+                <a href="#investimento" class="bg-brand-yellow text-black px-6 py-2.5 rounded-full text-xs font-bold uppercase tracking-wide hover:bg-brand-goldLight transition-all shadow-md hover:shadow-glow">
+                    Aprovar Agora
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- HERO SECTION -->
+    <header class="pt-32 pb-20 relative overflow-hidden bg-white">
+        <div class="bg-grid absolute inset-0 opacity-40"></div>
+        <div class="absolute inset-0 bg-gradient-to-b from-transparent via-white/50 to-white"></div>
+        
+        <div class="max-w-6xl mx-auto px-4 relative z-10">
+            <div class="text-center space-y-6 animate-slide-up">
+                <div class="inline-flex items-center gap-2 px-5 py-2 rounded-full border border-brand-yellow/30 bg-brand-yellow/10 text-brand-yellow text-[10px] font-bold uppercase tracking-widest">
+                    <i data-lucide="heart-pulse" class="w-4 h-4"></i>
+                    Monitoramento Assistivo | São Paulo
+                </div>
+                
+                <h1 class="text-4xl md:text-6xl lg:text-7xl font-bold text-gray-900 leading-tight">
+                    Cuidado, Carinho e<br>
+                    <span class="text-gold-shine">Visão Total</span>
+                </h1>
+                
+                <p class="text-xl md:text-2xl text-brand-yellow font-semibold max-w-3xl mx-auto">
+                    Projeto Especial: Cecilia
+                </p>
+
+                <p class="text-base md:text-lg text-gray-600 max-w-4xl mx-auto leading-relaxed font-light">
+                    Um sistema desenhado não apenas para segurança, mas para <strong>tranquilidade familiar</strong>. Monitore o bem-estar de quem você ama e acompanhe o trabalho dos cuidadores em 7 ambientes simultâneos.
+                </p>
+
+                <!-- Botão Removido -->
+            </div>
+
+            <div class="mt-16 grid grid-cols-2 md:grid-cols-4 gap-6 max-w-5xl mx-auto">
+                <div class="bg-white rounded-xl p-6 shadow-md border border-gray-200 text-center reveal">
+                    <i data-lucide="camera" class="w-10 h-10 text-brand-yellow mx-auto mb-3"></i>
+                    <div class="text-3xl font-bold text-gray-900">7</div>
+                    <div class="text-sm text-gray-600">Pontos de Visão</div>
+                </div>
+                <div class="bg-white rounded-xl p-6 shadow-md border border-gray-200 text-center reveal" style="animation-delay: 100ms;">
+                    <i data-lucide="mic" class="w-10 h-10 text-brand-yellow mx-auto mb-3"></i>
+                    <div class="text-3xl font-bold text-gray-900">Voz</div>
+                    <div class="text-sm text-gray-600">Bidirecional (Fale/Ouça)</div>
+                </div>
+                <div class="bg-white rounded-xl p-6 shadow-md border border-gray-200 text-center reveal" style="animation-delay: 200ms;">
+                    <i data-lucide="wifi" class="w-10 h-10 text-brand-yellow mx-auto mb-3"></i>
+                    <div class="text-3xl font-bold text-gray-900">Wi-Fi</div>
+                    <div class="text-sm text-gray-600">Instalação Limpa</div>
+                </div>
+                <div class="bg-white rounded-xl p-6 shadow-md border border-gray-200 text-center reveal" style="animation-delay: 300ms;">
+                    <i data-lucide="smartphone" class="w-10 h-10 text-brand-yellow mx-auto mb-3"></i>
+                    <div class="text-3xl font-bold text-gray-900">App</div>
+                    <div class="text-sm text-gray-600">Acesso Remoto 24h</div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- CONTEXTO E DESAFIO -->
+    <section id="contexto" class="py-20 bg-gray-50">
+        <div class="max-w-6xl mx-auto px-4">
+            <div class="text-center mb-12 reveal">
+                <span class="text-brand-yellow font-bold uppercase tracking-widest text-xs">O Cenário</span>
+                <h2 class="text-3xl md:text-5xl font-bold text-gray-900 mt-2">Visão Além do Alcance</h2>
+                <p class="text-gray-600 mt-3 max-w-3xl mx-auto">Cuidar de idosos requer presença constante, mesmo à distância.</p>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+                <div class="space-y-6 reveal">
+                    <p class="text-gray-700 leading-relaxed">
+                        Sabemos que a sua prioridade hoje é garantir o bem-estar e o tratamento adequado dentro de casa. O desafio não é apenas "gravar imagens", mas ter uma <strong class="text-brand-yellow">extensão dos seus olhos e ouvidos</strong> em cada cômodo.
+                    </p>
+
+                    <div class="bg-white rounded-xl p-6 border-l-4 border-brand-yellow shadow-md">
+                        <h4 class="font-bold text-gray-900 mb-4 flex items-center gap-2">
+                            <i data-lucide="check-circle-2" class="w-5 h-5 text-brand-yellow"></i>
+                            O Que Este Projeto Resolve:
+                        </h4>
+                        <ul class="space-y-3 text-sm text-gray-700">
+                            <li class="flex items-start gap-2">
+                                <i data-lucide="check" class="w-4 h-4 text-brand-yellow mt-0.5 flex-shrink-0"></i>
+                                <span>Monitoramento da rotina das enfermeiras</span>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <i data-lucide="check" class="w-4 h-4 text-brand-yellow mt-0.5 flex-shrink-0"></i>
+                                <span>Prevenção e registro de acidentes domésticos</span>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <i data-lucide="check" class="w-4 h-4 text-brand-yellow mt-0.5 flex-shrink-0"></i>
+                                <span><strong>Interação por Voz:</strong> Fale com quem está no ambiente</span>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <i data-lucide="check" class="w-4 h-4 text-brand-yellow mt-0.5 flex-shrink-0"></i>
+                                <span>Cobertura total de 7 ambientes críticos</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-2 gap-6 reveal">
+                    <div class="bg-white rounded-2xl p-8 shadow-lg text-center border-t-4 border-brand-yellow card-hover">
+                        <i data-lucide="ear" class="w-12 h-12 text-brand-yellow mx-auto mb-3"></i>
+                        <div class="text-2xl font-bold text-gray-900 mb-1">Escuta</div>
+                        <div class="text-sm text-gray-600">Ouça o ambiente<br>em tempo real</div>
+                    </div>
+                    <div class="bg-white rounded-2xl p-8 shadow-lg text-center border-t-4 border-brand-yellow card-hover">
+                        <i data-lucide="mic-2" class="w-12 h-12 text-brand-yellow mx-auto mb-3"></i>
+                        <div class="text-2xl font-bold text-gray-900 mb-1">Fala</div>
+                        <div class="text-sm text-gray-600">Envie alertas<br>por voz</div>
+                    </div>
+                    <div class="bg-white rounded-2xl p-8 shadow-lg text-center border-t-4 border-brand-yellow card-hover">
+                        <i data-lucide="moon" class="w-12 h-12 text-brand-yellow mx-auto mb-3"></i>
+                        <div class="text-2xl font-bold text-gray-900 mb-1">Noite</div>
+                        <div class="text-sm text-gray-600">Visão Noturna<br>Infravermelho</div>
+                    </div>
+                    <div class="bg-white rounded-2xl p-8 shadow-lg text-center border-t-4 border-brand-yellow card-hover">
+                        <i data-lucide="hard-drive" class="w-12 h-12 text-brand-yellow mx-auto mb-3"></i>
+                        <div class="text-2xl font-bold text-gray-900 mb-1">Gravação</div>
+                        <div class="text-sm text-gray-600">Histórico Local<br>(Cartão SD)</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SOLUÇÃO -->
+    <section id="solucao" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="text-center mb-12 reveal">
+                <span class="text-brand-yellow font-bold uppercase tracking-widest text-xs">Hardware Selecionado</span>
+                <h2 class="text-3xl md:text-5xl font-bold text-gray-900 mt-2">Smart Câmera Vision AI</h2>
+                <p class="text-gray-600 mt-3">Tecnologia discreta, potente e amigável.</p>
+            </div>
+
+            <!-- Produto Destaque -->
+            <div class="product-card reveal max-w-4xl mx-auto shadow-2xl border-2 border-brand-yellow">
+                <div class="grid md:grid-cols-2">
+                    <div class="bg-gray-50 flex items-center justify-center p-12 relative">
+                        <div class="absolute top-4 left-4 bg-brand-yellow text-black text-[10px] font-bold px-3 py-1 rounded-full">7 UNIDADES</div>
+                        <!-- Nova Imagem -->
+                        <div class="text-center w-full h-full flex items-center justify-center">
+                            <img src="https://res.cloudinary.com/dptcuckhf/image/upload/v1770814481/c%C3%A2mera-interna-wi-fi-_full-_hd-imx-micro-sd-de-32-gb_jmxswo.png" alt="Smart Vision Cam" class="max-h-64 w-auto object-contain drop-shadow-xl hover:scale-105 transition-transform mx-auto">
+                        </div>
+                    </div>
+                    <div class="p-8 md:p-12 flex flex-col justify-center">
+                        <h3 class="text-2xl font-bold text-gray-900 mb-2">Câmera Wi-Fi Vision Home</h3>
+                        <p class="text-xs text-brand-yellow font-bold uppercase tracking-wider mb-6">Linha Premium Vision</p>
+                        
+                        <p class="text-gray-600 mb-6 leading-relaxed">
+                            Selecionamos este modelo específico por ser <strong>compacto e discreto</strong>. Ela não tem a aparência agressiva de câmeras comerciais, integrando-se à decoração sem causar desconforto aos moradores.
+                        </p>
+
+                        <div class="space-y-3 mb-6 text-sm text-gray-700">
+                            <div class="flex items-center gap-3">
+                                <div class="bg-brand-yellow/10 p-2 rounded-full"><i data-lucide="wifi" class="w-4 h-4 text-brand-yellow"></i></div>
+                                <span><strong>Sem Fios:</strong> Conexão Wi-Fi (evita quebra de paredes)</span>
+                            </div>
+                            <div class="flex items-center gap-3">
+                                <div class="bg-brand-yellow/10 p-2 rounded-full"><i data-lucide="mic" class="w-4 h-4 text-brand-yellow"></i></div>
+                                <span><strong>Áudio Bidirecional:</strong> Interaja pelo app Vision</span>
+                            </div>
+                            <div class="flex items-center gap-3">
+                                <div class="bg-brand-yellow/10 p-2 rounded-full"><i data-lucide="eye" class="w-4 h-4 text-brand-yellow"></i></div>
+                                <span><strong>Visão Super Wide:</strong> Lente grande angular (131°)</span>
+                            </div>
+                            <div class="flex items-center gap-3">
+                                <div class="bg-brand-yellow/10 p-2 rounded-full"><i data-lucide="bell" class="w-4 h-4 text-brand-yellow"></i></div>
+                                <span><strong>Inteligência Artificial:</strong> Alerta de ruídos e movimento</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- VISION CARE (NOVA SEÇÃO) -->
+    <section id="vision-care" class="py-20 bg-gray-50 relative overflow-hidden">
+        <div class="bg-grid absolute inset-0 opacity-20 pointer-events-none"></div>
+        <div class="max-w-6xl mx-auto px-4 relative z-10">
+            <div class="text-center mb-12 reveal">
+                <span class="text-brand-yellow font-bold uppercase tracking-widest text-xs">Módulo de Sustentação</span>
+                <h2 class="text-3xl md:text-5xl font-bold text-gray-900 mt-2">Vision Care Home</h2>
+                <p class="text-gray-600 mt-3">Seguro de funcionalidade para a sua tranquilidade</p>
+            </div>
+
+            <div class="bg-white rounded-3xl p-8 shadow-xl border border-gray-200 reveal">
+                <div class="grid md:grid-cols-2 gap-10 items-center">
+                    <div>
+                        <p class="text-gray-700 leading-relaxed mb-6">
+                            Não adianta ter câmeras se, na hora que você precisa, o sistema parou de gravar. O <strong class="text-brand-yellow">Vision Care</strong> é a garantia de que nós cuidaremos da tecnologia enquanto você cuida da sua família.
+                        </p>
+                        
+                        <div class="space-y-4">
+                            <div class="flex items-start gap-4 p-4 bg-gray-50 rounded-xl border border-gray-100 hover:border-brand-yellow transition-all">
+                                <div class="bg-brand-yellow/10 p-2 rounded-lg flex-shrink-0">
+                                    <i data-lucide="zap" class="w-6 h-6 text-brand-yellow"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-gray-900 text-sm">SLA Prioritário (Fura-Fila)</h4>
+                                    <p class="text-xs text-gray-600">Se o sistema parar, você tem atendimento preferencial e rápido.</p>
+                                </div>
+                            </div>
+
+                            <div class="flex items-start gap-4 p-4 bg-gray-50 rounded-xl border border-gray-100 hover:border-brand-yellow transition-all">
+                                <div class="bg-brand-yellow/10 p-2 rounded-lg flex-shrink-0">
+                                    <i data-lucide="activity" class="w-6 h-6 text-brand-yellow"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-gray-900 text-sm">Monitoramento de Saúde</h4>
+                                    <p class="text-xs text-gray-600">Verificamos remotamente se as câmeras estão online e gravando.</p>
+                                </div>
+                            </div>
+
+                            <div class="flex items-start gap-4 p-4 bg-gray-50 rounded-xl border border-gray-100 hover:border-brand-yellow transition-all">
+                                <div class="bg-brand-yellow/10 p-2 rounded-lg flex-shrink-0">
+                                    <i data-lucide="help-circle" class="w-6 h-6 text-brand-yellow"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-gray-900 text-sm">Suporte de Uso Ilimitado</h4>
+                                    <p class="text-xs text-gray-600">Dúvidas sobre como buscar gravações ou usar o áudio? Nossa equipe ajuda.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="bg-gray-900 rounded-2xl p-8 text-center text-white relative overflow-hidden">
+                        <div class="absolute top-0 right-0 w-40 h-40 bg-brand-yellow/20 rounded-full blur-3xl -mr-10 -mt-10"></div>
+                        
+                        <i data-lucide="shield-check" class="w-16 h-16 text-brand-yellow mx-auto mb-4"></i>
+                        <h3 class="text-2xl font-bold mb-2">Garantia Total</h3>
+                        <p class="text-sm text-gray-400 mb-6">Cobertura completa contra defeitos e configuração.</p>
+                        
+                        <div class="text-4xl font-extrabold text-brand-yellow mb-2">R$ 250<span class="text-sm text-white font-normal">/mês</span></div>
+                        <p class="text-xs text-gray-500 uppercase tracking-widest">Plano Mensal Sem Fidelidade</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- INVESTIMENTO -->
+    <section id="investimento" class="py-20 bg-white">
+        <div class="max-w-5xl mx-auto px-4">
+            <div class="text-center mb-12 reveal">
+                <span class="text-brand-yellow font-bold uppercase tracking-widest text-xs">Proposta Comercial</span>
+                <h2 class="text-3xl md:text-5xl font-bold text-gray-900 mt-2">Investimento do Projeto</h2>
+                <p class="text-gray-600 mt-3">Flexibilidade e Segurança para sua Família</p>
+            </div>
+
+            <div class="bg-gray-50 rounded-3xl p-8 md:p-12 border border-gray-200 shadow-2xl reveal relative">
+                
+                <!-- Pricing Header -->
+                <div class="flex flex-col items-center text-center mb-12 pb-8 border-b-2 border-gray-200">
+                    <p class="text-sm font-bold text-gray-400 uppercase tracking-widest mb-2">Opção Parcelada</p>
+                    <div class="flex items-baseline justify-center gap-1 mb-1">
+                        <span class="text-2xl text-gray-700 font-bold">12x</span>
+                        <span class="text-6xl md:text-7xl font-extrabold text-gray-900 tracking-tight">R$ 459,00</span>
+                    </div>
+                    <p class="text-sm text-gray-500 mb-6">Total a prazo: R$ 5.508,00</p>
+                    
+                    <div class="w-full max-w-md bg-brand-yellow/10 rounded-2xl p-4 border border-brand-yellow/30 relative overflow-hidden group">
+                        <div class="absolute top-0 right-0 bg-brand-yellow text-black text-[10px] font-bold px-3 py-1 rounded-bl-xl z-10">RECOMENDADO</div>
+                        <p class="text-sm text-gray-600 mb-1">Ou pagamento à vista com desconto</p>
+                        <p class="text-3xl font-bold text-brand-yellow">R$ 4.850,00</p>
+                        <p class="text-xs font-bold text-green-600 mt-1 flex items-center justify-center gap-1">
+                            <i data-lucide="trending-down" class="w-3 h-3"></i>
+                            Economia de R$ 658,00 (12% OFF)
+                        </p>
+                    </div>
+                </div>
+
+                <div class="grid md:grid-cols-2 gap-8 mb-10">
+                    <!-- Equipamentos -->
+                    <div>
+                        <h4 class="font-bold text-gray-900 mb-4 flex items-center gap-2">
+                            <i data-lucide="package" class="w-5 h-5 text-brand-yellow"></i>
+                            Incluso no Pacote
+                        </h4>
+                        <ul class="space-y-3 text-sm text-gray-700">
+                            <li class="flex items-start gap-2 bg-white p-2.5 rounded border border-gray-200">
+                                <i data-lucide="check" class="w-4 h-4 text-brand-yellow mt-0.5 flex-shrink-0"></i>
+                                <span><strong>07x</strong> Câmeras Smart Vision Home AI</span>
+                            </li>
+                            <li class="flex items-start gap-2 bg-white p-2.5 rounded border border-gray-200">
+                                <i data-lucide="check" class="w-4 h-4 text-brand-yellow mt-0.5 flex-shrink-0"></i>
+                                <span><strong>07x</strong> Cartões de Memória 32GB (Gravação)</span>
+                            </li>
+                            <li class="flex items-start gap-2 bg-white p-2.5 rounded border border-gray-200">
+                                <i data-lucide="check-circle" class="w-4 h-4 text-brand-yellow mt-0.5 flex-shrink-0"></i>
+                                <span>Instalação White Glove (Limpa e Discreta)</span>
+                            </li>
+                            <li class="flex items-start gap-2 bg-white p-2.5 rounded border border-gray-200">
+                                <i data-lucide="check-circle" class="w-4 h-4 text-brand-yellow mt-0.5 flex-shrink-0"></i>
+                                <span>Configuração e Treinamento Familiar</span>
+                            </li>
+                        </ul>
+                    </div>
+                    
+                    <!-- Vision Care Block -->
+                    <div class="bg-gray-900 rounded-2xl p-6 text-white relative overflow-hidden border border-gray-800 flex flex-col justify-center">
+                        <div class="absolute top-0 right-0 w-32 h-32 bg-brand-yellow/10 rounded-full blur-3xl -mr-16 -mt-16 pointer-events-none"></div>
+                        
+                        <div class="flex justify-between items-center mb-4">
+                            <h4 class="font-bold text-lg text-white flex items-center gap-2">
+                                <i data-lucide="shield-plus" class="w-5 h-5 text-brand-yellow"></i>
+                                Vision Care
+                            </h4>
+                            <span class="bg-brand-yellow text-black text-[10px] font-bold px-2 py-0.5 rounded">OPCIONAL</span>
+                        </div>
+                        
+                        <p class="text-xs text-gray-400 mb-6">
+                            Adicione o plano de manutenção mensal para ter prioridade e garantia estendida.
+                        </p>
+
+                        <div class="flex items-center justify-between bg-white/5 p-4 rounded-lg border border-white/10 mt-auto">
+                            <div>
+                                <span class="text-sm font-bold text-white block">Ativar Assinatura?</span>
+                                <span class="text-xs text-brand-yellow">+ R$ 250,00/mês</span>
+                            </div>
+                            <div class="relative inline-block w-12 h-6 align-middle select-none transition duration-200 ease-in">
+                                <input type="checkbox" name="toggle" id="care-toggle" class="toggle-checkbox absolute block w-6 h-6 rounded-full bg-white border-4 appearance-none cursor-pointer border-gray-700 transition-all duration-300" onchange="updateTotal()"/>
+                                <label for="care-toggle" class="toggle-label block overflow-hidden h-6 rounded-full bg-gray-700 cursor-pointer"></label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <a href="#" id="whatsapp-link" target="_blank" class="block w-full bg-brand-yellow text-black font-bold py-5 rounded-2xl text-center text-lg transition-all hover:bg-brand-goldLight shadow-glow-strong transform hover:scale-[1.02] flex items-center justify-center gap-3 group">
+                    <i data-lucide="check-circle" class="w-6 h-6"></i>
+                    <span id="cta-text">Aprovar Proposta</span>
+                    <i data-lucide="arrow-right" class="w-5 h-5 group-hover:translate-x-1 transition-transform"></i>
+                </a>
+
+                <p class="text-center text-xs text-gray-600 mt-6">
+                    Condições: Pagamento facilitado. Instalação sujeita a disponibilidade de agenda.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="bg-[#09090b] text-zinc-500 text-sm py-12 border-t border-white/5">
+        <div class="max-w-6xl mx-auto px-4">
+            <div class="flex flex-col items-center text-center space-y-4">
+                <div class="flex flex-col items-center">
+                    <span class="font-logo font-bold text-3xl text-gold-shine lowercase tracking-tight leading-none">vısıon</span>
+                    <span class="font-tech text-[0.7rem] font-bold text-zinc-500 lowercase tracking-[0.3em] -mt-2">home safe</span>
+                </div>
+                
+                <p class="text-zinc-400">VISION TECNOLOGIA © 2026. Todos os direitos reservados.</p>
+                <p class="text-zinc-600 text-xs uppercase tracking-wider">RESIDENTIAL PROJECT | ID-VISION-HM-26.02</p>
+                
+                <div class="pt-4">
+                    <button onclick="window.print()" class="text-xs border border-zinc-700 text-zinc-500 px-4 py-2 rounded hover:text-brand-yellow hover:border-brand-yellow transition-colors flex items-center gap-2">
+                        <i data-lucide="download" class="w-3 h-3"></i>
+                        Salvar PDF
+                    </button>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Initialize Lucide Icons
+        lucide.createIcons();
+
+        // Lock Screen Logic
+        const accessCodes = ["vision", "cecilia", "admin"];
+        function checkPassword() {
+            const input = document.getElementById('password-input');
+            if(accessCodes.includes(input.value.toLowerCase())) {
+                document.getElementById('lock-screen').style.opacity = '0';
+                setTimeout(() => {
+                    document.getElementById('lock-screen').style.display = 'none';
+                    document.getElementById('html-root').classList.remove('overflow-hidden');
+                }, 700);
+            } else {
+                document.getElementById('error-msg').classList.remove('hidden');
+                setTimeout(() => {
+                    document.getElementById('error-msg').classList.add('hidden');
+                }, 3000);
+            }
+        }
+        
+        document.getElementById('password-input').addEventListener("keypress", function(event) {
+            if (event.key === "Enter") {
+                checkPassword();
+            }
+        });
+
+        // WhatsApp Link Update Logic
+        function updateTotal() {
+            const toggle = document.getElementById('care-toggle');
+            const btn = document.getElementById('whatsapp-link');
+            const ctaText = document.getElementById('cta-text');
+            
+            // Base URL
+            let baseUrl = "https://wa.me/5516997225999"; // Fone Cecilia
+            
+            if (toggle.checked) {
+                // Com Vision Care
+                const msg = encodeURIComponent("Olá, gostaria de aprovar o *Projeto Cecilia* COM a assinatura *Vision Care* (+R$ 250,00/mês).");
+                btn.href = `${baseUrl}?text=${msg}`;
+                ctaText.textContent = "Aprovar com Assinatura Care";
+            } else {
+                // Sem Vision Care
+                const msg = encodeURIComponent("Olá, gostaria de aprovar o *Projeto Cecilia* (R$ 4.850 à vista ou 12x 459).");
+                btn.href = `${baseUrl}?text=${msg}`;
+                ctaText.textContent = "Aprovar Proposta";
+            }
+        }
+
+        // Initialize link
+        updateTotal();
+
+        // Navbar Background on Scroll
+        window.addEventListener('scroll', () => {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('navbar-solid');
+            } else {
+                navbar.classList.remove('navbar-solid');
+            }
+
+            // Reveal animations
+            document.querySelectorAll('.reveal').forEach(el => {
+                if (el.getBoundingClientRect().top < window.innerHeight - 100) {
+                    el.classList.add('active');
+                }
+            });
+        });
+
+        // Smooth Scroll for Anchor Links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if(target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        setTimeout(() => {
+            lucide.createIcons();
+        }, 500);
+    </script>
+</body>
+</html>

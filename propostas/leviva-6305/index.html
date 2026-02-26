@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Proposta Comercial | Vision Tecnologia</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@700;800&family=Quicksand:wght@500;600;700&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: { 
+                        sans: ['"Outfit"', 'sans-serif'],
+                        logo: ['"League Spartan"', 'sans-serif'],
+                        tech: ['"Quicksand"', 'sans-serif']
+                    },
+                    colors: {
+                        brand: {
+                            yellow: '#b9880e', 
+                            goldLight: '#FFDE59', 
+                            goldDark: '#BA8500',  
+                            black: '#0F172A',
+                            dark: '#020617',
+                            surface: '#F8FAFC',
+                            accent: '#F59E0B'
+                        }
+                    },
+                    boxShadow: {
+                        'soft': '0 20px 40px -10px rgba(0,0,0,0.05)',
+                        'glow': '0 0 30px rgba(185, 136, 14, 0.4)',
+                        'card-hover': '0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)'
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #f1f1f1; }
+        ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
+        
+        .section-center-line::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 4px;
+            background: #b9880e;
+            margin: 1.5rem auto 0;
+            border-radius: 2px;
+        }
+
+        .hover-border-yellow {
+            transition: all 0.3s ease;
+            border: 1px solid transparent;
+        }
+        .hover-border-yellow:hover {
+            border-color: #b9880e;
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px -10px rgba(185, 136, 14, 0.2);
+        }
+
+        /* Texto com Gradiente Ouro */
+        .text-gold-gradient {
+            background: linear-gradient(135deg, #b9880e 0%, #eab308 50%, #b9880e 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            background-size: 200% auto;
+            animation: shine 6s linear infinite;
+        }
+
+        @keyframes shine {
+            to { background-position: 200% center; }
+        }
+
+        .border-gradient-gold-light {
+            position: relative;
+            background: linear-gradient(#fff, #fff) padding-box,
+                        linear-gradient(180deg, #FFDE59 0%, #BA8500 100%) border-box;
+            border: 2px solid transparent;
+            border-radius: 1.5rem;
+        }
+        .border-gradient-gold-dark {
+            position: relative;
+            background: linear-gradient(#0F172A, #0F172A) padding-box,
+                        linear-gradient(180deg, #FFDE59 0%, #BA8500 100%) border-box;
+            border: 2px solid transparent;
+            border-radius: 1.5rem;
+        }
+        
+        .benefit-list li {
+            position: relative;
+            padding-left: 2rem;
+            margin-bottom: 0.75rem;
+            text-align: left;
+        }
+        .benefit-list li::before {
+            content: '✓';
+            position: absolute;
+            left: 0.5rem;
+            color: #b9880e;
+            font-weight: bold;
+        }
+        .benefit-list-gray li::before { color: #64748b; }
+
+        .tab-btn.active {
+            background-color: #b9880e;
+            color: #0F172A;
+            border-color: #b9880e;
+        }
+        .tab-content {
+            display: none;
+            animation: fadeIn 0.5s ease-in-out;
+        }
+        .tab-content.active {
+            display: block;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .slide {
+            display: none;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: opacity 0.5s ease-in-out;
+        }
+        .slide.active-slide {
+            display: block;
+        }
+
+        @media print {
+            .no-print { display: none !important; }
+            body { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+            header { break-inside: avoid; }
+            section { break-inside: auto; }
+            .bg-brand-black { background-color: #0F172A !important; color: white !important; }
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-700 antialiased selection:bg-brand-yellow selection:text-brand-black">
+
+    <!-- Navbar -->
+    <nav class="fixed w-full z-50 top-0 bg-white/70 backdrop-blur-xl border-b border-white/40 transition-all duration-300 shadow-sm no-print">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-20 items-center">
+                <div class="flex flex-col items-stretch leading-none select-none cursor-pointer group">
+                    <div class="relative flex items-baseline">
+                        <!-- Logo TOPO: Cor sólida escura (#b9880e) -->
+                        <span class="font-logo font-bold text-[2.5rem] text-[#b9880e] lowercase tracking-[-0.08em] transition-colors leading-[0.8]">vısıon</span>
+                        <span class="text-[0.5rem] text-[#b9880e] font-bold ml-0.5 self-end mb-1">®</span>
+                    </div>
+                    <div class="font-tech text-[0.6rem] font-bold text-slate-600 lowercase flex justify-between px-0.5 group-hover:text-black transition-colors -mt-1">
+                        <span>t</span><span>e</span><span>c</span><span>n</span><span>o</span><span>l</span><span>o</span><span>g</span><span>i</span><span>a</span>
+                    </div>
+                </div>
+                
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="#diagnostico" class="text-sm font-medium text-slate-600 hover:text-brand-black transition-colors">Diagnóstico</a>
+                    <a href="#analise" class="text-sm font-medium text-slate-600 hover:text-brand-black transition-colors">Soluções</a>
+                    <a href="#investimento" class="text-sm font-medium text-slate-600 hover:text-brand-black transition-colors">Investimento</a>
+                </div>
+
+                <div class="flex items-center gap-4">
+                    <!-- Botão Salvar PDF -->
+                    <button onclick="window.print()" class="no-print hidden lg:flex items-center gap-2 text-sm font-bold text-slate-500 hover:text-brand-yellow transition-colors" title="Salvar como PDF">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-5 h-5">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M6.72 13.829c-.24.03-.48.062-.72.096m.72-.096a42.415 42.415 0 0 1 10.56 0m-10.56 0L6.34 18m10.94-4.171c.24.03.48.062.72.096m-.72-.096L17.66 18m0 0 .229 2.523a1.125 1.125 0 0 1-1.12 1.227H7.231c-.662 0-1.18-.568-1.12-1.227L6.34 18m11.318 0h1.091A2.25 2.25 0 0 0 21 15.75V9.456c0-1.081-.768-2.015-1.837-2.175a48.055 48.055 0 0 0-1.913-.247M6.34 18H5.25A2.25 2.25 0 0 1 3 15.75V9.456c0-1.081.768-2.015 1.837-2.175a48.041 48.041 0 0 1 1.913-.247m10.5 0a48.536 48.536 0 0 0-10.5 0m10.5 0V3.375c0-.621-.504-1.125-1.125-1.125h-8.25c-.621 0-1.125.504-1.125 1.125v3.659M18 10.5h.008v.008H18V10.5Zm-3 0h.008v.008H15V10.5Z" />
+                        </svg>
+                        <span>Salvar PDF</span>
+                    </button>
+
+                    <a href="#investimento" class="bg-brand-black hover:bg-slate-800 text-white px-6 py-2.5 rounded-full text-sm font-bold shadow-lg transition-all transform hover:-translate-y-0.5 hover:shadow-xl">
+                        Aprovar Proposta
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="bg-brand-black pt-32 pb-24 relative overflow-hidden text-white text-center rounded-b-[1.5rem] md:rounded-b-[2rem] shadow-2xl z-20">
+        <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[500px] bg-brand-yellow rounded-full blur-[200px] opacity-10 pointer-events-none"></div>
+        <div class="max-w-4xl mx-auto px-4 relative z-10">
+            <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-slate-700 bg-slate-800/50 text-brand-yellow text-xs font-bold uppercase tracking-wider mb-8 shadow-lg backdrop-blur-sm">
+                <span class="w-2 h-2 rounded-full bg-brand-yellow animate-pulse"></span> Proposta Comercial 2026
+            </div>
+            <h1 class="text-5xl md:text-7xl font-extrabold mb-8 leading-tight tracking-tight">
+                Controle de Acesso <br>
+                <span class="text-transparent bg-clip-text bg-gradient-to-r from-brand-goldLight to-brand-yellow">Clínica Integrada</span>
+            </h1>
+            <p class="text-slate-400 text-lg md:text-xl max-w-2xl mx-auto mb-12 leading-relaxed">
+                Gestão de fluxo para equipe de 70 colaboradores com tecnologia de ponta.
+            </p>
+            <div class="bg-white/5 backdrop-blur-md border border-white/10 rounded-2xl p-6 grid grid-cols-1 md:grid-cols-3 gap-8 text-left max-w-3xl mx-auto">
+                <div><p class="text-[10px] text-slate-400 uppercase font-bold tracking-wider mb-1">Cliente</p><p class="font-semibold text-lg text-white">Clínica Leviva</p></div>
+                <div class="md:border-l border-white/10 md:pl-8"><p class="text-[10px] text-slate-400 uppercase font-bold tracking-wider mb-1">Data Emissão</p><p class="text-brand-yellow font-semibold text-lg">26 de Janeiro</p><p class="text-xs text-slate-400">Ano 2026</p></div>
+                <div class="md:border-l border-white/10 md:pl-8"><p class="text-[10px] text-slate-400 uppercase font-bold tracking-wider mb-1">Responsável</p><p class="font-semibold text-lg text-white">Gabriel Nascimento</p><p class="text-xs text-slate-400">Vision Tecnologia</p></div>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section id="diagnostico" class="py-24 bg-white relative">
+            <div class="max-w-6xl mx-auto px-4">
+                <div class="text-center mb-16">
+                    <h2 class="text-4xl font-bold text-slate-900 section-center-line">Levantamento Técnico</h2>
+                    <p class="text-slate-500 mt-6 max-w-2xl mx-auto text-lg">
+                        Soluções desenhadas para a porta de entrada dos colaboradores (Madeira).
+                    </p>
+                </div>
+
+                <!-- CARD DE RELATÓRIO TÉCNICO INTEGRADO -->
+                <div class="max-w-4xl mx-auto mb-16">
+                    <div class="bg-white border border-slate-100 p-8 rounded-lg shadow-sm relative overflow-hidden flex flex-col md:flex-row gap-6 items-center border-l-[8px] border-l-brand-yellow">
+                        <div class="shrink-0 relative">
+                            <div class="w-16 h-16 bg-brand-yellow/10 rounded-full flex items-center justify-center text-3xl">📋</div>
+                        </div>
+                        <div>
+                            <h3 class="font-bold text-slate-900 text-xl mb-3">
+                                Análise de Fluxo e Infraestrutura
+                            </h3>
+                            <div class="text-slate-600 leading-relaxed text-sm md:text-base space-y-4">
+                                <p>"Considerando o fluxo intenso de aproximadamente <strong>70 funcionários</strong>, é crucial um sistema que aguente alto ciclo de abertura. A porta de madeira exige suportes específicos (L/Z) para a fixação segura do eletroímã."</p>
+                                <p>"Além disso, recomendamos fortemente o uso de <strong>Mola Aérea</strong> para garantir que a porta sempre feche sozinha após o acesso, mantendo a clínica segura."</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="grid md:grid-cols-2 gap-8">
+                    <!-- Card Texto: Agilidade no Acesso -->
+                    <div class="bg-brand-black p-8 rounded-3xl relative overflow-hidden group shadow-xl">
+                        <!-- Efeito de Fundo -->
+                        <div class="absolute top-0 right-0 w-40 h-40 bg-brand-yellow/10 rounded-full blur-3xl -mr-10 -mt-10"></div>
+                        
+                        <div class="relative z-10 flex flex-col h-full justify-between">
+                            <div>
+                                <div class="inline-block px-3 py-1 bg-brand-yellow text-brand-black rounded-full text-[10px] font-bold uppercase tracking-wider w-fit mb-4">Alto Fluxo</div>
+                                <h3 class="text-2xl font-bold text-white mb-4">Agilidade no Acesso (Sem Filas)</h3>
+                                <p class="text-slate-300 leading-relaxed">
+                                    Para 70 colaboradores, o gargalo na entrada pode ser um problema crítico. Nossa tecnologia de <strong>Reconhecimento Facial (Opção 1)</strong> elimina a necessidade de buscar tags ou digitar senhas.
+                                </p>
+                                <ul class="mt-6 space-y-2 text-sm text-slate-400">
+                                    <li class="flex gap-2"><span class="text-brand-yellow">✓</span> Leitura em 0,2 segundos</li>
+                                    <li class="flex gap-2"><span class="text-brand-yellow">✓</span> Higiene Total (Sem toque)</li>
+                                    <li class="flex gap-2"><span class="text-brand-yellow">✓</span> Fim das chaves físicas</li>
+                                </ul>
+                            </div>
+                            <div class="mt-8 pt-6 border-t border-white/10 flex items-center gap-2 text-brand-yellow font-bold text-sm uppercase tracking-wide">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-5 h-5"><path stroke-linecap="round" stroke-linejoin="round" d="M15.75 6a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0ZM4.501 20.118a7.5 7.5 0 0 1 14.998 0A17.933 17.933 0 0 1 12 21.75c-2.676 0-5.216-.584-7.499-1.632Z" /></svg>
+                                Tecnologia Touchless
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Card Texto: Segurança Física -->
+                    <div class="bg-white border border-slate-200 p-8 rounded-3xl relative overflow-hidden group shadow-lg hover:shadow-xl transition-all">
+                        <!-- Efeito de Fundo -->
+                        <div class="absolute bottom-0 left-0 w-40 h-40 bg-brand-yellow/5 rounded-full blur-3xl -ml-10 -mb-10"></div>
+
+                        <div class="relative z-10 flex flex-col h-full justify-between">
+                            <div>
+                                <div class="inline-block px-3 py-1 bg-slate-100 text-slate-600 rounded-full text-[10px] font-bold uppercase tracking-wider w-fit mb-4">Infraestrutura</div>
+                                <h3 class="text-2xl font-bold text-slate-900 mb-4">Segurança Física da Porta</h3>
+                                <p class="text-slate-600 leading-relaxed">
+                                    Utilizaremos uma fechadura <strong>Eletroímã de 150kg</strong> com suportes especiais para madeira. O sistema inclui <strong>Bateria de Backup</strong> para manter a porta trancada mesmo sem energia elétrica.
+                                </p>
+                                <ul class="mt-6 space-y-2 text-sm text-slate-500">
+                                    <li class="flex gap-2"><span class="text-brand-yellow font-bold">✓</span> Eletroímã Silencioso</li>
+                                    <li class="flex gap-2"><span class="text-brand-yellow font-bold">✓</span> 4h de Autonomia s/ Luz</li>
+                                    <li class="flex gap-2"><span class="text-brand-yellow font-bold">✓</span> Fixação Reforçada</li>
+                                </ul>
+                            </div>
+                            <div class="mt-8 pt-6 border-t border-slate-100 flex items-center gap-2 text-green-600 font-bold text-sm uppercase tracking-wide">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-5 h-5"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+                                Instalação Completa
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="analise" class="py-24 bg-brand-black text-white relative overflow-hidden -mt-16 pt-32">
+            <div class="absolute top-0 right-0 w-[600px] h-[600px] bg-brand-yellow rounded-full blur-[200px] opacity-5 pointer-events-none"></div>
+            <div class="max-w-7xl mx-auto px-4 relative z-10">
+                <div class="text-center mb-12">
+                    <h2 class="text-4xl font-bold text-white section-center-line">Comparativo de Tecnologias</h2>
+                    <p class="text-slate-400 mt-6 text-lg">Clique nos botões abaixo para ver os detalhes técnicos.</p>
+                </div>
+
+                <div class="flex justify-center gap-4 mb-12 flex-wrap no-print">
+                    <button onclick="openTab('tab1')" id="btn-tab1" class="tab-btn active px-8 py-3 rounded-full border border-slate-700 text-sm font-bold uppercase tracking-wider transition-all hover:bg-slate-800">Opção 1: Facial</button>
+                    <button onclick="openTab('tab2')" id="btn-tab2" class="tab-btn px-8 py-3 rounded-full border border-slate-700 text-sm font-bold uppercase tracking-wider transition-all hover:bg-slate-800">Opção 2: Robusta</button>
+                    <button onclick="openTab('tab3')" id="btn-tab3" class="tab-btn px-8 py-3 rounded-full border border-slate-700 text-sm font-bold uppercase tracking-wider transition-all hover:bg-slate-800">Infraestrutura</button>
+                </div>
+
+                <!-- TAB 1: FACIAL -->
+                <div id="tab1" class="tab-content active bg-slate-800/50 p-8 md:p-12 rounded-3xl border border-white/5 backdrop-blur-md">
+                    <div class="grid md:grid-cols-[1fr_400px] gap-8 items-center">
+                        <div>
+                            <h3 class="text-3xl font-bold text-brand-yellow mb-6">Controlador Facial Premium</h3>
+                            <p class="text-slate-300 mb-6 leading-relaxed text-lg">
+                                A solução definitiva para clínicas. Tecnologia de ponta que oferece rapidez, segurança e modernidade para a entrada dos colaboradores.
+                            </p>
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                                <ul class="space-y-4 text-sm">
+                                    <li class="flex items-start gap-3"><div class="text-brand-yellow shrink-0">✓</div><div><h5 class="font-bold text-white uppercase text-[10px] tracking-widest">Higiene Total</h5><p class="text-slate-400">Zero contato físico. Ideal para ambiente hospitalar.</p></div></li>
+                                    <li class="flex items-start gap-3"><div class="text-brand-yellow shrink-0">✓</div><div><h5 class="font-bold text-white uppercase text-[10px] tracking-widest">Anti-Fraude (Vivo)</h5><p class="text-slate-400">Distingue rosto real de foto/vídeo com precisão.</p></div></li>
+                                    <li class="flex items-start gap-3"><div class="text-brand-yellow shrink-0">✓</div><div><h5 class="font-bold text-white uppercase text-[10px] tracking-widest">Velocidade</h5><p class="text-slate-400">Reconhecimento em menos de 0,2 segundos.</p></div></li>
+                                </ul>
+                                <ul class="space-y-4 text-sm">
+                                    <li class="flex items-start gap-3"><div class="text-brand-yellow shrink-0">✓</div><div><h5 class="font-bold text-white uppercase text-[10px] tracking-widest">Alta Capacidade</h5><p class="text-slate-400">Até 3.000 faces (Suficiente para expansão).</p></div></li>
+                                    <li class="flex items-start gap-3"><div class="text-brand-yellow shrink-0">✓</div><div><h5 class="font-bold text-white uppercase text-[10px] tracking-widest">Tela Touch</h5><p class="text-slate-400">Interface intuitiva e moderna.</p></div></li>
+                                    <li class="flex items-start gap-3"><div class="text-brand-yellow shrink-0">✓</div><div><h5 class="font-bold text-white uppercase text-[10px] tracking-widest">Precisão</h5><p class="text-slate-400">Funciona mesmo com baixa luminosidade.</p></div></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="relative group h-full min-h-[250px] rounded-xl overflow-hidden shadow-2xl border border-slate-700/50">
+                            <iframe class="w-full h-full absolute inset-0" src="https://www.youtube.com/embed/xQH0baRPXv8?si=HSaoZ_ALKZyBJgbC" title="Intelbras Facial" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- TAB 2: ROBUSTO -->
+                <div id="tab2" class="tab-content bg-slate-800/50 p-8 md:p-12 rounded-3xl border border-white/5 backdrop-blur-md">
+                    <div class="grid md:grid-cols-[1fr_300px] gap-8 items-center">
+                        <div>
+                            <h3 class="text-3xl font-bold text-brand-yellow mb-6">Controlador de Acesso Blindado</h3>
+                            <p class="text-slate-300 mb-6 leading-relaxed text-lg">
+                                Equipamento "tanque de guerra". Feito para aguentar uso severo, toques repetitivos e exposição a intempéries sem falhar.
+                            </p>
+                            <ul class="space-y-4 text-sm">
+                                <li class="flex items-start gap-3"><div class="text-brand-yellow shrink-0">✓</div><div><h5 class="font-bold text-white uppercase text-[10px] tracking-widest">Proteção IP66</h5><p class="text-slate-400">Totalmente resistente a chuva, poeira e jatos d'água diretos.</p></div></li>
+                                <li class="flex items-start gap-3"><div class="text-brand-yellow shrink-0">✓</div><div><h5 class="font-bold text-white uppercase text-[10px] tracking-widest">Antivandalismo</h5><p class="text-slate-400">Carcaça metálica robusta resistente a impactos.</p></div></li>
+                                <li class="flex items-start gap-3"><div class="text-brand-yellow shrink-0">✓</div><div><h5 class="font-bold text-white uppercase text-[10px] tracking-widest">Teclado Iluminado</h5><p class="text-slate-400">Facilita a digitação da senha em ambientes com pouca luz.</p></div></li>
+                                <li class="flex items-start gap-3"><div class="text-brand-yellow shrink-0">✓</div><div><h5 class="font-bold text-white uppercase text-[10px] tracking-widest">Múltiplo Acesso</h5><p class="text-slate-400">Funciona via Senha Numérica (até 2.000 usuários) ou Chaveiro Tag.</p></div></li>
+                            </ul>
+                        </div>
+                        <div class="bg-slate-900 rounded-xl p-8 flex items-center justify-center h-full min-h-[300px] border border-slate-700/50">
+                            <img src="https://backend.intelbras.com/sites/default/files/styles/medium/public/2021-03/SA-211-1.png" class="w-full h-full object-contain drop-shadow-2xl" alt="Equipamento Blindado">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- TAB 3: INFRA -->
+                <div id="tab3" class="tab-content bg-slate-800/50 p-8 md:p-12 rounded-3xl border border-white/5 backdrop-blur-md">
+                    <div class="grid md:grid-cols-[1fr_300px] gap-8 items-center">
+                        <div>
+                            <h3 class="text-3xl font-bold text-brand-yellow mb-6">Kit Infraestrutura Profissional</h3>
+                            <p class="text-slate-300 mb-6 leading-relaxed text-lg">
+                                A base de todo sistema de segurança. Garantimos que a porta funcione perfeitamente 24/7 com componentes de alta performance.
+                            </p>
+                            <ul class="space-y-4 text-sm">
+                                <li class="flex items-start gap-3"><div class="text-brand-yellow shrink-0">✓</div><div><h5 class="font-bold text-white uppercase text-[10px] tracking-widest">Eletroímã 150kg</h5><p class="text-slate-400">Travamento magnético silencioso. Fixação específica para madeira.</p></div></li>
+                                <li class="flex items-start gap-3"><div class="text-brand-yellow shrink-0">✓</div><div><h5 class="font-bold text-white uppercase text-[10px] tracking-widest">Bateria de Backup</h5><p class="text-slate-400">Mantém a porta funcionando por até 4 horas sem energia elétrica.</p></div></li>
+                                <li class="flex items-start gap-3"><div class="text-brand-yellow shrink-0">✓</div><div><h5 class="font-bold text-white uppercase text-[10px] tracking-widest">Mola Aérea Hidráulica</h5><p class="text-slate-400">Garante o fechamento automático e suave da porta após cada passagem.</p></div></li>
+                                <li class="flex items-start gap-3"><div class="text-brand-yellow shrink-0">✓</div><div><h5 class="font-bold text-white uppercase text-[10px] tracking-widest">Acabamento Profissional</h5><p class="text-slate-400">Utilização de canaletas e acabamentos para zero fios expostos.</p></div></li>
+                            </ul>
+                        </div>
+                        <div class="bg-slate-900 rounded-xl p-0 flex items-center justify-center h-full min-h-[300px] overflow-hidden border border-slate-700/50">
+                            <img src="https://images.unsplash.com/photo-1558494949-ef526b0042a0?q=80&w=600&auto=format&fit=crop" class="w-full h-full object-cover opacity-80" alt="Instalação Técnica">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Prova Social -->
+        <section class="py-20 bg-white border-b border-slate-100 no-print">
+            <div class="max-w-6xl mx-auto px-4">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+                    <div class="bg-white p-8 rounded-2xl border border-slate-100 shadow-xl relative overflow-hidden group hover:shadow-2xl transition-all">
+                        <div class="absolute top-0 right-0 w-32 h-32 bg-yellow-50 rounded-full -mr-10 -mt-10 z-0"></div>
+                        <div class="relative z-10 text-center md:text-left">
+                            <div class="flex items-center gap-2 mb-2 justify-center md:justify-start">
+                                <img src="https://upload.wikimedia.org/wikipedia/commons/c/c1/Google_%22G%22_logo.svg" alt="Google" class="w-8 h-8">
+                                <span class="font-bold text-slate-700">Avaliações do Google</span>
+                            </div>
+                            <div class="flex items-baseline gap-2 mb-4 justify-center md:justify-start">
+                                <span class="text-6xl font-extrabold text-slate-900">5.0</span>
+                                <div class="flex flex-col text-left">
+                                    <div class="flex text-yellow-400 text-xl">★★★★★</div>
+                                    <span class="text-xs text-slate-400 font-bold uppercase tracking-wider">Excelência</span>
+                                </div>
+                            </div>
+                            <p class="text-slate-500 text-sm font-medium">Baseado em <strong class="text-slate-800 underline decoration-brand-yellow decoration-2">117 avaliações</strong> reais.</p>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="inline-block px-3 py-1 bg-blue-50 text-blue-600 rounded-full text-xs font-bold uppercase tracking-wider mb-4">Segurança Vision</div>
+                        <h3 class="text-3xl font-bold text-slate-900 mb-6 leading-tight">Sua segurança nas mãos de especialistas.</h3>
+                        <div class="grid grid-cols-2 gap-6">
+                            <div class="flex items-center gap-3"><div class="w-10 h-10 rounded-lg bg-brand-yellow/10 flex items-center justify-center text-brand-yellow font-bold text-xs">11 Anos</div><span class="text-xs font-bold text-slate-700 uppercase">Experiência</span></div>
+                            <div class="flex items-center gap-3"><div class="w-10 h-10 rounded-lg bg-green-50 flex items-center justify-center text-green-600 font-bold text-xs">✓</div><span class="text-xs font-bold text-slate-700 uppercase">NR10/NR35</span></div>
+                            <div class="flex items-center gap-3"><div class="w-10 h-10 rounded-lg bg-blue-50 flex items-center justify-center text-blue-600 font-bold text-xs">NF</div><span class="text-xs font-bold text-slate-700 uppercase">Fiscal</span></div>
+                            <div class="flex items-center gap-3"><div class="w-10 h-10 rounded-lg bg-purple-50 flex items-center justify-center text-purple-600 font-bold text-xs">🛡️</div><span class="text-xs font-bold text-slate-700 uppercase">Garantia</span></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="investimento" class="py-24 bg-gradient-to-b from-white to-slate-100">
+            <div class="max-w-5xl mx-auto px-4 text-center">
+                <h2 class="text-4xl font-bold text-slate-900 section-center-line mb-16">Cenários de Investimento</h2>
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center max-w-5xl mx-auto">
+                    
+                    <!-- Opção 2: Robusta -->
+                    <div class="border-gradient-gold-light relative z-10 overflow-hidden group transform hover:scale-[1.02] transition-transform duration-300 flex flex-col p-1 shadow-xl bg-white h-auto">
+                        <div class="bg-white p-8 rounded-[1.3rem] flex flex-col h-full relative overflow-hidden text-center">
+                             <div class="absolute top-0 right-0 bg-slate-100 text-slate-600 text-[10px] font-extrabold px-4 py-1 rounded-bl-lg tracking-wider">CUSTO-BENEFÍCIO</div>
+                            <h3 class="text-2xl font-bold text-slate-800 mb-2">Acesso Robusto</h3>
+                            <p class="text-xs text-slate-500 mb-6 uppercase tracking-widest font-bold">Senha + Tag</p>
+                            <div class="mb-8">
+                                <div class="flex items-baseline justify-center"><span class="text-sm font-medium mr-1 text-slate-400 uppercase tracking-tighter">12x</span><span class="text-5xl font-extrabold tracking-tighter text-slate-800">R$ 216</span></div>
+                                <!-- Preço à vista compacto (Botãozinho - Ajustado Width) -->
+                                <div class="mt-3 flex justify-center">
+                                    <span class="text-xs font-bold text-brand-yellow bg-yellow-50 px-4 py-1 rounded-full border border-yellow-100 w-fit">ou R$ 2.460 à vista (-5%)</span>
+                                </div>
+                            </div>
+                            <div class="text-left mb-8 flex-grow">
+                                <ul class="text-sm text-slate-600 space-y-3 benefit-list">
+                                    <li>Controlador Blindado IP66</li>
+                                    <li>Fechadura Eletroímã 150kg</li>
+                                    <li><strong>Bateria de Backup</strong> (Funciona sem luz)</li>
+                                    <li>Mola Aérea Hidráulica</li>
+                                    <li>Instalação Completa em Madeira</li>
+                                </ul>
+                            </div>
+                            <a href="https://wa.me/5511930816696?text=Olá Gabriel, aprovo a Opção 2 (Acesso Robusto) de R$ 2.590,00" target="_blank" class="block w-full border-2 border-brand-yellow text-brand-yellow text-center font-bold py-4 rounded-xl hover:bg-brand-yellow hover:text-brand-black transition-all uppercase tracking-widest text-xs">APROVAR OPÇÃO 2</a>
+                        </div>
+                    </div>
+
+                    <!-- Opção 1: Facial -->
+                    <div class="border-gradient-gold-dark relative z-20 text-white overflow-hidden group transform hover:scale-[1.03] transition-transform duration-300 flex flex-col p-1 shadow-2xl h-full">
+                        <div class="bg-brand-black p-10 rounded-[1.3rem] flex flex-col h-full relative overflow-hidden text-center">
+                            <div class="absolute top-0 right-0 bg-brand-yellow text-brand-black text-[10px] font-extrabold px-4 py-1 rounded-bl-lg tracking-wider shadow-lg">RECOMENDADO</div>
+                            <h3 class="text-2xl font-bold text-brand-yellow mb-2">Acesso Facial Premium</h3>
+                            <p class="text-xs text-slate-400 mb-6 uppercase tracking-widest font-bold">Touchscreen Higiênico</p>
+                            <div class="mb-8">
+                                <div class="flex items-baseline justify-center"><span class="text-sm font-medium mr-1 text-slate-500 uppercase tracking-tighter text-slate-400">12x</span><span class="text-6xl font-extrabold tracking-tighter">R$ 321</span></div>
+                                <!-- Preço à vista compacto (Botãozinho - Ajustado Width) -->
+                                <div class="mt-3 flex justify-center">
+                                    <span class="text-xs font-bold text-brand-black bg-brand-yellow px-4 py-1 rounded-full shadow-lg shadow-yellow-500/20 w-fit">ou R$ 3.657 à vista (-5%)</span>
+                                </div>
+                            </div>
+                            <div class="text-left mb-8 flex-grow">
+                                <ul class="text-sm text-slate-300 benefit-list space-y-3">
+                                    <li>Controlador Facial Premium (LCD)</li>
+                                    <li>Acesso Totalmente sem Toque</li>
+                                    <li>Fechadura Eletroímã 150kg</li>
+                                    <li>Bateria de Backup Inclusa</li>
+                                    <li>Mola Aérea Hidráulica</li>
+                                    <li>Instalação e Treinamento Completo</li>
+                                </ul>
+                            </div>
+                            <a href="https://wa.me/5511930816696?text=Olá Gabriel, quero a Opção 1 (Facial Premium) de R$ 3.850,00" target="_blank" class="block w-full bg-gradient-to-r from-brand-goldLight to-brand-goldDark text-brand-black text-center font-bold py-4 rounded-xl hover:shadow-lg hover:shadow-yellow-500/30 hover:-translate-y-1 transition-all uppercase tracking-widest text-xs">APROVAR OPÇÃO 1</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="py-24 bg-brand-black relative overflow-hidden border-t border-brand-yellow/20">
+            <div class="absolute inset-0 opacity-10" style="background-image: url('https://www.transparenttextures.com/patterns/cubes.png');"></div>
+            <div class="max-w-5xl mx-auto px-4 relative z-10 text-center">
+                <div class="inline-flex items-center gap-2 px-4 py-1 rounded-full border border-brand-yellow/30 bg-brand-yellow/10 text-brand-yellow text-xs font-bold uppercase tracking-widest mb-6">Compromisso Vision</div>
+                <h2 class="text-4xl md:text-5xl font-extrabold text-white mb-6 uppercase tracking-tighter">SEU RISCO É <span class="text-gold-gradient italic">ZERO!</span></h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 text-left mt-16">
+                    <div class="bg-white/5 backdrop-blur-sm border border-white/10 p-8 rounded-2xl flex items-start gap-6 group hover:border-brand-yellow/40 transition-colors">
+                        <div class="w-14 h-14 bg-brand-yellow/10 rounded-xl flex items-center justify-center shrink-0 text-brand-yellow text-3xl">🛡️</div>
+                        <div><h4 class="text-lg font-bold text-white mb-2">12 Meses de Fábrica</h4><p class="text-xs text-slate-400 leading-relaxed uppercase tracking-wider">Garantia total contra defeitos de fabricação em todos os equipamentos Intelbras instalados.</p></div>
+                    </div>
+                    <div class="bg-white/5 backdrop-blur-sm border border-white/10 p-8 rounded-2xl flex items-start gap-6 group hover:border-brand-yellow/40 transition-colors">
+                        <div class="w-14 h-14 bg-brand-yellow/10 rounded-xl flex items-center justify-center shrink-0 text-brand-yellow text-3xl">🛠️</div>
+                        <div><h4 class="text-lg font-bold text-white mb-2">90 Dias de Serviço</h4><p class="text-xs text-slate-400 leading-relaxed uppercase tracking-wider">Garantia de mão de obra. Resolvemos qualquer problema técnico em até 48h sem custo.</p></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="bg-brand-black text-slate-500 py-16 border-t border-slate-900">
+        <div class="max-w-4xl mx-auto px-4 text-center">
+            <div class="flex items-center justify-center gap-3 mb-10">
+                <div class="flex flex-col items-stretch leading-none select-none">
+                    <div class="relative flex items-baseline">
+                        <span class="font-logo font-bold text-[3rem] text-gold-gradient lowercase tracking-[-0.08em] leading-[0.8]">vısıon</span>
+                        <span class="text-[0.6rem] text-[#b9880e] font-bold ml-0.5 self-end mb-1">®</span>
+                    </div>
+                    <div class="font-tech text-[0.7rem] font-bold text-white lowercase flex justify-between px-1 -mt-1.5">
+                        <span>t</span><span>e</span><span>c</span><span>n</span><span>o</span><span>l</span><span>o</span><span>g</span><span>i</span><span>a</span>
+                    </div>
+                </div>
+            </div>
+            <div class="text-[10px] uppercase tracking-[0.2em] opacity-40">
+                <p>© 2026 Vision Tecnologia. Documento confidencial. Proposta válida por 30 dias.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        function openTab(tabName) {
+            var i, tabContent, tabBtn;
+            tabContent = document.getElementsByClassName("tab-content");
+            for (i = 0; i < tabContent.length; i++) {
+                tabContent[i].style.display = "none";
+                tabContent[i].classList.remove("active");
+            }
+            tabBtn = document.getElementsByClassName("tab-btn");
+            for (i = 0; i < tabBtn.length; i++) {
+                tabBtn[i].classList.remove("active");
+            }
+            document.getElementById(tabName).style.display = "block";
+            setTimeout(() => { document.getElementById(tabName).classList.add("active"); }, 10);
+            document.getElementById("btn-" + tabName).classList.add("active");
+        }
+    </script>
+
+</body>
+</html>

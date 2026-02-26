@@ -1,0 +1,1020 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth overflow-hidden" id="html-root">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Proposta Vision Business | Ibis Paulista</title>
+    <meta name="description" content="Projeto de Monitoramento de Obra - Ibis Paulista.">
+    <meta name="theme-color" content="#09090b">
+    
+    <!-- Fonts & Icons -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@700;800&family=Quicksand:wght@500;600;700&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: { 
+                        sans: ['"Outfit"', 'sans-serif'],
+                        logo: ['"League Spartan"', 'sans-serif'],
+                        tech: ['"Quicksand"', 'sans-serif'],
+                        visy: ['"Outfit"', 'sans-serif']
+                    },
+                    colors: {
+                        brand: {
+                            yellow: '#b9880e', 
+                            goldLight: '#FFDE59', 
+                            goldDark: '#BA8500',  
+                            black: '#09090b', /* Zinc 950 */
+                            dark: '#000000',
+                            surface: '#18181b', /* Zinc 900 */
+                            gray: '#27272a', /* Zinc 800 */
+                        },
+                        visy: {
+                            primary: '#6366f1', /* Indigo */
+                            secondary: '#a855f7' /* Purple */
+                        }
+                    },
+                    boxShadow: {
+                        'glow': '0 0 20px rgba(185, 136, 14, 0.15)',
+                        'glow-strong': '0 0 40px rgba(185, 136, 14, 0.3)',
+                        'glass': '0 8px 32px 0 rgba(0, 0, 0, 0.3)',
+                        'hero-curve': '0 20px 50px -10px rgba(0, 0, 0, 0.9)',
+                    },
+                    animation: {
+                        'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                        'slide-in': 'slideIn 0.3s ease-out forwards',
+                        'fade-in': 'fadeIn 0.5s ease-out forwards',
+                        'shake': 'shake 0.5s cubic-bezier(.36,.07,.19,.97) both',
+                        'shine': 'shine 4s linear infinite',
+                    },
+                    keyframes: {
+                        slideIn: {
+                            '0%': { opacity: '0', transform: 'translateX(-10px)' },
+                            '100%': { opacity: '1', transform: 'translateX(0)' },
+                        },
+                        fadeIn: {
+                            '0%': { opacity: '0', transform: 'translateY(10px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' },
+                        },
+                        shake: {
+                            '10%, 90%': { transform: 'translate3d(-1px, 0, 0)' },
+                            '20%, 80%': { transform: 'translate3d(2px, 0, 0)' },
+                            '30%, 50%, 70%': { transform: 'translate3d(-4px, 0, 0)' },
+                            '40%, 60%': { transform: 'translate3d(4px, 0, 0)' }
+                        },
+                        shine: {
+                            'to': { backgroundPosition: '200% center' }
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #09090b; }
+        ::-webkit-scrollbar-thumb { background: #3f3f46; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #b9880e; }
+        
+        .bg-grid-pattern {
+            background-image: linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+                              linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+            background-size: 40px 40px;
+        }
+
+        .text-gold-shine {
+            background: linear-gradient(to right, #b9880e 20%, #FFDE59 50%, #b9880e 80%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-size: 200% auto;
+            animation: shine 4s linear infinite;
+            filter: drop-shadow(0 0 1px rgba(185, 136, 14, 0.3));
+        }
+
+        .bg-gold-shine {
+            background: linear-gradient(to right, #b9880e 0%, #FFDE59 50%, #b9880e 100%);
+            background-size: 200% auto;
+            animation: shine 3s linear infinite;
+            color: #09090b;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+        
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease-out;
+        }
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .glass-text-box {
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(228, 228, 231, 0.8);
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Card Glass */
+        .glass-review {
+            background: rgba(24, 24, 27, 0.6);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+        }
+
+        .mask-gradient {
+            mask-image: linear-gradient(to bottom, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 100%);
+            -webkit-mask-image: linear-gradient(to bottom, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 100%);
+        }
+
+        /* Border Fade Effect - Silver */
+        .border-fade-silver {
+            position: relative;
+        }
+        .border-fade-silver::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, rgba(255,255,255,0.6) 0%, rgba(255,255,255,0) 50%, rgba(255,255,255,0.6) 100%);
+            pointer-events: none;
+        }
+        
+        /* New Premium Gold Border */
+        .border-premium-gold {
+            position: relative;
+        }
+        .border-premium-gold::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border-radius: 1rem; 
+            padding: 1px; 
+            background: linear-gradient(45deg, #b9880e, #FFDE59, #5a4205, #b9880e); 
+            -webkit-mask: 
+               linear-gradient(#fff 0 0) content-box, 
+               linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor;
+            mask-composite: exclude;
+            opacity: 0.8;
+            pointer-events: none;
+        }
+
+        /* Toggle Switch Styles */
+        .toggle-checkbox:checked {
+            right: 0;
+            border-color: #b9880e;
+        }
+        .toggle-checkbox:checked + .toggle-label {
+            background-color: #b9880e;
+        }
+        .toggle-checkbox:checked + .toggle-label:before {
+            transform: translateX(100%);
+        }
+        
+        .addon-enter {
+            animation: slideDownFade 0.3s ease-out forwards;
+        }
+        @keyframes slideDownFade {
+            from { opacity: 0; transform: translateY(-10px); height: 0; }
+            to { opacity: 1; transform: translateY(0); height: auto; }
+        }
+        
+        /* Accordion Style for FAQ */
+        details > summary {
+            list-style: none;
+        }
+        details > summary::-webkit-details-marker {
+            display: none;
+        }
+
+        /* Whatsapp Button Animation */
+        .whatsapp-pulse {
+            box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7);
+            animation: whatsapp-pulse 1.5s infinite cubic-bezier(0.66, 0, 0, 1);
+        }
+        @keyframes whatsapp-pulse {
+            to {
+                box-shadow: 0 0 0 20px rgba(37, 211, 102, 0);
+            }
+        }
+        
+        /* Lock Screen Input - Redesigned */
+        .lock-input {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: #b9880e;
+            font-family: 'League Spartan', sans-serif;
+            font-size: 1.5rem;
+            text-align: center;
+            outline: none;
+            transition: all 0.3s;
+            letter-spacing: 0.2em;
+            border-radius: 12px; /* Arredondado */
+        }
+        .lock-input:focus {
+            border-color: #b9880e;
+            background: rgba(255, 255, 255, 0.08);
+            box-shadow: 0 0 15px rgba(185, 136, 14, 0.2);
+        }
+        .lock-input::placeholder {
+            color: #52525b;
+            font-size: 0.9rem;
+            font-family: 'Outfit', sans-serif;
+            font-weight: 300;
+            letter-spacing: normal;
+        }
+
+        /* Lock Animation Classes */
+        .lock-shackle {
+            transform-origin: 12px 10px; /* Pivô ajustado para o cadeado */
+            transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .unlocked .lock-shackle {
+            transform: rotate(-45deg) translateY(-2px);
+        }
+        .unlocked .lock-body {
+            fill: #22c55e; /* Verde Sucesso */
+            stroke: #22c55e;
+        }
+        .unlocked .lock-circle {
+            border-color: #22c55e;
+            background-color: rgba(34, 197, 94, 0.1);
+        }
+    </style>
+</head>
+<body class="bg-zinc-50 text-zinc-700 antialiased selection:bg-brand-yellow selection:text-brand-black overflow-x-hidden">
+
+    <!-- LOCK SCREEN -->
+    <div id="lock-screen" class="fixed inset-0 z-[100] bg-zinc-950 flex flex-col items-center justify-center text-center p-4 transition-opacity duration-700 ease-out">
+        <!-- Background Pattern na Tela de Bloqueio -->
+        <div class="bg-grid-pattern absolute inset-0 opacity-10 pointer-events-none z-0"></div>
+        <div class="absolute top-0 right-0 w-[500px] h-[500px] bg-brand-yellow rounded-full blur-[400px] opacity-10 pointer-events-none"></div>
+
+        <!-- Logo Centralizada e Ajustada -->
+        <div class="relative flex flex-col items-center justify-center gap-0 mb-10 z-10 mt-[-5vh]"> <!-- Margem negativa para subir um pouco, mas centralizado -->
+            <div class="relative flex items-baseline leading-none">
+                <span class="font-logo font-bold text-[3rem] md:text-[5rem] text-gold-shine lowercase tracking-[-0.08em] leading-none">vısıon</span>
+                <span class="text-[0.7rem] md:text-[1.1rem] text-[#b9880e] font-bold ml-1 self-end mb-1 md:mb-2">®</span>
+            </div>
+            <!-- Business colado na Vision -->
+            <div class="font-tech text-[0.8rem] md:text-[1.2rem] font-light text-zinc-500 lowercase tracking-[0.4em] ml-1 -mt-3 md:-mt-5">
+                business
+            </div>
+        </div>
+        
+        <div class="w-full max-w-xs space-y-6 z-10" id="lock-content">
+            <!-- Cadeado Animado -->
+            <div id="lock-icon-container" class="w-16 h-16 border-2 border-white/10 rounded-full flex items-center justify-center mx-auto text-brand-yellow mb-6 transition-all duration-500 lock-circle bg-white/5">
+                <svg id="lock-svg" class="w-8 h-8 transition-colors duration-500" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <!-- Shackle (Alça) -->
+                    <path class="lock-shackle" d="M7 11V7a5 5 0 0 1 10 0v4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    <!-- Body -->
+                    <rect class="lock-body transition-colors duration-500" x="3" y="11" width="18" height="11" rx="2" ry="2" stroke="currentColor" stroke-width="2" fill="none"/>
+                    <path class="lock-body transition-colors duration-500" d="M12 16v2" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                </svg>
+            </div>
+
+            <div class="space-y-1">
+                <h2 class="text-white font-bold text-xl tracking-tight">Área Restrita</h2>
+                <p class="text-zinc-500 text-sm font-light">Documento técnico confidencial.</p>
+            </div>
+            
+            <div class="relative group pt-2">
+                <!-- Input Arredondado e Discreto -->
+                <input type="password" id="password-input" class="lock-input w-full py-3 px-4" placeholder="Chave de Acesso" autocomplete="off">
+                <p id="error-msg" class="text-red-500 text-xs mt-3 hidden font-bold">Acesso negado.</p>
+            </div>
+            
+            <button onclick="checkPassword()" class="w-full bg-brand-yellow hover:bg-white text-brand-black hover:text-black font-bold py-3.5 rounded-xl transition-all duration-300 shadow-glow flex items-center justify-center gap-2 transform hover:scale-[1.02]">
+                <span>Visualizar Proposta</span>
+                <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"/></svg>
+            </button>
+            
+            <p class="text-[10px] text-zinc-600 mt-6 font-mono opacity-60">
+                Encrypted by Vision Security®
+            </p>
+        </div>
+    </div>
+
+    <!-- Navbar -->
+    <nav class="fixed w-full z-50 top-0 bg-brand-black/95 backdrop-blur-xl border-b border-white/5 transition-all duration-300 shadow-lg no-print">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
+            <div class="flex justify-between h-20 items-center">
+                <div class="flex flex-col items-stretch leading-none select-none cursor-pointer group z-10">
+                    <div class="relative flex items-baseline">
+                        <span class="font-logo font-bold text-[2rem] text-gold-shine lowercase tracking-[-0.08em] leading-[0.8]">vısıon</span>
+                        <span class="text-[0.5rem] text-[#b9880e] font-bold ml-0.5 self-end mb-1">®</span>
+                    </div>
+                    <div class="font-tech text-[0.6rem] font-bold text-zinc-400 lowercase flex justify-between px-0.5 group-hover:text-brand-yellow transition-colors -mt-1 tracking-widest">
+                        <span>b</span><span>u</span><span>s</span><span>i</span><span>n</span><span>e</span><span>s</span><span>s</span>
+                    </div>
+                </div>
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="#diagnostico" class="text-sm font-medium text-zinc-300 hover:text-brand-yellow transition-colors">O Risco</a>
+                    <a href="#vision-neural" class="text-sm font-medium text-zinc-300 hover:text-brand-yellow transition-colors">Neural</a>
+                    <a href="#fullcolor" class="text-sm font-medium text-zinc-300 hover:text-brand-yellow transition-colors">Full Color</a>
+                    <a href="#investimento" class="text-sm font-medium text-zinc-300 hover:text-brand-yellow transition-colors">Investimento</a>
+                </div>
+                <div class="hidden md:flex items-center space-x-6 z-10">
+                    <a href="#investimento" class="bg-brand-yellow hover:bg-white hover:text-brand-black text-brand-black px-6 py-2.5 rounded-full text-sm font-bold shadow-glow transition-all">
+                        Ver Opções
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- CAPA (HERO) -->
+    <header class="bg-brand-black pt-32 pb-32 relative z-10 overflow-hidden text-white min-h-[85vh] flex flex-col justify-center items-center text-center rounded-b-[1.5rem] shadow-hero-curve border-fade-silver">
+        <div class="absolute inset-0 z-0">
+            <!-- Imagem Obra/Construção Dark -->
+            <img src="https://images.unsplash.com/photo-1503387762-592deb58ef4e?q=80&w=2070&auto=format&fit=crop" alt="Canteiro de Obras Noturno" class="w-full h-full object-cover opacity-30 mask-gradient">
+            <div class="absolute inset-0 bg-gradient-to-b from-black/80 via-black/60 to-brand-black"></div>
+        </div>
+        
+        <div class="bg-grid-pattern absolute inset-0 opacity-10 pointer-events-none z-0"></div>
+        
+        <div class="max-w-5xl mx-auto px-4 relative z-10">
+            <div class="reveal active">
+                <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-brand-yellow/30 bg-black/40 text-brand-yellow text-xs font-bold uppercase tracking-widest mb-8 backdrop-blur-md">
+                    Projeto Corporativo #Obra_Ibis_Paulista
+                </div>
+                
+                <h1 class="text-4xl md:text-6xl font-extrabold mb-6 leading-tight tracking-tight drop-shadow-2xl">
+                    Gestão de Ativos <br>
+                    <span class="text-gold-shine">& Monitoramento de Obra</span>
+                </h1>
+                
+                <h2 class="text-xl md:text-2xl text-zinc-300 font-light mb-10 max-w-3xl mx-auto leading-relaxed">
+                    Proteção integral dos estoques e áreas de circulação. Identificação precisa de materiais e acessos, mesmo no escuro total.
+                </h2>
+            </div>
+
+            <!-- Dados do Cliente -->
+            <div class="bg-white/5 backdrop-blur-md border border-white/10 p-1 rounded-2xl max-w-4xl mx-auto reveal active" style="transition-delay: 200ms;">
+                <div class="bg-brand-black/50 rounded-xl p-6 grid grid-cols-1 md:grid-cols-2 gap-6 items-center text-center md:text-left">
+                    <div class="border-b md:border-b-0 md:border-r border-white/10 pb-4 md:pb-0 md:pr-4">
+                        <p class="text-[10px] text-zinc-500 uppercase tracking-widest font-bold mb-1">Local</p>
+                        <p class="text-base font-bold text-white">Ibis Paulista</p>
+                    </div>
+                    <div class="pb-0 md:pr-4">
+                        <p class="text-[10px] text-zinc-500 uppercase tracking-widest font-bold mb-1">A/C</p>
+                        <p class="text-base font-bold text-brand-yellow">Luciana</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="bg-zinc-50">
+        
+        <!-- 1. DIAGNÓSTICO -->
+        <section id="diagnostico" class="pt-48 pb-24 -mt-20 relative z-0 bg-zinc-100 border-b border-zinc-200">
+            <div class="max-w-6xl mx-auto px-4">
+                
+                <div class="grid md:grid-cols-2 gap-12 reveal items-start">
+                    <!-- Coluna do Risco -->
+                    <div class="flex flex-col justify-center">
+                        <h3 class="text-2xl font-bold text-zinc-900 mb-4 border-l-4 border-red-500 pl-4">Vulnerabilidade de Canteiro</h3>
+                        <p class="text-zinc-600 mb-4 leading-relaxed">
+                            Obras são ambientes críticos. Com o fluxo intenso de prestadores e a movimentação de insumos de alto valor (fios, metais, ferramentas), o risco de <strong>"micro-furtos"</strong> é elevado.
+                        </p>
+                        <p class="text-zinc-600 mb-4 leading-relaxed">
+                            Além disso, o ambiente hostil (poeira excessiva) costuma travar equipamentos eletrônicos comuns, deixando a obra "cega" justamente quando acontece um incidente.
+                        </p>
+                        
+                        <div class="bg-white p-6 rounded-xl border border-red-100 shadow-sm mt-4">
+                            <h4 class="font-bold text-red-600 mb-3 flex items-center gap-2">
+                                <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/></svg>
+                                Riscos Imediatos
+                            </h4>
+                            <ul class="space-y-2 text-sm text-zinc-600">
+                                <li class="flex items-start gap-2"><span>•</span> <strong>Efeito Fantasma (P&B):</strong> À noite, câmeras comuns não diferenciam cores de materiais ou uniformes.</li>
+                                <li class="flex items-start gap-2"><span>•</span> <strong>Inimigo Invisível (Poeira):</strong> Pó de obra é condutor. DVRs expostos queimam em semanas.</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Coluna da Engenharia Vision -->
+                    <div class="glass-text-box p-8 rounded-2xl relative overflow-hidden flex flex-col justify-center">
+                        <div class="absolute -top-10 -right-10 w-40 h-40 bg-brand-yellow rounded-full blur-3xl opacity-10 pointer-events-none"></div>
+                        <h3 class="text-2xl font-bold text-zinc-900 mb-4 border-l-4 border-brand-yellow pl-4">Núcleo de Auditoria</h3>
+                        <p class="text-zinc-600 mb-4 leading-relaxed">
+                            Não vamos instalar apenas câmeras. Implementaremos uma <strong>Blindagem Operacional</strong>.
+                        </p>
+                        <p class="text-zinc-600 mb-6 leading-relaxed">
+                            O "cérebro" do sistema (DVR) será instalado dentro de uma <strong>Caixa Organizadora Blindada (COC)</strong>. Isso protege os conectores contra poeira de gesso/cimento e evita sabotagens manuais (puxar o fio para desligar).
+                        </p>
+                        
+                        <div class="flex items-center gap-3 bg-brand-yellow/10 p-4 rounded-lg border border-brand-yellow/20">
+                            <div class="text-brand-yellow text-2xl font-bold">
+                                <svg class="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+                            </div>
+                            <div>
+                                <p class="text-xs font-bold text-brand-yellow uppercase tracking-wider">Segurança Jurídica</p>
+                                <p class="text-xs text-zinc-700 leading-tight mt-1">
+                                    A tecnologia Full Color Intelbras mantém as cores vivas mesmo na escuridão, garantindo a identificação real.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- 3. SOLUÇÃO TÉCNICA (Escopo) -->
+        <section class="py-24 bg-white">
+            <div class="max-w-6xl mx-auto px-4">
+                <div class="text-center mb-16 reveal">
+                    <span class="text-brand-yellow font-bold tracking-widest uppercase text-xs">Especificações</span>
+                    <h2 class="text-3xl font-bold text-zinc-900 mt-2">Tecnologia para Obra</h2>
+                    <p class="text-zinc-500 mt-2 text-sm">Equipamentos dimensionados para ambiente hostil.</p>
+                </div>
+
+                <div class="grid md:grid-cols-4 gap-6 reveal">
+                    <!-- Item 1: Câmera -->
+                    <div class="bg-zinc-50 p-6 rounded-2xl border border-zinc-200 group hover:border-brand-yellow transition-all hover:-translate-y-1">
+                        <div class="w-12 h-12 bg-white text-zinc-700 rounded-xl flex items-center justify-center text-brand-yellow mb-4 shadow-sm group-hover:bg-brand-yellow group-hover:text-white transition-colors">
+                            <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/></svg>
+                        </div>
+                        <h4 class="font-bold text-zinc-900 mb-2">Visão Full Color</h4>
+                        <p class="text-xs text-zinc-600 leading-relaxed mb-3">Sensor de alta sensibilidade. A imagem é nítida e colorida 24h por dia. Formato "Bullet" inibe a ação por ser ostensiva.</p>
+                        <p class="text-[10px] uppercase font-bold text-zinc-400 border-t border-zinc-200 pt-2">Equipamento: Câmera Bullet Full Color</p>
+                    </div>
+                    
+                    <!-- Item 2: DVR -->
+                    <div class="bg-zinc-50 p-6 rounded-2xl border border-zinc-200 group hover:border-brand-yellow transition-all hover:-translate-y-1">
+                        <div class="w-12 h-12 bg-white text-zinc-700 rounded-xl flex items-center justify-center text-brand-yellow mb-4 shadow-sm group-hover:bg-brand-yellow group-hover:text-white transition-colors">
+                            <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2zM9 9h6v6H9V9z"/></svg>
+                        </div>
+                        <h4 class="font-bold text-zinc-900 mb-2">Processamento AI</h4>
+                        <p class="text-xs text-zinc-600 leading-relaxed mb-3">Processador robusto que melhora a compressão de vídeo. Vital para enviar imagens para a Nuvem sem travar a internet da obra.</p>
+                        <p class="text-[10px] uppercase font-bold text-zinc-400 border-t border-zinc-200 pt-2">Equipamento: Gravador Digital IA</p>
+                    </div>
+                    
+                    <!-- Item 3: Proteção Física -->
+                    <div class="bg-zinc-50 p-6 rounded-2xl border border-zinc-200 group hover:border-brand-yellow transition-all hover:-translate-y-1">
+                        <div class="w-12 h-12 bg-white text-zinc-700 rounded-xl flex items-center justify-center text-brand-yellow mb-4 shadow-sm group-hover:bg-brand-yellow group-hover:text-white transition-colors">
+                            <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/></svg>
+                        </div>
+                        <h4 class="font-bold text-zinc-900 mb-2">Blindagem Física</h4>
+                        <p class="text-xs text-zinc-600 leading-relaxed mb-3">Organização industrial. Fonte e cabos ficam travados e protegidos dentro da caixa metálica. Fim da "bagunça de fios".</p>
+                        <p class="text-[10px] uppercase font-bold text-zinc-400 border-t border-zinc-200 pt-2">Infra: Caixa Organizadora (COC)</p>
+                    </div>
+                    
+                    <!-- Item 4: Infraestrutura -->
+                    <div class="bg-zinc-50 p-6 rounded-2xl border border-zinc-200 group hover:border-brand-yellow transition-all hover:-translate-y-1">
+                        <div class="w-12 h-12 bg-white text-zinc-700 rounded-xl flex items-center justify-center text-brand-yellow mb-4 shadow-sm group-hover:bg-brand-yellow group-hover:text-white transition-colors">
+                            <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+                        </div>
+                        <h4 class="font-bold text-zinc-900 mb-2">Fixação Robusta</h4>
+                        <p class="text-xs text-zinc-600 leading-relaxed mb-3">Instalação pensada para o dinamismo do canteiro, com cabos fixados e protegidos contra impactos acidentais.</p>
+                        <p class="text-[10px] uppercase font-bold text-zinc-400 border-t border-zinc-200 pt-2">Serviço: Instalação Civil</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- VISION NEURAL SECTION (NOVA) -->
+        <section id="vision-neural" class="py-24 bg-brand-black relative overflow-hidden border-t border-white/5">
+            <!-- Background Effects -->
+            <div class="absolute inset-0 z-0">
+                <div class="bg-grid-pattern absolute inset-0 opacity-20"></div>
+                <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-brand-yellow/5 rounded-full blur-[120px] animate-pulse-slow"></div>
+            </div>
+
+            <div class="max-w-7xl mx-auto px-6 relative z-10">
+                <div class="text-center mb-16 reveal">
+                    <span class="text-brand-yellow font-bold tracking-[0.2em] uppercase text-xs border border-brand-yellow/30 px-3 py-1 rounded-full bg-brand-yellow/5">Inteligência Artificial</span>
+                    <h2 class="text-4xl md:text-5xl font-bold text-white mt-4 leading-tight">
+                        Vision <span class="text-transparent bg-clip-text bg-gradient-to-r from-brand-yellow via-white to-brand-yellow bg-[length:200%_auto] animate-shine">Neural</span>
+                    </h2>
+                    <p class="text-zinc-400 mt-4 max-w-2xl mx-auto text-lg font-light">
+                        Deixamos de apenas "gravar" para "entender". Conecte seu sistema à nossa rede neural e tenha uma segurança proativa.
+                    </p>
+                </div>
+
+                <div class="grid md:grid-cols-3 gap-8 reveal">
+                    
+                    <!-- Card 1: Cloud Vault -->
+                    <div class="bg-zinc-900/80 backdrop-blur-md border border-white/10 p-8 rounded-2xl hover:border-brand-yellow transition-all duration-500 group hover:-translate-y-2">
+                        <div class="w-14 h-14 bg-brand-yellow/10 rounded-xl flex items-center justify-center mb-6 group-hover:bg-brand-yellow group-hover:text-black transition-colors text-brand-yellow">
+                            <svg class="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"/></svg>
+                        </div>
+                        <h3 class="text-xl font-bold text-white mb-2">Vision Cloud Vault</h3>
+                        <p class="text-xs text-brand-yellow font-bold uppercase tracking-wider mb-4">Blindagem de Dados</p>
+                        <p class="text-sm text-zinc-400 leading-relaxed mb-6">
+                            A primeira regra da segurança: nunca tenha apenas uma cópia. O Cloud Vault espelha suas gravações em servidores criptografados.
+                        </p>
+                        <ul class="text-xs text-zinc-500 space-y-2 border-t border-white/10 pt-4">
+                            <li class="flex items-center gap-2"><span class="text-green-500">✓</span> Gravação 7 a 365 dias</li>
+                            <li class="flex items-center gap-2"><span class="text-green-500">✓</span> Acesso Instantâneo via App</li>
+                            <li class="flex items-center gap-2"><span class="text-green-500">✓</span> Proteção Anti-Sabotagem</li>
+                        </ul>
+                    </div>
+
+                    <!-- Card 2: Sentry AI -->
+                    <div class="bg-zinc-900/80 backdrop-blur-md border border-white/10 p-8 rounded-2xl hover:border-visy-primary transition-all duration-500 group hover:-translate-y-2 relative overflow-hidden">
+                        <div class="absolute top-0 right-0 bg-visy-primary text-white text-[10px] font-bold px-3 py-1 rounded-bl-lg">IA AVANÇADA</div>
+                        
+                        <div class="w-14 h-14 bg-visy-primary/10 rounded-xl flex items-center justify-center mb-6 group-hover:bg-visy-primary group-hover:text-white transition-colors text-visy-primary">
+                            <svg class="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/></svg>
+                        </div>
+                        <h3 class="text-xl font-bold text-white mb-2">Vision Sentry</h3>
+                        <p class="text-xs text-visy-primary font-bold uppercase tracking-wider mb-4">Analíticos de Comportamento</p>
+                        <p class="text-sm text-zinc-400 leading-relaxed mb-6">
+                            Reduz 98% dos alarmes falsos. Diferente de sensores comuns, nossa IA distingue <strong>Humanos</strong> e <strong>Veículos</strong>. Receba alertas apenas do que importa.
+                        </p>
+                        <ul class="text-xs text-zinc-500 space-y-2 border-t border-white/10 pt-4">
+                            <li class="flex items-center gap-2"><span class="text-visy-primary">⚡</span> Detecção de Invasão</li>
+                            <li class="flex items-center gap-2"><span class="text-visy-primary">⚡</span> Identificação de Suspeitos</li>
+                            <li class="flex items-center gap-2"><span class="text-visy-primary">⚡</span> Alerta em Tempo Real</li>
+                        </ul>
+                    </div>
+
+                    <!-- Card 3: Health -->
+                    <div class="bg-zinc-900/80 backdrop-blur-md border border-white/10 p-8 rounded-2xl hover:border-visy-secondary transition-all duration-500 group hover:-translate-y-2">
+                        <div class="w-14 h-14 bg-visy-secondary/10 rounded-xl flex items-center justify-center mb-6 group-hover:bg-visy-secondary group-hover:text-white transition-colors text-visy-secondary">
+                            <svg class="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                        </div>
+                        <h3 class="text-xl font-bold text-white mb-2">Vision Health</h3>
+                        <p class="text-xs text-visy-secondary font-bold uppercase tracking-wider mb-4">Autodiagnóstico 24/7</p>
+                        <p class="text-sm text-zinc-400 leading-relaxed mb-6">
+                            Falhas não avisam. Nossa IA monitora a saúde das câmeras a cada segundo. Detecta obstrução, perda de sinal ou sabotagem automaticamente.
+                        </p>
+                        <ul class="text-xs text-zinc-500 space-y-2 border-t border-white/10 pt-4">
+                            <li class="flex items-center gap-2"><span class="text-visy-secondary">🛠️</span> Detecção de Tela Preta</li>
+                            <li class="flex items-center gap-2"><span class="text-visy-secondary">🛠️</span> Alerta de Câmera Offline</li>
+                            <li class="flex items-center gap-2"><span class="text-visy-secondary">🛠️</span> Redução de Custo Operacional</li>
+                        </ul>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- 2. O PODER DO FULL COLOR (DEMONSTRATIVO) -->
+        <section id="fullcolor" class="py-20 bg-brand-surface text-white overflow-hidden">
+            <div class="max-w-4xl mx-auto px-4 reveal text-center">
+                
+                <div class="mb-10">
+                    <span class="text-brand-yellow font-bold tracking-widest uppercase text-xs">Visão Noturna Definitiva</span>
+                    <h2 class="text-3xl font-bold text-white mt-2">O Fim do Preto e Branco</h2>
+                    <p class="text-zinc-400 mt-2 max-w-2xl mx-auto">Em obras, o detalhe é a prova. Identifique a cor do material furtado mesmo na escuridão total.</p>
+                </div>
+
+                <!-- Video Container com Borda Dourada Fina -->
+                <div class="relative w-full max-w-3xl mx-auto aspect-video rounded-2xl overflow-hidden shadow-2xl border-premium-gold bg-black">
+                    <iframe 
+                        class="absolute inset-0 w-full h-full" 
+                        src="https://www.youtube.com/embed/fKQjjwa9n8k?rel=0" 
+                        title="Intelbras Full Color" 
+                        frameborder="0" 
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                        allowfullscreen>
+                    </iframe>
+                </div>
+                
+                <div class="grid md:grid-cols-2 gap-8 mt-10 text-left max-w-3xl mx-auto">
+                    <div class="bg-white/5 p-6 rounded-xl border border-red-500/30">
+                        <strong class="text-red-400 block mb-2 text-sm uppercase tracking-wide">Infravermelho Comum</strong>
+                        <p class="text-sm text-zinc-400">À noite, tudo vira vulto cinza. Se alguém levar um fio vermelho ou azul, você não sabe distinguir. Impossível provar autoria.</p>
+                    </div>
+                    <div class="bg-white/5 p-6 rounded-xl border border-brand-yellow/30">
+                        <strong class="text-brand-yellow block mb-2 text-sm uppercase tracking-wide">Vision Full Color</strong>
+                        <p class="text-sm text-zinc-400">Sensor de ultra-sensibilidade. A imagem é nítida e colorida 24h por dia. Você vê a cor do uniforme, do capacete e do material.</p>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- SEÇÃO: VISION CLOUD ENTERPRISE (HIGHLIGHTED) -->
+        <section id="cloud" class="py-20 bg-zinc-100 border-t border-zinc-200">
+            <div class="max-w-6xl mx-auto px-4 reveal">
+                <div class="bg-white rounded-3xl p-8 md:p-12 shadow-xl border border-brand-yellow relative overflow-hidden">
+                    <!-- Background Shine Effect -->
+                    <div class="absolute top-0 right-0 w-[400px] h-[400px] bg-brand-yellow rounded-full blur-[200px] opacity-10 pointer-events-none"></div>
+                    <div class="absolute top-6 right-6 md:right-12 bg-brand-yellow text-brand-black text-xs font-bold px-4 py-2 rounded-lg shadow-glow z-20">INDISPENSÁVEL PARA OBRA</div>
+
+                    <div class="grid md:grid-cols-2 gap-12 relative z-10">
+                        <!-- Lado Esquerdo: A Dor e a Solução -->
+                        <div class="flex flex-col justify-center">
+                            <div class="flex items-center gap-3 mb-4">
+                                <span class="bg-brand-yellow/10 text-brand-yellow text-[10px] font-bold px-3 py-1 rounded-full tracking-widest uppercase">Módulo Enterprise</span>
+                                <div class="h-px bg-zinc-200 flex-1"></div>
+                            </div>
+                            <h3 class="text-4xl md:text-5xl font-bold text-zinc-900 mb-2 tracking-tight">Vision Cloud <span class="text-brand-yellow">365</span></h3>
+                            <p class="text-lg text-zinc-500 font-light mb-8">Auditoria Retroativa & Blindagem Jurídica</p>
+                            
+                            <p class="text-sm text-zinc-600 mb-6 leading-relaxed">
+                                Luciana, considerando que a obra no Ibis tem previsão de 2 anos, o armazenamento local não protege contra incidentes antigos. O <strong>Vision Cloud 365</strong> é uma ferramenta de <strong>Compliance e Segurança Jurídica</strong>.
+                            </p>
+
+                            <div class="space-y-4 mt-4">
+                                <div class="flex items-start gap-4">
+                                    <div class="bg-brand-yellow/10 p-2 rounded-lg text-brand-yellow font-bold text-lg shadow-sm"><svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 6l3 1m0 0l-3 9a5.002 5.002 0 006.001 0M6 7l3 9M6 7l6-2m6 2l3-1m-3 1l-3 9a5.002 5.002 0 006.001 0M18 7l3 9m-3-9l-6-2m0-2v2m0 16V5m0 16H9m3 0h3"/></svg></div>
+                                    <div>
+                                        <strong class="text-sm text-zinc-900">Blindagem Trabalhista</strong>
+                                        <p class="text-xs text-zinc-500 mt-0.5">Vídeo preservado para contestar ações de meses atrás.</p>
+                                    </div>
+                                </div>
+                                <div class="flex items-start gap-4">
+                                    <div class="bg-brand-yellow/10 p-2 rounded-lg text-brand-yellow font-bold text-lg shadow-sm"><svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg></div>
+                                    <div>
+                                        <strong class="text-sm text-zinc-900">Rastreio de Ativos</strong>
+                                        <p class="text-xs text-zinc-500 mt-0.5">Volte no tempo para ver quem levou a ferramenta que sumiu.</p>
+                                    </div>
+                                </div>
+                                <div class="flex items-start gap-4">
+                                    <div class="bg-brand-yellow/10 p-2 rounded-lg text-brand-yellow font-bold text-lg shadow-sm"><svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/></svg></div>
+                                    <div>
+                                        <strong class="text-sm text-zinc-900">Anti-Sabotagem</strong>
+                                        <p class="text-xs text-zinc-500 mt-0.5">Se roubarem o DVR, a imagem do crime está salva fora da obra.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Lado Direito: O Valor -->
+                        <div class="bg-zinc-50 rounded-2xl border border-zinc-200 p-8 flex flex-col justify-center items-center text-center relative group hover:border-brand-yellow transition-colors">
+                             <!-- Badge -->
+                             <div class="mb-4">
+                                <span class="bg-zinc-200 text-zinc-600 text-[10px] font-bold px-3 py-1 rounded-full uppercase tracking-wider">Investimento Técnico</span>
+                             </div>
+                             
+                             <p class="text-sm text-zinc-500 mb-8 px-4 leading-relaxed">
+                                 Infraestrutura massiva de servidores dedicados (Terabytes) para manter <strong>1 ano de vídeo HD 24h</strong>.
+                             </p>
+                             
+                             <div class="mb-8">
+                                 <p class="text-xs text-zinc-400 uppercase tracking-wide mb-2">Valor Mensal (Pacote 4 Câmeras)</p>
+                                 <div class="flex items-baseline justify-center gap-1 text-zinc-900">
+                                     <span class="text-sm font-medium">R$</span>
+                                     <span class="text-5xl font-extrabold tracking-tight">4.820,<small class="text-2xl">00</small></span>
+                                 </div>
+                                 <div class="inline-flex items-center gap-1 mt-3 bg-brand-yellow/10 px-3 py-1 rounded-full">
+                                     <svg class="w-3 h-3 text-brand-yellow" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+                                     <span class="text-[10px] text-brand-yellow font-bold">Manutenção Preventiva Inclusa</span>
+                                 </div>
+                             </div>
+                             
+                             <div class="w-full border-t border-zinc-200 pt-6">
+                                 <p class="text-[11px] text-zinc-400 italic">
+                                     💡 <strong>Análise de Custo x Risco:</strong> Valor inferior ao custo de uma única ação trabalhista perdida ou reposição de equipamentos caros sem rastreio.
+                                 </p>
+                             </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 5. INVESTIMENTO -->
+        <section id="investimento" class="py-24 bg-zinc-50 relative">
+            <div class="max-w-7xl mx-auto px-4 relative z-10">
+                <div class="text-center mb-16 reveal">
+                    <h2 class="text-3xl font-bold text-zinc-900 mb-4">Investimento & Escopo</h2>
+                    <p class="text-zinc-500 text-lg max-w-2xl mx-auto">
+                        Arquiteturas baseadas na proteção dos estoques (Subsolos e Elevador).
+                    </p>
+                </div>
+
+                <div class="grid md:grid-cols-2 gap-8 items-stretch justify-center max-w-4xl mx-auto reveal">
+                    
+                    <!-- OPÇÃO 1: PROTEÇÃO PERIMETRAL (4 Câmeras) - DESTAQUE GOLD -->
+                    <div class="bg-white border-2 border-brand-yellow p-8 rounded-2xl flex flex-col h-full shadow-xl relative group transform md:scale-105 z-20">
+                        <div class="absolute top-0 right-0 bg-gold-shine text-[10px] font-bold px-4 py-1 rounded-bl-xl font-logo tracking-widest text-zinc-900">ESCOLHA ESTRATÉGICA</div>
+                        
+                        <div class="mb-4">
+                            <h3 class="text-2xl font-bold text-zinc-900">Proteção Perimetral</h3>
+                            <p class="text-sm text-brand-yellow font-bold mt-1">Foco: 4 Câmeras Críticas</p>
+                        </div>
+                        <div class="flex-1 text-sm text-zinc-600 mb-6 space-y-3">
+                            <p>Monitora quem acessa as áreas e o hall do elevador.</p>
+                            <ul class="space-y-2 text-xs text-zinc-500">
+                                <li class="flex items-center gap-2">✓ 04 Câmeras Full Color</li>
+                                <li class="flex items-center gap-2">✓ DVR 4 Canais + HD</li>
+                                <li class="flex items-center gap-2">✓ Rack Blindado + Fonte</li>
+                            </ul>
+                        </div>
+                        
+                        <!-- Toggle Cloud Enterprise Interno -->
+                        <div class="mb-6 pt-4 border-t border-zinc-100">
+                            <label class="flex items-center justify-between cursor-pointer p-3 rounded-lg hover:bg-zinc-50 transition-colors border border-transparent hover:border-zinc-200">
+                                <div class="flex flex-col">
+                                    <span class="text-xs font-bold text-zinc-800">Ativar Cloud Enterprise (365 Dias)</span>
+                                    <span class="text-[9px] text-zinc-400">Blindagem Jurídica Completa</span>
+                                </div>
+                                <div class="flex items-center gap-3">
+                                    <div class="relative">
+                                        <input type="checkbox" class="sr-only peer" onchange="updatePrice('perimetro', this)">
+                                        <div class="w-11 h-6 bg-zinc-300 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-brand-yellow"></div>
+                                    </div>
+                                </div>
+                            </label>
+                        </div>
+
+                        <!-- Bloco de Preço -->
+                        <div class="border-t border-zinc-100 pt-6 mt-auto">
+                            <div class="flex items-end justify-between">
+                                <div class="flex items-baseline gap-1">
+                                    <span class="text-sm font-bold text-zinc-400 mr-1">4x</span>
+                                    <span class="text-3xl font-extrabold text-brand-yellow">1.412,<small class="text-lg">50</small></span>
+                                </div>
+                                <!-- Valor Mensal Adicional -->
+                                <div id="monthly-display-perimetro" class="hidden text-brand-yellow font-bold text-sm mb-1 text-right animate-slide-in">
+                                    + R$ 4.820,00 <span class="text-[10px] text-zinc-400 font-medium text-brand-yellow/80">/mês</span>
+                                </div>
+                            </div>
+                            <div class="text-xs text-zinc-400 mt-1 font-medium">
+                                ou R$ 5.650,<small>00</small> à vista (5% OFF)
+                            </div>
+                            <a href="https://wa.me/5511930816696?text=Ola,%20Luciana%20aprovamos%20a%20Opcao%20Perimetral" id="link-perimetro" class="mt-4 block w-full bg-brand-yellow text-brand-black font-bold py-3 rounded-xl hover:bg-black hover:text-white transition-all text-center text-sm shadow-glow">
+                                Aprovar Opção Estratégica
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- OPÇÃO 2: CONTROLE TOTAL (Standard White - Sem Destaque Extra) -->
+                    <div class="bg-white border border-zinc-200 p-8 rounded-2xl flex flex-col h-full hover:border-zinc-300 transition-all shadow-sm opacity-90 hover:opacity-100 group">
+                        
+                        <div class="mb-4">
+                            <h3 class="text-xl font-bold text-zinc-700">Controle Total</h3>
+                            <p class="text-xs text-zinc-500 mt-2">Cobertura: 7 Câmeras (Perímetro + Depósitos).</p>
+                        </div>
+                        <div class="flex-1 text-sm text-zinc-600 mb-6 space-y-3">
+                            <p>Monitoramento de quem entra nos corredores E do que acontece dentro dos estoques.</p>
+                            <ul class="space-y-2 text-xs text-zinc-500">
+                                <li class="flex items-center gap-2">✓ 07 Câmeras Full Color</li>
+                                <li class="flex items-center gap-2">✓ Auditoria de Materiais</li>
+                                <li class="flex items-center gap-2">✓ Rack Blindado Incluso</li>
+                            </ul>
+                        </div>
+
+                        <!-- Bloco de Preço -->
+                        <div class="border-t border-zinc-100 pt-6 relative z-10 mt-auto">
+                            <div class="flex items-end justify-between">
+                                <div class="flex items-baseline gap-1 mt-1">
+                                    <span class="text-lg font-bold text-zinc-500 mr-1">4x</span>
+                                    <span class="text-3xl font-extrabold text-zinc-800">1.875,<small class="text-lg">00</small></span>
+                                </div>
+                            </div>
+                            <div class="text-xs text-zinc-400 mt-2 font-medium bg-zinc-50 inline-block px-3 py-1 rounded">
+                                ou R$ 7.500,<small>00</small> à vista (5% OFF)
+                            </div>
+                            
+                            <a href="https://wa.me/5511930816696?text=Ola,%20aprovamos%20a%20Opcao%20Controle%20Total" id="link-total" class="mt-6 block w-full bg-transparent border-2 border-zinc-300 text-zinc-600 font-bold py-3 rounded-xl hover:border-zinc-800 hover:text-zinc-900 transition-all text-center text-sm">
+                                Aprovar Opção Total
+                            </a>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- FAQ Section -->
+        <section class="py-16 bg-white border-t border-zinc-200">
+            <div class="max-w-4xl mx-auto px-4 reveal">
+                <div class="text-center mb-12">
+                    <span class="text-brand-yellow font-bold tracking-widest uppercase text-xs">Dúvidas Frequentes</span>
+                    <h2 class="text-3xl font-bold text-zinc-900 mt-2">Perguntas & Respostas</h2>
+                </div>
+                
+                <div class="space-y-4">
+                    <!-- Q1 -->
+                    <details class="bg-zinc-50 border border-zinc-200 rounded-xl overflow-hidden group">
+                        <summary class="flex justify-between items-center p-6 cursor-pointer list-none">
+                            <span class="font-bold text-zinc-800">Por que o Cloud de 1 ano é tão importante?</span>
+                            <span class="transition group-open:rotate-180">
+                                <svg fill="none" height="24" shape-rendering="geometricPrecision" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewBox="0 0 24 24" width="24"><path d="M6 9l6 6 6-6"></path></svg>
+                            </span>
+                        </summary>
+                        <div class="px-6 pb-6 text-sm text-zinc-600 leading-relaxed">
+                            Em obras longas (2 anos), problemas trabalhistas ou furtos podem ser descobertos meses depois do fato. O backup comum apaga a prova em 7 dias. O plano de 1 ano garante que você tenha a defesa jurídica guardada.
+                        </div>
+                    </details>
+                    
+                    <!-- Q2 -->
+                    <details class="bg-zinc-50 border border-zinc-200 rounded-xl overflow-hidden group">
+                        <summary class="flex justify-between items-center p-6 cursor-pointer list-none">
+                            <span class="font-bold text-zinc-800">O que acontece se a internet da obra cair?</span>
+                            <span class="transition group-open:rotate-180">
+                                <svg fill="none" height="24" shape-rendering="geometricPrecision" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewBox="0 0 24 24" width="24"><path d="M6 9l6 6 6-6"></path></svg>
+                            </span>
+                        </summary>
+                        <div class="px-6 pb-6 text-sm text-zinc-600 leading-relaxed">
+                            O sistema é híbrido. Mesmo sem internet, o DVR continua gravando localmente no HD. Se você tiver o Vision Cloud, assim que a internet voltar, ele sincroniza as imagens pendentes.
+                        </div>
+                    </details>
+
+                    <!-- Q3 -->
+                    <details class="bg-zinc-50 border border-zinc-200 rounded-xl overflow-hidden group">
+                        <summary class="flex justify-between items-center p-6 cursor-pointer list-none">
+                            <span class="font-bold text-zinc-800">A poeira vai estragar as câmeras?</span>
+                            <span class="transition group-open:rotate-180">
+                                <svg fill="none" height="24" shape-rendering="geometricPrecision" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewBox="0 0 24 24" width="24"><path d="M6 9l6 6 6-6"></path></svg>
+                            </span>
+                        </summary>
+                        <div class="px-6 pb-6 text-sm text-zinc-600 leading-relaxed">
+                            Não. As câmeras especificadas possuem índice de proteção IP67, totalmente vedadas contra poeira fina de obra e jatos de água. O ponto mais crítico é o DVR, que protegemos com a Caixa Blindada.
+                        </div>
+                    </details>
+                    
+                    <!-- Q4 (New) -->
+                    <details class="bg-zinc-50 border border-zinc-200 rounded-xl overflow-hidden group">
+                        <summary class="flex justify-between items-center p-6 cursor-pointer list-none">
+                            <span class="font-bold text-zinc-800">Vocês emitem ART e documentação de obra?</span>
+                            <span class="transition group-open:rotate-180">
+                                <svg fill="none" height="24" shape-rendering="geometricPrecision" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewBox="0 0 24 24" width="24"><path d="M6 9l6 6 6-6"></path></svg>
+                            </span>
+                        </summary>
+                        <div class="px-6 pb-6 text-sm text-zinc-600 leading-relaxed">
+                            Sim. Emitimos Nota Fiscal integral de produtos e serviços, e podemos fornecer ART (Anotação de Responsabilidade Técnica) caso exigido pela engenharia do Ibis, garantindo total conformidade com as normas da obra.
+                        </div>
+                    </details>
+
+                    <!-- Q5 (New) -->
+                    <details class="bg-zinc-50 border border-zinc-200 rounded-xl overflow-hidden group">
+                        <summary class="flex justify-between items-center p-6 cursor-pointer list-none">
+                            <span class="font-bold text-zinc-800">Posso acessar as câmeras pelo meu celular?</span>
+                            <span class="transition group-open:rotate-180">
+                                <svg fill="none" height="24" shape-rendering="geometricPrecision" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewBox="0 0 24 24" width="24"><path d="M6 9l6 6 6-6"></path></svg>
+                            </span>
+                        </summary>
+                        <div class="px-6 pb-6 text-sm text-zinc-600 leading-relaxed">
+                            Sim, o acesso é ilimitado via aplicativo Intelbras iSIC. Você pode liberar o acesso para o engenheiro responsável, mestre de obras e proprietários, com perfis de permissão diferentes se necessário.
+                        </div>
+                    </details>
+                    
+                     <!-- Q6 (New) -->
+                    <details class="bg-zinc-50 border border-zinc-200 rounded-xl overflow-hidden group">
+                        <summary class="flex justify-between items-center p-6 cursor-pointer list-none">
+                            <span class="font-bold text-zinc-800">Como evitamos furtos internos da equipe?</span>
+                            <span class="transition group-open:rotate-180">
+                                <svg fill="none" height="24" shape-rendering="geometricPrecision" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewBox="0 0 24 24" width="24"><path d="M6 9l6 6 6-6"></path></svg>
+                            </span>
+                        </summary>
+                        <div class="px-6 pb-6 text-sm text-zinc-600 leading-relaxed">
+                            A mera presença de câmeras ostensivas "Bullet" já inibe a ação. Além disso, com a visão Full Color, conseguimos identificar detalhes (como a cor de uma ferramenta no bolso) que câmeras comuns não pegam, servindo de prova incontestável para a gestão da obra.
+                        </div>
+                    </details>
+
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-brand-black text-zinc-400 py-12 border-t border-white/10 no-print">
+        <div class="max-w-4xl mx-auto px-4 text-center">
+            <div class="flex flex-col items-center justify-center gap-0 mb-8">
+                <div class="relative flex items-baseline leading-none">
+                    <span class="font-logo font-bold text-[2.5rem] text-gold-shine lowercase tracking-[-0.08em] leading-none">vısıon</span>
+                    <span class="text-[0.6rem] text-[#b9880e] font-bold ml-0.5 self-end mb-1">®</span>
+                </div>
+                <div class="font-tech text-[0.6rem] font-light text-white lowercase tracking-[0.4em] ml-1 -mt-2">
+                    business
+                </div>
+            </div>
+            
+            <p class="text-xs text-zinc-600 max-w-lg mx-auto mt-8 mb-4 font-bold tracking-widest text-brand-yellow/50">
+                PROPOSTA CONFIDENCIAL
+            </p>
+            <p class="text-xs text-zinc-600 max-w-lg mx-auto mb-4">
+                Esta proposta é válida por 7 dias. Parcelamento via Cartão de Crédito.
+            </p>
+
+            <div class="text-[10px] text-zinc-500 space-y-1">
+                <p>Vision Tecnologia e Segurança</p>
+                <p>Todos os direitos reservados</p>
+            </div>
+            
+            <!-- MARCA D'ÁGUA VISY -->
+            <div class="mt-8 pt-8 border-t border-white/5 flex flex-col items-center justify-center">
+                <a href="https://visy.netlify.app/" target="_blank" class="group flex items-center gap-2 opacity-50 hover:opacity-100 transition-opacity">
+                    <span class="text-[10px] uppercase tracking-widest text-zinc-500 group-hover:text-visy-primary transition-colors">Powered by</span>
+                    <div class="flex items-center gap-1.5">
+                        <div class="relative w-4 h-4 flex items-center justify-center">
+                            <div class="absolute w-full h-full border border-visy-primary/50 rounded-sm transform rotate-45 group-hover:rotate-90 transition-all duration-700 ease-out"></div>
+                            <div class="relative w-1 h-1 bg-white rounded-full"></div>
+                        </div>
+                        <span class="font-visy font-bold text-white text-sm tracking-wide group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-visy-primary group-hover:to-visy-secondary transition-all duration-500">visy</span>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Whatsapp Floating Button -->
+    <a href="https://wa.me/5511930816696?text=Ola,%20Luciana%20gostaria%20de%20falar%20sobre%20a%20proposta%20do%20Ibis"
+       target="_blank"
+       id="whatsapp-btn"
+       class="fixed bottom-6 right-6 z-50 bg-[#25D366] text-white w-14 h-14 flex items-center justify-center rounded-full shadow-lg hover:scale-110 hover:bg-[#20b858] transition-all duration-300 whatsapp-pulse no-print"
+       aria-label="Falar no WhatsApp">
+        <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.008-.57-.008-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
+        </svg>
+    </a>
+
+    <script>
+        // Constants
+        const CLOUD_ENTERPRISE_COST = 4820.00;
+        
+        function updatePrice(type, checkbox) {
+            const isChecked = checkbox.checked;
+            
+            // Update DOM
+            const displayEl = document.getElementById(`monthly-display-${type}`);
+            const linkEl = document.getElementById(`link-${type}`);
+            
+            if (isChecked) {
+                displayEl.classList.remove('hidden');
+                linkEl.href = `https://wa.me/5511930816696?text=Ola,%20Luciana%20aprovamos%20a%20Opcao%20Perimetral%20COM%20VISION%20CLOUD%20ENTERPRISE`;
+            } else {
+                displayEl.classList.add('hidden');
+                linkEl.href = `https://wa.me/5511930816696?text=Ola,%20Luciana%20aprovamos%20a%20Opcao%20Perimetral`;
+            }
+        }
+
+        // Lock Screen Logic
+        const accessCodes = ["luciana6152", "vision2620"]; 
+        const lockScreen = document.getElementById('lock-screen');
+        const passwordInput = document.getElementById('password-input');
+        const errorMsg = document.getElementById('error-msg');
+        const htmlRoot = document.getElementById('html-root');
+        const lockSvg = document.getElementById('lock-svg');
+
+        function checkPassword() {
+            if(accessCodes.includes(passwordInput.value.toLowerCase())) {
+                // Unlock Animation
+                lockSvg.parentElement.classList.add('unlocked');
+                
+                setTimeout(() => {
+                    lockScreen.style.opacity = '0';
+                    setTimeout(() => {
+                        lockScreen.style.display = 'none';
+                        htmlRoot.classList.remove('overflow-hidden');
+                    }, 700);
+                }, 500);
+            } else {
+                errorMsg.classList.remove('hidden');
+                const content = document.getElementById('lock-content');
+                content.classList.remove('animate-shake');
+                void content.offsetWidth;
+                content.classList.add('animate-shake');
+            }
+        }
+        
+        // Enter key support
+        passwordInput.addEventListener("keypress", function(event) {
+            if (event.key === "Enter") {
+                checkPassword();
+            }
+        });
+
+        // Reveal Animation Script
+        window.addEventListener('scroll', reveal);
+        function reveal() {
+            var reveals = document.querySelectorAll('.reveal');
+            for (var i = 0; i < reveals.length; i++) {
+                var windowHeight = window.innerHeight;
+                var elementTop = reveals[i].getBoundingClientRect().top;
+                var elementVisible = 100;
+                if (elementTop < windowHeight - elementVisible) {
+                    reveals[i].classList.add('active');
+                }
+            }
+        }
+        
+        // Whatsapp Button Reveal Logic
+        window.addEventListener('scroll', function() {
+            var whatsappBtn = document.getElementById('whatsapp-btn');
+            if (whatsappBtn) {
+                if (window.scrollY > 300) {
+                    whatsappBtn.classList.add('visible');
+                    whatsappBtn.classList.remove('translate-y-20', 'opacity-0');
+                } else {
+                    whatsappBtn.classList.remove('visible');
+                    whatsappBtn.classList.add('translate-y-20', 'opacity-0');
+                }
+            }
+        });
+
+        // Trigger reveal on load
+        reveal(); 
+    </script>
+</body>
+</html>

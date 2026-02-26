@@ -1,0 +1,756 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Proposta Vision Business | Renato (Jardins)</title>
+  <meta name="description" content="Blindagem Inteligente e Gestão de Acesso — Escritório Jardins" />
+  <meta name="theme-color" content="#b9880e"/>
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@700;800&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Tailwind + Icons -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Outfit', 'sans-serif'],
+            logo: ['League Spartan', 'sans-serif'],
+          },
+          colors: {
+            brand: {
+              gold: '#b9880e',
+              goldLight: '#FFDE59',
+              ink: '#0b0b0f',
+              slate: '#121218',
+              line: '#26262f',
+            }
+          },
+          boxShadow: {
+            soft: '0 12px 40px rgba(0,0,0,.10)',
+            gold: '0 0 0 1px rgba(185,136,14,.35), 0 18px 55px rgba(185,136,14,.18)',
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    /* Scrollbar suave */
+    ::-webkit-scrollbar { width: 10px; }
+    ::-webkit-scrollbar-track { background: #f3f4f6; }
+    ::-webkit-scrollbar-thumb { background: #d1d5db; border-radius: 999px; }
+    ::-webkit-scrollbar-thumb:hover { background: #b9880e; }
+
+    /* Shine (Estilo Intenso) */
+    .gold-shine {
+        background: linear-gradient(to right, #b9880e 20%, #FFDE59 50%, #b9880e 80%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-size: 200% auto;
+        animation: shine 4s linear infinite;
+    }
+    @keyframes shine { to { background-position: 200% center; } }
+
+    /* Reveal */
+    .reveal { opacity: 0; transform: translateY(16px); transition: all .7s ease; }
+    .reveal.active { opacity: 1; transform: translateY(0); }
+
+    /* Image Fit */
+    .product-img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+        transition: transform 0.3s ease;
+    }
+    .product-card:hover .product-img {
+        transform: scale(1.05);
+    }
+  </style>
+</head>
+
+<body class="bg-white text-gray-900 antialiased overflow-hidden">
+
+  <!-- ===== LOCK SCREEN ===== -->
+  <div id="lock" class="fixed inset-0 z-[100] bg-brand-ink text-white flex items-center justify-center p-6 transition-opacity duration-500">
+    <div class="w-full max-w-md">
+      <div class="text-center">
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-white/10 bg-white/5 text-xs tracking-widest uppercase text-white/80">
+          <i data-lucide="shield" class="w-4 h-4 text-brand-gold"></i>
+          Documento confidencial
+        </div>
+
+        <div class="mt-8">
+          <div class="font-logo text-7xl leading-none lowercase gold-shine tracking-[-0.08em]">vısıon</div>
+          <div class="text-[11px] tracking-[0.45em] uppercase text-white/50 -mt-3 ml-1">business</div>
+        </div>
+
+        <div class="mt-8 space-y-1">
+          <div class="text-lg font-semibold">Projeto Blindagem Varejo — Renato</div>
+          <div class="text-sm text-white/60">Jardins • São Paulo • 8º Andar</div>
+          <div class="text-xs text-white/35">ID: #VB-JARDINS-0226</div>
+        </div>
+      </div>
+
+      <div class="mt-10 space-y-4">
+        <div class="space-y-2">
+            <label class="block text-[10px] text-white/30 uppercase tracking-[0.2em] text-center">Senha de acesso</label>
+            <input id="pass" type="password" autocomplete="off"
+            class="w-full rounded-2xl px-4 py-4 bg-white/5 border border-white/10 focus:outline-none focus:ring-1 focus:ring-brand-gold/40 tracking-[0.25em] text-center font-semibold text-brand-gold placeholder-white/20"
+            placeholder="••••••••" />
+        </div>
+        <p id="lockErr" class="hidden text-xs text-red-400 font-semibold text-center">Acesso negado.</p>
+
+        <button id="btnUnlock"
+          class="w-full rounded-2xl py-4 bg-brand-gold text-black font-bold hover:bg-brand-goldLight transition shadow-gold flex items-center justify-center gap-2 transform active:scale-95 duration-200">
+          <i data-lucide="key-round" class="w-5 h-5"></i>
+          Acessar Proposta
+        </button>
+
+        <p class="text-[11px] text-white/20 text-center pt-4">
+          Ambiente seguro Vision Business
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== NAV ===== -->
+  <nav id="nav" class="sticky top-0 z-50 bg-white/85 backdrop-blur border-b border-gray-100">
+    <div class="max-w-7xl mx-auto px-4 py-4 flex items-center justify-between">
+      <a href="#topo" class="flex items-end gap-2 group">
+        <div>
+          <div class="font-logo text-4xl lowercase leading-none gold-shine tracking-[-0.08em]">vısıon</div>
+          <div class="text-[10px] tracking-[0.35em] uppercase text-gray-500 -mt-1.5 ml-0.5">business</div>
+        </div>
+        <span class="hidden sm:inline text-xs text-gray-500 pb-1 opacity-0 group-hover:opacity-100 transition-opacity">| Proposta executiva</span>
+      </a>
+
+      <div class="hidden md:flex items-center gap-6 text-sm text-gray-600">
+        <a class="hover:text-brand-gold" href="#diagnostico">Diagnóstico</a>
+        <a class="hover:text-brand-gold" href="#solucao">Solução</a>
+        <a class="hover:text-brand-gold" href="#processo">Processo</a>
+        <a class="hover:text-brand-gold" href="#investimento">Investimento</a>
+      </div>
+
+      <div class="flex items-center gap-3">
+        <a href="https://wa.me/5511945931528?text=Olá,%20quero%20falar%20sobre%20o%20projeto%20Jardins%20(ID-VISION-JARDINS-0226)."
+          class="hidden sm:inline-flex items-center gap-2 rounded-full px-4 py-2 border border-brand-gold/30 text-brand-gold font-semibold hover:bg-brand-gold/10 transition">
+          <!-- WhatsApp Logo -->
+          <svg viewBox="0 0 24 24" class="w-4 h-4 fill-current" xmlns="http://www.w3.org/2000/svg"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.008-.57-.008-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+          WhatsApp
+        </a>
+
+        <a href="#investimento"
+          class="inline-flex items-center gap-2 rounded-full px-5 py-2.5 bg-brand-gold text-black font-bold hover:bg-brand-goldLight transition shadow-soft">
+          Aprovar
+          <i data-lucide="arrow-right" class="w-4 h-4"></i>
+        </a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ===== HERO ===== -->
+  <header id="topo" class="relative overflow-hidden">
+    <!-- Fundo -->
+    <div class="absolute inset-0">
+      <img class="w-full h-full object-cover opacity-[0.10] grayscale"
+        src="https://images.unsplash.com/photo-1556742049-0cfed4f7a07d?auto=format&fit=crop&w=1920&q=80"
+        alt="Varejo e Escritório" />
+      <div class="absolute inset-0 bg-gradient-to-b from-white via-white/95 to-white"></div>
+    </div>
+
+    <div class="relative max-w-7xl mx-auto px-4 py-16 md:py-24">
+      <div class="grid lg:grid-cols-12 gap-10 items-center">
+        
+        <div class="lg:col-span-7 space-y-6 reveal">
+          <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-brand-gold/10 border border-brand-gold/20 text-xs font-bold tracking-widest uppercase text-brand-gold">
+            <i data-lucide="sparkles" class="w-4 h-4"></i>
+            Engenharia de confiança • Proposta executiva
+          </div>
+
+          <h1 class="font-logo text-5xl md:text-7xl font-bold leading-none tracking-tighter text-brand-ink">
+            Blindagem Inteligente e<br/>
+            Gestão de Acesso para <span class="gold-shine">Varejo</span>
+          </h1>
+
+          <p class="text-lg md:text-xl text-gray-700 leading-relaxed font-light">
+            Segurança que protege seu estoque sem atrapalhar sua operação. 
+            Projeto Integrado (CFTV + Facial + Alarme) para <strong>Escritório Jardins (8º Andar)</strong>.
+          </p>
+
+          <div class="grid sm:grid-cols-3 gap-4 pt-2">
+            <div class="rounded-2xl border border-gray-100 p-5 shadow-soft bg-white">
+              <div class="text-xs text-gray-500 font-bold uppercase tracking-wider">Entrega</div>
+              <div class="text-lg font-bold text-brand-ink">Tripla Proteção</div>
+              <div class="text-sm text-gray-600 mt-1">Câmera, Acesso e Alarme</div>
+            </div>
+            <div class="rounded-2xl border border-gray-100 p-5 shadow-soft bg-white">
+              <div class="text-xs text-gray-500 font-bold uppercase tracking-wider">Objetivo</div>
+              <div class="text-lg font-bold text-brand-ink">Fluxo Controlado</div>
+              <div class="text-sm text-gray-600 mt-1">Entrada "Touchless"</div>
+            </div>
+            <div class="rounded-2xl border border-gray-100 p-5 shadow-soft bg-white">
+              <div class="text-xs text-gray-500 font-bold uppercase tracking-wider">Prazo</div>
+              <div class="text-lg font-bold text-brand-ink">Instalação Limpa</div>
+              <div class="text-sm text-gray-600 mt-1">Sem obras pesadas</div>
+            </div>
+          </div>
+
+          <div class="flex flex-col sm:flex-row gap-3 pt-4">
+            <a href="#investimento"
+              class="inline-flex items-center justify-center gap-2 rounded-2xl px-6 py-4 bg-brand-gold text-black font-extrabold hover:bg-brand-goldLight transition shadow-gold">
+              <i data-lucide="check-circle" class="w-5 h-5"></i>
+              Ver pacote blindagem
+            </a>
+            <a href="#diagnostico"
+              class="inline-flex items-center justify-center gap-2 rounded-2xl px-6 py-4 border border-gray-200 font-bold text-gray-800 hover:bg-gray-50 transition">
+              Entender o diagnóstico
+              <i data-lucide="arrow-down" class="w-4 h-4"></i>
+            </a>
+          </div>
+
+          <!-- Validade -->
+          <div class="text-xs text-gray-500 pt-2">
+            Referência: <strong>#VB-JARDINS-0226</strong> • Validade: <strong>10 dias úteis</strong>
+          </div>
+        </div>
+
+        <!-- CARD DE ESCOPO -->
+        <div class="lg:col-span-5 reveal">
+          <div class="rounded-3xl border border-gray-100 bg-white shadow-soft overflow-hidden">
+            <div class="p-6 border-b border-gray-100 bg-gray-50/50">
+              <div class="flex items-center justify-between">
+                <div>
+                  <div class="text-xs text-gray-500">Resumo do projeto</div>
+                  <div class="text-xl font-extrabold font-logo">Escopo em 60s</div>
+                </div>
+                <div class="w-10 h-10 rounded-2xl bg-brand-gold/10 border border-brand-gold/20 flex items-center justify-center">
+                  <i data-lucide="clipboard-check" class="w-5 h-5 text-brand-gold"></i>
+                </div>
+              </div>
+            </div>
+
+            <div class="p-6 space-y-4">
+              <div class="flex gap-3">
+                <i data-lucide="scan-face" class="w-5 h-5 text-brand-gold mt-0.5"></i>
+                <div>
+                  <div class="font-bold">Acesso Facial "Touchless"</div>
+                  <div class="text-sm text-gray-600">Fim das chaves copiáveis. Entrada em 0.2s.</div>
+                </div>
+              </div>
+              <div class="flex gap-3">
+                <i data-lucide="eye" class="w-5 h-5 text-brand-gold mt-0.5"></i>
+                <div>
+                  <div class="font-bold">CFTV Full Color</div>
+                  <div class="text-sm text-gray-600">Imagem colorida 24h. Fim do "vulto".</div>
+                </div>
+              </div>
+              <div class="flex gap-3">
+                <i data-lucide="siren" class="w-5 h-5 text-brand-gold mt-0.5"></i>
+                <div>
+                  <div class="font-bold">Alarme Sem Fio</div>
+                  <div class="text-sm text-gray-600">Zero canaletas. Proteção noturna total.</div>
+                </div>
+              </div>
+
+              <div class="rounded-2xl p-4 bg-gray-50 border border-gray-100">
+                <div class="text-xs text-gray-500">Próximo passo</div>
+                <div class="font-extrabold">Aprovar e agendar</div>
+                <div class="text-sm text-gray-600 mt-1">Janela de instalação dependente de agenda.</div>
+              </div>
+
+              <a href="https://wa.me/5511945931528?text=Olá,%20recebi%20a%20proposta%20Jardins%20(ID-VISION-JARDINS-0226)%20e%20quero%20tirar%20uma%20dúvida."
+                class="inline-flex w-full items-center justify-center gap-2 rounded-2xl px-6 py-4 border border-brand-gold/30 text-brand-gold font-extrabold hover:bg-brand-gold/10 transition">
+                <!-- WhatsApp Logo -->
+                <svg viewBox="0 0 24 24" class="w-5 h-5 fill-current" xmlns="http://www.w3.org/2000/svg"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.008-.57-.008-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+                Falar com consultor
+              </a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </header>
+
+  <!-- ===== DIAGNÓSTICO ===== -->
+  <section id="diagnostico" class="py-16 md:py-24 bg-gray-50 border-y border-gray-100">
+    <div class="max-w-7xl mx-auto px-4">
+      <div class="max-w-3xl reveal">
+        <div class="text-xs font-bold tracking-widest uppercase text-brand-gold">Diagnóstico</div>
+        <h2 class="text-3xl md:text-5xl font-extrabold mt-2">O paradoxo do Varejo em Escritório.</h2>
+        <p class="text-lg text-gray-700 mt-4 leading-relaxed">
+          Você precisa facilitar a entrada de quem traz dinheiro (clientes) e bloquear quem traz risco.
+          No 8º andar, o risco não é só a invasão, é a falta de controle.
+        </p>
+      </div>
+
+      <div class="grid lg:grid-cols-12 gap-8 mt-12 items-start">
+        <div class="lg:col-span-7 space-y-4 reveal">
+          <div class="rounded-3xl bg-white border border-gray-100 shadow-soft p-6">
+            <div class="flex items-start gap-3">
+              <div class="w-10 h-10 rounded-2xl bg-orange-50 border border-orange-100 flex items-center justify-center">
+                <i data-lucide="users" class="w-5 h-5 text-orange-600"></i>
+              </div>
+              <div>
+                <div class="text-lg font-extrabold">Fluxo Híbrido (O Risco Invisível)</div>
+                <p class="text-gray-700 mt-1">
+                  Funcionários + "Gente de fora" circulando. O uso de chaves ou tags cria um risco alto:
+                  são fáceis de copiar, perder ou "emprestar".
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="rounded-3xl bg-white border border-gray-100 shadow-soft p-6">
+            <div class="flex items-start gap-3">
+              <div class="w-10 h-10 rounded-2xl bg-red-50 border border-red-100 flex items-center justify-center">
+                <i data-lucide="eye-off" class="w-5 h-5 text-red-600"></i>
+              </div>
+              <div>
+                <div class="text-lg font-extrabold">A Ilusão do "Vulto"</div>
+                <p class="text-gray-700 mt-1">
+                  Câmeras antigas em corredores com meia-luz entregam imagens granuladas em P&B.
+                  Se algo sumir, você vê o vulto, mas não identifica a cor da roupa ou o rosto.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="rounded-3xl bg-white border border-gray-100 shadow-soft p-6">
+            <div class="flex items-start gap-3">
+              <div class="w-10 h-10 rounded-2xl bg-brand-gold/10 border border-brand-gold/20 flex items-center justify-center">
+                <i data-lucide="moon" class="w-5 h-5 text-brand-gold"></i>
+              </div>
+              <div>
+                <div class="text-lg font-extrabold">Vulnerabilidade Noturna</div>
+                <p class="text-gray-700 mt-1">
+                  Sem um alarme monitorado, o escritório fica exposto por mais de 12h toda noite.
+                  Fechaduras comuns não aguentam o "abre e fecha" intenso.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="lg:col-span-5 reveal">
+          <div class="rounded-3xl bg-white border border-gray-100 shadow-soft p-6">
+            <div class="text-xs text-gray-500">Solução Vision</div>
+            <div class="text-lg font-extrabold">Zero Obras</div>
+            <p class="text-sm text-gray-600 mt-1">
+              Alarme 100% sem fio e infraestrutura limpa. Não quebramos suas paredes.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== SOLUÇÃO (CARDS EXPANDIDOS) ===== -->
+  <section id="solucao" class="py-16 md:py-24 bg-white">
+    <div class="max-w-7xl mx-auto px-4">
+      <div class="max-w-3xl reveal">
+        <div class="text-xs font-bold tracking-widest uppercase text-brand-gold">Solução Técnica</div>
+        <h2 class="text-3xl md:text-5xl font-extrabold mt-2">Tecnologia traduzida para benefício real.</h2>
+        <p class="text-lg text-gray-700 mt-4 leading-relaxed">
+          Dividimos o projeto em módulos que funcionam integrados para "blindar" o escritório.
+        </p>
+      </div>
+
+      <!-- Cards com Imagens -->
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-4 mt-12">
+        <!-- FACIAL (Atualizado) -->
+        <div class="rounded-3xl border border-gray-100 shadow-soft overflow-hidden reveal product-card hover:border-brand-gold/30 transition-colors bg-white">
+          <div class="h-40 flex items-center justify-center p-4 bg-gray-50">
+            <img src="https://res.cloudinary.com/dptcuckhf/image/upload/v1770745467/ss-3532-mf-w-frontal_2_c82tua.png" alt="Controlador Facial" class="product-img">
+          </div>
+          <div class="p-5">
+            <div class="text-base font-extrabold">Controlador Facial</div>
+            <p class="text-xs text-gray-600 mt-1">A porteira inteligente.</p>
+            <ul class="text-xs text-gray-700 mt-3 space-y-1.5">
+              <li class="flex gap-2"><i data-lucide="check" class="w-3 h-3 text-brand-gold mt-0.5"></i>Leitura em 0.2s</li>
+              <li class="flex gap-2"><i data-lucide="check" class="w-3 h-3 text-brand-gold mt-0.5"></i>Anti-fraude (rosto vivo)</li>
+              <li class="flex gap-2"><i data-lucide="check" class="w-3 h-3 text-brand-gold mt-0.5"></i>Design Premium</li>
+              <li class="flex gap-2"><i data-lucide="check" class="w-3 h-3 text-brand-gold mt-0.5"></i>Acesso Sem Toque</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- ELETROIMA (Atualizado) -->
+        <div class="rounded-3xl border border-gray-100 shadow-soft overflow-hidden reveal product-card hover:border-brand-gold/30 transition-colors bg-white">
+          <div class="h-40 flex items-center justify-center p-4 bg-gray-50">
+            <img src="https://res.cloudinary.com/dptcuckhf/image/upload/v1771011341/fe_20150_persp_esquerda_v2_mwjtp0.png" alt="Fechadura Eletroímã" class="product-img">
+          </div>
+          <div class="p-5">
+            <div class="text-base font-extrabold">01× Eletroímã 150kg</div>
+            <p class="text-xs text-gray-600 mt-1">Segurança física robusta.</p>
+            <ul class="text-xs text-gray-700 mt-3 space-y-1.5">
+              <li class="flex gap-2"><i data-lucide="check" class="w-3 h-3 text-brand-gold mt-0.5"></i>Sem peças de desgaste</li>
+              <li class="flex gap-2"><i data-lucide="check" class="w-3 h-3 text-brand-gold mt-0.5"></i>Força de 150kg</li>
+              <li class="flex gap-2"><i data-lucide="check" class="w-3 h-3 text-brand-gold mt-0.5"></i>Bateria própria</li>
+              <li class="flex gap-2"><i data-lucide="check" class="w-3 h-3 text-brand-gold mt-0.5"></i>Abertura Silenciosa</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- CÂMERA (Atualizado) -->
+        <div class="rounded-3xl border border-gray-100 shadow-soft overflow-hidden reveal product-card hover:border-brand-gold/30 transition-colors bg-white">
+          <div class="h-40 flex items-center justify-center p-4 bg-gray-50">
+            <img src="https://res.cloudinary.com/dptcuckhf/image/upload/v1771011144/vhd-1220-d-full-color-g8-font-1_fbwg6f.png" alt="Câmera Full Color" class="product-img">
+          </div>
+          <div class="p-5">
+            <div class="text-base font-extrabold">03× Dome Full Color</div>
+            <p class="text-xs text-gray-600 mt-1">A prova visual.</p>
+            <ul class="text-xs text-gray-700 mt-3 space-y-1.5">
+              <li class="flex gap-2"><i data-lucide="check" class="w-3 h-3 text-brand-gold mt-0.5"></i>Cor 24h por dia</li>
+              <li class="flex gap-2"><i data-lucide="check" class="w-3 h-3 text-brand-gold mt-0.5"></i>Full HD (1080p)</li>
+              <li class="flex gap-2"><i data-lucide="check" class="w-3 h-3 text-brand-gold mt-0.5"></i>Discreta no teto</li>
+              <li class="flex gap-2"><i data-lucide="check" class="w-3 h-3 text-brand-gold mt-0.5"></i>Sensor Alta Sensibilidade</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- GRAVAÇÃO (Separado) -->
+        <div class="rounded-3xl border border-gray-100 shadow-soft overflow-hidden reveal product-card hover:border-brand-gold/30 transition-colors bg-white">
+          <div class="h-40 flex items-center justify-center p-4 bg-gray-50">
+            <img src="https://res.cloudinary.com/dptcuckhf/image/upload/v1770981166/nvd-1408-esquerda_znmlxz.png" alt="Gravador Digital" class="product-img">
+          </div>
+          <div class="p-5">
+            <div class="text-base font-extrabold">Gravador Digital (DVR)</div>
+            <p class="text-xs text-gray-600 mt-1">Cérebro do sistema.</p>
+            <ul class="text-xs text-gray-700 mt-3 space-y-1.5">
+              <li class="flex gap-2"><i data-lucide="check" class="w-3 h-3 text-brand-gold mt-0.5"></i>Gestão Centralizada</li>
+              <li class="flex gap-2"><i data-lucide="check" class="w-3 h-3 text-brand-gold mt-0.5"></i>Acesso Remoto P2P</li>
+              <li class="flex gap-2"><i data-lucide="check" class="w-3 h-3 text-brand-gold mt-0.5"></i>Inteligência de Vídeo</li>
+              <li class="flex gap-2"><i data-lucide="check" class="w-3 h-3 text-brand-gold mt-0.5"></i>Compressão Otimizada</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- HD (Separado) -->
+        <div class="rounded-3xl border border-gray-100 shadow-soft overflow-hidden reveal product-card hover:border-brand-gold/30 transition-colors bg-white">
+          <div class="h-40 flex items-center justify-center p-4 bg-gray-50">
+            <img src="https://res.cloudinary.com/dptcuckhf/image/upload/v1771016800/220227145146714581_rhct4i.png" alt="HD Purple 2TB" class="product-img">
+          </div>
+          <div class="p-5">
+            <div class="text-base font-extrabold">HD WD Purple 2TB</div>
+            <p class="text-xs text-gray-600 mt-1">Armazenamento seguro.</p>
+            <ul class="text-xs text-gray-700 mt-3 space-y-1.5">
+              <li class="flex gap-2"><i data-lucide="check" class="w-3 h-3 text-brand-gold mt-0.5"></i>2TB de Espaço</li>
+              <li class="flex gap-2"><i data-lucide="check" class="w-3 h-3 text-brand-gold mt-0.5"></i>Gravação 24/7</li>
+              <li class="flex gap-2"><i data-lucide="check" class="w-3 h-3 text-brand-gold mt-0.5"></i>Tecnologia AllFrame</li>
+              <li class="flex gap-2"><i data-lucide="check" class="w-3 h-3 text-brand-gold mt-0.5"></i>Alta Durabilidade</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- ALARME (Detalhado) -->
+        <div class="rounded-3xl border border-gray-100 shadow-soft overflow-hidden reveal product-card hover:border-brand-gold/30 transition-colors bg-white">
+          <div class="h-40 flex items-center justify-center p-4 bg-gray-50">
+            <img src="https://res.cloudinary.com/dptcuckhf/image/upload/v1771016865/13f733_660d591c7e254701a80347f25047a18e_mv2_fnmnlk.avif" alt="Central AMT 8000" class="product-img">
+          </div>
+          <div class="p-5">
+            <div class="text-base font-extrabold">Kit Alarme AMT 8000</div>
+            <p class="text-xs text-gray-600 mt-1">Central + Sirene + Sensores + Controles</p>
+            <ul class="text-xs text-gray-700 mt-3 space-y-1.5">
+              <li class="flex gap-2"><i data-lucide="check" class="w-3 h-3 text-brand-gold mt-0.5"></i>100% Sem Fio (Zero Obras)</li>
+              <li class="flex gap-2"><i data-lucide="check" class="w-3 h-3 text-brand-gold mt-0.5"></i>App Mobile Total</li>
+              <li class="flex gap-2"><i data-lucide="check" class="w-3 h-3 text-brand-gold mt-0.5"></i>Criptografia de Dados</li>
+              <li class="flex gap-2"><i data-lucide="check" class="w-3 h-3 text-brand-gold mt-0.5"></i>Sensores Presença/Abertura</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- Texto de Estética -->
+      <div class="mt-12 rounded-3xl border border-gray-100 shadow-soft p-8 reveal">
+        <div class="flex items-center gap-3">
+          <div class="w-11 h-11 rounded-2xl bg-brand-gold/10 border border-brand-gold/20 flex items-center justify-center">
+            <i data-lucide="wrench" class="w-6 h-6 text-brand-gold"></i>
+          </div>
+          <div>
+            <div class="text-xs text-gray-500">Execução</div>
+            <div class="text-2xl font-extrabold">Instalação Especializada Vision</div>
+          </div>
+        </div>
+        <p class="text-gray-700 mt-5 leading-relaxed">
+          Sabemos que o escritório no 8º andar exige estética. Nosso alarme é sem fio para não ter canaletas descendo pelas paredes.
+          O controle de acesso elimina a chave feia e insegura. Tudo instalado por técnicos próprios, com treinamento de uso incluso.
+        </p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ===== PROCESSO ===== -->
+  <section id="processo" class="py-16 md:py-24 bg-gray-50 border-y border-gray-100">
+    <div class="max-w-7xl mx-auto px-4">
+      <div class="max-w-3xl reveal">
+        <div class="text-xs font-bold tracking-widest uppercase text-brand-gold">Processo</div>
+        <h2 class="text-3xl md:text-5xl font-extrabold mt-2">Sem surpresas.</h2>
+      </div>
+
+      <div class="grid md:grid-cols-4 gap-6 mt-12">
+        <div class="rounded-3xl bg-white border border-gray-100 shadow-soft p-6 reveal">
+          <div class="w-10 h-10 rounded-2xl bg-brand-gold/10 border border-brand-gold/20 flex items-center justify-center">
+            <i data-lucide="check" class="w-5 h-5 text-brand-gold"></i>
+          </div>
+          <div class="mt-4 font-extrabold">1) Aprovação</div>
+          <p class="text-sm text-gray-600 mt-1">Reserva de agenda (janela curta).</p>
+        </div>
+        <div class="rounded-3xl bg-white border border-gray-100 shadow-soft p-6 reveal">
+          <div class="w-10 h-10 rounded-2xl bg-brand-gold/10 border border-brand-gold/20 flex items-center justify-center">
+            <i data-lucide="ruler" class="w-5 h-5 text-brand-gold"></i>
+          </div>
+          <div class="mt-4 font-extrabold">2) Execução</div>
+          <p class="text-sm text-gray-600 mt-1">Instalação limpa e discreta.</p>
+        </div>
+        <div class="rounded-3xl bg-white border border-gray-100 shadow-soft p-6 reveal">
+          <div class="w-10 h-10 rounded-2xl bg-brand-gold/10 border border-brand-gold/20 flex items-center justify-center">
+            <i data-lucide="scan-face" class="w-5 h-5 text-brand-gold"></i>
+          </div>
+          <div class="mt-4 font-extrabold">3) Cadastro</div>
+          <p class="text-sm text-gray-600 mt-1">Cadastramos sua equipe no facial.</p>
+        </div>
+        <div class="rounded-3xl bg-white border border-gray-100 shadow-soft p-6 reveal">
+          <div class="w-10 h-10 rounded-2xl bg-brand-gold/10 border border-brand-gold/20 flex items-center justify-center">
+            <i data-lucide="graduation-cap" class="w-5 h-5 text-brand-gold"></i>
+          </div>
+          <div class="mt-4 font-extrabold">4) Treinamento</div>
+          <p class="text-sm text-gray-600 mt-1">Como usar o App e o sistema.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== INVESTIMENTO ===== -->
+  <section id="investimento" class="py-16 md:py-24 bg-brand-ink text-white">
+    <div class="max-w-7xl mx-auto px-4">
+      <div class="max-w-3xl reveal">
+        <div class="text-xs font-bold tracking-widest uppercase text-brand-gold">Investimento</div>
+        <h2 class="text-3xl md:text-5xl font-extrabold mt-2">Pacote "Blindagem Total"</h2>
+        <p class="text-lg text-white/70 mt-4 leading-relaxed">
+          Este projeto custa menos que a reposição de dois notebooks medianos, mas protege a empresa inteira por anos.
+        </p>
+      </div>
+
+      <!-- Urgência sutil -->
+      <div class="mt-10 rounded-3xl border border-white/10 bg-white/5 p-6 reveal">
+        <div class="flex items-start gap-3">
+          <i data-lucide="clock" class="w-6 h-6 text-brand-gold mt-0.5"></i>
+          <div>
+            <div class="font-extrabold">Instalação Prioritária</div>
+            <div class="text-sm text-white/70 mt-1">
+              Precisamos do "de acordo" até amanhã às 12h para garantir a instalação nesta janela de agenda.
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="grid lg:grid-cols-2 gap-6 mt-10">
+        <!-- À vista -->
+        <div class="rounded-3xl bg-white text-gray-900 p-8 shadow-soft reveal">
+          <div class="flex items-center justify-between">
+            <div>
+              <div class="text-xs text-gray-500">Opção 1</div>
+              <div class="text-2xl font-extrabold">À vista (PIX)</div>
+            </div>
+            <div class="px-3 py-1 rounded-full bg-brand-gold/10 border border-brand-gold/20 text-brand-gold text-xs font-extrabold">
+              Desconto Aplicado
+            </div>
+          </div>
+
+          <div class="mt-6">
+            <div class="text-sm text-gray-500">Pacote Completo (3 Módulos)</div>
+            <div class="text-sm text-gray-400 line-through font-bold">De: R$ 10.970</div>
+            <div class="text-5xl font-extrabold text-brand-gold mt-1">R$ 10.400</div>
+            <div class="text-xs text-gray-400 mt-2 font-bold text-brand-gold">Instalação inclusa.</div>
+          </div>
+
+          <div class="mt-6 flex flex-col gap-3">
+            <a href="https://wa.me/5511945931528?text=Olá,%20Renato%20aqui.%20Aprovo%20o%20pacote%20Blindagem%20Total%20à%20vista%20(R$%2010.400)."
+               class="rounded-2xl px-6 py-4 bg-brand-gold text-black font-extrabold text-center hover:bg-brand-goldLight transition shadow-gold flex items-center justify-center gap-2">
+              <!-- WhatsApp Logo -->
+              <svg viewBox="0 0 24 24" class="w-5 h-5 fill-current" xmlns="http://www.w3.org/2000/svg"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.008-.57-.008-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+              Aprovar à vista no WhatsApp
+            </a>
+            <a href="#escopo"
+               class="rounded-2xl px-6 py-4 border border-gray-200 font-bold text-center hover:bg-gray-50 transition">
+              Ver detalhe dos módulos
+            </a>
+          </div>
+        </div>
+
+        <!-- Parcelado -->
+        <div class="rounded-3xl border border-white/10 bg-white/5 p-8 reveal">
+          <div class="text-xs text-white/60">Opção 2</div>
+          <div class="text-2xl font-extrabold">12x no Cartão</div>
+          <p class="text-sm text-white/70 mt-2">Fluxo de caixa preservado.</p>
+
+          <div class="mt-6">
+            <div class="text-sm text-white/60">Parcelamento</div>
+            <div class="text-4xl font-extrabold mt-1">12× R$ 914,16</div>
+            <div class="text-xs text-white/50 mt-2">Total: R$ 10.970,00</div>
+          </div>
+
+          <div class="mt-6 rounded-2xl border border-white/10 bg-black/20 p-5">
+            <div class="text-xs text-white/60">Facilitador</div>
+            <div class="font-extrabold mt-1">Proteção completa por uma parcela acessível.</div>
+            <div class="text-sm text-white/70 mt-1">
+              A pergunta não é "se vale". É: vale deixar o estoque vulnerável?
+            </div>
+          </div>
+
+          <a href="https://wa.me/5511945931528?text=Olá,%20Renato%20aqui.%20Aprovo%20o%20pacote%20Blindagem%20Total%20parcelado%20em%2012x."
+             class="mt-6 block rounded-2xl px-6 py-4 border border-white/15 font-extrabold text-center hover:bg-white/10 transition flex items-center justify-center gap-2">
+             <!-- WhatsApp Logo (Branco) -->
+             <svg viewBox="0 0 24 24" class="w-5 h-5 fill-current text-white" xmlns="http://www.w3.org/2000/svg"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.008-.57-.008-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+            Aprovar parcelado no WhatsApp
+          </a>
+        </div>
+      </div>
+
+      <!-- Escopo Detalhado (Módulos) -->
+      <div id="escopo" class="grid lg:grid-cols-2 gap-6 mt-10">
+        <div class="rounded-3xl border border-white/10 bg-white/5 p-8 reveal">
+          <div class="flex items-center gap-3">
+            <i data-lucide="list-checks" class="w-6 h-6 text-brand-gold"></i>
+            <div class="text-2xl font-extrabold">O que está incluído</div>
+          </div>
+          <ul class="mt-5 space-y-3 text-sm text-white/75">
+            <li class="flex gap-2"><i data-lucide="check" class="w-4 h-4 text-brand-gold mt-0.5"></i> <strong>Módulo A (CFTV):</strong> 3 Câmeras Full Color + Gravação 2TB</li>
+            <li class="flex gap-2"><i data-lucide="check" class="w-4 h-4 text-brand-gold mt-0.5"></i> <strong>Módulo B (Acesso):</strong> Facial SS 3530 + Eletroímã 150kg + Nobreak</li>
+            <li class="flex gap-2"><i data-lucide="check" class="w-4 h-4 text-brand-gold mt-0.5"></i> <strong>Módulo C (Alarme):</strong> Central AMT 8000 + Sensores + Controles</li>
+            <li class="flex gap-2"><i data-lucide="check" class="w-4 h-4 text-brand-gold mt-0.5"></i> Instalação completa Vision e Treinamento</li>
+          </ul>
+        </div>
+
+        <div class="rounded-3xl border border-white/10 bg-white/5 p-8 reveal">
+          <div class="flex items-center gap-3">
+            <i data-lucide="shield-check" class="w-6 h-6 text-brand-gold"></i>
+            <div class="text-2xl font-extrabold">Vision Care (Garantias)</div>
+          </div>
+          <ul class="mt-5 space-y-3 text-sm text-white/75">
+            <li class="flex gap-2"><i data-lucide="check" class="w-4 h-4 text-brand-gold mt-0.5"></i> <strong>Equipamentos:</strong> Garantia oficial Intelbras</li>
+            <li class="flex gap-2"><i data-lucide="check" class="w-4 h-4 text-brand-gold mt-0.5"></i> <strong>Instalação:</strong> 12 meses de garantia sobre mão de obra</li>
+            <li class="flex gap-2"><i data-lucide="check" class="w-4 h-4 text-brand-gold mt-0.5"></i> <strong>Suporte:</strong> Canal direto via WhatsApp</li>
+          </ul>
+          <p class="text-sm text-white/60 mt-5">
+            Qualquer dúvida operacional (ex: "como cadastro um novo funcionário?"), nós resolvemos.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== FAQ ===== -->
+  <section id="faq" class="py-16 md:py-24 bg-white">
+    <div class="max-w-7xl mx-auto px-4">
+      <div class="max-w-3xl reveal">
+        <div class="text-xs font-bold tracking-widest uppercase text-brand-gold">FAQ</div>
+        <h2 class="text-3xl md:text-5xl font-extrabold mt-2">Dúvidas Frequentes</h2>
+      </div>
+
+      <div class="mt-10 grid lg:grid-cols-2 gap-6">
+        <details class="rounded-3xl border border-gray-100 shadow-soft p-6 reveal">
+          <summary class="font-extrabold cursor-pointer">O alarme precisa quebrar paredes?</summary>
+          <p class="text-gray-700 mt-3">
+            Não. Usamos a tecnologia AMT 8000 da Intelbras, que é 100% sem fio e criptografada. A instalação é limpa e rápida.
+          </p>
+        </details>
+
+        <details class="rounded-3xl border border-gray-100 shadow-soft p-6 reveal">
+          <summary class="font-extrabold cursor-pointer">E se faltar luz no prédio?</summary>
+          <p class="text-gray-700 mt-3">
+            O sistema de controle de acesso possui nobreak próprio. A porta continua trancada e segura (ou libera na emergência, conforme configuramos).
+          </p>
+        </details>
+
+        <details class="rounded-3xl border border-gray-100 shadow-soft p-6 reveal">
+          <summary class="font-extrabold cursor-pointer">A foto do celular desbloqueia a porta?</summary>
+          <p class="text-gray-700 mt-3">
+            Não. O controlador facial possui tecnologia "Liveness Check" que detecta profundidade e movimento, impedindo fraudes com fotos ou vídeos.
+          </p>
+        </details>
+
+        <details class="rounded-3xl border border-gray-100 shadow-soft p-6 reveal">
+          <summary class="font-extrabold cursor-pointer">Consigo ver as câmeras do celular?</summary>
+          <p class="text-gray-700 mt-3">
+            Sim. Configuramos o acesso remoto para você visualizar as câmeras e armar/desarmar o alarme de onde estiver.
+          </p>
+        </details>
+      </div>
+
+      <div class="mt-10 rounded-3xl border border-brand-gold/20 bg-brand-gold/10 p-8 reveal">
+        <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-6">
+          <div>
+            <div class="text-2xl font-extrabold">Vamos blindar tudo de uma vez?</div>
+            <p class="text-gray-700 mt-2">Garanta a condição especial do pacote completo.</p>
+          </div>
+          <a href="https://wa.me/5511945931528?text=Olá,%20Renato%20aqui.%20Quero%20aprovar%20o%20projeto."
+             class="inline-flex items-center justify-center gap-2 rounded-2xl px-6 py-4 bg-brand-gold text-black font-extrabold hover:bg-brand-goldLight transition shadow-gold">
+            Aprovar agora
+            <i data-lucide="arrow-right" class="w-5 h-5"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="bg-gray-50 border-t border-gray-100">
+    <div class="max-w-7xl mx-auto px-4 py-10 text-center">
+      <div class="font-logo text-4xl lowercase gold-shine tracking-[-0.08em]">vısıon</div>
+      <div class="text-[11px] tracking-[0.45em] uppercase text-gray-500 -mt-1.5 ml-0.5">business</div>
+      <div class="mt-3 text-xs text-gray-500">
+        ID: #VB-JARDINS-0226 • Vision Tecnologia e Segurança
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    lucide.createIcons();
+
+    // ===== LOCK =====
+    const lock = document.getElementById('lock');
+    const pass = document.getElementById('pass');
+    const lockErr = document.getElementById('lockErr');
+    const btnUnlock = document.getElementById('btnUnlock');
+
+    const accessCodes = ["vision", "renato", "jardins"];
+
+    function unlock() {
+      const v = (pass.value || "").toLowerCase().trim();
+      if (accessCodes.includes(v)) {
+        lock.style.opacity = "0";
+        setTimeout(() => lock.remove(), 350);
+        document.body.classList.remove('overflow-hidden');
+      } else {
+        lockErr.classList.remove('hidden');
+        setTimeout(() => lockErr.classList.add('hidden'), 2500);
+      }
+    }
+
+    btnUnlock.addEventListener('click', unlock);
+    pass.addEventListener('keydown', (e) => { if (e.key === 'Enter') unlock(); });
+
+    // ===== REVEAL =====
+    const els = () => document.querySelectorAll('.reveal');
+    const reveal = () => {
+      els().forEach(el => {
+        const rect = el.getBoundingClientRect();
+        if (rect.top < window.innerHeight - 90) el.classList.add('active');
+      });
+    };
+    window.addEventListener('scroll', reveal);
+    window.addEventListener('load', reveal);
+  </script>
+</body>
+</html>
