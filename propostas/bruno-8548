@@ -11,15 +11,17 @@
     <meta property="og:type" content="website">
     <meta property="og:title" content="Projeto de Monitoramento Blindado | Bruno – Vision Business">
     <meta property="og:description" content="Projeto Executivo de Monitoramento para Estacionamento. Controle absoluto do seu pátio e proteção blindada para o seu caixa.">
-    <!-- Usando a câmera bullet como miniatura do link -->
-    <meta property="og:image" content="https://res.cloudinary.com/dptcuckhf/image/upload/v1771543875/vhl-1120-b-g2-esq_jeqd5u.png">
+    <!-- Imagem atualizada para a Logo da Vision -->
+    <meta property="og:image" content="https://res.cloudinary.com/dptcuckhf/image/upload/v1772152427/C%C3%B3pia_de_LOGO_VISION_2025_cpcpuh.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
     <meta property="og:locale" content="pt_BR">
     
     <!-- Twitter Card Meta Tags -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Projeto de Monitoramento Blindado | Bruno – Vision Business">
     <meta name="twitter:description" content="Projeto Executivo de Monitoramento para Estacionamento.">
-    <meta name="twitter:image" content="https://res.cloudinary.com/dptcuckhf/image/upload/v1771543875/vhl-1120-b-g2-esq_jeqd5u.png">
+    <meta name="twitter:image" content="https://res.cloudinary.com/dptcuckhf/image/upload/v1772152427/C%C3%B3pia_de_LOGO_VISION_2025_cpcpuh.png">
 
     <!-- Fonts & Icons -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -164,6 +166,56 @@
         .accordion-item.open .accordion-content { max-height: 600px; }
         .accordion-item.open .acc-arrow { transform: rotate(180deg); }
         .acc-arrow { transition: transform 0.3s; }
+
+        /* Borda Animada Premium (Opção 2) - Reflexo Suave de Ouro */
+        .premium-border-glow {
+            position: relative;
+            border-radius: 2rem;
+            padding: 2px; /* Espessura da borda original fixa */
+            background-color: #b9880e; /* Base da borda original (Amarelo Vision) */
+            overflow: hidden;
+            box-shadow: 0 0 35px rgba(185,136,14,0.15); /* Brilho externo mais contido */
+            transition: transform 0.3s cubic-bezier(0.4,0,0.2,1);
+        }
+        .premium-border-glow:hover {
+            transform: scale(1.01);
+        }
+        .premium-border-glow::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            /* Ponto brilhoso dourado com núcleo branco (efeito lens flare idêntico à foto) */
+            background: conic-gradient(
+                from 0deg, 
+                transparent 0deg, 
+                transparent 175deg, 
+                rgba(255, 222, 89, 0.6) 178deg, 
+                #ffffff 180deg, 
+                rgba(255, 222, 89, 0.6) 182deg, 
+                transparent 185deg, 
+                transparent 360deg
+            );
+            animation: rotate-border 12s linear infinite; /* Movimento bem mais lento e elegante */
+            z-index: 0;
+        }
+        @keyframes rotate-border {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        .premium-border-inner {
+            position: relative;
+            z-index: 1;
+            background-color: #ffffff;
+            border-radius: calc(2rem - 2px);
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            padding: 2.5rem;
+            overflow: hidden;
+        }
 
         .product-card {
             background: white;
@@ -763,44 +815,46 @@
                 </a>
             </div>
 
-            <!-- OPÇÃO 2: Sistema Inteligente (DESTAQUE) -->
-            <div class="tier-card featured bg-white rounded-[2rem] p-10 shadow-glow-md relative overflow-hidden flex flex-col">
-                <div class="absolute top-0 left-0 w-full h-1.5 bg-gradient-to-r from-brand-yellow to-brand-goldLight rounded-t-[2rem]"></div>
-                <div class="absolute top-4 right-4">
-                    <span class="bg-brand-yellow text-black text-[10px] font-extrabold px-4 py-1.5 rounded-full uppercase tracking-widest shadow-glow">Mais Vantajoso / Recomendado</span>
-                </div>
-
-                <div class="mb-8">
-                    <p class="text-[10px] font-bold uppercase tracking-widest text-brand-yellow mb-2">Opção 2</p>
-                    <h3 class="font-bold text-gray-900 text-2xl">Sistema Inteligente (Com Áudio)</h3>
-                </div>
-
-                <div class="mb-8 p-6 bg-brand-yellow/5 border border-brand-yellow/20 rounded-2xl min-h-[140px] flex flex-col justify-center">
-                    <p class="text-xs text-brand-goldDark uppercase tracking-widest font-bold mb-2">Investimento Total</p>
-                    <div class="flex items-end gap-2" id="price-opt2">
-                        <!-- Conteúdo dinâmico JS -->
+            <!-- OPÇÃO 2: Sistema Inteligente (DESTAQUE) COM BORDA ANIMADA -->
+            <div class="premium-border-glow">
+                <div class="premium-border-inner">
+                    <div class="absolute top-0 left-0 w-full h-1.5 bg-gradient-to-r from-brand-yellow to-brand-goldLight rounded-t-[calc(2rem-3px)]"></div>
+                    <div class="absolute top-4 right-4 z-20">
+                        <span class="bg-brand-yellow text-black text-[10px] font-extrabold px-4 py-1.5 rounded-full uppercase tracking-widest shadow-glow">Mais Vantajoso / Recomendado</span>
                     </div>
-                    <p class="text-sm text-gray-700 mt-3 font-medium" id="subtext-opt2"></p>
-                </div>
 
-                <div class="space-y-3 mb-8 flex-1">
-                    <h4 class="font-semibold text-gray-700 text-sm uppercase tracking-wider mb-3">Tudo do pacote básico, MAS...</h4>
-                    <div class="flex items-start gap-3 p-4 bg-white border border-brand-yellow/30 rounded-xl shadow-sm">
-                        <i data-lucide="mic" class="w-6 h-6 text-brand-yellow shrink-0 mt-0.5"></i>
-                        <p class="text-sm text-gray-800 leading-relaxed">Troca da câmera do caixa por um <strong>Modelo com Microfone Embutido</strong> de alta captação.</p>
+                    <div class="mb-8 mt-2">
+                        <p class="text-[10px] font-bold uppercase tracking-widest text-brand-yellow mb-2">Opção 2</p>
+                        <h3 class="font-bold text-gray-900 text-2xl">Sistema Inteligente (Com Áudio)</h3>
                     </div>
-                    <div class="flex items-start gap-3 p-4 bg-white border border-brand-yellow/30 rounded-xl shadow-sm">
-                        <i data-lucide="shield-check" class="w-6 h-6 text-brand-yellow shrink-0 mt-0.5"></i>
-                        <p class="text-sm text-gray-800 leading-relaxed"><strong>Blindagem total</strong> contra desentendimentos verbais com clientes na recepção/pagamento.</p>
-                    </div>
-                </div>
 
-                <a href="https://wa.me/5511930816696?text=Olá,%20quero%20aprovar%20o%20projeto%20da%20Opção%202%20(Sistema%20com%20Áudio)%20para%20o%20Estacionamento." target="_blank" class="w-full bg-brand-yellow hover:bg-brand-goldLight text-black font-bold py-4 rounded-2xl flex items-center justify-center gap-2 transition-all shadow-glow-md text-sm uppercase tracking-widest group relative overflow-hidden mt-auto">
-                    <div class="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-300 rounded-2xl"></div>
-                    <i data-lucide="shield-check" class="w-5 h-5 relative z-10"></i>
-                    <span class="relative z-10">Aprovar Sistema com Áudio</span>
-                    <i data-lucide="arrow-right" class="w-4 h-4 relative z-10 group-hover:translate-x-1 transition-transform"></i>
-                </a>
+                    <div class="mb-8 p-6 bg-brand-yellow/5 border border-brand-yellow/20 rounded-2xl min-h-[140px] flex flex-col justify-center relative z-10">
+                        <p class="text-xs text-brand-goldDark uppercase tracking-widest font-bold mb-2">Investimento Total</p>
+                        <div class="flex items-end gap-2" id="price-opt2">
+                            <!-- Conteúdo dinâmico JS -->
+                        </div>
+                        <p class="text-sm text-gray-700 mt-3 font-medium" id="subtext-opt2"></p>
+                    </div>
+
+                    <div class="space-y-3 mb-8 flex-1 relative z-10">
+                        <h4 class="font-semibold text-gray-700 text-sm uppercase tracking-wider mb-3">Tudo do pacote básico, MAS...</h4>
+                        <div class="flex items-start gap-3 p-4 bg-white border border-brand-yellow/30 rounded-xl shadow-sm">
+                            <i data-lucide="mic" class="w-6 h-6 text-brand-yellow shrink-0 mt-0.5"></i>
+                            <p class="text-sm text-gray-800 leading-relaxed">Troca da câmera do caixa por um <strong>Modelo com Microfone Embutido</strong> de alta captação.</p>
+                        </div>
+                        <div class="flex items-start gap-3 p-4 bg-white border border-brand-yellow/30 rounded-xl shadow-sm">
+                            <i data-lucide="shield-check" class="w-6 h-6 text-brand-yellow shrink-0 mt-0.5"></i>
+                            <p class="text-sm text-gray-800 leading-relaxed"><strong>Blindagem total</strong> contra desentendimentos verbais com clientes na recepção/pagamento.</p>
+                        </div>
+                    </div>
+
+                    <a href="https://wa.me/5511930816696?text=Olá,%20quero%20aprovar%20o%20projeto%20da%20Opção%202%20(Sistema%20com%20Áudio)%20para%20o%20Estacionamento." target="_blank" class="w-full bg-brand-yellow hover:bg-brand-goldLight text-black font-bold py-4 rounded-2xl flex items-center justify-center gap-2 transition-all shadow-glow-md text-sm uppercase tracking-widest group relative overflow-hidden mt-auto z-10">
+                        <div class="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-300 rounded-2xl"></div>
+                        <i data-lucide="shield-check" class="w-5 h-5 relative z-10"></i>
+                        <span class="relative z-10">Aprovar Sistema com Áudio</span>
+                        <i data-lucide="arrow-right" class="w-4 h-4 relative z-10 group-hover:translate-x-1 transition-transform"></i>
+                    </a>
+                </div>
             </div>
 
         </div>
