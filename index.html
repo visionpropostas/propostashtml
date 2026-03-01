@@ -1,1 +1,1094 @@
-<h1>Site da Vision</h1>
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vision Tecnologia | Especialistas em Tecnologia de Alto Padrão</title>
+    <meta name="description" content="A Arquitetura Tecnológica do Seu Patrimônio. Soluções premium em Segurança e T.I. para empresas e residências de alto padrão.">
+    
+    <!-- Google Analytics 4 -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-KTGEL92B0F"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-KTGEL92B0F');
+    </script>
+
+    <!-- Microsoft Clarity -->
+    <script type="text/javascript">
+        (function(c,l,a,r,i,t,y){
+            c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+            t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+            y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+        })(window, document, "clarity", "script", "vifq10es5o");
+    </script>
+
+    <!-- Fonts & Icons -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@700;800&family=Quicksand:wght@500;600;700&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- FontAwesome (For WhatsApp icon) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"Outfit"', 'sans-serif'],
+                        logo: ['"League Spartan"', 'sans-serif'],
+                        tech: ['"Quicksand"', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            yellow: '#b9880e',
+                            goldLight: '#FFDE59',
+                            goldDark: '#8a6208',
+                            black: '#09090b',
+                        }
+                    },
+                    boxShadow: {
+                        'glass': '0 4px 24px 0 rgba(0,0,0,0.04)',
+                        'premium': '0 16px 50px -10px rgba(0,0,0,0.08)',
+                        'glow': '0 0 20px rgba(185,136,14,0.15)',
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            background-color: #fafafa;
+        }
+
+        .text-gold-shine {
+            background: linear-gradient(to right, #b9880e 20%, #FFDE59 50%, #b9880e 80%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-size: 200% auto;
+            animation: shine 4s linear infinite;
+        }
+        @keyframes shine { to { background-position: 200% center; } }
+
+        .bg-dots {
+            background-image: radial-gradient(#b9880e 1.2px, transparent 1.2px);
+            background-size: 24px 24px;
+            opacity: 0.04;
+        }
+
+        .service-card { transition: all 0.3s cubic-bezier(0.4,0,0.2,1); }
+        .service-card:hover { transform: translateY(-4px); box-shadow: 0 20px 40px -8px rgba(0,0,0,0.1); border-color: rgba(185,136,14,0.3); }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: #f9fafb; }
+        ::-webkit-scrollbar-thumb { background: #d1d5db; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #b9880e; }
+        
+        /* Auto Scroll Animation for Clients */
+        @keyframes scroll-clients {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+        .slider-track {
+            display: flex;
+            width: max-content;
+            animation: scroll-clients 45s linear infinite;
+        }
+
+        /* Auto Scroll Animation for Reviews */
+        @keyframes scroll-reviews {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+        .reviews-slider {
+            display: flex;
+            width: max-content;
+            animation: scroll-reviews 60s linear infinite;
+        }
+        .reviews-slider:hover {
+            animation-play-state: paused;
+        }
+
+        /* Float Animation for Badges */
+        @keyframes float-badge {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-12px); }
+        }
+        .animate-float-badge {
+            animation: float-badge 5s ease-in-out infinite;
+        }
+    </style>
+</head>
+<body class="text-gray-800 antialiased selection:bg-brand-yellow selection:text-white">
+
+    <!-- ===================== WHATSAPP FLUTUANTE DISCRETO ===================== -->
+    <a href="https://wa.me/551159950096?text=Ol%C3%A1%2C%20gostaria%20de%20falar%20com%20um%20especialista%20da%20Vision%20Tecnologia." id="floating-wa" class="fixed bottom-6 right-6 z-50 bg-[#25D366] text-white w-14 h-14 flex items-center justify-center rounded-full shadow-lg opacity-0 translate-y-10 transition-all duration-500 hover:scale-110 pointer-events-none hover:shadow-[#25D366]/40" target="_blank" aria-label="Falar no WhatsApp">
+        <i class="fa-brands fa-whatsapp text-3xl"></i>
+    </a>
+
+    <!-- ===================== NAVBAR REFINADO ===================== -->
+    <nav id="navbar" class="fixed w-full z-50 top-0 bg-white/90 backdrop-blur-xl border-b border-gray-200/50 shadow-sm transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-20 items-center">
+                
+                <!-- Logo -->
+                <a href="#inicio" class="flex flex-col items-center justify-center group">
+                    <div class="relative flex items-baseline leading-none">
+                        <span class="font-logo font-bold text-4xl text-gold-shine lowercase tracking-[-0.05em] leading-none">vısıon</span>
+                        <span class="absolute -right-2.5 top-1 text-[0.6rem] text-brand-yellow font-bold">®</span>
+                    </div>
+                    <span class="font-tech text-[0.55rem] font-bold text-gray-400 lowercase -mt-1.5 ml-1.5 tracking-[0.4em] group-hover:text-brand-yellow transition-colors">tecnologia</span>
+                </a>
+
+                <!-- Submenus Desktop -->
+                <div class="hidden lg:flex items-center space-x-8 text-xs font-semibold text-gray-500 uppercase tracking-widest">
+                    <a href="#inicio" class="hover:text-brand-yellow transition-colors">Início</a>
+                    <a href="#quem-somos" class="hover:text-brand-yellow transition-colors">Quem Somos</a>
+                    <a href="#seguranca" class="hover:text-brand-yellow transition-colors">Segurança</a>
+                    <a href="#infra" class="hover:text-brand-yellow transition-colors">T.I. e Infra</a>
+                    <a href="#locacao" class="hover:text-brand-yellow transition-colors">Locação</a>
+                </div>
+
+                <!-- Contato e CTA Desktop -->
+                <div class="hidden lg:flex items-center gap-4">
+                    <a href="https://wa.me/551159950096?text=Ol%C3%A1%2C%20gostaria%20de%20falar%20com%20um%20especialista%20da%20Vision%20Tecnologia." target="_blank" class="px-5 py-2 border-2 border-brand-yellow text-brand-goldDark rounded-full text-xs font-bold flex items-center gap-2 hover:bg-brand-yellow/10 transition-colors">
+                        (11) 5995-0096
+                    </a>
+                    <a href="#contato" class="inline-flex items-center justify-center gap-2 bg-zinc-900 text-white px-6 py-2.5 rounded-full text-[10px] font-bold uppercase tracking-widest hover:bg-brand-yellow hover:text-black transition-all shadow-md">
+                        <i class="fa-brands fa-whatsapp text-sm"></i> Fale com um Especialista
+                    </a>
+                </div>
+
+                <!-- Menu Mobile (Hamburguer Icon) -->
+                <div class="lg:hidden flex items-center gap-3">
+                    <a href="https://wa.me/551159950096?text=Ol%C3%A1%2C%20gostaria%20de%20falar%20com%20um%20especialista%20da%20Vision%20Tecnologia." target="_blank" class="px-4 py-1.5 border border-brand-yellow text-brand-goldDark rounded-full text-xs font-bold flex items-center hover:bg-brand-yellow/10 transition-colors">
+                        (11) 5995-0096
+                    </a>
+                    <button id="mobile-menu-btn" class="text-gray-500 hover:text-brand-yellow focus:outline-none">
+                        <i data-lucide="menu" class="w-6 h-6"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Dropdown Menu Mobile -->
+        <div id="mobile-menu" class="hidden lg:hidden fixed inset-0 top-20 z-40 bg-white/95 backdrop-blur-md border-t border-gray-200/50 shadow-2xl transition-all duration-300">
+            <div class="flex flex-col items-end px-6 py-8 space-y-6 text-sm font-semibold text-gray-800 uppercase tracking-widest text-right h-full">
+                <a href="#inicio" class="hover:text-brand-yellow transition-colors mobile-link">Início</a>
+                <a href="#quem-somos" class="hover:text-brand-yellow transition-colors mobile-link">Quem Somos</a>
+                <a href="#seguranca" class="hover:text-brand-yellow transition-colors mobile-link">Soluções em Segurança</a>
+                <a href="#infra" class="hover:text-brand-yellow transition-colors mobile-link">Soluções em T.I. e Infra</a>
+                <a href="#locacao" class="hover:text-brand-yellow transition-colors mobile-link">Locação para Projetos</a>
+                <div class="w-full pt-6 border-t border-gray-200/50 flex flex-col gap-4 mt-2">
+                    <a href="https://wa.me/551159950096?text=Ol%C3%A1%2C%20gostaria%20de%20falar%20com%20um%20especialista%20da%20Vision%20Tecnologia." target="_blank" class="border-2 border-brand-yellow text-brand-goldDark py-3 px-4 rounded-xl flex items-center justify-end gap-2 bg-white/50 backdrop-blur-sm">
+                        (11) 5995-0096
+                    </a>
+                    <a href="#contato" class="bg-[#25D366] text-white py-3 px-4 rounded-xl mobile-link flex items-center justify-end gap-2 shadow-md hover:bg-green-500 transition-colors">
+                        <i class="fa-brands fa-whatsapp text-lg"></i> Fale com um Especialista
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- ===================== HERO SECTION ===================== -->
+    <section id="inicio" class="relative pt-40 pb-20 lg:pt-52 lg:pb-32 overflow-hidden bg-white">
+        <div class="absolute inset-0 bg-dots pointer-events-none"></div>
+        <div class="absolute right-0 top-0 -translate-y-1/4 translate-x-1/4 w-[800px] h-[800px] bg-brand-yellow/5 rounded-full blur-[120px] pointer-events-none"></div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center flex flex-col items-center">
+            
+            <div class="inline-flex items-center gap-2 px-5 py-2 rounded-full border border-brand-yellow/30 bg-brand-yellow/5 text-brand-yellow text-[10px] font-bold uppercase tracking-widest mb-8">
+                <i data-lucide="shield-check" class="w-4 h-4"></i>
+                Especialistas em Tecnologia
+            </div>
+            
+            <h1 class="text-5xl md:text-7xl font-extrabold text-gray-900 tracking-tight mb-6 leading-[1.05]">
+                Tecnologia e Segurança <br />
+                <span class="text-gold-shine">de Alto Padrão.</span>
+            </h1>
+            
+            <p class="mt-4 text-lg md:text-xl text-gray-500 max-w-3xl mx-auto leading-relaxed font-medium">
+                Soluções premium em <strong class="text-gray-900">Segurança e T.I.</strong> para condomínios, empresas e residências exclusivas. Zero improvisos. Nossos especialistas garantem previsibilidade e controle total nas suas mãos.
+            </p>
+
+            <div class="mt-12 flex flex-col sm:flex-row gap-4 justify-center">
+                <a href="https://wa.me/551159950096?text=Ol%C3%A1%2C%20gostaria%20de%20falar%20com%20um%20especialista%20da%20Vision%20Tecnologia." target="_blank" class="inline-flex items-center justify-center gap-2 bg-brand-yellow hover:bg-brand-goldLight text-black px-8 py-4 rounded-full text-xs font-bold uppercase tracking-widest transition-all shadow-glow">
+                    <i class="fa-brands fa-whatsapp text-base"></i> Projetar Minha Estrutura
+                </a>
+                <a href="#quem-somos" class="inline-flex items-center justify-center gap-2 bg-white border-2 border-gray-100 hover:border-brand-yellow/50 text-gray-700 px-8 py-4 rounded-full text-xs font-bold uppercase tracking-widest transition-all shadow-sm">
+                    Conhecer a Vision
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===================== CLIENTES / SOCIAL PROOF ===================== -->
+    <section class="py-10 bg-white border-y border-gray-100 overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 mb-6 text-center">
+            <p class="text-[10px] font-bold uppercase tracking-widest text-gray-400">Condomínios e Empresas que confiam no padrão Vision</p>
+        </div>
+        <div class="relative w-full max-w-[100vw] mx-auto overflow-hidden group">
+            <!-- Fade masks for slider -->
+            <div class="absolute inset-y-0 left-0 w-16 md:w-32 bg-gradient-to-r from-white to-transparent z-10 pointer-events-none"></div>
+            <div class="absolute inset-y-0 right-0 w-16 md:w-32 bg-gradient-to-l from-white to-transparent z-10 pointer-events-none"></div>
+            
+            <!-- Carrossel de Logos - Espaçamento Fixo e Organizado -->
+            <div class="slider-track flex items-center py-4 opacity-60 grayscale group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-700">
+                
+                <!-- BLOCO 1 -->
+                <div class="flex items-center gap-16 md:gap-24 pr-16 md:pr-24 shrink-0">
+                    <img src="https://res.cloudinary.com/dptcuckhf/image/upload/v1772304278/Xpbox-clientes-logos-200-padding-sicoob_gjcfly.webp" alt="Sicoob" class="max-h-24 md:max-h-28 w-auto object-contain">
+                    <img src="https://res.cloudinary.com/dptcuckhf/image/upload/v1772305396/image_lbkjkn.webp" alt="Valor Investimentos" class="max-h-6 md:max-h-8 w-auto object-contain">
+                    <img src="https://res.cloudinary.com/dptcuckhf/image/upload/v1772305237/FormelD_Logo-svg_edited_ihhm8j.png" alt="Formel D" class="max-h-24 md:max-h-28 w-auto object-contain">
+                    <img src="https://res.cloudinary.com/dptcuckhf/image/upload/v1772304350/pertech_edited_edited_qtgrqc.png" alt="Pertech" class="max-h-20 md:max-h-24 w-auto object-contain">
+                    <img src="https://res.cloudinary.com/dptcuckhf/image/upload/v1772364465/ImageToStl.com_Emblema_PC_1551453377220_s8zzrn.avif" alt="Polícia Civil SP" class="max-h-16 md:max-h-20 w-auto object-contain">
+                    <img src="https://res.cloudinary.com/dptcuckhf/image/upload/v1772305484/level-group_jqrgeb.webp" alt="Level Group" class="max-h-12 md:max-h-16 w-auto object-contain brightness-0 opacity-70 group-hover:opacity-100 transition-all duration-700">
+                    <img src="https://res.cloudinary.com/dptcuckhf/image/upload/v1772305340/Logo_Aldifer_otgf65.avif" alt="Aldifer" class="max-h-16 md:max-h-20 w-auto object-contain">
+                    <img src="https://res.cloudinary.com/dptcuckhf/image/upload/v1772304631/Horizontal-Cores-Group_osa37z.png" alt="Cores Group" class="max-h-10 md:max-h-12 w-auto object-contain">
+                    <img src="https://res.cloudinary.com/dptcuckhf/image/upload/v1772363839/fatz-delicias-logo-removebg-preview_zr4bhr.png" alt="Fatz Burguer" class="max-h-16 md:max-h-20 w-auto object-contain">
+                </div>
+
+                <!-- BLOCO 2 (Cópia exata para o Loop Infinito Liso) -->
+                <div class="flex items-center gap-16 md:gap-24 pr-16 md:pr-24 shrink-0">
+                    <img src="https://res.cloudinary.com/dptcuckhf/image/upload/v1772304278/Xpbox-clientes-logos-200-padding-sicoob_gjcfly.webp" alt="Sicoob" class="max-h-24 md:max-h-28 w-auto object-contain">
+                    <img src="https://res.cloudinary.com/dptcuckhf/image/upload/v1772305396/image_lbkjkn.webp" alt="Valor Investimentos" class="max-h-6 md:max-h-8 w-auto object-contain">
+                    <img src="https://res.cloudinary.com/dptcuckhf/image/upload/v1772305237/FormelD_Logo-svg_edited_ihhm8j.png" alt="Formel D" class="max-h-24 md:max-h-28 w-auto object-contain">
+                    <img src="https://res.cloudinary.com/dptcuckhf/image/upload/v1772304350/pertech_edited_edited_qtgrqc.png" alt="Pertech" class="max-h-20 md:max-h-24 w-auto object-contain">
+                    <img src="https://res.cloudinary.com/dptcuckhf/image/upload/v1772364465/ImageToStl.com_Emblema_PC_1551453377220_s8zzrn.avif" alt="Polícia Civil SP" class="max-h-16 md:max-h-20 w-auto object-contain">
+                    <img src="https://res.cloudinary.com/dptcuckhf/image/upload/v1772305484/level-group_jqrgeb.webp" alt="Level Group" class="max-h-12 md:max-h-16 w-auto object-contain brightness-0 opacity-70 group-hover:opacity-100 transition-all duration-700">
+                    <img src="https://res.cloudinary.com/dptcuckhf/image/upload/v1772305340/Logo_Aldifer_otgf65.avif" alt="Aldifer" class="max-h-16 md:max-h-20 w-auto object-contain">
+                    <img src="https://res.cloudinary.com/dptcuckhf/image/upload/v1772304631/Horizontal-Cores-Group_osa37z.png" alt="Cores Group" class="max-h-10 md:max-h-12 w-auto object-contain">
+                    <img src="https://res.cloudinary.com/dptcuckhf/image/upload/v1772363839/fatz-delicias-logo-removebg-preview_zr4bhr.png" alt="Fatz Burguer" class="max-h-16 md:max-h-20 w-auto object-contain">
+                </div>
+                
+            </div>
+        </div>
+    </section>
+
+    <!-- ===================== QUEM SOMOS ===================== -->
+    <section id="quem-somos" class="py-24 bg-[#f8f9fa] relative overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="flex flex-col lg:flex-row items-center gap-16">
+                
+                <!-- Coluna Imagem (Brasão Equipe Vision 100% Limpo) -->
+                <div class="w-full lg:w-1/2 relative flex justify-center py-10">
+                    
+                    <div class="relative w-full max-w-md aspect-square flex items-center justify-center">
+                        <img src="https://res.cloudinary.com/dptcuckhf/image/upload/v1772326402/ImageToStl.com_Gemini_Generated_Image_e4vl7te4vl7te4vl-removebg-preview_a6y5bc.avif" alt="Equipe Vision" class="w-full h-full object-contain drop-shadow-sm hover:scale-105 transition-transform duration-700">
+                        
+                        <!-- Selo Flutuante: Execução Impecável -->
+                        <div class="absolute bottom-4 left-0 md:-left-4 z-20 animate-float-badge pointer-events-none">
+                            <div class="bg-white/90 backdrop-blur-md border border-white/60 shadow-[0_8px_30px_rgb(0,0,0,0.15)] rounded-2xl p-3 pr-6 flex items-center gap-4 w-max">
+                                <div class="w-10 h-10 bg-brand-yellow/10 rounded-xl flex items-center justify-center shrink-0">
+                                    <i data-lucide="cpu" class="w-5 h-5 text-brand-goldDark"></i>
+                                </div>
+                                <div class="flex flex-col text-left">
+                                    <span class="text-[9px] uppercase tracking-widest text-gray-500 font-bold mb-0.5">Padrão Vision</span>
+                                    <h3 class="text-sm font-black text-gray-900 leading-none">Execução Impecável</h3>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Coluna Texto -->
+                <div class="w-full lg:w-1/2">
+                    <span class="text-brand-yellow font-bold uppercase tracking-widest text-xs mb-4 block">Padrão de Excelência</span>
+                    <h2 class="text-3xl md:text-5xl font-bold text-gray-900 mb-6 leading-tight">
+                        Eliminamos a complexidade. Entregamos <span class="text-brand-yellow">certezas.</span>
+                    </h2>
+                    
+                    <div class="space-y-6 text-gray-500 text-lg leading-relaxed font-medium">
+                        <p>
+                            A Vision Tecnologia nasceu para extinguir o amadorismo do mercado. Nós não fazemos "instalações" ou paliativos; nossos <strong class="text-gray-900">especialistas desenvolvem soluções integradas</strong>, executando projetos tecnológicos com precisão cirúrgica.
+                        </p>
+                        <p>
+                            Da infraestrutura impecável de um cabeamento estruturado ao controle de acesso facial mais sofisticado, nosso compromisso é singular: entregar uma tecnologia limpa, robusta e que funciona perfeitamente. 
+                        </p>
+                        <div class="p-5 bg-white border border-gray-100 rounded-2xl shadow-sm mt-8 relative">
+                            <i data-lucide="quote" class="w-8 h-8 text-brand-yellow/20 absolute top-4 left-4"></i>
+                            <p class="italic text-gray-600 pl-8 relative z-10 text-base">
+                                "Acreditamos que a melhor tecnologia é aquela que você não precisa notar. Ela simplesmente funciona, entregando a proteção e a estabilidade que o seu dia a dia exige."
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ===================== METODOLOGIA / ABISMO DO MERCADO ===================== -->
+    <section class="py-24 bg-zinc-900 relative overflow-hidden text-white border-y border-brand-yellow/20">
+        <div class="absolute inset-0 bg-dots opacity-10 pointer-events-none"></div>
+        <div class="absolute left-0 top-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-brand-yellow/10 rounded-full blur-[120px] pointer-events-none"></div>
+        
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <span class="text-brand-yellow font-bold uppercase tracking-widest text-xs">A Nossa Metodologia</span>
+                <h2 class="text-4xl md:text-5xl font-bold text-white mt-4 mb-6 leading-tight">
+                    O Abismo <br>do Mercado.
+                </h2>
+                <p class="text-gray-400 text-lg font-light">
+                    Como transformamos projetos complexos em uma experiência premium e sem estresse.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Step 1 -->
+                <div class="bg-white/5 backdrop-blur-md border border-white/10 p-8 rounded-3xl relative overflow-hidden group hover:border-brand-yellow/40 transition-colors">
+                    <div class="text-6xl font-logo font-bold text-white/5 absolute -top-2 -right-2 group-hover:text-brand-yellow/10 transition-colors">01</div>
+                    <div class="w-12 h-12 bg-brand-yellow/20 rounded-xl flex items-center justify-center mb-6 border border-brand-yellow/30">
+                        <i data-lucide="microscope" class="w-6 h-6 text-brand-goldLight"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-4">Consultoria e Raio-X Técnico</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed">
+                        Tudo começa com um mapeamento completo das vulnerabilidades físicas e digitais do seu espaço. Não vendemos pacotes fechados; criamos soluções sob medida.
+                    </p>
+                </div>
+
+                <!-- Step 2 -->
+                <div class="bg-white/5 backdrop-blur-md border border-white/10 p-8 rounded-3xl relative overflow-hidden group hover:border-brand-yellow/40 transition-colors">
+                    <div class="text-6xl font-logo font-bold text-white/5 absolute -top-2 -right-2 group-hover:text-brand-yellow/10 transition-colors">02</div>
+                    <div class="w-12 h-12 bg-brand-yellow/20 rounded-xl flex items-center justify-center mb-6 border border-brand-yellow/30">
+                        <i data-lucide="monitor-play" class="w-6 h-6 text-brand-goldLight"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-4">O Fim do PDF<br><span class="text-brand-yellow text-sm font-semibold uppercase tracking-widest">Propostas Interativas</span></h3>
+                    <p class="text-gray-400 text-sm leading-relaxed">
+                        O cliente recebe o seu projeto em uma plataforma exclusiva. Visão clara dos equipamentos, da topologia de rede e dos investimentos, com total transparência e vídeos explicativos.
+                    </p>
+                </div>
+
+                <!-- Step 3 -->
+                <div class="bg-white/5 backdrop-blur-md border border-white/10 p-8 rounded-3xl relative overflow-hidden group hover:border-brand-yellow/40 transition-colors">
+                    <div class="text-6xl font-logo font-bold text-white/5 absolute -top-2 -right-2 group-hover:text-brand-yellow/10 transition-colors">03</div>
+                    <div class="w-12 h-12 bg-brand-yellow/20 rounded-xl flex items-center justify-center mb-6 border border-brand-yellow/30">
+                        <i data-lucide="shield-check" class="w-6 h-6 text-brand-goldLight"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-4">Execução e Garantia Blindada</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed">
+                        Equipe técnica uniformizada e altamente treinada. Emitimos nota fiscal, cumprimos os prazos à risca e oferecemos 12 meses de garantia sobre a nossa mão de obra, além da garantia de fábrica.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===================== PILAR 1: SEGURANÇA E ACESSO ===================== -->
+    <section id="seguranca" class="py-24 lg:py-32 relative bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            
+            <!-- Imagem Principal + Selo Flutuante à Esquerda -->
+            <div class="flex flex-col-reverse lg:flex-row items-center gap-12 mb-20">
+                <div class="w-full lg:w-1/2 text-center lg:text-left">
+                    <span class="text-brand-yellow font-bold uppercase tracking-widest text-xs">Proteção Ininterrupta</span>
+                    <h2 class="text-4xl md:text-5xl font-bold text-gray-900 mt-4 mb-6">Soluções em Segurança</h2>
+                    <p class="text-gray-500 text-lg font-medium">O controle absoluto de quem entra, sai e do que acontece no seu ecossistema. Monitoramento inteligente com resposta imediata e soluções de ponta.</p>
+                </div>
+                <div class="w-full lg:w-1/2">
+                    <div class="relative w-full flex justify-center group cursor-default">
+                        
+                        <div class="relative inline-block group-hover:scale-105 transition-transform duration-700">
+                            <!-- Selo Flutuante Deslocado para a Esquerda da Placa -->
+                            <div class="absolute top-[40%] -left-4 md:-left-8 lg:-left-12 z-20 animate-float-badge pointer-events-none">
+                                <div class="bg-white/90 backdrop-blur-md border border-white/60 shadow-[0_8px_30px_rgb(0,0,0,0.15)] rounded-2xl p-3 pr-6 flex items-center gap-3 w-max">
+                                    <div class="w-10 h-10 bg-green-100/80 rounded-full flex items-center justify-center shrink-0">
+                                        <i data-lucide="shield-check" class="w-5 h-5 text-green-600"></i>
+                                    </div>
+                                    <div class="flex flex-col text-left">
+                                        <span class="text-[9px] font-bold text-gray-500 tracking-wider uppercase mb-0.5">Status do Sistema</span>
+                                        <span class="text-sm font-black text-gray-800 leading-none">100% Protegido</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Foto dos Equipamentos Vision (Totalmente livre de caixas com drop-shadow limpo) -->
+                            <img src="https://res.cloudinary.com/dptcuckhf/image/upload/v1772305165/Equipamentos_vision_tecnologia1_dk7qqc.avif" alt="Equipamentos de Segurança Vision" class="w-full max-w-lg h-auto object-contain drop-shadow-[0_20px_40px_rgba(0,0,0,0.15)]">
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+            <!-- Grid de Serviços Premium com Lista -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Serviço 1 -->
+                <div class="service-card bg-white p-8 rounded-[2rem] border border-gray-100 shadow-glass flex flex-col h-full">
+                    <div class="flex items-center gap-4 mb-6">
+                        <div class="w-12 h-12 bg-brand-yellow/10 rounded-xl flex items-center justify-center shrink-0">
+                            <i data-lucide="cctv" class="w-6 h-6 text-brand-yellow"></i>
+                        </div>
+                        <h3 class="text-lg font-bold text-gray-900 leading-tight">Instalação de Câmeras<br><span class="text-sm font-medium text-gray-500">(CFTV e Inteligência)</span></h3>
+                    </div>
+                    
+                    <div class="bg-gray-50/50 rounded-2xl p-5 border border-gray-50 mb-8 flex-1">
+                        <ul class="space-y-3">
+                            <li class="flex items-start gap-3 text-sm text-gray-600 font-medium">
+                                <i data-lucide="check-circle-2" class="w-4 h-4 text-brand-yellow shrink-0 mt-0.5"></i> Resolução 4K e imagens nítidas
+                            </li>
+                            <li class="flex items-start gap-3 text-sm text-gray-600 font-medium">
+                                <i data-lucide="check-circle-2" class="w-4 h-4 text-brand-yellow shrink-0 mt-0.5"></i> Inteligência Artificial para intrusão
+                            </li>
+                            <li class="flex items-start gap-3 text-sm text-gray-600 font-medium">
+                                <i data-lucide="check-circle-2" class="w-4 h-4 text-brand-yellow shrink-0 mt-0.5"></i> Acesso remoto via aplicativo
+                            </li>
+                            <li class="flex items-start gap-3 text-sm text-gray-600 font-medium">
+                                <i data-lucide="check-circle-2" class="w-4 h-4 text-brand-yellow shrink-0 mt-0.5"></i> Gravação contínua e segura
+                            </li>
+                        </ul>
+                    </div>
+                    
+                    <a href="https://wa.me/551159950096?text=Ol%C3%A1%2C%20gostaria%20de%20saber%20mais%20sobre%20a%20instala%C3%A7%C3%A3o%20de%20C%C3%A2meras%20de%20Seguran%C3%A7a." target="_blank" class="mt-auto w-full inline-flex items-center justify-center gap-2 px-5 py-3 border-2 border-gray-100 rounded-xl text-xs font-bold uppercase tracking-widest text-gray-700 hover:border-brand-yellow hover:text-brand-goldDark hover:bg-brand-yellow/5 transition-all">
+                        Saiba mais <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                    </a>
+                </div>
+
+                <!-- Serviço 2 -->
+                <div class="service-card bg-white p-8 rounded-[2rem] border border-gray-100 shadow-glass flex flex-col h-full">
+                    <div class="flex items-center gap-4 mb-6">
+                        <div class="w-12 h-12 bg-blue-50 rounded-xl flex items-center justify-center shrink-0">
+                            <i data-lucide="cloud" class="w-6 h-6 text-blue-500"></i>
+                        </div>
+                        <h3 class="text-lg font-bold text-gray-900 leading-tight">Gravação em Nuvem<br><span class="text-sm font-medium text-gray-500">(Privada e Blindada)</span></h3>
+                    </div>
+                    
+                    <div class="bg-gray-50/50 rounded-2xl p-5 border border-gray-50 mb-8 flex-1">
+                        <ul class="space-y-3">
+                            <li class="flex items-start gap-3 text-sm text-gray-600 font-medium">
+                                <i data-lucide="check-circle-2" class="w-4 h-4 text-brand-yellow shrink-0 mt-0.5"></i> Gravação 100% externa e segura
+                            </li>
+                            <li class="flex items-start gap-3 text-sm text-gray-600 font-medium">
+                                <i data-lucide="check-circle-2" class="w-4 h-4 text-brand-yellow shrink-0 mt-0.5"></i> Servidores de alta redundância
+                            </li>
+                            <li class="flex items-start gap-3 text-sm text-gray-600 font-medium">
+                                <i data-lucide="check-circle-2" class="w-4 h-4 text-brand-yellow shrink-0 mt-0.5"></i> Proteção contra sabotagem local
+                            </li>
+                            <li class="flex items-start gap-3 text-sm text-gray-600 font-medium">
+                                <i data-lucide="check-circle-2" class="w-4 h-4 text-brand-yellow shrink-0 mt-0.5"></i> Acesso rápido e criptografado
+                            </li>
+                        </ul>
+                    </div>
+
+                    <a href="https://wa.me/551159950096?text=Ol%C3%A1%2C%20gostaria%20de%20saber%20mais%20sobre%20a%20Nuvem%20Privada%20de%20Imagens." target="_blank" class="mt-auto w-full inline-flex items-center justify-center gap-2 px-5 py-3 border-2 border-gray-100 rounded-xl text-xs font-bold uppercase tracking-widest text-gray-700 hover:border-brand-yellow hover:text-brand-goldDark hover:bg-brand-yellow/5 transition-all">
+                        Saiba mais <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                    </a>
+                </div>
+
+                <!-- Serviço 3 -->
+                <div class="service-card bg-white p-8 rounded-[2rem] border border-brand-yellow/30 shadow-premium relative overflow-hidden group flex flex-col h-full">
+                    <div class="absolute top-0 right-0 w-32 h-32 bg-brand-yellow/5 blur-3xl rounded-full group-hover:bg-brand-yellow/10 transition-colors"></div>
+                    
+                    <div class="flex items-center gap-4 mb-6 relative z-10">
+                        <div class="w-12 h-12 bg-brand-yellow/10 border border-brand-yellow/20 rounded-xl flex items-center justify-center shrink-0">
+                            <i data-lucide="scan-face" class="w-6 h-6 text-brand-yellow"></i>
+                        </div>
+                        <h3 class="text-lg font-bold text-gray-900 leading-tight">Controle de Acesso<br><span class="text-sm font-medium text-gray-500">(Corporativo/Condomínio)</span></h3>
+                    </div>
+                    
+                    <div class="bg-white/60 backdrop-blur-sm rounded-2xl p-5 border border-brand-yellow/10 shadow-inner mb-8 flex-1 relative z-10">
+                        <ul class="space-y-3">
+                            <li class="flex items-start gap-3 text-sm text-gray-700 font-medium">
+                                <i data-lucide="check-circle-2" class="w-4 h-4 text-brand-yellow shrink-0 mt-0.5"></i> Reconhecimento facial ultrarrápido
+                            </li>
+                            <li class="flex items-start gap-3 text-sm text-gray-700 font-medium">
+                                <i data-lucide="check-circle-2" class="w-4 h-4 text-brand-yellow shrink-0 mt-0.5"></i> Catracas e torniquetes premium
+                            </li>
+                            <li class="flex items-start gap-3 text-sm text-gray-700 font-medium">
+                                <i data-lucide="check-circle-2" class="w-4 h-4 text-brand-yellow shrink-0 mt-0.5"></i> Relatórios de auditoria em tempo real
+                            </li>
+                            <li class="flex items-start gap-3 text-sm text-gray-700 font-medium">
+                                <i data-lucide="check-circle-2" class="w-4 h-4 text-brand-yellow shrink-0 mt-0.5"></i> Bloqueio imediato de intrusos
+                            </li>
+                        </ul>
+                    </div>
+
+                    <a href="https://wa.me/551159950096?text=Ol%C3%A1%2C%20gostaria%20de%20saber%20mais%20sobre%20o%20Controle%20de%20Acesso%20Corporativo." target="_blank" class="mt-auto w-full inline-flex items-center justify-center gap-2 px-5 py-3 bg-brand-yellow hover:bg-brand-goldLight rounded-xl text-xs font-bold uppercase tracking-widest text-black transition-all relative z-10 shadow-glow">
+                        Saiba mais <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                    </a>
+                </div>
+
+                <!-- Serviço 4 -->
+                <div class="service-card bg-white p-8 rounded-[2rem] border border-gray-100 shadow-glass flex flex-col h-full">
+                    <div class="flex items-center gap-4 mb-6">
+                        <div class="w-12 h-12 bg-gray-50 rounded-xl flex items-center justify-center shrink-0">
+                            <i data-lucide="door-open" class="w-6 h-6 text-gray-700"></i>
+                        </div>
+                        <h3 class="text-lg font-bold text-gray-900 leading-tight">Fechaduras Digitais<br><span class="text-sm font-medium text-gray-500">(Instalação Premium)</span></h3>
+                    </div>
+                    
+                    <div class="bg-gray-50/50 rounded-2xl p-5 border border-gray-50 mb-8 flex-1">
+                        <ul class="space-y-3">
+                            <li class="flex items-start gap-3 text-sm text-gray-600 font-medium">
+                                <i data-lucide="check-circle-2" class="w-4 h-4 text-brand-yellow shrink-0 mt-0.5"></i> Design de alto padrão e acabamento limpo
+                            </li>
+                            <li class="flex items-start gap-3 text-sm text-gray-600 font-medium">
+                                <i data-lucide="check-circle-2" class="w-4 h-4 text-brand-yellow shrink-0 mt-0.5"></i> Acesso via biometria, senha ou tag
+                            </li>
+                            <li class="flex items-start gap-3 text-sm text-gray-600 font-medium">
+                                <i data-lucide="check-circle-2" class="w-4 h-4 text-brand-yellow shrink-0 mt-0.5"></i> Trancamento automático de segurança
+                            </li>
+                            <li class="flex items-start gap-3 text-sm text-gray-600 font-medium">
+                                <i data-lucide="check-circle-2" class="w-4 h-4 text-brand-yellow shrink-0 mt-0.5"></i> Integração com automação residencial
+                            </li>
+                        </ul>
+                    </div>
+
+                    <a href="https://wa.me/551159950096?text=Ol%C3%A1%2C%20gostaria%20de%20saber%20mais%20sobre%20a%20instala%C3%A7%C3%A3o%20de%20Fechaduras%20Digitais." target="_blank" class="mt-auto w-full inline-flex items-center justify-center gap-2 px-5 py-3 border-2 border-gray-100 rounded-xl text-xs font-bold uppercase tracking-widest text-gray-700 hover:border-brand-yellow hover:text-brand-goldDark hover:bg-brand-yellow/5 transition-all">
+                        Saiba mais <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                    </a>
+                </div>
+
+                <!-- Serviço 5 -->
+                <div class="service-card bg-white p-8 rounded-[2rem] border border-gray-100 shadow-glass flex flex-col h-full">
+                    <div class="flex items-center gap-4 mb-6">
+                        <div class="w-12 h-12 bg-red-50 rounded-xl flex items-center justify-center shrink-0">
+                            <i data-lucide="siren" class="w-6 h-6 text-red-500"></i>
+                        </div>
+                        <h3 class="text-lg font-bold text-gray-900 leading-tight">Sistemas de Alarme<br><span class="text-sm font-medium text-gray-500">(Segurança Perimetral)</span></h3>
+                    </div>
+                    
+                    <div class="bg-gray-50/50 rounded-2xl p-5 border border-gray-50 mb-8 flex-1">
+                        <ul class="space-y-3">
+                            <li class="flex items-start gap-3 text-sm text-gray-600 font-medium">
+                                <i data-lucide="check-circle-2" class="w-4 h-4 text-brand-yellow shrink-0 mt-0.5"></i> Barreiras invisíveis de alta precisão
+                            </li>
+                            <li class="flex items-start gap-3 text-sm text-gray-600 font-medium">
+                                <i data-lucide="check-circle-2" class="w-4 h-4 text-brand-yellow shrink-0 mt-0.5"></i> Sensores de movimento estratégicos
+                            </li>
+                            <li class="flex items-start gap-3 text-sm text-gray-600 font-medium">
+                                <i data-lucide="check-circle-2" class="w-4 h-4 text-brand-yellow shrink-0 mt-0.5"></i> Acionamento instantâneo via aplicativo
+                            </li>
+                            <li class="flex items-start gap-3 text-sm text-gray-600 font-medium">
+                                <i data-lucide="check-circle-2" class="w-4 h-4 text-brand-yellow shrink-0 mt-0.5"></i> Integração direta com as câmeras
+                            </li>
+                        </ul>
+                    </div>
+
+                    <a href="https://wa.me/551159950096?text=Ol%C3%A1%2C%20gostaria%20de%20saber%20mais%20sobre%20Sistemas%20de%20Alarme%20e%20Seguran%C3%A7a%20Perimetral." target="_blank" class="mt-auto w-full inline-flex items-center justify-center gap-2 px-5 py-3 border-2 border-gray-100 rounded-xl text-xs font-bold uppercase tracking-widest text-gray-700 hover:border-brand-yellow hover:text-brand-goldDark hover:bg-brand-yellow/5 transition-all">
+                        Saiba mais <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                    </a>
+                </div>
+
+                <!-- Serviço 6 -->
+                <div class="service-card bg-white p-8 rounded-[2rem] border border-gray-100 shadow-glass flex flex-col h-full">
+                    <div class="flex items-center gap-4 mb-6">
+                        <div class="w-12 h-12 bg-emerald-50 rounded-xl flex items-center justify-center shrink-0">
+                            <i data-lucide="factory" class="w-6 h-6 text-emerald-500"></i>
+                        </div>
+                        <h3 class="text-lg font-bold text-gray-900 leading-tight">Automação de Portões<br><span class="text-sm font-medium text-gray-500">(Controle Veicular)</span></h3>
+                    </div>
+                    
+                    <div class="bg-gray-50/50 rounded-2xl p-5 border border-gray-50 mb-8 flex-1">
+                        <ul class="space-y-3">
+                            <li class="flex items-start gap-3 text-sm text-gray-600 font-medium">
+                                <i data-lucide="check-circle-2" class="w-4 h-4 text-brand-yellow shrink-0 mt-0.5"></i> Motores industriais de alta velocidade
+                            </li>
+                            <li class="flex items-start gap-3 text-sm text-gray-600 font-medium">
+                                <i data-lucide="check-circle-2" class="w-4 h-4 text-brand-yellow shrink-0 mt-0.5"></i> Fluxo veicular pesado sem interrupções
+                            </li>
+                            <li class="flex items-start gap-3 text-sm text-gray-600 font-medium">
+                                <i data-lucide="check-circle-2" class="w-4 h-4 text-brand-yellow shrink-0 mt-0.5"></i> Abertura via tag veicular (sem parar)
+                            </li>
+                            <li class="flex items-start gap-3 text-sm text-gray-600 font-medium">
+                                <i data-lucide="check-circle-2" class="w-4 h-4 text-brand-yellow shrink-0 mt-0.5"></i> Manutenção preventiva inclusa
+                            </li>
+                        </ul>
+                    </div>
+
+                    <a href="https://wa.me/551159950096?text=Ol%C3%A1%2C%20gostaria%20de%20saber%20mais%20sobre%20a%20Automa%C3%A7%C3%A3o%20de%20Port%C3%B5es%20e%20Acessos." target="_blank" class="mt-auto w-full inline-flex items-center justify-center gap-2 px-5 py-3 border-2 border-gray-100 rounded-xl text-xs font-bold uppercase tracking-widest text-gray-700 hover:border-brand-yellow hover:text-brand-goldDark hover:bg-brand-yellow/5 transition-all">
+                        Saiba mais <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===================== PILAR 2: T.I. E INFRAESTRUTURA ===================== -->
+    <section id="infra" class="py-24 bg-[#f8f9fa] border-y border-gray-200/60 relative overflow-hidden">
+        <div class="absolute right-0 bottom-0 w-[500px] h-[500px] bg-brand-yellow/5 rounded-full blur-[100px] pointer-events-none"></div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <!-- Imagem Principal + Selo Flutuante à Esquerda -->
+            <div class="flex flex-col-reverse lg:flex-row items-center gap-12 mb-20">
+                <div class="w-full lg:w-1/2 text-center lg:text-left">
+                    <span class="text-brand-yellow font-bold uppercase tracking-widest text-xs mb-4 block">Alta Disponibilidade</span>
+                    <h2 class="text-4xl md:text-5xl font-bold text-gray-900 mb-6 leading-tight">Soluções em <br><span class="text-brand-yellow">T.I. e Infra</span></h2>
+                    <p class="text-gray-500 text-lg leading-relaxed font-medium">
+                        A espinha dorsal da sua operação. Desenhamos e gerimos a infraestrutura para garantir que seu negócio opere em velocidade máxima. Sem quedas, sem improvisos.
+                    </p>
+                </div>
+                <div class="w-full lg:w-1/2">
+                    <div class="relative w-full flex justify-center group cursor-default">
+                        <div class="relative inline-block group-hover:scale-105 transition-transform duration-700">
+                            <!-- Selo Flutuante Deslocado para a Esquerda -->
+                            <div class="absolute top-[40%] -left-4 md:-left-8 lg:-left-12 z-20 animate-float-badge pointer-events-none">
+                                <div class="bg-white/90 backdrop-blur-md border border-white/60 shadow-[0_8px_30px_rgb(0,0,0,0.15)] rounded-2xl p-3 pr-6 flex items-center gap-3 w-max">
+                                    <div class="w-10 h-10 bg-brand-yellow/10 rounded-full flex items-center justify-center shrink-0">
+                                        <i data-lucide="activity" class="w-5 h-5 text-brand-goldDark"></i>
+                                    </div>
+                                    <div class="flex flex-col text-left">
+                                        <span class="text-[9px] font-bold text-gray-500 tracking-wider uppercase mb-0.5">Performance Máxima</span>
+                                        <span class="text-sm font-black text-gray-800 leading-none">Gestão Proativa</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Foto dos Equipamentos TI -->
+                            <img src="https://res.cloudinary.com/dptcuckhf/image/upload/v1772393339/ImageToStl.com_Vision_Tecnologia._-_Computadores_TI_upavqe.avif" alt="Equipamentos de T.I. Vision" class="w-full max-w-lg h-auto object-contain drop-shadow-[0_20px_40px_rgba(0,0,0,0.15)]">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Grid de Serviços Premium com Lista -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <!-- Infra 1 -->
+                <div class="service-card bg-white p-8 rounded-[2rem] border border-gray-100 shadow-glass flex flex-col h-full">
+                    <div class="flex items-center gap-4 mb-6">
+                        <div class="w-12 h-12 bg-gray-50 rounded-xl flex items-center justify-center shrink-0">
+                            <i data-lucide="network" class="w-6 h-6 text-gray-700"></i>
+                        </div>
+                        <h4 class="text-lg font-bold text-gray-900 leading-tight">Redes e Cabeamento<br><span class="text-sm font-medium text-gray-500">(Infraestrutura Física)</span></h4>
+                    </div>
+                    
+                    <div class="bg-gray-50/50 rounded-2xl p-5 border border-gray-50 mb-8 flex-1">
+                        <ul class="space-y-3">
+                            <li class="flex items-start gap-3 text-sm text-gray-600 font-medium">
+                                <i data-lucide="check-circle-2" class="w-4 h-4 text-brand-yellow shrink-0 mt-0.5"></i> Organização e estética impecável de Racks
+                            </li>
+                            <li class="flex items-start gap-3 text-sm text-gray-600 font-medium">
+                                <i data-lucide="check-circle-2" class="w-4 h-4 text-brand-yellow shrink-0 mt-0.5"></i> Mapeamento e certificação de pontos
+                            </li>
+                            <li class="flex items-start gap-3 text-sm text-gray-600 font-medium">
+                                <i data-lucide="check-circle-2" class="w-4 h-4 text-brand-yellow shrink-0 mt-0.5"></i> Conectividade Wi-Fi de alta performance
+                            </li>
+                            <li class="flex items-start gap-3 text-sm text-gray-600 font-medium">
+                                <i data-lucide="check-circle-2" class="w-4 h-4 text-brand-yellow shrink-0 mt-0.5"></i> O fim definitivo dos gargalos e lentidão de rede
+                            </li>
+                        </ul>
+                    </div>
+
+                    <a href="https://wa.me/551159950096?text=Ol%C3%A1%2C%20gostaria%20de%20saber%20mais%20sobre%20Cabeamento%20Estruturado%20e%20Redes." target="_blank" class="mt-auto w-full inline-flex items-center justify-center gap-2 px-5 py-3 border-2 border-gray-100 rounded-xl text-xs font-bold uppercase tracking-widest text-gray-700 hover:border-brand-yellow hover:text-brand-goldDark hover:bg-brand-yellow/5 transition-all">
+                        Saiba mais <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                    </a>
+                </div>
+
+                <!-- Infra 2 -->
+                <div class="service-card bg-white p-8 rounded-[2rem] border border-brand-yellow/30 shadow-premium relative overflow-hidden flex flex-col h-full group">
+                    <div class="absolute top-0 right-0 px-4 py-1.5 bg-brand-yellow/10 text-brand-goldDark text-[10px] font-bold uppercase rounded-bl-2xl z-20">Mais Buscado</div>
+                    <div class="absolute top-0 right-0 w-32 h-32 bg-brand-yellow/5 blur-3xl rounded-full group-hover:bg-brand-yellow/10 transition-colors"></div>
+
+                    <div class="flex items-center gap-4 mb-6 relative z-10">
+                        <div class="w-12 h-12 bg-brand-yellow/10 rounded-xl flex items-center justify-center shrink-0 border border-brand-yellow/20">
+                            <i data-lucide="activity" class="w-6 h-6 text-brand-yellow"></i>
+                        </div>
+                        <h4 class="text-lg font-bold text-gray-900 leading-tight">Suporte de T.I. Gerenciada<br><span class="text-sm font-medium text-gray-500">(Modelo MSP)</span></h4>
+                    </div>
+                    
+                    <div class="bg-white/60 backdrop-blur-sm rounded-2xl p-5 border border-brand-yellow/10 shadow-inner mb-8 flex-1 relative z-10">
+                        <ul class="space-y-3">
+                            <li class="flex items-start gap-3 text-sm text-gray-700 font-medium">
+                                <i data-lucide="check-circle-2" class="w-4 h-4 text-brand-yellow shrink-0 mt-0.5"></i> Suporte técnico ágil e ilimitado
+                            </li>
+                            <li class="flex items-start gap-3 text-sm text-gray-700 font-medium">
+                                <i data-lucide="check-circle-2" class="w-4 h-4 text-brand-yellow shrink-0 mt-0.5"></i> Monitoramento preventivo silencioso 24/7
+                            </li>
+                            <li class="flex items-start gap-3 text-sm text-gray-700 font-medium">
+                                <i data-lucide="check-circle-2" class="w-4 h-4 text-brand-yellow shrink-0 mt-0.5"></i> Previsibilidade financeira (mensalidade fixa)
+                            </li>
+                            <li class="flex items-start gap-3 text-sm text-gray-700 font-medium">
+                                <i data-lucide="check-circle-2" class="w-4 h-4 text-brand-yellow shrink-0 mt-0.5"></i> Gestão completa de computadores e servidores
+                            </li>
+                        </ul>
+                    </div>
+
+                    <a href="https://wa.me/551159950096?text=Ol%C3%A1%2C%20gostaria%20de%20saber%20mais%20sobre%20os%20servi%C3%A7os%20de%20T.I.%20Gerenciada%20%28MSP%29." target="_blank" class="mt-auto w-full inline-flex items-center justify-center gap-2 px-5 py-3 bg-brand-yellow hover:bg-brand-goldLight rounded-xl text-xs font-bold uppercase tracking-widest text-black transition-all relative z-10 shadow-glow">
+                        Saiba mais <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                    </a>
+                </div>
+
+                <!-- Infra 3 -->
+                <div class="service-card bg-white p-8 rounded-[2rem] border border-gray-100 shadow-glass flex flex-col h-full">
+                    <div class="flex items-center gap-4 mb-6">
+                        <div class="w-12 h-12 bg-red-50 rounded-xl flex items-center justify-center shrink-0">
+                            <i data-lucide="shield-check" class="w-6 h-6 text-red-500"></i>
+                        </div>
+                        <h4 class="text-lg font-bold text-gray-900 leading-tight">Segurança da Informação<br><span class="text-sm font-medium text-gray-500">(Antivírus e Políticas)</span></h4>
+                    </div>
+                    
+                    <div class="bg-gray-50/50 rounded-2xl p-5 border border-gray-50 mb-8 flex-1">
+                        <ul class="space-y-3">
+                            <li class="flex items-start gap-3 text-sm text-gray-600 font-medium">
+                                <i data-lucide="check-circle-2" class="w-4 h-4 text-brand-yellow shrink-0 mt-0.5"></i> Implementação de Antivírus Corporativo (EDR)
+                            </li>
+                            <li class="flex items-start gap-3 text-sm text-gray-600 font-medium">
+                                <i data-lucide="check-circle-2" class="w-4 h-4 text-brand-yellow shrink-0 mt-0.5"></i> Políticas rigorosas contra Ransomware
+                            </li>
+                            <li class="flex items-start gap-3 text-sm text-gray-600 font-medium">
+                                <i data-lucide="check-circle-2" class="w-4 h-4 text-brand-yellow shrink-0 mt-0.5"></i> Adequação de processos à LGPD
+                            </li>
+                            <li class="flex items-start gap-3 text-sm text-gray-600 font-medium">
+                                <i data-lucide="check-circle-2" class="w-4 h-4 text-brand-yellow shrink-0 mt-0.5"></i> Bloqueio inteligente de sites e acessos indevidos
+                            </li>
+                        </ul>
+                    </div>
+
+                    <a href="https://wa.me/551159950096?text=Ol%C3%A1%2C%20gostaria%20de%20saber%20mais%20sobre%20Consultoria%20e%20Seguran%C3%A7a%20Digital." target="_blank" class="mt-auto w-full inline-flex items-center justify-center gap-2 px-5 py-3 border-2 border-gray-100 rounded-xl text-xs font-bold uppercase tracking-widest text-gray-700 hover:border-brand-yellow hover:text-brand-goldDark hover:bg-brand-yellow/5 transition-all">
+                        Saiba mais <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                    </a>
+                </div>
+
+                <!-- Infra 4 -->
+                <div class="service-card bg-white p-8 rounded-[2rem] border border-gray-100 shadow-glass flex flex-col h-full">
+                    <div class="flex items-center gap-4 mb-6">
+                        <div class="w-12 h-12 bg-indigo-50 rounded-xl flex items-center justify-center shrink-0">
+                            <i data-lucide="database-backup" class="w-6 h-6 text-indigo-500"></i>
+                        </div>
+                        <h4 class="text-lg font-bold text-gray-900 leading-tight">Backup e Cloud<br><span class="text-sm font-medium text-gray-500">(Recuperação de Dados)</span></h4>
+                    </div>
+                    
+                    <div class="bg-gray-50/50 rounded-2xl p-5 border border-gray-50 mb-8 flex-1">
+                        <ul class="space-y-3">
+                            <li class="flex items-start gap-3 text-sm text-gray-600 font-medium">
+                                <i data-lucide="check-circle-2" class="w-4 h-4 text-brand-yellow shrink-0 mt-0.5"></i> Rotinas de backup 100% automatizadas
+                            </li>
+                            <li class="flex items-start gap-3 text-sm text-gray-600 font-medium">
+                                <i data-lucide="check-circle-2" class="w-4 h-4 text-brand-yellow shrink-0 mt-0.5"></i> Armazenamento ultrasseguro em nuvem
+                            </li>
+                            <li class="flex items-start gap-3 text-sm text-gray-600 font-medium">
+                                <i data-lucide="check-circle-2" class="w-4 h-4 text-brand-yellow shrink-0 mt-0.5"></i> Testes de restauração periódicos pela nossa equipe
+                            </li>
+                            <li class="flex items-start gap-3 text-sm text-gray-600 font-medium">
+                                <i data-lucide="check-circle-2" class="w-4 h-4 text-brand-yellow shrink-0 mt-0.5"></i> Retorno operacional em minutos após falhas
+                            </li>
+                        </ul>
+                    </div>
+
+                    <a href="https://wa.me/551159950096?text=Ol%C3%A1%2C%20gostaria%20de%20saber%20mais%20sobre%20Backup%20e%20Recupera%C3%A7%C3%A3o%20de%20Desastres." target="_blank" class="mt-auto w-full inline-flex items-center justify-center gap-2 px-5 py-3 border-2 border-gray-100 rounded-xl text-xs font-bold uppercase tracking-widest text-gray-700 hover:border-brand-yellow hover:text-brand-goldDark hover:bg-brand-yellow/5 transition-all">
+                        Saiba mais <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                    </a>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- ===================== PILAR 3: GRANDES PROJETOS (HaaS) ===================== -->
+    <section id="locacao" class="py-24 lg:py-32 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            
+            <div class="relative rounded-[2.5rem] overflow-hidden bg-zinc-900 shadow-premium">
+                <!-- BG Pattern -->
+                <div class="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&q=80')] opacity-5 mix-blend-luminosity bg-cover bg-center"></div>
+                <div class="absolute top-0 right-0 w-[500px] h-[500px] bg-brand-yellow/10 rounded-full blur-[100px] pointer-events-none"></div>
+                
+                <div class="relative z-10 p-10 md:p-16 flex flex-col lg:flex-row items-center justify-between gap-12">
+                    
+                    <div class="w-full lg:w-3/5">
+                        <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/5 border border-white/10 text-gray-300 text-[10px] font-bold uppercase tracking-widest mb-6">
+                            <i data-lucide="server" class="w-4 h-4 text-brand-yellow"></i>
+                            Soluções HaaS • Zero Imobilização
+                        </div>
+                        <h2 class="text-4xl md:text-5xl font-bold text-white mb-6 leading-tight">
+                            Locação de <span class="text-brand-yellow">Grandes Projetos.</span> <br/>
+                            Hardware as a Service.
+                        </h2>
+                        <p class="text-gray-300 text-lg leading-relaxed mb-8 font-light">
+                            O modelo ideal para operações de alta complexidade. Nós projetamos, implementamos e mantemos todo o parque tecnológico — câmeras, servidores, rede e acessos — como um serviço contínuo.
+                        </p>
+                        <ul class="space-y-4 mb-8">
+                            <li class="flex items-center gap-3 text-sm text-gray-300 font-medium">
+                                <i data-lucide="check-circle-2" class="w-5 h-5 text-brand-yellow"></i> Você não compra equipamentos que ficarão obsoletos.
+                            </li>
+                            <li class="flex items-center gap-3 text-sm text-gray-300 font-medium">
+                                <i data-lucide="check-circle-2" class="w-5 h-5 text-brand-yellow"></i> Você investe em disponibilidade garantida e SLA rigoroso.
+                            </li>
+                            <li class="flex items-center gap-3 text-sm text-gray-300 font-medium">
+                                <i data-lucide="check-circle-2" class="w-5 h-5 text-brand-yellow"></i> Solução 100% nossa: da planta à manutenção perpétua.
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="w-full lg:w-2/5 flex justify-center lg:justify-end">
+                        <div class="bg-white/5 backdrop-blur-xl border border-white/10 p-8 rounded-3xl text-center w-full max-w-sm relative shadow-2xl">
+                            <i data-lucide="building-2" class="w-12 h-12 text-brand-yellow mx-auto mb-4"></i>
+                            <h4 class="text-xl font-bold text-white mb-2">Monte seu Projeto</h4>
+                            <p class="text-gray-400 text-sm mb-8 leading-relaxed">Ideal para novos condomínios de luxo e galpões logísticos corporativos.</p>
+                            <a href="https://wa.me/551159950096?text=Ol%C3%A1%2C%20tenho%20interesse%20na%20solu%C3%A7%C3%A3o%20de%20Projetos%20e%20Loca%C3%A7%C3%A3o%20%28HaaS%29%20da%20Vision." target="_blank" class="inline-flex items-center justify-center gap-2 w-full bg-brand-yellow text-black font-bold py-4 rounded-xl text-xs uppercase tracking-widest hover:bg-brand-goldLight transition-colors shadow-glow">
+                                <i class="fa-brands fa-whatsapp text-base"></i> Agendar Reunião
+                            </a>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===================== ONDE ATUAMOS ===================== -->
+    <section class="py-24 bg-[#f8f9fa] border-y border-gray-200/60 relative overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 flex flex-col-reverse md:flex-row items-center gap-12">
+            <!-- Esquerda: Texto -->
+            <div class="w-full md:w-1/2 text-center md:text-left">
+                <span class="text-brand-yellow font-bold uppercase tracking-widest text-xs mb-4 block">Presença Estratégica</span>
+                <h2 class="text-3xl md:text-5xl font-bold text-gray-900 mb-6 leading-tight">Onde atuamos</h2>
+                <p class="text-gray-500 text-lg leading-relaxed font-medium mb-6 max-w-xl mx-auto md:mx-0">
+                    Com <strong class="text-gray-900">11 anos de experiência</strong> de mercado, a Vision Tecnologia construiu uma infraestrutura logística ágil para atender com excelência as regiões mais exigentes.
+                </p>
+                
+                <!-- Cards SEO de Localização -->
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 w-full">
+                    <!-- Card SP Capital -->
+                    <div class="bg-white border border-gray-100 p-5 rounded-2xl shadow-sm text-left hover:border-brand-yellow/30 hover:shadow-md transition-all group">
+                        <div class="flex items-center gap-3 mb-3">
+                            <div class="w-10 h-10 bg-brand-yellow/10 rounded-xl flex items-center justify-center shrink-0">
+                                <i data-lucide="map-pin" class="w-5 h-5 text-brand-goldDark"></i>
+                            </div>
+                            <h3 class="font-bold text-gray-900 text-lg">São Paulo & Alphaville</h3>
+                        </div>
+                        <p class="text-[13px] text-gray-500 leading-relaxed font-medium">
+                            Atendimento premium nos principais polos: <strong class="text-gray-700">Itaim Bibi, Vila Olímpia, Faria Lima, Brooklin, Jardins, Moema, Morumbi, Pinheiros e Alphaville</strong>.
+                        </p>
+                    </div>
+
+                    <!-- Card ABC Paulista -->
+                    <div class="bg-white border border-gray-100 p-5 rounded-2xl shadow-sm text-left hover:border-brand-yellow/30 hover:shadow-md transition-all group">
+                        <div class="flex items-center gap-3 mb-3">
+                            <div class="w-10 h-10 bg-brand-yellow/10 rounded-xl flex items-center justify-center shrink-0">
+                                <i data-lucide="map" class="w-5 h-5 text-brand-goldDark"></i>
+                            </div>
+                            <h3 class="font-bold text-gray-900 text-lg">ABC Paulista</h3>
+                        </div>
+                        <p class="text-[13px] text-gray-500 leading-relaxed font-medium">
+                            Cobertura rápida e especializada para condomínios e empresas em <strong class="text-gray-700">São Bernardo do Campo, Santo André e São Caetano do Sul</strong>.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Direita: Mapa Flutuante do Estado de SP -->
+            <div class="w-full md:w-1/2 relative flex justify-center">
+                <div class="absolute inset-0 bg-brand-yellow/5 rounded-full blur-[100px] pointer-events-none"></div>
+                
+                <div class="relative w-full flex justify-center group cursor-default">
+                    <div class="relative inline-block group-hover:scale-105 transition-transform duration-700">
+                        
+                        <!-- Imagem oficial cartográfica SP Vision (Fora da caixa) -->
+                        <img src="https://res.cloudinary.com/dptcuckhf/image/upload/v1772373283/Mapa_S%C3%A3o_Paulo_-_Vision_wkesry.avif" alt="Mapa São Paulo" class="w-full max-w-lg h-auto object-contain drop-shadow-[0_20px_40px_rgba(0,0,0,0.1)]">
+                        
+                        <!-- SP Pin Dinâmico -->
+                        <div class="absolute top-[45%] left-[55%] flex flex-col items-center">
+                            <div class="w-4 h-4 bg-brand-yellow rounded-full shadow-[0_0_20px_#b9880e] animate-pulse relative z-20 border-2 border-white"></div>
+                            <span class="mt-3 bg-white/90 backdrop-blur-sm px-4 py-1.5 rounded-xl text-xs font-bold shadow-md text-gray-900 border border-brand-yellow/30 relative z-20">São Paulo & ABC</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===================== CONTATO / CTA ===================== -->
+    <section id="contato" class="py-24 bg-white border-t border-gray-200/60 relative">
+        <div class="max-w-2xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="text-center mb-12">
+                <span class="text-brand-yellow font-bold uppercase tracking-widest text-xs mb-4 block">Próximos Passos</span>
+                <h2 class="text-4xl md:text-5xl font-bold text-gray-900 mb-6">Eleve o padrão da sua <span class="text-brand-yellow">tecnologia.</span></h2>
+                <p class="text-gray-500 text-lg font-medium leading-relaxed">
+                    Chega de improvisos. Agende uma consultoria e descubra como a Vision estrutura o seu patrimônio.
+                </p>
+            </div>
+
+            <!-- Formulário de Contato Centralizado com Dropdown -->
+            <form id="contact-form" class="space-y-5 bg-[#f8f9fa] p-8 md:p-12 rounded-[2rem] border border-gray-100 shadow-premium relative">
+                
+                <!-- Configurações do FormSubmit Original Removidas (agora via Fetch/Static Forms no JS) -->
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+                    <div>
+                        <label class="block text-xs font-bold text-gray-700 uppercase tracking-widest mb-2">Nome Completo</label>
+                        <input type="text" name="name" required class="w-full bg-white border border-gray-200 px-4 py-3 rounded-xl focus:outline-none focus:border-brand-yellow focus:ring-1 focus:ring-brand-yellow transition-all" placeholder="Seu nome">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-bold text-gray-700 uppercase tracking-widest mb-2 flex justify-between">
+                            <span>Tel / WhatsApp</span>
+                            <span class="text-[10px] text-gray-400 normal-case tracking-normal font-normal">*Opcional</span>
+                        </label>
+                        <input type="text" name="phone" class="w-full bg-white border border-gray-200 px-4 py-3 rounded-xl focus:outline-none focus:border-brand-yellow focus:ring-1 focus:ring-brand-yellow transition-all" placeholder="(DD) 00000-0000">
+                    </div>
+                    <div class="md:col-span-2">
+                        <label class="block text-xs font-bold text-gray-700 uppercase tracking-widest mb-2">E-mail Corporativo ou Pessoal</label>
+                        <input type="email" name="email" required class="w-full bg-white border border-gray-200 px-4 py-3 rounded-xl focus:outline-none focus:border-brand-yellow focus:ring-1 focus:ring-brand-yellow transition-all" placeholder="seu@email.com.br">
+                    </div>
+                    <div class="md:col-span-2">
+                        <label class="block text-xs font-bold text-gray-700 uppercase tracking-widest mb-2">Qual serviço você precisa?</label>
+                        <div class="relative">
+                            <select name="subject" required class="w-full bg-white border border-gray-200 px-4 py-3 rounded-xl focus:outline-none focus:border-brand-yellow focus:ring-1 focus:ring-brand-yellow transition-all appearance-none text-gray-600 font-medium cursor-pointer">
+                                <option value="" disabled selected>Escolha uma opção...</option>
+                                <option value="Projetos de Segurança (Câmeras, Acesso, Alarme)">Projetos de Segurança (Câmeras, Acesso, Alarme)</option>
+                                <option value="Instalação de Fechaduras Digitais">Instalação de Fechaduras Digitais</option>
+                                <option value="Soluções em T.I. e Redes">Soluções em T.I. e Redes</option>
+                                <option value="Locação para Grandes Projetos (HaaS)">Locação para Grandes Projetos (HaaS)</option>
+                                <option value="Outros Assuntos">Outros assuntos</option>
+                            </select>
+                            <div class="absolute inset-y-0 right-4 flex items-center pointer-events-none">
+                                <i data-lucide="chevron-down" class="w-4 h-4 text-gray-400"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="pt-4 flex flex-col items-center gap-4">
+                    <button type="submit" class="w-full inline-flex items-center justify-center gap-2 bg-zinc-900 hover:bg-brand-yellow hover:text-black text-white px-8 py-4 rounded-xl text-sm font-bold uppercase tracking-widest transition-all shadow-md">
+                        Solicitar Consultoria <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                    </button>
+                    <span class="text-sm font-medium text-gray-400">ou chame direto no <a href="https://wa.me/551159950096?text=Ol%C3%A1%2C%20gostaria%20de%20falar%20com%20um%20especialista%20da%20Vision%20Tecnologia." target="_blank" class="text-[#25D366] hover:underline font-bold"><i class="fa-brands fa-whatsapp"></i> WhatsApp</a></span>
+                </div>
+            </form>
+        </div>
+    </section>
+
+    <!-- ===================== FOOTER CENTRALIZADO COM DADOS OFICIAIS ===================== -->
+    <footer class="bg-[#09090b] pt-20 pb-16 text-center border-t border-zinc-900 group">
+        <div class="max-w-6xl mx-auto px-4">
+            
+            <div class="flex flex-col items-center justify-center leading-none opacity-40 group-hover:opacity-100 transition-opacity duration-500 cursor-default mb-10">
+                <div class="flex flex-col items-center">
+                    <div class="relative flex items-baseline leading-none">
+                        <span class="font-logo font-bold text-[3.5rem] text-white lowercase tracking-[-0.05em] leading-none">vısıon</span>
+                        <span class="absolute -right-3.5 top-2.5 text-[0.75rem] text-brand-yellow font-bold">®</span>
+                    </div>
+                    <span class="font-tech text-[0.75rem] font-bold text-zinc-500 lowercase -mt-3 ml-1.5 text-center w-full" style="letter-spacing: 0.53em;">tecnologia</span>
+                </div>
+            </div>
+
+            <!-- Links -->
+            <div class="flex flex-wrap justify-center gap-6 text-[10px] sm:text-xs text-zinc-500 font-bold uppercase tracking-widest mb-12">
+                <a href="#inicio" class="hover:text-brand-yellow transition-colors">Início</a>
+                <a href="#quem-somos" class="hover:text-brand-yellow transition-colors">Quem Somos</a>
+                <a href="#seguranca" class="hover:text-brand-yellow transition-colors">Segurança</a>
+                <a href="#infra" class="hover:text-brand-yellow transition-colors">T.I.</a>
+                <a href="#locacao" class="hover:text-brand-yellow transition-colors">Projetos</a>
+            </div>
+
+            <!-- Dados Legais e Contato Integrados -->
+            <div class="flex flex-col items-center justify-center gap-4 text-zinc-500 text-xs md:text-sm mb-12 text-center font-medium">
+                <span class="flex items-center justify-center gap-2"><i data-lucide="map-pin" class="w-4 h-4 text-brand-yellow"></i> Av. Paulista, 1636 CJ 4 - PAV. 15, Sala 1504 - Bela Vista, São Paulo - SP, 01310-200</span>
+                <span class="flex items-center justify-center gap-2"><i data-lucide="mail" class="w-4 h-4 text-brand-yellow"></i> contato@visionsp.com.br</span>
+                <span class="flex items-center justify-center gap-2"><i data-lucide="building-2" class="w-4 h-4 text-brand-yellow"></i> CNPJ: 62.117.013/0001-00</span>
+            </div>
+
+            <div class="w-full h-px bg-zinc-900 mb-8 max-w-lg mx-auto"></div>
+
+            <p class="text-[10px] text-zinc-700 uppercase tracking-widest font-bold">
+                &copy; 2026 Vision Tecnologia. Todos os direitos reservados. | Assessoria e Projetos de Tecnologia Premium.
+            </p>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script>
+        lucide.createIcons();
+
+        // Lógica do Navbar e Botão Flutuante do WhatsApp no Scroll
+        window.addEventListener('scroll', () => {
+            const navbar = document.getElementById('navbar');
+            const floatingWa = document.getElementById('floating-wa');
+            
+            // Sombra no Navbar
+            if (window.scrollY > 20) {
+                navbar.classList.add('shadow-md');
+                navbar.classList.remove('shadow-sm');
+            } else {
+                navbar.classList.add('shadow-sm');
+                navbar.classList.remove('shadow-md');
+            }
+
+            // Exibir WhatsApp Flutuante apenas após passar do Hero (aprox 600px)
+            if (window.scrollY > 600) {
+                floatingWa.classList.remove('opacity-0', 'translate-y-10', 'pointer-events-none');
+            } else {
+                floatingWa.classList.add('opacity-0', 'translate-y-10', 'pointer-events-none');
+            }
+        });
+
+        // Lógica do Menu Mobile (Sanduíche)
+        const btnMenu = document.getElementById('mobile-menu-btn');
+        const menu = document.getElementById('mobile-menu');
+        const mobileLinks = document.querySelectorAll('.mobile-link');
+
+        btnMenu.addEventListener('click', () => {
+            menu.classList.toggle('hidden');
+        });
+
+        // Fecha o menu mobile ao clicar em um link
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                menu.classList.add('hidden');
+            });
+        });
+
+        // Formulário Static Forms
+        const contactForm = document.getElementById('contact-form');
+        if(contactForm) {
+            contactForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                const btn = this.querySelector('button[type="submit"]');
+                const originalText = btn.innerHTML;
+                btn.innerHTML = 'Enviando... <i data-lucide="loader-2" class="w-4 h-4 animate-spin"></i>';
+                lucide.createIcons();
+
+                const name = this.querySelector('input[name="name"]').value;
+                const email = this.querySelector('input[name="email"]').value;
+                const phone = this.querySelector('input[name="phone"]').value || 'Não informado';
+                const subject = this.querySelector('select[name="subject"]').value;
+
+                fetch('https://api.staticforms.dev/submit', {
+                    method: 'POST',
+                    headers: { 
+                        'Content-Type': 'application/json',
+                        'Accept': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        accessKey: "sf_077ej49gjha153gk3m6ceecf", 
+                        subject: "Novo Alerta / Contato do Site - " + subject,
+                        name: name,
+                        email: "diretoria@visionsp.com.br", // Destino principal exigido no prompt
+                        replyTo: email,
+                        message: `NOVO CONTATO RECEBIDO\n\nNome: ${name}\nE-mail do Cliente: ${email}\nTelefone: ${phone}\nServiço de interesse: ${subject}`
+                    })
+                })
+                .then(response => response.json())
+                .then(data => {
+                    btn.innerHTML = 'Enviado com sucesso! <i data-lucide="check" class="w-4 h-4"></i>';
+                    lucide.createIcons();
+                    setTimeout(() => {
+                        contactForm.reset();
+                        btn.innerHTML = originalText;
+                        lucide.createIcons();
+                    }, 4000);
+                })
+                .catch(error => {
+                    console.error('Erro ao enviar:', error);
+                    btn.innerHTML = 'Erro ao enviar <i data-lucide="x" class="w-4 h-4"></i>';
+                    lucide.createIcons();
+                    setTimeout(() => {
+                        btn.innerHTML = originalText;
+                        lucide.createIcons();
+                    }, 4000);
+                });
+            });
+        }
+    </script>
+</body>
+</html>
