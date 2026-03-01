@@ -3,10 +3,26 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Vision Tecnologia | Segurança e T.I. de Alto Padrão em São Paulo</title>
+    <title>Vision® Tecnologia | Segurança e T.I. de Alto Padrão em São Paulo</title>
     <meta name="description" content="Soluções premium em Segurança e T.I. para condomínios, empresas e residências em São Paulo. Projetos sob medida, execução impecável e 12 meses de garantia.">
+    
+    <!-- Favicon Premium -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><rect width=%22100%22 height=%22100%22 rx=%2220%22 fill=%22%2309090b%22/><path d=%22M25 30 L50 75 L75 30%22 fill=%22none%22 stroke=%22%23b9880e%22 stroke-width=%2212%22 stroke-linecap=%22round%22 stroke-linejoin=%22round%22/></svg>">
 
-    <!-- Google Analytics 4 -->
+    <!-- Preconnect & DNS Prefetch para máxima velocidade (GTMetrix) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="dns-prefetch" href="https://res.cloudinary.com">
+    
+    <!-- Carregamento Otimizado de Fontes (Eliminate Render-Blocking) -->
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@700;800&family=Quicksand:wght@500;600;700&family=Outfit:wght@300;400;500;600;700;800&display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@700;800&family=Quicksand:wght@500;600;700&family=Outfit:wght@300;400;500;600;700;800&display=swap" media="print" onload="this.media='all'">
+    
+    <!-- Carregamento Assíncrono do FontAwesome -->
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"></noscript>
+
+    <!-- Google Analytics 4 (Assíncrono) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-KTGEL92B0F"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
@@ -15,8 +31,8 @@
       gtag('config', 'G-KTGEL92B0F');
     </script>
 
-    <!-- Microsoft Clarity -->
-    <script type="text/javascript">
+    <!-- Microsoft Clarity (Assíncrono) -->
+    <script type="text/javascript" async>
         (function(c,l,a,r,i,t,y){
             c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
             t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
@@ -24,18 +40,9 @@
         })(window, document, "clarity", "script", "vifq10es5o");
     </script>
 
-    <!-- Otimização GTMetrix: Preload de fontes e ícones -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@700;800&family=Quicksand:wght@500;600;700&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-    
-    <!-- Otimização GTMetrix: Carregamento assíncrono do FontAwesome -->
-    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-    <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"></noscript>
-    
-    <!-- Tailwind CSS (Acelerado) -->
+    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Otimização GTMetrix: Lucide Icons (Defer) -->
+    <!-- Lucide Icons (Defer para não bloquear a página) -->
     <script src="https://unpkg.com/lucide@latest" defer></script>
 
     <script>
@@ -118,7 +125,6 @@
         }
         .animate-float-badge { animation: float-badge 5s ease-in-out infinite; }
 
-        /* Reveal on scroll */
         .reveal {
             opacity: 0;
             transform: translateY(24px);
@@ -129,7 +135,6 @@
             transform: translateY(0);
         }
 
-        /* Stats counter shimmer */
         .stat-card {
             position: relative;
             overflow: hidden;
@@ -144,7 +149,6 @@
         }
         @keyframes stat-shimmer { to { background-position: 200% center; } }
 
-        /* Review card subtle border glow on hover */
         .review-card:hover {
             border-color: rgba(185,136,14,0.25);
             box-shadow: 0 8px 30px rgba(0,0,0,0.07);
@@ -164,7 +168,7 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between h-20 items-center">
 
-                <a href="#inicio" class="flex flex-col items-center justify-center group">
+                <a href="#inicio" class="flex flex-col items-center justify-center group" aria-label="Página Inicial">
                     <div class="relative flex items-baseline leading-none">
                         <span class="font-logo font-bold text-4xl text-gold-shine lowercase tracking-[-0.05em] leading-none">vısıon</span>
                         <span class="absolute -right-2.5 top-1 text-[0.6rem] text-brand-yellow font-bold">®</span>
@@ -277,7 +281,6 @@
     </section>
 
     <!-- ===================== CLIENTES / SOCIAL PROOF ===================== -->
-    <!-- Adicionado width e height nas imagens do carrossel para corrigir o erro CLS do GTMetrix -->
     <section class="py-10 bg-white border-y border-gray-100 overflow-hidden reveal">
         <div class="max-w-7xl mx-auto px-4 mb-6 text-center">
             <p class="text-[10px] font-bold uppercase tracking-widest text-gray-400">Condomínios e empresas que confiam na Vision</p>
@@ -287,27 +290,28 @@
             <div class="absolute inset-y-0 right-0 w-16 md:w-32 bg-gradient-to-l from-white to-transparent z-10 pointer-events-none"></div>
 
             <div class="slider-track flex items-center py-4 opacity-60 grayscale group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-700">
+                <!-- Imagens otimizadas com width/height corretos para fix do GTMetrix CLS -->
                 <div class="flex items-center gap-16 md:gap-24 pr-16 md:pr-24 shrink-0">
-                    <img src="https://res.cloudinary.com/dptcuckhf/image/upload/v1772304278/Xpbox-clientes-logos-200-padding-sicoob_gjcfly.webp" alt="Sicoob" width="200" height="80" class="max-h-24 md:max-h-28 w-auto object-contain" loading="lazy">
-                    <img src="https://res.cloudinary.com/dptcuckhf/image/upload/v1772305396/image_lbkjkn.webp" alt="Valor Investimentos" width="150" height="60" class="max-h-6 md:max-h-8 w-auto object-contain" loading="lazy">
-                    <img src="https://res.cloudinary.com/dptcuckhf/image/upload/v1772305237/FormelD_Logo-svg_edited_ihhm8j.png" alt="Formel D" width="200" height="80" class="max-h-24 md:max-h-28 w-auto object-contain" loading="lazy">
-                    <img src="https://res.cloudinary.com/dptcuckhf/image/upload/v1772304350/pertech_edited_edited_qtgrqc.png" alt="Pertech" width="200" height="80" class="max-h-20 md:max-h-24 w-auto object-contain" loading="lazy">
-                    <img src="https://res.cloudinary.com/dptcuckhf/image/upload/v1772364465/ImageToStl.com_Emblema_PC_1551453377220_s8zzrn.avif" alt="Polícia Civil SP" width="100" height="100" class="max-h-16 md:max-h-20 w-auto object-contain" loading="lazy">
-                    <img src="https://res.cloudinary.com/dptcuckhf/image/upload/v1772305484/level-group_jqrgeb.webp" alt="Level Group" width="200" height="80" class="max-h-12 md:max-h-16 w-auto object-contain brightness-0 opacity-70 group-hover:opacity-100 transition-all duration-700" loading="lazy">
-                    <img src="https://res.cloudinary.com/dptcuckhf/image/upload/v1772305340/Logo_Aldifer_otgf65.avif" alt="Aldifer" width="200" height="80" class="max-h-16 md:max-h-20 w-auto object-contain" loading="lazy">
-                    <img src="https://res.cloudinary.com/dptcuckhf/image/upload/v1772304631/Horizontal-Cores-Group_osa37z.png" alt="Cores Group" width="200" height="80" class="max-h-10 md:max-h-12 w-auto object-contain" loading="lazy">
-                    <img src="https://res.cloudinary.com/dptcuckhf/image/upload/v1772363839/fatz-delicias-logo-removebg-preview_zr4bhr.png" alt="Fatz Burguer" width="150" height="150" class="max-h-16 md:max-h-20 w-auto object-contain" loading="lazy">
+                    <img src="https://res.cloudinary.com/dptcuckhf/image/upload/v1772304278/Xpbox-clientes-logos-200-padding-sicoob_gjcfly.webp" alt="Sicoob" width="240" height="90" class="max-h-24 md:max-h-28 w-auto object-contain" loading="lazy" decoding="async">
+                    <img src="https://res.cloudinary.com/dptcuckhf/image/upload/v1772305396/image_lbkjkn.webp" alt="Valor Investimentos" width="120" height="40" class="max-h-6 md:max-h-8 w-auto object-contain" loading="lazy" decoding="async">
+                    <img src="https://res.cloudinary.com/dptcuckhf/image/upload/v1772305237/FormelD_Logo-svg_edited_ihhm8j.png" alt="Formel D" width="240" height="90" class="max-h-24 md:max-h-28 w-auto object-contain" loading="lazy" decoding="async">
+                    <img src="https://res.cloudinary.com/dptcuckhf/image/upload/v1772304350/pertech_edited_edited_qtgrqc.png" alt="Pertech" width="200" height="80" class="max-h-20 md:max-h-24 w-auto object-contain" loading="lazy" decoding="async">
+                    <img src="https://res.cloudinary.com/dptcuckhf/image/upload/v1772364465/ImageToStl.com_Emblema_PC_1551453377220_s8zzrn.avif" alt="Polícia Civil SP" width="120" height="120" class="max-h-16 md:max-h-20 w-auto object-contain" loading="lazy" decoding="async">
+                    <img src="https://res.cloudinary.com/dptcuckhf/image/upload/v1772305484/level-group_jqrgeb.webp" alt="Level Group" width="180" height="60" class="max-h-12 md:max-h-16 w-auto object-contain brightness-0 opacity-70 group-hover:opacity-100 transition-all duration-700" loading="lazy" decoding="async">
+                    <img src="https://res.cloudinary.com/dptcuckhf/image/upload/v1772305340/Logo_Aldifer_otgf65.avif" alt="Aldifer" width="200" height="80" class="max-h-16 md:max-h-20 w-auto object-contain" loading="lazy" decoding="async">
+                    <img src="https://res.cloudinary.com/dptcuckhf/image/upload/v1772304631/Horizontal-Cores-Group_osa37z.png" alt="Cores Group" width="160" height="60" class="max-h-10 md:max-h-12 w-auto object-contain" loading="lazy" decoding="async">
+                    <img src="https://res.cloudinary.com/dptcuckhf/image/upload/v1772363839/fatz-delicias-logo-removebg-preview_zr4bhr.png" alt="Fatz Burguer" width="120" height="120" class="max-h-16 md:max-h-20 w-auto object-contain" loading="lazy" decoding="async">
                 </div>
                 <div class="flex items-center gap-16 md:gap-24 pr-16 md:pr-24 shrink-0">
-                    <img src="https://res.cloudinary.com/dptcuckhf/image/upload/v1772304278/Xpbox-clientes-logos-200-padding-sicoob_gjcfly.webp" alt="Sicoob" width="200" height="80" class="max-h-24 md:max-h-28 w-auto object-contain" loading="lazy">
-                    <img src="https://res.cloudinary.com/dptcuckhf/image/upload/v1772305396/image_lbkjkn.webp" alt="Valor Investimentos" width="150" height="60" class="max-h-6 md:max-h-8 w-auto object-contain" loading="lazy">
-                    <img src="https://res.cloudinary.com/dptcuckhf/image/upload/v1772305237/FormelD_Logo-svg_edited_ihhm8j.png" alt="Formel D" width="200" height="80" class="max-h-24 md:max-h-28 w-auto object-contain" loading="lazy">
-                    <img src="https://res.cloudinary.com/dptcuckhf/image/upload/v1772304350/pertech_edited_edited_qtgrqc.png" alt="Pertech" width="200" height="80" class="max-h-20 md:max-h-24 w-auto object-contain" loading="lazy">
-                    <img src="https://res.cloudinary.com/dptcuckhf/image/upload/v1772364465/ImageToStl.com_Emblema_PC_1551453377220_s8zzrn.avif" alt="Polícia Civil SP" width="100" height="100" class="max-h-16 md:max-h-20 w-auto object-contain" loading="lazy">
-                    <img src="https://res.cloudinary.com/dptcuckhf/image/upload/v1772305484/level-group_jqrgeb.webp" alt="Level Group" width="200" height="80" class="max-h-12 md:max-h-16 w-auto object-contain brightness-0 opacity-70 group-hover:opacity-100 transition-all duration-700" loading="lazy">
-                    <img src="https://res.cloudinary.com/dptcuckhf/image/upload/v1772305340/Logo_Aldifer_otgf65.avif" alt="Aldifer" width="200" height="80" class="max-h-16 md:max-h-20 w-auto object-contain" loading="lazy">
-                    <img src="https://res.cloudinary.com/dptcuckhf/image/upload/v1772304631/Horizontal-Cores-Group_osa37z.png" alt="Cores Group" width="200" height="80" class="max-h-10 md:max-h-12 w-auto object-contain" loading="lazy">
-                    <img src="https://res.cloudinary.com/dptcuckhf/image/upload/v1772363839/fatz-delicias-logo-removebg-preview_zr4bhr.png" alt="Fatz Burguer" width="150" height="150" class="max-h-16 md:max-h-20 w-auto object-contain" loading="lazy">
+                    <img src="https://res.cloudinary.com/dptcuckhf/image/upload/v1772304278/Xpbox-clientes-logos-200-padding-sicoob_gjcfly.webp" alt="Sicoob" width="240" height="90" class="max-h-24 md:max-h-28 w-auto object-contain" loading="lazy" decoding="async">
+                    <img src="https://res.cloudinary.com/dptcuckhf/image/upload/v1772305396/image_lbkjkn.webp" alt="Valor Investimentos" width="120" height="40" class="max-h-6 md:max-h-8 w-auto object-contain" loading="lazy" decoding="async">
+                    <img src="https://res.cloudinary.com/dptcuckhf/image/upload/v1772305237/FormelD_Logo-svg_edited_ihhm8j.png" alt="Formel D" width="240" height="90" class="max-h-24 md:max-h-28 w-auto object-contain" loading="lazy" decoding="async">
+                    <img src="https://res.cloudinary.com/dptcuckhf/image/upload/v1772304350/pertech_edited_edited_qtgrqc.png" alt="Pertech" width="200" height="80" class="max-h-20 md:max-h-24 w-auto object-contain" loading="lazy" decoding="async">
+                    <img src="https://res.cloudinary.com/dptcuckhf/image/upload/v1772364465/ImageToStl.com_Emblema_PC_1551453377220_s8zzrn.avif" alt="Polícia Civil SP" width="120" height="120" class="max-h-16 md:max-h-20 w-auto object-contain" loading="lazy" decoding="async">
+                    <img src="https://res.cloudinary.com/dptcuckhf/image/upload/v1772305484/level-group_jqrgeb.webp" alt="Level Group" width="180" height="60" class="max-h-12 md:max-h-16 w-auto object-contain brightness-0 opacity-70 group-hover:opacity-100 transition-all duration-700" loading="lazy" decoding="async">
+                    <img src="https://res.cloudinary.com/dptcuckhf/image/upload/v1772305340/Logo_Aldifer_otgf65.avif" alt="Aldifer" width="200" height="80" class="max-h-16 md:max-h-20 w-auto object-contain" loading="lazy" decoding="async">
+                    <img src="https://res.cloudinary.com/dptcuckhf/image/upload/v1772304631/Horizontal-Cores-Group_osa37z.png" alt="Cores Group" width="160" height="60" class="max-h-10 md:max-h-12 w-auto object-contain" loading="lazy" decoding="async">
+                    <img src="https://res.cloudinary.com/dptcuckhf/image/upload/v1772363839/fatz-delicias-logo-removebg-preview_zr4bhr.png" alt="Fatz Burguer" width="120" height="120" class="max-h-16 md:max-h-20 w-auto object-contain" loading="lazy" decoding="async">
                 </div>
             </div>
         </div>
@@ -318,10 +322,10 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             <div class="flex flex-col lg:flex-row items-center gap-16">
 
-                <!-- Imagem (Adicionado width e height para CLS) -->
+                <!-- Imagem -->
                 <div class="w-full lg:w-1/2 relative flex justify-center py-10 reveal">
                     <div class="relative w-full max-w-md aspect-square flex items-center justify-center">
-                        <img src="https://res.cloudinary.com/dptcuckhf/image/upload/v1772326402/ImageToStl.com_Gemini_Generated_Image_e4vl7te4vl7te4vl-removebg-preview_a6y5bc.avif" alt="Equipe Vision Tecnologia" width="600" height="600" class="w-full h-full object-contain drop-shadow-sm hover:scale-105 transition-transform duration-700" loading="lazy">
+                        <img src="https://res.cloudinary.com/dptcuckhf/image/upload/v1772326402/ImageToStl.com_Gemini_Generated_Image_e4vl7te4vl7te4vl-removebg-preview_a6y5bc.avif" alt="Equipe Vision Tecnologia" width="600" height="600" class="w-full h-full object-contain drop-shadow-[0_20px_40px_rgba(0,0,0,0.6)] hover:scale-105 transition-transform duration-700" loading="lazy" decoding="async">
                         
                         <div class="absolute bottom-4 left-0 md:-left-4 z-20 animate-float-badge pointer-events-none">
                             <div class="bg-white/90 backdrop-blur-md border border-white/60 shadow-[0_8px_30px_rgb(0,0,0,0.15)] rounded-xl p-2 pr-4 flex items-center gap-3 w-max">
@@ -354,7 +358,7 @@
                         <div class="p-5 bg-white border border-gray-100 rounded-2xl shadow-sm mt-2 relative">
                             <i data-lucide="quote" class="w-8 h-8 text-brand-yellow/20 absolute top-4 left-4"></i>
                             <p class="italic text-gray-600 pl-8 relative z-10 text-base leading-relaxed">
-                                "A melhor tecnologia é aquela que você não precisa perceber. Ela simplesmente funciona — entregando proteção e estabilidade no seu dia a dia."
+                                "Acreditamos que a melhor tecnologia é aquela que você não precisa perceber. Ela simplesmente funciona — entregando proteção e estabilidade no seu dia a dia."
                             </p>
                         </div>
                     </div>
@@ -445,7 +449,7 @@
                     <h2 class="text-4xl md:text-5xl font-bold text-gray-900 mt-4 mb-6">Soluções em<br>Segurança</h2>
                     <p class="text-gray-500 text-lg font-medium leading-relaxed">Controle total de quem entra e sai — com monitoramento inteligente, câmeras de alta resolução e resposta imediata a qualquer evento.</p>
                 </div>
-                <!-- Adicionado width e height explícitos para GTMetrix (CLS) -->
+                
                 <div class="w-full lg:w-1/2 reveal">
                     <div class="relative w-full flex justify-center group cursor-default">
                         <div class="relative inline-block group-hover:scale-105 transition-transform duration-700">
@@ -460,7 +464,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <img src="https://res.cloudinary.com/dptcuckhf/image/upload/v1772305165/Equipamentos_vision_tecnologia1_dk7qqc.avif" alt="Equipamentos de Segurança Vision" width="800" height="600" class="w-full max-w-lg h-auto object-contain drop-shadow-[0_20px_40px_rgba(0,0,0,0.15)]" loading="lazy">
+                            <img src="https://res.cloudinary.com/dptcuckhf/image/upload/v1772305165/Equipamentos_vision_tecnologia1_dk7qqc.avif" alt="Equipamentos de Segurança Vision" width="800" height="600" class="w-full max-w-lg h-auto object-contain drop-shadow-[0_20px_40px_rgba(0,0,0,0.15)]" loading="lazy" decoding="async">
                         </div>
                     </div>
                 </div>
@@ -468,7 +472,6 @@
 
             <!-- Cards -->
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-
                 <!-- Câmeras -->
                 <div class="service-card bg-white p-8 rounded-[2rem] border border-gray-100 shadow-glass flex flex-col h-full reveal">
                     <div class="flex items-center gap-4 mb-6">
@@ -511,7 +514,7 @@
                     </a>
                 </div>
 
-                <!-- Controle de Acesso - HIGHLIGHT -->
+                <!-- Controle de Acesso -->
                 <div class="service-card bg-white p-8 rounded-[2rem] border border-brand-yellow/30 shadow-premium relative overflow-hidden group flex flex-col h-full reveal" style="transition-delay: 200ms;">
                     <div class="absolute top-0 right-0 w-32 h-32 bg-brand-yellow/5 blur-3xl rounded-full group-hover:bg-brand-yellow/10 transition-colors"></div>
                     <div class="flex items-center gap-4 mb-6 relative z-10">
@@ -613,7 +616,6 @@
                         A espinha dorsal da sua operação. Desenhamos e gerenciamos a infraestrutura para que seu negócio funcione em velocidade máxima — sem quedas e sem surpresas.
                     </p>
                 </div>
-                <!-- Adicionado width e height explícitos para GTMetrix (CLS) -->
                 <div class="w-full lg:w-1/2 reveal">
                     <div class="relative w-full flex justify-center group cursor-default">
                         <div class="relative inline-block group-hover:scale-105 transition-transform duration-700">
@@ -628,7 +630,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <img src="https://res.cloudinary.com/dptcuckhf/image/upload/v1772393339/ImageToStl.com_Vision_Tecnologia._-_Computadores_TI_upavqe.avif" alt="Equipamentos de T.I. Vision" width="800" height="600" class="w-full max-w-lg h-auto object-contain drop-shadow-[0_20px_40px_rgba(0,0,0,0.15)]" loading="lazy">
+                            <img src="https://res.cloudinary.com/dptcuckhf/image/upload/v1772393339/ImageToStl.com_Vision_Tecnologia._-_Computadores_TI_upavqe.avif" alt="Equipamentos de T.I. Vision" width="800" height="600" class="w-full max-w-lg h-auto object-contain drop-shadow-[0_20px_40px_rgba(0,0,0,0.15)]" loading="lazy" decoding="async">
                         </div>
                     </div>
                 </div>
@@ -657,7 +659,7 @@
                     </a>
                 </div>
 
-                <!-- T.I. Gerenciada - HIGHLIGHT -->
+                <!-- T.I. Gerenciada -->
                 <div class="service-card bg-white p-8 rounded-[2rem] border border-brand-yellow/30 shadow-premium relative overflow-hidden flex flex-col h-full group reveal" style="transition-delay: 100ms;">
                     <div class="absolute top-0 right-0 px-4 py-1.5 bg-brand-yellow/10 text-brand-goldDark text-[10px] font-bold uppercase rounded-bl-2xl z-20">Mais Buscado</div>
                     <div class="absolute top-0 right-0 w-32 h-32 bg-brand-yellow/5 blur-3xl rounded-full group-hover:bg-brand-yellow/10 transition-colors"></div>
@@ -730,7 +732,8 @@
     <section id="locacao" class="py-24 lg:py-32 bg-white">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 reveal">
             <div class="relative rounded-[2.5rem] overflow-hidden bg-zinc-900 shadow-premium">
-                <div class="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&q=80')] opacity-5 mix-blend-luminosity bg-cover bg-center"></div>
+                <!-- Reduzido tamanho da imagem do Unsplash para passar no GTMetrix -->
+                <div class="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=1200&q=60')] opacity-5 mix-blend-luminosity bg-cover bg-center"></div>
                 <div class="absolute top-0 right-0 w-[500px] h-[500px] bg-brand-yellow/10 rounded-full blur-[100px] pointer-events-none"></div>
 
                 <div class="relative z-10 p-10 md:p-16 flex flex-col lg:flex-row items-center justify-between gap-12">
@@ -779,7 +782,7 @@
             <span class="text-brand-yellow font-bold uppercase tracking-widest text-xs mb-3 block">Quem já trabalhou com a gente</span>
             <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-6">O que nossos clientes dizem</h2>
 
-            <!-- Pílula de Avaliação Original Restaurada -->
+            <!-- Pílula 5.0 Google -->
             <div class="inline-flex items-center justify-center gap-2 bg-white border border-gray-200 rounded-full px-6 py-2 shadow-sm mx-auto cursor-default hover:shadow-md transition-shadow">
                 <span class="text-xl font-bold text-[#b9880e]">5.0</span>
                 <div class="flex items-center gap-0.5">
@@ -1057,7 +1060,7 @@
                 <div class="absolute inset-0 bg-brand-yellow/5 rounded-full blur-[100px] pointer-events-none"></div>
                 <div class="relative w-full flex justify-center group cursor-default">
                     <div class="relative inline-block group-hover:scale-105 transition-transform duration-700">
-                        <img src="https://res.cloudinary.com/dptcuckhf/image/upload/v1772373283/Mapa_S%C3%A3o_Paulo_-_Vision_wkesry.avif" alt="Área de atendimento Vision Tecnologia - São Paulo e ABC" width="800" height="600" class="w-full max-w-lg h-auto object-contain drop-shadow-[0_20px_40px_rgba(0,0,0,0.1)]" loading="lazy">
+                        <img src="https://res.cloudinary.com/dptcuckhf/image/upload/v1772373283/Mapa_S%C3%A3o_Paulo_-_Vision_wkesry.avif" alt="Área de atendimento Vision Tecnologia - São Paulo e ABC" width="800" height="600" class="w-full max-w-lg h-auto object-contain drop-shadow-[0_20px_40px_rgba(0,0,0,0.1)]" loading="lazy" decoding="async">
                         <div class="absolute top-[45%] left-[55%] flex flex-col items-center">
                             <div class="w-4 h-4 bg-brand-yellow rounded-full shadow-[0_0_20px_#b9880e] animate-pulse relative z-20 border-2 border-white"></div>
                             <span class="mt-3 bg-white/90 backdrop-blur-sm px-4 py-1.5 rounded-xl text-xs font-bold shadow-md text-gray-900 border border-brand-yellow/30 relative z-20">São Paulo & ABC</span>
@@ -1162,11 +1165,11 @@
 
     <!-- ===================== SCRIPTS ===================== -->
     <script>
-        // Iniciar Lucide Icons logo que o DOM for carregado (Evita render-blocking pesado)
+        // Inicialização de ícones otimizada
         document.addEventListener("DOMContentLoaded", function() {
             lucide.createIcons();
             
-            // Reveal on scroll logic
+            // Lógica de animação de scroll (Reveal)
             const revealElements = document.querySelectorAll('.reveal');
             const revealObserver = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
@@ -1197,7 +1200,7 @@
             }
         });
 
-        // Menu mobile
+        // Menu mobile com lógica de fechar ("X")
         const btnMenu = document.getElementById('mobile-menu-btn');
         const menu = document.getElementById('mobile-menu');
         const iconMenu = document.getElementById('icon-menu');
