@@ -1,0 +1,990 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth overflow-x-hidden" id="html-root">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Diagnóstico Consultivo de Acesso Premium | Residência Campestre – Vision Tecnologia</title>
+    <meta name="description" content="Projeto Executivo de Controle de Acesso Premium – Vision Tecnologia">
+    <meta name="theme-color" content="#b9880e">
+
+    <!-- Open Graph / Link Preview Tags -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Acesso Premium | Residência Campestre – Vision Tecnologia">
+    <meta property="og:description" content="A chave mais segura é aquela que não pode ser copiada. Controle e elegância na porta da sua casa.">
+    <meta property="og:image" content="https://res.cloudinary.com/dptcuckhf/image/upload/v1772152427/C%C3%B3pia_de_LOGO_VISION_2025_cpcpuh.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:locale" content="pt_BR">
+    
+    <!-- Fonts & Icons -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@700;800&family=Quicksand:wght@500;600;700&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"Outfit"', 'sans-serif'],
+                        logo: ['"League Spartan"', 'sans-serif'],
+                        tech: ['"Quicksand"', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            yellow: '#b9880e',
+                            goldLight: '#FFDE59',
+                            goldDark: '#8a6208',
+                            black: '#09090b',
+                        }
+                    },
+                    boxShadow: {
+                        'glass': '0 4px 24px 0 rgba(0,0,0,0.04)',
+                        'premium': '0 16px 50px -10px rgba(0,0,0,0.08)',
+                        'premium-card': '0 16px 50px -10px rgba(0, 0, 0, 0.08)',
+                        'glow': '0 0 20px rgba(185,136,14,0.15)',
+                        'glow-md': '0 0 35px rgba(185,136,14,0.25)',
+                    },
+                    animation: {
+                        'slide-up': 'slideUp 0.9s cubic-bezier(0.16,1,0.3,1) forwards',
+                        'float': 'float 6s ease-in-out infinite',
+                        'fade-in': 'fadeIn 0.6s ease forwards',
+                        'shine-pulse': 'shinePulse 3s ease-in-out infinite',
+                    },
+                    keyframes: {
+                        slideUp: {
+                            '0%': { opacity: '0', transform: 'translateY(40px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' }
+                        },
+                        float: {
+                            '0%,100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-12px)' }
+                        },
+                        fadeIn: {
+                            '0%': { opacity: '0' },
+                            '100%': { opacity: '1' }
+                        },
+                        shinePulse: {
+                            '0%,100%': { opacity: '0.6' },
+                            '50%': { opacity: '1' }
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: #f9fafb; }
+        ::-webkit-scrollbar-thumb { background: #d1d5db; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #b9880e; }
+
+        .text-gold-shine {
+            background: linear-gradient(to right, #b9880e 20%, #FFDE59 50%, #b9880e 80%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-size: 200% auto;
+            animation: shine 4s linear infinite;
+        }
+        @keyframes shine { to { background-position: 200% center; } }
+
+        .bg-grid {
+            background-image: linear-gradient(rgba(185,136,14,0.04) 1px, transparent 1px),
+                              linear-gradient(90deg, rgba(185,136,14,0.04) 1px, transparent 1px);
+            background-size: 40px 40px;
+        }
+        .bg-dots {
+            background-image: radial-gradient(#b9880e 1.2px, transparent 1.2px);
+            background-size: 22px 22px;
+            opacity: 0.035;
+        }
+
+        .lock-input {
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.1);
+            color: #b9880e;
+            font-family: 'League Spartan', sans-serif;
+            font-size: 1.5rem;
+            text-align: center;
+            outline: none;
+            transition: all 0.3s;
+            letter-spacing: 0.2em;
+            border-radius: 14px;
+        }
+        .lock-input:focus {
+            border-color: #b9880e;
+            background: rgba(255,255,255,0.08);
+            box-shadow: 0 0 20px rgba(185,136,14,0.25);
+        }
+        .lock-input::placeholder {
+            color: #52525b;
+            font-size: 0.85rem;
+            font-family: 'Outfit', sans-serif;
+            font-weight: 300;
+            letter-spacing: normal;
+        }
+
+        .reveal { opacity: 0; transform: translateY(30px); transition: all 0.8s cubic-bezier(0.16,1,0.3,1); }
+        .reveal.active { opacity: 1; transform: translateY(0); }
+
+        .service-card:hover { transform: translateY(-4px); box-shadow: 0 20px 40px -8px rgba(0,0,0,0.1); }
+        .service-card { transition: all 0.3s cubic-bezier(0.4,0,0.2,1); }
+
+        .tier-card { transition: all 0.3s cubic-bezier(0.4,0,0.2,1); }
+        .tier-card:hover { transform: scale(1.01); }
+        
+        /* Borda Animada Premium */
+        .premium-border-glow {
+            position: relative;
+            border-radius: 2rem;
+            padding: 2px;
+            background-color: #b9880e;
+            overflow: hidden;
+            box-shadow: 0 0 35px rgba(185,136,14,0.15);
+            transition: transform 0.3s cubic-bezier(0.4,0,0.2,1);
+        }
+        .premium-border-glow:hover { transform: scale(1.01); }
+        .premium-border-glow::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: conic-gradient(
+                from 0deg, 
+                transparent 0deg, 
+                transparent 175deg, 
+                rgba(255, 222, 89, 0.6) 178deg, 
+                #ffffff 180deg, 
+                rgba(255, 222, 89, 0.6) 182deg, 
+                transparent 185deg, 
+                transparent 360deg
+            );
+            animation: rotate-border 12s linear infinite;
+            z-index: 0;
+        }
+        @keyframes rotate-border {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        .premium-border-inner {
+            position: relative;
+            z-index: 1;
+            background-color: #ffffff;
+            border-radius: calc(2rem - 2px);
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            padding: 2.5rem;
+            overflow: hidden;
+        }
+
+        .product-card {
+            background: white;
+            border: 1px solid #e5e7eb;
+            border-radius: 16px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+        .product-card:hover {
+            border-color: #b9880e;
+            box-shadow: 0 10px 30px rgba(185, 136, 14, 0.15);
+            transform: translateY(-5px);
+        }
+
+        /* Seletor de Cores */
+        .color-option { transition: all 0.3s ease; cursor: pointer; }
+        .color-option.active {
+            border-color: #b9880e;
+            transform: scale(1.2);
+            box-shadow: 0 0 10px rgba(185, 136, 14, 0.4);
+        }
+        .glass-review {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+        }
+
+        @media print {
+            #lock-screen, #navbar, #cta-float { display: none !important; }
+            .reveal { opacity: 1 !important; transform: none !important; }
+        }
+    </style>
+</head>
+<body class="bg-[#fafafa] text-gray-800 antialiased selection:bg-brand-yellow selection:text-white h-screen overflow-hidden">
+
+<!-- ===================== LOCK SCREEN ===================== -->
+<div id="lock-screen" class="fixed inset-0 z-[100] bg-[#09090b] flex flex-col items-center justify-center text-center p-4 transition-opacity duration-700 ease-out touch-none" style="overscroll-behavior: none;">
+    <div class="bg-grid absolute inset-0 opacity-10 pointer-events-none"></div>
+    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-brand-yellow/5 rounded-full blur-[100px] pointer-events-none"></div>
+
+    <div class="relative flex flex-col items-center mb-10 z-10">
+        <div class="relative flex items-baseline leading-none">
+            <span class="font-logo font-bold text-[5.5rem] md:text-[6rem] text-gold-shine lowercase tracking-[-0.05em] leading-none">vısıon</span>
+            <span class="absolute -right-5 top-4 text-[1.1rem] text-brand-yellow font-bold">®</span>
+        </div>
+        <span class="font-tech text-[0.9rem] font-bold text-zinc-500 lowercase -mt-3 ml-2.5 text-center w-full" style="letter-spacing:0.4em;">tecnologia</span>
+    </div>
+
+    <div class="w-full max-w-sm space-y-5 z-10">
+        <div class="space-y-1.5">
+            <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-brand-yellow/30 bg-brand-yellow/10 mb-3">
+                <i data-lucide="lock" class="w-3.5 h-3.5 text-brand-yellow"></i>
+                <span class="text-brand-yellow text-[10px] font-bold uppercase tracking-widest">Acesso Privado</span>
+            </div>
+            <h2 class="text-white font-bold text-2xl">Residência Campestre</h2>
+            <p class="text-zinc-400 text-sm">Diagnóstico Consultivo de Acesso Premium</p>
+        </div>
+
+        <div>
+            <!-- SENHA CONFIGURADA: campestre2026 ou vision -->
+            <input type="password" id="password-input" class="lock-input w-full py-4 px-4" placeholder="SENHA DE ACESSO" autocomplete="off" onkeydown="if(event.key==='Enter') checkPassword()">
+            <p id="error-msg" class="text-red-400 text-xs mt-2 hidden">
+                <span class="flex items-center justify-center gap-1"><i data-lucide="x-circle" class="w-4 h-4"></i> Credencial inválida.</span>
+            </p>
+        </div>
+
+        <button onclick="checkPassword()" class="w-full bg-brand-yellow hover:bg-brand-goldLight text-black font-bold py-4 rounded-2xl transition-all shadow-glow flex items-center justify-center gap-2 group relative overflow-hidden">
+            <div class="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-300 rounded-2xl"></div>
+            <i data-lucide="shield-check" class="w-5 h-5 relative z-10"></i>
+            <span class="relative z-10 text-sm uppercase tracking-widest">Acessar Proposta</span>
+            <i data-lucide="arrow-right" class="w-4 h-4 relative z-10 group-hover:translate-x-1 transition-transform"></i>
+        </button>
+
+        <p class="text-zinc-600 text-xs">Documento restrito · Válido por 30 dias · Vision Tecnologia © 2026</p>
+    </div>
+</div>
+
+<!-- ===================== NAVBAR ===================== -->
+<nav id="navbar" class="fixed w-full z-50 top-0 bg-white/90 backdrop-blur-xl border-b border-gray-200/50 shadow-sm transition-all duration-300">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-between h-20 items-center">
+            <div class="flex flex-col items-center justify-center cursor-pointer">
+                <div class="relative flex items-baseline leading-none">
+                    <span class="font-logo font-bold text-[2.6rem] text-gold-shine lowercase tracking-[-0.05em] leading-none">vısıon</span>
+                    <span class="absolute -right-2.5 top-1.5 text-[0.6rem] text-brand-yellow font-bold">®</span>
+                </div>
+                <span class="font-tech text-[0.55rem] font-bold text-gray-400 lowercase -mt-2 ml-1" style="letter-spacing:0.4em;">tecnologia</span>
+            </div>
+            <div class="hidden md:flex items-center space-x-7 text-xs font-semibold text-gray-500 uppercase tracking-wider">
+                <a href="#diagnostico" class="hover:text-brand-yellow transition-colors">Diagnóstico</a>
+                <a href="#solucao" class="hover:text-brand-yellow transition-colors">Abordagem</a>
+                <a href="#diferenciais" class="hover:text-brand-yellow transition-colors">Diferenciais</a>
+                <a href="#investimento" class="hover:text-brand-yellow transition-colors">Investimento</a>
+            </div>
+            <a href="#investimento" class="bg-zinc-900 text-white px-5 py-2.5 rounded-full text-[10px] font-bold uppercase tracking-widest hover:bg-brand-yellow hover:text-black transition-all shadow-md">
+                Ver Proposta
+            </a>
+        </div>
+    </div>
+</nav>
+
+<!-- ===================== HERO ===================== -->
+<header class="pt-32 pb-20 lg:pt-40 relative overflow-hidden bg-white">
+    <div class="absolute inset-0 bg-tech-pattern pointer-events-none"></div>
+    <div class="absolute right-0 top-0 -translate-y-1/4 translate-x-1/4 w-[800px] h-[800px] bg-brand-yellow/5 rounded-full blur-[120px] pointer-events-none"></div>
+    
+    <div class="max-w-7xl mx-auto px-4 relative z-10">
+        <div class="flex flex-col lg:flex-row items-center gap-12 lg:gap-16">
+            
+            <!-- Coluna Texto -->
+            <div class="w-full lg:w-1/2 text-center lg:text-left animate-slide-up">
+                <div class="inline-flex items-center gap-2 px-5 py-2 rounded-full border border-brand-yellow/30 bg-brand-yellow/5 text-brand-yellow text-[10px] font-bold uppercase tracking-widest mb-8 mx-auto lg:mx-0">
+                    <i data-lucide="shield" class="w-4 h-4"></i>
+                    PROPOSTA TÉCNICA #VB-2026-0302 | VALIDADE: 30 DIAS
+                </div>
+                
+                <h1 class="text-4xl md:text-5xl lg:text-6xl font-extrabold text-gray-900 leading-[1.05] tracking-tight mb-6">
+                    A chave mais segura é aquela que <span class="text-gold-shine">não pode ser copiada.</span>
+                </h1>
+                
+                <h2 class="text-base md:text-lg text-gray-500 max-w-xl mx-auto lg:mx-0 font-medium mt-6 leading-relaxed">
+                    Diagnóstico Consultivo de Acesso Premium — Residência Campestre. Controle e elegância absoluta na porta da sua casa.
+                </h2>
+            </div>
+
+            <!-- Coluna Vídeo -->
+            <div class="w-full lg:w-1/2 mt-4 lg:mt-0 reveal animate-slide-up" style="animation-delay: 200ms;">
+                <div class="relative w-full rounded-[2rem] shadow-[0_20px_50px_-10px_rgba(0,0,0,0.3)] border-[3px] border-brand-yellow/80 group hover:shadow-[0_25px_60px_-10px_rgba(0,0,0,0.4)] transition-shadow duration-500 bg-black">
+                    <div class="relative w-full aspect-video rounded-[1.8rem] overflow-hidden bg-black shadow-inner">
+                        <video id="vision-video" class="w-full h-full object-cover cursor-pointer opacity-90" autoplay muted loop playsinline>
+                            <source src="https://res.cloudinary.com/dptcuckhf/video/upload/v1771711323/Vict%C3%B3ria_-_Vision_gdqnrk.mp4" type="video/mp4">
+                        </video>
+                        <div id="unmute-overlay" class="absolute inset-0 bg-black/50 backdrop-blur-sm flex flex-col items-center justify-center cursor-pointer transition-opacity duration-500 z-10 hover:bg-black/40">
+                            <div class="bg-brand-yellow text-black font-bold px-6 py-3 md:px-8 md:py-4 rounded-full flex items-center gap-2 md:gap-3 shadow-glow animate-pulse transform group-hover:scale-105 transition-all">
+                                <i data-lucide="volume-2" class="w-5 h-5 md:w-6 md:h-6"></i>
+                                <span class="text-xs md:text-sm tracking-wide uppercase">Clique para Ouvir</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Floating Quick Stats -->
+        <div class="mt-16 lg:mt-24 grid grid-cols-2 md:grid-cols-4 gap-5 max-w-4xl mx-auto reveal">
+            <div class="bg-white rounded-2xl p-6 shadow-glass border border-gray-100 text-center hover:border-brand-yellow/40 transition-all animate-float" style="animation-delay:0s;">
+                <div class="w-10 h-10 bg-brand-yellow/10 rounded-xl flex items-center justify-center mx-auto mb-3">
+                    <i data-lucide="fingerprint" class="w-5 h-5 text-brand-yellow"></i>
+                </div>
+                <div class="text-3xl font-extrabold text-gray-900">&lt;1s</div>
+                <div class="text-xs text-gray-500 font-medium mt-1 uppercase tracking-wider">Acesso Biométrico</div>
+            </div>
+            <div class="bg-white rounded-2xl p-6 shadow-glass border border-gray-100 text-center hover:border-brand-yellow/40 transition-all animate-float" style="animation-delay:0.8s;">
+                <div class="w-10 h-10 bg-brand-yellow/10 rounded-xl flex items-center justify-center mx-auto mb-3">
+                    <i data-lucide="wifi" class="w-5 h-5 text-brand-yellow"></i>
+                </div>
+                <div class="text-3xl font-extrabold text-gray-900">App</div>
+                <div class="text-xs text-gray-500 font-medium mt-1 uppercase tracking-wider">Gestão Remota</div>
+            </div>
+            <div class="bg-white rounded-2xl p-6 shadow-glass border border-gray-100 text-center hover:border-brand-yellow/40 transition-all animate-float" style="animation-delay:0.4s;">
+                <div class="w-10 h-10 bg-brand-yellow/10 rounded-xl flex items-center justify-center mx-auto mb-3">
+                    <i data-lucide="ruler" class="w-5 h-5 text-brand-yellow"></i>
+                </div>
+                <div class="text-3xl font-extrabold text-gray-900">35mm</div>
+                <div class="text-xs text-gray-500 font-medium mt-1 uppercase tracking-wider">Marcenaria Precisa</div>
+            </div>
+            <div class="bg-white rounded-2xl p-6 shadow-glass border border-gray-100 text-center hover:border-brand-yellow/40 transition-all animate-float" style="animation-delay:1.2s;">
+                <div class="w-10 h-10 bg-brand-yellow/10 rounded-xl flex items-center justify-center mx-auto mb-3">
+                    <i data-lucide="key-round" class="w-5 h-5 text-brand-yellow"></i>
+                </div>
+                <div class="text-3xl font-extrabold text-gray-900">Zero</div>
+                <div class="text-xs text-gray-500 font-medium mt-1 uppercase tracking-wider">Chaves Copiadas</div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- ===================== DIAGNÓSTICO DO CENÁRIO ===================== -->
+<section id="diagnostico" class="py-28 bg-[#f8f9fa] border-y border-gray-200/60 relative">
+    <div class="max-w-7xl mx-auto px-4">
+        <div class="text-center mb-16 reveal">
+            <span class="text-brand-yellow font-bold uppercase tracking-widest text-xs">Cenário Atual</span>
+            <h2 class="text-3xl md:text-5xl font-bold text-gray-900 mt-3 leading-tight">O problema das fechaduras <br class="hidden md:block">mecânicas em portas de 35mm</h2>
+            <p class="text-gray-500 mt-5 max-w-3xl mx-auto text-lg leading-relaxed">
+                Durante nosso alinhamento técnico para a sua residência no bairro Campestre, mapeamos os seguintes pontos críticos em relação ao uso de fechaduras tradicionais:
+            </p>
+        </div>
+
+        <div class="grid md:grid-cols-3 gap-8 reveal">
+            <!-- Card 1 -->
+            <div class="bg-white rounded-[2rem] p-8 shadow-premium border border-gray-100 relative overflow-hidden group hover:-translate-y-1 transition-transform duration-300 flex flex-col">
+                <div class="absolute top-0 right-0 w-32 h-32 bg-red-50 rounded-full blur-3xl transition-colors"></div>
+                <div class="w-14 h-14 bg-red-50 rounded-2xl flex items-center justify-center mb-6 relative z-10">
+                    <i data-lucide="key" class="w-7 h-7 text-red-500"></i>
+                </div>
+                <h3 class="text-xl font-bold text-gray-900 mb-3 relative z-10">Vulnerabilidade da Chave</h3>
+                <p class="text-gray-600 text-sm mb-6 relative z-10 leading-relaxed flex-1">
+                    Chaves convencionais podem ser copiadas sem o seu conhecimento ou perdidas. Isso cria uma brecha silenciosa de segurança, especialmente quando há necessidade de dar acesso a prestadores de serviço ou <em>dog walkers</em> para a sua pet.
+                </p>
+            </div>
+
+            <!-- Card 2 -->
+            <div class="bg-white rounded-[2rem] p-8 shadow-premium border border-gray-100 relative overflow-hidden group hover:-translate-y-1 transition-transform duration-300 flex flex-col">
+                <div class="absolute top-0 right-0 w-32 h-32 bg-orange-50 rounded-full blur-3xl transition-colors"></div>
+                <div class="w-14 h-14 bg-orange-50 rounded-2xl flex items-center justify-center mb-6 relative z-10">
+                    <i data-lucide="history" class="w-7 h-7 text-orange-500"></i>
+                </div>
+                <h3 class="text-xl font-bold text-gray-900 mb-3 relative z-10">Falta de Rastreabilidade</h3>
+                <p class="text-gray-600 text-sm mb-6 relative z-10 leading-relaxed flex-1">
+                    Hoje, você não sabe a que horas alguém entrou ou saiu da sua casa. Não há um registro (log) de acessos, o que impossibilita o monitoramento remoto da sua própria porta quando você não está presente.
+                </p>
+            </div>
+
+            <!-- Card 3 -->
+            <div class="bg-white rounded-[2rem] p-8 shadow-premium border border-gray-100 relative overflow-hidden group hover:-translate-y-1 transition-transform duration-300 flex flex-col">
+                <div class="absolute top-0 right-0 w-32 h-32 bg-blue-50 rounded-full blur-3xl transition-colors"></div>
+                <div class="w-14 h-14 bg-blue-50 rounded-2xl flex items-center justify-center mb-6 relative z-10">
+                    <i data-lucide="alert-triangle" class="w-7 h-7 text-blue-500"></i>
+                </div>
+                <h3 class="text-xl font-bold text-gray-900 mb-3 relative z-10">O "Barato que Sai Caro"</h3>
+                <p class="text-gray-600 text-sm mb-6 relative z-10 leading-relaxed flex-1">
+                    O mercado está inundado de fechaduras de baixa qualidade com motores fracos que travam a lingueta ou plásticos que ressecam, causando a temida "porta trancada por fora" e exigindo arrombamento de emergência.
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ===================== A ABORDAGEM VISION ===================== -->
+<section id="solucao" class="py-28 bg-white relative overflow-hidden">
+    <div class="absolute inset-0 bg-dots pointer-events-none"></div>
+    <div class="max-w-7xl mx-auto px-4 relative z-10">
+        <div class="text-center mb-16 reveal">
+            <span class="text-brand-yellow font-bold uppercase tracking-widest text-xs">O Alívio</span>
+            <h2 class="text-3xl md:text-5xl font-bold text-gray-900 mt-3">A Abordagem Vision</h2>
+            <p class="text-gray-500 mt-4 max-w-2xl mx-auto text-lg">Nós não "instalamos fechaduras". Nós integramos engenharia de acesso à sua arquitetura.</p>
+        </div>
+
+        <div class="grid md:grid-cols-3 gap-6 reveal mb-16">
+            <div class="service-card bg-white rounded-2xl p-8 border border-gray-100 shadow-glass">
+                <div class="w-12 h-12 bg-brand-yellow/10 rounded-2xl flex items-center justify-center mb-5">
+                    <i data-lucide="pen-tool" class="w-6 h-6 text-brand-yellow"></i>
+                </div>
+                <h3 class="font-bold text-gray-900 text-xl mb-3">1. Marcenaria de Precisão</h3>
+                <p class="text-gray-500 text-sm leading-relaxed mb-4">Como você optou pelo modelo de embutir (que substitui a atual), nossa equipe utiliza gabaritos milimétricos. O corte na madeira é cirúrgico, garantindo que a nova fechadura pareça ter nascido com a porta.</p>
+            </div>
+
+            <div class="service-card bg-white rounded-2xl p-8 border border-gray-100 shadow-glass">
+                <div class="w-12 h-12 bg-brand-yellow/10 rounded-2xl flex items-center justify-center mb-5">
+                    <i data-lucide="smartphone" class="w-6 h-6 text-brand-yellow"></i>
+                </div>
+                <h3 class="font-bold text-gray-900 text-xl mb-3">2. Conectividade Total</h3>
+                <p class="text-gray-500 text-sm leading-relaxed mb-4">Não propomos fechaduras "cegas". Nossas soluções incluem Hubs de integração Wi-Fi. Você destranca a porta do seu escritório ou vê quem acessou sua casa diretamente pelo celular.</p>
+            </div>
+
+            <div class="service-card bg-white rounded-2xl p-8 border border-gray-100 shadow-glass">
+                <div class="w-12 h-12 bg-brand-yellow/10 rounded-2xl flex items-center justify-center mb-5">
+                    <i data-lucide="shield-check" class="w-6 h-6 text-brand-yellow"></i>
+                </div>
+                <h3 class="font-bold text-gray-900 text-xl mb-3">3. Durabilidade Mecânica</h3>
+                <p class="text-gray-500 text-sm leading-relaxed mb-4">Selecionamos apenas equipamentos testados para milhares de ciclos de abertura, com máquinas de embutir robustas que não empenam e garantem o travamento perfeito todos os dias.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ===================== ALERTAS VISUAIS ===================== -->
+<section class="py-20 bg-zinc-900 text-white relative overflow-hidden">
+    <div class="max-w-5xl mx-auto px-4 relative z-10">
+        <div class="text-center mb-12 reveal">
+            <span class="text-red-400 font-bold uppercase tracking-widest text-xs flex items-center justify-center gap-2"><i data-lucide="siren" class="w-4 h-4"></i> Atenção Crítica</span>
+            <h2 class="text-3xl md:text-4xl font-bold mt-3">Os riscos que evitamos no seu projeto</h2>
+        </div>
+
+        <div class="grid md:grid-cols-2 gap-8 reveal">
+            <!-- Alerta 1 -->
+            <div class="bg-zinc-800/50 rounded-2xl p-8 border border-red-500/30">
+                <div class="flex items-center gap-4 mb-4">
+                    <div class="w-10 h-10 bg-red-500/20 rounded-full flex items-center justify-center">
+                        <i data-lucide="hammer" class="w-5 h-5 text-red-400"></i>
+                    </div>
+                    <h3 class="text-xl font-bold">Instalação Amadora em Portas 35mm</h3>
+                </div>
+                <p class="text-zinc-400 text-sm leading-relaxed">
+                    Portas com essa espessura exigem precisão absoluta. Uma instalação feita por não qualificados pode lascar a madeira, enfraquecer a estrutura e deixar a máquina desalinhada. O resultado? A fechadura "força" o motor para fechar, <strong>esgotando as pilhas em poucas semanas e diminuindo a vida útil do equipamento em 70%.</strong>
+                </p>
+            </div>
+
+            <!-- Alerta 2 -->
+            <div class="bg-zinc-800/50 rounded-2xl p-8 border border-orange-500/30">
+                <div class="flex items-center gap-4 mb-4">
+                    <div class="w-10 h-10 bg-orange-500/20 rounded-full flex items-center justify-center">
+                        <i data-lucide="wifi-off" class="w-5 h-5 text-orange-400"></i>
+                    </div>
+                    <h3 class="text-xl font-bold">Fechaduras Sem Conectividade</h3>
+                </div>
+                <p class="text-zinc-400 text-sm leading-relaxed">
+                    Muitos instalam fechaduras apenas com senha local, gerando um falso conforto. Se uma emergência ocorrer enquanto você viaja e alguém precisar entrar (como resgatar sua pet), você terá que repassar sua senha mestre para terceiros. <strong>Sem um Hub Wi-Fi, você perde o controle do seu patrimônio.</strong>
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ===================== POR QUE CONTRATAR A VISION? ===================== -->
+<section id="diferenciais" class="py-24 bg-white relative">
+    <div class="max-w-6xl mx-auto px-4">
+         <div class="text-center mb-16 reveal">
+             <span class="text-brand-yellow font-bold uppercase tracking-widest text-xs">Nosso DNA</span>
+             <h2 class="text-3xl font-bold text-gray-900 mt-2 mb-4">Por que contratar a Vision?</h2>
+             <p class="text-gray-500 max-w-2xl mx-auto text-lg">
+                 A fechadura você encontra em qualquer lugar. A <strong>paz de espírito</strong> de uma instalação perfeita e garantia real, só aqui.
+             </p>
+         </div>
+
+         <div class="grid md:grid-cols-3 gap-8 reveal mb-16">
+             <!-- Card 1 -->
+             <div class="p-8 bg-[#f8f9fa] rounded-2xl border border-gray-100 hover:shadow-lg transition-all group">
+                 <div class="w-14 h-14 bg-brand-black text-white rounded-xl flex items-center justify-center text-2xl mb-6 group-hover:bg-brand-yellow group-hover:text-brand-black transition-colors">
+                    🏆
+                 </div>
+                 <h3 class="text-xl font-bold text-gray-900 mb-3">11 Anos de Experiência</h3>
+                 <p class="text-gray-600 text-sm leading-relaxed">
+                     Não enviamos "instaladores de aplicativo". Nossos técnicos são funcionários de carreira da Vision, com mais de uma década de experiência em portas de alto padrão. Sabemos lidar com imprevistos.
+                 </p>
+             </div>
+
+             <!-- Card 2 -->
+             <div class="p-8 bg-[#f8f9fa] rounded-2xl border border-gray-100 hover:shadow-lg transition-all group">
+                <div class="w-14 h-14 bg-brand-black text-white rounded-xl flex items-center justify-center text-2xl mb-6 group-hover:bg-brand-yellow group-hover:text-brand-black transition-colors">
+                   🛡️
+                </div>
+                <h3 class="text-xl font-bold text-gray-900 mb-3">Garantia Vision 4 Anos</h3>
+                <p class="text-gray-600 text-sm leading-relaxed">
+                    A garantia padrão de mercado é de 1 ano. Confiamos tanto na nossa instalação e no produto que estendemos para <strong>4 anos no produto</strong> e 1 ano total no serviço. Se der problema, nós resolvemos.
+                </p>
+            </div>
+
+            <!-- Card 3 -->
+            <div class="p-8 bg-[#f8f9fa] rounded-2xl border border-gray-100 hover:shadow-lg transition-all group">
+                <div class="w-14 h-14 bg-brand-black text-white rounded-xl flex items-center justify-center text-2xl mb-6 group-hover:bg-brand-yellow group-hover:text-brand-black transition-colors">
+                   🤝
+                </div>
+                <h3 class="text-xl font-bold text-gray-900 mb-3">Pós-Venda Real</h3>
+                <p class="text-gray-600 text-sm leading-relaxed">
+                    Não desaparecemos após o pagamento. Temos sede própria, suporte via WhatsApp dedicado e corpo técnico pronto para atender. Você compra um relacionamento de longo prazo.
+                </p>
+            </div>
+         </div>
+
+         <!-- Google Review Card -->
+         <div class="max-w-4xl mx-auto glass-review rounded-2xl p-8 flex flex-col md:flex-row items-center justify-between gap-6 hover:shadow-glow transition-shadow bg-[#09090b] reveal">
+            <div class="flex items-center gap-6">
+                <div class="w-16 h-16 bg-white rounded-full flex items-center justify-center p-2 shadow-lg">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/c/c1/Google_%22G%22_logo.svg" alt="Google" class="w-full h-full">
+                </div>
+                <div>
+                    <h4 class="font-bold text-white text-2xl">Excelência Comprovada</h4>
+                    <p class="text-brand-yellow text-sm font-medium">Líder em Avaliações no Google</p>
+                </div>
+            </div>
+            
+            <div class="flex flex-col items-center md:items-end">
+                <div class="flex gap-1 mb-2">
+                    <span class="text-brand-yellow text-2xl">★</span>
+                    <span class="text-brand-yellow text-2xl">★</span>
+                    <span class="text-brand-yellow text-2xl">★</span>
+                    <span class="text-brand-yellow text-2xl">★</span>
+                    <span class="text-brand-yellow text-2xl">★</span>
+                </div>
+                <p class="text-white font-bold text-xl">5.0 - Excelente</p>
+                <p class="text-xs text-zinc-400 mt-1">Baseado em clientes reais</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ===================== VÍDEO DEMONSTRATIVO ===================== -->
+<section class="py-20 bg-[#f8f9fa] border-y border-gray-100">
+    <div class="max-w-4xl mx-auto px-4 text-center reveal">
+        <div class="inline-block bg-brand-yellow/10 text-brand-yellow text-xs font-bold px-4 py-1.5 rounded-full uppercase tracking-widest mb-4 border border-brand-yellow/20">Veja em Ação</div>
+        <h2 class="text-3xl font-bold text-gray-900 mb-8">Conveniência no seu dia a dia</h2>
+        
+        <div class="relative w-full max-w-[350px] mx-auto aspect-[9/16] rounded-[2rem] overflow-hidden shadow-premium border-[6px] border-white">
+            <iframe 
+                class="absolute inset-0 w-full h-full" 
+                src="https://www.youtube.com/embed/TfqAzedHmuI?autoplay=0&loop=1&rel=0" 
+                title="Yale Fechadura Digital" 
+                frameborder="0" 
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                allowfullscreen>
+            </iframe>
+        </div>
+    </div>
+</section>
+
+<!-- ===================== REALIDADE AUMENTADA (AR) ===================== -->
+<section class="py-16 bg-white relative">
+    <div class="max-w-3xl mx-auto px-4 reveal">
+        <div class="p-1 rounded-2xl bg-[#09090b] shadow-premium relative overflow-hidden">
+            <div class="absolute top-0 right-0 w-64 h-64 bg-brand-yellow/10 rounded-full blur-3xl pointer-events-none"></div>
+            <div class="bg-black/20 rounded-xl p-8 flex flex-col md:flex-row items-center gap-8 text-center md:text-left relative z-10">
+                <div class="shrink-0 bg-white p-2 rounded-lg shadow-lg">
+                    <img src="https://res.cloudinary.com/dptcuckhf/image/upload/v1769716688/Realidade_virtual_Yale_420w_iopezr.png" alt="QR Code Realidade Aumentada" class="w-32 h-32 object-contain">
+                </div>
+                <div>
+                    <h3 class="text-xl font-bold text-white mb-2 flex items-center justify-center md:justify-start gap-2">
+                        <i data-lucide="scan" class="w-6 h-6 text-brand-yellow"></i>
+                        Veja em Realidade Aumentada
+                    </h3>
+                    <p class="text-sm text-zinc-400 mb-4 leading-relaxed">
+                        Não consegue imaginar como ficará na sua porta? Escaneie o QR Code com a câmera do seu celular e projete a fechadura no seu ambiente agora mesmo.
+                    </p>
+                    <span class="text-xs font-bold text-brand-yellow border border-brand-yellow/30 px-3 py-1 rounded-full bg-brand-yellow/10">Tecnologia 3D Vision</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ===================== INVESTIMENTO (INTELBRAS VS YALE CONNECT) ===================== -->
+<section id="investimento" class="py-28 bg-[#f8f9fa] border-t border-gray-200/60 relative overflow-hidden">
+    <div class="absolute inset-0 bg-dots pointer-events-none"></div>
+    <div class="max-w-6xl mx-auto px-4 relative z-10">
+        <div class="text-center mb-8 reveal">
+            <span class="text-brand-yellow font-bold uppercase tracking-widest text-xs">A Escolha da Fechadura</span>
+            <h2 class="text-3xl md:text-5xl font-bold text-gray-900 mt-3">Escolha sua Experiência</h2>
+            <p class="text-gray-500 mt-4 max-w-xl mx-auto text-lg">Qualidade superior em dois níveis de interação para a sua residência.</p>
+        </div>
+
+        <!-- Toggle Pagamento -->
+        <div class="flex flex-col items-center justify-center mb-10 reveal">
+            <div class="bg-white p-1.5 rounded-full inline-flex relative shadow-sm border border-gray-200">
+                <div id="toggle-bg" class="absolute top-1.5 bottom-1.5 w-[calc(50%-3px)] bg-brand-yellow/10 rounded-full transition-transform duration-300 ease-in-out border border-brand-yellow/30" style="transform: translateX(100%); left: 3px;"></div>
+                <button onclick="setPaymentMode('avista')" id="btn-avista" class="relative z-10 px-8 py-2.5 text-sm font-bold text-gray-500 transition-colors w-44 text-center rounded-full focus:outline-none">À Vista (PIX)</button>
+                <button onclick="setPaymentMode('parcelado')" id="btn-parcelado" class="relative z-10 px-8 py-2.5 text-sm font-bold text-brand-goldDark transition-colors w-44 text-center rounded-full focus:outline-none">Parcelado Cartão</button>
+            </div>
+            
+            <div id="installment-container" class="mt-6 flex flex-col items-center transition-all duration-300 opacity-100">
+                <div class="relative">
+                    <select id="installment-select" class="appearance-none bg-white border border-gray-200 text-gray-800 text-sm font-bold rounded-xl focus:ring-brand-yellow focus:border-brand-yellow block w-48 p-3 pl-4 pr-10 shadow-sm outline-none cursor-pointer hover:border-gray-300 transition-colors" onchange="updatePrices()">
+                        <option value="1">1x no Crédito</option>
+                        <option value="2">2x no Crédito</option>
+                        <option value="3">3x no Crédito</option>
+                        <option value="4">4x no Crédito</option>
+                        <option value="5">5x no Crédito</option>
+                        <option value="6">6x no Crédito</option>
+                        <option value="10">10x no Crédito</option>
+                        <option value="12" selected>12x no Crédito</option>
+                    </select>
+                    <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-3 text-gray-500">
+                        <i data-lucide="chevron-down" class="w-4 h-4"></i>
+                    </div>
+                </div>
+                <p class="text-xs text-gray-400 mt-2 font-medium" id="parcelado-note">*Acréscimo de 10% da taxa de operação do cartão incluso no total.</p>
+            </div>
+        </div>
+
+        <div class="grid lg:grid-cols-2 gap-8 reveal items-stretch">
+            
+            <!-- OPÇÃO 1: INTELBRAS -->
+            <div class="product-card bg-white rounded-[2rem] p-10 shadow-glass border border-gray-200 relative flex flex-col h-full group">
+                <div class="mb-4">
+                    <div class="text-xs font-bold text-gray-500 uppercase tracking-widest mb-2">Segurança & Design</div>
+                    <h3 class="text-2xl font-bold text-gray-900">Fechadura Intelbras</h3>
+                    <p class="text-sm text-gray-500 mt-2">Design elegante com Hub Smart integrado.</p>
+                </div>
+
+                <!-- Imagem -->
+                <div class="w-full h-56 mb-6 flex items-center justify-center p-4">
+                     <img src="https://res.cloudinary.com/dptcuckhf/image/upload/v1772495921/ifr-7000_-pack-removebg-preview_uahorl.png" 
+                          alt="Fechadura Intelbras" 
+                          class="h-full object-contain drop-shadow-2xl transition-all duration-500 transform group-hover:scale-105">
+                </div>
+
+                <div class="space-y-4 mb-8 flex-1 text-sm text-gray-700">
+                    <ul class="space-y-3">
+                        <li class="flex items-center gap-3"><i data-lucide="check" class="w-5 h-5 text-brand-yellow shrink-0"></i> Design Premium com Maçaneta</li>
+                        <li class="flex items-center gap-3"><i data-lucide="check" class="w-5 h-5 text-brand-yellow shrink-0"></i> Hub Mibo Smart Incluso</li>
+                        <li class="flex items-center gap-3"><i data-lucide="check" class="w-5 h-5 text-brand-yellow shrink-0"></i> Instalação de Especialista</li>
+                        <li class="flex items-center gap-3"><i data-lucide="check" class="w-5 h-5 text-brand-yellow shrink-0"></i> <strong>Garantia Estendida</strong></li>
+                    </ul>
+                </div>
+
+                <div class="border-t border-gray-100 pt-6 mt-auto">
+                    <div class="flex flex-col items-end mb-4">
+                        <span class="text-xs text-gray-400 font-bold uppercase tracking-wider mb-1">Investimento</span>
+                        <div class="flex items-baseline gap-2" id="price-opt1"></div>
+                        <span class="text-sm text-gray-500 font-medium mt-1" id="subtext-opt1"></span>
+                    </div>
+                    <a href="https://wa.me/551159950096?text=Olá%20Glicia,%20quero%20aprovar%20o%20pacote%20da%20Fechadura%20Intelbras%20MFD%207000%20para%20a%20Residência%20Campestre." target="_blank" class="w-full border-2 border-gray-200 text-gray-700 font-bold py-4 rounded-2xl flex items-center justify-center gap-2 hover:border-brand-yellow hover:text-brand-yellow transition-all text-sm uppercase tracking-widest mt-auto">
+                        Aprovar Pacote Intelbras
+                    </a>
+                </div>
+            </div>
+
+            <!-- OPÇÃO 2: YALE CONNECT (RECOMENDADO) -->
+            <div class="premium-border-glow h-full group">
+                <div class="premium-border-inner flex flex-col h-full bg-white relative">
+                    <div class="absolute top-4 right-4 z-20">
+                        <span class="bg-brand-yellow text-black text-[10px] font-extrabold px-4 py-1.5 rounded-full uppercase tracking-widest shadow-glow">Recomendado</span>
+                    </div>
+
+                    <div class="mb-4 mt-2">
+                        <div class="text-xs font-bold text-brand-yellow uppercase tracking-widest mb-2">Upgrade Tecnológico</div>
+                        <h3 class="text-2xl font-bold text-gray-900">Yale de Embutir Connect</h3>
+                        <p class="text-sm text-gray-500 mt-2">Tecnologia de ponta com conectividade Wi-Fi.</p>
+                    </div>
+
+                    <!-- Imagem com Badge Wi-Fi -->
+                    <div class="w-full h-56 mb-6 flex items-center justify-center p-4 relative">
+                         <div class="absolute -top-2 left-0 bg-white border border-gray-200 px-3 py-1.5 rounded-full flex items-center gap-2 z-20 shadow-sm">
+                             <i data-lucide="wifi" class="w-4 h-4 text-brand-yellow"></i>
+                             <span class="text-[10px] font-bold text-gray-700 uppercase">App Control</span>
+                         </div>
+                         <img id="img-connect" src="https://res.cloudinary.com/dptcuckhf/image/upload/v1769713365/Fechadura_Digital_YMC_420W_com_Zigbee_integrado___Kit_Conectividade__Preto_fosco_fabsws.png" 
+                              alt="Yale de Embutir Connect" 
+                              class="h-full object-contain drop-shadow-[0_20px_30px_rgba(0,0,0,0.15)] transition-all duration-500 transform group-hover:scale-105">
+                    </div>
+
+                    <!-- Cores -->
+                    <div class="flex items-center gap-3 mb-6 bg-brand-yellow/5 p-3 rounded-xl border border-brand-yellow/20">
+                        <span class="text-[11px] uppercase font-bold text-brand-goldDark flex items-center gap-1 animate-pulse">
+                            <i data-lucide="mouse-pointer-click" class="w-3.5 h-3.5"></i> Escolha a cor:
+                        </span>
+                        <button onclick="changeColor('connect', 'black')" class="color-option active w-6 h-6 rounded-full bg-[#1a1a1a] border-2 border-brand-yellow/50 focus:outline-none hover:scale-110" title="Preto Fosco"></button>
+                        <button onclick="changeColor('connect', 'silver')" class="color-option w-6 h-6 rounded-full bg-[#e2e2e2] border-2 border-brand-yellow/50 focus:outline-none hover:scale-110" title="Prata"></button>
+                        <button onclick="changeColor('connect', 'white')" class="color-option w-6 h-6 rounded-full bg-[#f8f8f8] border-2 border-brand-yellow/50 focus:outline-none hover:scale-110" title="Branca"></button>
+                    </div>
+
+                    <div class="space-y-4 mb-8 flex-1 text-sm text-gray-700">
+                        <p class="text-xs italic text-brand-goldDark font-semibold mb-2">A união da tradição mundial com conectividade</p>
+                        <ul class="space-y-3">
+                            <li class="flex items-center gap-3"><i data-lucide="check-circle-2" class="w-5 h-5 text-brand-yellow shrink-0"></i> <strong>Abertura Remota</strong> (Abra de onde estiver)</li>
+                            <li class="flex items-center gap-3"><i data-lucide="check-circle-2" class="w-5 h-5 text-brand-yellow shrink-0"></i> Relatório de Acesso no App</li>
+                            <li class="flex items-center gap-3"><i data-lucide="check-circle-2" class="w-5 h-5 text-brand-yellow shrink-0"></i> <strong>Garantia Estendida Vision (4 Anos)</strong></li>
+                            <li class="flex items-center gap-3"><i data-lucide="check-circle-2" class="w-5 h-5 text-brand-yellow shrink-0"></i> Módulo Zigbee + Hub Inclusos</li>
+                        </ul>
+                    </div>
+
+                    <div class="border-t border-gray-100 pt-6 mt-auto">
+                        <div class="flex flex-col items-end mb-4">
+                            <span class="text-xs text-gray-400 font-bold uppercase tracking-wider mb-1">Investimento</span>
+                            <div class="flex items-baseline gap-2" id="price-opt2"></div>
+                            <span class="text-sm text-gray-500 font-medium mt-1" id="subtext-opt2"></span>
+                        </div>
+                        <a href="https://wa.me/551159950096?text=Olá%20Glicia,%20quero%20aprovar%20o%20pacote%20Recomendado%20da%20Fechadura%20Yale%20Connect%20para%20a%20Residência%20Campestre." target="_blank" class="w-full bg-brand-yellow hover:bg-brand-goldLight text-black font-bold py-4 rounded-2xl flex items-center justify-center gap-2 transition-all shadow-glow-md text-sm uppercase tracking-widest mt-auto z-10">
+                            Aprovar Yale Connect
+                            <i data-lucide="arrow-right" class="w-4 h-4 transition-transform group-hover:translate-x-1"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<!-- ===================== NOTA DE ESCOPO (LIMPA) ===================== -->
+<section class="py-16 bg-white border-b border-gray-100 relative">
+    <div class="max-w-4xl mx-auto px-4 reveal">
+        <h3 class="text-2xl font-bold text-gray-900 mb-8 text-center">O que entregamos neste projeto</h3>
+        
+        <div class="grid md:grid-cols-2 gap-6 mb-8">
+            <div class="bg-emerald-50/50 rounded-2xl p-6 border border-emerald-100">
+                <h4 class="font-bold text-emerald-800 mb-4 flex items-center gap-2"><i data-lucide="check-circle" class="w-5 h-5"></i> INCLUÍDO</h4>
+                <ul class="space-y-3 text-sm text-emerald-700/80">
+                    <li class="flex items-start gap-2"><i data-lucide="check" class="w-4 h-4 shrink-0 mt-0.5"></i> Fornecimento da fechadura premium escolhida e módulos.</li>
+                    <li class="flex items-start gap-2"><i data-lucide="check" class="w-4 h-4 shrink-0 mt-0.5"></i> Instalação especializada Vision (Marcenaria em porta de 35mm).</li>
+                    <li class="flex items-start gap-2"><i data-lucide="check" class="w-4 h-4 shrink-0 mt-0.5"></i> Configuração na rede Wi-Fi e pareamento com o celular.</li>
+                    <li class="flex items-start gap-2"><i data-lucide="check" class="w-4 h-4 shrink-0 mt-0.5"></i> Treinamento operacional para os moradores.</li>
+                    <li class="flex items-start gap-2"><i data-lucide="check" class="w-4 h-4 shrink-0 mt-0.5"></i> Limpeza rigorosa do local após a instalação.</li>
+                </ul>
+            </div>
+
+            <div class="bg-red-50/50 rounded-2xl p-6 border border-red-100">
+                <h4 class="font-bold text-red-800 mb-4 flex items-center gap-2"><i data-lucide="x-circle" class="w-5 h-5"></i> NÃO INCLUÍDO</h4>
+                <ul class="space-y-3 text-sm text-red-700/80">
+                    <li class="flex items-start gap-2"><i data-lucide="x" class="w-4 h-4 shrink-0 mt-0.5"></i> Restauração com massa, pintura ou envelopamento da porta caso decida se mudar e retirar a fechadura no futuro (o modelo de embutir exige furação definitiva).</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="bg-[#f8f9fa] rounded-xl p-5 border border-gray-200 text-center shadow-sm">
+            <p class="text-sm text-gray-600">
+                <strong>Transparência total:</strong> Esta consultoria técnica inicial, avaliada em R$ 500,00, é uma cortesia Vision Business para demonstrar nosso padrão de qualidade antes mesmo de você nos contratar.
+            </p>
+        </div>
+    </div>
+</section>
+
+<!-- ===================== VISION CARE (OPCIONAL) ===================== -->
+<section class="py-20 bg-white border-b border-gray-100">
+    <div class="max-w-4xl mx-auto px-4 reveal">
+        <div class="bg-zinc-900 rounded-[2rem] p-8 md:p-12 shadow-premium relative overflow-hidden">
+            <div class="absolute top-0 right-0 w-64 h-64 bg-brand-yellow/10 rounded-full blur-3xl pointer-events-none"></div>
+            
+            <div class="flex flex-col md:flex-row items-center gap-8 relative z-10">
+                <div class="w-24 h-24 bg-brand-yellow/20 rounded-full flex items-center justify-center shrink-0 border border-brand-yellow/30">
+                    <i data-lucide="shield-plus" class="w-10 h-10 text-brand-yellow"></i>
+                </div>
+                
+                <div class="flex-1 text-center md:text-left">
+                    <span class="text-brand-yellow text-[10px] font-bold uppercase tracking-widest mb-2 block">Sustentação Opcional</span>
+                    <h3 class="text-2xl md:text-3xl font-bold text-white mb-3">Vision Care Home</h3>
+                    <p class="text-zinc-400 text-sm leading-relaxed mb-6">
+                        O seguro de vida do seu controle de acesso. Toda máquina de precisão precisa de revisão. Garanta que a sua fechadura dure mais de 10 anos operando com a mesma maciez do primeiro dia.
+                    </p>
+                    
+                    <ul class="space-y-2 text-sm text-zinc-300 mb-6 text-left max-w-xl mx-auto md:mx-0">
+                        <li class="flex items-start gap-2"><i data-lucide="check" class="w-4 h-4 text-brand-yellow shrink-0 mt-0.5"></i> 1 Visita anual de manutenção preventiva (Reaperto de parafusos da máquina).</li>
+                        <li class="flex items-start gap-2"><i data-lucide="check" class="w-4 h-4 text-brand-yellow shrink-0 mt-0.5"></i> Lubrificação interna com grafite/óleos não corrosivos.</li>
+                        <li class="flex items-start gap-2"><i data-lucide="check" class="w-4 h-4 text-brand-yellow shrink-0 mt-0.5"></i> <strong>Troca inclusa do jogo de pilhas</strong> por baterias alcalinas premium.</li>
+                        <li class="flex items-start gap-2"><i data-lucide="check" class="w-4 h-4 text-brand-yellow shrink-0 mt-0.5"></i> Atualização de firmware contra hackers.</li>
+                    </ul>
+
+                    <div class="inline-flex items-center gap-4 bg-black/50 px-6 py-3 rounded-xl border border-white/10">
+                        <span class="text-zinc-400 text-sm font-medium">Investimento Anual:</span>
+                        <span class="text-white font-bold text-xl">R$ 290,00 <span class="text-sm font-normal text-zinc-500">/ano</span></span>
+                    </div>
+                    <p class="text-xs text-brand-yellow/80 mt-3">*Pago apenas no momento da visita preventiva.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ===================== FOOTER ===================== -->
+<footer class="bg-[#09090b] py-16 text-center group">
+    <div class="max-w-4xl mx-auto px-4">
+        <div class="flex flex-col items-center mb-10">
+            <span class="font-logo font-bold text-[3.5rem] text-white lowercase tracking-[-0.05em] leading-none">vısıon</span>
+            <span class="font-tech text-[0.65rem] font-bold text-zinc-500 lowercase tracking-[0.4em] -mt-2 ml-1">tecnologia</span>
+        </div>
+        <p class="text-zinc-500 text-xs opacity-60">ID-VISION-TECNOLOGIA-26.CAMPESTRE | São Paulo, SP</p>
+    </div>
+</footer>
+
+<!-- WHATSAPP CTA -->
+<div id="cta-float" class="fixed bottom-6 right-6 z-50 transition-all duration-500 opacity-0 translate-y-10 pointer-events-none">
+    <a href="https://wa.me/551159950096?text=Olá%20Glicia,%20gostaria%20de%20tirar%20algumas%20dúvidas%20sobre%20o%20projeto%20de%20acesso%20da%20Residência%20Campestre." target="_blank" class="flex items-center justify-center w-14 h-14 bg-brand-yellow text-black rounded-full shadow-glow-md hover:scale-110 transition-transform">
+        <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="currentColor" viewBox="0 0 16 16"><path d="M13.601 2.326A7.854 7.854 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c0 1.399.366 2.76 1.057 3.965L0 16l4.204-1.102a7.933 7.933 0 0 0 3.79.965h.004c4.368 0 7.926-3.558 7.93-7.93A7.898 7.898 0 0 0 13.6 2.326zM7.994 14.521a6.573 6.573 0 0 1-3.356-.92l-.24-.144-2.494.654.666-2.433-.156-.251a6.56 6.56 0 0 1-1.007-3.505c0-3.626 2.957-6.584 6.591-6.584a6.56 6.56 0 0 1 4.66 1.931 6.557 6.557 0 0 1 1.928 4.66c-.004 3.639-2.961 6.592-6.592 6.592zm3.615-4.934c-.197-.099-1.17-.578-1.353-.646-.182-.065-.315-.099-.445.099-.133.197-.513.646-.627.775-.114.133-.232.148-.43.05-.197-.1-.836-.308-1.592-.985-.59-.525-.985-1.175-1.103-1.372-.114-.198-.011-.304.088-.403.087-.088.197-.232.296-.346.1-.114.133-.198.198-.33.065-.134.034-.248-.015-.347-.05-.099-.445-1.076-.612-1.47-.16-.389-.323-.335-.445-.34-.114-.005-.247-.007-.38-.007a.729.729 0 0 0-.529.247c-.182.198-.691.677-.691 1.654 0 .977.71 1.916.81 2.049.098.133 1.394 2.132 3.383 2.992.47.205.84.326 1.129.418.475.152.904.129 1.246.08.38-.058 1.171-.48 1.338-.943.164-.464.164-.86.114-.943-.049-.084-.182-.133-.38-.232z"/></svg>
+    </a>
+</div>
+
+<script>
+    // PREÇOS BASE
+    const basePrice1 = 3350; // INTELBRAS COM HUB
+    const basePrice2 = 2077; // YALE CONNECT
+    const cardFee = 1.10;    // +10% de taxa na maquininha se parcelado
+    
+    let currentMode = 'parcelado';
+
+    // Banco de Imagens do Smart Entry integrado
+    const productImages = {
+        'hardware-yale': {
+            black: 'https://res.cloudinary.com/dptcuckhf/image/upload/v1769713365/Fechadura_Digital_YMC_420W_com_Zigbee_integrado___Kit_Conectividade__Preto_fosco_fabsws.png',
+            silver: 'https://res.cloudinary.com/dptcuckhf/image/upload/v1769712885/Fechadura_Digital_YMC_420W_com_Zigbee_integrado___Kit_Conectividade_tbvxhe.png',
+            white: 'https://res.cloudinary.com/dptcuckhf/image/upload/v1769713365/Fechadura_Digital_YMC_420W_com_Zigbee_integrado___Kit_Conectividade__Branca_-_fwx507.png'
+        },
+        'connect': {
+            black: 'https://res.cloudinary.com/dptcuckhf/image/upload/v1769713365/Fechadura_Digital_YMC_420W_com_Zigbee_integrado___Kit_Conectividade__Preto_fosco_fabsws.png',
+            silver: 'https://res.cloudinary.com/dptcuckhf/image/upload/v1769712885/Fechadura_Digital_YMC_420W_com_Zigbee_integrado___Kit_Conectividade_tbvxhe.png',
+            white: 'https://res.cloudinary.com/dptcuckhf/image/upload/v1769713365/Fechadura_Digital_YMC_420W_com_Zigbee_integrado___Kit_Conectividade__Branca_-_fwx507.png'
+        }
+    };
+
+    document.addEventListener("DOMContentLoaded", () => {
+        lucide.createIcons();
+        setPaymentMode('parcelado');
+
+        // Desbloqueio de áudio do vídeo
+        const unmuteOverlay = document.getElementById("unmute-overlay");
+        if (unmuteOverlay) {
+            unmuteOverlay.addEventListener("click", function() {
+                const video = document.getElementById("vision-video");
+                if (video) {
+                    video.muted = false;
+                    video.play();
+                }
+                this.style.display = "none";
+            });
+        }
+    });
+
+    // Função de Trocar Cores Yale
+    function changeColor(model, color) {
+        const imgElement = document.getElementById(`img-${model}`);
+        if (imgElement && productImages[model] && productImages[model][color]) {
+            imgElement.style.opacity = '0';
+            setTimeout(() => {
+                imgElement.src = productImages[model][color];
+                imgElement.style.opacity = '1';
+            }, 200);
+        }
+
+        const container = imgElement.closest('.group');
+        const buttons = container.querySelectorAll('.color-option');
+        
+        buttons.forEach(btn => {
+            btn.classList.remove('active');
+            if (btn.getAttribute('onclick').includes(`'${color}'`)) {
+                btn.classList.add('active');
+            }
+        });
+    }
+
+    function setPaymentMode(mode) {
+        currentMode = mode;
+        const bg = document.getElementById('toggle-bg');
+        const selectContainer = document.getElementById('installment-container');
+        const btnAvista = document.getElementById('btn-avista');
+        const btnParcelado = document.getElementById('btn-parcelado');
+
+        if (mode === 'avista') {
+            bg.style.transform = 'translateX(0)';
+            selectContainer.style.display = 'none';
+            btnAvista.classList.replace('text-gray-500', 'text-brand-goldDark');
+            btnParcelado.classList.replace('text-brand-goldDark', 'text-gray-500');
+        } else {
+            bg.style.transform = 'translateX(100%)';
+            selectContainer.style.display = 'flex';
+            btnParcelado.classList.replace('text-gray-500', 'text-brand-goldDark');
+            btnAvista.classList.replace('text-brand-goldDark', 'text-gray-500');
+        }
+        updatePrices();
+    }
+
+    function updatePrices() {
+        const elPrice1 = document.getElementById('price-opt1');
+        const elPrice2 = document.getElementById('price-opt2');
+        const elSub1 = document.getElementById('subtext-opt1');
+        const elSub2 = document.getElementById('subtext-opt2');
+        const select = document.getElementById('installment-select');
+
+        if (currentMode === 'avista') {
+            elPrice1.innerHTML = `<span class="text-4xl md:text-5xl font-extrabold text-gray-900">R$ ${basePrice1.toLocaleString('pt-BR')}</span>`;
+            elPrice2.innerHTML = `<span class="text-4xl md:text-5xl font-extrabold text-gray-900">R$ ${basePrice2.toLocaleString('pt-BR')}</span>`;
+            elSub1.innerHTML = 'Pagamento em PIX/Transferência.';
+            elSub2.innerHTML = 'Pagamento em PIX/Transferência.';
+        } else {
+            const inst = parseInt(select.value);
+            const total1 = basePrice1 * cardFee;
+            const total2 = basePrice2 * cardFee;
+            
+            const val1 = Math.round(total1 / inst);
+            const val2 = Math.round(total2 / inst);
+
+            elPrice1.innerHTML = `<span class="text-xl font-bold text-gray-400">${inst}x</span> <span class="text-4xl md:text-5xl font-extrabold text-gray-900">R$ ${val1.toLocaleString('pt-BR')}</span>`;
+            elPrice2.innerHTML = `<span class="text-xl font-bold text-brand-yellow">${inst}x</span> <span class="text-4xl md:text-5xl font-extrabold text-gray-900">R$ ${val2.toLocaleString('pt-BR')}</span>`;
+            elSub1.innerHTML = `Total Final no Cartão: R$ ${total1.toLocaleString('pt-BR', {minimumFractionDigits: 2, maximumFractionDigits: 2})}`;
+            elSub2.innerHTML = `Total Final no Cartão: R$ ${total2.toLocaleString('pt-BR', {minimumFractionDigits: 2, maximumFractionDigits: 2})}`;
+        }
+    }
+
+    function checkPassword() {
+        const input = document.getElementById('password-input').value.toUpperCase();
+        if (input === 'CAMPESTRE2026' || input === 'VISION') {
+            document.getElementById('lock-screen').style.opacity = '0';
+            setTimeout(() => {
+                document.getElementById('lock-screen').style.display = 'none';
+                document.body.classList.remove('overflow-hidden', 'h-screen');
+                document.getElementById('html-root').classList.remove('overflow-hidden', 'h-screen');
+            }, 700);
+            
+            fetch('https://api.staticforms.dev/submit', {
+                method: 'POST',
+                headers: { 
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json'
+                },
+                body: JSON.stringify({
+                    accessKey: "sf_077ej49gjha153gk3m6ceecf",
+                    subject: "🚨 ALERTA: Proposta Acessada (Residência Campestre)",
+                    name: "Sistema Vision",
+                    email: "diretoria@visionsp.com.br",
+                    message: `O cliente acabou de abrir a proposta!\n\n👤 Cliente: Residência Campestre\n🔑 Senha Utilizada: ${document.getElementById('password-input').value}\n🕒 Horário: ${new Date().toLocaleString('pt-BR')}`
+                })
+            }).catch(() => {});
+        } else {
+            document.getElementById('error-msg').classList.remove('hidden');
+        }
+    }
+
+    // Intersection Observer
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) entry.target.classList.add('active');
+        });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+    // Navbar e CTA flutuante
+    window.addEventListener('scroll', () => {
+        const cta = document.getElementById('cta-float');
+        if (window.scrollY > 400) {
+            cta.classList.remove('opacity-0', 'translate-y-10', 'pointer-events-none');
+            cta.classList.add('opacity-100', 'translate-y-0');
+        } else {
+            cta.classList.add('opacity-0', 'translate-y-10', 'pointer-events-none');
+        }
+    });
+</script>
+</body>
+</html>
