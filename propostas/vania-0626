@@ -1,0 +1,1005 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth overflow-x-hidden" id="html-root">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projeto Residencial | Vânia Maria – Vision</title>
+    <meta name="description" content="Ecossistema de Cuidados e Acesso Inteligente – Vision Tecnologia">
+    <meta name="theme-color" content="#b9880e">
+
+    <!-- Fonts & Icons -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@700;800&family=Quicksand:wght@500;600;700&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <!-- Google Analytics 4 -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-KTGEL92B0F"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-KTGEL92B0F');
+    </script>
+
+    <!-- Microsoft Clarity -->
+    <script type="text/javascript">
+        (function(c,l,a,r,i,t,y){
+            c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+            t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+            y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+        })(window, document, "clarity", "script", "vifq10es5o");
+    </script>
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"Outfit"', 'sans-serif'],
+                        logo: ['"League Spartan"', 'sans-serif'],
+                        tech: ['"Quicksand"', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            yellow: '#b9880e',
+                            goldLight: '#FFDE59',
+                            goldDark: '#8a6208',
+                            black: '#09090b',
+                        }
+                    },
+                    boxShadow: {
+                        'glass': '0 4px 24px 0 rgba(0,0,0,0.04)',
+                        'premium': '0 16px 50px -10px rgba(0,0,0,0.08)',
+                        'premium-card': '0 16px 50px -10px rgba(0, 0, 0, 0.08)',
+                        'glow': '0 0 20px rgba(185,136,14,0.15)',
+                        'glow-md': '0 0 35px rgba(185,136,14,0.25)',
+                    },
+                    animation: {
+                        'slide-up': 'slideUp 0.9s cubic-bezier(0.16,1,0.3,1) forwards',
+                        'float': 'float 6s ease-in-out infinite',
+                        'fade-in': 'fadeIn 0.6s ease forwards',
+                        'shine-pulse': 'shinePulse 3s ease-in-out infinite',
+                        'float-slow': 'float 8s ease-in-out infinite',
+                    },
+                    keyframes: {
+                        slideUp: {
+                            '0%': { opacity: '0', transform: 'translateY(40px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' }
+                        },
+                        float: {
+                            '0%,100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-12px)' }
+                        },
+                        fadeIn: {
+                            '0%': { opacity: '0' },
+                            '100%': { opacity: '1' }
+                        },
+                        shinePulse: {
+                            '0%,100%': { opacity: '0.6' },
+                            '50%': { opacity: '1' }
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: #f9fafb; }
+        ::-webkit-scrollbar-thumb { background: #d1d5db; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #b9880e; }
+
+        .text-gold-shine {
+            background: linear-gradient(to right, #b9880e 20%, #FFDE59 50%, #b9880e 80%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-size: 200% auto;
+            animation: shine 4s linear infinite;
+        }
+        @keyframes shine { to { background-position: 200% center; } }
+
+        .bg-grid {
+            background-image: linear-gradient(rgba(185,136,14,0.04) 1px, transparent 1px),
+                              linear-gradient(90deg, rgba(185,136,14,0.04) 1px, transparent 1px);
+            background-size: 40px 40px;
+        }
+        .bg-dots {
+            background-image: radial-gradient(#b9880e 1.2px, transparent 1.2px);
+            background-size: 22px 22px;
+            opacity: 0.035;
+        }
+
+        .lock-input {
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.1);
+            color: #b9880e;
+            font-family: 'League Spartan', sans-serif;
+            font-size: 1.5rem;
+            text-align: center;
+            outline: none;
+            transition: all 0.3s;
+            letter-spacing: 0.2em;
+            border-radius: 14px;
+        }
+        .lock-input:focus {
+            border-color: #b9880e;
+            background: rgba(255,255,255,0.08);
+            box-shadow: 0 0 20px rgba(185,136,14,0.25);
+        }
+        .lock-input::placeholder {
+            color: #52525b;
+            font-size: 0.85rem;
+            font-family: 'Outfit', sans-serif;
+            font-weight: 300;
+            letter-spacing: normal;
+        }
+
+        .reveal { opacity: 0; transform: translateY(30px); transition: all 0.8s cubic-bezier(0.16,1,0.3,1); }
+        .reveal.active { opacity: 1; transform: translateY(0); }
+
+        .service-card:hover { transform: translateY(-4px); box-shadow: 0 20px 40px -8px rgba(0,0,0,0.1); }
+        .service-card { transition: all 0.3s cubic-bezier(0.4,0,0.2,1); }
+
+        .accordion-content { max-height: 0; overflow: hidden; transition: max-height 0.45s cubic-bezier(0.4,0,0.2,1); }
+        .accordion-item.open .accordion-content { max-height: 600px; }
+        .accordion-item.open .acc-arrow { transform: rotate(180deg); }
+        .acc-arrow { transition: transform 0.3s; }
+
+        /* Borda Animada Premium */
+        .premium-border-glow {
+            position: relative;
+            border-radius: 2rem;
+            padding: 2px;
+            background-color: #b9880e;
+            overflow: hidden;
+            box-shadow: 0 0 35px rgba(185,136,14,0.15);
+            transition: transform 0.3s cubic-bezier(0.4,0,0.2,1);
+        }
+        .premium-border-glow:hover { transform: scale(1.01); }
+        .premium-border-glow::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: conic-gradient(
+                from 0deg, 
+                transparent 0deg, 
+                transparent 175deg, 
+                rgba(255, 222, 89, 0.6) 178deg, 
+                #ffffff 180deg, 
+                rgba(255, 222, 89, 0.6) 182deg, 
+                transparent 185deg, 
+                transparent 360deg
+            );
+            animation: rotate-border 12s linear infinite;
+            z-index: 0;
+        }
+        @keyframes rotate-border {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        .premium-border-inner {
+            position: relative;
+            z-index: 1;
+            background-color: #ffffff;
+            border-radius: calc(2rem - 2px);
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            padding: 2.5rem;
+            overflow: hidden;
+        }
+
+        .counter-num { font-variant-numeric: tabular-nums; }
+        
+        details > summary { list-style: none; }
+        details > summary::-webkit-details-marker { display: none; }
+        
+        @media print {
+            #lock-screen, #navbar, #cta-float { display: none !important; }
+            .reveal { opacity: 1 !important; transform: none !important; }
+        }
+    </style>
+</head>
+<body class="bg-[#fafafa] text-gray-800 antialiased selection:bg-brand-yellow selection:text-white overflow-hidden h-screen" id="body-root">
+
+<!-- ===================== LOCK SCREEN ===================== -->
+<div id="lock-screen" class="fixed inset-0 z-[100] bg-[#09090b] flex flex-col items-center justify-center text-center p-4 transition-opacity duration-700 ease-out touch-none" style="overscroll-behavior: none;">
+    <div class="bg-grid absolute inset-0 opacity-10 pointer-events-none"></div>
+    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-brand-yellow/5 rounded-full blur-[100px] pointer-events-none"></div>
+
+    <!-- Logo -->
+    <div class="relative flex flex-col items-center mb-10 z-10">
+        <div class="relative flex items-baseline leading-none">
+            <span class="font-logo font-bold text-[5.5rem] md:text-[6rem] text-gold-shine lowercase tracking-[-0.05em] leading-none">vısıon</span>
+            <span class="absolute -right-5 top-4 text-[1.1rem] text-brand-yellow font-bold">®</span>
+        </div>
+        <span class="font-tech text-[1.1rem] font-bold text-zinc-500 lowercase -mt-4 ml-2.5 text-center w-full" style="letter-spacing:0.53em;">tecnologia</span>
+    </div>
+
+    <div class="w-full max-w-sm space-y-5 z-10">
+        <div class="space-y-1.5">
+            <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-brand-yellow/30 bg-brand-yellow/10 mb-3">
+                <i data-lucide="lock" class="w-3.5 h-3.5 text-brand-yellow"></i>
+                <span class="text-brand-yellow text-[10px] font-bold uppercase tracking-widest">Proposta Confidencial</span>
+            </div>
+            <h2 class="text-white font-bold text-2xl">Residência Vânia Maria</h2>
+            <p class="text-zinc-400 text-sm">A/C Vânia M. E. Giongo S. de Araújo<br>Projeto Executivo de Cuidados e Acesso</p>
+        </div>
+
+        <div>
+            <!-- SENHA CONFIGURADA: vania2026 ou vision -->
+            <input type="password" id="password-input" class="lock-input w-full py-4 px-4" placeholder="SENHA DE ACESSO" autocomplete="off">
+            <p id="error-msg" class="text-red-400 text-xs mt-2 hidden">
+                <span class="flex items-center justify-center gap-1"><i data-lucide="x-circle" class="w-4 h-4"></i> Credencial inválida.</span>
+            </p>
+        </div>
+
+        <button onclick="checkPassword()" class="w-full bg-brand-yellow hover:bg-brand-goldLight text-black font-bold py-4 rounded-2xl transition-all shadow-glow flex items-center justify-center gap-2 group relative overflow-hidden">
+            <div class="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-300 rounded-2xl"></div>
+            <i data-lucide="shield-check" class="w-5 h-5 relative z-10"></i>
+            <span class="relative z-10 text-sm uppercase tracking-widest">Acessar Documento Técnico</span>
+            <i data-lucide="arrow-right" class="w-4 h-4 relative z-10 group-hover:translate-x-1 transition-transform"></i>
+        </button>
+
+        <p class="text-zinc-600 text-xs">Documento restrito · Válido por 15 dias · Vision Tecnologia © 2026</p>
+    </div>
+</div>
+
+<!-- ===================== NAVBAR ===================== -->
+<nav id="navbar" class="fixed w-full z-50 top-0 bg-white/90 backdrop-blur-xl border-b border-gray-200/50 shadow-sm transition-all duration-300">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-between h-20 items-center">
+            <div class="flex flex-col items-center justify-center cursor-pointer" onclick="window.scrollTo(0,0)">
+                <div class="relative flex items-baseline leading-none">
+                    <span class="font-logo font-bold text-[2.6rem] text-gold-shine lowercase tracking-[-0.05em] leading-none">vısıon</span>
+                    <span class="absolute -right-2.5 top-1.5 text-[0.6rem] text-brand-yellow font-bold">®</span>
+                </div>
+                <span class="font-tech text-[0.6rem] font-bold text-gray-400 lowercase -mt-2 ml-1.5" style="letter-spacing:0.53em;">tecnologia</span>
+            </div>
+            <div class="hidden md:flex items-center space-x-7 text-xs font-semibold text-gray-500 uppercase tracking-wider">
+                <a href="#diagnostico" class="hover:text-brand-yellow transition-colors">Diagnóstico</a>
+                <a href="#solucao" class="hover:text-brand-yellow transition-colors">A Solução</a>
+                <a href="#comparativo" class="hover:text-brand-yellow transition-colors">Comparativo</a>
+                <a href="#investimento" class="hover:text-brand-yellow transition-colors">Investimento</a>
+            </div>
+            <div class="flex items-center gap-4">
+                <button onclick="window.print()" class="text-gray-400 hover:text-brand-yellow transition-colors flex items-center gap-1.5" title="Salvar em PDF">
+                    <i data-lucide="download" class="w-4 h-4"></i>
+                    <span class="text-[10px] font-bold uppercase tracking-widest hidden sm:block">PDF</span>
+                </button>
+                <a href="#investimento" class="bg-zinc-900 text-white px-5 py-2.5 rounded-full text-[10px] font-bold uppercase tracking-widest hover:bg-brand-yellow hover:text-black transition-all shadow-md">
+                    Ver Proposta
+                </a>
+            </div>
+        </div>
+    </div>
+</nav>
+
+<!-- ===================== HERO COM VÍDEO ===================== -->
+<header class="pt-32 pb-20 lg:pt-40 relative overflow-hidden bg-white">
+    <div class="absolute inset-0 bg-tech-pattern pointer-events-none"></div>
+    <div class="absolute right-0 top-0 -translate-y-1/4 translate-x-1/4 w-[800px] h-[800px] bg-brand-yellow/5 rounded-full blur-[120px] pointer-events-none"></div>
+    
+    <div class="max-w-7xl mx-auto px-4 relative z-10">
+        <div class="flex flex-col lg:flex-row items-center gap-12 lg:gap-16">
+            
+            <!-- Coluna Texto -->
+            <div class="w-full lg:w-1/2 text-center lg:text-left animate-slide-up">
+                <div class="inline-flex items-center gap-2 px-5 py-2 rounded-full border border-brand-yellow/30 bg-brand-yellow/5 text-brand-yellow text-[10px] font-bold uppercase tracking-widest mb-8 mx-auto lg:mx-0">
+                    <i data-lucide="shield" class="w-4 h-4"></i>
+                    PROJETO EXECUTIVO #VB-2026-0310 | VALIDADE: 15 DIAS
+                </div>
+                
+                <h1 class="text-4xl md:text-5xl lg:text-6xl font-extrabold text-gray-900 leading-[1.05] tracking-tight mb-6">
+                    Tranquilidade absoluta para <span class="text-gold-shine">cuidar de quem você ama.</span>
+                </h1>
+                
+                <h2 class="text-base md:text-lg text-gray-500 max-w-xl mx-auto lg:mx-0 font-medium mt-6 leading-relaxed">
+                    Monitoramento inteligente, Wi-Fi impecável na casa toda e controle total de quem entra e sai do seu apartamento.
+                </h2>
+            </div>
+
+            <!-- Coluna Vídeo Principal -->
+            <div class="w-full lg:w-1/2 mt-4 lg:mt-0 reveal animate-slide-up" style="animation-delay: 200ms;">
+                <div class="relative w-full rounded-[2rem] shadow-[0_20px_50px_-10px_rgba(0,0,0,0.3)] border-[3px] border-brand-yellow/80 group hover:shadow-[0_25px_60px_-10px_rgba(0,0,0,0.4)] transition-shadow duration-500 bg-black">
+                    <div class="relative w-full aspect-video rounded-[1.8rem] overflow-hidden bg-black shadow-inner">
+                        <video id="vision-video" class="w-full h-full object-cover cursor-pointer opacity-90" autoplay muted loop playsinline>
+                            <source src="https://res.cloudinary.com/dptcuckhf/video/upload/v1771711323/Vict%C3%B3ria_-_Vision_gdqnrk.mp4" type="video/mp4">
+                            Seu navegador não suporta o formato de vídeo.
+                        </video>
+
+                        <div id="unmute-overlay" class="absolute inset-0 bg-black/50 backdrop-blur-sm flex flex-col items-center justify-center cursor-pointer transition-opacity duration-500 z-10 hover:bg-black/40">
+                            <div class="bg-brand-yellow text-black font-bold px-6 py-3 md:px-8 md:py-4 rounded-full flex items-center gap-2 md:gap-3 shadow-glow animate-pulse transform group-hover:scale-105 transition-all">
+                                <i data-lucide="volume-2" class="w-5 h-5 md:w-6 md:h-6"></i>
+                                <span class="text-xs md:text-sm tracking-wide uppercase">Clique para Ouvir</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Floating Quick Stats -->
+        <div class="mt-16 lg:mt-24 grid grid-cols-2 md:grid-cols-4 gap-5 max-w-4xl mx-auto reveal">
+            <div class="bg-white rounded-2xl p-6 shadow-glass border border-gray-100 text-center hover:border-brand-yellow/40 transition-all animate-float" style="animation-delay:0s;">
+                <div class="w-10 h-10 bg-brand-yellow/10 rounded-xl flex items-center justify-center mx-auto mb-3">
+                    <i data-lucide="scan-face" class="w-5 h-5 text-brand-yellow"></i>
+                </div>
+                <div class="text-3xl font-extrabold text-gray-900 counter-num" data-target="3">0</div>
+                <div class="text-xs text-gray-500 font-medium mt-1 uppercase tracking-wider">Fechaduras Faciais</div>
+            </div>
+            <div class="bg-white rounded-2xl p-6 shadow-glass border border-gray-100 text-center hover:border-brand-yellow/40 transition-all animate-float" style="animation-delay:0.8s;">
+                <div class="w-10 h-10 bg-brand-yellow/10 rounded-xl flex items-center justify-center mx-auto mb-3">
+                    <i data-lucide="heart" class="w-5 h-5 text-brand-yellow"></i>
+                </div>
+                <div class="text-3xl font-extrabold text-gray-900 counter-num" data-target="7">0</div>
+                <div class="text-xs text-gray-500 font-medium mt-1 uppercase tracking-wider">Ambientes Cobertos</div>
+            </div>
+            <div class="bg-white rounded-2xl p-6 shadow-glass border border-gray-100 text-center hover:border-brand-yellow/40 transition-all animate-float" style="animation-delay:0.4s;">
+                <div class="w-10 h-10 bg-brand-yellow/10 rounded-xl flex items-center justify-center mx-auto mb-3">
+                    <i data-lucide="wifi" class="w-5 h-5 text-brand-yellow"></i>
+                </div>
+                <div class="text-3xl font-extrabold text-gray-900">Mesh</div>
+                <div class="text-xs text-gray-500 font-medium mt-1 uppercase tracking-wider">Sinal Máximo</div>
+            </div>
+            <div class="bg-white rounded-2xl p-6 shadow-glass border border-gray-100 text-center hover:border-brand-yellow/40 transition-all animate-float" style="animation-delay:1.2s;">
+                <div class="w-10 h-10 bg-brand-yellow/10 rounded-xl flex items-center justify-center mx-auto mb-3">
+                    <i data-lucide="shield-check" class="w-5 h-5 text-brand-yellow"></i>
+                </div>
+                <div class="text-3xl font-extrabold text-gray-900">Zero</div>
+                <div class="text-xs text-gray-500 font-medium mt-1 uppercase tracking-wider">Fios Pendurados</div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- ===================== DIAGNÓSTICO DO CENÁRIO ===================== -->
+<section id="diagnostico" class="py-28 bg-[#f8f9fa] border-y border-gray-200/60 relative">
+    <div class="max-w-7xl mx-auto px-4">
+        <div class="text-center mb-16 reveal">
+            <span class="text-brand-yellow font-bold uppercase tracking-widest text-xs">O Diagnóstico Consultivo</span>
+            <h2 class="text-3xl md:text-5xl font-bold text-gray-900 mt-3 leading-tight">O que mapeamos <br class="hidden md:block">no seu apartamento</h2>
+            <p class="text-gray-500 mt-5 max-w-3xl mx-auto text-lg leading-relaxed">
+                Cuidar de um familiar idoso exige um ambiente seguro e uma rotina prática. <strong>Vânia</strong>, analisamos a sua necessidade de monitorar 7 ambientes e gerenciar a entrada de cuidadores. Para que o sistema funcione perfeitamente, identificamos pontos que precisam da nossa estrutura técnica:
+            </p>
+        </div>
+
+        <div class="grid md:grid-cols-3 gap-8 reveal">
+            <!-- Card 1 -->
+            <div class="bg-white rounded-[2rem] p-8 shadow-premium border border-gray-100 relative overflow-hidden group hover:-translate-y-1 transition-transform duration-300 flex flex-col">
+                <div class="absolute top-0 right-0 w-32 h-32 bg-red-50 rounded-full blur-3xl transition-colors"></div>
+                <div class="w-14 h-14 bg-red-50 rounded-2xl flex items-center justify-center mb-6 relative z-10">
+                    <i data-lucide="wifi-off" class="w-7 h-7 text-red-500"></i>
+                </div>
+                <h3 class="text-xl font-bold text-gray-900 mb-3 relative z-10">A Falha de Conexão</h3>
+                <p class="text-gray-600 text-sm mb-6 relative z-10 leading-relaxed flex-1">
+                    <strong>O Problema:</strong> Você mencionou que o Wi-Fi atual não chega na casa toda. Instalar câmeras em uma rede fraca significa que elas vão desconectar e perder gravações exatamente na hora que você mais precisar olhar o aplicativo.
+                </p>
+                <div class="mt-auto p-4 bg-emerald-50 rounded-xl border border-emerald-100 relative z-10">
+                    <p class="text-xs text-emerald-800 leading-relaxed flex items-start gap-2">
+                        <i data-lucide="check-circle-2" class="w-4 h-4 shrink-0 mt-0.5"></i>
+                        <span><strong>A Solução Vision:</strong> Implementação de uma Rede Mesh. Criaremos um "guarda-chuva" de internet potente que cobre o apartamento inteiro, garantindo que as câmeras funcionem 24 horas por dia sem travar.</span>
+                    </p>
+                </div>
+            </div>
+
+            <!-- Card 2 -->
+            <div class="bg-white rounded-[2rem] p-8 shadow-premium border border-gray-100 relative overflow-hidden group hover:-translate-y-1 transition-transform duration-300 flex flex-col">
+                <div class="absolute top-0 right-0 w-32 h-32 bg-orange-50 rounded-full blur-3xl transition-colors"></div>
+                <div class="w-14 h-14 bg-orange-50 rounded-2xl flex items-center justify-center mb-6 relative z-10">
+                    <i data-lucide="key" class="w-7 h-7 text-orange-500"></i>
+                </div>
+                <h3 class="text-xl font-bold text-gray-900 mb-3 relative z-10">O Controle dos Cuidadores</h3>
+                <p class="text-gray-600 text-sm mb-6 relative z-10 leading-relaxed flex-1">
+                    <strong>O Problema:</strong> Entregar chaves físicas ou senhas para prestadores de serviço tira o seu controle sobre quem realmente está acessando a sua casa, gerando insegurança.
+                </p>
+                <div class="mt-auto p-4 bg-emerald-50 rounded-xl border border-emerald-100 relative z-10">
+                    <p class="text-xs text-emerald-800 leading-relaxed flex items-start gap-2">
+                        <i data-lucide="check-circle-2" class="w-4 h-4 shrink-0 mt-0.5"></i>
+                        <span><strong>A Solução Vision:</strong> As 3 Fechaduras de Reconhecimento Facial (já aprovadas). O rosto do cuidador é a chave. Você sabe exatamente a hora que entraram e saíram, direto pelo celular.</span>
+                    </p>
+                </div>
+            </div>
+
+            <!-- Card 3 -->
+            <div class="bg-white rounded-[2rem] p-8 shadow-premium border border-gray-100 relative overflow-hidden group hover:-translate-y-1 transition-transform duration-300 flex flex-col">
+                <div class="absolute top-0 right-0 w-32 h-32 bg-blue-50 rounded-full blur-3xl transition-colors"></div>
+                <div class="w-14 h-14 bg-blue-50 rounded-2xl flex items-center justify-center mb-6 relative z-10">
+                    <i data-lucide="mic-off" class="w-7 h-7 text-blue-500"></i>
+                </div>
+                <h3 class="text-xl font-bold text-gray-900 mb-3 relative z-10">Monitoramento Incompleto</h3>
+                <p class="text-gray-600 text-sm mb-6 relative z-10 leading-relaxed flex-1">
+                    <strong>O Problema:</strong> Câmeras comuns apenas filmam. Para o cuidado de idosos, apenas ver não é o suficiente; é preciso ouvir o ambiente e poder se comunicar imediatamente.
+                </p>
+                <div class="mt-auto p-4 bg-emerald-50 rounded-xl border border-emerald-100 relative z-10">
+                    <p class="text-xs text-emerald-800 leading-relaxed flex items-start gap-2">
+                        <i data-lucide="check-circle-2" class="w-4 h-4 shrink-0 mt-0.5"></i>
+                        <span><strong>A Solução Vision:</strong> Captação de áudio nítido e bidirecional em todos os 7 ambientes. Você ouve o que acontece e pode até falar pelo celular para que a sua voz saia no ambiente.</span>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ===================== A SOLUÇÃO (VITRINE + VÍDEO) ===================== -->
+<section id="solucao" class="py-28 bg-white relative overflow-hidden">
+    <div class="absolute inset-0 bg-dots pointer-events-none"></div>
+    <div class="max-w-7xl mx-auto px-4 relative z-10">
+        
+        <div class="text-center mb-16 reveal">
+            <span class="text-brand-yellow font-bold uppercase tracking-widest text-xs">O Ecossistema Vision</span>
+            <h2 class="text-3xl md:text-5xl font-bold text-gray-900 mt-3">Tecnologia invisível<br>e acolhedora</h2>
+            <p class="text-gray-500 mt-4 max-w-2xl mx-auto text-lg">
+                Desenhamos um projeto limpo, sem obras complexas e focado em facilitar o seu dia a dia.
+            </p>
+        </div>
+
+        <div class="grid lg:grid-cols-12 gap-10 reveal items-center">
+            
+            <!-- COLUNA ESQUERDA: VÍDEO DEMONSTRATIVO (MOCKUP NOTEBOOK) -->
+            <div class="lg:col-span-6 flex flex-col items-center justify-center relative w-full">
+                <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-80 h-80 bg-brand-yellow/10 rounded-full blur-[80px] pointer-events-none"></div>
+                
+                <!-- Mockup de Notebook Apple/Premium -->
+                <div class="relative w-full max-w-lg mx-auto group z-10 mt-4">
+                    <!-- Tela do Notebook -->
+                    <div class="relative w-full aspect-video bg-black border-[6px] md:border-[10px] border-zinc-800 rounded-t-[1rem] md:rounded-t-[1.5rem] overflow-hidden shadow-2xl">
+                        <video id="camera-video" class="w-full h-full object-cover cursor-pointer opacity-90" autoplay muted loop playsinline>
+                            <source src="https://res.cloudinary.com/dptcuckhf/video/upload/v1773187980/YTDown.com_YouTube_iM3-e-iM4-As-cameras-inteligentes-da-lin_Media_PRplopi7vbE_001_1080p_wjbjia.mp4" type="video/mp4">
+                        </video>
+                        
+                        <div id="unmute-overlay-camera" class="absolute inset-0 bg-black/50 backdrop-blur-sm flex flex-col items-center justify-center cursor-pointer transition-opacity duration-500 z-30 hover:bg-black/40">
+                            <div class="bg-brand-yellow text-black font-bold px-6 py-3 rounded-full flex items-center gap-2 shadow-glow animate-pulse transform group-hover:scale-105 transition-all">
+                                <i data-lucide="play" class="w-4 h-4 fill-black"></i>
+                                <span class="text-xs font-bold tracking-wide uppercase">Ver na Prática</span>
+                            </div>
+                        </div>
+
+                        <!-- Webcam Dot -->
+                        <div class="absolute top-1.5 md:top-2 left-1/2 -translate-x-1/2 w-1.5 h-1.5 md:w-2 md:h-2 bg-zinc-950 rounded-full z-20"></div>
+                    </div>
+                    <!-- Base do Notebook -->
+                    <div class="relative w-[114%] -ml-[7%] h-3 md:h-5 bg-gradient-to-b from-zinc-300 to-zinc-400 rounded-b-xl md:rounded-b-2xl shadow-[0_20px_40px_rgba(0,0,0,0.5)] flex justify-center border-t border-zinc-200">
+                        <!-- Notch de abertura frontal -->
+                        <div class="w-1/5 h-1.5 md:h-2 bg-zinc-300 rounded-b-md shadow-inner"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- COLUNA DIREITA: CARDS DE SOLUÇÃO (IMAGENS E CHECKS) -->
+            <div class="lg:col-span-6 space-y-6">
+                
+                <!-- Card Câmera Destaque com Foto -->
+                <div class="bg-gray-50 rounded-[2rem] p-6 md:p-8 border border-gray-200 shadow-glass flex flex-col md:flex-row items-center md:items-start gap-8 relative overflow-hidden group hover:shadow-premium-card hover:border-brand-yellow/50 transition-all">
+                    <div class="absolute top-0 right-0 w-48 h-48 bg-brand-yellow/10 rounded-full blur-3xl transition-transform group-hover:scale-150"></div>
+                    
+                    <div class="w-40 h-40 shrink-0 bg-white rounded-2xl p-3 flex items-center justify-center border border-gray-100 shadow-sm relative z-10">
+                        <img src="https://res.cloudinary.com/dptcuckhf/image/upload/v1773187682/imx1_front_com_card_p9conh.png" alt="Câmera Inteligente" class="w-full h-full object-contain">
+                    </div>
+                    
+                    <div class="flex-1 text-center md:text-left relative z-10">
+                        <div class="inline-flex items-center gap-2 px-3 py-1 bg-white border border-brand-yellow/30 text-brand-goldDark rounded-full text-[10px] font-bold uppercase tracking-widest mb-3">
+                            <i data-lucide="video" class="w-3 h-3"></i> Monitoramento
+                        </div>
+                        <h3 class="font-bold text-gray-900 text-xl md:text-2xl mb-4">Cuidado em Tempo Real:<br>7 Câmeras Inteligentes</h3>
+                        <ul class="space-y-3 text-sm text-gray-600">
+                            <li class="flex items-start gap-2"><i data-lucide="check" class="w-4 h-4 text-brand-yellow shrink-0 mt-0.5"></i> Imagem purinha e nítida dos 7 ambientes da casa.</li>
+                            <li class="flex items-start gap-2"><i data-lucide="check" class="w-4 h-4 text-brand-yellow shrink-0 mt-0.5"></i> Áudio bidirecional: ouça e fale pelo celular em tempo real.</li>
+                            <li class="flex items-start gap-2"><i data-lucide="check" class="w-4 h-4 text-brand-yellow shrink-0 mt-0.5"></i> Cartões MicroSD de 32GB originais já inclusos para gravação local segura.</li>
+                            <li class="flex items-start gap-2"><i data-lucide="check" class="w-4 h-4 text-brand-yellow shrink-0 mt-0.5"></i> Design discreto que não agride a decoração da sua casa.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Card Roteador Mesh com Foto -->
+                <div class="bg-gray-50 rounded-[2rem] p-6 md:p-8 border border-gray-200 shadow-glass flex flex-col md:flex-row items-center md:items-start gap-8 relative overflow-hidden group hover:shadow-premium-card hover:border-brand-yellow/50 transition-all">
+                    <div class="absolute top-0 right-0 w-48 h-48 bg-brand-yellow/10 rounded-full blur-3xl transition-transform group-hover:scale-150"></div>
+                    
+                    <div class="w-40 h-40 shrink-0 bg-white rounded-2xl p-3 flex items-center justify-center border border-gray-100 shadow-sm relative z-10">
+                        <img src="https://res.cloudinary.com/dptcuckhf/image/upload/v1773187758/Twibi_giga_force_conjunto_frontal_inclinado_leds_on_qtwznd.png" alt="Roteador Mesh" class="w-full h-full object-contain">
+                    </div>
+                    
+                    <div class="flex-1 text-center md:text-left relative z-10">
+                        <div class="inline-flex items-center gap-2 px-3 py-1 bg-white border border-brand-yellow/30 text-brand-goldDark rounded-full text-[10px] font-bold uppercase tracking-widest mb-3">
+                            <i data-lucide="wifi" class="w-3 h-3"></i> Estabilidade
+                        </div>
+                        <h3 class="font-bold text-gray-900 text-xl md:text-2xl mb-4">Conexão Ininterrupta:<br>Conjunto Roteador Mesh</h3>
+                        <ul class="space-y-3 text-sm text-gray-600">
+                            <li class="flex items-start gap-2"><i data-lucide="check" class="w-4 h-4 text-brand-yellow shrink-0 mt-0.5"></i> Cria uma única rede inteligente pela casa toda.</li>
+                            <li class="flex items-start gap-2"><i data-lucide="check" class="w-4 h-4 text-brand-yellow shrink-0 mt-0.5"></i> O fim da internet fraca ou caindo nos quartos.</li>
+                            <li class="flex items-start gap-2"><i data-lucide="check" class="w-4 h-4 text-brand-yellow shrink-0 mt-0.5"></i> Garante que as câmeras funcionem 24h sem desconectar ou travar.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Benefício Destaque -->
+                <div class="bg-zinc-900 rounded-2xl p-6 md:p-8 border border-zinc-800 shadow-premium flex flex-col sm:flex-row items-center gap-6 relative overflow-hidden group">
+                    <div class="w-14 h-14 bg-brand-yellow/20 rounded-full flex items-center justify-center shrink-0 relative z-10 border border-brand-yellow/30">
+                        <i data-lucide="award" class="w-6 h-6 text-brand-yellow"></i>
+                    </div>
+                    <div class="text-center sm:text-left relative z-10">
+                        <h4 class="font-bold text-white mb-3 text-lg">Instalação Padrão Ouro Vision</h4>
+                        <ul class="space-y-2 text-sm text-zinc-400">
+                            <li class="flex items-start gap-2"><i data-lucide="check" class="w-4 h-4 text-brand-yellow shrink-0 mt-0.5"></i> Nossa equipe técnica é especialista em residências de alto padrão.</li>
+                            <li class="flex items-start gap-2"><i data-lucide="check" class="w-4 h-4 text-brand-yellow shrink-0 mt-0.5"></i> Faremos a fixação e a configuração com extremo cuidado, sem sujeira e sem deixar fios pendurados.</li>
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ===================== COMPARATIVO / TABELA ===================== -->
+<section id="comparativo" class="py-28 bg-[#f8f9fa] border-y border-gray-200/60">
+    <div class="max-w-5xl mx-auto px-4">
+        <div class="text-center mb-16 reveal">
+            <span class="text-brand-yellow font-bold uppercase tracking-widest text-xs">Transparência Total</span>
+            <h2 class="text-3xl md:text-5xl font-bold text-gray-900 mt-3">O padrão do mercado vs.<br>A Estrutura Vision</h2>
+            <p class="text-gray-500 mt-5 max-w-xl mx-auto text-lg">Entenda a diferença entre comprar produtos soltos e investir em um ecossistema integrado.</p>
+        </div>
+
+        <div class="bg-white rounded-[2rem] shadow-premium-card border border-gray-100 reveal mt-12 relative overflow-hidden">
+            <div class="absolute top-0 right-0 w-64 h-64 bg-brand-yellow/5 rounded-full blur-3xl pointer-events-none"></div>
+            
+            <div class="relative z-10 p-4 md:p-8">
+                <!-- Desktop Header -->
+                <div class="hidden md:grid grid-cols-3 bg-gray-50 rounded-t-xl border-b border-gray-200">
+                    <div class="py-4 px-6 font-bold text-gray-700">Necessidade do Cliente</div>
+                    <div class="py-4 px-6 font-bold text-gray-500 text-center">Soluções Comuns</div>
+                    <div class="py-4 px-6 bg-brand-yellow/10 font-bold text-brand-goldDark text-center rounded-tr-xl text-lg">Vision (Recomendado)</div>
+                </div>
+
+                <!-- Rows Container -->
+                <div class="flex flex-col gap-4 md:gap-0">
+                    
+                    <div class="bg-white border border-gray-100 md:border-0 md:border-b md:border-gray-100 rounded-2xl md:rounded-none p-5 md:p-0 grid grid-cols-1 md:grid-cols-3 shadow-sm md:shadow-none items-center">
+                        <div class="font-bold text-gray-900 md:text-gray-800 text-center md:text-left text-lg md:text-sm mb-4 md:mb-0 md:py-5 md:px-6 border-b border-gray-100 md:border-0 pb-3 md:pb-0">Estabilidade e Internet</div>
+                        <div class="grid grid-cols-2 md:grid-cols-2 md:col-span-2 gap-4 md:gap-0 h-full">
+                            <div class="flex flex-col items-center justify-center md:py-5 md:px-4">
+                                <span class="md:hidden text-[10px] font-bold uppercase tracking-widest text-gray-400 mb-2">Comum</span>
+                                <span class="bg-red-50 text-red-600 px-3 py-1.5 rounded-lg text-xs font-bold text-center w-full">Câmeras travam pois o Wi-Fi é fraco</span>
+                            </div>
+                            <div class="flex flex-col items-center justify-center md:py-5 md:px-4 md:bg-brand-yellow/5">
+                                <span class="md:hidden text-[10px] font-bold uppercase tracking-widest text-brand-goldDark mb-2">Vision</span>
+                                <span class="bg-emerald-50 text-emerald-600 px-3 py-1.5 rounded-lg text-xs font-bold text-center w-full">Rede Mesh dedicada garantindo 100% de estabilidade</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="bg-white border border-gray-100 md:border-0 md:border-b md:border-gray-100 rounded-2xl md:rounded-none p-5 md:p-0 grid grid-cols-1 md:grid-cols-3 shadow-sm md:shadow-none items-center">
+                        <div class="font-bold text-gray-900 md:text-gray-800 text-center md:text-left text-lg md:text-sm mb-4 md:mb-0 md:py-5 md:px-6 border-b border-gray-100 md:border-0 pb-3 md:pb-0">Acesso à Residência</div>
+                        <div class="grid grid-cols-2 md:grid-cols-2 md:col-span-2 gap-4 md:gap-0 h-full">
+                            <div class="flex flex-col items-center justify-center md:py-5 md:px-4">
+                                <span class="md:hidden text-[10px] font-bold uppercase tracking-widest text-gray-400 mb-2">Comum</span>
+                                <span class="text-gray-500 text-sm font-medium text-center">Senhas repassadas para estranhos</span>
+                            </div>
+                            <div class="flex flex-col items-center justify-center md:py-5 md:px-4 md:bg-brand-yellow/5">
+                                <span class="md:hidden text-[10px] font-bold uppercase tracking-widest text-brand-goldDark mb-2">Vision</span>
+                                <span class="text-gray-900 font-bold text-sm text-center">Fechaduras Faciais premium para as 3 portas</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="bg-white border border-gray-100 md:border-0 md:border-b md:border-gray-100 rounded-2xl md:rounded-none p-5 md:p-0 grid grid-cols-1 md:grid-cols-3 shadow-sm md:shadow-none items-center">
+                        <div class="font-bold text-gray-900 md:text-gray-800 text-center md:text-left text-lg md:text-sm mb-4 md:mb-0 md:py-5 md:px-6 border-b border-gray-100 md:border-0 pb-3 md:pb-0">Gravação de Imagens</div>
+                        <div class="grid grid-cols-2 md:grid-cols-2 md:col-span-2 gap-4 md:gap-0 h-full">
+                            <div class="flex flex-col items-center justify-center md:py-5 md:px-4">
+                                <span class="md:hidden text-[10px] font-bold uppercase tracking-widest text-gray-400 mb-2">Comum</span>
+                                <span class="text-gray-500 text-sm font-medium text-center">Vendidas sem cartão (você descobre depois que não gravou)</span>
+                            </div>
+                            <div class="flex flex-col items-center justify-center md:py-5 md:px-4 md:bg-brand-yellow/5">
+                                <span class="md:hidden text-[10px] font-bold uppercase tracking-widest text-brand-goldDark mb-2">Vision</span>
+                                <span class="text-gray-900 font-bold text-sm text-center">Cartões originais de 32GB já inclusos nas 7 câmeras</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="bg-white border border-gray-100 md:border-0 rounded-2xl md:rounded-none p-5 md:p-0 grid grid-cols-1 md:grid-cols-3 shadow-sm md:shadow-none items-center md:rounded-b-xl">
+                        <div class="font-bold text-gray-900 md:text-gray-800 text-center md:text-left text-lg md:text-sm mb-4 md:mb-0 md:py-5 md:px-6 border-b border-gray-100 md:border-0 pb-3 md:pb-0">Acabamento e Interação</div>
+                        <div class="grid grid-cols-2 md:grid-cols-2 md:col-span-2 gap-4 md:gap-0 h-full">
+                            <div class="flex flex-col items-center justify-center md:py-5 md:px-4">
+                                <span class="md:hidden text-[10px] font-bold uppercase tracking-widest text-gray-400 mb-2">Comum</span>
+                                <span class="text-gray-500 text-sm font-medium text-center">Fios aparentes, bagunça e câmeras mudas</span>
+                            </div>
+                            <div class="flex flex-col items-center justify-center md:py-5 md:px-4 md:bg-brand-yellow/5 md:rounded-br-xl">
+                                <span class="md:hidden text-[10px] font-bold uppercase tracking-widest text-brand-goldDark mb-2">Vision</span>
+                                <span class="text-gray-900 font-bold text-sm text-center">Áudio bidirecional e instalação 100% estética</span>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<!-- ===================== PROPOSTA COMERCIAL (INVESTIMENTO) ===================== -->
+<section id="investimento" class="py-28 bg-white relative overflow-hidden">
+    <div class="absolute inset-0 bg-dots pointer-events-none z-0"></div>
+    <div class="max-w-5xl mx-auto px-4 relative z-10">
+
+        <div class="text-center mb-16 reveal">
+            <span class="text-brand-yellow font-bold uppercase tracking-widest text-xs">O Projeto Completo</span>
+            <h2 class="text-3xl md:text-5xl font-bold text-gray-900 mt-3">Pacote Smart Care</h2>
+            <p class="text-gray-500 mt-4 max-w-xl mx-auto text-lg">Unificamos a tecnologia da sua casa para que você tenha controle de tudo em um único lugar.</p>
+        </div>
+
+        <!-- CARD ÚNICO DE DESTAQUE COM BORDA DOURADA (REDESIGN) -->
+        <div class="premium-border-glow reveal mb-8">
+            <div class="premium-border-inner flex flex-col relative overflow-hidden bg-white p-0">
+                <div class="absolute top-0 left-0 w-64 h-64 bg-brand-yellow/5 rounded-full blur-[80px] pointer-events-none"></div>
+                
+                <div class="flex flex-col lg:flex-row items-stretch">
+                    
+                    <!-- Lado Esquerdo: Benefícios -->
+                    <div class="w-full lg:w-7/12 p-8 md:p-12 relative z-10 border-b lg:border-b-0 lg:border-r border-gray-100">
+                        <div class="mb-8">
+                            <span class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-black text-brand-yellow text-[10px] font-bold uppercase tracking-widest mb-4 shadow-md">
+                                <i data-lucide="zap" class="w-3.5 h-3.5"></i> Execução Integrada
+                            </span>
+                            <h3 class="text-3xl font-bold text-gray-900">Projeto de Monitoramento e Rede Mesh</h3>
+                        </div>
+
+                        <h4 class="font-bold text-gray-900 uppercase tracking-wider text-sm mb-6">O que está entregue neste valor:</h4>
+                        <ul class="space-y-4">
+                            <li class="flex items-start gap-3">
+                                <i data-lucide="check-circle-2" class="w-5 h-5 text-brand-yellow shrink-0 mt-0.5"></i>
+                                <p class="text-sm text-gray-700 leading-relaxed">Fornecimento de <strong>7x Câmeras Inteligentes Wi-Fi</strong> com áudio bidirecional e visão noturna.</p>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <i data-lucide="check-circle-2" class="w-5 h-5 text-brand-yellow shrink-0 mt-0.5"></i>
+                                <p class="text-sm text-gray-700 leading-relaxed">Fornecimento de <strong>7x Cartões MicroSD 32GB Originais</strong>.</p>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <i data-lucide="check-circle-2" class="w-5 h-5 text-brand-yellow shrink-0 mt-0.5"></i>
+                                <p class="text-sm text-gray-700 leading-relaxed">Fornecimento do <strong>Conjunto de Roteadores Mesh de Alta Performance</strong> para cobertura total.</p>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <i data-lucide="check-circle-2" class="w-5 h-5 text-brand-yellow shrink-0 mt-0.5"></i>
+                                <p class="text-sm text-gray-700 leading-relaxed">Toda a mão de obra especializada para instalação estética e configuração da rede.</p>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- Lado Direito: Preço Destacado -->
+                    <div class="w-full lg:w-5/12 bg-[#f8f9fa] p-8 md:p-12 flex flex-col items-center justify-center text-center relative z-10">
+                        <p class="text-[11px] font-bold text-gray-400 uppercase tracking-widest mb-6">Valor deste escopo</p>
+                        
+                        <!-- Bloco de Preço -->
+                        <div class="flex items-baseline justify-center gap-1.5 mb-6">
+                            <span class="text-2xl font-bold text-gray-400">R$</span>
+                            <span class="text-6xl md:text-7xl font-extrabold text-[#111827] tracking-tighter leading-none">6.547</span>
+                        </div>
+                        
+                        <!-- Etiqueta à vista -->
+                        <span class="inline-flex items-center gap-1.5 px-4 py-1.5 bg-white border border-gray-200 text-gray-600 rounded-md text-[11px] font-bold uppercase tracking-widest shadow-sm">
+                            <i data-lucide="wallet" class="w-3.5 h-3.5 text-brand-yellow"></i> à vista
+                        </span>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <!-- NOTA DE UNIFICAÇÃO (Risco Zero e Transparência) -->
+        <div class="bg-gray-50 rounded-2xl p-6 md:p-8 border border-gray-200 shadow-sm reveal relative z-10">
+            <div class="flex items-start gap-4">
+                <div class="w-10 h-10 bg-white rounded-full flex items-center justify-center border border-gray-200 shrink-0 shadow-sm mt-1">
+                    <i data-lucide="calculator" class="w-5 h-5 text-gray-600"></i>
+                </div>
+                <div>
+                    <h4 class="font-bold text-gray-900 text-lg mb-2">Modernização Completa do Apartamento</h4>
+                    <p class="text-sm text-gray-600 leading-relaxed">
+                        Este valor do ecossistema de Câmeras e Internet Mesh (R$ 6.547) será unificado em contrato junto com as <strong>3 Fechaduras Faciais</strong> (R$ 4.650, já aprovadas). O total do projeto unificado é de <strong>R$ 11.197</strong>.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- CTA OPÇÃO -->
+        <div class="flex flex-col items-center reveal mt-12">
+            <a href="https://wa.me/551159950096?text=Ola%20Glicia,%20aqui%20é%20a%20Vânia.%20Analisei%20a%20proposta%20residencial%20e%20gostaria%20de%20aprovar%20o%20sistema%20completo." target="_blank" class="w-full md:w-auto py-5 px-12 rounded-full font-bold flex justify-center items-center gap-3 bg-brand-yellow text-black hover:bg-brand-goldLight transition-all shadow-glow-md transform hover:-translate-y-1 uppercase tracking-widest text-sm">
+                <i data-lucide="check-circle" class="w-5 h-5"></i> Aprovar Sistema Completo
+            </a>
+            <p class="text-zinc-500 text-sm mt-4 font-medium">(Vânia, clique acima para unificarmos o seu projeto e agendarmos a nossa equipe técnica).</p>
+        </div>
+
+    </div>
+</section>
+
+<!-- ===================== FAQ ===================== -->
+<section id="faq" class="py-24 bg-white border-t border-gray-200/60">
+    <div class="max-w-3xl mx-auto px-4">
+        <div class="text-center mb-14 reveal">
+            <span class="text-brand-yellow font-bold uppercase tracking-widest text-xs">Dúvidas Frequentes</span>
+            <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mt-3">Perguntas & Respostas</h2>
+        </div>
+        
+        <div class="space-y-4 reveal" id="accordion">
+            
+            <div class="accordion-item bg-gray-50 rounded-2xl border border-gray-100 shadow-sm overflow-hidden transition-all hover:border-brand-yellow/50">
+                <button onclick="toggleAccordion(this)" class="w-full flex items-center justify-between p-6 text-left font-bold text-gray-900 focus:outline-none">
+                    <span>Vou precisar quebrar paredes para instalar as câmeras?</span>
+                    <i data-lucide="chevron-down" class="w-5 h-5 text-brand-yellow acc-arrow shrink-0"></i>
+                </button>
+                <div class="accordion-content">
+                    <p class="px-6 pb-6 text-gray-600 text-sm leading-relaxed">Não! As câmeras se conectam via Wi-Fi (que agora será perfeito graças ao sistema Mesh) e precisam apenas ser ligadas a uma tomada próxima. Nossa equipe organiza os fios de forma muito discreta e cuidadosa.</p>
+                </div>
+            </div>
+
+            <div class="accordion-item bg-gray-50 rounded-2xl border border-gray-100 shadow-sm overflow-hidden transition-all hover:border-brand-yellow/50">
+                <button onclick="toggleAccordion(this)" class="w-full flex items-center justify-between p-6 text-left font-bold text-gray-900 focus:outline-none">
+                    <span>Eu consigo acessar as câmeras quando estiver fora de casa?</span>
+                    <i data-lucide="chevron-down" class="w-5 h-5 text-brand-yellow acc-arrow shrink-0"></i>
+                </button>
+                <div class="accordion-content">
+                    <p class="px-6 pb-6 text-gray-600 text-sm leading-relaxed">Sim. De qualquer lugar do mundo, basta abrir o aplicativo no seu celular para ver as imagens ao vivo, escutar o som do ambiente e acessar as gravações dos dias anteriores.</p>
+                </div>
+            </div>
+
+            <div class="accordion-item bg-gray-50 rounded-2xl border border-gray-100 shadow-sm overflow-hidden transition-all hover:border-brand-yellow/50">
+                <button onclick="toggleAccordion(this)" class="w-full flex items-center justify-between p-6 text-left font-bold text-gray-900 focus:outline-none">
+                    <span>Como funciona a rede Mesh? Preciso trocar a senha da internet?</span>
+                    <i data-lucide="chevron-down" class="w-5 h-5 text-brand-yellow acc-arrow shrink-0"></i>
+                </button>
+                <div class="accordion-content">
+                    <p class="px-6 pb-6 text-gray-600 text-sm leading-relaxed">Nós configuramos tudo para você. O sistema Mesh substitui o Wi-Fi fraco da sua operadora por um sinal inteligente. Você terá apenas um nome de rede e uma senha para a casa toda, sem precisar ficar trocando de conexão quando for para o quarto ou sala.</p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<!-- ===================== CTA FINAL ===================== -->
+<section class="py-28 bg-[#09090b] relative overflow-hidden">
+    <div class="bg-grid absolute inset-0 opacity-10 pointer-events-none z-0"></div>
+    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-brand-yellow/10 rounded-full blur-[100px] pointer-events-none"></div>
+    
+    <div class="max-w-4xl mx-auto px-4 text-center relative z-10 reveal">
+        <span class="text-brand-yellow font-bold uppercase tracking-widest text-xs mb-4 block">Próximo Passo</span>
+        <h2 class="text-3xl md:text-5xl font-extrabold text-white leading-tight mb-6">
+            Vamos deixar o seu apartamento <span class="text-gold-shine">totalmente protegido.</span>
+        </h2>
+        <p class="text-zinc-400 text-lg mb-10 leading-relaxed max-w-2xl mx-auto">
+            Você já garantiu o acesso seguro com as fechaduras. Agora, vamos resolver as câmeras e o Wi-Fi para te entregar paz de espírito completa.
+        </p>
+
+        <a href="https://wa.me/551159950096?text=Ola%20Glicia,%20aqui%20é%20a%20Vânia.%20Analisei%20a%20proposta%20residencial%20e%20gostaria%20de%20aprovar%20o%20sistema%20completo." target="_blank" class="inline-flex items-center gap-3 bg-brand-yellow hover:bg-brand-goldLight text-brand-black font-bold px-10 py-5 rounded-full transition-all shadow-glow-md text-sm uppercase tracking-widest transform hover:scale-[1.03]">
+            <i data-lucide="check-circle" class="w-5 h-5"></i>
+            Aprovar Sistema Completo
+            <i data-lucide="arrow-right" class="w-4 h-4 ml-1"></i>
+        </a>
+    </div>
+</section>
+
+<!-- ===================== FOOTER ===================== -->
+<footer class="bg-black py-16 text-center border-t border-zinc-900 group">
+    <div class="max-w-4xl mx-auto px-4">
+        
+        <div class="flex flex-col items-center justify-center leading-none opacity-40 group-hover:opacity-100 transition-opacity duration-500 cursor-default mb-10">
+            <div class="flex flex-col items-center">
+                <div class="relative flex items-baseline leading-none">
+                    <span class="font-logo font-bold text-[3.5rem] text-white lowercase tracking-[-0.05em] leading-none">vısıon</span>
+                    <!-- R circulado rebaixado milimetricamente -->
+                    <span class="absolute -right-3.5 top-2.5 text-[0.75rem] text-brand-yellow font-bold">®</span>
+                </div>
+                <!-- Letter spacing ajustado e alinhado -->
+                <span class="font-tech text-[0.75rem] font-bold text-zinc-500 lowercase -mt-3 ml-1.5 text-center w-full" style="letter-spacing: 0.53em;">tecnologia</span>
+            </div>
+        </div>
+
+        <div class="text-zinc-500 text-xs md:text-sm leading-relaxed space-y-1 mb-8 opacity-60">
+            <p>Vânia Maria Estela Giongo Silveira de Araújo | CPF: 104.797.928-44</p>
+            <p>Rua Dr. Alfredo Ellis, 273, apto. 43, CEP 01322-050, Bela Vista - SP/SP</p>
+        </div>
+
+        <div class="inline-flex items-center justify-center gap-2 border border-zinc-800 bg-zinc-900/50 px-5 py-2.5 rounded-full mb-6 shadow-sm">
+            <i data-lucide="lock" class="w-3.5 h-3.5 text-brand-yellow"></i>
+            <span class="text-[10px] md:text-xs text-zinc-400 uppercase tracking-widest font-bold">Documento confidencial</span>
+        </div>
+        
+        <p class="text-[10px] text-zinc-700 uppercase tracking-widest font-bold mt-6">Sistemas de Segurança de Alta Performance</p>
+    </div>
+</footer>
+
+<!-- WHATSAPP CTA FLUTUANTE -->
+<div id="cta-float" class="fixed bottom-6 right-6 z-40 hidden md:block">
+    <a href="https://wa.me/551159950096?text=Ola%20Glicia,%20aqui%20é%20a%20Vânia.%20Analisei%20a%20proposta%20residencial%20e%20gostaria%20de%20aprovar%20o%20sistema%20completo." target="_blank" class="flex items-center gap-3 bg-brand-yellow text-black font-bold px-6 py-4 rounded-full shadow-glow-md hover:shadow-glow transition-all group">
+        <i data-lucide="calendar-check" class="w-5 h-5"></i>
+        <span class="text-sm tracking-wide uppercase">Agendar Instalação</span>
+        <i data-lucide="arrow-right" class="w-4 h-4 group-hover:translate-x-1 transition-transform"></i>
+    </a>
+</div>
+
+<!-- ===================== SCRIPTS ===================== -->
+<script>
+    // INIT LUCIDE ICONS
+    lucide.createIcons();
+
+    // LOCK SCREEN + FORMSUBMIT (STATICFORMS)
+    function checkPassword() {
+        const input = document.getElementById('password-input').value;
+        const errorMsg = document.getElementById('error-msg');
+        
+        // Senhas configuradas
+        if (input.toUpperCase() === 'VANIA2026' || input.toUpperCase() === 'VISION') {
+            const lockScreen = document.getElementById('lock-screen');
+            lockScreen.style.opacity = '0';
+
+            // Start Hero Video
+            const video1 = document.getElementById("vision-video");
+            if (video1 && video1.paused) {
+                video1.muted = true;
+                video1.play().catch(e => {});
+            }
+
+            // Start Camera Video (Mobile preview)
+            const video2 = document.getElementById("camera-video");
+            if (video2 && video2.paused) {
+                video2.muted = true;
+                video2.play().catch(e => {});
+            }
+
+            // Envio silencioso do alerta de acesso
+            fetch('https://api.staticforms.dev/submit', {
+                method: 'POST',
+                headers: { 
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json'
+                },
+                body: JSON.stringify({
+                    accessKey: "sf_077ej49gjha153gk3m6ceecf",
+                    subject: "🚨 ALERTA: Proposta Acessada (Vânia Maria - Bela Vista)",
+                    name: "Sistema Vision",
+                    email: "diretoria@visionsp.com.br",
+                    message: `A cliente acabou de abrir a proposta!\n\n👤 Cliente: Vânia Maria Estela G. S. Araújo\n📍 Endereço: Rua Dr. Alfredo Ellis, 273, apto. 43 - Bela Vista\n🔑 Senha Utilizada: ${input}\n🕒 Horário: ${new Date().toLocaleString('pt-BR')}`
+                })
+            }).catch(error => console.log('Log de acesso registrado.'));
+
+            setTimeout(() => { 
+                lockScreen.style.display = 'none'; 
+                const htmlRoot = document.getElementById('html-root');
+                if(htmlRoot) {
+                    htmlRoot.classList.remove('overflow-hidden', 'h-screen');
+                    htmlRoot.classList.add('overflow-x-hidden');
+                }
+                document.body.classList.remove('overflow-hidden', 'h-screen');
+            }, 700);
+        } else {
+            errorMsg.classList.remove('hidden');
+            document.getElementById('password-input').style.borderColor = 'rgba(239,68,68,0.5)';
+            setTimeout(() => {
+                errorMsg.classList.add('hidden');
+                document.getElementById('password-input').style.borderColor = '';
+            }, 3000);
+        }
+    }
+
+    // Permitir submeter com a tecla Enter
+    document.getElementById('password-input').addEventListener('keypress', function(e) {
+        if (e.key === 'Enter') {
+            checkPassword();
+        }
+    });
+
+    // REVEAL ON SCROLL
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('active');
+            }
+        });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+    // ANIMATE COUNTERS
+    function animateCounter(el, target) {
+        let current = 0;
+        const increment = Math.ceil(target / 40);
+        const interval = setInterval(() => {
+            current = Math.min(current + increment, target);
+            el.textContent = current;
+            if (current === target) clearInterval(interval);
+        }, 40);
+    }
+    const counterObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const el = entry.target;
+                const target = parseInt(el.getAttribute('data-target'));
+                animateCounter(el, target);
+                counterObserver.unobserve(el);
+            }
+        });
+    }, { threshold: 0.5 });
+    document.querySelectorAll('[data-target]').forEach(el => counterObserver.observe(el));
+
+    // ACCORDION
+    function toggleAccordion(btn) {
+        const item = btn.parentElement;
+        const isOpen = item.classList.contains('open');
+        document.querySelectorAll('.accordion-item').forEach(i => i.classList.remove('open'));
+        if (!isOpen) item.classList.add('open');
+        lucide.createIcons();
+    }
+
+    // NAVBAR E CTA SCROLL
+    window.addEventListener('scroll', () => {
+        const navbar = document.getElementById('navbar');
+        const ctaFloat = document.getElementById('cta-float');
+        
+        if (window.scrollY > 50) {
+            navbar.classList.add('shadow-md');
+        } else {
+            navbar.classList.remove('shadow-md');
+        }
+
+        if (window.scrollY > 400) {
+            ctaFloat.classList.remove('hidden');
+        } else {
+            ctaFloat.classList.add('hidden');
+        }
+    });
+
+    // VIDEOS INTERATIVOS
+    document.addEventListener("DOMContentLoaded", function() {
+        
+        // 1. Vídeo Hero
+        const videoHero = document.getElementById("vision-video");
+        const overlayHero = document.getElementById("unmute-overlay");
+        
+        if (videoHero && overlayHero) {
+            overlayHero.addEventListener("click", function(e) {
+                e.stopPropagation(); 
+                videoHero.muted = false;
+                videoHero.loop = false; 
+                videoHero.currentTime = 0;
+                videoHero.play();
+                overlayHero.style.opacity = "0";
+                setTimeout(() => { overlayHero.style.display = "none"; }, 500); 
+            });
+
+            videoHero.addEventListener("click", function() {
+                if (overlayHero.style.display === "none") {
+                    if (videoHero.paused) { videoHero.play(); } else { videoHero.pause(); }
+                }
+            });
+        }
+
+        // 2. Vídeo Câmera 360 (Secção Solução)
+        const videoCam = document.getElementById("camera-video");
+        const overlayCam = document.getElementById("unmute-overlay-camera");
+        
+        if (videoCam && overlayCam) {
+            overlayCam.addEventListener("click", function(e) {
+                e.stopPropagation(); 
+                videoCam.muted = false;
+                videoCam.loop = false; 
+                videoCam.currentTime = 0;
+                videoCam.play();
+                overlayCam.style.opacity = "0";
+                setTimeout(() => { overlayCam.style.display = "none"; }, 500); 
+            });
+
+            videoCam.addEventListener("click", function() {
+                if (overlayCam.style.display === "none") {
+                    if (videoCam.paused) { videoCam.play(); } else { videoCam.pause(); }
+                }
+            });
+        }
+    });
+</script>
+</body>
+</html>
