@@ -1,0 +1,875 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth overflow-x-hidden" id="html-root">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projeto Executivo de Sustentação | Grupo ACR – Vision</title>
+    <meta name="description" content="Monitoramento 24h e Sustentação Técnica – Vision Tecnologia">
+    <meta name="theme-color" content="#b9880e">
+
+    <!-- Fonts & Icons -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@700;800&family=Quicksand:wght@500;600;700&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <!-- Google Analytics 4 -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-KTGEL92B0F"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-KTGEL92B0F');
+    </script>
+
+    <!-- Microsoft Clarity -->
+    <script type="text/javascript">
+        (function(c,l,a,r,i,t,y){
+            c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+            t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+            y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+        })(window, document, "clarity", "script", "vifq10es5o");
+    </script>
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"Outfit"', 'sans-serif'],
+                        logo: ['"League Spartan"', 'sans-serif'],
+                        tech: ['"Quicksand"', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            yellow: '#b9880e',
+                            goldLight: '#FFDE59',
+                            goldDark: '#8a6208',
+                            black: '#09090b',
+                        }
+                    },
+                    boxShadow: {
+                        'glass': '0 4px 24px 0 rgba(0,0,0,0.04)',
+                        'premium': '0 16px 50px -10px rgba(0,0,0,0.08)',
+                        'premium-card': '0 16px 50px -10px rgba(0, 0, 0, 0.08)',
+                        'glow': '0 0 20px rgba(185,136,14,0.15)',
+                        'glow-md': '0 0 35px rgba(185,136,14,0.25)',
+                    },
+                    animation: {
+                        'slide-up': 'slideUp 0.9s cubic-bezier(0.16,1,0.3,1) forwards',
+                        'float': 'float 6s ease-in-out infinite',
+                        'fade-in': 'fadeIn 0.6s ease forwards',
+                        'shine-pulse': 'shinePulse 3s ease-in-out infinite',
+                        'float-slow': 'float 8s ease-in-out infinite',
+                    },
+                    keyframes: {
+                        slideUp: {
+                            '0%': { opacity: '0', transform: 'translateY(40px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' }
+                        },
+                        float: {
+                            '0%,100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-12px)' }
+                        },
+                        fadeIn: {
+                            '0%': { opacity: '0' },
+                            '100%': { opacity: '1' }
+                        },
+                        shinePulse: {
+                            '0%,100%': { opacity: '0.6' },
+                            '50%': { opacity: '1' }
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: #f9fafb; }
+        ::-webkit-scrollbar-thumb { background: #d1d5db; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #b9880e; }
+
+        .text-gold-shine {
+            background: linear-gradient(to right, #b9880e 20%, #FFDE59 50%, #b9880e 80%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-size: 200% auto;
+            animation: shine 4s linear infinite;
+        }
+        @keyframes shine { to { background-position: 200% center; } }
+
+        .bg-grid {
+            background-image: linear-gradient(rgba(185,136,14,0.04) 1px, transparent 1px),
+                              linear-gradient(90deg, rgba(185,136,14,0.04) 1px, transparent 1px);
+            background-size: 40px 40px;
+        }
+        .bg-dots {
+            background-image: radial-gradient(#b9880e 1.2px, transparent 1.2px);
+            background-size: 22px 22px;
+            opacity: 0.035;
+        }
+
+        .lock-input {
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.1);
+            color: #b9880e;
+            font-family: 'League Spartan', sans-serif;
+            font-size: 1.5rem;
+            text-align: center;
+            outline: none;
+            transition: all 0.3s;
+            letter-spacing: 0.2em;
+            border-radius: 14px;
+        }
+        .lock-input:focus {
+            border-color: #b9880e;
+            background: rgba(255,255,255,0.08);
+            box-shadow: 0 0 20px rgba(185,136,14,0.25);
+        }
+        .lock-input::placeholder {
+            color: #52525b;
+            font-size: 0.85rem;
+            font-family: 'Outfit', sans-serif;
+            font-weight: 300;
+            letter-spacing: normal;
+        }
+
+        .reveal { opacity: 0; transform: translateY(30px); transition: all 0.8s cubic-bezier(0.16,1,0.3,1); }
+        .reveal.active { opacity: 1; transform: translateY(0); }
+
+        .service-card:hover { transform: translateY(-4px); box-shadow: 0 20px 40px -8px rgba(0,0,0,0.1); }
+        .service-card { transition: all 0.3s cubic-bezier(0.4,0,0.2,1); }
+
+        .accordion-content { max-height: 0; overflow: hidden; transition: max-height 0.45s cubic-bezier(0.4,0,0.2,1); }
+        .accordion-item.open .accordion-content { max-height: 600px; }
+        .accordion-item.open .acc-arrow { transform: rotate(180deg); }
+        .acc-arrow { transition: transform 0.3s; }
+
+        /* Borda Animada Premium */
+        .premium-border-glow {
+            position: relative;
+            border-radius: 2rem;
+            padding: 2px;
+            background-color: #b9880e;
+            overflow: hidden;
+            box-shadow: 0 0 35px rgba(185,136,14,0.15);
+            transition: transform 0.3s cubic-bezier(0.4,0,0.2,1);
+        }
+        .premium-border-glow:hover { transform: scale(1.01); }
+        .premium-border-glow::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: conic-gradient(
+                from 0deg, 
+                transparent 0deg, 
+                transparent 175deg, 
+                rgba(255, 222, 89, 0.6) 178deg, 
+                #ffffff 180deg, 
+                rgba(255, 222, 89, 0.6) 182deg, 
+                transparent 185deg, 
+                transparent 360deg
+            );
+            animation: rotate-border 12s linear infinite;
+            z-index: 0;
+        }
+        @keyframes rotate-border {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        .premium-border-inner {
+            position: relative;
+            z-index: 1;
+            background-color: #ffffff;
+            border-radius: calc(2rem - 2px);
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+        }
+
+        .counter-num { font-variant-numeric: tabular-nums; }
+        
+        details > summary { list-style: none; }
+        details > summary::-webkit-details-marker { display: none; }
+        
+        @media print {
+            #lock-screen, #navbar, #cta-float { display: none !important; }
+            .reveal { opacity: 1 !important; transform: none !important; }
+        }
+    </style>
+</head>
+<body class="bg-[#fafafa] text-gray-800 antialiased selection:bg-brand-yellow selection:text-white overflow-x-hidden h-screen" id="body-root">
+
+<!-- ===================== LOCK SCREEN ===================== -->
+<div id="lock-screen" class="fixed inset-0 z-[100] bg-[#09090b] flex flex-col items-center justify-center text-center p-4 transition-opacity duration-700 ease-out touch-none" style="overscroll-behavior: none;">
+    <div class="bg-grid absolute inset-0 opacity-10 pointer-events-none"></div>
+    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-brand-yellow/5 rounded-full blur-[100px] pointer-events-none"></div>
+
+    <!-- Logo -->
+    <div class="relative flex flex-col items-center mb-10 z-10">
+        <div class="relative flex items-baseline leading-none">
+            <span class="font-logo font-bold text-[5.5rem] md:text-[6rem] text-gold-shine lowercase tracking-[-0.05em] leading-none">vısıon</span>
+            <span class="absolute -right-5 top-4 text-[1.1rem] text-brand-yellow font-bold">®</span>
+        </div>
+        <span class="font-tech text-[1.1rem] font-bold text-zinc-500 lowercase -mt-4 ml-2.5 text-center w-full" style="letter-spacing:0.53em;">tecnologia</span>
+    </div>
+
+    <div class="w-full max-w-sm space-y-5 z-10">
+        <div class="space-y-1.5">
+            <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-brand-yellow/30 bg-brand-yellow/10 mb-3">
+                <i data-lucide="lock" class="w-3.5 h-3.5 text-brand-yellow"></i>
+                <span class="text-brand-yellow text-[10px] font-bold uppercase tracking-widest">Acesso Corporativo Restrito</span>
+            </div>
+            <h2 class="text-white font-bold text-2xl">Grupo ACR</h2>
+            <p class="text-zinc-400 text-sm">Projeto Executivo de Sustentação e Monitoramento 24h (Matriz, Galpão e School)</p>
+        </div>
+
+        <div>
+            <!-- SENHA CONFIGURADA: larissa2026 ou vision -->
+            <input type="password" id="password-input" class="lock-input w-full py-4 px-4" placeholder="SENHA DE ACESSO" autocomplete="off">
+            <p id="error-msg" class="text-red-400 text-xs mt-2 hidden">
+                <span class="flex items-center justify-center gap-1"><i data-lucide="x-circle" class="w-4 h-4"></i> Credencial inválida.</span>
+            </p>
+        </div>
+
+        <button onclick="checkPassword()" class="w-full bg-brand-yellow hover:bg-brand-goldLight text-black font-bold py-4 rounded-2xl transition-all shadow-glow flex items-center justify-center gap-2 group relative overflow-hidden">
+            <div class="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-300 rounded-2xl"></div>
+            <i data-lucide="shield-check" class="w-5 h-5 relative z-10"></i>
+            <span class="relative z-10 text-sm uppercase tracking-widest">Acessar Documento Técnico</span>
+            <i data-lucide="arrow-right" class="w-4 h-4 relative z-10 group-hover:translate-x-1 transition-transform"></i>
+        </button>
+
+        <p class="text-zinc-600 text-xs">Documento restrito · Válido por 15 dias · Vision Tecnologia © 2026</p>
+    </div>
+</div>
+
+<!-- ===================== NAVBAR ===================== -->
+<nav id="navbar" class="fixed w-full z-50 top-0 bg-white/90 backdrop-blur-xl border-b border-gray-200/50 shadow-sm transition-all duration-300">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-between h-20 items-center">
+            <div class="flex flex-col items-center justify-center cursor-pointer" onclick="window.scrollTo(0,0)">
+                <div class="relative flex items-baseline leading-none">
+                    <span class="font-logo font-bold text-[2.6rem] text-gold-shine lowercase tracking-[-0.05em] leading-none">vısıon</span>
+                    <span class="absolute -right-2.5 top-1.5 text-[0.6rem] text-brand-yellow font-bold">®</span>
+                </div>
+                <span class="font-tech text-[0.6rem] font-bold text-gray-400 lowercase -mt-2 ml-1.5" style="letter-spacing:0.53em;">tecnologia</span>
+            </div>
+            <div class="hidden md:flex items-center space-x-7 text-xs font-semibold text-gray-500 uppercase tracking-wider">
+                <a href="#diagnostico" class="hover:text-brand-yellow transition-colors">Diagnóstico</a>
+                <a href="#solucao" class="hover:text-brand-yellow transition-colors">A Solução</a>
+                <a href="#investimento" class="hover:text-brand-yellow transition-colors">Investimento Modular</a>
+                <a href="#faq" class="hover:text-brand-yellow transition-colors">FAQ</a>
+            </div>
+            <div class="flex items-center gap-4">
+                <button onclick="window.print()" class="text-gray-400 hover:text-brand-yellow transition-colors flex items-center gap-1.5" title="Salvar em PDF">
+                    <i data-lucide="download" class="w-4 h-4"></i>
+                    <span class="text-[10px] font-bold uppercase tracking-widest hidden sm:block">PDF</span>
+                </button>
+                <a href="#investimento" class="bg-zinc-900 text-white px-5 py-2.5 rounded-full text-[10px] font-bold uppercase tracking-widest hover:bg-brand-yellow hover:text-black transition-all shadow-md">
+                    Ver Proposta
+                </a>
+            </div>
+        </div>
+    </div>
+</nav>
+
+<!-- ===================== HERO COM VÍDEO ===================== -->
+<header class="pt-32 pb-20 lg:pt-40 relative overflow-hidden bg-white">
+    <div class="absolute inset-0 bg-tech-pattern pointer-events-none"></div>
+    <div class="absolute right-0 top-0 -translate-y-1/4 translate-x-1/4 w-[800px] h-[800px] bg-brand-yellow/5 rounded-full blur-[120px] pointer-events-none"></div>
+    
+    <div class="max-w-7xl mx-auto px-4 relative z-10">
+        <div class="flex flex-col lg:flex-row items-center gap-12 lg:gap-16">
+            
+            <div class="w-full lg:w-1/2 text-center lg:text-left animate-slide-up">
+                <div class="inline-flex items-center gap-2 px-5 py-2 rounded-full border border-brand-yellow/30 bg-brand-yellow/5 text-brand-yellow text-[10px] font-bold uppercase tracking-widest mb-8 mx-auto lg:mx-0">
+                    <i data-lucide="shield" class="w-4 h-4"></i>
+                    PROPOSTA TÉCNICA #VB-2026-0312 | VALIDADE: 15 DIAS
+                </div>
+                
+                <h1 class="text-4xl md:text-5xl lg:text-6xl font-extrabold text-gray-900 leading-[1.05] tracking-tight mb-6">
+                    A certeza absoluta de que o seu sistema vai funcionar <span class="text-gold-shine">no segundo em que você mais precisar.</span>
+                </h1>
+                
+                <h2 class="text-base md:text-lg text-gray-500 max-w-xl mx-auto lg:mx-0 font-medium mt-6 leading-relaxed">
+                    Sustentação técnica e monitoramento de alarmes 24h para blindar a operação contínua das 3 unidades do Grupo ACR.
+                </h2>
+            </div>
+
+            <!-- Coluna Vídeo Principal -->
+            <div class="w-full lg:w-1/2 mt-4 lg:mt-0 reveal animate-slide-up" style="animation-delay: 200ms;">
+                <div class="relative w-full rounded-[2rem] shadow-[0_20px_50px_-10px_rgba(0,0,0,0.3)] border-[3px] border-brand-yellow/80 group hover:shadow-[0_25px_60px_-10px_rgba(0,0,0,0.4)] transition-shadow duration-500 bg-black">
+                    <div class="relative w-full aspect-video rounded-[1.8rem] overflow-hidden bg-black shadow-inner">
+                        <video id="vision-video" class="w-full h-full object-cover cursor-pointer opacity-90" autoplay muted loop playsinline>
+                            <source src="https://res.cloudinary.com/dptcuckhf/video/upload/v1771711323/Vict%C3%B3ria_-_Vision_gdqnrk.mp4" type="video/mp4">
+                        </video>
+
+                        <div id="unmute-overlay" class="absolute inset-0 bg-black/50 backdrop-blur-sm flex flex-col items-center justify-center cursor-pointer transition-opacity duration-500 z-10 hover:bg-black/40">
+                            <div class="bg-brand-yellow text-black font-bold px-6 py-3 md:px-8 md:py-4 rounded-full flex items-center gap-2 md:gap-3 shadow-glow animate-pulse transform group-hover:scale-105 transition-all">
+                                <i data-lucide="volume-2" class="w-5 h-5 md:w-6 md:h-6"></i>
+                                <span class="text-xs md:text-sm tracking-wide uppercase">Clique para Ouvir</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="mt-16 lg:mt-24 grid grid-cols-2 md:grid-cols-4 gap-5 max-w-4xl mx-auto reveal">
+            <div class="bg-white rounded-2xl p-6 shadow-glass border border-gray-100 text-center hover:border-brand-yellow/40 transition-all animate-float" style="animation-delay:0s;">
+                <div class="w-10 h-10 bg-brand-yellow/10 rounded-xl flex items-center justify-center mx-auto mb-3">
+                    <i data-lucide="shield" class="w-5 h-5 text-brand-yellow"></i>
+                </div>
+                <div class="text-3xl font-extrabold text-gray-900 counter-num" data-target="3">0</div>
+                <div class="text-xs text-gray-500 font-medium mt-1 uppercase tracking-wider">Unidades Blindadas</div>
+            </div>
+            <div class="bg-white rounded-2xl p-6 shadow-glass border border-gray-100 text-center hover:border-brand-yellow/40 transition-all animate-float" style="animation-delay:0.8s;">
+                <div class="w-10 h-10 bg-brand-yellow/10 rounded-xl flex items-center justify-center mx-auto mb-3">
+                    <i data-lucide="video" class="w-5 h-5 text-brand-yellow"></i>
+                </div>
+                <div class="text-3xl font-extrabold text-gray-900 counter-num" data-target="44">0</div>
+                <div class="text-xs text-gray-500 font-medium mt-1 uppercase tracking-wider">Câmeras Cobertas</div>
+            </div>
+            <div class="bg-white rounded-2xl p-6 shadow-glass border border-gray-100 text-center hover:border-brand-yellow/40 transition-all animate-float" style="animation-delay:0.4s;">
+                <div class="w-10 h-10 bg-brand-yellow/10 rounded-xl flex items-center justify-center mx-auto mb-3">
+                    <i data-lucide="activity" class="w-5 h-5 text-brand-yellow"></i>
+                </div>
+                <div class="text-3xl font-extrabold text-gray-900 counter-num" data-target="68">0</div>
+                <div class="text-xs text-gray-500 font-medium mt-1 uppercase tracking-wider">Sensores Monitorados</div>
+            </div>
+            <div class="bg-white rounded-2xl p-6 shadow-glass border border-gray-100 text-center hover:border-brand-yellow/40 transition-all animate-float" style="animation-delay:1.2s;">
+                <div class="w-10 h-10 bg-brand-yellow/10 rounded-xl flex items-center justify-center mx-auto mb-3">
+                    <i data-lucide="clock" class="w-5 h-5 text-brand-yellow"></i>
+                </div>
+                <div class="text-3xl font-extrabold text-gray-900">24/7</div>
+                <div class="text-xs text-gray-500 font-medium mt-1 uppercase tracking-wider">Central Operante</div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- ===================== DIAGNÓSTICO DO CENÁRIO ===================== -->
+<section id="diagnostico" class="py-28 bg-[#f8f9fa] border-y border-gray-200/60 relative">
+    <div class="max-w-7xl mx-auto px-4">
+        <div class="text-center mb-16 reveal">
+            <span class="text-brand-yellow font-bold uppercase tracking-widest text-xs">O Diagnóstico Consultivo</span>
+            <h2 class="text-3xl md:text-5xl font-bold text-gray-900 mt-3 leading-tight">O risco oculto de sistemas <br class="hidden md:block">sem gestão ativa</h2>
+            <p class="text-gray-500 mt-5 max-w-3xl mx-auto text-lg leading-relaxed">
+                <strong>Larissa</strong>, assumir a manutenção de um parque tecnológico instalado por terceiros exige grande responsabilidade. O nosso foco como consultoria não é apenas "consertar o que quebra", mas garantir que o sistema não falhe na hora de um sinistro real. Identificamos os pontos de atenção críticos que o nosso contrato vai eliminar:
+            </p>
+        </div>
+
+        <div class="grid md:grid-cols-3 gap-8 reveal">
+            <!-- Card 1 -->
+            <div class="bg-white rounded-[2rem] p-8 shadow-premium border border-gray-100 relative overflow-hidden group hover:-translate-y-1 transition-transform duration-300 flex flex-col">
+                <div class="absolute top-0 right-0 w-32 h-32 bg-red-50 rounded-full blur-3xl transition-colors"></div>
+                <div class="w-14 h-14 bg-red-50 rounded-2xl flex items-center justify-center mb-6 relative z-10">
+                    <i data-lucide="shield-alert" class="w-7 h-7 text-red-500"></i>
+                </div>
+                <h3 class="text-xl font-bold text-gray-900 mb-3 relative z-10">A Falsa Sensação de Segurança</h3>
+                <p class="text-gray-600 text-sm mb-6 relative z-10 leading-relaxed flex-1">
+                    <strong>O Problema:</strong> Ter equipamentos instalados não significa estar protegido. É comum as empresas só descobrirem que uma câmera estava sem foco ou um sensor inoperante depois que uma invasão acontece.
+                </p>
+                <div class="mt-auto p-4 bg-emerald-50 rounded-xl border border-emerald-100 relative z-10">
+                    <p class="text-xs text-emerald-800 leading-relaxed flex items-start gap-2">
+                        <i data-lucide="check-circle-2" class="w-4 h-4 shrink-0 mt-0.5"></i>
+                        <span><strong>A Solução Vision:</strong> Rotina de prevenção rigorosa. Nossa equipe se antecipa às falhas, realizando ajustes de posicionamento, limpeza de lentes e testes de comunicação de forma programada.</span>
+                    </p>
+                </div>
+            </div>
+
+            <!-- Card 2 -->
+            <div class="bg-white rounded-[2rem] p-8 shadow-premium border border-gray-100 relative overflow-hidden group hover:-translate-y-1 transition-transform duration-300 flex flex-col">
+                <div class="absolute top-0 right-0 w-32 h-32 bg-orange-50 rounded-full blur-3xl transition-colors"></div>
+                <div class="w-14 h-14 bg-orange-50 rounded-2xl flex items-center justify-center mb-6 relative z-10">
+                    <i data-lucide="cable" class="w-7 h-7 text-orange-500"></i>
+                </div>
+                <h3 class="text-xl font-bold text-gray-900 mb-3 relative z-10">O Desgaste Silencioso</h3>
+                <p class="text-gray-600 text-sm mb-6 relative z-10 leading-relaxed flex-1">
+                    <strong>O Problema:</strong> Cabos, conectores e fontes de energia ressecam e oxidam. A imensa maioria dos falsos disparos ou perda de imagem acontece por degradação física da infraestrutura.
+                </p>
+                <div class="mt-auto p-4 bg-emerald-50 rounded-xl border border-emerald-100 relative z-10">
+                    <p class="text-xs text-emerald-800 leading-relaxed flex items-start gap-2">
+                        <i data-lucide="check-circle-2" class="w-4 h-4 shrink-0 mt-0.5"></i>
+                        <span><strong>A Solução Vision:</strong> O nosso escopo cobre a revisão contínua dessa camada física, trocando cabeamentos curtos e conectores desgastados antes que eles derrubem o seu sistema.</span>
+                    </p>
+                </div>
+            </div>
+
+            <!-- Card 3 -->
+            <div class="bg-white rounded-[2rem] p-8 shadow-premium border border-gray-100 relative overflow-hidden group hover:-translate-y-1 transition-transform duration-300 flex flex-col">
+                <div class="absolute top-0 right-0 w-32 h-32 bg-blue-50 rounded-full blur-3xl transition-colors"></div>
+                <div class="w-14 h-14 bg-blue-50 rounded-2xl flex items-center justify-center mb-6 relative z-10">
+                    <i data-lucide="bell-off" class="w-7 h-7 text-blue-500"></i>
+                </div>
+                <h3 class="text-xl font-bold text-gray-900 mb-3 relative z-10">A Ação Tática Inexistente</h3>
+                <p class="text-gray-600 text-sm mb-6 relative z-10 leading-relaxed flex-1">
+                    <strong>O Problema:</strong> Um alarme disparando sozinho na madrugada sem ninguém para auditar ou intervir é totalmente inútil contra invasores experientes.
+                </p>
+                <div class="mt-auto p-4 bg-emerald-50 rounded-xl border border-emerald-100 relative z-10">
+                    <p class="text-xs text-emerald-800 leading-relaxed flex items-start gap-2">
+                        <i data-lucide="check-circle-2" class="w-4 h-4 shrink-0 mt-0.5"></i>
+                        <span><strong>A Solução Vision:</strong> Conexão direta das três unidades com a nossa Central de Monitoramento 24h. Houve violação? Nossa base recebe o alerta em segundos e toma as medidas táticas imediatas.</span>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ===================== A SOLUÇÃO (SERVIÇOS) ===================== -->
+<section id="solucao" class="py-28 bg-white relative overflow-hidden">
+    <div class="absolute inset-0 bg-dots pointer-events-none"></div>
+    <div class="max-w-7xl mx-auto px-4 relative z-10">
+        
+        <div class="text-center mb-16 reveal">
+            <span class="text-brand-yellow font-bold uppercase tracking-widest text-xs">O Ecossistema Vision</span>
+            <h2 class="text-3xl md:text-5xl font-bold text-gray-900 mt-3">O que significa ter a Vision<br>cuidando da ACR?</h2>
+            <p class="text-gray-500 mt-4 max-w-2xl mx-auto text-lg">
+                Desenhamos um guarda-chuva de proteção que une a inteligência da nossa base de monitoramento remoto com a presença física da nossa equipe de campo.
+            </p>
+        </div>
+
+        <!-- Grid de 3 colunas de serviços -->
+        <div class="grid lg:grid-cols-3 gap-8 reveal items-stretch">
+            
+            <!-- Serviço 1 -->
+            <div class="bg-gray-50 rounded-[2rem] p-6 md:p-8 border border-gray-200 shadow-glass flex flex-col relative overflow-hidden group hover:shadow-premium-card hover:border-brand-yellow/50 transition-all">
+                <div class="absolute top-0 right-0 w-48 h-48 bg-brand-yellow/10 rounded-full blur-3xl transition-transform group-hover:scale-150"></div>
+                
+                <div class="w-16 h-16 bg-white rounded-2xl flex items-center justify-center mb-6 shadow-sm border border-gray-100 relative z-10">
+                    <i data-lucide="headset" class="w-8 h-8 text-brand-yellow"></i>
+                </div>
+
+                <div class="flex-1 relative z-10">
+                    <h3 class="font-bold text-gray-900 text-xl mb-3">Central de Monitoramento 24 Horas</h3>
+                    <p class="text-gray-600 text-sm leading-relaxed mb-4">
+                        <strong>O que significa para a ACR:</strong> Seus 68 sensores estarão conectados à nossa base. Funcionamento ininterrupto (incluindo madrugadas, finais de semana e feriados) para recebimento e auditoria de eventos de intrusão, pânico ou falha de comunicação.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Serviço 2 -->
+            <div class="bg-gray-50 rounded-[2rem] p-6 md:p-8 border border-gray-200 shadow-glass flex flex-col relative overflow-hidden group hover:shadow-premium-card hover:border-brand-yellow/50 transition-all">
+                <div class="absolute top-0 right-0 w-48 h-48 bg-brand-yellow/10 rounded-full blur-3xl transition-transform group-hover:scale-150"></div>
+                
+                <div class="w-16 h-16 bg-white rounded-2xl flex items-center justify-center mb-6 shadow-sm border border-gray-100 relative z-10">
+                    <i data-lucide="tool" class="w-8 h-8 text-brand-yellow"></i>
+                </div>
+
+                <div class="flex-1 relative z-10">
+                    <h3 class="font-bold text-gray-900 text-xl mb-3">Manutenção Preventiva Ativa</h3>
+                    <p class="text-gray-600 text-sm leading-relaxed mb-4">
+                        <strong>O que significa para a ACR:</strong> Visitas técnicas periódicas para manter o parque em estado de arte. Limpeza das 44 câmeras, testes de bateria das centrais e checagem de conectores. É a prevenção que economiza milhares de reais a longo prazo.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Serviço 3 -->
+            <div class="bg-gray-50 rounded-[2rem] p-6 md:p-8 border border-gray-200 shadow-glass flex flex-col relative overflow-hidden group hover:shadow-premium-card hover:border-brand-yellow/50 transition-all">
+                <div class="absolute top-0 right-0 w-48 h-48 bg-brand-yellow/10 rounded-full blur-3xl transition-transform group-hover:scale-150"></div>
+                
+                <div class="w-16 h-16 bg-white rounded-2xl flex items-center justify-center mb-6 shadow-sm border border-gray-100 relative z-10">
+                    <i data-lucide="zap" class="w-8 h-8 text-brand-yellow"></i>
+                </div>
+
+                <div class="flex-1 relative z-10">
+                    <h3 class="font-bold text-gray-900 text-xl mb-3">SLA de Correção (Resposta Prioritária)</h3>
+                    <p class="text-gray-600 text-sm leading-relaxed mb-4">
+                        <strong>O que significa para a ACR:</strong> Um cabo rompeu? Uma câmera apagou? Vocês não entram em filas de espera de assistências comuns. O contrato garante atendimento prioritário da nossa equipe para restabelecer a segurança no menor tempo possível.
+                    </p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<!-- ===================== PROPOSTA COMERCIAL (INVESTIMENTO MODULAR) ===================== -->
+<section id="investimento" class="py-28 bg-[#f8f9fa] border-y border-zinc-200 relative overflow-hidden">
+    <div class="absolute inset-0 bg-dots pointer-events-none z-0"></div>
+    <div class="max-w-6xl mx-auto px-4 relative z-10">
+
+        <div class="text-center mb-16 reveal">
+            <span class="text-brand-yellow font-bold uppercase tracking-widest text-xs">Custos Operacionais Previsíveis</span>
+            <h2 class="text-3xl md:text-5xl font-bold text-gray-900 mt-3">Transparência Financeira<br>por Unidade</h2>
+            <p class="text-gray-500 mt-4 max-w-3xl mx-auto text-lg leading-relaxed">
+                Estruturamos a estimativa do contrato separada por local. Como desenhamos este plano de forma imediata (sem uma vistoria física que atrasaria a sua cotação), o valor já contempla uma margem de segurança operacional. Isso garante que a Vision absorva pequenas correções logo no primeiro mês, sem gerar "custos surpresa" para o departamento de compras da ACR.
+            </p>
+        </div>
+
+        <!-- Grade de Unidades Individuais -->
+        <div class="grid md:grid-cols-3 gap-6 mb-8 reveal">
+            
+            <!-- Matriz -->
+            <div class="bg-white rounded-2xl p-6 border border-gray-200 shadow-sm flex flex-col hover:border-brand-yellow/40 transition-colors">
+                <div class="flex items-center justify-between border-b border-gray-100 pb-4 mb-4">
+                    <h4 class="font-bold text-gray-900 text-lg">ACR Matriz</h4>
+                    <i data-lucide="building" class="w-5 h-5 text-gray-400"></i>
+                </div>
+                <div class="flex-1 mb-6">
+                    <p class="text-xs text-gray-400 font-bold uppercase tracking-wider mb-2">Escopo Técnico</p>
+                    <p class="text-sm text-gray-600 font-medium">27 Sensores de Alarme + 14 Câmeras.</p>
+                </div>
+                <div class="mt-auto">
+                    <span class="text-2xl font-extrabold text-gray-900">R$ 950,00 <span class="text-xs text-gray-500 font-normal">/mês</span></span>
+                </div>
+            </div>
+
+            <!-- Galpão -->
+            <div class="bg-white rounded-2xl p-6 border border-gray-200 shadow-sm flex flex-col hover:border-brand-yellow/40 transition-colors">
+                <div class="flex items-center justify-between border-b border-gray-100 pb-4 mb-4">
+                    <h4 class="font-bold text-gray-900 text-lg">ACR Galpão 1</h4>
+                    <i data-lucide="warehouse" class="w-5 h-5 text-gray-400"></i>
+                </div>
+                <div class="flex-1 mb-6">
+                    <p class="text-xs text-gray-400 font-bold uppercase tracking-wider mb-2">Escopo Técnico</p>
+                    <p class="text-sm text-gray-600 font-medium">14 Sensores e Central de Alarme.</p>
+                </div>
+                <div class="mt-auto">
+                    <span class="text-2xl font-extrabold text-gray-900">R$ 550,00 <span class="text-xs text-gray-500 font-normal">/mês</span></span>
+                </div>
+            </div>
+
+            <!-- School -->
+            <div class="bg-white rounded-2xl p-6 border border-gray-200 shadow-sm flex flex-col hover:border-brand-yellow/40 transition-colors">
+                <div class="flex items-center justify-between border-b border-gray-100 pb-4 mb-4">
+                    <h4 class="font-bold text-gray-900 text-lg">ACR School</h4>
+                    <i data-lucide="graduation-cap" class="w-5 h-5 text-gray-400"></i>
+                </div>
+                <div class="flex-1 mb-6">
+                    <p class="text-xs text-gray-400 font-bold uppercase tracking-wider mb-2">Escopo Técnico</p>
+                    <p class="text-sm text-gray-600 font-medium">27 Sensores de Alarme + 30 Câmeras <br><span class="text-xs text-gray-400 font-normal">(Maior volume de tráfego de dados e imagens).</span></p>
+                </div>
+                <div class="mt-auto">
+                    <span class="text-2xl font-extrabold text-gray-900">R$ 1.490,00 <span class="text-xs text-gray-500 font-normal">/mês</span></span>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- CARD ÚNICO DE DESTAQUE (GESTÃO GLOBAL) -->
+        <div class="premium-border-glow reveal mb-8">
+            <div class="premium-border-inner flex flex-col lg:flex-row relative overflow-hidden bg-white p-0">
+                <div class="absolute top-0 left-0 w-64 h-64 bg-brand-yellow/5 rounded-full blur-[80px] pointer-events-none"></div>
+                
+                <!-- Lado Esquerdo: Descrição -->
+                <div class="w-full lg:w-7/12 p-8 md:p-12 relative z-10 border-b lg:border-b-0 lg:border-r border-gray-100 flex flex-col justify-center">
+                    <div class="mb-6">
+                        <span class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-black text-brand-yellow text-[10px] font-bold uppercase tracking-widest mb-4 shadow-md">
+                            <i data-lucide="star" class="w-3.5 h-3.5"></i> Recomendado
+                        </span>
+                        <h3 class="text-3xl font-bold text-gray-900">Gestão Global ACR</h3>
+                        <p class="text-sm text-gray-500 mt-2 font-medium">Cobertura absoluta e gestão centralizada das 3 unidades.</p>
+                    </div>
+
+                    <div class="bg-gray-50 p-5 rounded-xl border border-gray-100 mb-2">
+                        <p class="text-sm text-gray-700 leading-relaxed font-medium flex items-start gap-3">
+                            <i data-lucide="check-circle-2" class="w-5 h-5 text-brand-yellow shrink-0 mt-0.5"></i>
+                            <span>Inclui o <strong>Monitoramento 24h</strong> de todos os alarmes e a <strong>Manutenção Preventiva e Corretiva</strong> do parque total de câmeras e sensores.</span>
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Lado Direito: Preço Unificado -->
+                <div class="w-full lg:w-5/12 bg-[#f8f9fa] p-8 md:p-12 flex flex-col items-center justify-center text-center relative z-10">
+                    <p class="text-[11px] font-bold text-gray-400 uppercase tracking-widest mb-6">Investimento Unificado</p>
+                    
+                    <div class="flex items-baseline justify-center gap-1.5 mb-2">
+                        <span class="text-2xl font-bold text-gray-400">R$</span>
+                        <span class="text-5xl md:text-6xl font-extrabold text-[#111827] tracking-tighter leading-none">2.990</span>
+                        <span class="text-2xl font-bold text-gray-400">,00</span>
+                    </div>
+                    <span class="text-sm font-bold text-gray-400 uppercase tracking-widest mb-6">/ Mês</span>
+                    
+                </div>
+            </div>
+        </div>
+
+        <!-- NOTA EXECUTIVA -->
+        <div class="bg-emerald-50/80 rounded-2xl p-6 md:p-8 border border-emerald-200 shadow-sm reveal relative z-10">
+            <div class="flex items-start gap-4">
+                <div class="w-10 h-10 bg-white rounded-full flex items-center justify-center border border-emerald-200 shrink-0 shadow-sm mt-1">
+                    <i data-lucide="shield-check" class="w-5 h-5 text-emerald-600"></i>
+                </div>
+                <div>
+                    <h4 class="font-bold text-emerald-900 text-lg mb-2">Nota Executiva</h4>
+                    <p class="text-sm text-emerald-800 leading-relaxed">
+                        Este modelo unificado blinda a empresa contra falhas repentinas, elimina o processo burocrático de aprovar orçamentos avulsos toda vez que algo quebrar e tira esse peso operacional das costas da sua equipe de compras.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- CTA OPÇÃO -->
+        <div class="flex flex-col items-center reveal mt-12">
+            <a href="https://wa.me/551159950096?text=Ola%20Glicia,%20analisei%20a%20proposta%20do%20Grupo%20ACR%20e%20gostaria%20de%20aprovar." target="_blank" class="w-full md:w-auto py-5 px-12 rounded-full font-bold flex justify-center items-center gap-3 bg-brand-yellow text-black hover:bg-brand-goldLight transition-all shadow-glow-md transform hover:-translate-y-1 uppercase tracking-widest text-sm">
+                <i data-lucide="check-circle" class="w-5 h-5"></i> Aprovar Contrato Global
+            </a>
+            <p class="text-zinc-500 text-sm mt-4 font-medium">(Larissa, clique acima para validarmos o escopo e agendarmos a nossa primeira manutenção preventiva integrada).</p>
+        </div>
+
+    </div>
+</section>
+
+<!-- ===================== FAQ ===================== -->
+<section id="faq" class="py-24 bg-white border-t border-gray-200/60">
+    <div class="max-w-3xl mx-auto px-4">
+        <div class="text-center mb-14 reveal">
+            <span class="text-brand-yellow font-bold uppercase tracking-widest text-xs">Dúvidas Frequentes</span>
+            <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mt-3">Perguntas & Respostas</h2>
+        </div>
+        
+        <div class="space-y-4 reveal" id="accordion">
+            
+            <div class="accordion-item bg-gray-50 rounded-2xl border border-gray-100 shadow-sm overflow-hidden transition-all hover:border-brand-yellow/50">
+                <button onclick="toggleAccordion(this)" class="w-full flex items-center justify-between p-6 text-left font-bold text-gray-900 focus:outline-none">
+                    <span>Se um equipamento queimar de vez, o contrato cobre a peça?</span>
+                    <i data-lucide="chevron-down" class="w-5 h-5 text-brand-yellow acc-arrow shrink-0"></i>
+                </button>
+                <div class="accordion-content">
+                    <p class="px-6 pb-6 text-gray-600 text-sm leading-relaxed">O contrato cobre 100% da mão de obra corretiva, preventiva e o monitoramento contínuo. Caso um equipamento de vocês chegue ao fim da vida útil (ex: queima de uma câmera antiga), o custo do hardware novo é repassado com valores de parceria, mas a instalação é por nossa conta.</p>
+                </div>
+            </div>
+
+            <div class="accordion-item bg-gray-50 rounded-2xl border border-gray-100 shadow-sm overflow-hidden transition-all hover:border-brand-yellow/50">
+                <button onclick="toggleAccordion(this)" class="w-full flex items-center justify-between p-6 text-left font-bold text-gray-900 focus:outline-none">
+                    <span>Como funciona o monitoramento de alarmes na prática?</span>
+                    <i data-lucide="chevron-down" class="w-5 h-5 text-brand-yellow acc-arrow shrink-0"></i>
+                </button>
+                <div class="accordion-content">
+                    <p class="px-6 pb-6 text-gray-600 text-sm leading-relaxed">Ao detectar uma invasão, a central envia um sinal criptografado para nossa base. Nossos operadores verificam a ocorrência e seguem um protocolo de segurança rigoroso (definido junto com a diretoria da ACR), envolvendo contato com os responsáveis e acionamento tático/policial.</p>
+                </div>
+            </div>
+
+            <div class="accordion-item bg-gray-50 rounded-2xl border border-gray-100 shadow-sm overflow-hidden transition-all hover:border-brand-yellow/50">
+                <button onclick="toggleAccordion(this)" class="w-full flex items-center justify-between p-6 text-left font-bold text-gray-900 focus:outline-none">
+                    <span>Por que podemos fechar sem uma visita técnica prévia?</span>
+                    <i data-lucide="chevron-down" class="w-5 h-5 text-brand-yellow acc-arrow shrink-0"></i>
+                </button>
+                <div class="accordion-content">
+                    <p class="px-6 pb-6 text-gray-600 text-sm leading-relaxed">Este orçamento executivo permite acelerar a proteção da ACR para "hoje". O valor foi calculado estrategicamente para absorver os riscos iniciais de assumir um sistema instalado por terceiros. Aprovando este modelo, nossa primeira ação já será uma varredura preventiva presencial para deixar tudo no padrão Vision.</p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<!-- ===================== CTA FINAL ===================== -->
+<section class="py-28 bg-[#09090b] relative overflow-hidden">
+    <div class="bg-grid absolute inset-0 opacity-10 pointer-events-none z-0"></div>
+    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-brand-yellow/10 rounded-full blur-[100px] pointer-events-none"></div>
+    
+    <div class="max-w-4xl mx-auto px-4 text-center relative z-10 reveal">
+        <span class="text-brand-yellow font-bold uppercase tracking-widest text-xs mb-4 block">Próximo Passo</span>
+        <h2 class="text-3xl md:text-5xl font-extrabold text-white leading-tight mb-6">
+            A operação da ACR não pode trabalhar <span class="text-gold-shine">no escuro.</span>
+        </h2>
+        <p class="text-zinc-400 text-lg mb-10 leading-relaxed max-w-2xl mx-auto">
+            Vamos tirar o risco de falhas técnicas das mãos da sua equipe e transferi-lo definitivamente para a nossa gestão técnica especializada.
+        </p>
+
+        <a href="https://wa.me/551159950096?text=Ola%20Glicia,%20analisei%20a%20proposta%20do%20Grupo%20ACR%20e%20gostaria%20de%20aprovar." target="_blank" class="inline-flex items-center gap-3 bg-brand-yellow hover:bg-brand-goldLight text-brand-black font-bold px-10 py-5 rounded-full transition-all shadow-glow-md text-sm uppercase tracking-widest transform hover:scale-[1.03]">
+            <i data-lucide="check-circle" class="w-5 h-5"></i>
+            Aprovar Contrato Global
+            <i data-lucide="arrow-right" class="w-4 h-4 ml-1"></i>
+        </a>
+    </div>
+</section>
+
+<!-- ===================== FOOTER ===================== -->
+<footer class="bg-black py-16 text-center border-t border-zinc-900 group">
+    <div class="max-w-4xl mx-auto px-4">
+        
+        <div class="flex flex-col items-center justify-center leading-none opacity-40 group-hover:opacity-100 transition-opacity duration-500 cursor-default mb-10">
+            <div class="flex flex-col items-center">
+                <div class="relative flex items-baseline leading-none">
+                    <span class="font-logo font-bold text-[3.5rem] text-white lowercase tracking-[-0.05em] leading-none">vısıon</span>
+                    <!-- R circulado rebaixado milimetricamente -->
+                    <span class="absolute -right-3.5 top-2.5 text-[0.75rem] text-brand-yellow font-bold">®</span>
+                </div>
+                <!-- Letter spacing ajustado e alinhado -->
+                <span class="font-tech text-[0.75rem] font-bold text-zinc-500 lowercase -mt-3 ml-1.5 text-center w-full" style="letter-spacing: 0.53em;">tecnologia</span>
+            </div>
+        </div>
+
+        <div class="text-zinc-500 text-xs md:text-sm leading-relaxed space-y-1 mb-8 opacity-60">
+            <p>Av. Paulista, 1636 - Sala 1504 | Bela Vista, São Paulo SP - CEP 01310-200</p>
+            <p>CNPJ: 62.117.013/0001-00</p>
+        </div>
+
+        <div class="inline-flex items-center justify-center gap-2 border border-zinc-800 bg-zinc-900/50 px-5 py-2.5 rounded-full mb-6 shadow-sm">
+            <i data-lucide="lock" class="w-3.5 h-3.5 text-brand-yellow"></i>
+            <span class="text-[10px] md:text-xs text-zinc-400 uppercase tracking-widest font-bold">Documento confidencial</span>
+        </div>
+        
+        <p class="text-[10px] text-zinc-700 uppercase tracking-widest font-bold mt-6">Sistemas de Segurança de Alta Performance</p>
+    </div>
+</footer>
+
+<!-- WHATSAPP CTA FLUTUANTE -->
+<div id="cta-float" class="fixed bottom-6 right-6 z-40 hidden md:block">
+    <a href="https://wa.me/551159950096?text=Ola%20Glicia,%20analisei%20a%20proposta%20do%20Grupo%20ACR%20e%20gostaria%20de%20aprovar." target="_blank" class="flex items-center gap-3 bg-brand-yellow text-black font-bold px-6 py-4 rounded-full shadow-glow-md hover:shadow-glow transition-all group">
+        <i data-lucide="shield-check" class="w-5 h-5"></i>
+        <span class="text-sm tracking-wide uppercase">Aprovar Contrato</span>
+        <i data-lucide="arrow-right" class="w-4 h-4 group-hover:translate-x-1 transition-transform"></i>
+    </a>
+</div>
+
+<!-- ===================== SCRIPTS ===================== -->
+<script>
+    // INIT LUCIDE ICONS
+    lucide.createIcons();
+
+    // LOCK SCREEN + FORMSUBMIT (STATICFORMS)
+    function checkPassword() {
+        const input = document.getElementById('password-input').value;
+        const errorMsg = document.getElementById('error-msg');
+        
+        // Senhas configuradas
+        if (input.toUpperCase() === 'LARISSA2026' || input.toUpperCase() === 'VISION') {
+            const lockScreen = document.getElementById('lock-screen');
+            lockScreen.style.opacity = '0';
+
+            // Start Hero Video
+            const video1 = document.getElementById("vision-video");
+            if (video1 && video1.paused) {
+                video1.muted = true;
+                video1.play().catch(e => {});
+            }
+
+            // Envio silencioso do alerta de acesso
+            fetch('https://api.staticforms.dev/submit', {
+                method: 'POST',
+                headers: { 
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json'
+                },
+                body: JSON.stringify({
+                    accessKey: "sf_077ej49gjha153gk3m6ceecf",
+                    subject: "🚨 ALERTA: Proposta Acessada (Larissa - Grupo ACR)",
+                    name: "Sistema Vision",
+                    email: "diretoria@visionsp.com.br",
+                    message: `A cliente acabou de abrir a proposta!\n\n👤 Cliente: Larissa - Grupo ACR (Matriz, Galpão, School)\n🔑 Senha Utilizada: ${input}\n🕒 Horário: ${new Date().toLocaleString('pt-BR')}`
+                })
+            }).catch(error => console.log('Log de acesso registrado.'));
+
+            setTimeout(() => { 
+                lockScreen.style.display = 'none'; 
+                const htmlRoot = document.getElementById('html-root');
+                if(htmlRoot) {
+                    htmlRoot.classList.remove('overflow-hidden', 'h-screen');
+                    htmlRoot.classList.add('overflow-x-hidden');
+                }
+                document.body.classList.remove('overflow-hidden', 'h-screen');
+            }, 700);
+        } else {
+            errorMsg.classList.remove('hidden');
+            document.getElementById('password-input').style.borderColor = 'rgba(239,68,68,0.5)';
+            setTimeout(() => {
+                errorMsg.classList.add('hidden');
+                document.getElementById('password-input').style.borderColor = '';
+            }, 3000);
+        }
+    }
+
+    // Permitir submeter com a tecla Enter
+    document.getElementById('password-input').addEventListener('keypress', function(e) {
+        if (e.key === 'Enter') {
+            checkPassword();
+        }
+    });
+
+    // REVEAL ON SCROLL
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('active');
+            }
+        });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+    // ANIMATE COUNTERS
+    function animateCounter(el, target) {
+        let current = 0;
+        const increment = Math.ceil(target / 40);
+        const interval = setInterval(() => {
+            current = Math.min(current + increment, target);
+            el.textContent = current;
+            if (current === target) clearInterval(interval);
+        }, 40);
+    }
+    const counterObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const el = entry.target;
+                const target = parseInt(el.getAttribute('data-target'));
+                animateCounter(el, target);
+                counterObserver.unobserve(el);
+            }
+        });
+    }, { threshold: 0.5 });
+    document.querySelectorAll('[data-target]').forEach(el => counterObserver.observe(el));
+
+    // ACCORDION
+    function toggleAccordion(btn) {
+        const item = btn.parentElement;
+        const isOpen = item.classList.contains('open');
+        document.querySelectorAll('.accordion-item').forEach(i => i.classList.remove('open'));
+        if (!isOpen) item.classList.add('open');
+        lucide.createIcons();
+    }
+
+    // NAVBAR E CTA SCROLL
+    window.addEventListener('scroll', () => {
+        const navbar = document.getElementById('navbar');
+        const ctaFloat = document.getElementById('cta-float');
+        
+        if (window.scrollY > 50) {
+            navbar.classList.add('shadow-md');
+        } else {
+            navbar.classList.remove('shadow-md');
+        }
+
+        if (window.scrollY > 400) {
+            ctaFloat.classList.remove('hidden');
+        } else {
+            ctaFloat.classList.add('hidden');
+        }
+    });
+
+    // VIDEOS INTERATIVOS
+    document.addEventListener("DOMContentLoaded", function() {
+        const videoHero = document.getElementById("vision-video");
+        const overlayHero = document.getElementById("unmute-overlay");
+        
+        if (videoHero && overlayHero) {
+            overlayHero.addEventListener("click", function(e) {
+                e.stopPropagation(); 
+                videoHero.muted = false;
+                videoHero.loop = false; 
+                videoHero.currentTime = 0;
+                videoHero.play();
+                overlayHero.style.opacity = "0";
+                setTimeout(() => { overlayHero.style.display = "none"; }, 500); 
+            });
+
+            videoHero.addEventListener("click", function() {
+                if (overlayHero.style.display === "none") {
+                    if (videoHero.paused) { videoHero.play(); } else { videoHero.pause(); }
+                }
+            });
+        }
+    });
+</script>
+</body>
+</html>
