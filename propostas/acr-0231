@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Projeto Executivo de Sustentação | Grupo ACR – Vision</title>
-    <meta name="description" content="Monitoramento 24h e Sustentação Técnica – Vision Tecnologia">
+    <title>Atualização de Escopo Técnico | Grupo ACR – Vision</title>
+    <meta name="description" content="Sustentação e Monitoramento 24h – Vision Tecnologia">
     <meta name="theme-color" content="#b9880e">
 
     <!-- Fonts & Icons -->
@@ -61,7 +61,6 @@
                         'float': 'float 6s ease-in-out infinite',
                         'fade-in': 'fadeIn 0.6s ease forwards',
                         'shine-pulse': 'shinePulse 3s ease-in-out infinite',
-                        'float-slow': 'float 8s ease-in-out infinite',
                     },
                     keyframes: {
                         slideUp: {
@@ -191,6 +190,7 @@
             height: 100%;
             display: flex;
             flex-direction: column;
+            padding: 2.5rem;
             overflow: hidden;
         }
 
@@ -205,7 +205,7 @@
         }
     </style>
 </head>
-<body class="bg-[#fafafa] text-gray-800 antialiased selection:bg-brand-yellow selection:text-white overflow-x-hidden h-screen" id="body-root">
+<body class="bg-[#fafafa] text-gray-800 antialiased selection:bg-brand-yellow selection:text-white overflow-hidden h-screen" id="body-root">
 
 <!-- ===================== LOCK SCREEN ===================== -->
 <div id="lock-screen" class="fixed inset-0 z-[100] bg-[#09090b] flex flex-col items-center justify-center text-center p-4 transition-opacity duration-700 ease-out touch-none" style="overscroll-behavior: none;">
@@ -218,7 +218,7 @@
             <span class="font-logo font-bold text-[5.5rem] md:text-[6rem] text-gold-shine lowercase tracking-[-0.05em] leading-none">vısıon</span>
             <span class="absolute -right-5 top-4 text-[1.1rem] text-brand-yellow font-bold">®</span>
         </div>
-        <span class="font-tech text-[1.1rem] font-bold text-zinc-500 lowercase -mt-4 ml-2.5 text-center w-full" style="letter-spacing:0.53em;">tecnologia</span>
+        <span class="font-tech text-[1.1rem] font-bold text-zinc-500 lowercase -mt-4 ml-2.5 text-center w-full" style="letter-spacing:0.53em;">business</span>
     </div>
 
     <div class="w-full max-w-sm space-y-5 z-10">
@@ -228,12 +228,12 @@
                 <span class="text-brand-yellow text-[10px] font-bold uppercase tracking-widest">Acesso Corporativo Restrito</span>
             </div>
             <h2 class="text-white font-bold text-2xl">Grupo ACR</h2>
-            <p class="text-zinc-400 text-sm">Projeto Executivo de Sustentação e Monitoramento 24h (Matriz, Galpão e School)</p>
+            <p class="text-zinc-400 text-sm">Atualização de Escopo Técnico: Sustentação e Monitoramento 24h</p>
         </div>
 
         <div>
             <!-- SENHA CONFIGURADA: larissa2026 ou vision -->
-            <input type="password" id="password-input" class="lock-input w-full py-4 px-4" placeholder="SENHA DE ACESSO" autocomplete="off">
+            <input type="password" id="password-input" class="lock-input w-full py-4 px-4" placeholder="SENHA DE ACESSO" autocomplete="off" onkeydown="if(event.key==='Enter') checkPassword()">
             <p id="error-msg" class="text-red-400 text-xs mt-2 hidden">
                 <span class="flex items-center justify-center gap-1"><i data-lucide="x-circle" class="w-4 h-4"></i> Credencial inválida.</span>
             </p>
@@ -242,11 +242,11 @@
         <button onclick="checkPassword()" class="w-full bg-brand-yellow hover:bg-brand-goldLight text-black font-bold py-4 rounded-2xl transition-all shadow-glow flex items-center justify-center gap-2 group relative overflow-hidden">
             <div class="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-300 rounded-2xl"></div>
             <i data-lucide="shield-check" class="w-5 h-5 relative z-10"></i>
-            <span class="relative z-10 text-sm uppercase tracking-widest">Acessar Documento Técnico</span>
+            <span class="relative z-10 text-sm uppercase tracking-widest">Acessar Revisão de Escopo</span>
             <i data-lucide="arrow-right" class="w-4 h-4 relative z-10 group-hover:translate-x-1 transition-transform"></i>
         </button>
 
-        <p class="text-zinc-600 text-xs">Documento restrito · Válido por 15 dias · Vision Tecnologia © 2026</p>
+        <p class="text-zinc-600 text-xs">Documento restrito · Válido por 15 dias · Vision Business © 2026</p>
     </div>
 </div>
 
@@ -259,13 +259,13 @@
                     <span class="font-logo font-bold text-[2.6rem] text-gold-shine lowercase tracking-[-0.05em] leading-none">vısıon</span>
                     <span class="absolute -right-2.5 top-1.5 text-[0.6rem] text-brand-yellow font-bold">®</span>
                 </div>
-                <span class="font-tech text-[0.6rem] font-bold text-gray-400 lowercase -mt-2 ml-1.5" style="letter-spacing:0.53em;">tecnologia</span>
+                <span class="font-tech text-[0.6rem] font-bold text-gray-400 lowercase -mt-2 ml-1.5" style="letter-spacing:0.53em;">business</span>
             </div>
             <div class="hidden md:flex items-center space-x-7 text-xs font-semibold text-gray-500 uppercase tracking-wider">
-                <a href="#diagnostico" class="hover:text-brand-yellow transition-colors">Diagnóstico</a>
-                <a href="#solucao" class="hover:text-brand-yellow transition-colors">A Solução</a>
-                <a href="#investimento" class="hover:text-brand-yellow transition-colors">Investimento Modular</a>
-                <a href="#faq" class="hover:text-brand-yellow transition-colors">FAQ</a>
+                <a href="#escopo" class="hover:text-brand-yellow transition-colors">Mapeamento</a>
+                <a href="#sla" class="hover:text-brand-yellow transition-colors">SLA & Escopo</a>
+                <a href="#implantacao" class="hover:text-brand-yellow transition-colors">Cronograma</a>
+                <a href="#investimento" class="hover:text-brand-yellow transition-colors">Investimento</a>
             </div>
             <div class="flex items-center gap-4">
                 <button onclick="window.print()" class="text-gray-400 hover:text-brand-yellow transition-colors flex items-center gap-1.5" title="Salvar em PDF">
@@ -273,7 +273,7 @@
                     <span class="text-[10px] font-bold uppercase tracking-widest hidden sm:block">PDF</span>
                 </button>
                 <a href="#investimento" class="bg-zinc-900 text-white px-5 py-2.5 rounded-full text-[10px] font-bold uppercase tracking-widest hover:bg-brand-yellow hover:text-black transition-all shadow-md">
-                    Ver Proposta
+                    Ver OPEX
                 </a>
             </div>
         </div>
@@ -288,18 +288,19 @@
     <div class="max-w-7xl mx-auto px-4 relative z-10">
         <div class="flex flex-col lg:flex-row items-center gap-12 lg:gap-16">
             
+            <!-- Coluna Texto -->
             <div class="w-full lg:w-1/2 text-center lg:text-left animate-slide-up">
                 <div class="inline-flex items-center gap-2 px-5 py-2 rounded-full border border-brand-yellow/30 bg-brand-yellow/5 text-brand-yellow text-[10px] font-bold uppercase tracking-widest mb-8 mx-auto lg:mx-0">
                     <i data-lucide="shield" class="w-4 h-4"></i>
-                    PROPOSTA TÉCNICA #VB-2026-0312 | VALIDADE: 15 DIAS
+                    REVISÃO TÉCNICA #VB-2026-0318 | VALIDADE: 15 DIAS
                 </div>
                 
                 <h1 class="text-4xl md:text-5xl lg:text-6xl font-extrabold text-gray-900 leading-[1.05] tracking-tight mb-6">
-                    A certeza absoluta de que o seu sistema vai funcionar <span class="text-gold-shine">no segundo em que você mais precisar.</span>
+                    A previsibilidade financeira e a garantia de que as suas <span class="text-gold-shine">95 câmeras não vão falhar.</span>
                 </h1>
                 
                 <h2 class="text-base md:text-lg text-gray-500 max-w-xl mx-auto lg:mx-0 font-medium mt-6 leading-relaxed">
-                    Sustentação técnica e monitoramento de alarmes 24h para blindar a operação contínua das 3 unidades do Grupo ACR.
+                    Ajuste de engenharia para o novo escopo do Galpão 1. Separação rigorosa de custos operacionais e garantias contratuais (SLA) para aprovação da diretoria.
                 </h2>
             </div>
 
@@ -309,6 +310,7 @@
                     <div class="relative w-full aspect-video rounded-[1.8rem] overflow-hidden bg-black shadow-inner">
                         <video id="vision-video" class="w-full h-full object-cover cursor-pointer opacity-90" autoplay muted loop playsinline>
                             <source src="https://res.cloudinary.com/dptcuckhf/video/upload/v1771711323/Vict%C3%B3ria_-_Vision_gdqnrk.mp4" type="video/mp4">
+                            Seu navegador não suporta o formato de vídeo.
                         </video>
 
                         <div id="unmute-overlay" class="absolute inset-0 bg-black/50 backdrop-blur-sm flex flex-col items-center justify-center cursor-pointer transition-opacity duration-500 z-10 hover:bg-black/40">
@@ -322,10 +324,11 @@
             </div>
         </div>
 
+        <!-- Floating Quick Stats -->
         <div class="mt-16 lg:mt-24 grid grid-cols-2 md:grid-cols-4 gap-5 max-w-4xl mx-auto reveal">
             <div class="bg-white rounded-2xl p-6 shadow-glass border border-gray-100 text-center hover:border-brand-yellow/40 transition-all animate-float" style="animation-delay:0s;">
                 <div class="w-10 h-10 bg-brand-yellow/10 rounded-xl flex items-center justify-center mx-auto mb-3">
-                    <i data-lucide="shield" class="w-5 h-5 text-brand-yellow"></i>
+                    <i data-lucide="building" class="w-5 h-5 text-brand-yellow"></i>
                 </div>
                 <div class="text-3xl font-extrabold text-gray-900 counter-num" data-target="3">0</div>
                 <div class="text-xs text-gray-500 font-medium mt-1 uppercase tracking-wider">Unidades Blindadas</div>
@@ -334,8 +337,8 @@
                 <div class="w-10 h-10 bg-brand-yellow/10 rounded-xl flex items-center justify-center mx-auto mb-3">
                     <i data-lucide="video" class="w-5 h-5 text-brand-yellow"></i>
                 </div>
-                <div class="text-3xl font-extrabold text-gray-900 counter-num" data-target="44">0</div>
-                <div class="text-xs text-gray-500 font-medium mt-1 uppercase tracking-wider">Câmeras Cobertas</div>
+                <div class="text-3xl font-extrabold text-gray-900 counter-num" data-target="95">0</div>
+                <div class="text-xs text-gray-500 font-medium mt-1 uppercase tracking-wider">Câmeras Totais</div>
             </div>
             <div class="bg-white rounded-2xl p-6 shadow-glass border border-gray-100 text-center hover:border-brand-yellow/40 transition-all animate-float" style="animation-delay:0.4s;">
                 <div class="w-10 h-10 bg-brand-yellow/10 rounded-xl flex items-center justify-center mx-auto mb-3">
@@ -346,216 +349,522 @@
             </div>
             <div class="bg-white rounded-2xl p-6 shadow-glass border border-gray-100 text-center hover:border-brand-yellow/40 transition-all animate-float" style="animation-delay:1.2s;">
                 <div class="w-10 h-10 bg-brand-yellow/10 rounded-xl flex items-center justify-center mx-auto mb-3">
-                    <i data-lucide="clock" class="w-5 h-5 text-brand-yellow"></i>
+                    <i data-lucide="shield-check" class="w-5 h-5 text-brand-yellow"></i>
                 </div>
-                <div class="text-3xl font-extrabold text-gray-900">24/7</div>
-                <div class="text-xs text-gray-500 font-medium mt-1 uppercase tracking-wider">Central Operante</div>
+                <div class="text-3xl font-extrabold text-gray-900">24h</div>
+                <div class="text-xs text-gray-500 font-medium mt-1 uppercase tracking-wider">SLA de Correção</div>
             </div>
         </div>
     </div>
 </header>
 
-<!-- ===================== DIAGNÓSTICO DO CENÁRIO ===================== -->
-<section id="diagnostico" class="py-28 bg-[#f8f9fa] border-y border-gray-200/60 relative">
+<!-- ===================== MAPEAMENTO DE ESCOPO POR UNIDADE ===================== -->
+<section id="escopo" class="py-28 bg-[#f8f9fa] border-y border-gray-200/60 relative">
     <div class="max-w-7xl mx-auto px-4">
         <div class="text-center mb-16 reveal">
-            <span class="text-brand-yellow font-bold uppercase tracking-widest text-xs">O Diagnóstico Consultivo</span>
-            <h2 class="text-3xl md:text-5xl font-bold text-gray-900 mt-3 leading-tight">O risco oculto de sistemas <br class="hidden md:block">sem gestão ativa</h2>
+            <span class="text-brand-yellow font-bold uppercase tracking-widest text-xs">Inventário Estrutural</span>
+            <h2 class="text-3xl md:text-5xl font-bold text-gray-900 mt-3 leading-tight">Mapeamento de Escopo<br class="hidden md:block">por Unidade</h2>
             <p class="text-gray-500 mt-5 max-w-3xl mx-auto text-lg leading-relaxed">
-                <strong>Larissa</strong>, assumir a manutenção de um parque tecnológico instalado por terceiros exige grande responsabilidade. O nosso foco como consultoria não é apenas "consertar o que quebra", mas garantir que o sistema não falhe na hora de um sinistro real. Identificamos os pontos de atenção críticos que o nosso contrato vai eliminar:
+                Toda a infraestrutura do Grupo ACR que será monitorada, protegida e mantida pelo nosso contrato de sustentação técnica.
             </p>
         </div>
 
         <div class="grid md:grid-cols-3 gap-8 reveal">
-            <!-- Card 1 -->
-            <div class="bg-white rounded-[2rem] p-8 shadow-premium border border-gray-100 relative overflow-hidden group hover:-translate-y-1 transition-transform duration-300 flex flex-col">
-                <div class="absolute top-0 right-0 w-32 h-32 bg-red-50 rounded-full blur-3xl transition-colors"></div>
-                <div class="w-14 h-14 bg-red-50 rounded-2xl flex items-center justify-center mb-6 relative z-10">
-                    <i data-lucide="shield-alert" class="w-7 h-7 text-red-500"></i>
+            
+            <!-- MATRIZ -->
+            <div class="bg-white rounded-[2rem] p-8 shadow-sm border border-gray-100 relative overflow-hidden group hover:shadow-premium-card transition-all">
+                <div class="flex items-center justify-between mb-8">
+                    <div class="flex items-center gap-4">
+                        <div class="w-12 h-12 bg-blue-50 text-blue-600 rounded-xl flex items-center justify-center border border-blue-100">
+                            <i data-lucide="building" class="w-6 h-6"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-gray-900 text-lg">ACR Matriz</h4>
+                            <p class="text-xs text-gray-400">SBC – Centro</p>
+                        </div>
+                    </div>
+                    <span class="text-[10px] font-bold uppercase tracking-widest bg-gray-100 text-gray-500 px-3 py-1 rounded-full">Unidade 01</span>
                 </div>
-                <h3 class="text-xl font-bold text-gray-900 mb-3 relative z-10">A Falsa Sensação de Segurança</h3>
-                <p class="text-gray-600 text-sm mb-6 relative z-10 leading-relaxed flex-1">
-                    <strong>O Problema:</strong> Ter equipamentos instalados não significa estar protegido. É comum as empresas só descobrirem que uma câmera estava sem foco ou um sensor inoperante depois que uma invasão acontece.
-                </p>
-                <div class="mt-auto p-4 bg-emerald-50 rounded-xl border border-emerald-100 relative z-10">
-                    <p class="text-xs text-emerald-800 leading-relaxed flex items-start gap-2">
-                        <i data-lucide="check-circle-2" class="w-4 h-4 shrink-0 mt-0.5"></i>
-                        <span><strong>A Solução Vision:</strong> Rotina de prevenção rigorosa. Nossa equipe se antecipa às falhas, realizando ajustes de posicionamento, limpeza de lentes e testes de comunicação de forma programada.</span>
-                    </p>
-                </div>
-            </div>
-
-            <!-- Card 2 -->
-            <div class="bg-white rounded-[2rem] p-8 shadow-premium border border-gray-100 relative overflow-hidden group hover:-translate-y-1 transition-transform duration-300 flex flex-col">
-                <div class="absolute top-0 right-0 w-32 h-32 bg-orange-50 rounded-full blur-3xl transition-colors"></div>
-                <div class="w-14 h-14 bg-orange-50 rounded-2xl flex items-center justify-center mb-6 relative z-10">
-                    <i data-lucide="cable" class="w-7 h-7 text-orange-500"></i>
-                </div>
-                <h3 class="text-xl font-bold text-gray-900 mb-3 relative z-10">O Desgaste Silencioso</h3>
-                <p class="text-gray-600 text-sm mb-6 relative z-10 leading-relaxed flex-1">
-                    <strong>O Problema:</strong> Cabos, conectores e fontes de energia ressecam e oxidam. A imensa maioria dos falsos disparos ou perda de imagem acontece por degradação física da infraestrutura.
-                </p>
-                <div class="mt-auto p-4 bg-emerald-50 rounded-xl border border-emerald-100 relative z-10">
-                    <p class="text-xs text-emerald-800 leading-relaxed flex items-start gap-2">
-                        <i data-lucide="check-circle-2" class="w-4 h-4 shrink-0 mt-0.5"></i>
-                        <span><strong>A Solução Vision:</strong> O nosso escopo cobre a revisão contínua dessa camada física, trocando cabeamentos curtos e conectores desgastados antes que eles derrubem o seu sistema.</span>
-                    </p>
+                
+                <div class="grid grid-cols-2 gap-4">
+                    <div class="bg-gray-50 rounded-xl p-4 text-center border border-gray-100">
+                        <div class="text-3xl font-extrabold text-blue-500">14</div>
+                        <div class="text-xs text-gray-500 font-medium mt-1">Câmeras</div>
+                    </div>
+                    <div class="bg-gray-50 rounded-xl p-4 text-center border border-gray-100">
+                        <div class="text-3xl font-extrabold text-blue-500">27</div>
+                        <div class="text-xs text-gray-500 font-medium mt-1">Sensores</div>
+                    </div>
                 </div>
             </div>
 
-            <!-- Card 3 -->
-            <div class="bg-white rounded-[2rem] p-8 shadow-premium border border-gray-100 relative overflow-hidden group hover:-translate-y-1 transition-transform duration-300 flex flex-col">
-                <div class="absolute top-0 right-0 w-32 h-32 bg-blue-50 rounded-full blur-3xl transition-colors"></div>
-                <div class="w-14 h-14 bg-blue-50 rounded-2xl flex items-center justify-center mb-6 relative z-10">
-                    <i data-lucide="bell-off" class="w-7 h-7 text-blue-500"></i>
+            <!-- GALPÃO 1 (ALERTA) -->
+            <div class="bg-white rounded-[2rem] p-8 shadow-premium border-2 border-brand-yellow/30 relative overflow-hidden group hover:shadow-premium-card hover:border-brand-yellow/60 transition-all">
+                <div class="absolute top-0 right-0 w-32 h-32 bg-brand-yellow/10 rounded-full blur-3xl pointer-events-none"></div>
+                <div class="flex items-center justify-between mb-8 relative z-10">
+                    <div class="flex items-center gap-4">
+                        <div class="w-12 h-12 bg-amber-50 text-amber-600 rounded-xl flex items-center justify-center border border-amber-100">
+                            <i data-lucide="warehouse" class="w-6 h-6"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-gray-900 text-lg">ACR Galpão 1</h4>
+                            <p class="text-xs text-gray-400">SBC – Jardim do Mar</p>
+                        </div>
+                    </div>
+                    <span class="text-[10px] font-bold uppercase tracking-widest bg-brand-yellow text-black px-3 py-1 rounded-full shadow-sm">Escopo Ampliado</span>
                 </div>
-                <h3 class="text-xl font-bold text-gray-900 mb-3 relative z-10">A Ação Tática Inexistente</h3>
-                <p class="text-gray-600 text-sm mb-6 relative z-10 leading-relaxed flex-1">
-                    <strong>O Problema:</strong> Um alarme disparando sozinho na madrugada sem ninguém para auditar ou intervir é totalmente inútil contra invasores experientes.
-                </p>
-                <div class="mt-auto p-4 bg-emerald-50 rounded-xl border border-emerald-100 relative z-10">
-                    <p class="text-xs text-emerald-800 leading-relaxed flex items-start gap-2">
-                        <i data-lucide="check-circle-2" class="w-4 h-4 shrink-0 mt-0.5"></i>
-                        <span><strong>A Solução Vision:</strong> Conexão direta das três unidades com a nossa Central de Monitoramento 24h. Houve violação? Nossa base recebe o alerta em segundos e toma as medidas táticas imediatas.</span>
-                    </p>
+                
+                <div class="grid grid-cols-2 gap-4 relative z-10">
+                    <div class="bg-amber-50/50 rounded-xl p-4 text-center border border-amber-100">
+                        <div class="text-3xl font-extrabold text-amber-600">51</div>
+                        <div class="text-xs text-amber-800 font-medium mt-1">Câmeras</div>
+                    </div>
+                    <div class="bg-amber-50/50 rounded-xl p-4 text-center border border-amber-100">
+                        <div class="text-3xl font-extrabold text-amber-600">14</div>
+                        <div class="text-xs text-amber-800 font-medium mt-1">Sensores</div>
+                    </div>
+                </div>
+                <div class="mt-6 pt-4 border-t border-gray-100 relative z-10">
+                    <p class="text-xs text-gray-500 leading-relaxed"><strong class="text-gray-900">Nota:</strong> Com 51 câmeras, o Galpão 1 representa o maior parque do contrato. O dimensionamento foi ajustado para absorver esta complexidade.</p>
                 </div>
             </div>
+
+            <!-- SCHOOL -->
+            <div class="bg-white rounded-[2rem] p-8 shadow-sm border border-gray-100 relative overflow-hidden group hover:shadow-premium-card transition-all">
+                <div class="flex items-center justify-between mb-8">
+                    <div class="flex items-center gap-4">
+                        <div class="w-12 h-12 bg-purple-50 text-purple-600 rounded-xl flex items-center justify-center border border-purple-100">
+                            <i data-lucide="graduation-cap" class="w-6 h-6"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-gray-900 text-lg">ACR School</h4>
+                            <p class="text-xs text-gray-400">São Bernardo do Campo</p>
+                        </div>
+                    </div>
+                    <span class="text-[10px] font-bold uppercase tracking-widest bg-gray-100 text-gray-500 px-3 py-1 rounded-full">Unidade 03</span>
+                </div>
+                
+                <div class="grid grid-cols-2 gap-4">
+                    <div class="bg-gray-50 rounded-xl p-4 text-center border border-gray-100">
+                        <div class="text-3xl font-extrabold text-purple-500">30</div>
+                        <div class="text-xs text-gray-500 font-medium mt-1">Câmeras</div>
+                    </div>
+                    <div class="bg-gray-50 rounded-xl p-4 text-center border border-gray-100">
+                        <div class="text-3xl font-extrabold text-purple-500">27</div>
+                        <div class="text-xs text-gray-500 font-medium mt-1">Sensores</div>
+                    </div>
+                </div>
+            </div>
+
         </div>
     </div>
 </section>
 
-<!-- ===================== A SOLUÇÃO (SERVIÇOS) ===================== -->
-<section id="solucao" class="py-28 bg-white relative overflow-hidden">
-    <div class="absolute inset-0 bg-dots pointer-events-none"></div>
-    <div class="max-w-7xl mx-auto px-4 relative z-10">
-        
+<!-- ===================== DIAGNÓSTICO DO CENÁRIO (IMPACTO) ===================== -->
+<section class="py-28 bg-white relative">
+    <div class="max-w-7xl mx-auto px-4">
         <div class="text-center mb-16 reveal">
-            <span class="text-brand-yellow font-bold uppercase tracking-widest text-xs">O Ecossistema Vision</span>
-            <h2 class="text-3xl md:text-5xl font-bold text-gray-900 mt-3">O que significa ter a Vision<br>cuidando da ACR?</h2>
-            <p class="text-gray-500 mt-4 max-w-2xl mx-auto text-lg">
-                Desenhamos um guarda-chuva de proteção que une a inteligência da nossa base de monitoramento remoto com a presença física da nossa equipe de campo.
+            <span class="text-brand-yellow font-bold uppercase tracking-widest text-xs">Análise de Risco</span>
+            <h2 class="text-3xl md:text-5xl font-bold text-gray-900 mt-3 leading-tight">O impacto de 51 novas <br class="hidden md:block">câmeras na sua operação</h2>
+            <p class="text-gray-500 mt-5 max-w-3xl mx-auto text-lg leading-relaxed">
+                <strong>Larissa</strong>, o acréscimo das 51 câmeras do Galpão muda completamente a dinâmica de risco e a carga de dados. Assumir um parque de terceiros, sem histórico prévio, exige uma intervenção técnica robusta da nossa engenharia.
             </p>
         </div>
 
-        <!-- Grid de 3 colunas de serviços -->
-        <div class="grid lg:grid-cols-3 gap-8 reveal items-stretch">
-            
-            <!-- Serviço 1 -->
-            <div class="bg-gray-50 rounded-[2rem] p-6 md:p-8 border border-gray-200 shadow-glass flex flex-col relative overflow-hidden group hover:shadow-premium-card hover:border-brand-yellow/50 transition-all">
-                <div class="absolute top-0 right-0 w-48 h-48 bg-brand-yellow/10 rounded-full blur-3xl transition-transform group-hover:scale-150"></div>
-                
-                <div class="w-16 h-16 bg-white rounded-2xl flex items-center justify-center mb-6 shadow-sm border border-gray-100 relative z-10">
-                    <i data-lucide="headset" class="w-8 h-8 text-brand-yellow"></i>
+        <div class="grid md:grid-cols-3 gap-8 reveal">
+            <div class="bg-gray-50 rounded-[2rem] p-8 border border-gray-100 relative overflow-hidden">
+                <div class="w-12 h-12 bg-red-100 rounded-xl flex items-center justify-center mb-6">
+                    <i data-lucide="network" class="w-6 h-6 text-red-600"></i>
                 </div>
-
-                <div class="flex-1 relative z-10">
-                    <h3 class="font-bold text-gray-900 text-xl mb-3">Central de Monitoramento 24 Horas</h3>
-                    <p class="text-gray-600 text-sm leading-relaxed mb-4">
-                        <strong>O que significa para a ACR:</strong> Seus 68 sensores estarão conectados à nossa base. Funcionamento ininterrupto (incluindo madrugadas, finais de semana e feriados) para recebimento e auditoria de eventos de intrusão, pânico ou falha de comunicação.
-                    </p>
-                </div>
+                <h3 class="text-xl font-bold text-gray-900 mb-3">O Risco de Sobrecarga</h3>
+                <p class="text-gray-600 text-sm mb-6 leading-relaxed flex-1">
+                    <strong>O Problema:</strong> Enviar as imagens de 51 câmeras simultaneamente para a nossa base exige uma infraestrutura de rede impecável. Fios antigos geram ruído e derrubam a conexão.
+                </p>
             </div>
 
-            <!-- Serviço 2 -->
-            <div class="bg-gray-50 rounded-[2rem] p-6 md:p-8 border border-gray-200 shadow-glass flex flex-col relative overflow-hidden group hover:shadow-premium-card hover:border-brand-yellow/50 transition-all">
-                <div class="absolute top-0 right-0 w-48 h-48 bg-brand-yellow/10 rounded-full blur-3xl transition-transform group-hover:scale-150"></div>
-                
-                <div class="w-16 h-16 bg-white rounded-2xl flex items-center justify-center mb-6 shadow-sm border border-gray-100 relative z-10">
-                    <i data-lucide="tool" class="w-8 h-8 text-brand-yellow"></i>
+            <div class="bg-gray-50 rounded-[2rem] p-8 border border-gray-100 relative overflow-hidden">
+                <div class="w-12 h-12 bg-orange-100 rounded-xl flex items-center justify-center mb-6">
+                    <i data-lucide="camera" class="w-6 h-6 text-orange-600"></i>
                 </div>
-
-                <div class="flex-1 relative z-10">
-                    <h3 class="font-bold text-gray-900 text-xl mb-3">Manutenção Preventiva Ativa</h3>
-                    <p class="text-gray-600 text-sm leading-relaxed mb-4">
-                        <strong>O que significa para a ACR:</strong> Visitas técnicas periódicas para manter o parque em estado de arte. Limpeza das 44 câmeras, testes de bateria das centrais e checagem de conectores. É a prevenção que economiza milhares de reais a longo prazo.
-                    </p>
-                </div>
+                <h3 class="text-xl font-bold text-gray-900 mb-3">O Desgaste Físico</h3>
+                <p class="text-gray-600 text-sm mb-6 leading-relaxed flex-1">
+                    <strong>O Problema:</strong> Em galpões, a poeira e a fuligem embaçam as lentes das câmeras rapidamente, inutilizando totalmente as gravações noturnas.
+                </p>
             </div>
 
-            <!-- Serviço 3 -->
-            <div class="bg-gray-50 rounded-[2rem] p-6 md:p-8 border border-gray-200 shadow-glass flex flex-col relative overflow-hidden group hover:shadow-premium-card hover:border-brand-yellow/50 transition-all">
-                <div class="absolute top-0 right-0 w-48 h-48 bg-brand-yellow/10 rounded-full blur-3xl transition-transform group-hover:scale-150"></div>
-                
-                <div class="w-16 h-16 bg-white rounded-2xl flex items-center justify-center mb-6 shadow-sm border border-gray-100 relative z-10">
-                    <i data-lucide="zap" class="w-8 h-8 text-brand-yellow"></i>
+            <div class="bg-gray-50 rounded-[2rem] p-8 border border-gray-100 relative overflow-hidden">
+                <div class="w-12 h-12 bg-blue-100 rounded-xl flex items-center justify-center mb-6">
+                    <i data-lucide="trending-down" class="w-6 h-6 text-blue-600"></i>
                 </div>
-
-                <div class="flex-1 relative z-10">
-                    <h3 class="font-bold text-gray-900 text-xl mb-3">SLA de Correção (Resposta Prioritária)</h3>
-                    <p class="text-gray-600 text-sm leading-relaxed mb-4">
-                        <strong>O que significa para a ACR:</strong> Um cabo rompeu? Uma câmera apagou? Vocês não entram em filas de espera de assistências comuns. O contrato garante atendimento prioritário da nossa equipe para restabelecer a segurança no menor tempo possível.
-                    </p>
-                </div>
+                <h3 class="text-xl font-bold text-gray-900 mb-3">A Falsa Economia</h3>
+                <p class="text-gray-600 text-sm mb-6 leading-relaxed flex-1">
+                    <strong>O Problema:</strong> Aprovar manutenções avulsas (reativas) para quase 100 câmeras torna o custo de TI do Grupo ACR totalmente imprevisível no fim do ano.
+                </p>
             </div>
-
         </div>
     </div>
 </section>
 
-<!-- ===================== PROPOSTA COMERCIAL (INVESTIMENTO MODULAR) ===================== -->
-<section id="investimento" class="py-28 bg-[#f8f9fa] border-y border-zinc-200 relative overflow-hidden">
+<!-- ===================== O ESCOPO E SLA DE MANUTENÇÃO ===================== -->
+<section id="sla" class="py-28 bg-[#09090b] relative overflow-hidden">
+    <div class="bg-grid absolute inset-0 opacity-10 pointer-events-none z-0"></div>
+    <div class="absolute top-0 right-0 w-[600px] h-[600px] bg-brand-yellow/10 rounded-full blur-[120px] pointer-events-none"></div>
+
+    <div class="max-w-7xl mx-auto px-4 relative z-10">
+         <div class="text-center mb-16 reveal">
+            <span class="text-brand-yellow font-bold uppercase tracking-widest text-xs">As Regras do Jogo</span>
+            <h2 class="text-3xl md:text-5xl font-bold text-white mt-3">Garantia de Atendimento e SLA</h2>
+            <p class="text-zinc-400 mt-5 max-w-3xl mx-auto text-lg leading-relaxed">Tempos máximos de resposta comprometidos em contrato. Sem letras miúdas.</p>
+        </div>
+
+        <!-- SLA Dashboard -->
+        <div class="bg-zinc-900 rounded-[2rem] p-8 md:p-12 shadow-premium mb-12 relative overflow-hidden reveal flex flex-col md:flex-row items-center justify-between gap-8 border border-zinc-800">
+            <div class="absolute top-0 right-0 w-64 h-64 bg-brand-yellow/10 rounded-full blur-3xl pointer-events-none"></div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 w-full relative z-10">
+                <!-- Critical SLA -->
+                <div class="flex flex-col items-center md:items-start border-b md:border-b-0 md:border-r border-zinc-800 pb-6 md:pb-0 md:pr-8">
+                     <span class="text-red-400 font-bold tracking-widest text-[10px] uppercase mb-2 flex items-center gap-2"><div class="w-2 h-2 rounded-full bg-red-500 animate-pulse"></div> Falha Crítica</span>
+                     <div class="text-5xl font-extrabold text-white mb-2">12<span class="text-2xl text-zinc-500 font-medium">h úteis</span></div>
+                     <p class="text-zinc-400 text-sm text-center md:text-left">Equipamento central parado (DVR/NVR) ou unidade sem gravação.</p>
+                </div>
+                <!-- Partial SLA -->
+                 <div class="flex flex-col items-center md:items-start border-b md:border-b-0 md:border-r border-zinc-800 pb-6 md:pb-0 md:px-8">
+                     <span class="text-brand-yellow font-bold tracking-widest text-[10px] uppercase mb-2 flex items-center gap-2"><div class="w-2 h-2 rounded-full bg-brand-yellow"></div> Falha Parcial</span>
+                     <div class="text-5xl font-extrabold text-white mb-2">24<span class="text-2xl text-zinc-500 font-medium">h úteis</span></div>
+                     <p class="text-zinc-400 text-sm text-center md:text-left">Câmera ou sensor isolado inoperante, sem comprometer o todo.</p>
+                </div>
+                <!-- Corretivas -->
+                <div class="flex flex-col items-center md:items-start md:pl-8">
+                     <span class="text-emerald-400 font-bold tracking-widest text-[10px] uppercase mb-2 flex items-center gap-2"><i data-lucide="infinity" class="w-3 h-3"></i> Chamados Corretivos</span>
+                     <div class="text-4xl md:text-5xl font-extrabold text-white mb-2 tracking-tight">Ilimitados</div>
+                     <p class="text-zinc-400 text-sm text-center md:text-left">Zero custo de deslocamento para emergências ou vandalismo.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- The 3 Pillars Cards -->
+        <div class="grid md:grid-cols-3 gap-6 reveal">
+            <!-- Preventiva -->
+            <div class="bg-white rounded-2xl p-8 border border-gray-100 shadow-glass hover:shadow-premium-card hover:border-brand-yellow/30 transition-all group flex flex-col">
+                <div class="w-12 h-12 bg-brand-yellow/10 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                    <i data-lucide="calendar-check" class="w-6 h-6 text-brand-goldDark"></i>
+                </div>
+                <h3 class="text-xl font-bold text-gray-900 mb-3">03 Preventivas Fixas Mensais</h3>
+                <p class="text-sm text-gray-600 mb-5 leading-relaxed flex-1">
+                    Uma visita programada para cada unidade do Grupo ACR, focada em antecipar falhas antes que elas ocorram.
+                </p>
+                <ul class="space-y-3 text-sm text-gray-700">
+                    <li class="flex items-start gap-3"><i data-lucide="check" class="w-4 h-4 text-brand-yellow shrink-0 mt-0.5"></i> Limpeza química de lentes e cúpulas.</li>
+                    <li class="flex items-start gap-3"><i data-lucide="check" class="w-4 h-4 text-brand-yellow shrink-0 mt-0.5"></i> Aferição de fontes e NVRs.</li>
+                    <li class="flex items-start gap-3"><i data-lucide="check" class="w-4 h-4 text-brand-yellow shrink-0 mt-0.5"></i> Realinhamento de foco e angulação.</li>
+                </ul>
+            </div>
+
+            <!-- Insumos -->
+            <div class="bg-white rounded-2xl p-8 border border-gray-100 shadow-glass hover:shadow-premium-card hover:border-brand-yellow/30 transition-all group flex flex-col">
+                <div class="w-12 h-12 bg-emerald-50 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                    <i data-lucide="package-check" class="w-6 h-6 text-emerald-600"></i>
+                </div>
+                <h3 class="text-xl font-bold text-gray-900 mb-3">Insumos Menores Inclusos</h3>
+                <p class="text-sm text-gray-600 mb-5 leading-relaxed flex-1">
+                    Fim dos pequenos boletos surpresa. A camada física menor que vier a queimar está 100% coberta pelo contrato.
+                </p>
+                <ul class="space-y-3 text-sm text-gray-700">
+                    <li class="flex items-start gap-3"><i data-lucide="check" class="w-4 h-4 text-emerald-500 shrink-0 mt-0.5"></i> Fontes de alimentação 12v.</li>
+                    <li class="flex items-start gap-3"><i data-lucide="check" class="w-4 h-4 text-emerald-500 shrink-0 mt-0.5"></i> Conectores BNC, P4 e RJ45 originais.</li>
+                    <li class="flex items-start gap-3"><i data-lucide="check" class="w-4 h-4 text-emerald-500 shrink-0 mt-0.5"></i> Baluns e caixas de proteção VBOX.</li>
+                </ul>
+            </div>
+
+            <!-- Relatórios -->
+            <div class="bg-white rounded-2xl p-8 border border-gray-100 shadow-glass hover:shadow-premium-card hover:border-brand-yellow/30 transition-all group flex flex-col">
+                <div class="w-12 h-12 bg-blue-50 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                    <i data-lucide="file-bar-chart-2" class="w-6 h-6 text-blue-600"></i>
+                </div>
+                <h3 class="text-xl font-bold text-gray-900 mb-3">Gestão de Qualidade Integrada</h3>
+                <p class="text-sm text-gray-600 mb-5 leading-relaxed flex-1">
+                    Você não gerencia a manutenção "no grito". Nossa equipe registra e reporta tudo para o departamento de compras.
+                </p>
+                <ul class="space-y-3 text-sm text-gray-700">
+                    <li class="flex items-start gap-3"><i data-lucide="check" class="w-4 h-4 text-blue-500 shrink-0 mt-0.5"></i> Ordem de serviço digital assinada.</li>
+                    <li class="flex items-start gap-3"><i data-lucide="check" class="w-4 h-4 text-blue-500 shrink-0 mt-0.5"></i> Relatório mensal de saúde do parque.</li>
+                    <li class="flex items-start gap-3"><i data-lucide="check" class="w-4 h-4 text-blue-500 shrink-0 mt-0.5"></i> Mapeamento fotográfico das revisões.</li>
+                </ul>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<!-- ===================== CRONOGRAMA DE IMPLANTAÇÃO ===================== -->
+<section id="implantacao" class="py-24 bg-[#f8f9fa] border-b border-gray-200 relative overflow-hidden">
+    <div class="max-w-5xl mx-auto px-4 reveal">
+        <div class="text-center mb-16">
+            <span class="text-brand-yellow font-bold uppercase tracking-widest text-xs">O Início da Parceria</span>
+            <h2 class="text-3xl md:text-4xl font-extrabold text-gray-900 mt-3 tracking-tight">Plano de Implantação: 4 Semanas</h2>
+            <p class="text-gray-500 mt-4 max-w-2xl mx-auto text-lg leading-relaxed">
+                Como chegamos ao 100% operacional sem interromper a rotina das unidades da ACR.
+            </p>
+        </div>
+
+        <div class="relative max-w-3xl mx-auto mt-12">
+            <!-- Linha vertical central -->
+            <div class="absolute left-8 md:left-1/2 top-0 bottom-0 w-1 bg-gray-200 transform md:-translate-x-1/2 rounded-full"></div>
+            
+            <div class="space-y-12">
+                <!-- Semana 1 -->
+                <div class="relative flex items-center md:justify-center">
+                    <div class="w-16 h-16 bg-white border-4 border-gray-100 rounded-full flex items-center justify-center z-10 shrink-0 text-gray-900 font-black text-xl shadow-sm">1</div>
+                    <div class="ml-6 md:ml-0 md:absolute md:w-[45%] md:left-0 md:pr-12 md:text-right bg-white md:bg-transparent p-5 md:p-0 rounded-2xl shadow-sm md:shadow-none border md:border-none border-gray-100">
+                        <h4 class="text-lg font-bold text-brand-goldDark">Integração à Central</h4>
+                        <p class="text-sm text-gray-500 mt-2 leading-relaxed">Configuração remota dos DVRs/NVRs e conexão das 3 unidades ao nosso VMS. Teste de sinal e validação do protocolo de alarmes. Sem visita presencial necessária nessa fase.</p>
+                    </div>
+                </div>
+                <!-- Semana 2 -->
+                <div class="relative flex items-center md:justify-center">
+                    <div class="w-16 h-16 bg-white border-4 border-gray-100 rounded-full flex items-center justify-center z-10 shrink-0 text-gray-900 font-black text-xl shadow-sm">2</div>
+                    <div class="ml-6 md:ml-0 md:absolute md:w-[45%] md:right-0 md:pl-12 md:text-left bg-white md:bg-transparent p-5 md:p-0 rounded-2xl shadow-sm md:shadow-none border md:border-none border-gray-100">
+                        <h4 class="text-lg font-bold text-gray-900">1ª Preventiva (Galpão 1)</h4>
+                        <p class="text-sm text-gray-500 mt-2 leading-relaxed">Prioridade para o Galpão 1 pelo volume de 51 câmeras. Mapeamento físico de cabeamento, limpeza de lentes, ajuste de posicionamento e laudo técnico inicial do parque.</p>
+                    </div>
+                </div>
+                <!-- Semana 3 -->
+                <div class="relative flex items-center md:justify-center">
+                    <div class="w-16 h-16 bg-white border-4 border-gray-100 rounded-full flex items-center justify-center z-10 shrink-0 text-gray-900 font-black text-xl shadow-sm">3</div>
+                    <div class="ml-6 md:ml-0 md:absolute md:w-[45%] md:left-0 md:pr-12 md:text-right bg-white md:bg-transparent p-5 md:p-0 rounded-2xl shadow-sm md:shadow-none border md:border-none border-gray-100">
+                        <h4 class="text-lg font-bold text-gray-900">Visitas Matriz + School</h4>
+                        <p class="text-sm text-gray-500 mt-2 leading-relaxed">Manutenção preventiva inicial nas duas unidades restantes. Cadastro de todos os sensores de alarme na central e validação das zonas.</p>
+                    </div>
+                </div>
+                <!-- Semana 4 -->
+                <div class="relative flex items-center md:justify-center">
+                    <div class="w-16 h-16 bg-brand-yellow border-4 border-brand-yellow/30 rounded-full flex items-center justify-center z-10 shrink-0 text-black font-black text-xl shadow-md">
+                        <i data-lucide="check" class="w-6 h-6"></i>
+                    </div>
+                    <div class="ml-6 md:ml-0 md:absolute md:w-[45%] md:right-0 md:pl-12 md:text-left bg-white md:bg-transparent p-5 md:p-0 rounded-2xl shadow-sm md:shadow-none border md:border-none border-gray-100">
+                        <h4 class="text-lg font-bold text-emerald-600">Operação Plena</h4>
+                        <p class="text-sm text-gray-700 font-medium mt-2 leading-relaxed">Entrega do relatório de saúde do parque por unidade, apresentação do painel e início formal do contrato com todos os indicadores SLA ativos.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ===================== COMPARATIVO (MERCADO VS VISION) ===================== -->
+<section class="py-28 bg-white border-b border-gray-200/60 relative overflow-hidden">
+    <div class="absolute inset-0 bg-dots pointer-events-none"></div>
+    <div class="max-w-6xl mx-auto px-4 relative z-10">
+        <div class="text-center mb-16 reveal">
+            <span class="text-brand-yellow font-bold uppercase tracking-widest text-xs">Visão de Especialista</span>
+            <h2 class="text-3xl md:text-5xl font-bold text-gray-900 mt-3">Por que o Grupo ACR não pode<br>ter um "Contrato Cego"</h2>
+            <p class="text-gray-500 mt-5 max-w-xl mx-auto text-lg">Entenda a diferença estrutural entre orçamentos amadores e a engenharia de contratos da Vision.</p>
+        </div>
+
+        <div class="bg-[#f8f9fa] rounded-[2rem] shadow-premium-card border border-gray-100 reveal mt-12 relative overflow-hidden">
+            <div class="absolute top-0 right-0 w-64 h-64 bg-brand-yellow/5 rounded-full blur-3xl pointer-events-none"></div>
+            
+            <div class="relative z-10 p-4 md:p-8">
+                <!-- Desktop Header -->
+                <div class="hidden md:grid grid-cols-3 bg-white rounded-t-xl border-b border-gray-200">
+                    <div class="py-4 px-6 font-bold text-gray-700">Fator Estratégico</div>
+                    <div class="py-4 px-6 font-bold text-gray-500 text-center">Empresas Comuns</div>
+                    <div class="py-4 px-6 bg-brand-yellow/10 font-bold text-brand-goldDark text-center rounded-tr-xl text-lg">Sustentação Vision</div>
+                </div>
+
+                <!-- Rows Container -->
+                <div class="flex flex-col gap-4 md:gap-0">
+                    
+                    <!-- Row 1 -->
+                    <div class="bg-white border border-gray-100 md:border-0 md:border-b md:border-gray-100 rounded-2xl md:rounded-none p-5 md:p-0 grid grid-cols-1 md:grid-cols-3 shadow-sm md:shadow-none items-center">
+                        <div class="font-bold text-gray-900 md:text-gray-800 text-center md:text-left text-lg md:text-sm mb-4 md:mb-0 md:py-5 md:px-6 border-b border-gray-100 md:border-0 pb-3 md:pb-0">Avaliação do Parque (95 câmeras)</div>
+                        <div class="grid grid-cols-2 md:grid-cols-2 md:col-span-2 gap-4 md:gap-0 h-full">
+                            <div class="flex flex-col items-center justify-center md:py-5 md:px-4 bg-white">
+                                <span class="md:hidden text-[10px] font-bold uppercase tracking-widest text-gray-400 mb-2">Comum</span>
+                                <span class="bg-red-50 text-red-600 px-3 py-1.5 rounded-lg text-xs font-bold text-center w-full">Assumem "no escuro" para fechar rápido</span>
+                            </div>
+                            <div class="flex flex-col items-center justify-center md:py-5 md:px-4 md:bg-brand-yellow/5">
+                                <span class="md:hidden text-[10px] font-bold uppercase tracking-widest text-brand-goldDark mb-2">Vision</span>
+                                <span class="bg-emerald-50 text-emerald-600 px-3 py-1.5 rounded-lg text-xs font-bold text-center w-full">Exige Auditoria Física prévia para zerar surpresas</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Row 2 -->
+                    <div class="bg-white border border-gray-100 md:border-0 md:border-b md:border-gray-100 rounded-2xl md:rounded-none p-5 md:p-0 grid grid-cols-1 md:grid-cols-3 shadow-sm md:shadow-none items-center">
+                        <div class="font-bold text-gray-900 md:text-gray-800 text-center md:text-left text-lg md:text-sm mb-4 md:mb-0 md:py-5 md:px-6 border-b border-gray-100 md:border-0 pb-3 md:pb-0">Limites e Deslocamentos</div>
+                        <div class="grid grid-cols-2 md:grid-cols-2 md:col-span-2 gap-4 md:gap-0 h-full">
+                            <div class="flex flex-col items-center justify-center md:py-5 md:px-4 bg-white">
+                                <span class="md:hidden text-[10px] font-bold uppercase tracking-widest text-gray-400 mb-2">Comum</span>
+                                <span class="text-gray-500 text-sm font-medium text-center">Limitado a 1 ou 2 por mês. Cobram km à parte.</span>
+                            </div>
+                            <div class="flex flex-col items-center justify-center md:py-5 md:px-4 md:bg-brand-yellow/5">
+                                <span class="md:hidden text-[10px] font-bold uppercase tracking-widest text-brand-goldDark mb-2">Vision</span>
+                                <span class="text-gray-900 font-bold text-sm text-center">Ilimitado. Deslocamento já compõe o OPEX.</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Row 3 -->
+                    <div class="bg-white border border-gray-100 md:border-0 rounded-2xl md:rounded-none p-5 md:p-0 grid grid-cols-1 md:grid-cols-3 shadow-sm md:shadow-none items-center md:rounded-b-xl">
+                        <div class="font-bold text-gray-900 md:text-gray-800 text-center md:text-left text-lg md:text-sm mb-4 md:mb-0 md:py-5 md:px-6 border-b border-gray-100 md:border-0 pb-3 md:pb-0">Responsabilidade Técnica</div>
+                        <div class="grid grid-cols-2 md:grid-cols-2 md:col-span-2 gap-4 md:gap-0 h-full">
+                            <div class="flex flex-col items-center justify-center md:py-5 md:px-4 bg-white">
+                                <span class="md:hidden text-[10px] font-bold uppercase tracking-widest text-gray-400 mb-2">Comum</span>
+                                <span class="text-gray-500 text-sm font-medium text-center">A empresa de Alarme culpa a de Câmera na falha.</span>
+                            </div>
+                            <div class="flex flex-col items-center justify-center md:py-5 md:px-4 md:bg-brand-yellow/5 md:rounded-br-xl">
+                                <span class="md:hidden text-[10px] font-bold uppercase tracking-widest text-brand-goldDark mb-2">Vision</span>
+                                <span class="text-gray-900 font-bold text-sm text-center">Gestão Global Unificada. Risco transferido para nós.</span>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<!-- ===================== A SOLUÇÃO (SERVIÇOS ABERTOS OPEX) ===================== -->
+<section id="investimento" class="py-28 bg-[#f8f9fa] border-t border-zinc-200 relative overflow-hidden">
     <div class="absolute inset-0 bg-dots pointer-events-none z-0"></div>
     <div class="max-w-6xl mx-auto px-4 relative z-10">
 
         <div class="text-center mb-16 reveal">
-            <span class="text-brand-yellow font-bold uppercase tracking-widest text-xs">Custos Operacionais Previsíveis</span>
-            <h2 class="text-3xl md:text-5xl font-bold text-gray-900 mt-3">Transparência Financeira<br>por Unidade</h2>
+            <span class="text-brand-yellow font-bold uppercase tracking-widest text-xs">Transparência de Custos</span>
+            <h2 class="text-3xl md:text-5xl font-bold text-gray-900 mt-3">Investimento Detalhado por Unidade</h2>
             <p class="text-gray-500 mt-4 max-w-3xl mx-auto text-lg leading-relaxed">
-                Estruturamos a estimativa do contrato separada por local. Como desenhamos este plano de forma imediata (sem uma vistoria física que atrasaria a sua cotação), o valor já contempla uma margem de segurança operacional. Isso garante que a Vision absorva pequenas correções logo no primeiro mês, sem gerar "custos surpresa" para o departamento de compras da ACR.
+                Conforme solicitado para organização interna, separamos o investimento nos pilares de Inteligência de Base (Módulo A) e Engenharia de Campo (Módulo B).
             </p>
         </div>
 
-        <!-- Grade de Unidades Individuais -->
-        <div class="grid md:grid-cols-3 gap-6 mb-8 reveal">
+        <!-- Grade de Tabelas de Preço (A e B) -->
+        <div class="grid lg:grid-cols-2 gap-8 mb-12 reveal items-stretch">
             
-            <!-- Matriz -->
-            <div class="bg-white rounded-2xl p-6 border border-gray-200 shadow-sm flex flex-col hover:border-brand-yellow/40 transition-colors">
-                <div class="flex items-center justify-between border-b border-gray-100 pb-4 mb-4">
-                    <h4 class="font-bold text-gray-900 text-lg">ACR Matriz</h4>
-                    <i data-lucide="building" class="w-5 h-5 text-gray-400"></i>
+            <!-- MÓDULO A: Monitoramento -->
+            <div class="bg-white rounded-[2rem] shadow-glass border border-gray-200 overflow-hidden flex flex-col group hover:border-brand-yellow/30 transition-colors h-full">
+                <!-- Header -->
+                <div class="bg-gray-50 p-6 border-b border-gray-100 flex items-center gap-4">
+                    <div class="w-12 h-12 bg-blue-50 text-blue-600 rounded-xl flex items-center justify-center border border-blue-100">
+                        <i data-lucide="shield" class="w-6 h-6"></i>
+                    </div>
+                    <div>
+                        <h4 class="font-bold text-gray-900 text-lg">Módulo A — Monitoramento 24h</h4>
+                        <p class="text-xs text-gray-500">Central, Protocolo e VMS Dedicado</p>
+                    </div>
                 </div>
-                <div class="flex-1 mb-6">
-                    <p class="text-xs text-gray-400 font-bold uppercase tracking-wider mb-2">Escopo Técnico</p>
-                    <p class="text-sm text-gray-600 font-medium">27 Sensores de Alarme + 14 Câmeras.</p>
-                </div>
-                <div class="mt-auto">
-                    <span class="text-2xl font-extrabold text-gray-900">R$ 950,00 <span class="text-xs text-gray-500 font-normal">/mês</span></span>
+
+                <!-- Table Content -->
+                <div class="p-6 flex-1 flex flex-col">
+                    <div class="space-y-4 flex-1">
+                        <!-- U1 -->
+                        <div class="flex justify-between items-center pb-4 border-b border-gray-100">
+                            <div>
+                                <div class="flex items-center gap-2 mb-1">
+                                    <span class="text-[10px] font-bold bg-gray-100 px-2 py-0.5 rounded text-gray-600">U1</span>
+                                    <span class="font-bold text-gray-900 text-sm">ACR Matriz</span>
+                                </div>
+                                <p class="text-xs text-gray-500">14 Câm / 27 Sens</p>
+                            </div>
+                            <span class="font-bold text-blue-600">R$ 290,00</span>
+                        </div>
+                        <!-- U2 -->
+                        <div class="flex justify-between items-center pb-4 border-b border-gray-100">
+                            <div>
+                                <div class="flex items-center gap-2 mb-1">
+                                    <span class="text-[10px] font-bold bg-amber-100 px-2 py-0.5 rounded text-amber-700">U2</span>
+                                    <span class="font-bold text-gray-900 text-sm">ACR Galpão 1</span>
+                                </div>
+                                <p class="text-xs text-gray-500">51 Câm / 14 Sens (VMS Pro)</p>
+                            </div>
+                            <span class="font-bold text-amber-600">R$ 590,00</span>
+                        </div>
+                        <!-- U3 -->
+                        <div class="flex justify-between items-center pb-4 border-b border-gray-100">
+                            <div>
+                                <div class="flex items-center gap-2 mb-1">
+                                    <span class="text-[10px] font-bold bg-purple-100 px-2 py-0.5 rounded text-purple-700">U3</span>
+                                    <span class="font-bold text-gray-900 text-sm">ACR School</span>
+                                </div>
+                                <p class="text-xs text-gray-500">30 Câm / 27 Sens</p>
+                            </div>
+                            <span class="font-bold text-purple-600">R$ 410,00</span>
+                        </div>
+                    </div>
+
+                    <!-- Total A -->
+                    <div class="mt-6 bg-blue-50/50 p-4 rounded-xl border border-blue-100 flex justify-between items-center">
+                        <span class="text-xs font-bold text-blue-800 uppercase tracking-widest">Total Módulo A</span>
+                        <span class="text-xl font-extrabold text-blue-900">R$ 1.290,00</span>
+                    </div>
                 </div>
             </div>
 
-            <!-- Galpão -->
-            <div class="bg-white rounded-2xl p-6 border border-gray-200 shadow-sm flex flex-col hover:border-brand-yellow/40 transition-colors">
-                <div class="flex items-center justify-between border-b border-gray-100 pb-4 mb-4">
-                    <h4 class="font-bold text-gray-900 text-lg">ACR Galpão 1</h4>
-                    <i data-lucide="warehouse" class="w-5 h-5 text-gray-400"></i>
+            <!-- MÓDULO B: Manutenção -->
+            <div class="bg-white rounded-[2rem] shadow-glass border border-gray-200 overflow-hidden flex flex-col group hover:border-brand-yellow/30 transition-colors h-full">
+                <!-- Header -->
+                <div class="bg-gray-50 p-6 border-b border-gray-100 flex items-center gap-4">
+                    <div class="w-12 h-12 bg-amber-50 text-amber-600 rounded-xl flex items-center justify-center border border-amber-100">
+                        <i data-lucide="wrench" class="w-6 h-6"></i>
+                    </div>
+                    <div>
+                        <h4 class="font-bold text-gray-900 text-lg">Módulo B — Sustentação SLA</h4>
+                        <p class="text-xs text-gray-500">Preventiva, Corretiva, Visitas e Insumos</p>
+                    </div>
                 </div>
-                <div class="flex-1 mb-6">
-                    <p class="text-xs text-gray-400 font-bold uppercase tracking-wider mb-2">Escopo Técnico</p>
-                    <p class="text-sm text-gray-600 font-medium">14 Sensores e Central de Alarme.</p>
-                </div>
-                <div class="mt-auto">
-                    <span class="text-2xl font-extrabold text-gray-900">R$ 550,00 <span class="text-xs text-gray-500 font-normal">/mês</span></span>
-                </div>
-            </div>
 
-            <!-- School -->
-            <div class="bg-white rounded-2xl p-6 border border-gray-200 shadow-sm flex flex-col hover:border-brand-yellow/40 transition-colors">
-                <div class="flex items-center justify-between border-b border-gray-100 pb-4 mb-4">
-                    <h4 class="font-bold text-gray-900 text-lg">ACR School</h4>
-                    <i data-lucide="graduation-cap" class="w-5 h-5 text-gray-400"></i>
-                </div>
-                <div class="flex-1 mb-6">
-                    <p class="text-xs text-gray-400 font-bold uppercase tracking-wider mb-2">Escopo Técnico</p>
-                    <p class="text-sm text-gray-600 font-medium">27 Sensores de Alarme + 30 Câmeras <br><span class="text-xs text-gray-400 font-normal">(Maior volume de tráfego de dados e imagens).</span></p>
-                </div>
-                <div class="mt-auto">
-                    <span class="text-2xl font-extrabold text-gray-900">R$ 1.490,00 <span class="text-xs text-gray-500 font-normal">/mês</span></span>
+                <!-- Table Content -->
+                <div class="p-6 flex-1 flex flex-col">
+                    <div class="space-y-4 flex-1">
+                        <!-- U1 -->
+                        <div class="flex justify-between items-center pb-4 border-b border-gray-100">
+                            <div>
+                                <div class="flex items-center gap-2 mb-1">
+                                    <span class="text-[10px] font-bold bg-gray-100 px-2 py-0.5 rounded text-gray-600">U1</span>
+                                    <span class="font-bold text-gray-900 text-sm">ACR Matriz</span>
+                                </div>
+                                <p class="text-xs text-gray-500">1 visita preventiva/mês</p>
+                            </div>
+                            <span class="font-bold text-blue-600">R$ 660,00</span>
+                        </div>
+                        <!-- U2 -->
+                        <div class="flex justify-between items-center pb-4 border-b border-gray-100">
+                            <div>
+                                <div class="flex items-center gap-2 mb-1">
+                                    <span class="text-[10px] font-bold bg-amber-100 px-2 py-0.5 rounded text-amber-700">U2</span>
+                                    <span class="font-bold text-gray-900 text-sm">ACR Galpão 1</span>
+                                </div>
+                                <p class="text-xs text-gray-500">1 visita dedicada (tempo extra)</p>
+                            </div>
+                            <span class="font-bold text-amber-600">R$ 1.400,00</span>
+                        </div>
+                        <!-- U3 -->
+                        <div class="flex justify-between items-center pb-4 border-b border-gray-100">
+                            <div>
+                                <div class="flex items-center gap-2 mb-1">
+                                    <span class="text-[10px] font-bold bg-purple-100 px-2 py-0.5 rounded text-purple-700">U3</span>
+                                    <span class="font-bold text-gray-900 text-sm">ACR School</span>
+                                </div>
+                                <p class="text-xs text-gray-500">1 visita preventiva/mês</p>
+                            </div>
+                            <span class="font-bold text-purple-600">R$ 1.140,00</span>
+                        </div>
+                    </div>
+
+                    <!-- Total B -->
+                    <div class="mt-6 bg-amber-50/50 p-4 rounded-xl border border-amber-100 flex justify-between items-center">
+                        <span class="text-xs font-bold text-amber-800 uppercase tracking-widest">Total Módulo B</span>
+                        <span class="text-xl font-extrabold text-amber-900">R$ 3.200,00</span>
+                    </div>
                 </div>
             </div>
 
         </div>
 
-        <!-- CARD ÚNICO DE DESTAQUE (GESTÃO GLOBAL) -->
+        <!-- CARD ÚNICO DE DESTAQUE (CONTRATO GLOBAL) TEMA CLARO -->
         <div class="premium-border-glow reveal mb-8">
             <div class="premium-border-inner flex flex-col lg:flex-row relative overflow-hidden bg-white p-0">
                 <div class="absolute top-0 left-0 w-64 h-64 bg-brand-yellow/5 rounded-full blur-[80px] pointer-events-none"></div>
@@ -564,56 +873,48 @@
                 <div class="w-full lg:w-7/12 p-8 md:p-12 relative z-10 border-b lg:border-b-0 lg:border-r border-gray-100 flex flex-col justify-center">
                     <div class="mb-6">
                         <span class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-black text-brand-yellow text-[10px] font-bold uppercase tracking-widest mb-4 shadow-md">
-                            <i data-lucide="star" class="w-3.5 h-3.5"></i> Recomendado
+                            📦 Pacote Completo (3 Unidades)
                         </span>
-                        <h3 class="text-3xl font-bold text-gray-900">Gestão Global ACR</h3>
-                        <p class="text-sm text-gray-500 mt-2 font-medium">Cobertura absoluta e gestão centralizada das 3 unidades.</p>
+                        <h3 class="text-3xl font-bold text-gray-900">Contrato Global Vision</h3>
+                        <p class="text-sm text-gray-500 mt-2 font-medium">Monitoramento (R$ 1.290) + Manutenção SLA (R$ 3.200)</p>
                     </div>
 
                     <div class="bg-gray-50 p-5 rounded-xl border border-gray-100 mb-2">
                         <p class="text-sm text-gray-700 leading-relaxed font-medium flex items-start gap-3">
                             <i data-lucide="check-circle-2" class="w-5 h-5 text-brand-yellow shrink-0 mt-0.5"></i>
-                            <span>Inclui o <strong>Monitoramento 24h</strong> de todos os alarmes e a <strong>Manutenção Preventiva e Corretiva</strong> do parque total de câmeras e sensores.</span>
+                            <span>Economia e blindagem unificada. Fidelidade mínima de 12 meses com reajuste anual atrelado ao IPCA.</span>
                         </p>
                     </div>
                 </div>
 
                 <!-- Lado Direito: Preço Unificado -->
                 <div class="w-full lg:w-5/12 bg-[#f8f9fa] p-8 md:p-12 flex flex-col items-center justify-center text-center relative z-10">
-                    <p class="text-[11px] font-bold text-gray-400 uppercase tracking-widest mb-6">Investimento Unificado</p>
+                    <p class="text-[11px] font-bold text-gray-400 uppercase tracking-widest mb-6">Valor Mensal Unificado</p>
                     
                     <div class="flex items-baseline justify-center gap-1.5 mb-2">
                         <span class="text-2xl font-bold text-gray-400">R$</span>
-                        <span class="text-5xl md:text-6xl font-extrabold text-[#111827] tracking-tighter leading-none">2.990</span>
+                        <span class="text-5xl md:text-7xl font-extrabold text-[#111827] tracking-tight leading-none">4.490</span>
                         <span class="text-2xl font-bold text-gray-400">,00</span>
                     </div>
-                    <span class="text-sm font-bold text-gray-400 uppercase tracking-widest mb-6">/ Mês</span>
+                    <span class="text-sm font-bold text-gray-400 uppercase tracking-widest mt-2">/ Mês</span>
                     
                 </div>
             </div>
         </div>
 
-        <!-- NOTA EXECUTIVA -->
-        <div class="bg-emerald-50/80 rounded-2xl p-6 md:p-8 border border-emerald-200 shadow-sm reveal relative z-10">
+        <!-- NOTA EXECUTIVA (ALERTA - AGENDAR VISTORIA) -->
+        <div class="bg-amber-50/80 rounded-2xl p-6 md:p-8 border border-amber-200 shadow-sm reveal relative z-10">
             <div class="flex items-start gap-4">
-                <div class="w-10 h-10 bg-white rounded-full flex items-center justify-center border border-emerald-200 shrink-0 shadow-sm mt-1">
-                    <i data-lucide="shield-check" class="w-5 h-5 text-emerald-600"></i>
+                <div class="w-10 h-10 bg-white rounded-full flex items-center justify-center border border-amber-200 shrink-0 shadow-sm mt-1">
+                    <i data-lucide="search" class="w-5 h-5 text-amber-600"></i>
                 </div>
                 <div>
-                    <h4 class="font-bold text-emerald-900 text-lg mb-2">Nota Executiva</h4>
-                    <p class="text-sm text-emerald-800 leading-relaxed">
-                        Este modelo unificado blinda a empresa contra falhas repentinas, elimina o processo burocrático de aprovar orçamentos avulsos toda vez que algo quebrar e tira esse peso operacional das costas da sua equipe de compras.
+                    <h4 class="font-bold text-amber-900 text-lg mb-2">Recomendação Técnica — Vistoria no Galpão 1</h4>
+                    <p class="text-sm text-amber-800 leading-relaxed">
+                        Com <strong class="font-bold">51 câmeras</strong> no Galpão 1, assumimos a infraestrutura sem conhecer a saúde do cabeamento atual. Por transparência, recomendamos uma <strong>vistoria técnica gratuita</strong> antes da assinatura para garantir que não haja surpresas no primeiro mês de operação e que o SLA possa ser honrado integralmente. Se preferir avançar sem vistoria, este contrato já está precificado com margem de segurança para absorver eventuais correções iniciais.
                     </p>
                 </div>
             </div>
-        </div>
-
-        <!-- CTA OPÇÃO -->
-        <div class="flex flex-col items-center reveal mt-12">
-            <a href="https://wa.me/551159950096?text=Ola%20Glicia,%20analisei%20a%20proposta%20do%20Grupo%20ACR%20e%20gostaria%20de%20aprovar." target="_blank" class="w-full md:w-auto py-5 px-12 rounded-full font-bold flex justify-center items-center gap-3 bg-brand-yellow text-black hover:bg-brand-goldLight transition-all shadow-glow-md transform hover:-translate-y-1 uppercase tracking-widest text-sm">
-                <i data-lucide="check-circle" class="w-5 h-5"></i> Aprovar Contrato Global
-            </a>
-            <p class="text-zinc-500 text-sm mt-4 font-medium">(Larissa, clique acima para validarmos o escopo e agendarmos a nossa primeira manutenção preventiva integrada).</p>
         </div>
 
     </div>
@@ -631,31 +932,81 @@
             
             <div class="accordion-item bg-gray-50 rounded-2xl border border-gray-100 shadow-sm overflow-hidden transition-all hover:border-brand-yellow/50">
                 <button onclick="toggleAccordion(this)" class="w-full flex items-center justify-between p-6 text-left font-bold text-gray-900 focus:outline-none">
-                    <span>Se um equipamento queimar de vez, o contrato cobre a peça?</span>
+                    <span>Por que o valor da manutenção é maior que o do monitoramento?</span>
                     <i data-lucide="chevron-down" class="w-5 h-5 text-brand-yellow acc-arrow shrink-0"></i>
                 </button>
                 <div class="accordion-content">
-                    <p class="px-6 pb-6 text-gray-600 text-sm leading-relaxed">O contrato cobre 100% da mão de obra corretiva, preventiva e o monitoramento contínuo. Caso um equipamento de vocês chegue ao fim da vida útil (ex: queima de uma câmera antiga), o custo do hardware novo é repassado com valores de parceria, mas a instalação é por nossa conta.</p>
+                    <p class="px-6 pb-6 text-gray-600 text-sm leading-relaxed">O monitoramento é um serviço remoto de software e operadores de base. Já a Manutenção de SLA (Nível de Serviço) envolve o deslocamento físico constante de veículos da engenharia, ferramentas, uso de insumos e horas técnicas dedicadas presencialmente para limpar, testar e consertar quase 100 câmeras e 70 sensores em locais diferentes de São Bernardo.</p>
                 </div>
             </div>
 
             <div class="accordion-item bg-gray-50 rounded-2xl border border-gray-100 shadow-sm overflow-hidden transition-all hover:border-brand-yellow/50">
                 <button onclick="toggleAccordion(this)" class="w-full flex items-center justify-between p-6 text-left font-bold text-gray-900 focus:outline-none">
-                    <span>Como funciona o monitoramento de alarmes na prática?</span>
+                    <span>O que exatamente os técnicos farão nas 3 visitas preventivas mensais?</span>
                     <i data-lucide="chevron-down" class="w-5 h-5 text-brand-yellow acc-arrow shrink-0"></i>
                 </button>
                 <div class="accordion-content">
-                    <p class="px-6 pb-6 text-gray-600 text-sm leading-relaxed">Ao detectar uma invasão, a central envia um sinal criptografado para nossa base. Nossos operadores verificam a ocorrência e seguem um protocolo de segurança rigoroso (definido junto com a diretoria da ACR), envolvendo contato com os responsáveis e acionamento tático/policial.</p>
+                    <p class="px-6 pb-6 text-gray-600 text-sm leading-relaxed">Na preventiva, nossa equipe não espera dar problema. Eles vão às 3 unidades (uma em cada semana programada do mês) para: limpar as lentes e cúpulas das câmeras (essencial no galpão), testar a voltagem das baterias dos alarmes, checar a integridade das fontes de energia e realinhar focos.</p>
                 </div>
             </div>
 
             <div class="accordion-item bg-gray-50 rounded-2xl border border-gray-100 shadow-sm overflow-hidden transition-all hover:border-brand-yellow/50">
                 <button onclick="toggleAccordion(this)" class="w-full flex items-center justify-between p-6 text-left font-bold text-gray-900 focus:outline-none">
-                    <span>Por que podemos fechar sem uma visita técnica prévia?</span>
+                    <span>A manutenção preventiva atrapalha o funcionamento das unidades?</span>
                     <i data-lucide="chevron-down" class="w-5 h-5 text-brand-yellow acc-arrow shrink-0"></i>
                 </button>
                 <div class="accordion-content">
-                    <p class="px-6 pb-6 text-gray-600 text-sm leading-relaxed">Este orçamento executivo permite acelerar a proteção da ACR para "hoje". O valor foi calculado estrategicamente para absorver os riscos iniciais de assumir um sistema instalado por terceiros. Aprovando este modelo, nossa primeira ação já será uma varredura preventiva presencial para deixar tudo no padrão Vision.</p>
+                    <p class="px-6 pb-6 text-gray-600 text-sm leading-relaxed">Não. Nossos técnicos são orientados a realizar as rondas de limpeza, aferição e testes de maneira silenciosa, respeitando o fluxo de trabalho da ACR e evitando qualquer bloqueio nas áreas de passagem de empilhadeiras ou corredores.</p>
+                </div>
+            </div>
+
+            <div class="accordion-item bg-gray-50 rounded-2xl border border-gray-100 shadow-sm overflow-hidden transition-all hover:border-brand-yellow/50">
+                <button onclick="toggleAccordion(this)" class="w-full flex items-center justify-between p-6 text-left font-bold text-gray-900 focus:outline-none">
+                    <span>Se uma das 51 câmeras do Galpão queimar de vez, a Vision dá uma nova?</span>
+                    <i data-lucide="chevron-down" class="w-5 h-5 text-brand-yellow acc-arrow shrink-0"></i>
+                </button>
+                <div class="accordion-content">
+                    <p class="px-6 pb-6 text-gray-600 text-sm leading-relaxed">O contrato cobre 100% da mão de obra ilimitada e insumos menores (visita, diagnóstico, troca de conectores, fontes e reinstalação). Porém, caso o aparelho de gravação principal (câmera ou DVR) queime por pico elétrico do galpão ou fim da vida útil, o custo do hardware novo é repassado à ACR com valores de parceiro (sem margem de varejo). A troca técnica em si, já está coberta.</p>
+                </div>
+            </div>
+
+            <div class="accordion-item bg-gray-50 rounded-2xl border border-gray-100 shadow-sm overflow-hidden transition-all hover:border-brand-yellow/50">
+                <button onclick="toggleAccordion(this)" class="w-full flex items-center justify-between p-6 text-left font-bold text-gray-900 focus:outline-none">
+                    <span>O que acontece com a gravação se houver queda de energia?</span>
+                    <i data-lucide="chevron-down" class="w-5 h-5 text-brand-yellow acc-arrow shrink-0"></i>
+                </button>
+                <div class="accordion-content">
+                    <p class="px-6 pb-6 text-gray-600 text-sm leading-relaxed">Durante a primeira vistoria física, nossa equipe dimensionará a capacidade dos Nobreaks instalados atualmente (caso existam). O nosso contrato garante que os parâmetros de "safe-mode" e estabilização funcionem para que as gravações não sejam corrompidas, mas é vital que o galpão possua a alimentação autônoma em dia.</p>
+                </div>
+            </div>
+
+            <div class="accordion-item bg-gray-50 rounded-2xl border border-gray-100 shadow-sm overflow-hidden transition-all hover:border-brand-yellow/50">
+                <button onclick="toggleAccordion(this)" class="w-full flex items-center justify-between p-6 text-left font-bold text-gray-900 focus:outline-none">
+                    <span>E se houver uma emergência de madrugada ou no final de semana?</span>
+                    <i data-lucide="chevron-down" class="w-5 h-5 text-brand-yellow acc-arrow shrink-0"></i>
+                </button>
+                <div class="accordion-content">
+                    <p class="px-6 pb-6 text-gray-600 text-sm leading-relaxed">A nossa Central de Monitoramento atua 24h por dia, 7 dias por semana. Se houver um disparo real ou invasão, a equipe tática de monitoramento atua imediatamente e aciona a polícia, não importa o horário. Para falhas técnicas de câmera, o suporte de engenharia abrirá o chamado para atuar dentro do SLA no próximo horário útil.</p>
+                </div>
+            </div>
+
+            <div class="accordion-item bg-gray-50 rounded-2xl border border-gray-100 shadow-sm overflow-hidden transition-all hover:border-brand-yellow/50">
+                <button onclick="toggleAccordion(this)" class="w-full flex items-center justify-between p-6 text-left font-bold text-gray-900 focus:outline-none">
+                    <span>Como a diretoria acompanha o que foi feito no mês?</span>
+                    <i data-lucide="chevron-down" class="w-5 h-5 text-brand-yellow acc-arrow shrink-0"></i>
+                </button>
+                <div class="accordion-content">
+                    <p class="px-6 pb-6 text-gray-600 text-sm leading-relaxed">Através de relatórios executivos. Toda vez que um chamado é finalizado ou uma preventiva é concluída, a ordem de serviço é enviada com os apontamentos técnicos e fotografias, garantindo total transparência ao setor de Compras e Diretoria sobre a saúde do parque.</p>
+                </div>
+            </div>
+
+            <div class="accordion-item bg-gray-50 rounded-2xl border border-gray-100 shadow-sm overflow-hidden transition-all hover:border-brand-yellow/50">
+                <button onclick="toggleAccordion(this)" class="w-full flex items-center justify-between p-6 text-left font-bold text-gray-900 focus:outline-none">
+                    <span>Qual o próximo passo prático?</span>
+                    <i data-lucide="chevron-down" class="w-5 h-5 text-brand-yellow acc-arrow shrink-0"></i>
+                </button>
+                <div class="accordion-content">
+                    <p class="px-6 pb-6 text-gray-600 text-sm leading-relaxed">Aprovar a visita de auditoria. Antes de assinarmos o contrato global de R$ 4.490,00, precisamos obrigatoriamente que o nosso técnico vá até as 3 unidades para mapear e atestar a saúde real dos fios e conectores instalados por terceiros.</p>
                 </div>
             </div>
 
@@ -669,26 +1020,30 @@
     <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-brand-yellow/10 rounded-full blur-[100px] pointer-events-none"></div>
     
     <div class="max-w-4xl mx-auto px-4 text-center relative z-10 reveal">
-        <span class="text-brand-yellow font-bold uppercase tracking-widest text-xs mb-4 block">Próximo Passo</span>
+        <span class="text-brand-yellow font-bold uppercase tracking-widest text-xs mb-4 block">Próximo Passo Obrigatório</span>
         <h2 class="text-3xl md:text-5xl font-extrabold text-white leading-tight mb-6">
-            A operação da ACR não pode trabalhar <span class="text-gold-shine">no escuro.</span>
+            Vamos mapear a saúde real da <span class="text-gold-shine">sua infraestrutura.</span>
         </h2>
         <p class="text-zinc-400 text-lg mb-10 leading-relaxed max-w-2xl mx-auto">
-            Vamos tirar o risco de falhas técnicas das mãos da sua equipe e transferi-lo definitivamente para a nossa gestão técnica especializada.
+            O escopo financeiro de monitoramento e manutenção (OPEX) está dentro do esperado pela diretoria? O próximo passo inegociável é enviarmos nosso especialista para auditar os cabos e cravarmos o início seguro da operação.
         </p>
 
-        <a href="https://wa.me/551159950096?text=Ola%20Glicia,%20analisei%20a%20proposta%20do%20Grupo%20ACR%20e%20gostaria%20de%20aprovar." target="_blank" class="inline-flex items-center gap-3 bg-brand-yellow hover:bg-brand-goldLight text-brand-black font-bold px-10 py-5 rounded-full transition-all shadow-glow-md text-sm uppercase tracking-widest transform hover:scale-[1.03]">
-            <i data-lucide="check-circle" class="w-5 h-5"></i>
-            Aprovar Contrato Global
+        <a href="https://wa.me/551159950096?text=Ola%20Glicia,%20analisei%20a%20revisão%20de%20escopo%20da%20ACR%20e%20gostaria%20de%20agendar%20a%20auditoria." target="_blank" class="inline-flex items-center gap-3 bg-brand-yellow hover:bg-brand-goldLight text-brand-black font-bold px-10 py-5 rounded-full transition-all shadow-glow-md text-sm uppercase tracking-widest transform hover:scale-[1.03]">
+            <i data-lucide="calendar-check" class="w-5 h-5"></i>
+            Agendar Auditoria Técnica (Falar c/ Glícia)
             <i data-lucide="arrow-right" class="w-4 h-4 ml-1"></i>
         </a>
+        <p class="text-zinc-500 text-sm mt-6 font-medium">(Larissa, clique acima para definirmos se a nossa vistoria acontece amanhã ou quinta-feira).</p>
     </div>
 </section>
 
 <!-- ===================== FOOTER ===================== -->
-<footer class="bg-black py-16 text-center border-t border-zinc-900 group">
-    <div class="max-w-4xl mx-auto px-4">
-        
+<footer class="bg-black pt-12 pb-16 text-center group relative">
+    
+    <!-- Linha Sutil e Discreta -->
+    <div class="absolute top-0 left-1/2 -translate-x-1/2 w-3/4 max-w-lg h-px bg-gradient-to-r from-transparent via-zinc-800 to-transparent"></div>
+
+    <div class="max-w-4xl mx-auto px-4 mt-6">
         <div class="flex flex-col items-center justify-center leading-none opacity-40 group-hover:opacity-100 transition-opacity duration-500 cursor-default mb-10">
             <div class="flex flex-col items-center">
                 <div class="relative flex items-baseline leading-none">
@@ -696,8 +1051,7 @@
                     <!-- R circulado rebaixado milimetricamente -->
                     <span class="absolute -right-3.5 top-2.5 text-[0.75rem] text-brand-yellow font-bold">®</span>
                 </div>
-                <!-- Letter spacing ajustado e alinhado -->
-                <span class="font-tech text-[0.75rem] font-bold text-zinc-500 lowercase -mt-3 ml-1.5 text-center w-full" style="letter-spacing: 0.53em;">tecnologia</span>
+                <span class="font-tech text-[0.75rem] font-bold text-zinc-500 lowercase -mt-3 ml-1.5 text-center w-full" style="letter-spacing: 0.53em;">business</span>
             </div>
         </div>
 
@@ -711,15 +1065,15 @@
             <span class="text-[10px] md:text-xs text-zinc-400 uppercase tracking-widest font-bold">Documento confidencial</span>
         </div>
         
-        <p class="text-[10px] text-zinc-700 uppercase tracking-widest font-bold mt-6">Sistemas de Segurança de Alta Performance</p>
+        <p class="text-[10px] text-zinc-700 uppercase tracking-widest font-bold mt-6">Gestão de Infraestrutura e Monitoramento (SLA)</p>
     </div>
 </footer>
 
 <!-- WHATSAPP CTA FLUTUANTE -->
 <div id="cta-float" class="fixed bottom-6 right-6 z-40 hidden md:block">
-    <a href="https://wa.me/551159950096?text=Ola%20Glicia,%20analisei%20a%20proposta%20do%20Grupo%20ACR%20e%20gostaria%20de%20aprovar." target="_blank" class="flex items-center gap-3 bg-brand-yellow text-black font-bold px-6 py-4 rounded-full shadow-glow-md hover:shadow-glow transition-all group">
-        <i data-lucide="shield-check" class="w-5 h-5"></i>
-        <span class="text-sm tracking-wide uppercase">Aprovar Contrato</span>
+    <a href="https://wa.me/551159950096?text=Ola%20Glicia,%20analisei%20a%20revisão%20de%20escopo%20da%20ACR%20e%20gostaria%20de%20agendar%20a%20auditoria." target="_blank" class="flex items-center gap-3 bg-brand-yellow text-black font-bold px-6 py-4 rounded-full shadow-glow-md hover:shadow-glow transition-all group">
+        <i data-lucide="calendar-check" class="w-5 h-5"></i>
+        <span class="text-sm tracking-wide uppercase">Agendar Auditoria</span>
         <i data-lucide="arrow-right" class="w-4 h-4 group-hover:translate-x-1 transition-transform"></i>
     </a>
 </div>
@@ -729,21 +1083,20 @@
     // INIT LUCIDE ICONS
     lucide.createIcons();
 
-    // LOCK SCREEN + FORMSUBMIT (STATICFORMS)
+    // LOCK SCREEN + FORMSUBMIT
     function checkPassword() {
         const input = document.getElementById('password-input').value;
         const errorMsg = document.getElementById('error-msg');
         
-        // Senhas configuradas
         if (input.toUpperCase() === 'LARISSA2026' || input.toUpperCase() === 'VISION') {
             const lockScreen = document.getElementById('lock-screen');
             lockScreen.style.opacity = '0';
 
-            // Start Hero Video
-            const video1 = document.getElementById("vision-video");
-            if (video1 && video1.paused) {
-                video1.muted = true;
-                video1.play().catch(e => {});
+            // Start Video Se houver
+            const video = document.getElementById("vision-video");
+            if (video && video.paused) {
+                video.muted = true;
+                video.play().catch(e => {});
             }
 
             // Envio silencioso do alerta de acesso
@@ -755,10 +1108,10 @@
                 },
                 body: JSON.stringify({
                     accessKey: "sf_077ej49gjha153gk3m6ceecf",
-                    subject: "🚨 ALERTA: Proposta Acessada (Larissa - Grupo ACR)",
+                    subject: "🚨 ALERTA: Proposta Acessada (Larissa - ACR Re-Design)",
                     name: "Sistema Vision",
                     email: "diretoria@visionsp.com.br",
-                    message: `A cliente acabou de abrir a proposta!\n\n👤 Cliente: Larissa - Grupo ACR (Matriz, Galpão, School)\n🔑 Senha Utilizada: ${input}\n🕒 Horário: ${new Date().toLocaleString('pt-BR')}`
+                    message: `A cliente acabou de abrir a proposta REVISADA E REDESENHADA!\n\n👤 Cliente: Larissa - Grupo ACR (SLA 95 Câmeras)\n🔑 Senha Utilizada: ${input}\n🕒 Horário: ${new Date().toLocaleString('pt-BR')}`
                 })
             }).catch(error => console.log('Log de acesso registrado.'));
 
@@ -847,7 +1200,7 @@
         }
     });
 
-    // VIDEOS INTERATIVOS
+    // VIDEO UNMUTE
     document.addEventListener("DOMContentLoaded", function() {
         const videoHero = document.getElementById("vision-video");
         const overlayHero = document.getElementById("unmute-overlay");
