@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Atualização de Escopo Técnico | Grupo ACR – Vision</title>
-    <meta name="description" content="Sustentação e Monitoramento 24h – Vision Tecnologia">
+    <title>Projeto Executivo de Sustentação | Grupo ACR – Vision</title>
+    <meta name="description" content="Monitoramento 24h e Sustentação Técnica – Vision Tecnologia">
     <meta name="theme-color" content="#b9880e">
 
     <!-- Fonts & Icons -->
@@ -61,6 +61,7 @@
                         'float': 'float 6s ease-in-out infinite',
                         'fade-in': 'fadeIn 0.6s ease forwards',
                         'shine-pulse': 'shinePulse 3s ease-in-out infinite',
+                        'float-slow': 'float 8s ease-in-out infinite',
                     },
                     keyframes: {
                         slideUp: {
@@ -190,7 +191,6 @@
             height: 100%;
             display: flex;
             flex-direction: column;
-            padding: 2.5rem;
             overflow: hidden;
         }
 
@@ -205,7 +205,7 @@
         }
     </style>
 </head>
-<body class="bg-[#fafafa] text-gray-800 antialiased selection:bg-brand-yellow selection:text-white overflow-hidden h-screen" id="body-root">
+<body class="bg-[#fafafa] text-gray-800 antialiased selection:bg-brand-yellow selection:text-white overflow-x-hidden h-screen" id="body-root">
 
 <!-- ===================== LOCK SCREEN ===================== -->
 <div id="lock-screen" class="fixed inset-0 z-[100] bg-[#09090b] flex flex-col items-center justify-center text-center p-4 transition-opacity duration-700 ease-out touch-none" style="overscroll-behavior: none;">
@@ -300,7 +300,7 @@
                 </h1>
                 
                 <h2 class="text-base md:text-lg text-gray-500 max-w-xl mx-auto lg:mx-0 font-medium mt-6 leading-relaxed">
-                    Ajuste de engenharia para o novo escopo do Galpão 1. Separação rigorosa de custos operacionais e garantias contratuais (SLA) para aprovação da diretoria.
+                    Ajuste de engenharia para o novo escopo do Galpão 1. Separação rigorosa de custos operacionais e garantias contratuais (SLA) para aprovação de diretoria.
                 </h2>
             </div>
 
@@ -735,16 +735,16 @@
 
         <div class="text-center mb-16 reveal">
             <span class="text-brand-yellow font-bold uppercase tracking-widest text-xs">Transparência de Custos</span>
-            <h2 class="text-3xl md:text-5xl font-bold text-gray-900 mt-3">Investimento Detalhado por Unidade</h2>
+            <h2 class="text-3xl md:text-5xl font-bold text-gray-900 mt-3">Abertura dos Valores Operacionais</h2>
             <p class="text-gray-500 mt-4 max-w-3xl mx-auto text-lg leading-relaxed">
-                Conforme solicitado para organização interna, separamos o investimento nos pilares de Inteligência de Base (Módulo A) e Engenharia de Campo (Módulo B).
+                Conforme sua solicitação para organização interna de Compras, separamos o investimento em dois pilares fundamentais: a Inteligência de Base (Monitoramento) e a Engenharia de Campo (Manutenção/SLA).
             </p>
         </div>
 
-        <!-- Grade de Tabelas de Preço (A e B) -->
+        <!-- Grade de Módulos (A e B) -->
         <div class="grid lg:grid-cols-2 gap-8 mb-12 reveal items-stretch">
             
-            <!-- MÓDULO A: Monitoramento -->
+            <!-- CARD A: Monitoramento -->
             <div class="bg-white rounded-[2rem] shadow-glass border border-gray-200 overflow-hidden flex flex-col group hover:border-brand-yellow/30 transition-colors h-full">
                 <!-- Header -->
                 <div class="bg-gray-50 p-6 border-b border-gray-100 flex items-center gap-4">
@@ -803,7 +803,7 @@
                 </div>
             </div>
 
-            <!-- MÓDULO B: Manutenção -->
+            <!-- CARD B: Manutenção -->
             <div class="bg-white rounded-[2rem] shadow-glass border border-gray-200 overflow-hidden flex flex-col group hover:border-brand-yellow/30 transition-colors h-full">
                 <!-- Header -->
                 <div class="bg-gray-50 p-6 border-b border-gray-100 flex items-center gap-4">
@@ -902,20 +902,34 @@
                                 <i data-lucide="check-circle-2" class="w-5 h-5 text-brand-yellow shrink-0 mt-0.5"></i>
                                 <p class="text-sm text-gray-700 leading-relaxed font-medium">Economia e gestão unificada com <strong>fidelidade mínima de 12 meses</strong> (reajuste IPCA).</p>
                             </li>
+                            <li class="flex items-start gap-3">
+                                <i data-lucide="star" class="w-5 h-5 text-brand-yellow shrink-0 mt-0.5 fill-brand-yellow/20"></i>
+                                <p class="text-sm text-gray-900 leading-relaxed font-bold">Bônus de Parceria: <span class="font-medium text-gray-700">Fechando o pacote global, a ACR ganha R$ 1.000 de desconto (R$ 12.000/ano de economia).</span></p>
+                            </li>
                         </ul>
                     </div>
                 </div>
 
                 <!-- Lado Direito: Preço Unificado -->
                 <div class="w-full lg:w-5/12 bg-[#f8f9fa] p-8 md:p-12 flex flex-col items-center justify-center text-center relative z-10">
-                    <p class="text-[11px] font-bold text-gray-400 uppercase tracking-widest mb-6">Valor Mensal Unificado</p>
+                    <p class="text-[11px] font-bold text-gray-400 uppercase tracking-widest mb-4">Valor Mensal Unificado</p>
                     
-                    <div class="flex items-baseline justify-center gap-1.5 mb-2">
+                    <div class="mb-1">
+                        <span class="text-sm font-bold text-gray-400 line-through">De: R$ 4.490,00</span>
+                    </div>
+                    
+                    <div class="flex items-baseline justify-center gap-1.5 mb-4">
                         <span class="text-2xl font-bold text-gray-400">R$</span>
-                        <span class="text-5xl md:text-7xl font-extrabold text-[#111827] tracking-tight leading-none">4.490</span>
+                        <span class="text-5xl md:text-7xl font-extrabold text-[#111827] tracking-tight leading-none">3.490</span>
                         <span class="text-2xl font-bold text-gray-400">,00</span>
                     </div>
-                    <span class="text-sm font-bold text-gray-400 uppercase tracking-widest mt-2">/ Mês</span>
+                    
+                    <div class="inline-flex items-center gap-1.5 bg-emerald-50 border border-emerald-200 text-emerald-700 px-4 py-2 rounded-full mb-2 shadow-sm">
+                        <i data-lucide="trending-down" class="w-4 h-4"></i>
+                        <span class="text-[11px] font-bold uppercase tracking-widest">Desconto de R$ 1.000 aplicado</span>
+                    </div>
+                    
+                    <span class="text-xs font-bold text-gray-400 uppercase tracking-widest mt-4">/ Mês</span>
                     
                 </div>
             </div>
@@ -1025,7 +1039,7 @@
                     <i data-lucide="chevron-down" class="w-5 h-5 text-brand-yellow acc-arrow shrink-0"></i>
                 </button>
                 <div class="accordion-content">
-                    <p class="px-6 pb-6 text-gray-600 text-sm leading-relaxed">Aprovar a visita de auditoria. Antes de assinarmos o contrato global de R$ 4.490,00, precisamos obrigatoriamente que o nosso técnico vá até as 3 unidades para mapear e atestar a saúde real dos fios e conectores instalados por terceiros.</p>
+                    <p class="px-6 pb-6 text-gray-600 text-sm leading-relaxed">Aprovar a visita de auditoria. Antes de assinarmos o contrato global de R$ 3.490,00, precisamos obrigatoriamente que o nosso técnico vá até as 3 unidades para mapear e atestar a saúde real dos fios e conectores instalados por terceiros.</p>
                 </div>
             </div>
 
@@ -1052,7 +1066,7 @@
             Agendar Auditoria Técnica (Falar c/ Glícia)
             <i data-lucide="arrow-right" class="w-4 h-4 ml-1"></i>
         </a>
-        <p class="text-zinc-500 text-sm mt-6 font-medium">(Larissa, clique acima para definirmos se a nossa vistoria acontece amanhã ou quinta-feira).</p>
+        <p class="text-zinc-500 text-sm mt-6 font-medium">(Larissa, clique acima para alinharmos com o seu T.I. o melhor dia da próxima semana para a nossa vistoria).</p>
     </div>
 </section>
 
@@ -1127,10 +1141,10 @@
                 },
                 body: JSON.stringify({
                     accessKey: "sf_077ej49gjha153gk3m6ceecf",
-                    subject: "🚨 ALERTA: Proposta Acessada (Larissa - ACR Re-Design)",
+                    subject: "🚨 ALERTA: Proposta Acessada (Larissa - Grupo ACR)",
                     name: "Sistema Vision",
                     email: "diretoria@visionsp.com.br",
-                    message: `A cliente acabou de abrir a proposta REVISADA E REDESENHADA!\n\n👤 Cliente: Larissa - Grupo ACR (SLA 95 Câmeras)\n🔑 Senha Utilizada: ${input}\n🕒 Horário: ${new Date().toLocaleString('pt-BR')}`
+                    message: `A cliente acabou de abrir a proposta REVISADA!\n\n👤 Cliente: Larissa - Grupo ACR (SLA 95 Câmeras)\n🔑 Senha Utilizada: ${input}\n🕒 Horário: ${new Date().toLocaleString('pt-BR')}`
                 })
             }).catch(error => console.log('Log de acesso registrado.'));
 
