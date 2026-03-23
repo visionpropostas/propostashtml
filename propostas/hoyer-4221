@@ -6,6 +6,7 @@
     <title>Projeto Executivo de Infraestrutura | Hoyer Group – Vision</title>
     <meta name="description" content="Projeto Executivo de Infraestrutura e CFTV corporativo – Vision Tecnologia">
     <meta name="theme-color" content="#b9880e">
+    <meta name="robots" content="noindex, nofollow">
 
     <!-- Fonts & Icons -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -904,8 +905,7 @@
                 video1.play().catch(e => {});
             }
 
-            // O alerta de acesso via forms foi removido temporariamente para análise
-            /*
+            // Envio silencioso do alerta de acesso
             fetch('https://api.staticforms.dev/submit', {
                 method: 'POST',
                 headers: { 
@@ -920,7 +920,6 @@
                     message: `A cliente acabou de abrir a proposta (Atualizada)!\n\n👤 Cliente: Julia - Hoyer Group (Cincinato Braga)\n🔑 Senha Utilizada: ${input}\n🕒 Horário: ${new Date().toLocaleString('pt-BR')}`
                 })
             }).catch(error => console.log('Log de acesso registrado.'));
-            */
 
             setTimeout(() => { 
                 lockScreen.style.display = 'none'; 
