@@ -1,0 +1,1260 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth overflow-x-hidden" id="html-root">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projeto Corporativo SEBRAE | Guilherme – Vision</title>
+    <meta name="description" content="Engenharia de Segurança Corporativa – Vision Tecnologia">
+    <meta name="theme-color" content="#b9880e">
+    <meta name="robots" content="noindex, nofollow">
+
+    <!-- Fonts & Icons -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@700;800&family=Quicksand:wght@500;600;700&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <!-- Google Analytics 4 -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-KTGEL92B0F"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-KTGEL92B0F');
+    </script>
+
+    <!-- Microsoft Clarity -->
+    <script type="text/javascript">
+        (function(c,l,a,r,i,t,y){
+            c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+            t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+            y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+        })(window, document, "clarity", "script", "vifq10es5o");
+    </script>
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"Outfit"', 'sans-serif'],
+                        logo: ['"League Spartan"', 'sans-serif'],
+                        tech: ['"Quicksand"', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            yellow: '#b9880e',
+                            goldLight: '#FFDE59',
+                            goldDark: '#8a6208',
+                            black: '#09090b',
+                        }
+                    },
+                    boxShadow: {
+                        'glass': '0 4px 24px 0 rgba(0,0,0,0.04)',
+                        'premium': '0 16px 50px -10px rgba(0,0,0,0.08)',
+                        'premium-card': '0 16px 50px -10px rgba(0, 0, 0, 0.08)',
+                        'glow': '0 0 20px rgba(185,136,14,0.15)',
+                        'glow-md': '0 0 35px rgba(185,136,14,0.25)',
+                    },
+                    animation: {
+                        'slide-up': 'slideUp 0.9s cubic-bezier(0.16,1,0.3,1) forwards',
+                        'float': 'float 6s ease-in-out infinite',
+                        'fade-in': 'fadeIn 0.6s ease forwards',
+                        'shine-pulse': 'shinePulse 3s ease-in-out infinite',
+                        'float-slow': 'float 8s ease-in-out infinite',
+                    },
+                    keyframes: {
+                        slideUp: {
+                            '0%': { opacity: '0', transform: 'translateY(40px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' }
+                        },
+                        float: {
+                            '0%,100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-12px)' }
+                        },
+                        fadeIn: {
+                            '0%': { opacity: '0' },
+                            '100%': { opacity: '1' }
+                        },
+                        shinePulse: {
+                            '0%,100%': { opacity: '0.6' },
+                            '50%': { opacity: '1' }
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: #f9fafb; }
+        ::-webkit-scrollbar-thumb { background: #d1d5db; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #b9880e; }
+
+        .text-gold-shine {
+            background: linear-gradient(to right, #b9880e 20%, #FFDE59 50%, #b9880e 80%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-size: 200% auto;
+            animation: shine 4s linear infinite;
+        }
+        @keyframes shine { to { background-position: 200% center; } }
+
+        .bg-grid {
+            background-image: linear-gradient(rgba(185,136,14,0.04) 1px, transparent 1px),
+                              linear-gradient(90deg, rgba(185,136,14,0.04) 1px, transparent 1px);
+            background-size: 40px 40px;
+        }
+        .bg-dots {
+            background-image: radial-gradient(#b9880e 1.2px, transparent 1.2px);
+            background-size: 22px 22px;
+            opacity: 0.035;
+        }
+
+        .lock-input {
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.1);
+            color: #b9880e;
+            font-family: 'League Spartan', sans-serif;
+            font-size: 1.5rem;
+            text-align: center;
+            outline: none;
+            transition: all 0.3s;
+            letter-spacing: 0.2em;
+            border-radius: 14px;
+        }
+        .lock-input:focus {
+            border-color: #b9880e;
+            background: rgba(255,255,255,0.08);
+            box-shadow: 0 0 20px rgba(185,136,14,0.25);
+        }
+        .lock-input::placeholder {
+            color: #52525b;
+            font-size: 0.85rem;
+            font-family: 'Outfit', sans-serif;
+            font-weight: 300;
+            letter-spacing: normal;
+        }
+
+        .reveal { opacity: 0; transform: translateY(30px); transition: all 0.8s cubic-bezier(0.16,1,0.3,1); }
+        .reveal.active { opacity: 1; transform: translateY(0); }
+
+        .service-card:hover { transform: translateY(-4px); box-shadow: 0 20px 40px -8px rgba(0,0,0,0.1); }
+        .service-card { transition: all 0.3s cubic-bezier(0.4,0,0.2,1); }
+
+        .accordion-content { max-height: 0; overflow: hidden; transition: max-height 0.45s cubic-bezier(0.4,0,0.2,1); }
+        .accordion-item.open .accordion-content { max-height: 600px; }
+        .accordion-item.open .acc-arrow { transform: rotate(180deg); }
+        .acc-arrow { transition: transform 0.3s; }
+
+        /* Borda Animada Premium */
+        .premium-border-glow {
+            position: relative;
+            border-radius: 2rem;
+            padding: 2px;
+            background-color: #b9880e;
+            overflow: hidden;
+            box-shadow: 0 0 35px rgba(185,136,14,0.15);
+            transition: transform 0.3s cubic-bezier(0.4,0,0.2,1);
+        }
+        .premium-border-glow:hover { transform: scale(1.01); }
+        .premium-border-glow::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: conic-gradient(
+                from 0deg, 
+                transparent 0deg, 
+                transparent 175deg, 
+                rgba(255, 222, 89, 0.6) 178deg, 
+                #ffffff 180deg, 
+                rgba(255, 222, 89, 0.6) 182deg, 
+                transparent 185deg, 
+                transparent 360deg
+            );
+            animation: rotate-border 12s linear infinite;
+            z-index: 0;
+        }
+        @keyframes rotate-border {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        .premium-border-inner {
+            position: relative;
+            z-index: 1;
+            background-color: #ffffff;
+            border-radius: calc(2rem - 2px);
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            padding: 2.5rem;
+            overflow: hidden;
+        }
+
+        .counter-num { font-variant-numeric: tabular-nums; }
+        
+        details > summary { list-style: none; }
+        details > summary::-webkit-details-marker { display: none; }
+        
+        @media print {
+            #lock-screen, #navbar, #cta-float { display: none !important; }
+            .reveal { opacity: 1 !important; transform: none !important; }
+        }
+    </style>
+</head>
+<body class="bg-[#fafafa] text-gray-800 antialiased selection:bg-brand-yellow selection:text-white overflow-hidden h-screen" id="body-root">
+
+<!-- ===================== LOCK SCREEN ===================== -->
+<div id="lock-screen" class="fixed inset-0 z-[100] bg-[#09090b] flex flex-col items-center justify-center text-center p-4 transition-opacity duration-700 ease-out touch-none" style="overscroll-behavior: none;">
+    <div class="bg-grid absolute inset-0 opacity-10 pointer-events-none"></div>
+    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-brand-yellow/5 rounded-full blur-[100px] pointer-events-none"></div>
+
+    <!-- Logo -->
+    <div class="relative flex flex-col items-center mb-10 z-10">
+        <div class="relative flex items-baseline leading-none">
+            <span class="font-logo font-bold text-[5.5rem] md:text-[6rem] text-gold-shine lowercase tracking-[-0.05em] leading-none">vısıon</span>
+            <span class="absolute -right-5 top-4 text-[1.1rem] text-brand-yellow font-bold">®</span>
+        </div>
+        <span class="font-tech text-[1.1rem] font-bold text-zinc-500 lowercase -mt-4 ml-2.5 text-center w-full" style="letter-spacing:0.53em;">business</span>
+    </div>
+
+    <div class="w-full max-w-sm space-y-5 z-10">
+        <div class="space-y-1.5">
+            <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-brand-yellow/30 bg-brand-yellow/10 mb-3">
+                <i data-lucide="lock" class="w-3.5 h-3.5 text-brand-yellow"></i>
+                <span class="text-brand-yellow text-[10px] font-bold uppercase tracking-widest">Acesso Corporativo Restrito</span>
+            </div>
+            <h2 class="text-white font-bold text-2xl">Projeto SEBRAE</h2>
+            <p class="text-zinc-400 text-sm">A/C Guilherme<br>Sede Capital Norte (Santana, SP)</p>
+        </div>
+
+        <div>
+            <!-- SENHA CONFIGURADA: GUILHERME2026 ou VISION -->
+            <input type="password" id="password-input" class="lock-input w-full py-4 px-4" placeholder="SENHA DE ACESSO" autocomplete="off">
+            <p id="error-msg" class="text-red-400 text-xs mt-2 hidden">
+                <span class="flex items-center justify-center gap-1"><i data-lucide="x-circle" class="w-4 h-4"></i> Credencial inválida.</span>
+            </p>
+        </div>
+
+        <button onclick="checkPassword()" class="w-full bg-brand-yellow hover:bg-brand-goldLight text-black font-bold py-4 rounded-2xl transition-all shadow-glow flex items-center justify-center gap-2 group relative overflow-hidden">
+            <div class="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-300 rounded-2xl"></div>
+            <i data-lucide="shield-check" class="w-5 h-5 relative z-10"></i>
+            <span class="relative z-10 text-sm uppercase tracking-widest">Acessar Documento Técnico</span>
+            <i data-lucide="arrow-right" class="w-4 h-4 relative z-10 group-hover:translate-x-1 transition-transform"></i>
+        </button>
+
+        <p class="text-zinc-600 text-xs">Documento restrito · Válido por 15 dias · Vision Business © 2026</p>
+    </div>
+</div>
+
+<!-- ===================== NAVBAR ===================== -->
+<nav id="navbar" class="fixed w-full z-50 top-0 bg-white/90 backdrop-blur-xl border-b border-gray-200/50 shadow-sm transition-all duration-300">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-between h-20 items-center">
+            <div class="flex flex-col items-center justify-center cursor-pointer" onclick="window.scrollTo(0,0)">
+                <div class="relative flex items-baseline leading-none">
+                    <span class="font-logo font-bold text-[2.6rem] text-gold-shine lowercase tracking-[-0.05em] leading-none">vısıon</span>
+                    <span class="absolute -right-2.5 top-1.5 text-[0.6rem] text-brand-yellow font-bold">®</span>
+                </div>
+                <span class="font-tech text-[0.6rem] font-bold text-gray-400 lowercase -mt-2 ml-1.5" style="letter-spacing:0.53em;">business</span>
+            </div>
+            <div class="hidden md:flex items-center space-x-7 text-xs font-semibold text-gray-500 uppercase tracking-wider">
+                <a href="#diagnostico" class="hover:text-brand-yellow transition-colors">Diagnóstico</a>
+                <a href="#tecnologia" class="hover:text-brand-yellow transition-colors">Tecnologia</a>
+                <a href="#empresa" class="hover:text-brand-yellow transition-colors">Engenharia</a>
+                <a href="#investimento" class="hover:text-brand-yellow transition-colors">Investimento</a>
+            </div>
+            <div class="flex items-center gap-4">
+                <button onclick="window.print()" class="text-gray-400 hover:text-brand-yellow transition-colors flex items-center gap-1.5" title="Salvar em PDF">
+                    <i data-lucide="download" class="w-4 h-4"></i>
+                    <span class="text-[10px] font-bold uppercase tracking-widest hidden sm:block">PDF</span>
+                </button>
+                <a href="#investimento" class="bg-zinc-900 text-white px-5 py-2.5 rounded-full text-[10px] font-bold uppercase tracking-widest hover:bg-brand-yellow hover:text-black transition-all shadow-md">
+                    Ver Projeto
+                </a>
+            </div>
+        </div>
+    </div>
+</nav>
+
+<!-- ===================== HERO COM VÍDEO/MOCKUP ===================== -->
+<header class="pt-32 pb-20 lg:pt-40 relative overflow-hidden bg-white">
+    <div class="absolute inset-0 bg-tech-pattern pointer-events-none"></div>
+    <div class="absolute right-0 top-0 -translate-y-1/4 translate-x-1/4 w-[800px] h-[800px] bg-brand-yellow/5 rounded-full blur-[120px] pointer-events-none"></div>
+    
+    <div class="max-w-7xl mx-auto px-4 relative z-10">
+        <div class="flex flex-col lg:flex-row items-center gap-12 lg:gap-16">
+            
+            <!-- Coluna Texto -->
+            <div class="w-full lg:w-1/2 text-center lg:text-left animate-slide-up">
+                <div class="inline-flex items-center gap-2 px-5 py-2 rounded-full border border-brand-yellow/30 bg-brand-yellow/5 text-brand-yellow text-[10px] font-bold uppercase tracking-widest mb-8 mx-auto lg:mx-0">
+                    <i data-lucide="shield" class="w-4 h-4"></i>
+                    PROJETO EXECUTIVO #VB-2026-0331 | VALIDADE: 15 DIAS
+                </div>
+                
+                <h1 class="text-4xl md:text-5xl lg:text-6xl font-extrabold text-gray-900 leading-[1.05] tracking-tight mb-6">
+                    Infraestrutura IP pronta para <span class="text-gold-shine">o futuro.</span>
+                </h1>
+                
+                <h2 class="text-base md:text-lg text-gray-500 max-w-xl mx-auto lg:mx-0 font-medium mt-6 leading-relaxed">
+                    Com base no projeto técnico enviado, dimensionamos uma rede de CFTV corporativa descentralizada. 40 câmeras em 4 pavimentos, alimentadas via PoE e gerenciadas por um datacenter interno escalável.
+                </h2>
+            </div>
+
+            <!-- Coluna Mockup de Notebook -->
+            <div class="w-full lg:w-1/2 mt-4 lg:mt-0 reveal animate-slide-up" style="animation-delay: 200ms;">
+                <div class="relative w-full max-w-lg mx-auto group z-10 mt-4">
+                    <div class="relative w-full aspect-video bg-black border-[6px] md:border-[10px] border-zinc-800 rounded-t-[1rem] md:rounded-t-[1.5rem] overflow-hidden shadow-2xl">
+                        <!-- Vídeo Mulher Falando (Padrão Vision) -->
+                        <video id="vision-video" class="w-full h-full object-cover cursor-pointer opacity-90" autoplay muted loop playsinline>
+                            <source src="https://res.cloudinary.com/dptcuckhf/video/upload/v1771711323/Vict%C3%B3ria_-_Vision_gdqnrk.mp4" type="video/mp4">
+                        </video>
+                        
+                        <div id="unmute-overlay" class="absolute inset-0 bg-black/50 backdrop-blur-sm flex flex-col items-center justify-center cursor-pointer transition-opacity duration-500 z-30 hover:bg-black/40">
+                            <div class="bg-brand-yellow text-black font-bold px-6 py-3 rounded-full flex items-center gap-2 shadow-glow animate-pulse transform group-hover:scale-105 transition-all">
+                                <i data-lucide="play" class="w-4 h-4 fill-black"></i>
+                                <span class="text-[10px] font-bold tracking-wide uppercase">Clique para Ouvir</span>
+                            </div>
+                        </div>
+
+                        <div class="absolute top-1.5 md:top-2 left-1/2 -translate-x-1/2 w-1.5 h-1.5 md:w-2 md:h-2 bg-zinc-950 rounded-full z-20"></div>
+                    </div>
+                    <div class="relative w-[114%] -ml-[7%] h-3 md:h-5 bg-gradient-to-b from-zinc-300 to-zinc-400 rounded-b-xl md:rounded-b-2xl shadow-[0_20px_40px_rgba(0,0,0,0.5)] flex justify-center border-t border-zinc-200">
+                        <div class="w-1/5 h-1.5 md:h-2 bg-zinc-300 rounded-b-md shadow-inner"></div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Floating Quick Stats -->
+        <div class="mt-16 lg:mt-24 grid grid-cols-2 md:grid-cols-4 gap-5 max-w-4xl mx-auto reveal">
+            <div class="bg-white rounded-2xl p-6 shadow-glass border border-gray-100 text-center hover:border-brand-yellow/40 transition-all animate-float" style="animation-delay:0s;">
+                <div class="w-10 h-10 bg-brand-yellow/10 rounded-xl flex items-center justify-center mx-auto mb-3">
+                    <i data-lucide="building" class="w-5 h-5 text-brand-yellow"></i>
+                </div>
+                <div class="text-3xl font-extrabold text-gray-900 counter-num" data-target="4">0</div>
+                <div class="text-xs text-gray-500 font-medium mt-1 uppercase tracking-wider">Pavimentos Mapeados</div>
+            </div>
+            <div class="bg-white rounded-2xl p-6 shadow-glass border border-gray-100 text-center hover:border-brand-yellow/40 transition-all animate-float" style="animation-delay:0.8s;">
+                <div class="w-10 h-10 bg-brand-yellow/10 rounded-xl flex items-center justify-center mx-auto mb-3">
+                    <i data-lucide="video" class="w-5 h-5 text-brand-yellow"></i>
+                </div>
+                <div class="text-3xl font-extrabold text-gray-900 counter-num" data-target="40">0</div>
+                <div class="text-xs text-gray-500 font-medium mt-1 uppercase tracking-wider">Câmeras IP Full HD</div>
+            </div>
+            <div class="bg-white rounded-2xl p-6 shadow-glass border border-gray-100 text-center hover:border-brand-yellow/40 transition-all animate-float" style="animation-delay:0.4s;">
+                <div class="w-10 h-10 bg-brand-yellow/10 rounded-xl flex items-center justify-center mx-auto mb-3">
+                    <i data-lucide="hard-drive" class="w-5 h-5 text-brand-yellow"></i>
+                </div>
+                <div class="text-3xl font-extrabold text-gray-900"><span class="counter-num" data-target="16">0</span>TB</div>
+                <div class="text-xs text-gray-500 font-medium mt-1 uppercase tracking-wider">Storage Dedicado</div>
+            </div>
+            <div class="bg-white rounded-2xl p-6 shadow-glass border border-gray-100 text-center hover:border-brand-yellow/40 transition-all animate-float" style="animation-delay:1.2s;">
+                <div class="w-10 h-10 bg-brand-yellow/10 rounded-xl flex items-center justify-center mx-auto mb-3">
+                    <i data-lucide="network" class="w-5 h-5 text-brand-yellow"></i>
+                </div>
+                <div class="text-3xl font-extrabold text-gray-900">100%</div>
+                <div class="text-xs text-gray-500 font-medium mt-1 uppercase tracking-wider">Rede CAT6 + PoE</div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- ===================== DIAGNÓSTICO DO CENÁRIO ===================== -->
+<section id="diagnostico" class="py-28 bg-[#f8f9fa] border-y border-gray-200/60 relative">
+    <div class="max-w-7xl mx-auto px-4">
+        <div class="text-center mb-16 reveal">
+            <span class="text-brand-yellow font-bold uppercase tracking-widest text-xs">O Diagnóstico Consultivo</span>
+            <h2 class="text-3xl md:text-5xl font-bold text-gray-900 mt-3 leading-tight">Análise de Risco <br class="hidden md:block">e Distribuição do Projeto</h2>
+            <p class="text-gray-500 mt-5 max-w-3xl mx-auto text-lg leading-relaxed">
+                <strong>Guilherme</strong>, avaliamos meticulosamente as plantas do SEBRAE Capital Norte. Para um projeto corporativo de grande porte, o sucesso reside na escolha da lente correta para a área correta.
+            </p>
+        </div>
+
+        <div class="grid md:grid-cols-3 gap-8 reveal">
+            <!-- Card 1 -->
+            <div class="bg-white rounded-[2rem] p-8 shadow-premium border border-gray-100 relative overflow-hidden group hover:-translate-y-1 transition-transform duration-300 flex flex-col">
+                <div class="absolute top-0 right-0 w-32 h-32 bg-blue-50 rounded-full blur-3xl transition-colors"></div>
+                <div class="w-14 h-14 bg-blue-50 rounded-2xl flex items-center justify-center mb-6 relative z-10">
+                    <i data-lucide="car" class="w-7 h-7 text-blue-500"></i>
+                </div>
+                <h3 class="text-xl font-bold text-gray-900 mb-4 relative z-10">Acessos e Garagem (10 Pontos)</h3>
+                <ul class="space-y-3 relative z-10 flex-1 text-sm text-gray-600 mb-6">
+                    <li class="flex items-start gap-2"><i data-lucide="check" class="w-4 h-4 text-blue-500 shrink-0 mt-0.5"></i> Cobertura das Entradas Principais.</li>
+                    <li class="flex items-start gap-2"><i data-lucide="check" class="w-4 h-4 text-blue-500 shrink-0 mt-0.5"></i> Mapeamento das Áreas Externas.</li>
+                    <li class="flex items-start gap-2"><i data-lucide="check" class="w-4 h-4 text-blue-500 shrink-0 mt-0.5"></i> Controle das Garagens Subterrâneas (1, 2 e 3).</li>
+                </ul>
+                <div class="mt-auto p-4 bg-emerald-50 rounded-xl border border-emerald-100 relative z-10">
+                    <p class="text-xs text-emerald-800 leading-relaxed flex items-start gap-2">
+                        <i data-lucide="crosshair" class="w-4 h-4 shrink-0 mt-0.5"></i>
+                        <span><strong>Solução:</strong> Câmeras <strong>Bullet IP</strong> com longo alcance infravermelho e proteção contra poeira, perfeitas para a escuridão do subsolo.</span>
+                    </p>
+                </div>
+            </div>
+
+            <!-- Card 2 -->
+            <div class="bg-white rounded-[2rem] p-8 shadow-premium border border-gray-100 relative overflow-hidden group hover:-translate-y-1 transition-transform duration-300 flex flex-col">
+                <div class="absolute top-0 right-0 w-32 h-32 bg-orange-50 rounded-full blur-3xl transition-colors"></div>
+                <div class="w-14 h-14 bg-orange-50 rounded-2xl flex items-center justify-center mb-6 relative z-10">
+                    <i data-lucide="presentation" class="w-7 h-7 text-orange-500"></i>
+                </div>
+                <h3 class="text-xl font-bold text-gray-900 mb-4 relative z-10">Recepção e Treino (15 Pontos)</h3>
+                <ul class="space-y-3 relative z-10 flex-1 text-sm text-gray-600 mb-6">
+                    <li class="flex items-start gap-2"><i data-lucide="check" class="w-4 h-4 text-orange-500 shrink-0 mt-0.5"></i> Monitoramento das Mesas de Atendimento.</li>
+                    <li class="flex items-start gap-2"><i data-lucide="check" class="w-4 h-4 text-orange-500 shrink-0 mt-0.5"></i> Visão ampla nas Estações de Trabalho (1 a 4).</li>
+                    <li class="flex items-start gap-2"><i data-lucide="check" class="w-4 h-4 text-orange-500 shrink-0 mt-0.5"></i> Dupla verificação (frente/fundo) nas Salas Multimédia.</li>
+                </ul>
+                <div class="mt-auto p-4 bg-emerald-50 rounded-xl border border-emerald-100 relative z-10">
+                    <p class="text-xs text-emerald-800 leading-relaxed flex items-start gap-2">
+                        <i data-lucide="crosshair" class="w-4 h-4 shrink-0 mt-0.5"></i>
+                        <span><strong>Solução:</strong> Câmaras <strong>Dome IP</strong>. Elegantes e discretas, evitam que o público perceba o foco da lente na área corporativa.</span>
+                    </p>
+                </div>
+            </div>
+
+            <!-- Card 3 -->
+            <div class="bg-white rounded-[2rem] p-8 shadow-premium border border-gray-100 relative overflow-hidden group hover:-translate-y-1 transition-transform duration-300 flex flex-col">
+                <div class="absolute top-0 right-0 w-32 h-32 bg-red-50 rounded-full blur-3xl transition-colors"></div>
+                <div class="w-14 h-14 bg-red-50 rounded-2xl flex items-center justify-center mb-6 relative z-10">
+                    <i data-lucide="shield-alert" class="w-7 h-7 text-red-500"></i>
+                </div>
+                <h3 class="text-xl font-bold text-gray-900 mb-4 relative z-10">Infra Crítica e Fugas (15 Pontos)</h3>
+                <ul class="space-y-3 relative z-10 flex-1 text-sm text-gray-600 mb-6">
+                    <li class="flex items-start gap-2"><i data-lucide="check" class="w-4 h-4 text-red-500 shrink-0 mt-0.5"></i> Segurança no Hall dos Elevadores.</li>
+                    <li class="flex items-start gap-2"><i data-lucide="check" class="w-4 h-4 text-red-500 shrink-0 mt-0.5"></i> Cruzamento visual nas Escadas (Rotas de Fuga).</li>
+                    <li class="flex items-start gap-2"><i data-lucide="check" class="w-4 h-4 text-red-500 shrink-0 mt-0.5"></i> Acesso blindado à Sala do Servidor e QGBT.</li>
+                </ul>
+                <div class="mt-auto p-4 bg-emerald-50 rounded-xl border border-emerald-100 relative z-10">
+                    <p class="text-xs text-emerald-800 leading-relaxed flex items-start gap-2">
+                        <i data-lucide="crosshair" class="w-4 h-4 shrink-0 mt-0.5"></i>
+                        <span><strong>Solução:</strong> Domes IP com <strong>WDR</strong> (compensação de luz) para lidar com o brilho excessivo nas escadarias e portas de vidro.</span>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ===================== VITRINE TECNOLÓGICA (O CÉREBRO DA OPERAÇÃO / ARQUITETURA DE REDE) ===================== -->
+<section id="tecnologia" class="py-28 bg-[#fdfdfd] border-b border-gray-200/60 relative overflow-hidden">
+    <div class="absolute inset-0 bg-grid pointer-events-none opacity-50"></div>
+    <div class="max-w-7xl mx-auto px-4 relative z-10">
+        
+        <div class="text-center mb-20 reveal">
+            <span class="text-brand-yellow font-bold uppercase tracking-widest text-xs">Arquitetura de Rede</span>
+            <h2 class="text-3xl md:text-5xl font-bold text-gray-900 mt-3">Estratégia "Future-Proof"</h2>
+            <p class="text-gray-500 mt-4 max-w-3xl mx-auto text-lg leading-relaxed">
+                Utilizar cabos coaxiais num projeto deste porte estrangularia as tubulações prediais. Desenhamos um escopo descentralizado, de elevada performance e preparado para a expansão do SEBRAE.
+            </p>
+        </div>
+
+        <div class="grid lg:grid-cols-12 gap-12 reveal items-stretch mb-16">
+            
+            <!-- COLUNA ESQUERDA: CARDS DETALHADOS (MÓDULOS DE ENGENHARIA) -->
+            <div class="lg:col-span-7 space-y-6 flex flex-col justify-center">
+                
+                <!-- NVRs e HDDs -->
+                <div class="bg-white rounded-2xl p-6 border border-gray-200 shadow-bento flex items-start gap-5 relative overflow-hidden group hover:shadow-bento-hover hover:border-brand-yellow/50 transition-all">
+                    <div class="absolute top-0 right-0 w-32 h-32 bg-blue-50/50 rounded-full blur-3xl transition-transform group-hover:scale-150 pointer-events-none"></div>
+                    <div class="w-14 h-14 shrink-0 bg-blue-50 rounded-xl flex items-center justify-center border border-blue-100 relative z-10">
+                        <i data-lucide="server" class="w-6 h-6 text-blue-600"></i>
+                    </div>
+                    <div class="relative z-10 w-full">
+                        <div class="flex items-center justify-between mb-4">
+                            <h3 class="font-bold text-gray-900 text-lg">Gravadores NVR 32 Canais</h3>
+                            <span class="bg-gray-100 text-gray-500 text-[9px] font-bold px-2 py-0.5 rounded uppercase tracking-wider border border-gray-200">Core</span>
+                        </div>
+                        <ul class="space-y-2 text-sm text-gray-600 mb-4">
+                            <li class="flex items-start gap-2"><i data-lucide="check-circle-2" class="w-4 h-4 text-brand-yellow shrink-0 mt-0.5"></i> <strong>Sobra Técnica:</strong> 2x NVRs entregam 64 canais totais. O SEBRAE nasce com 24 portas vagas para o futuro.</li>
+                            <li class="flex items-start gap-2"><i data-lucide="check-circle-2" class="w-4 h-4 text-brand-yellow shrink-0 mt-0.5"></i> <strong>Storage:</strong> 2x HDs WD Purple de 8TB focados em retenção contínua e tolerância a falhas.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Câmeras VIP -->
+                <div class="bg-white rounded-2xl p-6 border border-gray-200 shadow-bento flex items-start gap-5 relative overflow-hidden group hover:shadow-bento-hover hover:border-brand-yellow/50 transition-all">
+                    <div class="absolute top-0 right-0 w-32 h-32 bg-amber-50/50 rounded-full blur-3xl transition-transform group-hover:scale-150 pointer-events-none"></div>
+                    <div class="w-14 h-14 shrink-0 bg-amber-50 rounded-xl flex items-center justify-center border border-amber-100 relative z-10">
+                        <i data-lucide="video" class="w-6 h-6 text-amber-600"></i>
+                    </div>
+                    <div class="relative z-10 w-full">
+                        <div class="flex items-center justify-between mb-4">
+                            <h3 class="font-bold text-gray-900 text-lg">Captação: 40 Câmeras IP Full HD</h3>
+                            <span class="bg-gray-100 text-gray-500 text-[9px] font-bold px-2 py-0.5 rounded uppercase tracking-wider border border-gray-200">Edge</span>
+                        </div>
+                        <ul class="space-y-2 text-sm text-gray-600 mb-4">
+                            <li class="flex items-start gap-2"><i data-lucide="check-circle-2" class="w-4 h-4 text-brand-yellow shrink-0 mt-0.5"></i> <strong>10x Bullets IP:</strong> Proteção de perímetro para garagens e áreas externas sujeitas ao tempo.</li>
+                            <li class="flex items-start gap-2"><i data-lucide="check-circle-2" class="w-4 h-4 text-brand-yellow shrink-0 mt-0.5"></i> <strong>30x Domes IP:</strong> Estética corporativa para cobrir salas de treino, circulação e recepção.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Switches PoE e Infra -->
+                <div class="bg-white rounded-2xl p-6 border border-gray-200 shadow-bento flex items-start gap-5 relative overflow-hidden group hover:shadow-bento-hover hover:border-brand-yellow/50 transition-all">
+                    <div class="absolute top-0 right-0 w-32 h-32 bg-purple-50/50 rounded-full blur-3xl transition-transform group-hover:scale-150 pointer-events-none"></div>
+                    <div class="w-14 h-14 shrink-0 bg-purple-50 rounded-xl flex items-center justify-center border border-purple-100 relative z-10">
+                        <i data-lucide="network" class="w-6 h-6 text-purple-600"></i>
+                    </div>
+                    <div class="relative z-10 w-full">
+                        <div class="flex items-center justify-between mb-4">
+                            <h3 class="font-bold text-gray-900 text-lg">Topologia PoE + Rede CAT6</h3>
+                            <span class="bg-gray-100 text-gray-500 text-[9px] font-bold px-2 py-0.5 rounded uppercase tracking-wider border border-gray-200">Distribuição</span>
+                        </div>
+                        <ul class="space-y-2 text-sm text-gray-600 mb-4">
+                            <li class="flex items-start gap-2"><i data-lucide="check-circle-2" class="w-4 h-4 text-brand-yellow shrink-0 mt-0.5"></i> <strong>2x Switches Intelbras:</strong> Alimentam energia e dados no mesmo cabo, evitando dezenas de fios descendo.</li>
+                            <li class="flex items-start gap-2"><i data-lucide="check-circle-2" class="w-4 h-4 text-brand-yellow shrink-0 mt-0.5"></i> <strong>1.525 Metros de Cabo:</strong> Fornecimento de 5 caixas CAT6 de alto tráfego com conectores RJ45 homologados.</li>
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- COLUNA DIREITA: RACK 12U ILUSTRATIVO DE ALTA FIDELIDADE -->
+            <div class="lg:col-span-5 w-full flex flex-col justify-center relative">
+                
+                <div class="bg-white rounded-[2rem] p-6 border border-gray-200 shadow-premium relative group w-full flex flex-col items-center justify-center overflow-hidden">
+                    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-brand-yellow/10 rounded-full blur-[80px] pointer-events-none transition-transform duration-700 group-hover:scale-150"></div>
+                    
+                    <div class="w-full flex justify-between items-center mb-5 relative z-10 px-2">
+                        <div class="flex flex-col">
+                            <span class="text-gray-900 text-base font-extrabold tracking-tight">Rack 19" 12U</span>
+                            <span class="text-brand-goldDark text-[10px] uppercase tracking-widest font-bold">Topologia Física • Sala Ponto 26</span>
+                        </div>
+                        <div class="w-8 h-8 rounded-full bg-brand-yellow/10 flex items-center justify-center border border-brand-yellow/30">
+                            <i data-lucide="server" class="w-4 h-4 text-brand-goldDark"></i>
+                        </div>
+                    </div>
+
+                    <!-- MOCKUP DO RACK -->
+                    <div class="relative w-full bg-[#111113] rounded-xl border-4 border-zinc-800 shadow-[0_20px_50px_rgba(0,0,0,0.5)] overflow-hidden flex flex-col z-10">
+                        
+                        <!-- Top Ventilation -->
+                        <div class="w-full h-4 border-b border-zinc-800/50 flex items-center justify-center gap-8 bg-zinc-900">
+                            <div class="w-16 h-1.5 bg-zinc-950 rounded-full opacity-50"></div>
+                            <div class="w-16 h-1.5 bg-zinc-950 rounded-full opacity-50"></div>
+                        </div>
+
+                        <!-- MAIN RACK AREA (with side rails) -->
+                        <div class="flex-1 flex w-full">
+                            <!-- Left Rail -->
+                            <div class="w-5 bg-[#1a1a1d] border-r border-zinc-800 flex flex-col justify-evenly py-2 items-center">
+                                <div class="w-1.5 h-1.5 rounded-sm bg-zinc-900 border border-zinc-800"></div><div class="w-1.5 h-1.5 rounded-sm bg-zinc-900 border border-zinc-800"></div><div class="w-1.5 h-1.5 rounded-sm bg-zinc-900 border border-zinc-800"></div><div class="w-1.5 h-1.5 rounded-sm bg-zinc-900 border border-zinc-800"></div><div class="w-1.5 h-1.5 rounded-sm bg-zinc-900 border border-zinc-800"></div><div class="w-1.5 h-1.5 rounded-sm bg-zinc-900 border border-zinc-800"></div><div class="w-1.5 h-1.5 rounded-sm bg-zinc-900 border border-zinc-800"></div><div class="w-1.5 h-1.5 rounded-sm bg-zinc-900 border border-zinc-800"></div><div class="w-1.5 h-1.5 rounded-sm bg-zinc-900 border border-zinc-800"></div><div class="w-1.5 h-1.5 rounded-sm bg-zinc-900 border border-zinc-800"></div><div class="w-1.5 h-1.5 rounded-sm bg-zinc-900 border border-zinc-800"></div><div class="w-1.5 h-1.5 rounded-sm bg-zinc-900 border border-zinc-800"></div>
+                            </div>
+                            
+                            <!-- Equipment Slots -->
+                            <div class="flex-1 flex flex-col gap-[2px] bg-zinc-950 py-1 px-1 relative">
+                                
+                                <!-- Blank Panel 1U -->
+                                <div class="w-full h-5 bg-[#1f1f22] rounded-[2px] border border-zinc-700/50 flex items-center justify-center">
+                                    <span class="text-[7px] text-zinc-600 uppercase tracking-widest font-bold">Painel Cego</span>
+                                </div>
+
+                                <!-- Patch Panel 24P 1U -->
+                                <div class="w-full h-8 bg-[#18181b] rounded-[2px] border border-zinc-700 flex flex-col items-center justify-center px-2 relative group cursor-pointer overflow-hidden">
+                                    <div class="absolute inset-0 bg-gradient-to-r from-zinc-700/0 via-zinc-700/20 to-zinc-700/0 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-1000"></div>
+                                    <span class="text-[6px] text-zinc-400 absolute top-0.5 left-2">PATCH PANEL CAT6 - 24P</span>
+                                    <div class="grid grid-cols-12 gap-[2px] mt-2 w-full max-w-[80%]">
+                                        <!-- Simulando portas com algumas ativas -->
+                                        <div class="w-full aspect-square bg-zinc-900 border border-zinc-600 rounded-[1px] flex items-center justify-center"><div class="w-1 h-1 bg-yellow-500 rounded-full opacity-80"></div></div>
+                                        <div class="w-full aspect-square bg-zinc-900 border border-zinc-600 rounded-[1px] flex items-center justify-center"><div class="w-1 h-1 bg-yellow-500 rounded-full opacity-80"></div></div>
+                                        <div class="w-full aspect-square bg-zinc-900 border border-zinc-600 rounded-[1px] flex items-center justify-center"><div class="w-1 h-1 bg-yellow-500 rounded-full opacity-80"></div></div>
+                                        <div class="w-full aspect-square bg-zinc-900 border border-zinc-600 rounded-[1px] flex items-center justify-center"><div class="w-1 h-1 bg-yellow-500 rounded-full opacity-80"></div></div>
+                                        <div class="w-full aspect-square bg-zinc-900 border border-zinc-600 rounded-[1px] flex items-center justify-center"><div class="w-1 h-1 bg-yellow-500 rounded-full opacity-80"></div></div>
+                                        <div class="w-full aspect-square bg-zinc-900 border border-zinc-600 rounded-[1px] flex items-center justify-center"><div class="w-1 h-1 bg-yellow-500 rounded-full opacity-80"></div></div>
+                                        <div class="w-full aspect-square bg-zinc-900 border border-zinc-600 rounded-[1px] flex items-center justify-center"><div class="w-1 h-1 bg-yellow-500 rounded-full opacity-80"></div></div>
+                                        <div class="w-full aspect-square bg-zinc-900 border border-zinc-600 rounded-[1px] flex items-center justify-center"><div class="w-1 h-1 bg-yellow-500 rounded-full opacity-80"></div></div>
+                                        <div class="w-full aspect-square bg-zinc-900 border border-zinc-600 rounded-[1px] flex items-center justify-center"><div class="w-1 h-1 bg-yellow-500 rounded-full opacity-80"></div></div>
+                                        <div class="w-full aspect-square bg-zinc-900 border border-zinc-600 rounded-[1px] flex items-center justify-center"><div class="w-1 h-1 bg-yellow-500 rounded-full opacity-80"></div></div>
+                                        <div class="w-full aspect-square bg-zinc-900 border border-zinc-600 rounded-[1px]"></div>
+                                        <div class="w-full aspect-square bg-zinc-900 border border-zinc-600 rounded-[1px]"></div>
+                                    </div>
+                                </div>
+
+                                <!-- Organizador Frontal 1U -->
+                                <div class="w-full h-6 bg-[#27272a] rounded-[2px] border border-zinc-600/50 flex items-center justify-center shadow-[inset_0_2px_4px_rgba(0,0,0,0.5)]">
+                                    <div class="w-[90%] h-2 bg-black rounded-sm overflow-hidden flex items-center px-1 gap-0.5">
+                                        <div class="w-1 h-full bg-blue-500/30"></div><div class="w-1 h-full bg-blue-500/30"></div><div class="w-1 h-full bg-blue-500/30"></div><div class="w-1 h-full bg-blue-500/30"></div><div class="w-1 h-full bg-blue-500/30"></div><div class="w-1 h-full bg-blue-500/30"></div>
+                                    </div>
+                                </div>
+
+                                <!-- Switch PoE 1 (1U) -->
+                                <div class="w-full h-10 bg-gradient-to-r from-[#18181b] to-[#27272a] rounded-[2px] border-b border-zinc-600 flex items-center px-3 justify-between relative shadow-sm">
+                                    <div class="flex flex-col">
+                                        <span class="text-[7px] font-bold text-white leading-none">INTELBRAS S1126F-PA</span>
+                                        <span class="text-[5px] text-zinc-400 font-bold uppercase">Switch PoE+ 24 Portas</span>
+                                    </div>
+                                    <div class="flex gap-[1px]">
+                                        <!-- Blinking LEDs -->
+                                        <div class="w-1.5 h-1.5 bg-emerald-500 rounded-sm animate-pulse shadow-[0_0_5px_#10b981]"></div>
+                                        <div class="w-1.5 h-1.5 bg-emerald-500 rounded-sm animate-pulse shadow-[0_0_5px_#10b981]" style="animation-delay: 150ms"></div>
+                                        <div class="w-1.5 h-1.5 bg-emerald-500 rounded-sm animate-pulse shadow-[0_0_5px_#10b981]" style="animation-delay: 400ms"></div>
+                                        <div class="w-1.5 h-1.5 bg-emerald-500 rounded-sm animate-pulse shadow-[0_0_5px_#10b981]" style="animation-delay: 200ms"></div>
+                                        <div class="w-1.5 h-1.5 bg-zinc-700 rounded-sm"></div>
+                                        <div class="w-1.5 h-1.5 bg-zinc-700 rounded-sm"></div>
+                                        <div class="w-1.5 h-1.5 bg-blue-500 rounded-sm animate-pulse shadow-[0_0_5px_#3b82f6]" style="animation-delay: 50ms"></div>
+                                    </div>
+                                </div>
+
+                                <!-- Switch PoE 2 (1U) -->
+                                <div class="w-full h-10 bg-gradient-to-r from-[#18181b] to-[#27272a] rounded-[2px] border-b border-zinc-600 flex items-center px-3 justify-between relative shadow-sm">
+                                    <div class="flex flex-col">
+                                        <span class="text-[7px] font-bold text-white leading-none">INTELBRAS S1126F-PA</span>
+                                        <span class="text-[5px] text-zinc-400 font-bold uppercase">Switch PoE+ 24 Portas</span>
+                                    </div>
+                                    <div class="flex gap-[1px]">
+                                        <div class="w-1.5 h-1.5 bg-emerald-500 rounded-sm animate-pulse shadow-[0_0_5px_#10b981]" style="animation-delay: 300ms"></div>
+                                        <div class="w-1.5 h-1.5 bg-emerald-500 rounded-sm animate-pulse shadow-[0_0_5px_#10b981]" style="animation-delay: 100ms"></div>
+                                        <div class="w-1.5 h-1.5 bg-emerald-500 rounded-sm animate-pulse shadow-[0_0_5px_#10b981]" style="animation-delay: 500ms"></div>
+                                        <div class="w-1.5 h-1.5 bg-zinc-700 rounded-sm"></div>
+                                        <div class="w-1.5 h-1.5 bg-zinc-700 rounded-sm"></div>
+                                        <div class="w-1.5 h-1.5 bg-zinc-700 rounded-sm"></div>
+                                        <div class="w-1.5 h-1.5 bg-blue-500 rounded-sm animate-pulse shadow-[0_0_5px_#3b82f6]" style="animation-delay: 250ms"></div>
+                                    </div>
+                                </div>
+
+                                <!-- Organizador Frontal 1U -->
+                                <div class="w-full h-6 bg-[#27272a] rounded-[2px] border border-zinc-600/50 flex items-center justify-center shadow-[inset_0_2px_4px_rgba(0,0,0,0.5)]">
+                                    <div class="w-[90%] h-2 bg-black rounded-sm overflow-hidden flex items-center px-1 gap-0.5">
+                                        <div class="w-1 h-full bg-blue-500/30"></div><div class="w-1 h-full bg-blue-500/30"></div><div class="w-1 h-full bg-blue-500/30"></div>
+                                    </div>
+                                </div>
+
+                                <!-- NVR 1 (1.5U) -->
+                                <div class="w-full h-14 bg-gradient-to-br from-[#0c0c0e] to-[#18181b] rounded-[2px] border border-zinc-700 flex flex-col justify-between p-2 relative shadow-lg">
+                                    <div class="flex justify-between w-full items-start">
+                                        <div class="flex items-center gap-1.5">
+                                            <div class="w-3 h-3 bg-zinc-800 rounded-full border border-zinc-600"></div>
+                                            <span class="text-[9px] font-bold text-white tracking-widest">iNVD 3032</span>
+                                        </div>
+                                        <div class="flex gap-1 items-center">
+                                            <span class="text-[5px] text-zinc-500">PWR</span><div class="w-1 h-1 bg-red-500 rounded-full shadow-[0_0_3px_#ef4444]"></div>
+                                            <span class="text-[5px] text-zinc-500 ml-1">NET</span><div class="w-1 h-1 bg-blue-500 rounded-full animate-pulse"></div>
+                                            <span class="text-[5px] text-zinc-500 ml-1">HDD</span><div class="w-1 h-1 bg-brand-yellow rounded-full animate-pulse" style="animation-delay: 150ms"></div>
+                                        </div>
+                                    </div>
+                                    <div class="flex justify-between items-end">
+                                        <span class="text-[6px] text-brand-yellow border border-brand-yellow/30 bg-brand-yellow/10 px-1 py-0.5 rounded font-bold">NODE 01 • 32CH 4K</span>
+                                        <div class="flex items-center gap-1">
+                                            <span class="text-[5px] text-zinc-400">WD PURPLE 8TB</span>
+                                            <!-- Storage capacity bar -->
+                                            <div class="w-8 h-1.5 bg-zinc-800 rounded-sm overflow-hidden flex border border-zinc-700">
+                                                <div class="h-full bg-blue-500 w-[65%]"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- NVR 2 (1.5U) -->
+                                <div class="w-full h-14 bg-gradient-to-br from-[#0c0c0e] to-[#18181b] rounded-[2px] border border-zinc-700 flex flex-col justify-between p-2 relative shadow-lg">
+                                    <div class="flex justify-between w-full items-start">
+                                        <div class="flex items-center gap-1.5">
+                                            <div class="w-3 h-3 bg-zinc-800 rounded-full border border-zinc-600"></div>
+                                            <span class="text-[9px] font-bold text-white tracking-widest">iNVD 3032</span>
+                                        </div>
+                                        <div class="flex gap-1 items-center">
+                                            <span class="text-[5px] text-zinc-500">PWR</span><div class="w-1 h-1 bg-red-500 rounded-full shadow-[0_0_3px_#ef4444]"></div>
+                                            <span class="text-[5px] text-zinc-500 ml-1">NET</span><div class="w-1 h-1 bg-blue-500 rounded-full animate-pulse" style="animation-delay: 100ms"></div>
+                                            <span class="text-[5px] text-zinc-500 ml-1">HDD</span><div class="w-1 h-1 bg-brand-yellow rounded-full animate-pulse" style="animation-delay: 500ms"></div>
+                                        </div>
+                                    </div>
+                                    <div class="flex justify-between items-end">
+                                        <span class="text-[6px] text-brand-yellow border border-brand-yellow/30 bg-brand-yellow/10 px-1 py-0.5 rounded font-bold">NODE 02 • 32CH 4K</span>
+                                        <div class="flex items-center gap-1">
+                                            <span class="text-[5px] text-zinc-400">WD PURPLE 8TB</span>
+                                            <div class="w-8 h-1.5 bg-zinc-800 rounded-sm overflow-hidden flex border border-zinc-700">
+                                                <div class="h-full bg-blue-500 w-[40%]"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- PDU / Régua de Tomadas 1U -->
+                                <div class="w-full h-6 bg-[#09090b] rounded-[2px] border border-zinc-700/50 flex items-center justify-evenly px-2 mt-auto">
+                                    <div class="w-3 h-3 rounded-sm bg-zinc-900 border border-zinc-700 flex items-center justify-center"><div class="w-1 h-1 bg-black rounded-full"></div></div>
+                                    <div class="w-3 h-3 rounded-sm bg-zinc-900 border border-zinc-700 flex items-center justify-center"><div class="w-1 h-1 bg-black rounded-full"></div></div>
+                                    <div class="w-3 h-3 rounded-sm bg-zinc-900 border border-zinc-700 flex items-center justify-center"><div class="w-1 h-1 bg-black rounded-full"></div></div>
+                                    <div class="w-3 h-3 rounded-sm bg-zinc-900 border border-zinc-700 flex items-center justify-center"><div class="w-1 h-1 bg-black rounded-full"></div></div>
+                                    <div class="w-3 h-3 rounded-sm bg-zinc-900 border border-zinc-700 flex items-center justify-center"><div class="w-1 h-1 bg-black rounded-full"></div></div>
+                                    <div class="flex items-center gap-1 ml-auto">
+                                        <div class="w-1.5 h-1.5 bg-red-500 rounded-full shadow-[0_0_5px_#ef4444]"></div>
+                                        <span class="text-[5px] text-zinc-500 font-bold uppercase">PDU</span>
+                                    </div>
+                                </div>
+
+                            </div>
+                            
+                            <!-- Right Rail -->
+                            <div class="w-5 bg-[#1a1a1d] border-l border-zinc-800 flex flex-col justify-evenly py-2 items-center">
+                                <div class="w-1.5 h-1.5 rounded-sm bg-zinc-900 border border-zinc-800"></div><div class="w-1.5 h-1.5 rounded-sm bg-zinc-900 border border-zinc-800"></div><div class="w-1.5 h-1.5 rounded-sm bg-zinc-900 border border-zinc-800"></div><div class="w-1.5 h-1.5 rounded-sm bg-zinc-900 border border-zinc-800"></div><div class="w-1.5 h-1.5 rounded-sm bg-zinc-900 border border-zinc-800"></div><div class="w-1.5 h-1.5 rounded-sm bg-zinc-900 border border-zinc-800"></div><div class="w-1.5 h-1.5 rounded-sm bg-zinc-900 border border-zinc-800"></div><div class="w-1.5 h-1.5 rounded-sm bg-zinc-900 border border-zinc-800"></div><div class="w-1.5 h-1.5 rounded-sm bg-zinc-900 border border-zinc-800"></div><div class="w-1.5 h-1.5 rounded-sm bg-zinc-900 border border-zinc-800"></div><div class="w-1.5 h-1.5 rounded-sm bg-zinc-900 border border-zinc-800"></div><div class="w-1.5 h-1.5 rounded-sm bg-zinc-900 border border-zinc-800"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- FIM MOCKUP DO RACK -->
+
+                    <p class="text-xs text-gray-500 font-medium mt-6 text-center leading-relaxed">
+                        Topologia montada com organização técnica de Rack padrão 19 polegadas. Garante a ventilação adequada e otimiza a vida útil dos equipamentos de rede.
+                    </p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<!-- ===================== BILL OF MATERIALS (BoM) - MÁXIMO DE DETALHES ===================== -->
+<section id="hardware" class="py-24 bg-white border-t border-gray-200/60 relative">
+    <div class="max-w-7xl mx-auto px-4">
+        <div class="text-center mb-16 reveal">
+            <span class="text-brand-yellow font-bold uppercase tracking-widest text-xs">Transparência Técnica</span>
+            <h2 class="text-3xl md:text-5xl font-bold text-gray-900 mt-3 leading-tight">Bill of Materials (BoM)</h2>
+            <p class="text-gray-500 mt-5 max-w-2xl mx-auto text-lg leading-relaxed">
+                A listagem rigorosa dos equipamentos dimensionados para sustentar o fluxo de dados e garantir a durabilidade contínua da infraestrutura do SEBRAE.
+            </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 reveal">
+            
+            <!-- Item 1 -->
+            <div class="bg-white rounded-[2rem] p-8 border border-gray-100 shadow-glass hover:shadow-premium-card hover:border-brand-yellow/40 transition-all flex flex-col group">
+                <div class="flex justify-between items-start mb-6">
+                    <div class="w-14 h-14 bg-gray-50 text-gray-800 rounded-xl flex items-center justify-center border border-gray-200 group-hover:bg-brand-yellow/10 group-hover:text-brand-goldDark group-hover:border-brand-yellow/30 transition-colors">
+                        <i data-lucide="server" class="w-7 h-7"></i>
+                    </div>
+                    <span class="bg-black text-white px-3 py-1 rounded-md text-xs font-bold uppercase tracking-widest">QTD: 02</span>
+                </div>
+                <div class="w-full h-32 flex items-center justify-center mb-4">
+                    <img src="https://res.cloudinary.com/dptcuckhf/image/upload/v1771621274/nvd-3316-plus-pers-dir_cuqefw.png" alt="NVR Intelbras" class="max-w-full max-h-full object-contain drop-shadow-md transform group-hover:scale-105 transition-transform duration-500">
+                </div>
+                <h3 class="font-bold text-gray-900 text-lg mb-1">Gravador NVR 32CH</h3>
+                <p class="text-xs font-bold text-brand-yellow uppercase tracking-widest mb-4">Intelbras iNVD 3032</p>
+                <ul class="space-y-3 text-sm text-gray-600 mt-auto">
+                    <li class="flex items-start gap-2"><i data-lucide="check-circle-2" class="w-4 h-4 text-emerald-500 shrink-0 mt-0.5"></i> Capacidade base de 32 canais (suporta 4K).</li>
+                    <li class="flex items-start gap-2"><i data-lucide="check-circle-2" class="w-4 h-4 text-emerald-500 shrink-0 mt-0.5"></i> Arquitetura com 24 portas vazias para expansão.</li>
+                </ul>
+            </div>
+
+            <!-- Item 2 -->
+            <div class="bg-white rounded-[2rem] p-8 border border-gray-100 shadow-glass hover:shadow-premium-card hover:border-brand-yellow/40 transition-all flex flex-col group">
+                <div class="flex justify-between items-start mb-6">
+                    <div class="w-14 h-14 bg-gray-50 text-gray-800 rounded-xl flex items-center justify-center border border-gray-200 group-hover:bg-brand-yellow/10 group-hover:text-brand-goldDark group-hover:border-brand-yellow/30 transition-colors">
+                        <i data-lucide="video" class="w-7 h-7"></i>
+                    </div>
+                    <span class="bg-black text-white px-3 py-1 rounded-md text-xs font-bold uppercase tracking-widest">QTD: 10</span>
+                </div>
+                <div class="w-full h-32 flex items-center justify-center mb-4">
+                    <img src="https://res.cloudinary.com/dptcuckhf/image/upload/v1775058367/vip-1230-b-g3-persp-dir_nkmi3k.png" alt="Câmera Bullet" class="max-w-full max-h-full object-contain drop-shadow-md transform group-hover:scale-105 transition-transform duration-500">
+                </div>
+                <h3 class="font-bold text-gray-900 text-lg mb-1">Câmera IP Bullet Full HD</h3>
+                <p class="text-xs font-bold text-brand-yellow uppercase tracking-widest mb-4">Intelbras VIP 1230 B</p>
+                <ul class="space-y-3 text-sm text-gray-600 mt-auto">
+                    <li class="flex items-start gap-2"><i data-lucide="check-circle-2" class="w-4 h-4 text-emerald-500 shrink-0 mt-0.5"></i> Lente cilíndrica com infravermelho de 30m.</li>
+                    <li class="flex items-start gap-2"><i data-lucide="check-circle-2" class="w-4 h-4 text-emerald-500 shrink-0 mt-0.5"></i> Proteção IP67 para garagens subterrâneas.</li>
+                </ul>
+            </div>
+
+            <!-- Item 3 -->
+            <div class="bg-white rounded-[2rem] p-8 border border-gray-100 shadow-glass hover:shadow-premium-card hover:border-brand-yellow/40 transition-all flex flex-col group">
+                <div class="flex justify-between items-start mb-6">
+                    <div class="w-14 h-14 bg-gray-50 text-gray-800 rounded-xl flex items-center justify-center border border-gray-200 group-hover:bg-brand-yellow/10 group-hover:text-brand-goldDark group-hover:border-brand-yellow/30 transition-colors">
+                        <i data-lucide="scan-eye" class="w-7 h-7"></i>
+                    </div>
+                    <span class="bg-black text-white px-3 py-1 rounded-md text-xs font-bold uppercase tracking-widest">QTD: 30</span>
+                </div>
+                <div class="w-full h-32 flex items-center justify-center mb-4">
+                    <img src="https://res.cloudinary.com/dptcuckhf/image/upload/v1770981167/vip-1230-d-g5-front-1_df8d6l.png" alt="Câmera Dome" class="max-w-full max-h-full object-contain drop-shadow-md transform group-hover:scale-105 transition-transform duration-500">
+                </div>
+                <h3 class="font-bold text-gray-900 text-lg mb-1">Câmera IP Dome Full HD</h3>
+                <p class="text-xs font-bold text-brand-yellow uppercase tracking-widest mb-4">Intelbras VIP 1230 D</p>
+                <ul class="space-y-3 text-sm text-gray-600 mt-auto">
+                    <li class="flex items-start gap-2"><i data-lucide="check-circle-2" class="w-4 h-4 text-emerald-500 shrink-0 mt-0.5"></i> Formato de cúpula elegante para recepções.</li>
+                    <li class="flex items-start gap-2"><i data-lucide="check-circle-2" class="w-4 h-4 text-emerald-500 shrink-0 mt-0.5"></i> Evita o desconforto visual nas áreas do SEBRAE.</li>
+                </ul>
+            </div>
+
+            <!-- Item 4 -->
+            <div class="bg-white rounded-[2rem] p-8 border border-gray-100 shadow-glass hover:shadow-premium-card hover:border-brand-yellow/40 transition-all flex flex-col group">
+                <div class="flex justify-between items-start mb-6">
+                    <div class="w-14 h-14 bg-gray-50 text-gray-800 rounded-xl flex items-center justify-center border border-gray-200 group-hover:bg-brand-yellow/10 group-hover:text-brand-goldDark group-hover:border-brand-yellow/30 transition-colors">
+                        <i data-lucide="hard-drive" class="w-7 h-7"></i>
+                    </div>
+                    <span class="bg-black text-white px-3 py-1 rounded-md text-xs font-bold uppercase tracking-widest">QTD: 02</span>
+                </div>
+                <h3 class="font-bold text-gray-900 text-lg mb-1">Disco Rígido Especial</h3>
+                <p class="text-xs font-bold text-brand-yellow uppercase tracking-widest mb-4">WD Purple 8TB</p>
+                <ul class="space-y-3 text-sm text-gray-600 mt-auto">
+                    <li class="flex items-start gap-2"><i data-lucide="check-circle-2" class="w-4 h-4 text-emerald-500 shrink-0 mt-0.5"></i> Total de 16TB dedicados unicamente ao videomonitoramento.</li>
+                    <li class="flex items-start gap-2"><i data-lucide="check-circle-2" class="w-4 h-4 text-emerald-500 shrink-0 mt-0.5"></i> Operação 24/7 ininterrupta sem corromper as imagens.</li>
+                </ul>
+            </div>
+
+            <!-- Item 5 -->
+            <div class="bg-white rounded-[2rem] p-8 border border-gray-100 shadow-glass hover:shadow-premium-card hover:border-brand-yellow/40 transition-all flex flex-col group">
+                <div class="flex justify-between items-start mb-6">
+                    <div class="w-14 h-14 bg-gray-50 text-gray-800 rounded-xl flex items-center justify-center border border-gray-200 group-hover:bg-brand-yellow/10 group-hover:text-brand-goldDark group-hover:border-brand-yellow/30 transition-colors">
+                        <i data-lucide="network" class="w-7 h-7"></i>
+                    </div>
+                    <span class="bg-black text-white px-3 py-1 rounded-md text-xs font-bold uppercase tracking-widest">QTD: 02</span>
+                </div>
+                <h3 class="font-bold text-gray-900 text-lg mb-1">Switch de Rede PoE</h3>
+                <p class="text-xs font-bold text-brand-yellow uppercase tracking-widest mb-4">Intelbras S1126F-PA</p>
+                <ul class="space-y-3 text-sm text-gray-600 mt-auto">
+                    <li class="flex items-start gap-2"><i data-lucide="check-circle-2" class="w-4 h-4 text-emerald-500 shrink-0 mt-0.5"></i> Switch inteligente de 24 portas c/ Power over Ethernet.</li>
+                    <li class="flex items-start gap-2"><i data-lucide="check-circle-2" class="w-4 h-4 text-emerald-500 shrink-0 mt-0.5"></i> Envia a energia e os dados no mesmo cabo CAT6.</li>
+                </ul>
+            </div>
+
+            <!-- Item 6 -->
+            <div class="bg-white rounded-[2rem] p-8 border border-gray-100 shadow-glass hover:shadow-premium-card hover:border-brand-yellow/40 transition-all flex flex-col group">
+                <div class="flex justify-between items-start mb-6">
+                    <div class="w-14 h-14 bg-gray-50 text-gray-800 rounded-xl flex items-center justify-center border border-gray-200 group-hover:bg-brand-yellow/10 group-hover:text-brand-goldDark group-hover:border-brand-yellow/30 transition-colors">
+                        <i data-lucide="layers" class="w-7 h-7"></i>
+                    </div>
+                    <span class="bg-gray-200 text-gray-600 px-3 py-1 rounded-md text-xs font-bold uppercase tracking-widest">Lote</span>
+                </div>
+                <h3 class="font-bold text-gray-900 text-lg mb-1">Infraestrutura Física</h3>
+                <p class="text-xs font-bold text-brand-yellow uppercase tracking-widest mb-4">Diversos (Cabo, Rack, RJ45)</p>
+                <ul class="space-y-3 text-sm text-gray-600 mt-auto">
+                    <li class="flex items-start gap-2"><i data-lucide="check-circle-2" class="w-4 h-4 text-emerald-500 shrink-0 mt-0.5"></i> 05 Caixas de Rede CAT6 (Totalizando 1.525 metros).</li>
+                    <li class="flex items-start gap-2"><i data-lucide="check-circle-2" class="w-4 h-4 text-emerald-500 shrink-0 mt-0.5"></i> Rack 19" 12U e conectores originais inclusos.</li>
+                </ul>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<!-- ===================== A VISION (POR QUE CONTRATAR) ===================== -->
+<section id="empresa" class="py-24 bg-[#f8f9fa] relative border-b border-gray-100">
+    <div class="max-w-6xl mx-auto px-4">
+         <div class="text-center mb-16 reveal">
+             <span class="text-brand-yellow font-bold uppercase tracking-widest text-xs">Padrão Ouro Vision</span>
+             <h2 class="text-3xl font-bold text-gray-900 mt-2 mb-4">A Garantia de uma Engenharia Especializada</h2>
+             <p class="text-gray-500 max-w-2xl mx-auto text-lg">
+                 Equipamentos de ponta perdem o seu valor se instalados por equipes sem qualificação corporativa. Entregamos um contrato de confiança.
+             </p>
+         </div>
+
+         <div class="grid md:grid-cols-3 gap-8 reveal mb-16">
+             <!-- Card 1 -->
+             <div class="p-8 bg-white rounded-2xl border border-gray-100 shadow-sm hover:shadow-lg transition-all group">
+                 <div class="w-14 h-14 bg-brand-black text-white rounded-xl flex items-center justify-center text-2xl mb-6 group-hover:bg-brand-yellow group-hover:text-brand-black transition-colors">
+                    🧹
+                 </div>
+                 <h3 class="text-xl font-bold text-gray-900 mb-4">Engenharia Própria "White Glove"</h3>
+                 <ul class="space-y-3 text-sm text-gray-600">
+                     <li class="flex items-start gap-2"><i data-lucide="check" class="w-4 h-4 text-brand-yellow shrink-0 mt-0.5"></i> Passagem cuidada de mil metros de cabo CAT6.</li>
+                     <li class="flex items-start gap-2"><i data-lucide="check" class="w-4 h-4 text-brand-yellow shrink-0 mt-0.5"></i> Alinhamento cirúrgico com a equipe predial.</li>
+                     <li class="flex items-start gap-2"><i data-lucide="check" class="w-4 h-4 text-brand-yellow shrink-0 mt-0.5"></i> Foco absoluto em acabamento limpo e estético.</li>
+                 </ul>
+             </div>
+
+             <!-- Card 2 -->
+             <div class="p-8 bg-white rounded-2xl border border-gray-100 shadow-sm hover:shadow-lg transition-all group">
+                <div class="w-14 h-14 bg-brand-black text-white rounded-xl flex items-center justify-center text-2xl mb-6 group-hover:bg-brand-yellow group-hover:text-brand-black transition-colors">
+                   ⚙️
+                </div>
+                <h3 class="text-xl font-bold text-gray-900 mb-4">Configuração Lógica Avançada</h3>
+                <ul class="space-y-3 text-sm text-gray-600">
+                     <li class="flex items-start gap-2"><i data-lucide="check" class="w-4 h-4 text-brand-yellow shrink-0 mt-0.5"></i> Endereçamento rigoroso dos IPs das 40 Câmeras.</li>
+                     <li class="flex items-start gap-2"><i data-lucide="check" class="w-4 h-4 text-brand-yellow shrink-0 mt-0.5"></i> Roteamento das sub-redes diretamente nos Switches.</li>
+                     <li class="flex items-start gap-2"><i data-lucide="check" class="w-4 h-4 text-brand-yellow shrink-0 mt-0.5"></i> Otimização da banda no Servidor para evitar latência.</li>
+                 </ul>
+            </div>
+
+            <!-- Card 3 -->
+            <div class="p-8 bg-white rounded-2xl border border-gray-100 shadow-sm hover:shadow-lg transition-all group">
+                <div class="w-14 h-14 bg-brand-black text-white rounded-xl flex items-center justify-center text-2xl mb-6 group-hover:bg-brand-yellow group-hover:text-brand-black transition-colors">
+                   🤝
+                </div>
+                <h3 class="text-xl font-bold text-gray-900 mb-4">Garantia Expressa no Local</h3>
+                <ul class="space-y-3 text-sm text-gray-600">
+                     <li class="flex items-start gap-2"><i data-lucide="check" class="w-4 h-4 text-brand-yellow shrink-0 mt-0.5"></i> Cobertura total de peças contra anomalias de fábrica.</li>
+                     <li class="flex items-start gap-2"><i data-lucide="check" class="w-4 h-4 text-brand-yellow shrink-0 mt-0.5"></i> Durante 12 meses, nós nos deslocamos até a unidade.</li>
+                     <li class="flex items-start gap-2"><i data-lucide="check" class="w-4 h-4 text-brand-yellow shrink-0 mt-0.5"></i> Substituição técnica sem burocracias com a fabricante.</li>
+                 </ul>
+            </div>
+         </div>
+
+    </div>
+</section>
+
+<!-- ===================== PROPOSTA COMERCIAL (INVESTIMENTO) ===================== -->
+<section id="investimento" class="py-28 bg-white relative overflow-hidden">
+    <div class="absolute inset-0 bg-dots pointer-events-none z-0"></div>
+    <div class="max-w-5xl mx-auto px-4 relative z-10">
+
+        <div class="text-center mb-12 reveal">
+            <span class="text-brand-yellow font-bold uppercase tracking-widest text-xs">Visão Comercial</span>
+            <h2 class="text-3xl md:text-5xl font-bold text-gray-900 mt-3">Investimento CAPEX</h2>
+            <p class="text-gray-500 mt-4 max-w-xl mx-auto text-lg leading-relaxed">
+                O custo estrutural unificado (Fornecimento do Hardware listado no BoM + Engenharia de Instalação de todos os 40 pontos) entregue operando em 100%.
+            </p>
+        </div>
+
+        <div class="grid lg:grid-cols-1 gap-8 reveal items-stretch">
+            
+            <div class="premium-border-glow group relative z-20">
+                <div class="premium-border-inner flex flex-col lg:flex-row relative overflow-hidden bg-white p-0">
+                    <div class="absolute top-0 left-0 w-64 h-64 bg-brand-yellow/5 rounded-full blur-[80px] pointer-events-none"></div>
+                    
+                    <div class="w-full lg:w-7/12 p-8 md:p-12 relative z-10 border-b lg:border-b-0 lg:border-r border-gray-100 flex flex-col justify-center">
+                        <div class="mb-6">
+                            <span class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-black text-brand-yellow text-[10px] font-bold uppercase tracking-widest mb-4 shadow-md">
+                                ⭐ Escopo Turn-Key (Chave na Mão)
+                            </span>
+                            <h3 class="text-3xl font-bold text-gray-900">Projeto SEBRAE Santana</h3>
+                            <p class="text-sm text-gray-500 mt-2 font-medium">As 40 câmeras centralizadas com folga técnica para futuras expansões.</p>
+                        </div>
+
+                        <ul class="space-y-4">
+                            <li class="flex items-start gap-3">
+                                <i data-lucide="check-circle-2" class="w-5 h-5 text-brand-yellow shrink-0 mt-0.5"></i>
+                                <p class="text-sm text-gray-700 leading-relaxed"><strong>Hardwares Principais:</strong> 40x Câmeras VIPs Intelbras (Domes e Bullets), 2x NVRs 32CH, 2x HDs 8TB e 2x Switches PoE.</p>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <i data-lucide="check-circle-2" class="w-5 h-5 text-brand-yellow shrink-0 mt-0.5"></i>
+                                <p class="text-sm text-gray-700 leading-relaxed"><strong>Infraestrutura Física:</strong> Rack 12U, conectores e 5 caixas de cabos de rede originais (CAT6).</p>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <i data-lucide="check-circle-2" class="w-5 h-5 text-brand-yellow shrink-0 mt-0.5"></i>
+                                <p class="text-sm text-gray-700 leading-relaxed"><strong>Mão de Obra Integral:</strong> Engenharia completa da passagem de cabos até a configuração lógica da rede IP no Rack.</p>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- Lado Direito: Preço Fixo (50/50) -->
+                    <div class="w-full lg:w-5/12 bg-[#f8f9fa] p-8 md:p-12 flex flex-col items-center justify-center text-center relative z-10 min-h-[300px]">
+                        <p class="text-[11px] font-bold text-brand-goldDark uppercase tracking-widest mb-6">Sinal para Aceite (50%)</p>
+
+                        <div class="flex items-baseline justify-center gap-1.5 mb-2">
+                            <span class="text-2xl font-bold text-gray-400">R$</span>
+                            <span class="text-5xl md:text-6xl font-extrabold text-[#111827] tracking-tighter leading-none">30.745<span class="text-3xl text-gray-400">,00</span></span>
+                        </div>
+                        
+                        <div class="inline-flex items-center gap-1.5 bg-emerald-50 border border-emerald-200 text-emerald-700 px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-widest mt-2 mb-6">
+                            <i data-lucide="check" class="w-3 h-3"></i> Faturamento NF-e
+                        </div>
+
+                        <!-- Breakdown / Restante -->
+                        <div class="w-full space-y-3 mt-4">
+                            <div class="bg-white border border-gray-200 rounded-xl p-4 shadow-sm relative overflow-hidden text-center opacity-90 transition-all hover:border-brand-yellow/30">
+                                <div class="absolute top-0 left-0 w-1.5 h-full bg-brand-yellow"></div>
+                                <div class="pl-2">
+                                    <span class="text-[10px] font-bold uppercase tracking-widest text-gray-500 block mb-1">Finalização (50%)</span>
+                                    <span class="font-extrabold text-gray-900 text-lg">R$ 30.745,00 <span class="text-xs font-medium text-gray-500 normal-case tracking-normal pl-1">após entrega final</span></span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <p class="text-xs text-gray-400 font-medium mt-6">(Investimento Total CAPEX: R$ 61.490,00)</p>
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<!-- ===================== FAQ ===================== -->
+<section id="faq" class="py-24 bg-[#f8f9fa] border-t border-gray-200/60 relative">
+    <div class="max-w-3xl mx-auto px-4">
+        <div class="text-center mb-14 reveal">
+            <span class="text-brand-yellow font-bold uppercase tracking-widest text-xs">Dúvidas Frequentes</span>
+            <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mt-3">Perguntas & Respostas</h2>
+        </div>
+        
+        <div class="space-y-4 reveal" id="accordion">
+            
+            <div class="accordion-item bg-white rounded-2xl border border-gray-100 shadow-sm overflow-hidden transition-all hover:border-brand-yellow/50">
+                <button onclick="toggleAccordion(this)" class="w-full flex items-center justify-between p-6 text-left font-bold text-gray-900 focus:outline-none">
+                    <span>A infraestrutura suporta a adição de mais câmeras no futuro?</span>
+                    <i data-lucide="chevron-down" class="w-5 h-5 text-brand-yellow acc-arrow shrink-0"></i>
+                </button>
+                <div class="accordion-content">
+                    <p class="px-6 pb-6 text-gray-600 text-sm leading-relaxed">Sim! Esse é o maior benefício do projeto. Como orçamos 2 NVRs de 32 canais (total de 64), o sistema nasce com 24 portas vagas no datacenter. Adicionar câmeras novas no próximo ano será apenas puxar um cabo e plugar, sem a necessidade de comprar gravadores caros novamente.</p>
+                </div>
+            </div>
+
+            <div class="accordion-item bg-white rounded-2xl border border-gray-100 shadow-sm overflow-hidden transition-all hover:border-brand-yellow/50">
+                <button onclick="toggleAccordion(this)" class="w-full flex items-center justify-between p-6 text-left font-bold text-gray-900 focus:outline-none">
+                    <span>Como a fiação será organizada entre os andares?</span>
+                    <i data-lucide="chevron-down" class="w-5 h-5 text-brand-yellow acc-arrow shrink-0"></i>
+                </button>
+                <div class="accordion-content">
+                    <p class="px-6 pb-6 text-gray-600 text-sm leading-relaxed">Não desceremos 40 cabos pelos dutos. A estratégia PoE (Power over Ethernet) permite que instalemos Switches estratégicos por andar. As câmeras ligam nesse Switch usando o cabo de rede CAT6, e apenas um cabo (ou fibra óptica) de alta capacidade desce daquele andar até a sala do servidor. É uma rede inteligente e limpa.</p>
+                </div>
+            </div>
+
+            <div class="accordion-item bg-white rounded-2xl border border-gray-100 shadow-sm overflow-hidden transition-all hover:border-brand-yellow/50">
+                <button onclick="toggleAccordion(this)" class="w-full flex items-center justify-between p-6 text-left font-bold text-gray-900 focus:outline-none">
+                    <span>A instalação e passagem de cabos vão interromper o expediente do SEBRAE?</span>
+                    <i data-lucide="chevron-down" class="w-5 h-5 text-brand-yellow acc-arrow shrink-0"></i>
+                </button>
+                <div class="accordion-content">
+                    <p class="px-6 pb-6 text-gray-600 text-sm leading-relaxed">Não. Nossa equipe é especialista em ambientes corporativos e executa as passagens de infraestrutura pelo forro de forma silenciosa e organizada. Caso seja necessário intervir em áreas de fluxo mais sensíveis, podemos alinhar horários alternativos para não impactar em nada a operação da unidade.</p>
+                </div>
+            </div>
+
+            <div class="accordion-item bg-white rounded-2xl border border-gray-100 shadow-sm overflow-hidden transition-all hover:border-brand-yellow/50">
+                <button onclick="toggleAccordion(this)" class="w-full flex items-center justify-between p-6 text-left font-bold text-gray-900 focus:outline-none">
+                    <span>Quem fica responsável pela configuração do aplicativo nos celulares da diretoria?</span>
+                    <i data-lucide="chevron-down" class="w-5 h-5 text-brand-yellow acc-arrow shrink-0"></i>
+                </button>
+                <div class="accordion-content">
+                    <p class="px-6 pb-6 text-gray-600 text-sm leading-relaxed">A nossa engenharia cuidará de tudo. Deixaremos o sistema 100% configurado nos smartphones da diretoria e dos gerentes solicitados. No momento da entrega final do projeto, damos todo o treinamento de uso do software da Intelbras para puxar gravações e ver imagens ao vivo.</p>
+                </div>
+            </div>
+
+            <div class="accordion-item bg-white rounded-2xl border border-gray-100 shadow-sm overflow-hidden transition-all hover:border-brand-yellow/50">
+                <button onclick="toggleAccordion(this)" class="w-full flex items-center justify-between p-6 text-left font-bold text-gray-900 focus:outline-none">
+                    <span>Vocês oferecem suporte caso as câmeras fiquem off-line por queda de internet?</span>
+                    <i data-lucide="chevron-down" class="w-5 h-5 text-brand-yellow acc-arrow shrink-0"></i>
+                </button>
+                <div class="accordion-content">
+                    <p class="px-6 pb-6 text-gray-600 text-sm leading-relaxed">A gravação do sistema no SEBRAE é local (dentro dos NVRs). Isso significa que, mesmo se a internet do prédio cair, a segurança não para e o sistema continua gravando normalmente. Quando a rede voltar, o acesso remoto pelo aplicativo volta a funcionar automaticamente, sem a perda de um único segundo de vídeo.</p>
+                </div>
+            </div>
+
+            <div class="accordion-item bg-white rounded-2xl border border-gray-100 shadow-sm overflow-hidden transition-all hover:border-brand-yellow/50">
+                <button onclick="toggleAccordion(this)" class="w-full flex items-center justify-between p-6 text-left font-bold text-gray-900 focus:outline-none">
+                    <span>Como funciona a garantia dos equipamentos?</span>
+                    <i data-lucide="chevron-down" class="w-5 h-5 text-brand-yellow acc-arrow shrink-0"></i>
+                </button>
+                <div class="accordion-content">
+                    <p class="px-6 pb-6 text-gray-600 text-sm leading-relaxed">Como vocês estão contratando a modalidade Turn-Key (Chave na Mão), o risco tecnológico é nosso. Se qualquer câmera, switch ou NVR apresentar defeito de fabricação nos próximos 12 meses, nossa engenharia vai até o SEBRAE e troca a peça gratuitamente, sem vocês precisarem abrir chamados burocráticos com a Intelbras.</p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<!-- ===================== CTA FINAL ===================== -->
+<section class="py-28 bg-[#09090b] relative overflow-hidden">
+    <div class="bg-grid absolute inset-0 opacity-10 pointer-events-none z-0"></div>
+    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-brand-yellow/10 rounded-full blur-[100px] pointer-events-none"></div>
+    
+    <div class="max-w-4xl mx-auto px-4 text-center relative z-10 reveal">
+        <span class="text-brand-yellow font-bold uppercase tracking-widest text-xs mb-4 block">Alinhamento Executivo</span>
+        <h2 class="text-3xl md:text-5xl font-extrabold text-white leading-tight mb-6">
+            A infraestrutura certa para<br><span class="text-gold-shine">a segurança do SEBRAE.</span>
+        </h2>
+        <p class="text-zinc-400 text-lg mb-10 leading-relaxed max-w-2xl mx-auto">
+            Guilherme, o documento com a engenharia de CFTV IP está preparado para a apresentação. O próximo passo é cravarmos os detalhes da infraestrutura na visita técnica.
+        </p>
+
+        <a href="https://wa.me/5511945931528?text=Olá%20Dayana,%20analisei%20a%20proposta%20do%20SEBRAE.%20Gostaria%20de%20agendar%20a%20visita%20técnica%20para%20validarmos%20o%20projeto." target="_blank" onclick="if(window.clarity) window.clarity('event', 'Clique_WhatsApp_Principal');" class="inline-flex items-center gap-3 bg-brand-yellow hover:bg-brand-goldLight text-brand-black font-bold px-10 py-5 rounded-full transition-all shadow-glow-md text-sm uppercase tracking-widest transform hover:scale-[1.03]">
+            <i data-lucide="map-pin" class="w-5 h-5"></i>
+            Agendar Visita Técnica (Dayana)
+            <i data-lucide="arrow-right" class="w-4 h-4 ml-1"></i>
+        </a>
+    </div>
+</section>
+
+<!-- ===================== FOOTER ===================== -->
+<footer class="bg-black py-16 text-center border-t border-zinc-900 group">
+    <div class="max-w-4xl mx-auto px-4">
+        
+        <div class="flex flex-col items-center justify-center leading-none opacity-40 group-hover:opacity-100 transition-opacity duration-500 cursor-default mb-10">
+            <div class="flex flex-col items-center">
+                <div class="relative flex items-baseline leading-none">
+                    <span class="font-logo font-bold text-[3.5rem] text-white lowercase tracking-[-0.05em] leading-none">vısıon</span>
+                    <!-- R circulado rebaixado milimetricamente -->
+                    <span class="absolute -right-3.5 top-2.5 text-[0.75rem] text-brand-yellow font-bold">®</span>
+                </div>
+                <span class="font-tech text-[0.75rem] font-bold text-zinc-500 lowercase -mt-3 ml-1.5 text-center w-full" style="letter-spacing: 0.53em;">business</span>
+            </div>
+        </div>
+
+        <div class="text-zinc-500 text-xs md:text-sm leading-relaxed space-y-1 mb-8 opacity-60">
+            <p><strong>Projeto SEBRAE Capital Norte (A/C Guilherme)</strong> | Santana, São Paulo - SP</p>
+            <p>Proposta Executiva #VB-2026-0331 | Emitida em Março de 2026</p>
+        </div>
+
+        <div class="inline-flex items-center justify-center gap-2 border border-zinc-800 bg-zinc-900/50 px-5 py-2.5 rounded-full mb-6 shadow-sm">
+            <i data-lucide="lock" class="w-3.5 h-3.5 text-brand-yellow"></i>
+            <span class="text-[10px] md:text-xs text-zinc-400 uppercase tracking-widest font-bold">Documento confidencial corporativo</span>
+        </div>
+        
+        <p class="text-[10px] text-zinc-700 uppercase tracking-widest font-bold mt-6">Engenharia de Segurança Corporativa</p>
+    </div>
+</footer>
+
+<!-- WHATSAPP CTA FLUTUANTE -->
+<div id="cta-float" class="fixed bottom-6 right-6 z-40 hidden md:block">
+    <a href="https://wa.me/5511945931528?text=Olá%20Dayana,%20analisei%20a%20proposta%20do%20SEBRAE.%20Gostaria%20de%20agendar%20a%20visita%20técnica%20para%20validarmos%20o%20projeto." target="_blank" onclick="if(window.clarity) window.clarity('event', 'Clique_WhatsApp_Flutuante');" class="flex items-center gap-3 bg-brand-yellow text-black font-bold px-6 py-4 rounded-full shadow-glow-md hover:shadow-glow transition-all group">
+        <i data-lucide="calendar-check" class="w-5 h-5"></i>
+        <span class="text-sm tracking-wide uppercase">Agendar Visita</span>
+        <i data-lucide="arrow-right" class="w-4 h-4 group-hover:translate-x-1 transition-transform"></i>
+    </a>
+</div>
+
+<!-- ===================== SCRIPTS ===================== -->
+<script>
+    // INIT LUCIDE ICONS
+    lucide.createIcons();
+
+    // LOCK SCREEN + FORMSUBMIT (STATICFORMS) + CLARITY
+    function checkPassword() {
+        const input = document.getElementById('password-input').value;
+        const errorMsg = document.getElementById('error-msg');
+        
+        // Senhas configuradas
+        if (input.toUpperCase() === 'GUILHERME2026' || input.toUpperCase() === 'VISION') {
+            const lockScreen = document.getElementById('lock-screen');
+            lockScreen.style.opacity = '0';
+
+            // Microsoft Clarity - Rastreamento Avançado
+            if (window.clarity) {
+                window.clarity("consent");
+                window.clarity("identify", "guilherme-sebrae", undefined, undefined, "Guilherme (SEBRAE)");
+                window.clarity("set", "Proposta", "Projeto_SEBRAE_Guilherme");
+                window.clarity("event", "Proposta_Desbloqueada");
+            }
+
+            // Lógica para dar play no vídeo original do Hero
+            const video1 = document.getElementById("vision-video");
+            if (video1 && video1.paused) {
+                video1.muted = true;
+                video1.play().catch(e => {});
+            }
+
+            // Envio silencioso do alerta de acesso
+            fetch('https://api.staticforms.dev/submit', {
+                method: 'POST',
+                headers: { 
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json'
+                },
+                body: JSON.stringify({
+                    accessKey: "sf_077ej49gjha153gk3m6ceecf",
+                    subject: "🚨 ALERTA B2B: Proposta Acessada (Guilherme - SEBRAE)",
+                    name: "Sistema Vision",
+                    email: "diretoria@visionsp.com.br",
+                    message: `O cliente acabou de abrir a proposta corporativa no LAYOUT PADRÃO VISION!\n\n👤 Cliente: Guilherme (SEBRAE)\n📍 Local: Santana, SP Capital\n🔑 Senha Utilizada: ${input}\n🕒 Horário: ${new Date().toLocaleString('pt-BR')}`
+                })
+            }).catch(error => console.log('Log de acesso registrado.'));
+
+            setTimeout(() => { 
+                lockScreen.style.display = 'none'; 
+                const htmlRoot = document.getElementById('html-root');
+                if(htmlRoot) {
+                    htmlRoot.classList.remove('overflow-hidden', 'h-screen');
+                    htmlRoot.classList.add('overflow-x-hidden');
+                }
+                document.body.classList.remove('overflow-hidden', 'h-screen');
+            }, 700);
+        } else {
+            errorMsg.classList.remove('hidden');
+            document.getElementById('password-input').style.borderColor = 'rgba(239,68,68,0.5)';
+            setTimeout(() => {
+                errorMsg.classList.add('hidden');
+                document.getElementById('password-input').style.borderColor = '';
+            }, 3000);
+        }
+    }
+
+    // Permitir submeter com a tecla Enter
+    document.getElementById('password-input').addEventListener('keypress', function(e) {
+        if (e.key === 'Enter') {
+            checkPassword();
+        }
+    });
+
+    // REVEAL ON SCROLL
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('active');
+            }
+        });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+    // ANIMATE COUNTERS
+    function animateCounter(el, target) {
+        let current = 0;
+        const increment = Math.ceil(target / 40) || 1;
+        const interval = setInterval(() => {
+            current = Math.min(current + increment, target);
+            el.textContent = current;
+            if (current === target) clearInterval(interval);
+        }, 40);
+    }
+    const counterObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const el = entry.target;
+                const target = parseInt(el.getAttribute('data-target'));
+                animateCounter(el, target);
+                counterObserver.unobserve(el);
+            }
+        });
+    }, { threshold: 0.5 });
+    document.querySelectorAll('[data-target]').forEach(el => counterObserver.observe(el));
+
+    // ACCORDION
+    function toggleAccordion(btn) {
+        const item = btn.parentElement;
+        const isOpen = item.classList.contains('open');
+        document.querySelectorAll('.accordion-item').forEach(i => i.classList.remove('open'));
+        if (!isOpen) item.classList.add('open');
+        lucide.createIcons();
+    }
+
+    // NAVBAR E CTA SCROLL
+    window.addEventListener('scroll', () => {
+        const navbar = document.getElementById('navbar');
+        const ctaFloat = document.getElementById('cta-float');
+        
+        if (window.scrollY > 50) {
+            navbar.classList.add('shadow-md');
+        } else {
+            navbar.classList.remove('shadow-md');
+        }
+
+        if (window.scrollY > 400) {
+            ctaFloat.classList.remove('hidden');
+        } else {
+            ctaFloat.classList.add('hidden');
+        }
+    });
+
+    // VÍDEOS INTERATIVOS
+    document.addEventListener("DOMContentLoaded", function() {
+        function setupVideo(videoId, overlayId) {
+            const video = document.getElementById(videoId);
+            const overlay = document.getElementById(overlayId);
+            
+            if (video && overlay) {
+                overlay.addEventListener("click", function(e) {
+                    e.stopPropagation(); 
+                    video.muted = false;
+                    video.loop = false; 
+                    video.currentTime = 0;
+                    video.play();
+                    overlay.style.opacity = "0";
+                    setTimeout(() => { overlay.style.display = "none"; }, 500); 
+
+                    if (window.clarity) window.clarity("event", "Video_Assistido_" + videoId);
+                });
+
+                video.addEventListener("click", function() {
+                    if (overlay.style.display === "none") {
+                        if (video.paused) { video.play(); } else { video.pause(); }
+                    }
+                });
+            }
+        }
+        setupVideo("vision-video", "unmute-overlay");
+    });
+</script>
+</body>
+</html>
