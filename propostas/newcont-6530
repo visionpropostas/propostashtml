@@ -1,0 +1,1063 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth overflow-x-hidden" id="html-root">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projeto Executivo de Acesso | New Cont – Vision</title>
+    <meta name="description" content="Controle de Acesso Facial para o Novo Prédio – Vision Tecnologia">
+    <meta name="theme-color" content="#b9880e">
+    <meta name="robots" content="noindex, nofollow">
+
+    <!-- Fonts & Icons -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@700;800&family=Quicksand:wght@500;600;700&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <!-- Google Analytics 4 -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-KTGEL92B0F"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-KTGEL92B0F');
+    </script>
+
+    <!-- Microsoft Clarity -->
+    <script type="text/javascript">
+        (function(c,l,a,r,i,t,y){
+            c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+            t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+            y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+        })(window, document, "clarity", "script", "vifq10es5o");
+    </script>
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"Outfit"', 'sans-serif'],
+                        logo: ['"League Spartan"', 'sans-serif'],
+                        tech: ['"Quicksand"', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            yellow: '#b9880e',
+                            goldLight: '#FFDE59',
+                            goldDark: '#8a6208',
+                            black: '#09090b',
+                        }
+                    },
+                    boxShadow: {
+                        'glass': '0 4px 24px 0 rgba(0,0,0,0.04)',
+                        'premium': '0 16px 50px -10px rgba(0,0,0,0.08)',
+                        'premium-card': '0 16px 50px -10px rgba(0, 0, 0, 0.08)',
+                        'glow': '0 0 20px rgba(185,136,14,0.15)',
+                        'glow-md': '0 0 35px rgba(185,136,14,0.25)',
+                    },
+                    animation: {
+                        'slide-up': 'slideUp 0.9s cubic-bezier(0.16,1,0.3,1) forwards',
+                        'float': 'float 6s ease-in-out infinite',
+                        'fade-in': 'fadeIn 0.6s ease forwards',
+                        'shine-pulse': 'shinePulse 3s ease-in-out infinite',
+                    },
+                    keyframes: {
+                        slideUp: {
+                            '0%': { opacity: '0', transform: 'translateY(40px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' }
+                        },
+                        float: {
+                            '0%,100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-12px)' }
+                        },
+                        fadeIn: {
+                            '0%': { opacity: '0' },
+                            '100%': { opacity: '1' }
+                        },
+                        shinePulse: {
+                            '0%,100%': { opacity: '0.6' },
+                            '50%': { opacity: '1' }
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: #f9fafb; }
+        ::-webkit-scrollbar-thumb { background: #d1d5db; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #b9880e; }
+
+        .text-gold-shine {
+            background: linear-gradient(to right, #b9880e 20%, #FFDE59 50%, #b9880e 80%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-size: 200% auto;
+            animation: shine 4s linear infinite;
+        }
+        @keyframes shine { to { background-position: 200% center; } }
+
+        .bg-grid {
+            background-image: linear-gradient(rgba(185,136,14,0.04) 1px, transparent 1px),
+                              linear-gradient(90deg, rgba(185,136,14,0.04) 1px, transparent 1px);
+            background-size: 40px 40px;
+        }
+        .bg-dots {
+            background-image: radial-gradient(#b9880e 1.2px, transparent 1.2px);
+            background-size: 22px 22px;
+            opacity: 0.035;
+        }
+
+        .lock-input {
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.1);
+            color: #b9880e;
+            font-family: 'League Spartan', sans-serif;
+            font-size: 1.5rem;
+            text-align: center;
+            outline: none;
+            transition: all 0.3s;
+            letter-spacing: 0.2em;
+            border-radius: 14px;
+        }
+        .lock-input:focus {
+            border-color: #b9880e;
+            background: rgba(255,255,255,0.08);
+            box-shadow: 0 0 20px rgba(185,136,14,0.25);
+        }
+        .lock-input::placeholder {
+            color: #52525b;
+            font-size: 0.85rem;
+            font-family: 'Outfit', sans-serif;
+            font-weight: 300;
+            letter-spacing: normal;
+        }
+
+        .reveal { opacity: 0; transform: translateY(30px); transition: all 0.8s cubic-bezier(0.16,1,0.3,1); }
+        .reveal.active { opacity: 1; transform: translateY(0); }
+
+        .service-card:hover { transform: translateY(-4px); box-shadow: 0 20px 40px -8px rgba(0,0,0,0.1); }
+        .service-card { transition: all 0.3s cubic-bezier(0.4,0,0.2,1); }
+
+        .accordion-content { max-height: 0; overflow: hidden; transition: max-height 0.45s cubic-bezier(0.4,0,0.2,1); }
+        .accordion-item.open .accordion-content { max-height: 600px; }
+        .accordion-item.open .acc-arrow { transform: rotate(180deg); }
+        .acc-arrow { transition: transform 0.3s; }
+
+        /* Borda Animada Premium */
+        .premium-border-glow {
+            position: relative;
+            border-radius: 2rem;
+            padding: 2px;
+            background-color: #b9880e;
+            overflow: hidden;
+            box-shadow: 0 0 35px rgba(185,136,14,0.15);
+            transition: transform 0.3s cubic-bezier(0.4,0,0.2,1);
+        }
+        .premium-border-glow:hover { transform: scale(1.01); }
+        .premium-border-glow::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: conic-gradient(
+                from 0deg, 
+                transparent 0deg, 
+                transparent 175deg, 
+                rgba(255, 222, 89, 0.6) 178deg, 
+                #ffffff 180deg, 
+                rgba(255, 222, 89, 0.6) 182deg, 
+                transparent 185deg, 
+                transparent 360deg
+            );
+            animation: rotate-border 12s linear infinite;
+            z-index: 0;
+        }
+        @keyframes rotate-border {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        .premium-border-inner {
+            position: relative;
+            z-index: 1;
+            background-color: #ffffff;
+            border-radius: calc(2rem - 2px);
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            padding: 2.5rem;
+            overflow: hidden;
+        }
+
+        .counter-num { font-variant-numeric: tabular-nums; }
+        
+        details > summary { list-style: none; }
+        details > summary::-webkit-details-marker { display: none; }
+        
+        @media print {
+            #lock-screen, #navbar, #cta-float { display: none !important; }
+            .reveal { opacity: 1 !important; transform: none !important; }
+        }
+    </style>
+</head>
+<body class="bg-[#fafafa] text-gray-800 antialiased selection:bg-brand-yellow selection:text-white overflow-x-hidden h-screen" id="body-root">
+
+<!-- ===================== LOCK SCREEN ===================== -->
+<div id="lock-screen" class="fixed inset-0 z-[100] bg-[#09090b] flex flex-col items-center justify-center text-center p-4 transition-opacity duration-700 ease-out touch-none" style="overscroll-behavior: none;">
+    <div class="bg-grid absolute inset-0 opacity-10 pointer-events-none"></div>
+    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-brand-yellow/5 rounded-full blur-[100px] pointer-events-none"></div>
+
+    <!-- Logo -->
+    <div class="relative flex flex-col items-center mb-10 z-10">
+        <div class="relative flex items-baseline leading-none">
+            <span class="font-logo font-bold text-[5.5rem] md:text-[6rem] text-gold-shine lowercase tracking-[-0.05em] leading-none">vısıon</span>
+            <span class="absolute -right-5 top-4 text-[1.1rem] text-brand-yellow font-bold">®</span>
+        </div>
+        <span class="font-tech text-[1.1rem] font-bold text-zinc-500 lowercase -mt-4 ml-2.5 text-center w-full" style="letter-spacing:0.53em;">business</span>
+    </div>
+
+    <div class="w-full max-w-sm space-y-5 z-10">
+        <div class="space-y-1.5">
+            <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-brand-yellow/30 bg-brand-yellow/10 mb-3">
+                <i data-lucide="lock" class="w-3.5 h-3.5 text-brand-yellow"></i>
+                <span class="text-brand-yellow text-[10px] font-bold uppercase tracking-widest">Acesso Restrito</span>
+            </div>
+            <h2 class="text-white font-bold text-2xl">New Cont — Prédio Novo</h2>
+            <p class="text-zinc-400 text-sm">Projeto Executivo: Acesso Facial (A/C Letícia)</p>
+        </div>
+
+        <div>
+            <!-- SENHA CONFIGURADA: LETICIA2026 ou VISION -->
+            <input type="password" id="password-input" class="lock-input w-full py-4 px-4" placeholder="INSERIR CREDENCIAL" autocomplete="off" onkeydown="if(event.key==='Enter') checkPassword()">
+            <p id="error-msg" class="text-red-400 text-xs mt-2 hidden">
+                <span class="flex items-center justify-center gap-1"><i data-lucide="x-circle" class="w-4 h-4"></i> Credencial inválida.</span>
+            </p>
+        </div>
+
+        <button onclick="checkPassword()" class="w-full bg-brand-yellow hover:bg-brand-goldLight text-black font-bold py-4 rounded-2xl transition-all shadow-glow flex items-center justify-center gap-2 group relative overflow-hidden">
+            <div class="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-300 rounded-2xl"></div>
+            <i data-lucide="shield-check" class="w-5 h-5 relative z-10"></i>
+            <span class="relative z-10 text-sm uppercase tracking-widest">Acessar Documento Técnico</span>
+            <i data-lucide="arrow-right" class="w-4 h-4 relative z-10 group-hover:translate-x-1 transition-transform"></i>
+        </button>
+
+        <p class="text-zinc-600 text-xs">Documento restrito · Válido por 15 dias · Vision Business © 2026</p>
+    </div>
+</div>
+
+<!-- ===================== NAVBAR ===================== -->
+<nav id="navbar" class="fixed w-full z-50 top-0 bg-white/90 backdrop-blur-xl border-b border-gray-200/50 shadow-sm transition-all duration-300">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-between h-20 items-center">
+            <div class="flex flex-col items-center justify-center cursor-pointer" onclick="window.scrollTo(0,0)">
+                <div class="relative flex items-baseline leading-none">
+                    <span class="font-logo font-bold text-[2.6rem] text-gold-shine lowercase tracking-[-0.05em] leading-none">vısıon</span>
+                    <span class="absolute -right-2.5 top-1.5 text-[0.6rem] text-brand-yellow font-bold">®</span>
+                </div>
+                <span class="font-tech text-[0.6rem] font-bold text-gray-400 lowercase -mt-2 ml-1.5" style="letter-spacing:0.53em;">business</span>
+            </div>
+            <div class="hidden md:flex items-center space-x-7 text-xs font-semibold text-gray-500 uppercase tracking-wider">
+                <a href="#diagnostico" class="hover:text-brand-yellow transition-colors">Diagnóstico</a>
+                <a href="#solucao" class="hover:text-brand-yellow transition-colors">Tecnologia</a>
+                <a href="#empresa" class="hover:text-brand-yellow transition-colors">A Vision</a>
+                <a href="#investimento" class="hover:text-brand-yellow transition-colors">Investimento</a>
+            </div>
+            <div class="flex items-center gap-4">
+                <button onclick="window.print()" class="text-gray-400 hover:text-brand-yellow transition-colors flex items-center gap-1.5" title="Salvar em PDF">
+                    <i data-lucide="download" class="w-4 h-4"></i>
+                    <span class="text-[10px] font-bold uppercase tracking-widest hidden sm:block">PDF</span>
+                </button>
+                <a href="#investimento" class="bg-zinc-900 text-white px-5 py-2.5 rounded-full text-[10px] font-bold uppercase tracking-widest hover:bg-brand-yellow hover:text-black transition-all shadow-md">
+                    Ver Projeto
+                </a>
+            </div>
+        </div>
+    </div>
+</nav>
+
+<!-- ===================== HERO COM VÍDEO ===================== -->
+<header class="pt-32 pb-20 lg:pt-40 relative overflow-hidden bg-[#f8f9fa]">
+    <div class="absolute inset-0 bg-grid pointer-events-none"></div>
+    <div class="absolute right-0 top-0 w-1/2 h-full bg-gradient-to-l from-white to-transparent z-0 pointer-events-none hidden lg:block"></div>
+    
+    <div class="max-w-7xl mx-auto px-4 relative z-10">
+        <div class="flex flex-col lg:flex-row items-center gap-12 lg:gap-20">
+            
+            <!-- Text Column -->
+            <div class="w-full lg:w-[55%] text-center lg:text-left animate-slide-up">
+                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-white border border-gray-200 text-gray-600 text-[10px] font-bold uppercase tracking-widest mb-8 mx-auto lg:mx-0 shadow-sm">
+                    <div class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></div>
+                    Cliente New Cont | Santo André, SP
+                </div>
+                
+                <h1 class="text-4xl md:text-5xl lg:text-[3.5rem] font-extrabold text-gray-900 leading-[1.05] tracking-tight mb-6">
+                    Acesso de alto padrão para o novo prédio da <span class="text-gold-shine">New Cont.</span>
+                </h1>
+                
+                <p class="text-base md:text-lg text-gray-500 max-w-xl mx-auto lg:mx-0 font-medium mt-6 leading-relaxed">
+                    A robustez e o acabamento impecável que a sua nova recepção exige. Tudo integrado: biometria facial ultrarrápida, monitor de vídeo e portas blindadas.
+                </p>
+
+                <div class="mt-10 flex flex-wrap items-center justify-center lg:justify-start gap-4">
+                    <div class="flex -space-x-3">
+                        <div class="w-10 h-10 rounded-full border-2 border-white bg-gray-100 flex items-center justify-center text-gray-500"><i data-lucide="scan-face" class="w-4 h-4"></i></div>
+                        <div class="w-10 h-10 rounded-full border-2 border-white bg-gray-100 flex items-center justify-center text-gray-500"><i data-lucide="monitor" class="w-4 h-4"></i></div>
+                        <div class="w-10 h-10 rounded-full border-2 border-white bg-brand-yellow/20 flex items-center justify-center text-brand-goldDark"><i data-lucide="magnet" class="w-4 h-4"></i></div>
+                    </div>
+                    <span class="text-xs font-bold text-gray-500 uppercase tracking-widest">Setup Completo Intelbras</span>
+                </div>
+            </div>
+
+            <!-- Video/Visual Column -->
+            <div class="w-full lg:w-[45%] mt-4 lg:mt-0 reveal animate-slide-up" style="animation-delay: 200ms;">
+                <div class="relative w-full max-w-lg mx-auto group z-10">
+                    <div class="relative w-full aspect-video bg-black border-[6px] md:border-[10px] border-zinc-800 rounded-t-[1rem] md:rounded-t-[1.5rem] overflow-hidden shadow-2xl">
+                        <!-- Vídeo Mulher Falando -->
+                        <video id="vision-video" class="w-full h-full object-cover cursor-pointer opacity-90" autoplay muted loop playsinline>
+                            <source src="https://res.cloudinary.com/dptcuckhf/video/upload/v1771711323/Vict%C3%B3ria_-_Vision_gdqnrk.mp4" type="video/mp4">
+                        </video>
+                        
+                        <div id="unmute-overlay" class="absolute inset-0 bg-black/50 backdrop-blur-sm flex flex-col items-center justify-center cursor-pointer transition-opacity duration-500 z-30 hover:bg-black/40">
+                            <div class="bg-brand-yellow text-black font-bold px-6 py-3 rounded-full flex items-center gap-2 shadow-glow animate-pulse transform group-hover:scale-105 transition-all">
+                                <i data-lucide="volume-2" class="w-4 h-4 fill-black"></i>
+                                <span class="text-[10px] tracking-wide uppercase">Clique para Ouvir</span>
+                            </div>
+                        </div>
+
+                        <div class="absolute top-1.5 md:top-2 left-1/2 -translate-x-1/2 w-1.5 h-1.5 md:w-2 md:h-2 bg-zinc-950 rounded-full z-20"></div>
+                    </div>
+                    <div class="relative w-[114%] -ml-[7%] h-3 md:h-5 bg-gradient-to-b from-zinc-300 to-zinc-400 rounded-b-xl md:rounded-b-2xl shadow-[0_20px_40px_rgba(0,0,0,0.5)] flex justify-center border-t border-zinc-200">
+                        <div class="w-1/5 h-1.5 md:h-2 bg-zinc-300 rounded-b-md shadow-inner"></div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Floating Quick Stats -->
+        <div class="mt-16 lg:mt-24 grid grid-cols-2 md:grid-cols-4 gap-5 max-w-4xl mx-auto reveal">
+            <div class="bg-white rounded-2xl p-6 shadow-glass border border-gray-100 text-center hover:border-brand-yellow/40 transition-all animate-float" style="animation-delay:0s;">
+                <div class="w-10 h-10 bg-brand-yellow/10 rounded-xl flex items-center justify-center mx-auto mb-3">
+                    <i data-lucide="scan-face" class="w-5 h-5 text-brand-yellow"></i>
+                </div>
+                <div class="text-3xl font-extrabold text-gray-900">&lt;1s</div>
+                <div class="text-xs text-gray-500 font-medium mt-1 uppercase tracking-wider">Leitura Rápida</div>
+            </div>
+            <div class="bg-white rounded-2xl p-6 shadow-glass border border-gray-100 text-center hover:border-brand-yellow/40 transition-all animate-float" style="animation-delay:0.8s;">
+                <div class="w-10 h-10 bg-brand-yellow/10 rounded-xl flex items-center justify-center mx-auto mb-3">
+                    <i data-lucide="magnet" class="w-5 h-5 text-brand-yellow"></i>
+                </div>
+                <div class="text-3xl font-extrabold text-gray-900">150kg</div>
+                <div class="text-xs text-gray-500 font-medium mt-1 uppercase tracking-wider">Força Eletroímã</div>
+            </div>
+            <div class="bg-white rounded-2xl p-6 shadow-glass border border-gray-100 text-center hover:border-brand-yellow/40 transition-all animate-float" style="animation-delay:0.4s;">
+                <div class="w-10 h-10 bg-brand-yellow/10 rounded-xl flex items-center justify-center mx-auto mb-3">
+                    <i data-lucide="monitor-play" class="w-5 h-5 text-brand-yellow"></i>
+                </div>
+                <div class="text-3xl font-extrabold text-gray-900">TVIP</div>
+                <div class="text-xs text-gray-500 font-medium mt-1 uppercase tracking-wider">Recepção de Vídeo</div>
+            </div>
+            <div class="bg-white rounded-2xl p-6 shadow-glass border border-gray-100 text-center hover:border-brand-yellow/40 transition-all animate-float" style="animation-delay:1.2s;">
+                <div class="w-10 h-10 bg-brand-yellow/10 rounded-xl flex items-center justify-center mx-auto mb-3">
+                    <i data-lucide="hand-metal" class="w-5 h-5 text-brand-yellow"></i>
+                </div>
+                <div class="text-3xl font-extrabold text-gray-900">100%</div>
+                <div class="text-xs text-gray-500 font-medium mt-1 uppercase tracking-wider">Saída Sem Toque</div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- ===================== DIAGNÓSTICO DO CENÁRIO ===================== -->
+<section id="diagnostico" class="py-28 bg-[#f8f9fa] border-y border-gray-200/60 relative">
+    <div class="max-w-7xl mx-auto px-4">
+        <div class="text-center mb-16 reveal">
+            <span class="text-brand-yellow font-bold uppercase tracking-widest text-xs">O Diagnóstico Consultivo</span>
+            <h2 class="text-3xl md:text-5xl font-bold text-gray-900 mt-3 leading-tight">O que mapeamos para o <br class="hidden md:block">seu novo prédio</h2>
+            <p class="text-gray-500 mt-5 max-w-3xl mx-auto text-lg leading-relaxed">
+                <strong>Letícia</strong>, é excelente ter a New Cont conosco em mais um projeto! Analisamos a sua urgência e a necessidade do novo prédio. Como a vossa equipe de T.I. já preparou o cabeamento, ganhamos muita agilidade. Focámos o projeto em três pilares essenciais:
+            </p>
+        </div>
+
+        <div class="grid md:grid-cols-3 gap-8 reveal">
+            <!-- Card 1 -->
+            <div class="bg-white rounded-[2rem] p-8 shadow-premium border border-gray-100 relative overflow-hidden group hover:-translate-y-1 transition-transform duration-300 flex flex-col">
+                <div class="absolute top-0 right-0 w-32 h-32 bg-red-50 rounded-full blur-3xl transition-colors"></div>
+                <div class="w-14 h-14 bg-red-50 rounded-2xl flex items-center justify-center mb-6 relative z-10">
+                    <i data-lucide="door-open" class="w-7 h-7 text-red-500"></i>
+                </div>
+                <h3 class="text-xl font-bold text-gray-900 mb-3 relative z-10">O Fluxo Constante</h3>
+                <p class="text-gray-600 text-sm mb-6 relative z-10 leading-relaxed flex-1">
+                    <strong>O Foco:</strong> Um prédio inteiro significa um alto volume de entradas e saídas de colaboradores. Fechaduras convencionais com lingueta mecânica estragam rapidamente sob uso intenso.
+                </p>
+                <div class="mt-auto p-4 bg-emerald-50 rounded-xl border border-emerald-100 relative z-10">
+                    <p class="text-xs text-emerald-800 leading-relaxed flex items-start gap-2">
+                        <i data-lucide="check-circle-2" class="w-4 h-4 shrink-0 mt-0.5"></i>
+                        <span><strong>A Solução Vision:</strong> Fechadura Eletroímã industrial e Mola Aérea. Sem peças móveis que se desgastam, garantindo que a porta tranque perfeitamente e suporte milhares de aberturas mensais sem manutenção.</span>
+                    </p>
+                </div>
+            </div>
+
+            <!-- Card 2 -->
+            <div class="bg-white rounded-[2rem] p-8 shadow-premium border border-gray-100 relative overflow-hidden group hover:-translate-y-1 transition-transform duration-300 flex flex-col">
+                <div class="absolute top-0 right-0 w-32 h-32 bg-orange-50 rounded-full blur-3xl transition-colors"></div>
+                <div class="w-14 h-14 bg-orange-50 rounded-2xl flex items-center justify-center mb-6 relative z-10">
+                    <i data-lucide="monitor-play" class="w-7 h-7 text-orange-500"></i>
+                </div>
+                <h3 class="text-xl font-bold text-gray-900 mb-3 relative z-10">Atendimento da Recepção</h3>
+                <p class="text-gray-600 text-sm mb-6 relative z-10 leading-relaxed flex-1">
+                    <strong>O Foco:</strong> A recepcionista precisa validar visitantes, entregadores ou clientes antes de abrir a porta de vidro, sem precisar gritar através do vidro ou sair da mesa.
+                </p>
+                <div class="mt-auto p-4 bg-emerald-50 rounded-xl border border-emerald-100 relative z-10">
+                    <p class="text-xs text-emerald-800 leading-relaxed flex items-start gap-2">
+                        <i data-lucide="check-circle-2" class="w-4 h-4 shrink-0 mt-0.5"></i>
+                        <span><strong>A Solução Vision:</strong> Instalação da Tela IP na mesa da recepção. Quando o visitante toca no terminal externo, a tela toca com vídeo e áudio bidirecional, permitindo a liberação com um simples toque.</span>
+                    </p>
+                </div>
+            </div>
+
+            <!-- Card 3 -->
+            <div class="bg-white rounded-[2rem] p-8 shadow-premium border border-gray-100 relative overflow-hidden group hover:-translate-y-1 transition-transform duration-300 flex flex-col">
+                <div class="absolute top-0 right-0 w-32 h-32 bg-blue-50 rounded-full blur-3xl transition-colors"></div>
+                <div class="w-14 h-14 bg-blue-50 rounded-2xl flex items-center justify-center mb-6 relative z-10">
+                    <i data-lucide="sparkles" class="w-7 h-7 text-blue-500"></i>
+                </div>
+                <h3 class="text-xl font-bold text-gray-900 mb-3 relative z-10">A Estética e a Urgência</h3>
+                <p class="text-gray-600 text-sm mb-6 relative z-10 leading-relaxed flex-1">
+                    <strong>O Foco:</strong> O prédio é novo e precisa começar a operar com segurança ontem, mas sem sacrificar o aspecto clean e tecnológico do hall de entrada.
+                </p>
+                <div class="mt-auto p-4 bg-emerald-50 rounded-xl border border-emerald-100 relative z-10">
+                    <p class="text-xs text-emerald-800 leading-relaxed flex items-start gap-2">
+                        <i data-lucide="check-circle-2" class="w-4 h-4 shrink-0 mt-0.5"></i>
+                        <span><strong>A Solução Vision:</strong> Aproveitamento inteligente da rede deixada pelo seu T.I.. Faremos a instalação padrão ouro, invisível para a câmera e biometria, combinada com a rapidez que só uma equipe dedicada como a nossa consegue entregar.</span>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ===================== VITRINE TECNOLÓGICA ===================== -->
+<section id="solucao" class="py-28 bg-white border-b border-gray-200/60 relative overflow-hidden">
+    <div class="absolute inset-0 bg-dots pointer-events-none"></div>
+    <div class="max-w-7xl mx-auto px-4 relative z-10">
+        
+        <div class="text-center mb-20 reveal">
+            <span class="text-brand-yellow font-bold uppercase tracking-widest text-xs">O Equipamento</span>
+            <h2 class="text-3xl md:text-5xl font-bold text-gray-900 mt-3">Tecnologia Premium Corporativa</h2>
+            <p class="text-gray-500 mt-4 max-w-2xl mx-auto text-lg">
+                Combinamos o que há de melhor no mercado para garantir que a entrada do seu prédio novo transmita segurança, modernidade e eficiência.
+            </p>
+        </div>
+
+        <div class="grid lg:grid-cols-2 gap-12 reveal items-center mb-16">
+            
+            <!-- COLUNA ESQUERDA: FOTOS DO PRODUTO -->
+            <div class="w-full flex flex-col gap-6">
+                <!-- Facial Principal -->
+                <div class="bg-gray-50 rounded-[2rem] p-8 border border-gray-200 shadow-premium flex flex-col items-center justify-center relative overflow-hidden group hover:border-brand-yellow/50 transition-all">
+                    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-brand-yellow/10 rounded-full blur-[80px] pointer-events-none"></div>
+                    <img src="https://res.cloudinary.com/dptcuckhf/image/upload/v1770745467/ss-3532-mf-w-frontal_2_c82tua.png" alt="Leitor Facial Corporativo" class="w-full max-w-[220px] object-contain drop-shadow-xl relative z-10 transform group-hover:scale-105 transition-transform duration-500 mb-4">
+                    <span class="text-gray-400 text-[10px] font-bold uppercase tracking-widest relative z-10">Leitor Facial de Alta Performance</span>
+                </div>
+
+                <!-- Sub-grid: Monitor e Botoeira/Imã -->
+                <div class="grid grid-cols-2 gap-6">
+                    <div class="bg-gray-50 rounded-2xl p-6 border border-gray-200 shadow-sm flex flex-col items-center justify-center hover:border-brand-yellow transition-colors relative group">
+                        <img src="https://res.cloudinary.com/dptcuckhf/image/upload/v1776122090/Terminal-de-video-IP-TVIP_2221_0_xowe8f.png" alt="Monitor IP" class="w-24 h-24 object-contain mb-3 transform group-hover:scale-110 transition-transform">
+                        <span class="text-[9px] text-gray-500 font-bold uppercase tracking-widest text-center">Monitor de Vídeo<br>Recepção</span>
+                    </div>
+                    <div class="bg-gray-50 rounded-2xl p-6 border border-gray-200 shadow-sm flex flex-col items-center justify-center hover:border-brand-yellow transition-colors relative group">
+                        <div class="flex items-center gap-2 mb-3">
+                            <img src="https://res.cloudinary.com/dptcuckhf/image/upload/v1776122154/Fechadura_eletro%C3%ADm%C3%A3_150_kgf_com_sensor_q8sphm.png" alt="Fechadura Eletroímã" class="w-12 h-12 object-contain transform group-hover:scale-110 transition-transform">
+                            <img src="https://res.cloudinary.com/dptcuckhf/image/upload/v1770745467/MH_104_MOLA_A%C3%89REA_mvjqbm.jpg" alt="Mola Aérea" class="w-12 h-12 object-contain mix-blend-multiply transform group-hover:scale-110 transition-transform">
+                        </div>
+                        <span class="text-[9px] text-gray-500 font-bold uppercase tracking-widest text-center">Eletroímã Industrial<br>& Mola Aérea</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- COLUNA DIREITA: CARDS DE BENEFÍCIOS -->
+            <div class="space-y-5">
+                
+                <div class="bg-white rounded-2xl p-5 border border-gray-100 shadow-glass flex items-start gap-5 relative overflow-hidden group hover:shadow-premium-card hover:border-brand-yellow/30 transition-all">
+                    <div class="w-12 h-12 shrink-0 bg-brand-yellow/10 rounded-xl flex items-center justify-center border border-brand-yellow/20">
+                        <i data-lucide="scan-face" class="w-5 h-5 text-brand-goldDark"></i>
+                    </div>
+                    <div>
+                        <h3 class="font-bold text-gray-900 text-base mb-1">Acesso Facial Ultrarrápido</h3>
+                        <p class="text-sm text-gray-600 leading-relaxed">
+                            O leitor biométrico reconhece o rosto do funcionário em menos de 1 segundo, mesmo com máscara ou em locais com pouca luz. Muito mais higiênico e rápido que as impressões digitais.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-2xl p-5 border border-gray-100 shadow-glass flex items-start gap-5 relative overflow-hidden group hover:shadow-premium-card hover:border-brand-yellow/30 transition-all">
+                    <div class="w-12 h-12 shrink-0 bg-brand-yellow/10 rounded-xl flex items-center justify-center border border-brand-yellow/20">
+                        <i data-lucide="monitor" class="w-5 h-5 text-brand-goldDark"></i>
+                    </div>
+                    <div>
+                        <h3 class="font-bold text-gray-900 text-base mb-1">Terminal de Vídeo de Mesa</h3>
+                        <p class="text-sm text-gray-600 leading-relaxed">
+                            Um monitor elegante dedicado para a sua recepção. Quando o visitante toca no terminal externo, a tela avisa com vídeo nítido e permite abrir a porta com total segurança e conforto.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-2xl p-5 border border-gray-100 shadow-glass flex items-start gap-5 relative overflow-hidden group hover:shadow-premium-card hover:border-brand-yellow/30 transition-all">
+                    <div class="w-12 h-12 shrink-0 bg-brand-yellow/10 rounded-xl flex items-center justify-center border border-brand-yellow/20">
+                        <i data-lucide="magnet" class="w-5 h-5 text-brand-goldDark"></i>
+                    </div>
+                    <div>
+                        <h3 class="font-bold text-gray-900 text-base mb-1">Eletroímã e Mola Aérea</h3>
+                        <p class="text-sm text-gray-600 leading-relaxed">
+                            A porta só fecha e tranca sozinha se tiver uma <strong>Mola Aérea</strong> instalada. O <strong>Eletroímã</strong> garante que a porta suporte a força bruta, essencial para o alto fluxo diário do prédio.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-2xl p-5 border border-gray-100 shadow-glass flex items-start gap-5 relative overflow-hidden group hover:shadow-premium-card hover:border-brand-yellow/30 transition-all">
+                    <div class="w-12 h-12 shrink-0 bg-brand-yellow/10 rounded-xl flex items-center justify-center border border-brand-yellow/20">
+                        <i data-lucide="hand-metal" class="w-5 h-5 text-brand-goldDark"></i>
+                    </div>
+                    <div>
+                        <h3 class="font-bold text-gray-900 text-base mb-1">Saída Sem Toque (No Touch)</h3>
+                        <p class="text-sm text-gray-600 leading-relaxed">
+                            Na hora de sair do prédio, o funcionário apenas aproxima a mão da <strong>botoeira em inox sem toque</strong>. É mais higiênico, evita desgaste mecânico de botões convencionais e agiliza a saída.
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<!-- ===================== VÍDEO DEMONSTRATIVO (ACESSO NA PRÁTICA) ===================== -->
+<section class="py-20 bg-[#f8f9fa] border-y border-gray-100">
+    <div class="max-w-4xl mx-auto px-4 text-center reveal">
+        <div class="inline-block bg-brand-yellow/10 text-brand-yellow text-xs font-bold px-4 py-1.5 rounded-full uppercase tracking-widest mb-4 border border-brand-yellow/20">Veja na Prática</div>
+        <h2 class="text-3xl font-bold text-gray-900 mb-8">Velocidade do Acesso Facial</h2>
+        <p class="text-gray-500 mb-10 max-w-2xl mx-auto">Confira a agilidade do sistema de reconhecimento facial integrado, garantindo um fluxo sem filas e sem contato físico.</p>
+        
+        <div class="relative w-full max-w-[320px] mx-auto aspect-[9/16] rounded-[2.5rem] overflow-hidden shadow-premium border-[8px] border-zinc-900 bg-black">
+            <iframe 
+                class="absolute inset-0 w-full h-full scale-[1.02]" 
+                src="https://www.youtube.com/embed/1dvh4e3mdL8?autoplay=0&loop=1&playlist=1dvh4e3mdL8&rel=0&controls=0" 
+                title="Demonstração Acesso Facial" 
+                frameborder="0" 
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                allowfullscreen>
+            </iframe>
+        </div>
+    </div>
+</section>
+
+<!-- ===================== A VISION (POR QUE CONTRATAR) ===================== -->
+<section id="empresa" class="py-24 bg-white relative border-b border-gray-100">
+    <div class="max-w-6xl mx-auto px-4">
+         <div class="text-center mb-16 reveal">
+             <span class="text-brand-yellow font-bold uppercase tracking-widest text-xs">Padrão Ouro Vision</span>
+             <h2 class="text-3xl font-bold text-gray-900 mt-2 mb-4">A Parceria que Você Já Conhece</h2>
+             <p class="text-gray-500 max-w-2xl mx-auto text-lg">
+                 Nós já equipamos a sua infraestrutura anterior. Sabemos exatamente como a New Cont trabalha e o nível de excelência que vocês exigem.
+             </p>
+         </div>
+
+         <div class="grid md:grid-cols-3 gap-8 reveal mb-16">
+             <!-- Card 1 -->
+             <div class="p-8 bg-[#f8f9fa] rounded-2xl border border-gray-100 shadow-sm hover:shadow-lg transition-all group">
+                 <div class="w-14 h-14 bg-brand-black text-white rounded-xl flex items-center justify-center text-2xl mb-6 group-hover:bg-brand-yellow group-hover:text-brand-black transition-colors">
+                    ⚡
+                 </div>
+                 <h3 class="text-xl font-bold text-gray-900 mb-4">Velocidade de Implantação</h3>
+                 <p class="text-gray-600 text-sm leading-relaxed">
+                     Como a sua equipe de T.I. já adiantou o cabeamento estrutural, o nosso técnico Léo poderá focar 100% na fixação estética, nas configurações lógicas de rede e na ativação rápida do sistema.
+                 </p>
+             </div>
+
+             <!-- Card 2 -->
+             <div class="p-8 bg-[#f8f9fa] rounded-2xl border border-gray-100 shadow-sm hover:shadow-lg transition-all group">
+                <div class="w-14 h-14 bg-brand-black text-white rounded-xl flex items-center justify-center text-2xl mb-6 group-hover:bg-brand-yellow group-hover:text-brand-black transition-colors">
+                   📱
+                </div>
+                <h3 class="text-xl font-bold text-gray-900 mb-4">Configuração Executiva</h3>
+                <p class="text-gray-600 text-sm leading-relaxed">
+                    Acompanhamos o processo até o fim. O Léo vai cadastrar os primeiros usuários com você, configurar a tela IP na recepção e garantir que a comunicação com a porta esteja perfeita.
+                </p>
+            </div>
+
+            <!-- Card 3 -->
+            <div class="p-8 bg-[#f8f9fa] rounded-2xl border border-gray-100 shadow-sm hover:shadow-lg transition-all group">
+                <div class="w-14 h-14 bg-brand-black text-white rounded-xl flex items-center justify-center text-2xl mb-6 group-hover:bg-brand-yellow group-hover:text-brand-black transition-colors">
+                   🤝
+                </div>
+                <h3 class="text-xl font-bold text-gray-900 mb-4">Garantia e Confiança</h3>
+                <p class="text-gray-600 text-sm leading-relaxed">
+                    Mantemos o mesmo compromisso do projeto anterior. Risco tecnológico 100% nosso. Se algum componente falhar de fábrica, nós retornamos e fazemos a troca sem custos de visita adicionais.
+                </p>
+            </div>
+         </div>
+
+    </div>
+</section>
+
+<!-- ===================== PROPOSTA COMERCIAL (INVESTIMENTO) ===================== -->
+<section id="investimento" class="py-28 bg-white relative overflow-hidden">
+    <div class="absolute inset-0 bg-dots pointer-events-none z-0"></div>
+    <div class="max-w-5xl mx-auto px-4 relative z-10">
+
+        <div class="text-center mb-12 reveal">
+            <span class="text-brand-yellow font-bold uppercase tracking-widest text-xs">Transparência Total</span>
+            <h2 class="text-3xl md:text-5xl font-bold text-gray-900 mt-3">O Investimento na sua Operação</h2>
+            <p class="text-gray-500 mt-4 max-w-xl mx-auto text-lg leading-relaxed">
+                Apresentamos o pacote executivo completo (equipamentos + engenharia) para blindar o acesso principal da New Cont.
+            </p>
+        </div>
+
+        <!-- TOGGLE DE PAGAMENTO (PIX vs CARTÃO) -->
+        <div class="flex justify-center mb-12 reveal">
+            <div class="bg-gray-100 p-1.5 rounded-full inline-flex border border-gray-200 shadow-inner">
+                <button id="btn-pix" onclick="togglePayment(true)" class="px-6 py-2.5 rounded-full text-sm font-bold bg-brand-yellow text-black shadow-md transition-all">
+                    À Vista (PIX)
+                </button>
+                <button id="btn-card" onclick="togglePayment(false)" class="px-6 py-2.5 rounded-full text-sm font-bold bg-transparent text-gray-500 hover:text-gray-700 transition-all">
+                    Parcelado (Cartão)
+                </button>
+            </div>
+        </div>
+
+        <div class="grid lg:grid-cols-1 gap-8 reveal items-stretch">
+            
+            <div class="premium-border-glow group relative z-20">
+                <div class="premium-border-inner flex flex-col lg:flex-row relative overflow-hidden bg-white p-0">
+                    <div class="absolute top-0 left-0 w-64 h-64 bg-brand-yellow/5 rounded-full blur-[80px] pointer-events-none"></div>
+                    
+                    <div class="w-full lg:w-7/12 p-8 md:p-12 relative z-10 border-b lg:border-b-0 lg:border-r border-gray-100">
+                        <div class="mb-6">
+                            <span class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-black text-brand-yellow text-[10px] font-bold uppercase tracking-widest mb-4 shadow-md">
+                                ⭐ Escopo Corporativo Completo
+                            </span>
+                            <h3 class="text-3xl font-bold text-gray-900">Projeto Acesso Facial (Prédio Novo)</h3>
+                            <p class="text-sm text-gray-500 mt-2 font-medium">A biometria facial, tela de vídeo na recepção, trava de alta força magnética e fechamento suave.</p>
+                        </div>
+
+                        <ul class="space-y-3 mb-2">
+                            <li class="flex items-center gap-2"><i data-lucide="check-circle-2" class="w-5 h-5 text-brand-yellow shrink-0"></i> <span class="text-sm text-gray-700"><strong>Fornecimento do Leitor Facial Corporativo.</strong></span></li>
+                            <li class="flex items-center gap-2"><i data-lucide="check-circle-2" class="w-5 h-5 text-brand-yellow shrink-0"></i> <span class="text-sm text-gray-700"><strong>Fornecimento do Monitor IP de Recepção.</strong></span></li>
+                            <li class="flex items-start gap-2"><i data-lucide="check-circle-2" class="w-5 h-5 text-brand-yellow shrink-0 mt-1"></i> <span class="text-sm text-gray-700">Fornecimento do <strong>Eletroímã Industrial</strong>, <strong>Mola Aérea Hidráulica</strong>, Botoeira Sem Toque (Inox) e Fonte de Alimentação com Bateria (Segurança contra queda de energia).</span></li>
+                            <li class="flex items-start gap-2"><i data-lucide="check-circle-2" class="w-5 h-5 text-brand-yellow shrink-0 mt-1"></i> <span class="text-sm text-gray-700"><strong>Instalação Premium:</strong> O Léo fará a fixação dos aparelhos e das travas, além de todas as integrações lógicas na rede para o sistema funcionar em perfeita sincronia.</span></li>
+                        </ul>
+                    </div>
+
+                    <!-- Lado Direito: Preço Dinâmico -->
+                    <div class="w-full lg:w-5/12 bg-[#f8f9fa] p-8 md:p-12 flex flex-col items-center justify-center text-center relative z-10 min-h-[300px]">
+                        <p class="text-[11px] font-bold text-gray-400 uppercase tracking-widest mb-4" id="label-price">Investimento Total</p>
+
+                        <!-- Bloco PIX (Default) -->
+                        <div id="price-pix-block" class="flex flex-col items-center justify-center w-full transition-opacity duration-300">
+                            <div class="flex items-baseline justify-center gap-1.5 mb-2">
+                                <span class="text-2xl font-bold text-gray-400">R$</span>
+                                <span class="text-5xl md:text-6xl font-extrabold text-[#111827] tracking-tighter leading-none">5.790<span class="text-3xl text-gray-400">,00</span></span>
+                            </div>
+                            <div class="inline-flex items-center gap-1.5 bg-emerald-50 border border-emerald-200 text-emerald-700 px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-widest mt-2">
+                                <i data-lucide="zap" class="w-3 h-3"></i> Pagamento à vista (PIX)
+                            </div>
+                            
+                            <!-- Breakdown do PIX -->
+                            <div class="w-full mt-6 space-y-2">
+                                <div class="bg-white border border-gray-200 rounded-xl p-3 shadow-sm relative overflow-hidden text-center opacity-90">
+                                    <div class="absolute top-0 left-0 w-1.5 h-full bg-emerald-400"></div>
+                                    <div class="pl-2">
+                                        <span class="text-[10px] font-bold uppercase tracking-widest text-gray-500 block mb-0.5">Sinal (Aprovação)</span>
+                                        <span class="font-bold text-gray-900 text-sm">R$ 2.895,00</span>
+                                    </div>
+                                </div>
+                                <div class="bg-white border border-gray-200 rounded-xl p-3 shadow-sm relative overflow-hidden text-center opacity-90">
+                                    <div class="absolute top-0 left-0 w-1.5 h-full bg-brand-yellow"></div>
+                                    <div class="pl-2">
+                                        <span class="text-[10px] font-bold uppercase tracking-widest text-gray-500 block mb-0.5">Finalização (Pós-Entrega)</span>
+                                        <span class="font-bold text-gray-900 text-sm">R$ 2.895,00</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Bloco CARTÃO (Hidden) -->
+                        <div id="price-card-block" class="hidden flex-col items-center justify-center w-full transition-opacity duration-300">
+                            <span class="text-sm font-bold text-gray-400 mb-1">Pague parcelado em</span>
+                            <div class="flex items-baseline justify-center gap-1.5 mb-4">
+                                <span class="text-3xl font-bold text-[#111827]">12x de R$</span>
+                                <span class="text-6xl font-extrabold text-[#111827] tracking-tighter leading-none">559<span class="text-4xl text-gray-400">,70</span></span>
+                            </div>
+                            <div class="inline-flex items-center gap-1.5 bg-blue-50 border border-blue-200 text-blue-700 px-3 py-1.5 rounded-full w-fit shadow-sm mt-1">
+                                <i data-lucide="credit-card" class="w-4 h-4"></i>
+                                <span class="text-[10px] font-bold uppercase tracking-widest">Cartão de Crédito</span>
+                            </div>
+                            <p class="text-xs text-gray-400 font-medium mt-4">Valor total parcelado: R$ 6.716,40</p>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<!-- ===================== FAQ ===================== -->
+<section id="faq" class="py-24 bg-[#f8f9fa] border-t border-gray-200/60">
+    <div class="max-w-3xl mx-auto px-4">
+        <div class="text-center mb-14 reveal">
+            <span class="text-brand-yellow font-bold uppercase tracking-widest text-xs">Dúvidas Frequentes</span>
+            <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mt-3">Perguntas & Respostas</h2>
+        </div>
+        
+        <div class="space-y-4 reveal" id="accordion">
+            
+            <div class="accordion-item bg-white rounded-2xl border border-gray-100 shadow-sm overflow-hidden transition-all hover:border-brand-yellow/50">
+                <button onclick="toggleAccordion(this)" class="w-full flex items-center justify-between p-6 text-left font-bold text-gray-900 focus:outline-none">
+                    <span>O que acontece se faltar luz na rua do novo prédio?</span>
+                    <i data-lucide="chevron-down" class="w-5 h-5 text-brand-yellow acc-arrow shrink-0"></i>
+                </button>
+                <div class="accordion-content">
+                    <p class="px-6 pb-6 text-gray-600 text-sm leading-relaxed">O projeto já inclui uma fonte com bateria selada de 12V. Em caso de corte de energia na rua, o sistema comuta automaticamente para a bateria. O leitor facial continua a funcionar e a porta mantém-se trancada pelo eletroímã de forma contínua.</p>
+                </div>
+            </div>
+
+            <div class="accordion-item bg-white rounded-2xl border border-gray-100 shadow-sm overflow-hidden transition-all hover:border-brand-yellow/50">
+                <button onclick="toggleAccordion(this)" class="w-full flex items-center justify-between p-6 text-left font-bold text-gray-900 focus:outline-none">
+                    <span>A tela na recepção comunica-se por Wi-Fi ou cabo de rede?</span>
+                    <i data-lucide="chevron-down" class="w-5 h-5 text-brand-yellow acc-arrow shrink-0"></i>
+                </button>
+                <div class="accordion-content">
+                    <p class="px-6 pb-6 text-gray-600 text-sm leading-relaxed">O monitor IP funciona através de ligação de rede. Como a sua equipe de T.I. já preparou a infraestrutura de rede, usaremos esse cabeamento para garantir a melhor qualidade de imagem, sem atrasos nas chamadas de vídeo da portaria.</p>
+                </div>
+            </div>
+
+            <div class="accordion-item bg-white rounded-2xl border border-gray-100 shadow-sm overflow-hidden transition-all hover:border-brand-yellow/50">
+                <button onclick="toggleAccordion(this)" class="w-full flex items-center justify-between p-6 text-left font-bold text-gray-900 focus:outline-none">
+                    <span>Posso também registrar visitantes ocasionais com código?</span>
+                    <i data-lucide="chevron-down" class="w-5 h-5 text-brand-yellow acc-arrow shrink-0"></i>
+                </button>
+                <div class="accordion-content">
+                    <p class="px-6 pb-6 text-gray-600 text-sm leading-relaxed">Com certeza! O Leitor Facial não lê apenas rostos. Ele permite a criação de senhas numéricas no próprio painel e também lê cartões de aproximação (Tags RFID/Mifare), oferecendo total flexibilidade para visitantes, entregadores ou funcionários pontuais.</p>
+                </div>
+            </div>
+
+            <div class="accordion-item bg-white rounded-2xl border border-gray-100 shadow-sm overflow-hidden transition-all hover:border-brand-yellow/50">
+                <button onclick="toggleAccordion(this)" class="w-full flex items-center justify-between p-6 text-left font-bold text-gray-900 focus:outline-none">
+                    <span>A instalação vai gerar muita sujeira no prédio novo?</span>
+                    <i data-lucide="chevron-down" class="w-5 h-5 text-brand-yellow acc-arrow shrink-0"></i>
+                </button>
+                <div class="accordion-content">
+                    <p class="px-6 pb-6 text-gray-600 text-sm leading-relaxed">Não. Nossa equipe utiliza técnicas de instalação limpa (White Glove). Como a sua infraestrutura de rede já está preparada, focaremos apenas na fixação dos equipamentos e passagem cuidadosa dos cabos finais, sem quebrar paredes ou danificar a pintura nova.</p>
+                </div>
+            </div>
+
+            <div class="accordion-item bg-white rounded-2xl border border-gray-100 shadow-sm overflow-hidden transition-all hover:border-brand-yellow/50">
+                <button onclick="toggleAccordion(this)" class="w-full flex items-center justify-between p-6 text-left font-bold text-gray-900 focus:outline-none">
+                    <span>O leitor facial reconhece pessoas usando máscara ou no escuro?</span>
+                    <i data-lucide="chevron-down" class="w-5 h-5 text-brand-yellow acc-arrow shrink-0"></i>
+                </button>
+                <div class="accordion-content">
+                    <p class="px-6 pb-6 text-gray-600 text-sm leading-relaxed">Sim! O equipamento possui tecnologia avançada com sensores infravermelhos que garantem a leitura ultrarrápida mesmo em ambientes sem luz. Além disso, o algoritmo identifica perfeitamente o rosto mesmo com o uso de máscaras de proteção.</p>
+                </div>
+            </div>
+
+            <div class="accordion-item bg-white rounded-2xl border border-gray-100 shadow-sm overflow-hidden transition-all hover:border-brand-yellow/50">
+                <button onclick="toggleAccordion(this)" class="w-full flex items-center justify-between p-6 text-left font-bold text-gray-900 focus:outline-none">
+                    <span>Se houver vandalismo no leitor da rua, a porta se abre?</span>
+                    <i data-lucide="chevron-down" class="w-5 h-5 text-brand-yellow acc-arrow shrink-0"></i>
+                </button>
+                <div class="accordion-content">
+                    <p class="px-6 pb-6 text-gray-600 text-sm leading-relaxed">De forma alguma. O sistema funciona com um relé de segurança interno. Se o equipamento externo for arrancado ou danificado, a fechadura de eletroímã continuará travada, mantendo o seu patrimônio 100% seguro.</p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<!-- ===================== CTA FINAL ===================== -->
+<section class="py-28 bg-[#09090b] relative overflow-hidden">
+    <div class="bg-grid absolute inset-0 opacity-10 pointer-events-none z-0"></div>
+    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-brand-yellow/10 rounded-full blur-[100px] pointer-events-none"></div>
+    
+    <div class="max-w-4xl mx-auto px-4 text-center relative z-10 reveal">
+        <span class="text-brand-yellow font-bold uppercase tracking-widest text-xs mb-4 block">Decisão Executiva</span>
+        <h2 class="text-3xl md:text-5xl font-extrabold text-white leading-tight mb-6">
+            Vamos agilizar a segurança do <span class="text-gold-shine">seu prédio novo.</span>
+        </h2>
+        <p class="text-zinc-400 text-lg mb-10 leading-relaxed max-w-2xl mx-auto">
+            Letícia, sabemos da sua urgência e a nossa agenda está pronta para vos atender. O projeto e as condições mantêm a essência da nossa parceria.
+        </p>
+
+        <a href="https://wa.me/551159950096?text=Ola%20Glicia,%20analisei%20a%20proposta%20do%20prédio%20novo%20da%20New%20Cont%20e%20gostaria%20de%20aprovar." target="_blank" onclick="if(window.clarity) window.clarity('event', 'Clique_WhatsApp_Principal');" class="inline-flex items-center gap-3 bg-brand-yellow hover:bg-brand-goldLight text-brand-black font-bold px-10 py-5 rounded-full transition-all shadow-glow-md text-sm uppercase tracking-widest transform hover:scale-[1.03]">
+            <i data-lucide="check-circle" class="w-5 h-5"></i>
+            Aprovar Projeto (Falar com Glícia)
+            <i data-lucide="arrow-right" class="w-4 h-4 ml-1"></i>
+        </a>
+    </div>
+</section>
+
+<!-- ===================== FOOTER ===================== -->
+<footer class="bg-black py-16 text-center border-t border-zinc-900 group">
+    <div class="max-w-4xl mx-auto px-4">
+        
+        <div class="flex flex-col items-center justify-center leading-none opacity-40 group-hover:opacity-100 transition-opacity duration-500 cursor-default mb-10">
+            <div class="flex flex-col items-center">
+                <div class="relative flex items-baseline leading-none">
+                    <span class="font-logo font-bold text-[3.5rem] text-white lowercase tracking-[-0.05em] leading-none">vısıon</span>
+                    <!-- R circulado rebaixado milimetricamente -->
+                    <span class="absolute -right-3.5 top-2.5 text-[0.75rem] text-brand-yellow font-bold">®</span>
+                </div>
+                <span class="font-tech text-[0.75rem] font-bold text-zinc-500 lowercase -mt-3 ml-1.5 text-center w-full" style="letter-spacing: 0.53em;">business</span>
+            </div>
+        </div>
+
+        <div class="text-zinc-500 text-xs md:text-sm leading-relaxed space-y-1 mb-8 opacity-60">
+            <p><strong>New Cont (A/C Letícia)</strong> | Travessa Marajó, 31 - Bairro Casa Branca, Santo André - SP</p>
+            <p>Proposta Executiva #VB-2026-0413 | Emitida em Abril de 2026</p>
+        </div>
+
+        <div class="inline-flex items-center justify-center gap-2 border border-zinc-800 bg-zinc-900/50 px-5 py-2.5 rounded-full mb-6 shadow-sm">
+            <i data-lucide="lock" class="w-3.5 h-3.5 text-brand-yellow"></i>
+            <span class="text-[10px] md:text-xs text-zinc-400 uppercase tracking-widest font-bold">Documento confidencial corporativo</span>
+        </div>
+        
+        <p class="text-[10px] text-zinc-700 uppercase tracking-widest font-bold mt-6">Engenharia de Segurança Corporativa</p>
+    </div>
+</footer>
+
+<!-- WHATSAPP CTA FLUTUANTE -->
+<div id="cta-float" class="fixed bottom-6 right-6 z-40 hidden md:block">
+    <a href="https://wa.me/551159950096?text=Ola%20Glicia,%20analisei%20a%20proposta%20do%20prédio%20novo%20da%20New%20Cont%20e%20gostaria%20de%20aprovar." target="_blank" onclick="if(window.clarity) window.clarity('event', 'Clique_WhatsApp_Flutuante');" class="flex items-center gap-3 bg-brand-yellow text-black font-bold px-6 py-4 rounded-full shadow-glow-md hover:shadow-glow transition-all group">
+        <i data-lucide="calendar-check" class="w-5 h-5"></i>
+        <span class="text-sm tracking-wide uppercase">Aprovar Projeto</span>
+        <i data-lucide="arrow-right" class="w-4 h-4 group-hover:translate-x-1 transition-transform"></i>
+    </a>
+</div>
+
+<!-- ===================== SCRIPTS ===================== -->
+<script>
+    // INIT LUCIDE ICONS
+    lucide.createIcons();
+
+    // LÓGICA DO TOGGLE DE PAGAMENTO (PIX VS CARTÃO)
+    let isPix = true;
+    function togglePayment(toPix) {
+        if(isPix === toPix) return; // Já está na aba certa
+        isPix = toPix;
+
+        const btnPix = document.getElementById('btn-pix');
+        const btnCard = document.getElementById('btn-card');
+        const pixBlock = document.getElementById('price-pix-block');
+        const cardBlock = document.getElementById('price-card-block');
+
+        // Fade out
+        pixBlock.classList.add('opacity-0');
+        cardBlock.classList.add('opacity-0');
+
+        setTimeout(() => {
+            if(isPix) {
+                // Ativa estilo botão PIX
+                btnPix.classList.add('bg-brand-yellow', 'text-black');
+                btnPix.classList.remove('bg-transparent', 'text-gray-500');
+                // Desativa estilo botão Cartão
+                btnCard.classList.remove('bg-brand-yellow', 'text-black');
+                btnCard.classList.add('bg-transparent', 'text-gray-500', 'hover:text-gray-700');
+
+                // Mostra bloco PIX
+                pixBlock.classList.remove('hidden');
+                cardBlock.classList.add('hidden');
+                
+            } else {
+                // Ativa estilo botão Cartão
+                btnCard.classList.add('bg-brand-yellow', 'text-black');
+                btnCard.classList.remove('bg-transparent', 'text-gray-500', 'hover:text-gray-700');
+                // Desativa estilo botão PIX
+                btnPix.classList.remove('bg-brand-yellow', 'text-black');
+                btnPix.classList.add('bg-transparent', 'text-gray-500');
+
+                // Mostra bloco Cartão
+                pixBlock.classList.add('hidden');
+                cardBlock.classList.remove('hidden');
+            }
+
+            lucide.createIcons();
+
+            // Efeito de fade in 
+            setTimeout(() => {
+                pixBlock.classList.remove('opacity-0');
+                cardBlock.classList.remove('opacity-0');
+            }, 50);
+
+        }, 300);
+
+        // Registro no Clarity 
+        if (window.clarity) window.clarity("event", isPix ? "Selecionou_PIX" : "Selecionou_Cartao");
+    }
+
+    // LOCK SCREEN + FORMSUBMIT
+    function checkPassword() {
+        const input = document.getElementById('password-input').value;
+        const errorMsg = document.getElementById('error-msg');
+        
+        if (input.toUpperCase() === 'LETICIA2026' || input.toUpperCase() === 'VISION') {
+            const lockScreen = document.getElementById('lock-screen');
+            lockScreen.style.opacity = '0';
+
+            // Start Video Se houver
+            const video = document.getElementById("vision-video");
+            if (video && video.paused) {
+                video.muted = true;
+                video.play().catch(e => {});
+            }
+
+            // --- CLARITY API TRACKING ---
+            if (window.clarity) {
+                window.clarity("consent");
+                window.clarity("identify", "leticia-newcont", undefined, undefined, "Letícia (New Cont Novo)");
+                window.clarity("set", "Proposta", "Projeto_Acesso_Leticia");
+                window.clarity("event", "Proposta_Desbloqueada");
+            }
+
+            // Envio silencioso do alerta de acesso
+            fetch('https://api.staticforms.dev/submit', {
+                method: 'POST',
+                headers: { 
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json'
+                },
+                body: JSON.stringify({
+                    accessKey: "sf_077ej49gjha153gk3m6ceecf",
+                    subject: "🚨 ALERTA: Proposta Acessada (Letícia - New Cont)",
+                    name: "Sistema Vision",
+                    email: "diretoria@visionsp.com.br",
+                    message: `A cliente Letícia abriu a proposta do prédio novo (R$ 5.790)!\n\n👤 Cliente: Letícia (New Cont - Santo André)\n🔑 Senha Utilizada: ${input}\n🕒 Horário: ${new Date().toLocaleString('pt-BR')}`
+                })
+            }).catch(error => console.log('Log de acesso registrado.'));
+
+            setTimeout(() => { 
+                lockScreen.style.display = 'none'; 
+                const htmlRoot = document.getElementById('html-root');
+                if(htmlRoot) {
+                    htmlRoot.classList.remove('overflow-hidden', 'h-screen');
+                    htmlRoot.classList.add('overflow-x-hidden');
+                }
+                document.body.classList.remove('overflow-hidden', 'h-screen');
+            }, 700);
+        } else {
+            errorMsg.classList.remove('hidden');
+            document.getElementById('password-input').style.borderColor = 'rgba(239,68,68,0.5)';
+            setTimeout(() => {
+                errorMsg.classList.add('hidden');
+                document.getElementById('password-input').style.borderColor = '';
+            }, 3000);
+        }
+    }
+
+    // Permitir submeter com a tecla Enter
+    document.getElementById('password-input').addEventListener('keypress', function(e) {
+        if (e.key === 'Enter') {
+            checkPassword();
+        }
+    });
+
+    // REVEAL ON SCROLL
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('active');
+            }
+        });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+    // ANIMATE COUNTERS
+    function animateCounter(el, target) {
+        let current = 0;
+        const increment = Math.ceil(target / 40);
+        const interval = setInterval(() => {
+            current = Math.min(current + increment, target);
+            el.textContent = current;
+            if (current === target) clearInterval(interval);
+        }, 40);
+    }
+    const counterObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const el = entry.target;
+                const target = parseInt(el.getAttribute('data-target'));
+                animateCounter(el, target);
+                counterObserver.unobserve(el);
+            }
+        });
+    }, { threshold: 0.5 });
+    document.querySelectorAll('[data-target]').forEach(el => counterObserver.observe(el));
+
+    // ACCORDION
+    function toggleAccordion(btn) {
+        const item = btn.parentElement;
+        const isOpen = item.classList.contains('open');
+        document.querySelectorAll('.accordion-item').forEach(i => i.classList.remove('open'));
+        if (!isOpen) item.classList.add('open');
+        lucide.createIcons();
+    }
+
+    // NAVBAR E CTA SCROLL
+    window.addEventListener('scroll', () => {
+        const navbar = document.getElementById('navbar');
+        const ctaFloat = document.getElementById('cta-float');
+        
+        if (window.scrollY > 50) {
+            navbar.classList.add('shadow-md');
+        } else {
+            navbar.classList.remove('shadow-md');
+        }
+
+        if (window.scrollY > 400) {
+            ctaFloat.classList.remove('hidden');
+        } else {
+            ctaFloat.classList.add('hidden');
+        }
+    });
+
+    // VIDEO UNMUTE
+    document.addEventListener("DOMContentLoaded", function() {
+        const videoHero = document.getElementById("vision-video");
+        const overlayHero = document.getElementById("unmute-overlay");
+        
+        if (videoHero && overlayHero) {
+            overlayHero.addEventListener("click", function(e) {
+                e.stopPropagation(); 
+                videoHero.muted = false;
+                videoHero.loop = false; 
+                videoHero.currentTime = 0;
+                videoHero.play();
+                overlayHero.style.opacity = "0";
+                setTimeout(() => { overlayHero.style.display = "none"; }, 500); 
+                
+                if (window.clarity) {
+                    window.clarity("event", "Video_Assistido");
+                }
+            });
+
+            videoHero.addEventListener("click", function() {
+                if (overlayHero.style.display === "none") {
+                    if (videoHero.paused) { videoHero.play(); } else { videoHero.pause(); }
+                }
+            });
+        }
+    });
+</script>
+</body>
+</html>
