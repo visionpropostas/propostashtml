@@ -141,6 +141,9 @@
         .reveal { opacity: 0; transform: translateY(30px); transition: all 0.8s cubic-bezier(0.16,1,0.3,1); }
         .reveal.active { opacity: 1; transform: translateY(0); }
 
+        .service-card:hover { transform: translateY(-4px); box-shadow: 0 20px 40px -8px rgba(0,0,0,0.1); }
+        .service-card { transition: all 0.3s cubic-bezier(0.4,0,0.2,1); }
+
         .product-card {
             background: white;
             border: 1px solid #e5e7eb;
@@ -154,12 +157,15 @@
             transform: translateY(-5px);
         }
 
+        .tier-card { transition: all 0.3s cubic-bezier(0.4,0,0.2,1); }
+        .tier-card:hover { transform: scale(1.01); }
+
         .accordion-content { max-height: 0; overflow: hidden; transition: max-height 0.45s cubic-bezier(0.4,0,0.2,1); }
         .accordion-item.open .accordion-content { max-height: 600px; }
         .accordion-item.open .acc-arrow { transform: rotate(180deg); }
         .acc-arrow { transition: transform 0.3s; }
 
-        /* Borda Animada Premium (Opção 2) */
+        /* Borda Animada Premium */
         .premium-border-glow {
             position: relative;
             border-radius: 2rem;
@@ -263,7 +269,7 @@
 <nav id="navbar" class="fixed w-full z-50 top-0 bg-white/90 backdrop-blur-xl border-b border-gray-200/50 shadow-sm transition-all duration-300">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex justify-between h-20 items-center">
-            <div class="flex flex-col items-center justify-center cursor-pointer">
+            <div class="flex flex-col items-center justify-center cursor-pointer" onclick="window.scrollTo(0,0)">
                 <div class="relative flex items-baseline leading-none">
                     <span class="font-logo font-bold text-[2.6rem] text-gold-shine lowercase tracking-[-0.05em] leading-none">vısıon</span>
                     <span class="absolute -right-2.5 top-1.5 text-[0.6rem] text-brand-yellow font-bold">®</span>
@@ -272,13 +278,19 @@
             </div>
             <div class="hidden md:flex items-center space-x-7 text-xs font-semibold text-gray-500 uppercase tracking-wider">
                 <a href="#diagnostico" class="hover:text-brand-yellow transition-colors">Diagnóstico</a>
+                <a href="#mapeamento" class="hover:text-brand-yellow transition-colors">Mapeamento</a>
                 <a href="#solucao" class="hover:text-brand-yellow transition-colors">Engenharia</a>
                 <a href="#hardware" class="hover:text-brand-yellow transition-colors">Equipamentos</a>
-                <a href="#investimento" class="hover:text-brand-yellow transition-colors">Investimento</a>
             </div>
-            <a href="#investimento" class="bg-zinc-900 text-white px-5 py-2.5 rounded-full text-[10px] font-bold uppercase tracking-widest hover:bg-brand-yellow hover:text-black transition-all shadow-md">
-                Ver Propostas
-            </a>
+            <div class="flex items-center gap-4">
+                <button onclick="window.print()" class="text-gray-400 hover:text-brand-yellow transition-colors flex items-center gap-1.5" title="Salvar em PDF">
+                    <i data-lucide="download" class="w-4 h-4"></i>
+                    <span class="text-[10px] font-bold uppercase tracking-widest hidden sm:block">PDF</span>
+                </button>
+                <a href="#investimento" class="bg-zinc-900 text-white px-5 py-2.5 rounded-full text-[10px] font-bold uppercase tracking-widest hover:bg-brand-yellow hover:text-black transition-all shadow-md">
+                    Ver Propostas
+                </a>
+            </div>
         </div>
     </div>
 </nav>
@@ -308,7 +320,7 @@
                 </h2>
             </div>
 
-            <!-- Coluna Vídeo / Mockup (mantida com a inteligência visual de um corredor seguro) -->
+            <!-- Coluna Mockup/Vídeo -->
             <div class="w-full lg:w-1/2 mt-4 lg:mt-0 reveal animate-slide-up" style="animation-delay: 200ms;">
                 <div class="relative w-full rounded-[2rem] shadow-[0_20px_50px_-10px_rgba(0,0,0,0.3)] border-[3px] border-brand-yellow/80 group hover:shadow-[0_25px_60px_-10px_rgba(0,0,0,0.4)] transition-shadow duration-500 bg-black">
                     <div class="relative w-full aspect-video rounded-[1.8rem] overflow-hidden bg-black shadow-inner">
@@ -432,9 +444,69 @@
     </div>
 </section>
 
-<!-- ===================== ECOSSISTEMA DA SOLUÇÃO ===================== -->
-<section id="solucao" class="py-28 bg-white relative overflow-hidden">
+<!-- ===================== MAPEAMENTO DAS CÂMERAS ===================== -->
+<section id="mapeamento" class="py-24 bg-white relative overflow-hidden border-b border-gray-100">
     <div class="absolute inset-0 bg-dots pointer-events-none"></div>
+    <div class="max-w-7xl mx-auto px-4 relative z-10">
+        
+        <div class="text-center mb-16 reveal">
+            <span class="text-brand-yellow font-bold uppercase tracking-widest text-xs">Aprovação do Layout</span>
+            <h2 class="text-3xl md:text-5xl font-bold text-gray-900 mt-3">Mapeamento Estratégico (1º ao 7º Andar)</h2>
+            <p class="text-gray-500 mt-4 max-w-2xl mx-auto text-lg">
+                Posicionamento técnico pensado para a funcionalidade do Condomínio. Entenda exatamente como as 29 câmeras serão distribuídas para eliminar todos os pontos cegos.
+            </p>
+        </div>
+
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-6 reveal">
+            
+            <!-- 1º ao 6º Andar -->
+            <div class="bg-white border border-brand-yellow/30 shadow-sm rounded-2xl p-5 text-center hover:border-brand-yellow hover:shadow-md transition-all group relative overflow-hidden">
+                <div class="absolute top-0 right-0 w-16 h-16 bg-brand-yellow/5 rounded-bl-full pointer-events-none"></div>
+                <div class="w-10 h-10 bg-brand-yellow/10 rounded-full flex items-center justify-center mx-auto mb-3 border border-brand-yellow/20">
+                    <i data-lucide="building" class="w-5 h-5 text-brand-goldDark group-hover:text-brand-yellow transition-colors"></i>
+                </div>
+                <div class="text-2xl font-black text-brand-goldDark mb-1">24x</div>
+                <h4 class="text-sm font-bold text-gray-900">1º ao 6º Andar</h4>
+                <p class="text-[10px] text-gray-500 mt-1 font-semibold leading-relaxed">4 Câmeras por Andar<br>Visão cruzada dos corredores</p>
+            </div>
+
+            <!-- 7º Andar -->
+            <div class="bg-white border border-brand-yellow/30 shadow-sm rounded-2xl p-5 text-center hover:border-brand-yellow hover:shadow-md transition-all group relative overflow-hidden">
+                <div class="absolute top-0 right-0 w-16 h-16 bg-brand-yellow/5 rounded-bl-full pointer-events-none"></div>
+                <div class="w-10 h-10 bg-brand-yellow/10 rounded-full flex items-center justify-center mx-auto mb-3 border border-brand-yellow/20">
+                    <i data-lucide="building-2" class="w-5 h-5 text-brand-goldDark group-hover:text-brand-yellow transition-colors"></i>
+                </div>
+                <div class="text-2xl font-black text-brand-goldDark mb-1">5x</div>
+                <h4 class="text-sm font-bold text-gray-900">7º Andar</h4>
+                <p class="text-[10px] text-gray-500 mt-1 font-semibold leading-relaxed">4 no Corredor<br>+1 Focada nos Elevadores</p>
+            </div>
+
+            <!-- Distribuição -->
+            <div class="bg-white border border-gray-200 shadow-sm rounded-2xl p-5 text-center hover:border-brand-yellow/50 hover:shadow-md transition-all group">
+                <div class="w-10 h-10 bg-gray-50 rounded-full flex items-center justify-center mx-auto mb-3 border border-gray-100 group-hover:bg-brand-yellow/10">
+                    <i data-lucide="router" class="w-5 h-5 text-gray-600 group-hover:text-brand-yellow transition-colors"></i>
+                </div>
+                <div class="text-2xl font-black text-gray-900 mb-1">7x</div>
+                <h4 class="text-sm font-bold text-gray-700">Distribuição PoE</h4>
+                <p class="text-[10px] text-gray-500 mt-1 font-semibold leading-relaxed">1 Switch em cada andar<br>Ocultos no teto falso</p>
+            </div>
+
+            <!-- Central -->
+            <div class="bg-white border border-gray-200 shadow-sm rounded-2xl p-5 text-center hover:border-brand-yellow/50 hover:shadow-md transition-all group">
+                <div class="w-10 h-10 bg-gray-50 rounded-full flex items-center justify-center mx-auto mb-3 border border-gray-100 group-hover:bg-brand-yellow/10">
+                    <i data-lucide="server" class="w-5 h-5 text-gray-600 group-hover:text-brand-yellow transition-colors"></i>
+                </div>
+                <div class="text-2xl font-black text-gray-900 mb-1">1x</div>
+                <h4 class="text-sm font-bold text-gray-700">Central Portaria</h4>
+                <p class="text-[10px] text-gray-500 mt-1 font-semibold leading-relaxed">NVR 32 Canais + 4TB<br>Recebe o cabo mestre</p>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<!-- ===================== ECOSSISTEMA DA SOLUÇÃO ===================== -->
+<section id="solucao" class="py-28 bg-[#f8f9fa] relative overflow-hidden border-y border-gray-200/60">
     <div class="max-w-7xl mx-auto px-4 relative z-10">
         <div class="text-center mb-16 reveal">
             <span class="text-brand-yellow font-bold uppercase tracking-widest text-xs">O Ecossistema Vision</span>
@@ -449,7 +521,7 @@
                     <i data-lucide="network" class="w-6 h-6 text-brand-yellow"></i>
                 </div>
                 <h3 class="font-bold text-gray-900 text-xl mb-3">Cascateamento Inteligente</h3>
-                <p class="text-gray-500 text-sm leading-relaxed mb-4">Em vez de puxar 29 cabos até a portaria, instalamos um <strong>Switch PoE Inteligente</strong> em cada andar, escondido no forro. As 4 câmeras de cada andar ligam-se apenas a ele, e um único fio desce para a central. Economia de material e eficiência brutal.</p>
+                <p class="text-gray-500 text-sm leading-relaxed mb-4">Em vez de puxar 29 cabos até a portaria, instalamos um <strong>Switch PoE Inteligente</strong> em cada andar, escondido no forro. As câmeras de cada andar ligam-se apenas a ele, e um único fio mestre desce para a central. Economia de material e eficiência brutal.</p>
             </div>
 
             <!-- Card 2 -->
@@ -483,8 +555,9 @@
 </section>
 
 <!-- ===================== HARDWARE - VITRINE ===================== -->
-<section id="hardware" class="py-20 bg-gray-50 border-t border-gray-200/60">
-    <div class="max-w-7xl mx-auto px-4">
+<section id="hardware" class="py-20 bg-white relative">
+    <div class="absolute inset-0 bg-dots pointer-events-none"></div>
+    <div class="max-w-7xl mx-auto px-4 relative z-10">
         <div class="text-center mb-12 reveal">
             <span class="text-brand-yellow font-bold uppercase tracking-widest text-xs">Especificações Técnicas</span>
             <h2 class="text-3xl md:text-5xl font-bold text-gray-900 mt-2">Tecnologia Homologada</h2>
@@ -502,7 +575,7 @@
                     </div>
                 </div>
                 <div class="p-6 flex flex-col h-[calc(100%-12rem)]">
-                    <h3 class="text-base font-bold text-gray-900 mb-1">Câmera VIPW 1220 D FC+ & VBOX</h3>
+                    <h3 class="text-base font-bold text-gray-900 mb-1">Câmera VIP 1230 D FC+ & VBOX</h3>
                     <p class="text-[10px] text-brand-yellow font-bold uppercase tracking-wider mb-4">Acabamento e Visão Full Color</p>
                     <div class="space-y-2 mb-4 text-xs text-gray-700">
                         <div class="flex items-center gap-2"><i data-lucide="check-circle" class="w-3.5 h-3.5 text-brand-yellow flex-shrink-0"></i><span>Imagem 100% colorida mesmo no escuro total</span></div>
@@ -553,7 +626,7 @@
 </section>
 
 <!-- ===================== A VISION (POR QUE CONTRATAR) ===================== -->
-<section id="empresa" class="py-24 bg-[#f8f9fa] relative border-b border-gray-100">
+<section id="empresa" class="py-24 bg-[#f8f9fa] relative border-y border-gray-200/60">
     <div class="max-w-6xl mx-auto px-4">
          <div class="text-center mb-16 reveal active">
              <span class="text-brand-yellow font-bold uppercase tracking-widest text-xs">Padrão Ouro Vision</span>
@@ -728,7 +801,7 @@
                     <i data-lucide="chevron-down" class="w-5 h-5 text-brand-yellow acc-arrow shrink-0"></i>
                 </button>
                 <div class="accordion-content">
-                    <p class="px-6 pb-6 text-gray-600 text-sm leading-relaxed">Em vez de passar um cabo separado para cada uma das 29 câmeras ligadas na portaria (o que criaria um "ninho de cabos" enorme), nós passamos apenas 1 cabo principal. Esse cabo conecta-se a um mini-distribuidor (Switch PoE) oculto no forro do andar. Daí sim, esse distribuidor liga as 4 câmeras daquele pavimento. É a tecnologia mais inteligente para manter a estética do prédio impecável.</p>
+                    <p class="px-6 pb-6 text-gray-600 text-sm leading-relaxed">Em vez de passar um cabo separado para cada uma das 29 câmeras ligadas na portaria (o que criaria um "ninho de cabos" enorme), nós passamos apenas 1 cabo principal. Esse cabo conecta-se a um mini-distribuidor (Switch PoE) oculto no forro do andar. Daí sim, esse distribuidor liga as câmeras daquele pavimento. É a tecnologia mais inteligente para manter a estética do prédio impecável.</p>
                 </div>
             </div>
 
