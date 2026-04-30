@@ -505,6 +505,66 @@
     </div>
 </section>
 
+<!-- ===================== TOPOLOGIA INTERATIVA ===================== -->
+<section id="topologia" class="py-28 bg-[#09090b] relative overflow-hidden">
+    <div class="bg-grid absolute inset-0 opacity-10 pointer-events-none z-0"></div>
+    <div class="max-w-6xl mx-auto px-4 relative z-10">
+        <div class="text-center mb-16 reveal">
+            <span class="text-brand-yellow font-bold uppercase tracking-widest text-xs">Engenharia em Detalhes</span>
+            <h2 class="text-3xl md:text-5xl font-bold text-white mt-3">A Topologia do Cascateamento</h2>
+            <p class="text-zinc-400 mt-4 max-w-2xl mx-auto text-lg">Clique nos andares abaixo para entender como a nossa equipe conectará 29 câmeras de alta definição sem congestionar o condomínio de cabos.</p>
+        </div>
+
+        <div class="flex flex-col md:flex-row gap-12 items-center reveal">
+            <!-- Diagrama Esquerdo (Espinha Dorsal) -->
+            <div class="w-full md:w-1/3 relative flex flex-col items-center py-6">
+                <!-- Linha mestre de conexão -->
+                <div class="absolute top-0 bottom-0 left-1/2 w-1 bg-zinc-800 -translate-x-1/2 rounded-full"></div>
+                <!-- Linha "acesa" de dados -->
+                <div class="absolute top-0 bottom-12 left-1/2 w-1 bg-brand-yellow -translate-x-1/2 shadow-glow animate-pulse rounded-full"></div>
+
+                <!-- Botão 7º Andar -->
+                <button onclick="updateTopology('andar-7', this)" class="topology-btn relative z-10 w-full max-w-[220px] bg-zinc-900 border-2 border-brand-yellow text-white py-4 rounded-xl mb-10 hover:scale-105 transition-all shadow-glow text-sm font-bold tracking-widest uppercase flex items-center justify-center gap-3">
+                    <i data-lucide="building-2" class="w-4 h-4"></i> 7º Andar
+                </button>
+
+                <!-- Botões 1 ao 6 Andar -->
+                <button onclick="updateTopology('andar-padrao', this)" class="topology-btn relative z-10 w-full max-w-[220px] bg-zinc-900 border-2 border-zinc-700 text-zinc-400 py-4 rounded-xl mb-10 hover:scale-105 hover:border-brand-yellow hover:text-white transition-all text-sm font-bold tracking-widest uppercase flex items-center justify-center gap-3">
+                    <i data-lucide="layers" class="w-4 h-4"></i> 1º ao 6º Andar
+                </button>
+
+                <!-- Botão Portaria -->
+                <button onclick="updateTopology('central', this)" class="topology-btn relative z-10 w-full max-w-[220px] bg-zinc-900 border-2 border-zinc-700 text-zinc-400 py-4 rounded-xl hover:scale-105 hover:border-brand-yellow hover:text-white transition-all text-sm font-bold tracking-widest uppercase flex items-center justify-center gap-3">
+                    <i data-lucide="server" class="w-4 h-4"></i> Central (Térreo)
+                </button>
+            </div>
+
+            <!-- Painel Direito de Explicação -->
+            <div class="w-full md:w-2/3">
+                <div class="bg-zinc-900 border border-zinc-800 rounded-[2rem] p-8 md:p-12 relative overflow-hidden min-h-[350px] flex flex-col justify-center transition-all duration-300" id="topo-panel">
+                    <div class="absolute top-0 right-0 w-64 h-64 bg-brand-yellow/10 rounded-full blur-[80px] pointer-events-none"></div>
+
+                    <div class="w-16 h-16 bg-brand-yellow/10 rounded-2xl flex items-center justify-center mb-6 border border-brand-yellow/20" id="topo-icon-wrapper">
+                        <i data-lucide="building-2" class="w-8 h-8 text-brand-yellow" id="topo-icon"></i>
+                    </div>
+
+                    <h3 class="text-2xl md:text-3xl font-bold text-white mb-4" id="topo-title">7º Andar (Elevadores e Corredor)</h3>
+                    <p class="text-zinc-400 leading-relaxed mb-8 text-lg" id="topo-desc">Instalamos 1x Switch PoE oculto no forro. Ele recebe as 5 câmeras do andar (fornecendo energia e internet) e injeta todo esse tráfego de dados em <strong>apenas um cabo mestre</strong>, que começa a descer pelo shaft (duto) do prédio.</p>
+
+                    <div class="flex flex-wrap gap-4" id="topo-stats">
+                        <div class="bg-black/50 border border-zinc-800 px-4 py-2.5 rounded-lg text-xs font-bold text-brand-yellow uppercase tracking-wider flex items-center gap-2">
+                            <i data-lucide="router" class="w-4 h-4"></i> 1x Switch PoE
+                        </div>
+                        <div class="bg-black/50 border border-zinc-800 px-4 py-2.5 rounded-lg text-xs font-bold text-brand-yellow uppercase tracking-wider flex items-center gap-2">
+                            <i data-lucide="video" class="w-4 h-4"></i> 5x Câmeras IP
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
 <!-- ===================== ECOSSISTEMA DA SOLUÇÃO ===================== -->
 <section id="solucao" class="py-28 bg-[#f8f9fa] relative overflow-hidden border-y border-gray-200/60">
     <div class="max-w-7xl mx-auto px-4 relative z-10">
@@ -903,6 +963,61 @@
 <script>
     // INIT LUCIDE ICONS
     lucide.createIcons();
+
+    // DADOS DA TOPOLOGIA INTERATIVA
+    const topologyData = {
+        'andar-7': {
+            title: '7º Andar (Elevadores e Corredor)',
+            desc: 'Instalamos 1x Switch PoE oculto no forro. Ele recebe as 5 câmeras do andar (fornecendo energia e dados) e injeta todo esse tráfego pesado em <strong>apenas um único cabo mestre</strong>, que começa a descer pelo duto principal do prédio.',
+            icon: 'building-2',
+            stats: ['<i data-lucide="router" class="w-4 h-4"></i> 1x Switch PoE', '<i data-lucide="video" class="w-4 h-4"></i> 5x Câmeras IP']
+        },
+        'andar-padrao': {
+            title: '1º ao 6º Andar (Cobertura Total)',
+            desc: 'Em cada um destes andares, 1x Switch PoE intercepta o cabo mestre que desce do andar de cima, atende as 4 câmeras locais daquele pavimento e continua descendo <strong>um único fio</strong> para o andar de baixo. Zero acúmulo de fios.',
+            icon: 'layers',
+            stats: ['<i data-lucide="router" class="w-4 h-4"></i> 6x Switches PoE', '<i data-lucide="video" class="w-4 h-4"></i> 24x Câmeras IP']
+        },
+        'central': {
+            title: 'Central Portaria (Térreo)',
+            desc: 'O shaft da portaria, que no modelo antigo receberia 29 cabos grossos, recebe <strong>APENAS 1 CABO DE REDE</strong>. Ele entra diretamente no NVR de 32 Canais, garantindo um ambiente limpo, organizado e livre de superaquecimento.',
+            icon: 'server',
+            stats: ['<i data-lucide="hard-drive" class="w-4 h-4"></i> 1x NVR 32 Canais', '<i data-lucide="cable" class="w-4 h-4"></i> Apenas 1 Cabo Central']
+        }
+    };
+
+    function updateTopology(nodeId, btnElement) {
+        // Atualiza estilo dos botões
+        document.querySelectorAll('.topology-btn').forEach(btn => {
+            btn.classList.remove('border-brand-yellow', 'text-white', 'shadow-glow');
+            btn.classList.add('border-zinc-700', 'text-zinc-400');
+        });
+        btnElement.classList.add('border-brand-yellow', 'text-white', 'shadow-glow');
+        btnElement.classList.remove('border-zinc-700', 'text-zinc-400');
+
+        // Anima o painel (Fade Out)
+        const panel = document.getElementById('topo-panel');
+        panel.style.opacity = '0';
+        panel.style.transform = 'translateY(10px)';
+
+        // Troca os dados e faz Fade In
+        setTimeout(() => {
+            const data = topologyData[nodeId];
+            document.getElementById('topo-title').innerHTML = data.title;
+            document.getElementById('topo-desc').innerHTML = data.desc;
+            
+            const iconWrapper = document.getElementById('topo-icon-wrapper');
+            iconWrapper.innerHTML = `<i data-lucide="${data.icon}" class="w-8 h-8 text-brand-yellow"></i>`;
+            
+            const statsWrapper = document.getElementById('topo-stats');
+            statsWrapper.innerHTML = data.stats.map(s => `<div class="bg-black/50 border border-zinc-800 px-4 py-2.5 rounded-lg text-xs font-bold text-brand-yellow uppercase tracking-wider flex items-center gap-2">${s}</div>`).join('');
+
+            lucide.createIcons();
+
+            panel.style.opacity = '1';
+            panel.style.transform = 'translateY(0)';
+        }, 200);
+    }
 
     // CALCULADORA DE INVESTIMENTOS
     const basePrice1 = 38500; // Opção 1: Analógico Tradicional
