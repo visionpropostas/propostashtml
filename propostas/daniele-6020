@@ -1,0 +1,1152 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth overflow-x-hidden" id="html-root">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Segurança e Automação | Condomínio (São Bernardo) – Vision</title>
+    <meta name="description" content="Projeto Executivo de CFTV e Automação de Acesso – Vision Tecnologia">
+    <meta name="theme-color" content="#b9880e">
+    
+    <!-- Bloqueio de Buscadores (Segurança/Confidencialidade) -->
+    <meta name="robots" content="noindex, nofollow">
+
+    <!-- Open Graph / Link Preview Tags -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Segurança e Automação | Projeto Executivo">
+    <meta property="og:description" content="Projeto Executivo: CFTV Integrado e Automação de Portas de Acesso.">
+    <meta property="og:image" content="https://res.cloudinary.com/dptcuckhf/image/upload/v1772152427/C%C3%B3pia_de_LOGO_VISION_2025_cpcpuh.png">
+    <meta property="og:locale" content="pt_BR">
+
+    <!-- Fonts & Icons -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@700;800&family=Quicksand:wght@500;600;700&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <!-- Google Analytics 4 -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-KTGEL92B0F"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-KTGEL92B0F');
+    </script>
+
+    <!-- Microsoft Clarity -->
+    <script type="text/javascript">
+        (function(c,l,a,r,i,t,y){
+            c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+            t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+            y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+        })(window, document, "clarity", "script", "vifq10es5o");
+    </script>
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"Outfit"', 'sans-serif'],
+                        logo: ['"League Spartan"', 'sans-serif'],
+                        tech: ['"Quicksand"', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            yellow: '#b9880e',
+                            goldLight: '#FFDE59',
+                            goldDark: '#8a6208',
+                            black: '#09090b',
+                        }
+                    },
+                    boxShadow: {
+                        'glass': '0 4px 24px 0 rgba(0,0,0,0.04)',
+                        'premium': '0 16px 50px -10px rgba(0,0,0,0.08)',
+                        'premium-card': '0 16px 50px -10px rgba(0, 0, 0, 0.08)',
+                        'glow': '0 0 20px rgba(185,136,14,0.15)',
+                        'glow-md': '0 0 35px rgba(185,136,14,0.25)',
+                    },
+                    animation: {
+                        'slide-up': 'slideUp 0.9s cubic-bezier(0.16,1,0.3,1) forwards',
+                        'float': 'float 6s ease-in-out infinite',
+                    },
+                    keyframes: {
+                        slideUp: {
+                            '0%': { opacity: '0', transform: 'translateY(40px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' }
+                        },
+                        float: {
+                            '0%,100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-12px)' }
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: #f9fafb; }
+        ::-webkit-scrollbar-thumb { background: #d1d5db; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #b9880e; }
+
+        .text-gold-shine {
+            background: linear-gradient(to right, #b9880e 20%, #FFDE59 50%, #b9880e 80%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-size: 200% auto;
+            animation: shine 4s linear infinite;
+        }
+        @keyframes shine { to { background-position: 200% center; } }
+
+        .bg-grid {
+            background-image: linear-gradient(rgba(185,136,14,0.04) 1px, transparent 1px),
+                              linear-gradient(90deg, rgba(185,136,14,0.04) 1px, transparent 1px);
+            background-size: 40px 40px;
+        }
+        .bg-dots {
+            background-image: radial-gradient(#b9880e 1.2px, transparent 1.2px);
+            background-size: 22px 22px;
+            opacity: 0.035;
+        }
+
+        .lock-input {
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.1);
+            color: #b9880e;
+            font-family: 'League Spartan', sans-serif;
+            font-size: 1.5rem;
+            text-align: center;
+            outline: none;
+            transition: all 0.3s;
+            letter-spacing: 0.2em;
+            border-radius: 14px;
+        }
+        .lock-input:focus {
+            border-color: #b9880e;
+            background: rgba(255,255,255,0.08);
+            box-shadow: 0 0 20px rgba(185,136,14,0.25);
+        }
+        .lock-input::placeholder {
+            color: #52525b;
+            font-size: 0.85rem;
+            font-family: 'Outfit', sans-serif;
+            font-weight: 300;
+            letter-spacing: normal;
+        }
+
+        .reveal { opacity: 0; transform: translateY(30px); transition: all 0.8s cubic-bezier(0.16,1,0.3,1); }
+        .reveal.active { opacity: 1; transform: translateY(0); }
+
+        .service-card:hover { transform: translateY(-4px); box-shadow: 0 20px 40px -8px rgba(0,0,0,0.1); }
+        .service-card { transition: all 0.3s cubic-bezier(0.4,0,0.2,1); }
+
+        .product-card {
+            background: white;
+            border: 1px solid #e5e7eb;
+            border-radius: 16px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+        .product-card:hover {
+            border-color: #b9880e;
+            box-shadow: 0 10px 30px rgba(185, 136, 14, 0.15);
+            transform: translateY(-5px);
+        }
+
+        .tier-card { transition: all 0.3s cubic-bezier(0.4,0,0.2,1); }
+        .tier-card:hover { transform: scale(1.01); }
+
+        .accordion-content { max-height: 0; overflow: hidden; transition: max-height 0.45s cubic-bezier(0.4,0,0.2,1); }
+        .accordion-item.open .accordion-content { max-height: 600px; }
+        .accordion-item.open .acc-arrow { transform: rotate(180deg); }
+        .acc-arrow { transition: transform 0.3s; }
+
+        /* Borda Animada Premium (Opção 2) */
+        .premium-border-glow {
+            position: relative;
+            border-radius: 2rem;
+            padding: 2px;
+            background-color: #b9880e;
+            overflow: hidden;
+            box-shadow: 0 0 35px rgba(185,136,14,0.15);
+            transition: transform 0.3s cubic-bezier(0.4,0,0.2,1);
+        }
+        .premium-border-glow:hover { transform: scale(1.01); }
+        .premium-border-glow::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: conic-gradient(
+                from 0deg, 
+                transparent 0deg, 
+                transparent 175deg, 
+                rgba(255, 222, 89, 0.6) 178deg, 
+                #ffffff 180deg, 
+                rgba(255, 222, 89, 0.6) 182deg, 
+                transparent 185deg, 
+                transparent 360deg
+            );
+            animation: rotate-border 12s linear infinite;
+            z-index: 0;
+        }
+        @keyframes rotate-border {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        .premium-border-inner {
+            position: relative;
+            z-index: 1;
+            background-color: #ffffff;
+            border-radius: calc(2rem - 2px);
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            padding: 2.5rem;
+            overflow: hidden;
+        }
+
+        .counter-num { font-variant-numeric: tabular-nums; }
+
+        @media print {
+            #lock-screen, #navbar, #cta-float { display: none !important; }
+            .reveal { opacity: 1 !important; transform: none !important; }
+        }
+    </style>
+</head>
+<body class="bg-[#fafafa] text-gray-800 antialiased selection:bg-brand-yellow selection:text-white h-screen overflow-hidden">
+
+<!-- ===================== LOCK SCREEN ===================== -->
+<div id="lock-screen" class="fixed inset-0 z-[100] bg-[#09090b] flex flex-col items-center justify-center text-center p-4 transition-opacity duration-700 ease-out touch-none" style="overscroll-behavior: none;">
+    <div class="bg-grid absolute inset-0 opacity-10 pointer-events-none"></div>
+    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-brand-yellow/5 rounded-full blur-[100px] pointer-events-none"></div>
+
+    <!-- Logo -->
+    <div class="relative flex flex-col items-center mb-10 z-10">
+        <div class="relative flex items-baseline leading-none">
+            <span class="font-logo font-bold text-[5.5rem] md:text-[6rem] text-gold-shine lowercase tracking-[-0.05em] leading-none">vısıon</span>
+            <span class="absolute -right-3 top-[22px] text-[1.4rem] text-brand-yellow font-bold">®</span>
+        </div>
+        <span class="font-tech text-[1.1rem] font-bold text-zinc-500 lowercase -mt-4 ml-2.5 text-center w-full" style="letter-spacing:0.53em;">condo</span>
+    </div>
+
+    <div class="w-full max-w-sm space-y-5 z-10">
+        <div class="space-y-1.5">
+            <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-brand-yellow/30 bg-brand-yellow/10 mb-3">
+                <i data-lucide="lock" class="w-3.5 h-3.5 text-brand-yellow"></i>
+                <span class="text-brand-yellow text-[10px] font-bold uppercase tracking-widest">Apresentação para Assembleia</span>
+            </div>
+            <h2 class="text-white font-bold text-2xl">Condomínio (São Bernardo)</h2>
+            <p class="text-zinc-400 text-sm">Projeto Executivo CFTV & Automação</p>
+        </div>
+
+        <div>
+            <!-- SENHA CONFIGURADA: DANIELE2026 ou VISION -->
+            <input type="password" id="password-input" class="lock-input w-full py-4 px-4" placeholder="SENHA DE ACESSO" autocomplete="off" onkeydown="if(event.key==='Enter') checkPassword()">
+            <p id="error-msg" class="text-red-400 text-xs mt-2 hidden">
+                <span class="flex items-center justify-center gap-1"><i data-lucide="x-circle" class="w-4 h-4"></i> Credencial inválida.</span>
+            </p>
+        </div>
+
+        <button onclick="checkPassword()" class="w-full bg-brand-yellow hover:bg-brand-goldLight text-black font-bold py-4 rounded-2xl transition-all shadow-glow flex items-center justify-center gap-2 group relative overflow-hidden">
+            <div class="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-300 rounded-2xl"></div>
+            <i data-lucide="shield-check" class="w-5 h-5 relative z-10"></i>
+            <span class="relative z-10 text-sm uppercase tracking-widest">Acessar Documento Técnico</span>
+            <i data-lucide="arrow-right" class="w-4 h-4 relative z-10 group-hover:translate-x-1 transition-transform"></i>
+        </button>
+
+        <p class="text-zinc-600 text-xs">Documento restrito · Válido por 15 dias · Vision Tecnologia © 2026</p>
+    </div>
+</div>
+
+<!-- ===================== NAVBAR ===================== -->
+<nav id="navbar" class="fixed w-full z-50 top-0 bg-white/90 backdrop-blur-xl border-b border-gray-200/50 shadow-sm transition-all duration-300">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-between h-20 items-center">
+            <div class="flex flex-col items-center justify-center cursor-pointer" onclick="window.scrollTo(0,0)">
+                <div class="relative flex items-baseline leading-none">
+                    <span class="font-logo font-bold text-[2.6rem] text-gold-shine lowercase tracking-[-0.05em] leading-none">vısıon</span>
+                    <span class="absolute -right-2.5 top-1.5 text-[0.6rem] text-brand-yellow font-bold">®</span>
+                </div>
+                <span class="font-tech text-[0.6rem] font-bold text-gray-400 lowercase -mt-2 ml-1.5" style="letter-spacing:0.53em;">condo</span>
+            </div>
+            <div class="hidden md:flex items-center space-x-7 text-xs font-semibold text-gray-500 uppercase tracking-wider">
+                <a href="#diagnostico" class="hover:text-brand-yellow transition-colors">Diagnóstico</a>
+                <a href="#solucao" class="hover:text-brand-yellow transition-colors">Engenharia</a>
+                <a href="#hardware" class="hover:text-brand-yellow transition-colors">Equipamentos</a>
+                <a href="#investimento" class="hover:text-brand-yellow transition-colors">Investimento</a>
+            </div>
+            <div class="flex items-center gap-4">
+                <button onclick="window.print()" class="text-gray-400 hover:text-brand-yellow transition-colors flex items-center gap-1.5" title="Salvar em PDF">
+                    <i data-lucide="download" class="w-4 h-4"></i>
+                    <span class="text-[10px] font-bold uppercase tracking-widest hidden sm:block">PDF</span>
+                </button>
+                <a href="#investimento" class="bg-zinc-900 text-white px-5 py-2.5 rounded-full text-[10px] font-bold uppercase tracking-widest hover:bg-brand-yellow hover:text-black transition-all shadow-md">
+                    Ver Projetos
+                </a>
+            </div>
+        </div>
+    </div>
+</nav>
+
+<!-- ===================== HERO ===================== -->
+<header class="pt-32 pb-20 lg:pt-40 relative overflow-hidden bg-white">
+    <div class="absolute inset-0 bg-tech-pattern pointer-events-none"></div>
+    <div class="absolute right-0 top-0 -translate-y-1/4 translate-x-1/4 w-[800px] h-[800px] bg-brand-yellow/5 rounded-full blur-[120px] pointer-events-none"></div>
+    
+    <div class="max-w-7xl mx-auto px-4 relative z-10">
+        <div class="flex flex-col lg:flex-row items-center gap-12 lg:gap-16">
+            
+            <!-- Coluna Texto -->
+            <div class="w-full lg:w-1/2 text-center lg:text-left animate-slide-up">
+                <div class="inline-flex items-center gap-2 px-5 py-2 rounded-full border border-brand-yellow/30 bg-brand-yellow/5 text-brand-yellow text-[10px] font-bold uppercase tracking-widest mb-8 mx-auto lg:mx-0">
+                    <i data-lucide="shield" class="w-4 h-4"></i>
+                    PROJETO EXECUTIVO PARA ASSEMBLEIA
+                </div>
+                
+                <h1 class="text-4xl md:text-5xl lg:text-6xl font-extrabold text-gray-900 leading-[1.05] tracking-tight mb-6">
+                    Acesso inteligente.<br>
+                    <span class="text-gold-shine">Monitoramento sem falhas.</span>
+                </h1>
+                
+                <h2 class="text-base md:text-lg text-gray-500 max-w-xl mx-auto lg:mx-0 font-medium mt-6 leading-relaxed">
+                    Daniele, a visita do nosso especialista Ernani foi fundamental. Desenvolvemos um projeto onde a segurança por vídeo se integra perfeitamente ao controle de acesso físico das portas automáticas, blindando o condomínio de ponta a ponta.
+                </h2>
+            </div>
+
+            <!-- Coluna Mockup -->
+            <div class="w-full lg:w-1/2 mt-4 lg:mt-0 reveal animate-slide-up" style="animation-delay: 200ms;">
+                <div class="relative w-full rounded-[2rem] shadow-[0_20px_50px_-10px_rgba(0,0,0,0.3)] border-[3px] border-brand-yellow/80 group hover:shadow-[0_25px_60px_-10px_rgba(0,0,0,0.4)] transition-shadow duration-500 bg-black">
+                    <div class="relative w-full aspect-video rounded-[1.8rem] overflow-hidden bg-black shadow-inner">
+                        <video id="vision-video" class="w-full h-full object-cover cursor-pointer opacity-90" autoplay muted loop playsinline>
+                            <source src="https://res.cloudinary.com/dptcuckhf/video/upload/v1771711323/Vict%C3%B3ria_-_Vision_gdqnrk.mp4" type="video/mp4">
+                            Seu navegador não suporta o formato de vídeo.
+                        </video>
+
+                        <div id="unmute-overlay" class="absolute inset-0 bg-black/50 backdrop-blur-sm flex flex-col items-center justify-center cursor-pointer transition-opacity duration-500 z-10 hover:bg-black/40">
+                            <div class="bg-brand-yellow text-black font-bold px-6 py-3 md:px-8 md:py-4 rounded-full flex items-center gap-2 md:gap-3 shadow-glow animate-pulse transform group-hover:scale-105 transition-all">
+                                <i data-lucide="volume-2" class="w-5 h-5 md:w-6 md:h-6"></i>
+                                <span class="text-xs md:text-sm tracking-wide uppercase">Clique para Ouvir</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Floating Quick Stats -->
+        <div class="mt-16 lg:mt-24 grid grid-cols-2 md:grid-cols-4 gap-5 max-w-4xl mx-auto reveal">
+            <div class="bg-white rounded-2xl p-6 shadow-glass border border-gray-100 text-center hover:border-brand-yellow/40 transition-all animate-float" style="animation-delay:0s;">
+                <div class="w-10 h-10 bg-brand-yellow/10 rounded-xl flex items-center justify-center mx-auto mb-3">
+                    <i data-lucide="video" class="w-5 h-5 text-brand-yellow"></i>
+                </div>
+                <div class="text-3xl font-extrabold text-gray-900 counter-num" data-target="10">0</div>
+                <div class="text-xs text-gray-500 font-medium mt-1 uppercase tracking-wider">Câmeras (Máx)</div>
+            </div>
+            <div class="bg-white rounded-2xl p-6 shadow-glass border border-gray-100 text-center hover:border-brand-yellow/40 transition-all animate-float" style="animation-delay:0.8s;">
+                <div class="w-10 h-10 bg-brand-yellow/10 rounded-xl flex items-center justify-center mx-auto mb-3">
+                    <i data-lucide="fingerprint" class="w-5 h-5 text-brand-yellow"></i>
+                </div>
+                <div class="text-3xl font-extrabold text-gray-900">Tag</div>
+                <div class="text-xs text-gray-500 font-medium mt-1 uppercase tracking-wider">Acesso Seguro</div>
+            </div>
+            <div class="bg-white rounded-2xl p-6 shadow-glass border border-gray-100 text-center hover:border-brand-yellow/40 transition-all animate-float" style="animation-delay:0.4s;">
+                <div class="w-10 h-10 bg-brand-yellow/10 rounded-xl flex items-center justify-center mx-auto mb-3">
+                    <i data-lucide="door-closed" class="w-5 h-5 text-brand-yellow"></i>
+                </div>
+                <div class="text-3xl font-extrabold text-gray-900 counter-num" data-target="2">0</div>
+                <div class="text-xs text-gray-500 font-medium mt-1 uppercase tracking-wider">Folhas Automatizadas</div>
+            </div>
+            <div class="bg-white rounded-2xl p-6 shadow-glass border border-gray-100 text-center hover:border-brand-yellow/40 transition-all animate-float" style="animation-delay:1.2s;">
+                <div class="w-10 h-10 bg-brand-yellow/10 rounded-xl flex items-center justify-center mx-auto mb-3">
+                    <i data-lucide="server" class="w-5 h-5 text-brand-yellow"></i>
+                </div>
+                <div class="text-3xl font-extrabold text-gray-900 counter-num" data-target="16">0</div>
+                <div class="text-xs text-gray-500 font-medium mt-1 uppercase tracking-wider">Canais no DVR</div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- ===================== DIAGNÓSTICO DO CENÁRIO ===================== -->
+<section id="diagnostico" class="py-28 bg-[#f8f9fa] border-y border-gray-200/60 relative">
+    <div class="max-w-7xl mx-auto px-4">
+        <div class="text-center mb-16 reveal">
+            <span class="text-brand-yellow font-bold uppercase tracking-widest text-xs">Visita Técnica</span>
+            <h2 class="text-3xl md:text-5xl font-bold text-gray-900 mt-3 leading-tight">Mapeamento Tático<br class="hidden md:block">com a Diretoria</h2>
+            <p class="text-gray-500 mt-5 max-w-3xl mx-auto text-lg leading-relaxed">
+                Daniele, é muito bom conversar diretamente com quem vive a rotina do condomínio. A visita do Ernani confirmou a vulnerabilidade das portas atuais e nos permitiu estruturar um ecossistema que resolve tanto o controle físico quanto o registro visual.
+            </p>
+        </div>
+
+        <div class="grid md:grid-cols-3 gap-8 reveal">
+            <!-- Card 1 -->
+            <div class="bg-white rounded-[2rem] p-8 shadow-premium border border-gray-100 relative overflow-hidden group hover:-translate-y-1 transition-transform duration-300 flex flex-col">
+                <div class="absolute top-0 right-0 w-32 h-32 bg-orange-50 rounded-full blur-3xl transition-colors"></div>
+                <div class="w-14 h-14 bg-orange-50 rounded-2xl flex items-center justify-center mb-6 relative z-10">
+                    <i data-lucide="door-open" class="w-7 h-7 text-orange-500"></i>
+                </div>
+                <h3 class="text-xl font-bold text-gray-900 mb-3 relative z-10">Vulnerabilidade no Acesso</h3>
+                <p class="text-gray-600 text-sm mb-6 relative z-10 leading-relaxed flex-1">
+                    <strong>A Situação:</strong> A porta de correr dupla atualmente opera sem barreiras adequadas, permitindo a entrada conjunta de não-moradores ("caronas") sem nenhum tipo de registro ou restrição.
+                </p>
+                <div class="p-4 bg-emerald-50 rounded-xl border border-emerald-100 relative z-10 mt-auto">
+                    <p class="text-xs text-emerald-800 leading-relaxed flex items-start gap-2">
+                        <i data-lucide="check-circle-2" class="w-4 h-4 shrink-0 mt-0.5"></i>
+                        <span><strong>A Solução Vision:</strong> Automatizadores PPA duplos integrados ao Leitor Standalone Intelbras. A porta só abre mediande a leitura da Tag (Chaveiro) do morador e fecha rapidamente.</span>
+                    </p>
+                </div>
+            </div>
+
+            <!-- Card 2 -->
+            <div class="bg-white rounded-[2rem] p-8 shadow-premium border border-gray-100 relative overflow-hidden group hover:-translate-y-1 transition-transform duration-300 flex flex-col">
+                <div class="absolute top-0 right-0 w-32 h-32 bg-blue-50 rounded-full blur-3xl transition-colors"></div>
+                <div class="w-14 h-14 bg-blue-50 rounded-2xl flex items-center justify-center mb-6 relative z-10">
+                    <i data-lucide="eye-off" class="w-7 h-7 text-blue-500"></i>
+                </div>
+                <h3 class="text-xl font-bold text-gray-900 mb-3 relative z-10">Pontos Cegos no Perímetro</h3>
+                <p class="text-gray-600 text-sm mb-6 relative z-10 leading-relaxed flex-1">
+                    <strong>A Situação:</strong> O perímetro interno e externo do condomínio não possuía cobertura suficiente, dificultando a resolução de incidentes e a identificação de visitantes.
+                </p>
+                <div class="p-4 bg-emerald-50 rounded-xl border border-emerald-100 relative z-10 mt-auto">
+                    <p class="text-xs text-emerald-800 leading-relaxed flex items-start gap-2">
+                        <i data-lucide="check-circle-2" class="w-4 h-4 shrink-0 mt-0.5"></i>
+                        <span><strong>A Solução Vision:</strong> Um grid tático de até 10 Câmeras (entre formato Bullet externo e Dome interno) cruzando imagens para garantir uma cobertura 360º de alta definição.</span>
+                    </p>
+                </div>
+            </div>
+
+            <!-- Card 3 -->
+            <div class="bg-white rounded-[2rem] p-8 shadow-premium border border-gray-100 relative overflow-hidden group hover:-translate-y-1 transition-transform duration-300 flex flex-col">
+                <div class="absolute top-0 right-0 w-32 h-32 bg-red-50 rounded-full blur-3xl transition-colors"></div>
+                <div class="w-14 h-14 bg-red-50 rounded-2xl flex items-center justify-center mb-6 relative z-10">
+                    <i data-lucide="hammer" class="w-7 h-7 text-red-500"></i>
+                </div>
+                <h3 class="text-xl font-bold text-gray-900 mb-3 relative z-10">Infraestrutura Exposta</h3>
+                <p class="text-gray-600 text-sm mb-6 relative z-10 leading-relaxed flex-1">
+                    <strong>A Situação:</strong> A maioria das empresas barateia a instalação colando fios frouxos nas paredes. Isso reduz drasticamente a vida útil do sistema no condomínio.
+                </p>
+                <div class="p-4 bg-emerald-50 rounded-xl border border-emerald-100 relative z-10 mt-auto">
+                    <p class="text-xs text-emerald-800 leading-relaxed flex items-start gap-2">
+                        <i data-lucide="check-circle-2" class="w-4 h-4 shrink-0 mt-0.5"></i>
+                        <span><strong>A Solução Vision:</strong> Uso da linha <strong>Urbanizada</strong> (Eletrodutos rígidos e Caixas VBOX de vedação). Traz uma estética limpa, industrial e com altíssima proteção anti-vandalismo.</span>
+                    </p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<!-- ===================== ECOSSISTEMA DA SOLUÇÃO ===================== -->
+<section id="solucao" class="py-28 bg-white relative overflow-hidden">
+    <div class="absolute inset-0 bg-dots pointer-events-none"></div>
+    <div class="max-w-7xl mx-auto px-4 relative z-10">
+        <div class="text-center mb-16 reveal">
+            <span class="text-brand-yellow font-bold uppercase tracking-widest text-xs">O Ecossistema Vision</span>
+            <h2 class="text-3xl md:text-5xl font-bold text-gray-900 mt-3">Segurança Analógica de Alta Definição</h2>
+            <p class="text-gray-500 mt-4 max-w-2xl mx-auto text-lg">Integração perfeita entre o controle mecânico da porta e a fiscalização em vídeo 24 horas por dia.</p>
+        </div>
+
+        <div class="grid md:grid-cols-2 gap-6 reveal">
+            <!-- Card 1 -->
+            <div class="service-card bg-white rounded-2xl p-8 border border-gray-100 shadow-glass">
+                <div class="w-12 h-12 bg-brand-yellow/10 rounded-2xl flex items-center justify-center mb-5">
+                    <i data-lucide="door-open" class="w-6 h-6 text-brand-yellow"></i>
+                </div>
+                <h3 class="font-bold text-gray-900 text-xl mb-3">Automação Dupla (PPA)</h3>
+                <p class="text-gray-500 text-sm leading-relaxed mb-4">Mecanismo de abertura simultânea para as duas folhas da porta principal. Sistema calibrado para fechar rapidamente após a passagem do morador, inibindo caronas indesejadas e garantindo o travamento.</p>
+            </div>
+
+            <!-- Card 2 -->
+            <div class="service-card bg-white rounded-2xl p-8 border border-gray-100 shadow-glass">
+                <div class="w-12 h-12 bg-brand-yellow/10 rounded-2xl flex items-center justify-center mb-5">
+                    <i data-lucide="key" class="w-6 h-6 text-brand-yellow"></i>
+                </div>
+                <h3 class="font-bold text-gray-900 text-xl mb-3">Controle Standalone Intelbras</h3>
+                <p class="text-gray-500 text-sm leading-relaxed mb-4">Leitor numérico e por aproximação (Tag). O projeto de automação já inclui <strong>20 chaveiros de aproximação</strong> configurados, garantindo que o acesso ao prédio seja fluido, exclusivo e restrito aos moradores.</p>
+            </div>
+
+            <!-- Card 3 -->
+            <div class="service-card bg-white rounded-2xl p-8 border border-gray-100 shadow-glass">
+                <div class="w-12 h-12 bg-brand-yellow/10 rounded-2xl flex items-center justify-center mb-5">
+                    <i data-lucide="camera" class="w-6 h-6 text-brand-yellow"></i>
+                </div>
+                <h3 class="font-bold text-gray-900 text-xl mb-3">Cobertura Tática (7 a 10 Câmeras)</h3>
+                <p class="text-gray-500 text-sm leading-relaxed mb-4">Mescla de modelos Bullet (para áreas externas e fachadas, devido à proteção extra contra chuva/sol) e Dome (para corredores e interiores). Alta definição de imagem dia e noite com infravermelho.</p>
+            </div>
+
+            <!-- Card 4 -->
+            <div class="service-card bg-white rounded-2xl p-8 border border-gray-100 shadow-glass">
+                <div class="w-12 h-12 bg-brand-yellow/10 rounded-2xl flex items-center justify-center mb-5">
+                    <i data-lucide="server" class="w-6 h-6 text-brand-yellow"></i>
+                </div>
+                <h3 class="font-bold text-gray-900 text-xl mb-3">Gravação Centralizada HDCVI</h3>
+                <p class="text-gray-500 text-sm leading-relaxed mb-4"><strong>DVR 16 Canais + HD Purple 2TB.</strong> O servidor central comporta o projeto atual e ainda deixa canais livres para o futuro. O disco rígido da linha Purple é feito exclusivamente para rodar 24h sem falhas.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ===================== HARDWARE - VITRINE ===================== -->
+<section id="hardware" class="py-20 bg-gray-50 border-t border-gray-200/60">
+    <div class="max-w-7xl mx-auto px-4">
+        <div class="text-center mb-12 reveal">
+            <span class="text-brand-yellow font-bold uppercase tracking-widest text-xs">Especificações Técnicas</span>
+            <h2 class="text-3xl md:text-5xl font-bold text-gray-900 mt-2">Tecnologia Homologada</h2>
+            <p class="text-gray-600 mt-3">Equipamentos robustos desenhados para suportar o fluxo contínuo do condomínio.</p>
+        </div>
+
+        <div class="grid lg:grid-cols-4 md:grid-cols-2 gap-6 mb-12">
+            <!-- Câmeras -->
+            <div class="product-card reveal">
+                <div class="h-48 bg-white flex items-center justify-center p-6 relative border-b border-gray-100">
+                    <div class="absolute top-4 right-4 bg-brand-yellow text-black text-[10px] font-bold px-3 py-1 rounded-full">ATÉ 10 UN</div>
+                    <img src="https://res.cloudinary.com/dptcuckhf/image/upload/v1770981167/vip-1230-d-g5-front-1_df8d6l.png" alt="Câmeras HDCVI" class="h-full object-contain drop-shadow-xl hover:scale-110 transition-transform">
+                </div>
+                <div class="p-6 flex flex-col h-[calc(100%-12rem)]">
+                    <h3 class="text-base font-bold text-gray-900 mb-1">Câmeras Bullet & Dome</h3>
+                    <p class="text-[10px] text-brand-yellow font-bold uppercase tracking-wider mb-4">Monitoramento Full HD</p>
+                    <div class="space-y-2 mb-4 text-xs text-gray-700">
+                        <div class="flex items-center gap-2"><i data-lucide="check-circle" class="w-3.5 h-3.5 text-brand-yellow flex-shrink-0"></i><span>Resolução 1080p Nítida</span></div>
+                        <div class="flex items-center gap-2"><i data-lucide="check-circle" class="w-3.5 h-3.5 text-brand-yellow flex-shrink-0"></i><span>Infravermelho Inteligente (Noite)</span></div>
+                        <div class="flex items-center gap-2"><i data-lucide="check-circle" class="w-3.5 h-3.5 text-brand-yellow flex-shrink-0"></i><span>Fixação em Caixas VBOX</span></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- DVR + HD -->
+            <div class="product-card reveal border-2 border-brand-yellow shadow-glow-md" style="animation-delay: 100ms;">
+                <div class="h-48 bg-gradient-to-br from-brand-yellow/5 to-brand-yellow/10 flex items-center justify-center p-4 relative border-b border-gray-100 overflow-hidden">
+                    <div class="absolute top-4 right-4 bg-brand-yellow text-black text-[10px] font-bold px-3 py-1 rounded-full z-10">O CÉREBRO</div>
+                    <div class="flex items-center justify-center gap-2 w-full h-full relative z-0">
+                        <img src="https://res.cloudinary.com/dptcuckhf/image/upload/v1771621274/nvd-3316-plus-pers-dir_cuqefw.png" alt="DVR Intelbras" class="w-[50%] object-contain drop-shadow-xl hover:scale-110 transition-transform">
+                        <img src="https://res.cloudinary.com/dptcuckhf/image/upload/v1771880502/WD-PURPLE_2TB-removebg-preview_f1micz.png" alt="HD Purple 2TB" class="w-[45%] object-contain drop-shadow-xl hover:scale-110 transition-transform">
+                    </div>
+                </div>
+                <div class="p-6 flex flex-col h-[calc(100%-12rem)]">
+                    <h3 class="text-base font-bold text-gray-900 mb-1">DVR 16 Canais + HD 2TB</h3>
+                    <p class="text-[10px] text-brand-yellow font-bold uppercase tracking-wider mb-4">Gravação e App</p>
+                    <div class="space-y-2 mb-4 text-xs text-gray-700">
+                        <div class="flex items-center gap-2"><i data-lucide="check-circle" class="w-3.5 h-3.5 text-brand-yellow flex-shrink-0"></i><span>Permite até 16 câmeras no futuro</span></div>
+                        <div class="flex items-center gap-2"><i data-lucide="check-circle" class="w-3.5 h-3.5 text-brand-yellow flex-shrink-0"></i><span>HD WD Purple feito para segurança</span></div>
+                        <div class="flex items-center gap-2"><i data-lucide="check-circle" class="w-3.5 h-3.5 text-brand-yellow flex-shrink-0"></i><span>App Intelbras para visualização</span></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Motor PPA -->
+            <div class="product-card reveal" style="animation-delay: 200ms;">
+                <div class="h-48 bg-white flex items-center justify-center p-6 relative border-b border-gray-100">
+                    <div class="absolute top-4 right-4 bg-brand-yellow text-black text-[10px] font-bold px-3 py-1 rounded-full">2 MOTORES</div>
+                    <i data-lucide="settings" class="w-20 h-20 text-gray-300 drop-shadow-xl hover:scale-110 transition-transform"></i>
+                </div>
+                <div class="p-6 flex flex-col h-[calc(100%-12rem)]">
+                    <h3 class="text-base font-bold text-gray-900 mb-1">Automatizador PPA</h3>
+                    <p class="text-[10px] text-brand-yellow font-bold uppercase tracking-wider mb-4">Portas de Correr</p>
+                    <div class="space-y-2 mb-4 text-xs text-gray-700">
+                        <div class="flex items-center gap-2"><i data-lucide="check-circle" class="w-3.5 h-3.5 text-brand-yellow flex-shrink-0"></i><span>Aciona as duas folhas da porta</span></div>
+                        <div class="flex items-center gap-2"><i data-lucide="check-circle" class="w-3.5 h-3.5 text-brand-yellow flex-shrink-0"></i><span>Fechamento rápido e robusto</span></div>
+                        <div class="flex items-center gap-2"><i data-lucide="check-circle" class="w-3.5 h-3.5 text-brand-yellow flex-shrink-0"></i><span>Evita entrada de "caronas"</span></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Controle de Acesso -->
+            <div class="product-card reveal" style="animation-delay: 300ms;">
+                <div class="h-48 bg-white flex items-center justify-center p-6 relative border-b border-gray-100">
+                    <div class="absolute top-4 right-4 bg-brand-yellow text-black text-[10px] font-bold px-3 py-1 rounded-full">20 TAGS INC.</div>
+                    <img src="https://res.cloudinary.com/dptcuckhf/image/upload/v1777989298/digiprox_sa_202_persp_esq_2__2_-removebg-preview_n6mo6t.png" alt="Leitor de Acesso" class="h-[80%] w-auto object-contain drop-shadow-xl hover:scale-110 transition-transform">
+                </div>
+                <div class="p-6 flex flex-col h-[calc(100%-12rem)]">
+                    <h3 class="text-base font-bold text-gray-900 mb-1">Leitor Standalone Intelbras</h3>
+                    <p class="text-[10px] text-brand-yellow font-bold uppercase tracking-wider mb-4">Liberação Segura</p>
+                    <div class="space-y-2 mb-4 text-xs text-gray-700">
+                        <div class="flex items-center gap-2"><i data-lucide="check-circle" class="w-3.5 h-3.5 text-brand-yellow flex-shrink-0"></i><span>Abertura via Chaveiro de Aproximação (Tag)</span></div>
+                        <div class="flex items-center gap-2"><i data-lucide="check-circle" class="w-3.5 h-3.5 text-brand-yellow flex-shrink-0"></i><span>Opção de senha numérica</span></div>
+                        <div class="flex items-center gap-2"><i data-lucide="check-circle" class="w-3.5 h-3.5 text-brand-yellow flex-shrink-0"></i><span>Integrado perfeitamente ao Motor PPA</span></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ===================== A VISION (POR QUE CONTRATAR) ===================== -->
+<section id="empresa" class="py-24 bg-[#f8f9fa] relative border-y border-gray-200/60">
+    <div class="max-w-6xl mx-auto px-4">
+         <div class="text-center mb-16 reveal active">
+             <span class="text-brand-yellow font-bold uppercase tracking-widest text-xs">Padrão Ouro Vision</span>
+             <h2 class="text-3xl font-bold text-gray-900 mt-2 mb-4">A Garantia de uma Engenharia Especializada</h2>
+             <p class="text-gray-500 max-w-2xl mx-auto text-lg">
+                Projetos de automação física e vídeo não permitem aventureiros. Entregamos responsabilidade técnica e estética impecável.
+             </p>
+         </div>
+
+         <div class="grid md:grid-cols-3 gap-8 reveal mb-16 active">
+             <!-- Card 1 -->
+             <div class="p-8 bg-white rounded-2xl border border-gray-100 shadow-sm hover:shadow-lg transition-all group">
+                 <div class="w-14 h-14 bg-brand-black text-white rounded-xl flex items-center justify-center text-2xl mb-6 group-hover:bg-brand-yellow group-hover:text-brand-black transition-colors">
+                    👷
+                 </div>
+                 <h3 class="text-xl font-bold text-gray-900 mb-4">Infraestrutura Blindada</h3>
+                 <p class="text-gray-600 text-sm leading-relaxed">
+                     Utilizamos eletrodutos rígidos (Linha Urbanizada) e caixas VBOX de vedação para proteger as conexões. Fim dos cabos soltos expostos ao tempo que apodrecem em poucos meses.
+                 </p>
+             </div>
+
+             <!-- Card 2 -->
+             <div class="p-8 bg-white rounded-2xl border border-gray-100 shadow-sm hover:shadow-lg transition-all group">
+                <div class="w-14 h-14 bg-brand-black text-white rounded-xl flex items-center justify-center text-2xl mb-6 group-hover:bg-brand-yellow group-hover:text-brand-black transition-colors">
+                    ⚙️
+                </div>
+                <h3 class="text-xl font-bold text-gray-900 mb-4">Sincronia Mecânica</h3>
+                <p class="text-gray-600 text-sm leading-relaxed">
+                    Nossa equipe não faz apenas o "plugar de fios". Calibramos o tempo de abertura dos motores PPA para conversar milimetricamente com a leitura da Tag Intelbras, garantindo o fechamento imediato.
+                </p>
+            </div>
+
+            <!-- Card 3 -->
+            <div class="p-8 bg-white rounded-2xl border border-gray-100 shadow-sm hover:shadow-lg transition-all group">
+                <div class="w-14 h-14 bg-brand-black text-white rounded-xl flex items-center justify-center text-2xl mb-6 group-hover:bg-brand-yellow group-hover:text-brand-black transition-colors">
+                    🤝
+                </div>
+                <h3 class="text-xl font-bold text-gray-900 mb-4">Garantia Expressa Vision</h3>
+                <p class="text-gray-600 text-sm leading-relaxed">
+                    Risco tecnológico 100% nosso. Se uma câmera, HD ou motor apresentar defeito natural em até 12 meses, nossa engenharia retorna e faz a substituição sem cobrar taxa de visita extra do condomínio.
+                </p>
+            </div>
+         </div>
+    </div>
+</section>
+
+<!-- ===================== PROPOSTA DE INVESTIMENTO ===================== -->
+<section id="investimento" class="py-28 bg-white relative overflow-hidden">
+    <div class="absolute inset-0 bg-dots pointer-events-none z-0"></div>
+    <div class="max-w-7xl mx-auto px-4 relative z-10">
+
+        <div class="text-center mb-12 reveal">
+            <span class="text-brand-yellow font-bold uppercase tracking-widest text-xs">Aprovação em Assembleia</span>
+            <h2 class="text-3xl md:text-5xl font-bold text-gray-900 mt-3">Análise de Viabilidade Financeira</h2>
+            <p class="text-gray-500 mt-4 max-w-xl mx-auto text-lg leading-relaxed">
+                Desenhamos três frentes de projeto independentes. Vocês podem aprovar apenas o CFTV ou combinar a segurança em vídeo com a Automação de Acesso no mesmo dia.
+            </p>
+        </div>
+
+        <!-- TOGGLE DE PAGAMENTO -->
+        <div class="flex flex-col items-center justify-center mb-12 reveal">
+            <div class="bg-gray-100 p-1.5 rounded-full inline-flex relative shadow-inner">
+                <div id="toggle-bg" class="absolute top-1.5 bottom-1.5 w-[calc(50%-3px)] bg-white rounded-full shadow-sm transition-transform duration-300 ease-in-out" style="transform: translateX(0); left: 3px;"></div>
+                
+                <button onclick="setPaymentMode('avista')" id="btn-avista" class="relative z-10 px-8 py-2.5 text-sm font-bold text-gray-900 transition-colors w-40 text-center rounded-full focus:outline-none">À Vista (PIX)</button>
+                <button onclick="setPaymentMode('parcelado')" id="btn-parcelado" class="relative z-10 px-8 py-2.5 text-sm font-bold text-gray-500 transition-colors w-48 text-center rounded-full focus:outline-none">Parcelado (Cartão)</button>
+            </div>
+
+            <!-- Select de Parcelas (Hidden by default for PIX) -->
+            <div id="installment-container" class="mt-6 flex flex-col items-center transition-all duration-300 opacity-0 pointer-events-none hidden">
+                <div class="relative">
+                    <select id="installment-select" class="appearance-none bg-white border border-gray-200 text-gray-800 text-sm font-bold rounded-xl focus:ring-brand-yellow focus:border-brand-yellow block w-48 p-3 pl-4 pr-10 shadow-sm outline-none cursor-pointer hover:border-gray-300 transition-colors" onchange="updatePrices()">
+                        <option value="1">1x no Crédito</option>
+                        <option value="2">2x no Crédito</option>
+                        <option value="3">3x no Crédito</option>
+                        <option value="4">4x no Crédito</option>
+                        <option value="5">5x no Crédito</option>
+                        <option value="6">6x no Crédito</option>
+                        <option value="7">7x no Crédito</option>
+                        <option value="8">8x no Crédito</option>
+                        <option value="9">9x no Crédito</option>
+                        <option value="10" selected>10x no Crédito</option>
+                        <option value="11">11x no Crédito</option>
+                        <option value="12">12x no Crédito</option>
+                    </select>
+                    <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-3 text-gray-500">
+                        <i data-lucide="chevron-down" class="w-4 h-4"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="grid lg:grid-cols-3 gap-6 reveal items-stretch">
+            
+            <!-- PROJETO 1: CFTV Padrão -->
+            <div class="bg-white rounded-[2rem] p-8 border border-gray-200 shadow-glass relative flex flex-col hover:border-gray-300 hover:shadow-lg transition-all">
+                <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-gray-200 to-gray-300 rounded-t-[2rem]"></div>
+                
+                <div class="mb-6 text-center">
+                    <p class="text-[10px] font-bold uppercase tracking-widest text-gray-400 mb-2">Projeto 1</p>
+                    <h3 class="font-bold text-gray-900 text-xl">CFTV Padrão</h3>
+                </div>
+
+                <div class="mb-6 p-6 bg-gray-50 rounded-2xl flex flex-col items-center justify-center text-center">
+                    <div class="w-full" id="price-opt1">
+                        <!-- Conteúdo dinâmico JS -->
+                    </div>
+                </div>
+
+                <div class="space-y-3 mb-8 flex-1">
+                    <div class="flex items-start gap-2 border-b border-gray-50 pb-3">
+                        <i data-lucide="video" class="w-4 h-4 text-brand-yellow shrink-0 mt-0.5"></i>
+                        <p class="text-sm text-gray-600"><strong>7 Câmeras de Segurança</strong> focadas nas áreas de circulação.</p>
+                    </div>
+                    <div class="flex items-start gap-2 border-b border-gray-50 pb-3">
+                        <i data-lucide="server" class="w-4 h-4 text-brand-yellow shrink-0 mt-0.5"></i>
+                        <p class="text-sm text-gray-600">DVR 16 Canais + HD 2TB Purple (Central e Gravação 24h).</p>
+                    </div>
+                    <div class="flex items-start gap-2 pb-2">
+                        <i data-lucide="shield-check" class="w-4 h-4 text-brand-yellow shrink-0 mt-0.5"></i>
+                        <p class="text-sm text-gray-600">Instalação via eletrodutos rígidos e VBOX (Linha Urbanizada).</p>
+                    </div>
+                </div>
+
+                <a href="https://wa.me/5511930816696?text=Olá%20Gabriel,%20avaliamos%20as%20opções%20e%20gostaríamos%20de%20aprovar%20o%20Projeto%201%20(CFTV%20Padrão)." target="_blank" class="w-full border-2 border-gray-200 text-gray-700 hover:text-black hover:border-brand-yellow hover:bg-brand-yellow/5 font-bold py-4 rounded-2xl flex items-center justify-center gap-2 transition-all text-[11px] uppercase tracking-widest mt-auto">
+                    Aprovar Projeto 1
+                </a>
+            </div>
+
+            <!-- PROJETO 2: CFTV Expandido (DESTAQUE) -->
+            <div class="premium-border-glow group relative z-20">
+                <div class="premium-border-inner flex flex-col relative bg-white p-8">
+                    <div class="absolute top-0 right-0 w-32 h-32 bg-brand-yellow/10 rounded-full blur-[50px] pointer-events-none"></div>
+                    <div class="absolute top-3 right-3 z-20">
+                        <span class="bg-brand-yellow text-black text-[9px] font-extrabold px-3 py-1 rounded-full uppercase tracking-widest shadow-glow">Recomendado em Vídeo</span>
+                    </div>
+
+                    <div class="mb-6 text-center relative z-10">
+                        <p class="text-[10px] font-bold uppercase tracking-widest text-brand-yellow mb-2 mt-2">Projeto 2</p>
+                        <h3 class="font-bold text-gray-900 text-xl">CFTV Expandido</h3>
+                    </div>
+
+                    <div class="mb-6 p-6 bg-brand-yellow/5 border border-brand-yellow/20 rounded-2xl flex flex-col items-center justify-center text-center relative z-10">
+                        <div class="w-full" id="price-opt2">
+                            <!-- Conteúdo dinâmico JS -->
+                        </div>
+                    </div>
+
+                    <div class="space-y-3 mb-8 flex-1 relative z-10">
+                        <div class="flex items-start gap-2 border-b border-gray-50 pb-3">
+                            <i data-lucide="eye" class="w-4 h-4 text-brand-yellow shrink-0 mt-0.5"></i>
+                            <p class="text-sm text-gray-800"><strong>10 Câmeras HD.</strong> Acaba definitivamente com os pontos cegos vulneráveis mapeados no condomínio.</p>
+                        </div>
+                        <div class="flex items-start gap-2 border-b border-gray-50 pb-3">
+                            <i data-lucide="server" class="w-4 h-4 text-brand-yellow shrink-0 mt-0.5"></i>
+                            <p class="text-sm text-gray-800">DVR 16 Canais + HD 2TB Purple. Servidor central pronto para uso via App no celular.</p>
+                        </div>
+                        <div class="flex items-start gap-2 pb-2">
+                            <i data-lucide="package-check" class="w-4 h-4 text-brand-yellow shrink-0 mt-0.5"></i>
+                            <p class="text-sm text-gray-800">Carga extra de eletrodutos e blindagem total dos novos pontos (Linha Urbanizada).</p>
+                        </div>
+                    </div>
+
+                    <a href="https://wa.me/5511930816696?text=Olá%20Gabriel,%20avaliamos%20as%20opções%20e%20gostaríamos%20de%20aprovar%20o%20Projeto%202%20(CFTV%20Expandido)." target="_blank" class="w-full bg-brand-yellow hover:bg-brand-goldLight text-black font-bold py-4 rounded-2xl flex items-center justify-center gap-2 transition-all shadow-glow-md text-[11px] uppercase tracking-widest group relative overflow-hidden mt-auto z-10">
+                        <div class="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-300 rounded-2xl"></div>
+                        <span class="relative z-10">Aprovar Projeto 2</span>
+                        <i data-lucide="arrow-right" class="w-3 h-3 relative z-10 group-hover:translate-x-1 transition-transform"></i>
+                    </a>
+                </div>
+            </div>
+
+            <!-- PROJETO 3: Automação -->
+            <div class="bg-[#09090b] rounded-[2rem] p-8 border border-zinc-800 shadow-premium relative flex flex-col hover:border-brand-yellow/50 transition-all">
+                <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-zinc-800 to-zinc-700 rounded-t-[2rem]"></div>
+                
+                <div class="mb-6 text-center">
+                    <p class="text-[10px] font-bold uppercase tracking-widest text-zinc-500 mb-2">Projeto 3 (Complementar)</p>
+                    <h3 class="font-bold text-white text-xl">Automação Física</h3>
+                </div>
+
+                <div class="mb-6 p-6 bg-zinc-900/50 border border-zinc-800 rounded-2xl flex flex-col items-center justify-center text-center">
+                    <div class="w-full" id="price-opt3">
+                        <!-- Conteúdo dinâmico JS -->
+                    </div>
+                </div>
+
+                <div class="space-y-3 mb-8 flex-1">
+                    <div class="flex items-start gap-2 border-b border-zinc-800 pb-3">
+                        <i data-lucide="settings" class="w-4 h-4 text-brand-yellow shrink-0 mt-0.5"></i>
+                        <p class="text-sm text-zinc-300"><strong>02 Motores PPA.</strong> Automação simultânea e pesada da porta de correr principal.</p>
+                    </div>
+                    <div class="flex items-start gap-2 border-b border-zinc-800 pb-3">
+                        <i data-lucide="key" class="w-4 h-4 text-brand-yellow shrink-0 mt-0.5"></i>
+                        <p class="text-sm text-zinc-300"><strong>Leitor Intelbras.</strong> Acesso bloqueado, abertura restrita via senha ou chaveiro (Tag).</p>
+                    </div>
+                    <div class="flex items-start gap-2 pb-2">
+                        <i data-lucide="fingerprint" class="w-4 h-4 text-brand-yellow shrink-0 mt-0.5"></i>
+                        <p class="text-sm text-zinc-300">Inclusão de 20 Tags já configuradas e sincronia mecânica completa.</p>
+                    </div>
+                </div>
+
+                <a href="https://wa.me/5511930816696?text=Olá%20Gabriel,%20avaliamos%20as%20opções%20e%20gostaríamos%20de%20aprovar%20o%20Projeto%203%20(Automação%20das%20Portas)." target="_blank" class="w-full border-2 border-zinc-700 text-zinc-300 hover:text-white hover:border-brand-yellow hover:bg-brand-yellow/10 font-bold py-4 rounded-2xl flex items-center justify-center gap-2 transition-all text-[11px] uppercase tracking-widest mt-auto">
+                    Aprovar Projeto 3
+                </a>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<!-- ===================== CTA FINAL ===================== -->
+<section class="py-28 bg-[#09090b] relative overflow-hidden">
+    <div class="bg-grid absolute inset-0 opacity-10 pointer-events-none z-0"></div>
+    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-brand-yellow/10 rounded-full blur-[100px] pointer-events-none"></div>
+    
+    <div class="max-w-4xl mx-auto px-4 text-center relative z-10 reveal active">
+        <span class="text-brand-yellow font-bold uppercase tracking-widest text-xs mb-4 block">Proteção Garantida</span>
+        <h2 class="text-3xl md:text-5xl font-extrabold text-white leading-tight mb-6">
+            O fim das falhas e vulnerabilidades <span class="text-gold-shine">no condomínio.</span>
+        </h2>
+        <p class="text-zinc-400 text-lg mb-10 leading-relaxed max-w-2xl mx-auto">
+            Daniele, a infraestrutura desenhada entrega exatamente o que o prédio necessita. Em caso de dúvidas durante a apresentação para o conselho ou assembleia, clique no botão abaixo para conversar comigo.
+        </p>
+
+        <a href="https://wa.me/5511930816696?text=Olá%20Gabriel,%20tenho%20algumas%20dúvidas%20sobre%20a%20proposta." target="_blank" class="inline-flex items-center gap-3 bg-brand-yellow hover:bg-brand-goldLight text-brand-black font-bold px-10 py-5 rounded-full transition-all shadow-glow-md text-sm uppercase tracking-widest transform hover:scale-[1.03]">
+            <i data-lucide="message-circle" class="w-5 h-5"></i>
+            Tirar dúvidas com Gabriel
+            <i data-lucide="arrow-right" class="w-4 h-4 ml-1"></i>
+        </a>
+    </div>
+</section>
+
+<!-- ===================== FOOTER ===================== -->
+<footer class="bg-black py-16 text-center border-t border-zinc-900 group">
+    <div class="max-w-4xl mx-auto px-4">
+        
+        <div class="flex flex-col items-center justify-center leading-none opacity-40 group-hover:opacity-100 transition-opacity duration-500 cursor-default mb-10">
+            <div class="flex flex-col items-center">
+                <div class="relative flex items-baseline leading-none">
+                    <span class="font-logo font-bold text-[3.5rem] text-white lowercase tracking-[-0.05em] leading-none">vısıon</span>
+                    <span class="absolute -right-3.5 top-2.5 text-[0.75rem] text-brand-yellow font-bold">®</span>
+                </div>
+                <span class="font-tech text-[0.75rem] font-bold text-zinc-500 lowercase -mt-3 ml-1.5 text-center w-full" style="letter-spacing: 0.53em;">condo</span>
+            </div>
+        </div>
+
+        <div class="text-zinc-500 text-xs md:text-sm leading-relaxed space-y-1 mb-8 opacity-60">
+            <p>Condomínio | São Bernardo do Campo, SP</p>
+            <p>Projetos de Engenharia e Automação | Emitido em Maio de 2026</p>
+        </div>
+
+        <div class="inline-flex items-center justify-center gap-2 border border-zinc-800 bg-zinc-900/50 px-5 py-2.5 rounded-full mb-6 shadow-sm">
+            <i data-lucide="lock" class="w-3.5 h-3.5 text-brand-yellow"></i>
+            <span class="text-[10px] md:text-xs text-zinc-400 uppercase tracking-widest font-bold">Documento confidencial corporativo</span>
+        </div>
+        
+        <p class="text-[10px] text-zinc-700 uppercase tracking-widest font-bold mt-6">Engenharia de Segurança Corporativa</p>
+    </div>
+</footer>
+
+<!-- WHATSAPP CTA FLUTUANTE -->
+<div id="cta-float" class="fixed bottom-6 right-6 z-40 hidden md:flex opacity-0 translate-y-10 pointer-events-none transition-all duration-500">
+    <a href="https://wa.me/5511930816696?text=Olá%20Gabriel,%20tenho%20uma%20dúvida%20sobre%20os%20projetos." target="_blank" class="flex items-center gap-3 bg-brand-yellow text-black font-bold px-6 py-4 rounded-full shadow-glow-md hover:shadow-glow transition-all group">
+        <i data-lucide="message-circle" class="w-5 h-5"></i>
+        <span class="text-sm tracking-wide uppercase">Falar no WhatsApp</span>
+        <i data-lucide="arrow-right" class="w-4 h-4 group-hover:translate-x-1 transition-transform"></i>
+    </a>
+</div>
+
+<!-- ===================== SCRIPTS ===================== -->
+<script>
+    // INIT LUCIDE ICONS
+    lucide.createIcons();
+
+    // CALCULADORA DE INVESTIMENTOS
+    const p1 = 8400; // Projeto 1
+    const p2 = 8650; // Projeto 2
+    const p3 = 7190; // Projeto 3
+    
+    // Tabela exata de repasse de taxas de cartão
+    const rates = {
+        1: 0.0420, 2: 0.0609, 3: 0.0701, 4: 0.0791, 5: 0.0880, 6: 0.0967,
+        7: 0.1259, 8: 0.1342, 9: 0.1425, 10: 0.1506,
+        11: 0.1587, 12: 0.1666
+    };
+    
+    let currentMode = 'avista';
+
+    document.addEventListener("DOMContentLoaded", () => {
+        setPaymentMode('avista');
+    });
+
+    function setPaymentMode(mode) {
+        currentMode = mode;
+        const bg = document.getElementById('toggle-bg');
+        const btnPix = document.getElementById('btn-avista');
+        const btnParcelado = document.getElementById('btn-parcelado');
+        const selectContainer = document.getElementById('installment-container');
+
+        if (mode === 'avista') {
+            if (bg) bg.style.transform = 'translateX(0)';
+            if (btnPix) {
+                btnPix.classList.remove('text-gray-500');
+                btnPix.classList.add('text-gray-900');
+            }
+            if (btnParcelado) {
+                btnParcelado.classList.remove('text-gray-900');
+                btnParcelado.classList.add('text-gray-500');
+            }
+            
+            if (selectContainer) {
+                selectContainer.classList.add('opacity-0', 'pointer-events-none');
+                setTimeout(() => { if(selectContainer) selectContainer.classList.add('hidden'); }, 300);
+            }
+        } else {
+            if (bg) bg.style.transform = 'translateX(100%)';
+            if (btnParcelado) {
+                btnParcelado.classList.remove('text-gray-500');
+                btnParcelado.classList.add('text-gray-900');
+            }
+            if (btnPix) {
+                btnPix.classList.remove('text-gray-900');
+                btnPix.classList.add('text-gray-500');
+            }
+            
+            if (selectContainer) {
+                selectContainer.classList.remove('hidden');
+                setTimeout(() => { if(selectContainer) selectContainer.classList.remove('opacity-0', 'pointer-events-none'); }, 10);
+            }
+        }
+        updatePrices();
+    }
+
+    function formatCurrency(value) {
+        return value.toLocaleString('pt-BR', {minimumFractionDigits: 2, maximumFractionDigits: 2});
+    }
+
+    function updatePrices() {
+        const el1 = document.getElementById('price-opt1');
+        const el2 = document.getElementById('price-opt2');
+        const el3 = document.getElementById('price-opt3');
+        const select = document.getElementById('installment-select');
+
+        if (!el1 || !el2 || !el3) return;
+
+        if (currentMode === 'avista') {
+            const h1 = p1 / 2;
+            const h2 = p2 / 2;
+            const h3 = p3 / 2;
+
+            el1.innerHTML = `
+                <div class="flex flex-col items-center w-full">
+                    <p class="text-[10px] text-gray-500 uppercase tracking-widest font-bold mb-1">À Vista (PIX)</p>
+                    <span class="text-3xl font-extrabold text-gray-900 mb-2">R$ ${formatCurrency(p1)}</span>
+                    <div class="w-full space-y-2 mt-2">
+                        <div class="bg-white border border-gray-200 rounded-lg p-2 shadow-sm relative overflow-hidden text-center">
+                            <div class="absolute top-0 left-0 w-1 h-full bg-emerald-400"></div>
+                            <span class="text-[9px] font-bold uppercase tracking-widest text-gray-500 block mb-0.5">Sinal 50%</span>
+                            <span class="font-bold text-gray-900 text-xs">R$ ${formatCurrency(h1)}</span>
+                        </div>
+                        <div class="bg-white border border-gray-200 rounded-lg p-2 shadow-sm relative overflow-hidden text-center">
+                            <div class="absolute top-0 left-0 w-1 h-full bg-brand-yellow"></div>
+                            <span class="text-[9px] font-bold uppercase tracking-widest text-gray-500 block mb-0.5">Restante na Entrega</span>
+                            <span class="font-bold text-gray-900 text-xs">R$ ${formatCurrency(h1)}</span>
+                        </div>
+                    </div>
+                </div>
+            `;
+            el2.innerHTML = `
+                <div class="flex flex-col items-center w-full">
+                    <p class="text-[10px] text-brand-goldDark uppercase tracking-widest font-bold mb-1">À Vista (PIX)</p>
+                    <span class="text-3xl font-extrabold text-gray-900 mb-2">R$ ${formatCurrency(p2)}</span>
+                    <div class="w-full space-y-2 mt-2">
+                        <div class="bg-white border border-brand-yellow/30 rounded-lg p-2 shadow-sm relative overflow-hidden text-center">
+                            <div class="absolute top-0 left-0 w-1 h-full bg-emerald-400"></div>
+                            <span class="text-[9px] font-bold uppercase tracking-widest text-brand-goldDark block mb-0.5">Sinal 50%</span>
+                            <span class="font-bold text-gray-900 text-xs">R$ ${formatCurrency(h2)}</span>
+                        </div>
+                        <div class="bg-white border border-brand-yellow/30 rounded-lg p-2 shadow-sm relative overflow-hidden text-center">
+                            <div class="absolute top-0 left-0 w-1 h-full bg-brand-yellow"></div>
+                            <span class="text-[9px] font-bold uppercase tracking-widest text-brand-goldDark block mb-0.5">Restante na Entrega</span>
+                            <span class="font-bold text-gray-900 text-xs">R$ ${formatCurrency(h2)}</span>
+                        </div>
+                    </div>
+                </div>
+            `;
+            el3.innerHTML = `
+                <div class="flex flex-col items-center w-full">
+                    <p class="text-[10px] text-zinc-400 uppercase tracking-widest font-bold mb-1">À Vista (PIX)</p>
+                    <span class="text-3xl font-extrabold text-white mb-2">R$ ${formatCurrency(p3)}</span>
+                    <div class="w-full space-y-2 mt-2">
+                        <div class="bg-zinc-800 border border-zinc-700 rounded-lg p-2 shadow-sm relative overflow-hidden text-center">
+                            <div class="absolute top-0 left-0 w-1 h-full bg-emerald-400"></div>
+                            <span class="text-[9px] font-bold uppercase tracking-widest text-zinc-400 block mb-0.5">Sinal 50%</span>
+                            <span class="font-bold text-white text-xs">R$ ${formatCurrency(h3)}</span>
+                        </div>
+                        <div class="bg-zinc-800 border border-zinc-700 rounded-lg p-2 shadow-sm relative overflow-hidden text-center">
+                            <div class="absolute top-0 left-0 w-1 h-full bg-brand-yellow"></div>
+                            <span class="text-[9px] font-bold uppercase tracking-widest text-zinc-400 block mb-0.5">Restante na Entrega</span>
+                            <span class="font-bold text-white text-xs">R$ ${formatCurrency(h3)}</span>
+                        </div>
+                    </div>
+                </div>
+            `;
+        } else {
+            const inst = parseInt(select.value);
+            const rate = rates[inst];
+            
+            // Valor total no cartão com a taxa exata da maquininha
+            const t1 = p1 / (1 - rate);
+            const t2 = p2 / (1 - rate);
+            const t3 = p3 / (1 - rate);
+
+            // Parcelas
+            const val1 = t1 / inst;
+            const val2 = t2 / inst;
+            const val3 = t3 / inst;
+
+            el1.innerHTML = `
+                <div class="flex items-baseline justify-center gap-1.5 mb-1">
+                    <span class="text-lg font-bold text-gray-500">${inst}x</span> 
+                    <span class="text-3xl font-extrabold text-gray-900">R$ ${formatCurrency(val1)}</span>
+                </div>
+                <p class="text-[10px] text-gray-400 font-medium">Total a prazo: R$ ${formatCurrency(t1)}</p>
+            `;
+            el2.innerHTML = `
+                <div class="flex items-baseline justify-center gap-1.5 mb-1">
+                    <span class="text-lg font-bold text-brand-yellow">${inst}x</span> 
+                    <span class="text-3xl font-extrabold text-gray-900">R$ ${formatCurrency(val2)}</span>
+                </div>
+                <p class="text-[10px] text-gray-600 font-medium">Total a prazo: R$ ${formatCurrency(t2)}</p>
+            `;
+            el3.innerHTML = `
+                <div class="flex items-baseline justify-center gap-1.5 mb-1">
+                    <span class="text-lg font-bold text-brand-yellow">${inst}x</span> 
+                    <span class="text-3xl font-extrabold text-white">R$ ${formatCurrency(val3)}</span>
+                </div>
+                <p class="text-[10px] text-zinc-500 font-medium">Total a prazo: R$ ${formatCurrency(t3)}</p>
+            `;
+        }
+        lucide.createIcons();
+    }
+
+    // LOCK SCREEN + FORMSUBMIT
+    function checkPassword() {
+        const input = document.getElementById('password-input').value;
+        const errorMsg = document.getElementById('error-msg');
+        
+        if (input.toUpperCase() === 'DANIELE2026' || input.toUpperCase() === 'VISION') {
+            const lockScreen = document.getElementById('lock-screen');
+            if(lockScreen) lockScreen.style.opacity = '0';
+
+            const video = document.getElementById("vision-video");
+            if (video && video.paused) {
+                video.muted = true;
+                video.play().catch(e => {});
+            }
+
+            if (window.clarity) {
+                window.clarity("consent");
+                window.clarity("identify", "sao-bernardo", undefined, undefined, "São Bernardo Daniele");
+            }
+
+            fetch('https://api.staticforms.dev/submit', {
+                method: 'POST',
+                headers: { 
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json'
+                },
+                body: JSON.stringify({
+                    accessKey: "sf_077ej49gjha153gk3m6ceecf",
+                    subject: "🚨 ALERTA: Proposta Acessada (Daniele - São Bernardo)",
+                    name: "Sistema Vision",
+                    email: "diretoria@visionsp.com.br",
+                    message: `O cliente abriu a PROPOSTA DO CONDOMÍNIO (São Bernardo)!\n\n👤 Cliente: Daniele (Assembleia)\n🔑 Senha Utilizada: ${input}\n🕒 Horário: ${new Date().toLocaleString('pt-BR')}`
+                })
+            }).catch(error => console.log('Log de acesso registrado.'));
+
+            setTimeout(() => { 
+                if(lockScreen) lockScreen.style.display = 'none'; 
+                const htmlRoot = document.getElementById('html-root');
+                if(htmlRoot) {
+                    htmlRoot.classList.remove('overflow-hidden', 'h-screen');
+                    htmlRoot.classList.add('overflow-x-hidden');
+                }
+                document.body.classList.remove('overflow-hidden', 'h-screen');
+                document.body.classList.add('overflow-x-hidden');
+            }, 700);
+        } else {
+            if(errorMsg) errorMsg.classList.remove('hidden');
+            const passInput = document.getElementById('password-input');
+            if(passInput) passInput.style.borderColor = 'rgba(239,68,68,0.5)';
+            setTimeout(() => {
+                if(errorMsg) errorMsg.classList.add('hidden');
+                if(passInput) passInput.style.borderColor = '';
+            }, 3000);
+        }
+    }
+
+    const passInputElem = document.getElementById('password-input');
+    if(passInputElem) {
+        passInputElem.addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') checkPassword();
+        });
+    }
+
+    // REVEAL ON SCROLL
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) entry.target.classList.add('active');
+        });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+    // ANIMATE COUNTERS
+    function animateCounter(el, target) {
+        let current = 0;
+        const increment = Math.ceil(target / 40) || 1;
+        const interval = setInterval(() => {
+            current = Math.min(current + increment, target);
+            el.textContent = current;
+            if (current === target) clearInterval(interval);
+        }, 40);
+    }
+    const counterObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const el = entry.target;
+                const target = parseInt(el.getAttribute('data-target'));
+                animateCounter(el, target);
+                counterObserver.unobserve(el);
+            }
+        });
+    }, { threshold: 0.5 });
+    document.querySelectorAll('[data-target]').forEach(el => counterObserver.observe(el));
+
+    // NAVBAR SCROLL
+    window.addEventListener('scroll', () => {
+        const navbar = document.getElementById('navbar');
+        if(navbar) {
+            if (window.scrollY > 50) {
+                navbar.classList.add('shadow-md');
+            } else {
+                navbar.classList.remove('shadow-md');
+            }
+        }
+    });
+
+    // VIDEO UNMUTE
+    document.addEventListener("DOMContentLoaded", function() {
+        const video = document.getElementById("vision-video");
+        const overlay = document.getElementById("unmute-overlay");
+        if (video && overlay) {
+            overlay.addEventListener("click", function(e) {
+                e.stopPropagation(); 
+                video.muted = false;
+                video.loop = false; 
+                video.currentTime = 0;
+                video.play();
+                overlay.style.opacity = "0";
+                setTimeout(() => { overlay.style.display = "none"; }, 500); 
+            });
+            video.addEventListener("click", function() {
+                if (overlay.style.display === "none") {
+                    if (video.paused) { video.play(); } else { video.pause(); }
+                }
+            });
+        }
+    });
+</script>
+</body>
+</html>
