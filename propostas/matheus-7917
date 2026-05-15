@@ -1013,7 +1013,8 @@
     }
 
     // CALCULADORA DE INVESTIMENTOS
-    const p1 = 121790; // Projeto Edifício Comercial (62 Câmeras)
+    const pAvista = 114728; // Projeto com desconto à vista
+    const pFaturado = 121790; // Projeto Edifício Comercial faturado
     
     let currentMode = 'avista';
 
@@ -1081,12 +1082,12 @@
         if (!el1) return;
 
         if (currentMode === 'avista') {
-            const h1 = p1 / 2;
+            const h1 = pAvista / 2;
 
             el1.innerHTML = `
                 <div class="bg-[#faf8f0] border border-[#e8dcc4] rounded-[1.5rem] p-6 md:p-8 w-full flex flex-col items-center relative shadow-sm">
                     <p class="text-[10px] font-extrabold text-brand-goldDark uppercase tracking-widest mb-2">À Vista (PIX)</p>
-                    <span class="text-4xl md:text-5xl font-black text-gray-900 tracking-tight mb-6">R$ ${formatCurrency(p1)}</span>
+                    <span class="text-4xl md:text-5xl font-black text-gray-900 tracking-tight mb-6">R$ ${formatCurrency(pAvista)}</span>
                     
                     <div class="w-full space-y-3">
                         <div class="bg-white border border-gray-200 rounded-xl py-4 flex flex-col items-center justify-center relative overflow-hidden shadow-sm">
@@ -1104,7 +1105,7 @@
             `;
         } else {
             const parcelas = 5;
-            const valorParcela = p1 / parcelas;
+            const valorParcela = pFaturado / parcelas;
 
             el1.innerHTML = `
                 <div class="bg-[#faf8f0] border border-[#e8dcc4] rounded-[1.5rem] p-6 md:p-8 w-full flex flex-col items-center relative shadow-sm">
@@ -1136,7 +1137,7 @@
                         </div>
                     </div>
                     
-                    <p class="text-[10px] text-gray-400 mt-5 font-bold uppercase tracking-widest">Total: R$ ${formatCurrency(p1)}</p>
+                    <p class="text-[10px] text-gray-400 mt-5 font-bold uppercase tracking-widest">Total: R$ ${formatCurrency(pFaturado)}</p>
                 </div>
             `;
         }
