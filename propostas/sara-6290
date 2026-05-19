@@ -1,0 +1,1244 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth overflow-x-hidden" id="html-root">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Engenharia de Segurança | Cond. Wall Street – Vision</title>
+    <meta name="description" content="Projeto Executivo de CFTV e Link Wireless – Vision Tecnologia">
+    <meta name="theme-color" content="#b9880e">
+    
+    <meta name="robots" content="noindex, nofollow">
+
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Engenharia de Segurança | Projeto Executivo">
+    <meta property="og:description" content="Projeto Executivo: Expansão de CFTV IP, Link Wireless para Elevadores e Infraestrutura Galvanizada.">
+    <meta property="og:image" content="https://res.cloudinary.com/dptcuckhf/image/upload/v1772152427/C%C3%B3pia_de_LOGO_VISION_2025_cpcpuh.png">
+    <meta property="og:locale" content="pt_BR">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@700;800&family=Quicksand:wght@500;600;700&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-KTGEL92B0F"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-KTGEL92B0F');
+    </script>
+
+    <script type="text/javascript">
+        (function(c,l,a,r,i,t,y){
+            c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+            t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+            y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+        })(window, document, "clarity", "script", "vifq10es5o");
+    </script>
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"Outfit"', 'sans-serif'],
+                        logo: ['"League Spartan"', 'sans-serif'],
+                        tech: ['"Quicksand"', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            yellow: '#b9880e',
+                            goldLight: '#FFDE59',
+                            goldDark: '#8a6208',
+                            black: '#09090b',
+                            mutedGold: '#c8a048',
+                        }
+                    },
+                    boxShadow: {
+                        'glass': '0 4px 24px 0 rgba(0,0,0,0.04)',
+                        'premium': '0 16px 50px -10px rgba(0,0,0,0.08)',
+                        'premium-card': '0 16px 50px -10px rgba(0, 0, 0, 0.08)',
+                        'glow': '0 0 20px rgba(185,136,14,0.15)',
+                        'glow-md': '0 0 35px rgba(185,136,14,0.25)',
+                    },
+                    animation: {
+                        'slide-up': 'slideUp 0.9s cubic-bezier(0.16,1,0.3,1) forwards',
+                        'float': 'float 6s ease-in-out infinite',
+                    },
+                    keyframes: {
+                        slideUp: {
+                            '0%': { opacity: '0', transform: 'translateY(40px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' }
+                        },
+                        float: {
+                            '0%,100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-12px)' }
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: #f9fafb; }
+        ::-webkit-scrollbar-thumb { background: #d1d5db; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #b9880e; }
+
+        .hide-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+        .hide-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+
+        .text-gold-shine {
+            background: linear-gradient(to right, #b9880e 20%, #FFDE59 50%, #b9880e 80%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-size: 200% auto;
+            animation: shine 4s linear infinite;
+        }
+        @keyframes shine { to { background-position: 200% center; } }
+
+        .bg-grid {
+            background-image: linear-gradient(rgba(185,136,14,0.04) 1px, transparent 1px),
+                              linear-gradient(90deg, rgba(185,136,14,0.04) 1px, transparent 1px);
+            background-size: 40px 40px;
+        }
+        .bg-dots {
+            background-image: radial-gradient(#b9880e 1.2px, transparent 1.2px);
+            background-size: 22px 22px;
+            opacity: 0.035;
+        }
+
+        .lock-input {
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.1);
+            color: #b9880e;
+            font-family: 'League Spartan', sans-serif;
+            font-size: 1.5rem;
+            text-align: center;
+            outline: none;
+            transition: all 0.3s;
+            letter-spacing: 0.2em;
+            border-radius: 14px;
+        }
+        .lock-input:focus {
+            border-color: #b9880e;
+            background: rgba(255,255,255,0.08);
+            box-shadow: 0 0 20px rgba(185,136,14,0.25);
+        }
+        .lock-input::placeholder {
+            color: #52525b;
+            font-size: 0.85rem;
+            font-family: 'Outfit', sans-serif;
+            font-weight: 300;
+            letter-spacing: normal;
+        }
+
+        .reveal { opacity: 0; transform: translateY(30px); transition: all 0.8s cubic-bezier(0.16,1,0.3,1); }
+        .reveal.active { opacity: 1; transform: translateY(0); }
+
+        .service-card:hover { transform: translateY(-4px); box-shadow: 0 20px 40px -8px rgba(0,0,0,0.1); }
+        .service-card { transition: all 0.3s cubic-bezier(0.4,0,0.2,1); }
+
+        .product-card {
+            background: white;
+            border: 1px solid #e5e7eb;
+            border-radius: 16px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+        .product-card:hover {
+            border-color: #b9880e;
+            box-shadow: 0 10px 30px rgba(185, 136, 14, 0.15);
+            transform: translateY(-5px);
+        }
+
+        .accordion-content { max-height: 0; overflow: hidden; transition: max-height 0.45s cubic-bezier(0.4,0,0.2,1); }
+        .accordion-item.open .accordion-content { max-height: 600px; }
+        .accordion-item.open .acc-arrow { transform: rotate(180deg); }
+        .acc-arrow { transition: transform 0.3s; }
+
+        .premium-border-glow {
+            position: relative;
+            border-radius: 2rem;
+            padding: 2px;
+            background-color: #b9880e;
+            overflow: hidden;
+            box-shadow: 0 0 35px rgba(185,136,14,0.15);
+            transition: transform 0.3s cubic-bezier(0.4,0,0.2,1);
+        }
+        .premium-border-glow:hover { transform: scale(1.01); }
+        .premium-border-glow::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: conic-gradient(
+                from 0deg, 
+                transparent 0deg, 
+                transparent 175deg, 
+                rgba(255, 222, 89, 0.6) 178deg, 
+                #ffffff 180deg, 
+                rgba(255, 222, 89, 0.6) 182deg, 
+                transparent 185deg, 
+                transparent 360deg
+            );
+            animation: rotate-border 12s linear infinite;
+            z-index: 0;
+        }
+        @keyframes rotate-border {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        .premium-border-inner {
+            position: relative;
+            z-index: 1;
+            background-color: #ffffff;
+            border-radius: calc(2rem - 2px);
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            padding: 2.5rem;
+            overflow: hidden;
+        }
+
+        .counter-num { font-variant-numeric: tabular-nums; }
+
+        @media print {
+            #lock-screen, #navbar, #cta-float { display: none !important; }
+            .reveal { opacity: 1 !important; transform: none !important; }
+        }
+    </style>
+</head>
+<body class="bg-[#fafafa] text-gray-800 antialiased selection:bg-brand-yellow selection:text-white h-screen overflow-hidden">
+
+<div id="lock-screen" class="fixed inset-0 z-[100] bg-[#09090b] flex flex-col items-center justify-center text-center p-4 transition-opacity duration-700 ease-out touch-none" style="overscroll-behavior: none;">
+    <div class="bg-grid absolute inset-0 opacity-10 pointer-events-none"></div>
+    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-brand-yellow/5 rounded-full blur-[100px] pointer-events-none"></div>
+
+    <div class="relative flex flex-col items-center mb-10 z-10">
+        <div class="relative flex items-baseline leading-none">
+            <span class="font-logo font-bold text-[5.5rem] md:text-[6rem] text-gold-shine lowercase tracking-[-0.05em] leading-none">vısıon</span>
+            <span class="absolute -right-3 top-[22px] text-[1.4rem] text-brand-yellow font-bold">®</span>
+        </div>
+        <span class="font-tech text-[1.1rem] font-bold text-zinc-500 lowercase -mt-4 ml-2.5 text-center w-full" style="letter-spacing:0.53em;">condo</span>
+    </div>
+
+    <div class="w-full max-w-sm space-y-5 z-10">
+        <div class="space-y-1.5">
+            <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-brand-yellow/30 bg-brand-yellow/10 mb-3">
+                <i data-lucide="lock" class="w-3.5 h-3.5 text-brand-yellow"></i>
+                <span class="text-brand-yellow text-[10px] font-bold uppercase tracking-widest">Projeto Executivo</span>
+            </div>
+            <h2 class="text-white font-bold text-2xl">Cond. Wall Street</h2>
+            <p class="text-zinc-400 text-sm">Apresentação: A/C Sara / Zangari</p>
+        </div>
+
+        <div>
+            <input type="password" id="password-input" class="lock-input w-full py-4 px-4" placeholder="SENHA DE ACESSO" autocomplete="off" onkeydown="if(event.key==='Enter') checkPassword()">
+            <p id="error-msg" class="text-red-400 text-xs mt-2 hidden">
+                <span class="flex items-center justify-center gap-1"><i data-lucide="x-circle" class="w-4 h-4"></i> Credencial inválida.</span>
+            </p>
+        </div>
+
+        <button onclick="checkPassword()" class="w-full bg-brand-yellow hover:bg-brand-goldLight text-black font-bold py-4 rounded-2xl transition-all shadow-glow flex items-center justify-center gap-2 group relative overflow-hidden">
+            <div class="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-300 rounded-2xl"></div>
+            <i data-lucide="shield-check" class="w-5 h-5 relative z-10"></i>
+            <span class="relative z-10 text-sm uppercase tracking-widest">Acessar Documento Técnico</span>
+            <i data-lucide="arrow-right" class="w-4 h-4 relative z-10 group-hover:translate-x-1 transition-transform"></i>
+        </button>
+
+        <p class="text-zinc-600 text-xs">Documento restrito corporativo · Vision Tecnologia © 2026</p>
+    </div>
+</div>
+
+<nav id="navbar" class="fixed w-full z-50 top-0 bg-white/90 backdrop-blur-xl border-b border-gray-200/50 shadow-sm transition-all duration-300">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-between h-20 items-center">
+            <div class="flex flex-col items-center justify-center cursor-pointer" onclick="window.scrollTo(0,0)">
+                <div class="relative flex items-baseline leading-none">
+                    <span class="font-logo font-bold text-[2.6rem] text-gold-shine lowercase tracking-[-0.05em] leading-none">vısıon</span>
+                    <span class="absolute -right-2.5 top-1.5 text-[0.6rem] text-brand-yellow font-bold">®</span>
+                </div>
+                <span class="font-tech text-[0.6rem] font-bold text-gray-400 lowercase -mt-2 ml-1.5" style="letter-spacing:0.53em;">condo</span>
+            </div>
+            <div class="hidden md:flex items-center space-x-7 text-xs font-semibold text-gray-500 uppercase tracking-wider">
+                <a href="#diagnostico" class="hover:text-brand-yellow transition-colors">Engenharia</a>
+                <a href="#solucao" class="hover:text-brand-yellow transition-colors">Tecnologia Wireless</a>
+                <a href="#hardware" class="hover:text-brand-yellow transition-colors">Equipamentos</a>
+                <a href="#investimento" class="hover:text-brand-yellow transition-colors">Investimento</a>
+            </div>
+            <div class="flex items-center gap-4">
+                <button onclick="window.print()" class="text-gray-400 hover:text-brand-yellow transition-colors flex items-center gap-1.5" title="Salvar em PDF">
+                    <i data-lucide="download" class="w-4 h-4"></i>
+                    <span class="text-[10px] font-bold uppercase tracking-widest hidden sm:block">PDF</span>
+                </button>
+                <a href="#investimento" class="bg-zinc-900 text-white px-5 py-2.5 rounded-full text-[10px] font-bold uppercase tracking-widest hover:bg-brand-yellow hover:text-black transition-all shadow-md">
+                    Ver Projeto
+                </a>
+            </div>
+        </div>
+    </div>
+</nav>
+
+<header class="pt-32 pb-20 lg:pt-40 relative overflow-hidden bg-white">
+    <div class="absolute inset-0 bg-tech-pattern pointer-events-none"></div>
+    <div class="absolute right-0 top-0 -translate-y-1/4 translate-x-1/4 w-[800px] h-[800px] bg-brand-yellow/5 rounded-full blur-[120px] pointer-events-none"></div>
+    
+    <div class="max-w-7xl mx-auto px-4 relative z-10">
+        <div class="flex flex-col lg:flex-row items-center gap-12 lg:gap-16">
+            
+            <div class="w-full lg:w-1/2 text-center lg:text-left animate-slide-up">
+                <div class="inline-flex items-center gap-2 px-5 py-2 rounded-full border border-brand-yellow/30 bg-brand-yellow/5 text-brand-yellow text-[10px] font-bold uppercase tracking-widest mb-8 mx-auto lg:mx-0">
+                    <i data-lucide="shield" class="w-4 h-4"></i>
+                    PROJETO EXECUTIVO COMERCIAL (WHITE GLOVE)
+                </div>
+                
+                <h1 class="text-4xl md:text-5xl lg:text-6xl font-extrabold text-gray-900 leading-[1.05] tracking-tight mb-6">
+                    Cobertura tática.<br>
+                    <span class="text-gold-shine">Engenharia sem falhas.</span>
+                </h1>
+                
+                <h2 class="text-base md:text-lg text-gray-500 max-w-xl mx-auto lg:mx-0 font-medium mt-6 leading-relaxed">
+                    Sara, o projeto do Condomínio Wall Street está finalizado. Desenhamos a solução definitiva para o cruzamento de rua e para os elevadores, implementando um Link Wireless que põe fim aos cabos rompidos, além da substituição completa da central de gravação.
+                </h2>
+            </div>
+
+            <div class="w-full lg:w-1/2 mt-4 lg:mt-0 reveal animate-slide-up" style="animation-delay: 200ms;">
+                <div class="relative w-full rounded-[2rem] shadow-[0_20px_50px_-10px_rgba(0,0,0,0.3)] border-[3px] border-brand-yellow/80 group hover:shadow-[0_25px_60px_-10px_rgba(0,0,0,0.4)] transition-shadow duration-500 bg-black">
+                    <div class="relative w-full aspect-video rounded-[1.8rem] overflow-hidden bg-black shadow-inner">
+                        <video id="vision-video" class="w-full h-full object-cover cursor-pointer opacity-90" autoplay muted loop playsinline>
+                            <source src="https://res.cloudinary.com/dptcuckhf/video/upload/v1771711323/Vict%C3%B3ria_-_Vision_gdqnrk.mp4" type="video/mp4">
+                            Seu navegador não suporta o formato de vídeo.
+                        </video>
+
+                        <div id="unmute-overlay" class="absolute inset-0 bg-black/50 backdrop-blur-sm flex flex-col items-center justify-center cursor-pointer transition-opacity duration-500 z-10 hover:bg-black/40">
+                            <div class="bg-brand-yellow text-black font-bold px-6 py-3 md:px-8 md:py-4 rounded-full flex items-center gap-2 md:gap-3 shadow-glow animate-pulse transform group-hover:scale-105 transition-all">
+                                <i data-lucide="volume-2" class="w-5 h-5 md:w-6 md:h-6"></i>
+                                <span class="text-xs md:text-sm tracking-wide uppercase">Clique para Ouvir</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="mt-16 lg:mt-24 grid grid-cols-2 md:grid-cols-4 gap-5 max-w-4xl mx-auto reveal">
+            <div class="bg-white rounded-2xl p-6 shadow-glass border border-gray-100 text-center hover:border-brand-yellow/40 transition-all animate-float" style="animation-delay:0s;">
+                <div class="w-10 h-10 bg-brand-yellow/10 rounded-xl flex items-center justify-center mx-auto mb-3">
+                    <i data-lucide="video" class="w-5 h-5 text-brand-yellow"></i>
+                </div>
+                <div class="text-3xl font-extrabold text-gray-900 counter-num" data-target="4">0</div>
+                <div class="text-xs text-gray-500 font-medium mt-1 uppercase tracking-wider">Novas Câmeras IP</div>
+            </div>
+            <div class="bg-white rounded-2xl p-6 shadow-glass border border-gray-100 text-center hover:border-brand-yellow/40 transition-all animate-float" style="animation-delay:0.8s;">
+                <div class="w-10 h-10 bg-brand-yellow/10 rounded-xl flex items-center justify-center mx-auto mb-3">
+                    <i data-lucide="radio-tower" class="w-5 h-5 text-brand-yellow"></i>
+                </div>
+                <div class="text-3xl font-extrabold text-gray-900">2x</div>
+                <div class="text-xs text-gray-500 font-medium mt-1 uppercase tracking-wider">Links Elevador</div>
+            </div>
+            <div class="bg-white rounded-2xl p-6 shadow-glass border border-gray-100 text-center hover:border-brand-yellow/40 transition-all animate-float" style="animation-delay:0.4s;">
+                <div class="w-10 h-10 bg-brand-yellow/10 rounded-xl flex items-center justify-center mx-auto mb-3">
+                    <i data-lucide="server" class="w-5 h-5 text-brand-yellow"></i>
+                </div>
+                <div class="text-3xl font-extrabold text-gray-900 counter-num" data-target="16">0</div>
+                <div class="text-xs text-gray-500 font-medium mt-1 uppercase tracking-wider">Canais na Central</div>
+            </div>
+            <div class="bg-white rounded-2xl p-6 shadow-glass border border-gray-100 text-center hover:border-brand-yellow/40 transition-all animate-float" style="animation-delay:1.2s;">
+                <div class="w-10 h-10 bg-brand-yellow/10 rounded-xl flex items-center justify-center mx-auto mb-3">
+                    <i data-lucide="pipette" class="w-5 h-5 text-brand-yellow"></i>
+                </div>
+                <div class="text-3xl font-extrabold text-gray-900">100%</div>
+                <div class="text-xs text-gray-500 font-medium mt-1 uppercase tracking-wider">Galvanizado (Rua)</div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<section class="py-24 bg-[#f8f9fa] border-y border-gray-200/60 relative">
+    <div class="max-w-7xl mx-auto px-4">
+        <div class="text-center mb-16 reveal">
+            <span class="text-brand-yellow font-bold uppercase tracking-widest text-xs">Desafios de Engenharia</span>
+            <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mt-2">A Solução Definitiva para o Wall Street</h2>
+        </div>
+
+        <div class="grid md:grid-cols-3 gap-6 reveal">
+            <div class="bg-white rounded-[1.5rem] p-8 border border-gray-100 relative group hover:border-brand-yellow/50 transition-all shadow-glass">
+                <div class="w-14 h-14 bg-gray-50 rounded-xl shadow-sm flex items-center justify-center mb-6">
+                    <i data-lucide="arrow-up-down" class="w-7 h-7 text-brand-yellow"></i>
+                </div>
+                <h3 class="text-xl font-bold text-gray-900 mb-3">Cabos de Elevador</h3>
+                <p class="text-sm text-gray-600 mb-6 leading-relaxed"><strong>O Problema:</strong> Instalar câmeras usando o cabo de manobra tradicional do elevador faz com que o fio se rompa em poucos meses devido ao sobe-e-desce constante da cabine.</p>
+                <ul class="text-sm text-gray-700 space-y-3">
+                    <li class="flex items-start gap-2"><i data-lucide="check-circle-2" class="text-emerald-500 w-5 h-5 shrink-0"></i> <span>Adoção de 02 pares de rádio wireless Intelbras no poço.</span></li>
+                    <li class="flex items-start gap-2"><i data-lucide="check-circle-2" class="text-emerald-500 w-5 h-5 shrink-0"></i> <span>O sinal da câmera viaja pelo ar, eliminando as falhas mecânicas para sempre.</span></li>
+                </ul>
+            </div>
+
+            <div class="bg-white rounded-[1.5rem] p-8 border border-gray-100 relative group hover:border-brand-yellow/50 transition-all shadow-glass">
+                <div class="w-14 h-14 bg-gray-50 rounded-xl shadow-sm flex items-center justify-center mb-6">
+                    <i data-lucide="eye" class="w-7 h-7 text-brand-yellow"></i>
+                </div>
+                <h3 class="text-xl font-bold text-gray-900 mb-3">Cruzamento na Rua</h3>
+                <p class="text-sm text-gray-600 mb-6 leading-relaxed"><strong>O Problema:</strong> A área externa e os cruzamentos sofrem com a ação extrema do tempo (sol e chuva) e estão muito mais expostos a atos de vandalismo intencional.</p>
+                <ul class="text-sm text-gray-700 space-y-3">
+                    <li class="flex items-start gap-2"><i data-lucide="check-circle-2" class="text-emerald-500 w-5 h-5 shrink-0"></i> <span>Câmeras IP Bullet blindadas com proteção IP67 e infravermelho longo.</span></li>
+                    <li class="flex items-start gap-2"><i data-lucide="check-circle-2" class="text-emerald-500 w-5 h-5 shrink-0"></i> <span>Toda a fiação será encapsulada em tubos e caixas de aço galvanizado 3/4".</span></li>
+                </ul>
+            </div>
+
+            <div class="bg-white rounded-[1.5rem] p-8 border border-gray-100 relative group hover:border-brand-yellow/50 transition-all shadow-glass">
+                <div class="w-14 h-14 bg-gray-50 rounded-xl shadow-sm flex items-center justify-center mb-6">
+                    <i data-lucide="hard-drive" class="w-7 h-7 text-brand-yellow"></i>
+                </div>
+                <h3 class="text-xl font-bold text-gray-900 mb-3">Central Obsoleta</h3>
+                <p class="text-sm text-gray-600 mb-6 leading-relaxed"><strong>O Problema:</strong> O Gravador de Imagens (DVR) atual do condomínio já está sem canais livres e não suporta a nova tecnologia IP que será implementada.</p>
+                <ul class="text-sm text-gray-700 space-y-3">
+                    <li class="flex items-start gap-2"><i data-lucide="check-circle-2" class="text-emerald-500 w-5 h-5 shrink-0"></i> <span>Substituição pelo DVR Híbrido Intelbras MHDX 3116-C de última geração.</span></li>
+                    <li class="flex items-start gap-2"><i data-lucide="check-circle-2" class="text-emerald-500 w-5 h-5 shrink-0"></i> <span>Aceita todas as câmeras velhas e processa as câmeras IP novas com folga.</span></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="solucao" class="py-28 bg-[#09090b] relative overflow-hidden">
+    <div class="bg-grid absolute inset-0 opacity-10 pointer-events-none z-0"></div>
+    <div class="max-w-6xl mx-auto px-4 relative z-10">
+        <div class="text-center mb-16 reveal">
+            <span class="text-brand-yellow font-bold uppercase tracking-widest text-xs">Engenharia de Rádio</span>
+            <h2 class="text-3xl md:text-5xl font-bold text-white mt-3">Topologia Wireless de Elevador</h2>
+            <p class="text-zinc-400 mt-4 max-w-2xl mx-auto text-lg">
+                Esqueça as manutenções caras por cabos rompidos no poço. Entenda como o nosso sistema cria um "feixe de ar" criptografado para transportar as imagens em tempo real.
+            </p>
+        </div>
+
+        <div class="flex flex-col md:flex-row gap-12 items-stretch reveal">
+            <div class="w-full md:w-1/3 flex flex-col gap-4">
+                <button onclick="updateServer('cabine', this)" class="server-btn relative z-10 w-full bg-zinc-900 border-2 border-brand-yellow text-white p-5 rounded-2xl hover:scale-[1.02] transition-all shadow-glow text-left flex items-center gap-4 group">
+                    <div class="w-10 h-10 bg-brand-yellow/10 rounded-lg flex items-center justify-center shrink-0 border border-brand-yellow/20">
+                        <i data-lucide="video" class="w-5 h-5 text-brand-yellow"></i>
+                    </div>
+                    <div>
+                        <h4 class="font-bold text-sm uppercase tracking-wider">Câmera na Cabine</h4>
+                        <p class="text-xs text-zinc-400 mt-1 transition-colors">Vigilância Interna Isolada</p>
+                    </div>
+                </button>
+
+                <button onclick="updateServer('transmissor', this)" class="server-btn relative z-10 w-full bg-zinc-900 border-2 border-zinc-800 text-zinc-500 p-5 rounded-2xl hover:scale-[1.02] hover:border-brand-yellow hover:text-white transition-all text-left flex items-center gap-4 group">
+                    <div class="w-10 h-10 bg-zinc-800 rounded-lg flex items-center justify-center shrink-0 border border-zinc-700 group-hover:bg-brand-yellow/10 group-hover:border-brand-yellow/20 transition-colors">
+                        <i data-lucide="wifi" class="w-5 h-5 text-zinc-400 group-hover:text-brand-yellow transition-colors"></i>
+                    </div>
+                    <div>
+                        <h4 class="font-bold text-sm uppercase tracking-wider">Antena Transmissora</h4>
+                        <p class="text-xs mt-1 transition-colors text-zinc-600">Instalada sobre o Elevador</p>
+                    </div>
+                </button>
+
+                <button onclick="updateServer('receptor', this)" class="server-btn relative z-10 w-full bg-zinc-900 border-2 border-zinc-800 text-zinc-500 p-5 rounded-2xl hover:scale-[1.02] hover:border-brand-yellow hover:text-white transition-all text-left flex items-center gap-4 group">
+                    <div class="w-10 h-10 bg-zinc-800 rounded-lg flex items-center justify-center shrink-0 border border-zinc-700 group-hover:bg-brand-yellow/10 group-hover:border-brand-yellow/20 transition-colors">
+                        <i data-lucide="radio-receiver" class="w-5 h-5 text-zinc-400 group-hover:text-brand-yellow transition-colors"></i>
+                    </div>
+                    <div>
+                        <h4 class="font-bold text-sm uppercase tracking-wider">Antena Receptora</h4>
+                        <p class="text-xs mt-1 transition-colors text-zinc-600">Fixada no teto do Poço</p>
+                    </div>
+                </button>
+
+                <button onclick="updateServer('central', this)" class="server-btn relative z-10 w-full bg-zinc-900 border-2 border-zinc-800 text-zinc-500 p-5 rounded-2xl hover:scale-[1.02] hover:border-brand-yellow hover:text-white transition-all text-left flex items-center gap-4 group">
+                    <div class="w-10 h-10 bg-zinc-800 rounded-lg flex items-center justify-center shrink-0 border border-zinc-700 group-hover:bg-brand-yellow/10 group-hover:border-brand-yellow/20 transition-colors">
+                        <i data-lucide="server" class="w-5 h-5 text-zinc-400 group-hover:text-brand-yellow transition-colors"></i>
+                    </div>
+                    <div>
+                        <h4 class="font-bold text-sm uppercase tracking-wider">Central de Gravação</h4>
+                        <p class="text-xs mt-1 transition-colors text-zinc-600">Recepção Final na Portaria</p>
+                    </div>
+                </button>
+            </div>
+
+            <div class="w-full md:w-2/3 h-full">
+                <div class="bg-zinc-900 border border-zinc-800 rounded-[2rem] p-8 md:p-12 relative overflow-hidden h-full min-h-[400px] flex flex-col justify-center transition-all duration-300 shadow-premium" id="server-panel">
+                    <div class="absolute top-0 right-0 w-80 h-80 bg-brand-yellow/10 rounded-full blur-[100px] pointer-events-none"></div>
+
+                    <div class="w-20 h-20 bg-brand-yellow/10 rounded-2xl flex items-center justify-center mb-8 border border-brand-yellow/20 shadow-glow" id="server-icon-wrapper">
+                        <i data-lucide="video" class="w-10 h-10 text-brand-yellow" id="server-icon"></i>
+                    </div>
+
+                    <h3 class="text-2xl md:text-4xl font-bold text-white mb-5" id="server-title">Câmera IP Interna (Cabine)</h3>
+                    <p class="text-zinc-400 leading-relaxed mb-8 text-lg" id="server-desc">
+                        Uma Câmera Intelbras Dome instalada no teto de gesso interno do elevador. Ela não possui nenhum cabo de dados ligado ao prédio, conectando-se apenas à energia local da própria cabine (luz) e ao rádio superior, mantendo uma estética 100% limpa e isolada do movimento do poço.
+                    </p>
+
+                    <div class="flex flex-wrap gap-4 mt-auto" id="server-stats">
+                        <div class="bg-black/60 border border-zinc-800 px-5 py-3 rounded-xl text-xs font-bold text-brand-yellow uppercase tracking-wider flex items-center gap-2">
+                            <i data-lucide="eye" class="w-4 h-4"></i> Monitoramento Focado
+                        </div>
+                        <div class="bg-black/60 border border-zinc-800 px-5 py-3 rounded-xl text-xs font-bold text-brand-yellow uppercase tracking-wider flex items-center gap-2">
+                            <i data-lucide="scissors" class="w-4 h-4"></i> Zero Fiação Pendente
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="hardware" class="py-24 bg-white border-t border-gray-100">
+    <div class="max-w-7xl mx-auto px-4">
+        <div class="text-center mb-12 reveal">
+            <span class="text-brand-yellow font-bold uppercase tracking-widest text-xs">Galeria de Equipamentos</span>
+            <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mt-2">Tecnologia Homologada</h2>
+        </div>
+
+        <div class="grid lg:grid-cols-4 md:grid-cols-2 gap-6 reveal">
+            <div class="bg-gray-50 rounded-2xl p-6 border border-gray-100 flex flex-col items-center text-center relative overflow-hidden group hover:border-brand-yellow/50 transition-all">
+                <div class="bg-white rounded-xl shadow-sm w-full h-32 flex items-center justify-center mb-4 p-2 relative">
+                    <span class="absolute top-2 right-2 bg-brand-yellow text-black text-[9px] font-bold px-2 py-0.5 rounded-md z-10">4 UN</span>
+                    <img src="https://res.cloudinary.com/dptcuckhf/image/upload/v1777380050/vip-1220-d-fc_-esq_mnjcds.png" alt="Câmera IP" class="h-[75%] max-w-[80%] object-contain group-hover:scale-110 transition-transform duration-500">
+                </div>
+                <h3 class="text-sm font-bold text-gray-900 mb-1">Câmeras IP Intelbras</h3>
+                <p class="text-[10px] text-brand-goldDark uppercase font-bold">Resolução IP (Dome e Bullet)</p>
+            </div>
+
+            <div class="bg-gray-50 rounded-2xl p-6 border border-gray-100 flex flex-col items-center text-center group hover:border-brand-yellow/50 transition-all">
+                <div class="bg-white rounded-xl shadow-sm w-full h-32 flex items-center justify-center gap-3 mb-4 p-2 relative">
+                    <span class="absolute top-2 right-2 bg-brand-yellow text-black text-[9px] font-bold px-2 py-0.5 rounded-md z-10">2 PARES</span>
+                    <i data-lucide="radio-tower" class="w-14 h-14 text-blue-600 group-hover:scale-110 transition-transform duration-500"></i>
+                </div>
+                <h3 class="text-sm font-bold text-gray-900 mb-1">Rádios WOM 5A MIMO</h3>
+                <p class="text-[10px] text-gray-500 uppercase font-semibold">Link Wireless Ponto a Ponto</p>
+            </div>
+
+            <div class="bg-gray-50 rounded-2xl p-6 border border-gray-100 flex flex-col items-center text-center group hover:border-brand-yellow/50 transition-all">
+                <div class="bg-white rounded-xl shadow-sm w-full h-32 flex items-center justify-center mb-4 p-2 relative">
+                    <span class="absolute top-2 right-2 bg-brand-yellow text-black text-[9px] font-bold px-2 py-0.5 rounded-md z-10">1 UN</span>
+                    <img src="https://res.cloudinary.com/dptcuckhf/image/upload/v1770981167/s1010f-p-front_vplwq9.png" alt="Switch PoE" class="h-[75%] max-w-[80%] object-contain group-hover:scale-110 transition-transform duration-500">
+                </div>
+                <h3 class="text-sm font-bold text-gray-900 mb-1">Switch 5 Portas PoE</h3>
+                <p class="text-[10px] text-gray-500 uppercase font-semibold">Distribuição de Dados e Energia</p>
+            </div>
+
+            <div class="bg-zinc-900 rounded-2xl p-6 shadow-glow-md flex flex-col items-center text-center relative overflow-hidden border border-zinc-800 group">
+                <div class="bg-black/50 rounded-xl shadow-sm w-full h-32 flex items-center justify-center mb-4 p-2 relative border border-zinc-700">
+                    <span class="absolute top-2 right-2 bg-brand-yellow text-black text-[9px] font-bold px-2 py-0.5 rounded-md z-10">CENTRAL</span>
+                    <img src="https://res.cloudinary.com/dptcuckhf/image/upload/v1771621274/nvd-3316-plus-pers-dir_cuqefw.png" alt="Gravador Híbrido" class="h-[50%] max-w-[80%] object-contain group-hover:scale-110 transition-transform duration-500">
+                </div>
+                <h3 class="text-sm font-bold text-white mb-1">DVR Híbrido MHDX 3116-C</h3>
+                <p class="text-[10px] text-brand-goldLight uppercase font-bold">16 Canais (Analógico + IP)</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="empresa" class="py-24 bg-black relative overflow-hidden">
+    <div class="absolute inset-0 bg-dots opacity-20 pointer-events-none"></div>
+    <div class="max-w-6xl mx-auto px-4 relative z-10">
+         <div class="flex flex-col md:flex-row gap-12 items-center reveal active">
+             
+             <div class="w-full md:w-1/2 text-left">
+                 <span class="text-brand-yellow font-bold uppercase tracking-widest text-xs mb-3 block">O Padrão Ouro Vision</span>
+                 <h2 class="text-3xl md:text-5xl font-extrabold text-white leading-tight mb-6">
+                     Um Acordo de Nível de Serviço (<span class="text-brand-yellow">SLA</span>) inquebrável.
+                 </h2>
+                 <p class="text-zinc-400 text-lg leading-relaxed mb-8">
+                     O Condomínio Wall Street não merece soluções paliativas. A tecnologia de comunicação sem fio em elevadores e a blindagem industrial externa exigem precisão cirúrgica e uma retaguarda técnica impecável para o pós-obra.
+                 </p>
+                 <div class="inline-flex items-center gap-2 px-5 py-2.5 rounded-full border border-brand-yellow/30 bg-brand-yellow/10">
+                    <i data-lucide="shield" class="w-4 h-4 text-brand-yellow"></i>
+                    <span class="text-brand-yellow text-xs font-bold uppercase tracking-widest">Engenharia Premium</span>
+                </div>
+             </div>
+
+             <div class="w-full md:w-1/2">
+                 <div class="space-y-4">
+                     <div class="bg-zinc-900/80 border border-zinc-800 p-5 rounded-2xl flex items-start gap-4 hover:border-brand-yellow/50 transition-colors shadow-sm">
+                         <i data-lucide="check-circle-2" class="w-6 h-6 text-brand-yellow shrink-0 mt-0.5"></i>
+                         <div>
+                             <h4 class="text-white font-bold text-base mb-1">Acabamento Galvanizado (Rua)</h4>
+                             <p class="text-zinc-400 text-sm leading-relaxed">Nas câmeras dos cruzamentos não usamos canaletas de plástico. A fiação corre 100% protegida dentro de tubos de aço galvanizado pesados, imunes ao sol, chuva e facas.</p>
+                         </div>
+                     </div>
+                     <div class="bg-zinc-900/80 border border-zinc-800 p-5 rounded-2xl flex items-start gap-4 hover:border-brand-yellow/50 transition-colors shadow-sm">
+                         <i data-lucide="check-circle-2" class="w-6 h-6 text-brand-yellow shrink-0 mt-0.5"></i>
+                         <div>
+                             <h4 class="text-white font-bold text-base mb-1">Migração Híbrida Inteligente</h4>
+                             <p class="text-zinc-400 text-sm leading-relaxed">Não descartaremos as câmeras boas que o condomínio já tem. O novo DVR Intelbras foi escolhido a dedo pois suporta as analógicas antigas e as novas de rede IP simultaneamente.</p>
+                         </div>
+                     </div>
+                     <div class="bg-zinc-900/80 border border-zinc-800 p-5 rounded-2xl flex items-start gap-4 hover:border-brand-yellow/50 transition-colors shadow-sm">
+                         <i data-lucide="check-circle-2" class="w-6 h-6 text-brand-yellow shrink-0 mt-0.5"></i>
+                         <div>
+                             <h4 class="text-white font-bold text-base mb-1">Garantia Expressa Oficial</h4>
+                             <p class="text-zinc-400 text-sm leading-relaxed">Risco tecnológico assumido integralmente pela Vision. Garantia total de 1 ano. Se qualquer câmera, rádio ou o gravador apresentar falhas, trocamos imediatamente sem custo adicional.</p>
+                         </div>
+                     </div>
+                 </div>
+             </div>
+         </div>
+    </div>
+</section>
+
+<section id="escopo" class="py-24 bg-[#f8f9fa] border-t border-gray-200">
+    <div class="max-w-5xl mx-auto px-4">
+        <div class="text-center mb-16 reveal">
+            <span class="text-brand-yellow font-bold uppercase tracking-widest text-xs">Transparência de Investimento</span>
+            <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mt-2">Detalhamento do Escopo Técnico</h2>
+            <p class="text-gray-500 mt-4 max-w-2xl mx-auto text-lg leading-relaxed">
+                Tudo o que está incluído no seu projeto. A listagem rigorosa dos equipamentos, materiais pesados e os serviços da nossa equipe técnica para entregar a obra chave na mão.
+            </p>
+        </div>
+
+        <div class="bg-white rounded-3xl border border-gray-200 shadow-glass overflow-hidden reveal">
+            <div class="hidden md:grid grid-cols-12 gap-4 bg-gray-50 border-b border-gray-200 p-6 text-xs font-bold text-gray-500 uppercase tracking-wider">
+                <div class="col-span-8">Descrição do Item / Serviço Técnico</div>
+                <div class="col-span-2 text-center">Quantidade</div>
+                <div class="col-span-2 text-center">Garantia</div>
+            </div>
+
+            <div class="border-b border-gray-100">
+                <div class="bg-brand-yellow/5 px-6 py-3 border-b border-brand-yellow/10 flex items-center gap-2">
+                    <i data-lucide="video" class="w-4 h-4 text-brand-goldDark"></i>
+                    <h3 class="text-xs font-bold text-brand-goldDark uppercase tracking-widest">1. Captação de Imagem e Rede IP</h3>
+                </div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-12 gap-4 p-6 border-b border-gray-50 hover:bg-gray-50 transition-colors items-center">
+                    <div class="md:col-span-8 flex flex-col">
+                        <span class="text-sm font-bold text-gray-900">Câmeras IP Dome (VIP 1230 D G5) e Câmeras IP Bullet (VIP 1230 B G5)</span>
+                        <span class="text-xs text-gray-500 mt-1">Câmeras de rede Intelbras com infravermelho e proteção IP67 blindadas.</span>
+                    </div>
+                    <div class="md:col-span-2 text-left md:text-center mt-2 md:mt-0"><span class="md:hidden text-xs font-bold text-gray-400 uppercase mr-2">Qtd:</span><span class="text-sm font-bold text-brand-yellow bg-brand-yellow/10 px-3 py-1 rounded-full">04 Und.</span></div>
+                    <div class="md:col-span-2 text-left md:text-center mt-2 md:mt-0"><span class="md:hidden text-xs font-bold text-gray-400 uppercase mr-2">Garantia:</span><span class="text-sm font-semibold text-gray-700">12 Meses</span></div>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-12 gap-4 p-6 border-b border-gray-50 hover:bg-gray-50 transition-colors items-center">
+                    <div class="md:col-span-8 flex flex-col">
+                        <span class="text-sm font-bold text-gray-900">Antenas Rádio Ponto a Ponto (WOM 5A MIMO)</span>
+                        <span class="text-xs text-gray-500 mt-1">Link de rádio Wireless Intelbras 5GHz focado na transmissão do fosso de elevador.</span>
+                    </div>
+                    <div class="md:col-span-2 text-left md:text-center mt-2 md:mt-0"><span class="md:hidden text-xs font-bold text-gray-400 uppercase mr-2">Qtd:</span><span class="text-sm font-bold text-brand-yellow bg-brand-yellow/10 px-3 py-1 rounded-full">04 Und.</span></div>
+                    <div class="md:col-span-2 text-left md:text-center mt-2 md:mt-0"><span class="md:hidden text-xs font-bold text-gray-400 uppercase mr-2">Garantia:</span><span class="text-sm font-semibold text-gray-700">12 Meses</span></div>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-12 gap-4 p-6 border-b border-gray-50 hover:bg-gray-50 transition-colors items-center">
+                    <div class="md:col-span-8 flex flex-col">
+                        <span class="text-sm font-bold text-gray-900">Bobina de Cabo de Rede CAT5e (305 metros) e Caixas de Passagem (VBOX)</span>
+                        <span class="text-xs text-gray-500 mt-1">Cabeamento blindado para tráfego IP de alta definição e caixas de proteção Intelbras.</span>
+                    </div>
+                    <div class="md:col-span-2 text-left md:text-center mt-2 md:mt-0"><span class="md:hidden text-xs font-bold text-gray-400 uppercase mr-2">Qtd:</span><span class="text-sm font-bold text-brand-yellow bg-brand-yellow/10 px-3 py-1 rounded-full">1 Lote</span></div>
+                    <div class="md:col-span-2 text-left md:text-center mt-2 md:mt-0"><span class="md:hidden text-xs font-bold text-gray-400 uppercase mr-2">Garantia:</span><span class="text-sm font-semibold text-gray-700">Oficial</span></div>
+                </div>
+            </div>
+
+            <div class="border-b border-gray-100">
+                <div class="bg-brand-yellow/5 px-6 py-3 border-b border-brand-yellow/10 flex items-center gap-2">
+                    <i data-lucide="server" class="w-4 h-4 text-brand-goldDark"></i>
+                    <h3 class="text-xs font-bold text-brand-goldDark uppercase tracking-widest">2. Central Híbrida de Gravação</h3>
+                </div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-12 gap-4 p-6 border-b border-gray-50 hover:bg-gray-50 transition-colors items-center">
+                    <div class="md:col-span-8 flex flex-col">
+                        <span class="text-sm font-bold text-gray-900">Gravador Híbrido de Vídeo (MHDX 3116-C)</span>
+                        <span class="text-xs text-gray-500 mt-1">Servidor central de 16 canais Intelbras com inteligência de processamento de dados (Aceita as analógicas antigas do prédio e as novas IP).</span>
+                    </div>
+                    <div class="md:col-span-2 text-left md:text-center mt-2 md:mt-0"><span class="md:hidden text-xs font-bold text-gray-400 uppercase mr-2">Qtd:</span><span class="text-sm font-bold text-brand-yellow bg-brand-yellow/10 px-3 py-1 rounded-full">01 Und.</span></div>
+                    <div class="md:col-span-2 text-left md:text-center mt-2 md:mt-0"><span class="md:hidden text-xs font-bold text-gray-400 uppercase mr-2">Garantia:</span><span class="text-sm font-semibold text-gray-700">12 Meses</span></div>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-12 gap-4 p-6 border-b border-gray-50 hover:bg-gray-50 transition-colors items-center">
+                    <div class="md:col-span-8 flex flex-col">
+                        <span class="text-sm font-bold text-gray-900">Switch Inteligente de 5 Portas (SF 500 PoE) e Roteador Wi-Fi (GF 1200)</span>
+                        <span class="text-xs text-gray-500 mt-1">Distribuição de energia direta pelo cabo de rede e criação de malha corporativa dedicada.</span>
+                    </div>
+                    <div class="md:col-span-2 text-left md:text-center mt-2 md:mt-0"><span class="md:hidden text-xs font-bold text-gray-400 uppercase mr-2">Qtd:</span><span class="text-sm font-bold text-brand-yellow bg-brand-yellow/10 px-3 py-1 rounded-full">02 Und.</span></div>
+                    <div class="md:col-span-2 text-left md:text-center mt-2 md:mt-0"><span class="md:hidden text-xs font-bold text-gray-400 uppercase mr-2">Garantia:</span><span class="text-sm font-semibold text-gray-700">12 Meses</span></div>
+                </div>
+            </div>
+
+            <div class="border-b border-gray-100">
+                <div class="bg-brand-yellow/5 px-6 py-3 border-b border-brand-yellow/10 flex items-center gap-2">
+                    <i data-lucide="pipette" class="w-4 h-4 text-brand-goldDark"></i>
+                    <h3 class="text-xs font-bold text-brand-goldDark uppercase tracking-widest">3. Lote de Infraestrutura Externa Pesada</h3>
+                </div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-12 gap-4 p-6 border-b border-gray-50 hover:bg-gray-50 transition-colors items-center">
+                    <div class="md:col-span-8 flex flex-col">
+                        <span class="text-sm font-bold text-gray-900">Tubulação Galvanizada, Conduletes e Fixação (Blindagem de Rua)</span>
+                        <span class="text-xs text-gray-500 mt-1">50 metros de eletrodutos metálicos 3/4", conduletes industriais, tampões, unidutes, curvas, sealtubo, buchas e abraçadeiras do tipo cunha.</span>
+                    </div>
+                    <div class="md:col-span-2 text-left md:text-center mt-2 md:mt-0"><span class="md:hidden text-xs font-bold text-gray-400 uppercase mr-2">Qtd:</span><span class="text-sm font-bold text-gray-600 bg-gray-100 border border-gray-200 px-3 py-1 rounded-full">Completo</span></div>
+                    <div class="md:col-span-2 text-left md:text-center mt-2 md:mt-0"><span class="md:hidden text-xs font-bold text-gray-400 uppercase mr-2">Garantia:</span><span class="text-sm font-semibold text-gray-700">Oficial</span></div>
+                </div>
+            </div>
+
+            <div>
+                <div class="bg-brand-yellow/5 px-6 py-3 border-b border-brand-yellow/10 flex items-center gap-2">
+                    <i data-lucide="wrench" class="w-4 h-4 text-brand-goldDark"></i>
+                    <h3 class="text-xs font-bold text-brand-goldDark uppercase tracking-widest">4. Engenharia e Serviços</h3>
+                </div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-12 gap-4 p-6 hover:bg-gray-50 transition-colors items-center">
+                    <div class="md:col-span-8 flex flex-col">
+                        <span class="text-sm font-bold text-gray-900">Mão de Obra "White Glove" & Comissionamento Técnico</span>
+                        <span class="text-xs text-gray-500 mt-2 leading-relaxed">
+                            • Passagem de infraestrutura rígida galvanizada nos cruzamentos da rua.<br>
+                            • Fixação e alinhamento milimétrico das Antenas de Rádio no teto e fosso dos elevadores.<br>
+                            • Migração cautelosa do HD (Disco Rígido) antigo do prédio para o novo Servidor Híbrido MHDX.<br>
+                            • Comissionamento da rede, ajustes de IP e liberação do acesso remoto no aplicativo do celular.
+                        </span>
+                    </div>
+                    <div class="md:col-span-2 text-left md:text-center mt-2 md:mt-0"><span class="md:hidden text-xs font-bold text-gray-400 uppercase mr-2">Qtd:</span><span class="text-sm font-bold text-emerald-600 bg-emerald-50 border border-emerald-100 px-3 py-1 rounded-full">Incluso</span></div>
+                    <div class="md:col-span-2 text-left md:text-center mt-2 md:mt-0"><span class="md:hidden text-xs font-bold text-gray-400 uppercase mr-2">Garantia:</span><span class="text-sm font-semibold text-brand-goldDark">Vitalícia (Obra)</span></div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="mt-8 flex flex-col sm:flex-row items-center justify-center gap-4 bg-white border border-gray-200 rounded-2xl p-6 shadow-sm reveal">
+            <div class="w-12 h-12 bg-brand-yellow/10 rounded-full flex items-center justify-center shrink-0 border border-brand-yellow/20">
+                <i data-lucide="shield-check" class="w-6 h-6 text-brand-yellow"></i>
+            </div>
+            <div class="text-center sm:text-left">
+                <h4 class="text-gray-900 font-bold text-base">Garantia Expressa de 1 Ano (12 Meses)</h4>
+                <p class="text-gray-500 text-sm mt-1">O projeto do Wall Street está 100% blindado. Cobertura on-site total para defeitos de fabricação em qualquer componente eletrônico instalado.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="investimento" class="py-28 bg-white relative overflow-hidden border-t border-gray-200">
+    <div class="max-w-4xl mx-auto px-4 relative z-10">
+
+        <div class="text-center mb-10 reveal">
+            <h2 class="text-3xl md:text-5xl font-extrabold text-gray-900 tracking-tight">Investimento Executivo</h2>
+            <p class="text-gray-500 mt-3 text-lg">A solução definitiva para o condomínio, entregue sem assinaturas mensais ou taxas escondidas.</p>
+        </div>
+
+        <div class="flex flex-col items-center justify-center mb-8 reveal">
+            <div class="bg-gray-100 p-1.5 rounded-full inline-flex relative shadow-sm border border-gray-200">
+                <div id="toggle-bg" class="absolute top-1.5 bottom-1.5 w-[calc(50%-3px)] bg-brand-yellow rounded-full transition-transform duration-300 ease-in-out" style="transform: translateX(0); left: 3px;"></div>
+                
+                <button onclick="setPaymentMode('avista')" id="btn-avista" class="relative z-10 px-8 py-2.5 text-sm font-bold text-black transition-colors w-40 text-center rounded-full focus:outline-none">À Vista (PIX)</button>
+                <button onclick="setPaymentMode('parcelado')" id="btn-parcelado" class="relative z-10 px-8 py-2.5 text-sm font-bold text-gray-500 transition-colors w-48 text-center rounded-full focus:outline-none hover:text-black">Parcelado (Cartão)</button>
+            </div>
+            <p id="card-fee-warning" class="text-xs text-gray-400 font-bold uppercase tracking-widest mt-4 opacity-0 transition-opacity duration-300">Pague em até 10 vezes</p>
+        </div>
+
+        <div class="reveal">
+            <div class="premium-border-glow group relative z-20 max-w-2xl mx-auto shadow-premium">
+                <div class="premium-border-inner bg-white p-8 md:p-10 text-center flex flex-col relative">
+                    <div class="absolute top-0 left-0 w-full h-1.5 bg-gradient-to-r from-brand-yellow to-brand-goldLight rounded-t-[calc(2rem-2px)]"></div>
+                    <div class="absolute top-0 right-0 w-32 h-32 bg-brand-yellow/10 rounded-full blur-[50px] pointer-events-none"></div>
+
+                    <div class="mb-6 mt-2 relative z-10">
+                        <p class="text-[10px] font-bold uppercase tracking-widest text-brand-yellow mb-2">Projeto de Engenharia</p>
+                        <h3 class="font-bold text-gray-900 text-2xl">CFTV Híbrido + Wireless Elevador</h3>
+                    </div>
+
+                    <div class="mb-8 w-full relative z-10" id="price-opt1">
+                        </div>
+
+                    <div class="space-y-0 mb-8 text-left w-full flex-1 relative z-10">
+                        <div class="flex items-start gap-4 border-b border-gray-100 py-4">
+                            <i data-lucide="radio" class="w-5 h-5 text-brand-yellow shrink-0 mt-0.5"></i>
+                            <p class="text-[13px] text-gray-600 leading-relaxed"><strong class="text-gray-900 font-bold">Tecnologia Wireless.</strong> Instalação de 2 Pares de Rádio Intelbras WOM 5A MIMO e Câmeras IP nos poços de elevador.</p>
+                        </div>
+                        <div class="flex items-start gap-4 border-b border-gray-100 py-4">
+                            <i data-lucide="pipette" class="w-5 h-5 text-brand-yellow shrink-0 mt-0.5"></i>
+                            <p class="text-[13px] text-gray-600 leading-relaxed"><strong class="text-gray-900 font-bold">Blindagem Galvanizada.</strong> 02 Câmeras Bullet IP cruzando a rua protegidas por eletrodutos metálicos rígidos.</p>
+                        </div>
+                        <div class="flex items-start gap-4 border-b border-gray-100 py-4">
+                            <i data-lucide="server" class="w-5 h-5 text-brand-yellow shrink-0 mt-0.5"></i>
+                            <p class="text-[13px] text-gray-600 leading-relaxed"><strong class="text-gray-900 font-bold">Central Upgrade.</strong> Novo Gravador Híbrido Intelbras de 16 Canais, substituindo o antigo e suportando as câmeras atuais do prédio.</p>
+                        </div>
+                        <div class="flex items-start gap-4 pt-4">
+                            <i data-lucide="wrench" class="w-5 h-5 text-brand-yellow shrink-0 mt-0.5"></i>
+                            <p class="text-[13px] text-gray-600 leading-relaxed"><strong class="text-gray-900 font-bold">Instalação White Glove.</strong> Obra 100% limpa, materiais brutos, nossa mão de obra, migração do HD e zero mensalidades.</p>
+                        </div>
+                    </div>
+
+                    <a href="https://wa.me/5511930816696?text=Olá%20Gabriel,%20avaliamos%20a%20proposta%20e%20gostaríamos%20de%20aprovar%20o%20Projeto%20do%20Wall%20Street." target="_blank" class="w-full bg-brand-yellow hover:bg-brand-goldLight text-black font-bold py-4 rounded-xl flex items-center justify-center gap-2 transition-all shadow-glow text-sm uppercase tracking-widest mt-auto hover:-translate-y-0.5 relative z-10">
+                        <i data-lucide="check-circle" class="w-5 h-5"></i>
+                        <span>Aprovar Implantação</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="faq" class="py-24 bg-[#f8f9fa] border-t border-gray-100">
+    <div class="max-w-3xl mx-auto px-4">
+        <div class="text-center mb-14 reveal">
+            <span class="text-brand-yellow font-bold uppercase tracking-widest text-xs">Dúvidas Frequentes</span>
+            <h2 class="text-3xl font-bold text-gray-900 mt-2">Alinhamentos Finais</h2>
+        </div>
+        
+        <div class="space-y-4 reveal" id="accordion">
+            <div class="accordion-item bg-white rounded-2xl border border-gray-200 shadow-sm overflow-hidden transition-all hover:border-brand-yellow/50">
+                <button onclick="toggleAccordion(this)" class="w-full flex items-center justify-between p-6 text-left font-bold text-gray-900 focus:outline-none">
+                    <span>O valor inclui alguma mensalidade ou taxa extra?</span>
+                    <i data-lucide="chevron-down" class="w-5 h-5 text-brand-yellow acc-arrow shrink-0"></i>
+                </button>
+                <div class="accordion-content">
+                    <p class="px-6 pb-6 text-gray-600 text-sm leading-relaxed">Não. Este é um investimento definitivo para a infraestrutura do Wall Street. O valor abrange 100% da obra listada no escopo: Câmeras IP, Rádios Transmissores, Switch, o novo DVR Híbrido, os tubos galvanizados e toda a nossa mão de obra técnica especializada. O sistema finalizado é do condomínio, sem licenças anuais atreladas.</p>
+                </div>
+            </div>
+
+            <div class="accordion-item bg-white rounded-2xl border border-gray-200 shadow-sm overflow-hidden transition-all hover:border-brand-yellow/50">
+                <button onclick="toggleAccordion(this)" class="w-full flex items-center justify-between p-6 text-left font-bold text-gray-900 focus:outline-none">
+                    <span>Qual o problema dos cabos tradicionais no elevador?</span>
+                    <i data-lucide="chevron-down" class="w-5 h-5 text-brand-yellow acc-arrow shrink-0"></i>
+                </button>
+                <div class="accordion-content">
+                    <p class="px-6 pb-6 text-gray-600 text-sm leading-relaxed">Empresas amadoras passam fios que descem pendurados pelo poço junto com a cabine. O movimento contínuo de sobe e desce, aliado ao atrito, quebra a malha interna do fio em meses, deixando o elevador sem câmera e gerando custos caros de reparo. A nossa engenharia via Rádio manda a imagem "pelo ar", eliminando esse estresse mecânico de forma definitiva.</p>
+                </div>
+            </div>
+
+            <div class="accordion-item bg-white rounded-2xl border border-gray-200 shadow-sm overflow-hidden transition-all hover:border-brand-yellow/50">
+                <button onclick="toggleAccordion(this)" class="w-full flex items-center justify-between p-6 text-left font-bold text-gray-900 focus:outline-none">
+                    <span>As câmeras que já temos vão continuar funcionando?</span>
+                    <i data-lucide="chevron-down" class="w-5 h-5 text-brand-yellow acc-arrow shrink-0"></i>
+                </button>
+                <div class="accordion-content">
+                    <p class="px-6 pb-6 text-gray-600 text-sm leading-relaxed">Sim! Por isso selecionamos o DVR Híbrido Intelbras MHDX de 16 Canais. Esse equipamento possui um processador que reconhece e grava perfeitamente as imagens das câmeras antigas (via cabo coaxial) ao mesmo tempo em que gerencia a rede de dados das novas câmeras IP que estamos a instalar nos elevadores e na rua.</p>
+                </div>
+            </div>
+            
+            <div class="accordion-item bg-white rounded-2xl border border-gray-200 shadow-sm overflow-hidden transition-all hover:border-brand-yellow/50">
+                <button onclick="toggleAccordion(this)" class="w-full flex items-center justify-between p-6 text-left font-bold text-gray-900 focus:outline-none">
+                    <span>O Disco Rígido (HD) está incluso neste valor?</span>
+                    <i data-lucide="chevron-down" class="w-5 h-5 text-brand-yellow acc-arrow shrink-0"></i>
+                </button>
+                <div class="accordion-content">
+                    <p class="px-6 pb-6 text-gray-600 text-sm leading-relaxed">Como vocês estão com as imagens rodando no DVR antigo, nós faremos a migração do HD que vocês já possuem (dentro do DVR velho) para a nova máquina de 16 canais gratuitamente, mantendo o histórico de vocês. Caso esse HD atual de vocês esteja danificado e a administração exija um novo (ex: da linha Purple), o custo da peça de mercado é faturado à parte.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="py-28 bg-[#09090b] relative overflow-hidden">
+    <div class="bg-grid absolute inset-0 opacity-10 pointer-events-none z-0"></div>
+    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-brand-yellow/10 rounded-full blur-[100px] pointer-events-none"></div>
+    
+    <div class="max-w-4xl mx-auto px-4 text-center relative z-10 reveal active">
+        <span class="text-brand-yellow font-bold uppercase tracking-widest text-xs mb-4 block">Próximos Passos</span>
+        <h2 class="text-3xl md:text-5xl font-extrabold text-white leading-tight mb-6">
+            O projeto de segurança <span class="text-gold-shine">definitivo.</span>
+        </h2>
+        <p class="text-zinc-400 text-lg mb-10 leading-relaxed max-w-2xl mx-auto">
+            Sara, desenhamos a solução tecnológica mais avançada e livre de dores de cabeça para o Wall Street. Sem fios a quebrar no poço do elevador e com o perímetro devidamente blindado e gravado pela nova central de 16 canais.
+        </p>
+
+        <a href="https://wa.me/5511930816696?text=Olá%20Gabriel,%20avaliamos%20a%20proposta%20e%20gostaríamos%20de%20aprovar%20o%20Projeto%20do%20Wall%20Street." target="_blank" class="inline-flex items-center gap-3 bg-brand-yellow hover:bg-brand-goldLight text-brand-black font-bold px-10 py-5 rounded-full transition-all shadow-glow-md text-sm uppercase tracking-widest transform hover:scale-[1.03]">
+            <i data-lucide="check-circle" class="w-5 h-5"></i>
+            Aprovar Implantação
+            <i data-lucide="arrow-right" class="w-4 h-4 ml-1"></i>
+        </a>
+    </div>
+</section>
+
+<footer class="bg-black py-16 text-center border-t border-zinc-900 group">
+    <div class="max-w-4xl mx-auto px-4">
+        
+        <div class="flex flex-col items-center justify-center leading-none opacity-40 group-hover:opacity-100 transition-opacity duration-500 cursor-default mb-10">
+            <div class="flex flex-col items-center">
+                <div class="relative flex items-baseline leading-none">
+                    <span class="font-logo font-bold text-[3.5rem] text-white lowercase tracking-[-0.05em] leading-none">vısıon</span>
+                    <span class="absolute -right-3.5 top-2.5 text-[0.75rem] text-brand-yellow font-bold">®</span>
+                </div>
+                <span class="font-tech text-[0.75rem] font-bold text-zinc-500 lowercase -mt-3 ml-1.5 text-center w-full" style="letter-spacing: 0.53em;">business</span>
+            </div>
+        </div>
+
+        <div class="text-zinc-500 text-xs md:text-sm leading-relaxed space-y-1 mb-8 opacity-60">
+            <p>Cond. Wall Street | Rua Pedroso Alvarenga, 1245 - Itaim Bibi, SP</p>
+            <p>Projeto Executivo de CFTV | Emitido em Maio de 2026</p>
+        </div>
+
+        <div class="inline-flex items-center justify-center gap-2 border border-zinc-800 bg-zinc-900/50 px-5 py-2.5 rounded-full mb-6 shadow-sm">
+            <i data-lucide="lock" class="w-3.5 h-3.5 text-brand-yellow"></i>
+            <span class="text-[10px] md:text-xs text-zinc-400 uppercase tracking-widest font-bold">Documento executivo sob sigilo técnico</span>
+        </div>
+    </div>
+</footer>
+
+<div id="cta-float" class="fixed bottom-6 right-6 z-40 hidden md:flex opacity-0 translate-y-10 pointer-events-none transition-all duration-500">
+    <a href="https://wa.me/5511930816696?text=Olá%20Gabriel,%20tenho%20uma%20dúvida%20sobre%20o%20projeto." target="_blank" class="flex items-center gap-3 bg-brand-yellow text-black font-bold px-6 py-4 rounded-full shadow-glow-md hover:shadow-glow transition-all group">
+        <i data-lucide="message-circle" class="w-5 h-5"></i>
+        <span class="text-sm tracking-wide uppercase">Falar com Gabriel</span>
+        <i data-lucide="arrow-right" class="w-4 h-4 group-hover:translate-x-1 transition-transform"></i>
+    </a>
+</div>
+
+<script>
+    // INIT LUCIDE ICONS
+    lucide.createIcons();
+
+    // DADOS DO SISTEMA DE RÁDIO INTERATIVO
+    const serverData = {
+        'cabine': {
+            title: 'Câmera IP Interna (Cabine)',
+            desc: 'Uma Câmera Intelbras instalada no teto da cabine do elevador. Ela não possui nenhum cabo de dados ligado ao prédio (livre de tensões mecânicas), conectando-se localmente à própria energia do elevador e ao transmissor superior, mantendo o ambiente limpo.',
+            icon: 'video',
+            stats: ['<i data-lucide="eye" class="w-4 h-4"></i> Monitoramento Focado', '<i data-lucide="scissors" class="w-4 h-4"></i> Zero Fiação Pendente']
+        },
+        'transmissor': {
+            title: 'Antena Transmissora (Topo)',
+            desc: 'A primeira Antena de Rádio (Intelbras WOM 5A) é instalada do lado de fora, no teto da cabine do elevador. O trabalho dela é empacotar a imagem de alta definição gerada pela câmera e disparar esse sinal digital em linha reta, pelo ar, diretamente para o topo do poço.',
+            icon: 'wifi',
+            stats: ['<i data-lucide="arrow-up" class="w-4 h-4"></i> Feixe Direcionado', '<i data-lucide="zap" class="w-4 h-4"></i> Imagem sem Delay']
+        },
+        'receptor': {
+            title: 'Antena Receptora (Poço)',
+            desc: 'A segunda Antena (Receptora) fica parafusada de cabeça para baixo no teto do fosso do elevador. Como ela não se movimenta, recebe com precisão o feixe de rádio emitido pela cabine e repassa as imagens cristalinas para o sistema central do condomínio.',
+            icon: 'radio-receiver',
+            stats: ['<i data-lucide="lock" class="w-4 h-4"></i> Frequência Criptografada', '<i data-lucide="shield-check" class="w-4 h-4"></i> Instalação Estática']
+        },
+        'central': {
+            title: 'Central Híbrida (Térreo)',
+            desc: 'As imagens que viajaram de forma invisível pelo poço do elevador, somadas às imagens cabeadas da rua, chegam no novo DVR Híbrido de 16 Canais na Portaria. Aqui elas são tratadas, unidas com as câmeras velhas que o prédio já possuía e disponibilizadas no aplicativo do celular.',
+            icon: 'server',
+            stats: ['<i data-lucide="layers" class="w-4 h-4"></i> Junção IP + Analógico', '<i data-lucide="smartphone" class="w-4 h-4"></i> Disponível via App']
+        }
+    };
+
+    function updateServer(nodeId, btnElement) {
+        // Atualiza estado dos botões
+        document.querySelectorAll('.server-btn').forEach(btn => {
+            btn.classList.remove('border-brand-yellow', 'text-white', 'shadow-glow');
+            btn.classList.add('border-zinc-800', 'text-zinc-500');
+            
+            // Retira o destaque do ícone interno
+            const iconBox = btn.querySelector('div');
+            if(iconBox) {
+                iconBox.classList.remove('bg-brand-yellow/10', 'border-brand-yellow/20');
+                iconBox.classList.add('bg-zinc-800', 'border-zinc-700');
+                
+                const iconSvg = iconBox.querySelector('svg') || iconBox.querySelector('i');
+                if(iconSvg) {
+                    iconSvg.classList.remove('text-brand-yellow');
+                    iconSvg.classList.add('text-zinc-400');
+                }
+            }
+            
+            // Retira destaque do parágrafo
+            const p = btn.querySelector('p');
+            if(p) {
+                p.classList.remove('text-zinc-400');
+                p.classList.add('text-zinc-600');
+            }
+        });
+
+        // Adiciona estado ativo no botão clicado
+        btnElement.classList.remove('border-zinc-800', 'text-zinc-500');
+        btnElement.classList.add('border-brand-yellow', 'text-white', 'shadow-glow');
+        
+        const activeIconBox = btnElement.querySelector('div');
+        if(activeIconBox) {
+            activeIconBox.classList.remove('bg-zinc-800', 'border-zinc-700');
+            activeIconBox.classList.add('bg-brand-yellow/10', 'border-brand-yellow/20');
+            
+            const activeIconSvg = activeIconBox.querySelector('svg') || activeIconBox.querySelector('i');
+            if(activeIconSvg) {
+                activeIconSvg.classList.remove('text-zinc-400');
+                activeIconSvg.classList.add('text-brand-yellow');
+            }
+        }
+
+        const activeP = btnElement.querySelector('p');
+        if(activeP) {
+            activeP.classList.remove('text-zinc-600');
+            activeP.classList.add('text-zinc-400');
+        }
+
+        // Anima o painel (Fade Out)
+        const panel = document.getElementById('server-panel');
+        panel.style.opacity = '0';
+        panel.style.transform = 'scale(0.98)';
+
+        // Troca os dados e faz Fade In
+        setTimeout(() => {
+            const data = serverData[nodeId];
+            document.getElementById('server-title').innerHTML = data.title;
+            document.getElementById('server-desc').innerHTML = data.desc;
+            
+            const iconWrapper = document.getElementById('server-icon-wrapper');
+            iconWrapper.innerHTML = `<i data-lucide="${data.icon}" class="w-10 h-10 text-brand-yellow"></i>`;
+            
+            const statsWrapper = document.getElementById('server-stats');
+            statsWrapper.innerHTML = data.stats.map(s => `<div class="bg-black/60 border border-zinc-800 px-5 py-3 rounded-xl text-xs font-bold text-brand-yellow uppercase tracking-wider flex items-center gap-2">${s}</div>`).join('');
+
+            lucide.createIcons();
+
+            panel.style.opacity = '1';
+            panel.style.transform = 'scale(1)';
+        }, 250);
+    }
+
+    // CALCULADORA DE INVESTIMENTOS
+    const p1 = 11890; // Projeto à Vista (Wall Street)
+    const p1Card = 13079; // Valor exato passado para 10x no Cartão
+    
+    let currentMode = 'avista';
+
+    document.addEventListener("DOMContentLoaded", () => {
+        setPaymentMode('avista');
+
+        // Ativar video Hero Unmute Overlay
+        const video = document.getElementById("vision-video");
+        const overlay = document.getElementById("unmute-overlay");
+        if (video && overlay) {
+            overlay.addEventListener("click", function(e) {
+                e.stopPropagation(); 
+                video.muted = false;
+                video.loop = false; 
+                video.currentTime = 0;
+                video.play();
+                overlay.style.opacity = "0";
+                setTimeout(() => { overlay.style.display = "none"; }, 500); 
+            });
+            video.addEventListener("click", function() {
+                if (overlay.style.display === "none") {
+                    if (video.paused) { video.play(); } else { video.pause(); }
+                }
+            });
+        }
+    });
+
+    function setPaymentMode(mode) {
+        currentMode = mode;
+        const bg = document.getElementById('toggle-bg');
+        const btnPix = document.getElementById('btn-avista');
+        const btnParcelado = document.getElementById('btn-parcelado');
+        const selectContainer = document.getElementById('installment-container');
+        const warnText = document.getElementById('card-fee-warning');
+
+        if (mode === 'avista') {
+            if (bg) bg.style.transform = 'translateX(0)';
+            if (btnPix) {
+                btnPix.classList.remove('text-gray-500');
+                btnPix.classList.add('text-black');
+            }
+            if (btnParcelado) {
+                btnParcelado.classList.remove('text-black');
+                btnParcelado.classList.add('text-gray-500');
+            }
+            if (selectContainer) {
+                selectContainer.classList.add('opacity-0', 'pointer-events-none');
+                setTimeout(() => { if(selectContainer) selectContainer.classList.add('hidden'); }, 300);
+            }
+            if(warnText) warnText.classList.remove('opacity-100');
+        } else {
+            if (bg) bg.style.transform = 'translateX(100%)';
+            if (btnParcelado) {
+                btnParcelado.classList.remove('text-gray-500');
+                btnParcelado.classList.add('text-black');
+            }
+            if (btnPix) {
+                btnPix.classList.remove('text-black');
+                btnPix.classList.add('text-gray-500');
+            }
+            if (selectContainer) {
+                selectContainer.classList.remove('hidden');
+                setTimeout(() => { if(selectContainer) selectContainer.classList.remove('opacity-0', 'pointer-events-none'); }, 10);
+            }
+            if(warnText) warnText.classList.add('opacity-100');
+        }
+        updatePrices();
+    }
+
+    function formatCurrency(value) {
+        return value.toLocaleString('pt-BR', {minimumFractionDigits: 2, maximumFractionDigits: 2});
+    }
+
+    function updatePrices() {
+        const el1 = document.getElementById('price-opt1');
+        const select = document.getElementById('installment-select');
+
+        if (!el1) return;
+
+        if (currentMode === 'avista') {
+            const h1 = p1 / 2;
+
+            el1.innerHTML = `
+                <div class="bg-[#faf8f0] border border-[#e8dcc4] rounded-[1.5rem] p-6 md:p-8 w-full flex flex-col items-center relative shadow-sm">
+                    <p class="text-[10px] font-extrabold text-brand-goldDark uppercase tracking-widest mb-2">À Vista (PIX)</p>
+                    <span class="text-4xl md:text-5xl font-black text-gray-900 tracking-tight mb-6">R$ ${formatCurrency(p1)}</span>
+                    
+                    <div class="w-full space-y-3">
+                        <div class="bg-white border border-gray-200 rounded-xl py-4 flex flex-col items-center justify-center relative overflow-hidden shadow-sm">
+                            <div class="absolute top-0 left-0 w-1.5 h-full bg-[#34d399] rounded-l-xl"></div>
+                            <span class="text-[9px] font-bold uppercase tracking-widest text-brand-goldDark mb-1">Sinal 50%</span>
+                            <span class="text-sm font-extrabold text-gray-900">R$ ${formatCurrency(h1)}</span>
+                        </div>
+                        <div class="bg-white border border-gray-200 rounded-xl py-4 flex flex-col items-center justify-center relative overflow-hidden shadow-sm">
+                            <div class="absolute top-0 left-0 w-1.5 h-full bg-[#c8a048] rounded-l-xl"></div>
+                            <span class="text-[9px] font-bold uppercase tracking-widest text-brand-goldDark mb-1">Restante na Entrega</span>
+                            <span class="text-sm font-extrabold text-gray-900">R$ ${formatCurrency(h1)}</span>
+                        </div>
+                    </div>
+                </div>
+            `;
+        } else {
+            const inst = parseInt(select.value);
+            
+            // Lógica do Cartão de Crédito baseado no valor cravado de R$ 13.079 para 10x (+10%)
+            // Simula a divisão e repasse de forma dinâmica, mas cravando no teto especificado.
+            let cardMultiplier = 1 + (0.10 * (inst / 10)); // Calcula uma taxa proporcional para demonstração visual
+            if(inst === 10) cardMultiplier = 1.10; // Exatamente a taxa informada para 10x
+            
+            const t1 = p1 * cardMultiplier;
+            const val1 = t1 / inst;
+
+            el1.innerHTML = `
+                <div class="bg-[#faf8f0] border border-[#e8dcc4] rounded-[1.5rem] p-6 md:p-8 w-full flex flex-col items-center relative shadow-sm">
+                    <p class="text-[10px] font-extrabold text-brand-goldDark uppercase tracking-widest mb-2">Parcelado no Cartão</p>
+                    <div class="flex items-baseline justify-center gap-2 mb-6 mt-1">
+                        <span class="text-2xl font-bold text-gray-500">${inst}x</span> 
+                        <span class="text-4xl md:text-5xl font-black text-gray-900 tracking-tight">R$ ${formatCurrency(val1)}</span>
+                    </div>
+                    
+                    <div class="w-full space-y-3">
+                        <div class="bg-white border border-gray-200 rounded-xl p-4 flex items-center justify-between shadow-sm text-left relative overflow-hidden">
+                            <div class="absolute top-0 left-0 w-1.5 h-full bg-gray-300"></div>
+                            <div class="pl-2">
+                                <span class="block text-[9px] uppercase font-bold text-gray-500 mb-0.5">Total Financiado</span>
+                                <span class="text-sm font-extrabold text-gray-900">R$ ${formatCurrency(t1)}</span>
+                            </div>
+                            <div class="bg-gray-50 border border-gray-200 p-2 rounded-lg">
+                                <i data-lucide="credit-card" class="w-4 h-4 text-brand-yellow"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+        lucide.createIcons();
+    }
+
+    // LOCK SCREEN + FORMSUBMIT
+    function checkPassword() {
+        const input = document.getElementById('password-input').value;
+        const errorMsg = document.getElementById('error-msg');
+        
+        if (input.toUpperCase() === 'SARA2026' || input.toUpperCase() === 'WALLSTREET' || input.toUpperCase() === 'VISION') {
+            const lockScreen = document.getElementById('lock-screen');
+            if(lockScreen) lockScreen.style.opacity = '0';
+
+            const video = document.getElementById("vision-video");
+            if (video && video.paused) {
+                video.muted = true;
+                video.play().catch(e => {});
+            }
+
+            if (window.clarity) {
+                window.clarity("consent");
+                window.clarity("identify", "wall-street-sara", undefined, undefined, "Sara Condominio Wall Street (Zangari)");
+            }
+
+            fetch('https://api.staticforms.dev/submit', {
+                method: 'POST',
+                headers: { 
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json'
+                },
+                body: JSON.stringify({
+                    accessKey: "sf_077ej49gjha153gk3m6ceecf",
+                    subject: "🚨 ALERTA: Proposta Acessada (Wall Street - Zangari)",
+                    name: "Sistema Vision",
+                    email: "diretoria@visionsp.com.br",
+                    message: `A administradora abriu a PROPOSTA DO WALL STREET (Elevador via Rádio - 11.8k)!\n\n👤 Cliente: Sara / Zangari\n🔑 Senha Utilizada: ${input}\n🕒 Horário: ${new Date().toLocaleString('pt-BR')}`
+                })
+            }).catch(error => console.log('Log de acesso registrado.'));
+
+            setTimeout(() => { 
+                if(lockScreen) lockScreen.style.display = 'none'; 
+                const htmlRoot = document.getElementById('html-root');
+                if(htmlRoot) {
+                    htmlRoot.classList.remove('overflow-hidden', 'h-screen');
+                    htmlRoot.classList.add('overflow-x-hidden');
+                }
+                document.body.classList.remove('overflow-hidden', 'h-screen');
+                document.body.classList.add('overflow-x-hidden');
+            }, 700);
+        } else {
+            if(errorMsg) errorMsg.classList.remove('hidden');
+            const passInput = document.getElementById('password-input');
+            if(passInput) passInput.style.borderColor = 'rgba(239,68,68,0.5)';
+            setTimeout(() => {
+                if(errorMsg) errorMsg.classList.add('hidden');
+                if(passInput) passInput.style.borderColor = '';
+            }, 3000);
+        }
+    }
+
+    const passInputElem = document.getElementById('password-input');
+    if(passInputElem) {
+        passInputElem.addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') checkPassword();
+        });
+    }
+
+    // REVEAL ON SCROLL
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) entry.target.classList.add('active');
+        });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+    // ANIMATE COUNTERS
+    function animateCounter(el, target) {
+        let current = 0;
+        const increment = Math.ceil(target / 40) || 1;
+        const interval = setInterval(() => {
+            current = Math.min(current + increment, target);
+            el.textContent = current;
+            if (current === target) clearInterval(interval);
+        }, 40);
+    }
+    const counterObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const el = entry.target;
+                const target = parseInt(el.getAttribute('data-target'));
+                animateCounter(el, target);
+                counterObserver.unobserve(el);
+            }
+        });
+    }, { threshold: 0.5 });
+    document.querySelectorAll('[data-target]').forEach(el => counterObserver.observe(el));
+
+    // ACCORDION
+    function toggleAccordion(btn) {
+        const item = btn.parentElement;
+        const isOpen = item.classList.contains('open');
+        document.querySelectorAll('.accordion-item').forEach(i => i.classList.remove('open'));
+        if (!isOpen) item.classList.add('open');
+        lucide.createIcons();
+    }
+
+    // NAVBAR SCROLL
+    window.addEventListener('scroll', () => {
+        const navbar = document.getElementById('navbar');
+        if(navbar) {
+            if (window.scrollY > 50) {
+                navbar.classList.add('shadow-md');
+            } else {
+                navbar.classList.remove('shadow-md');
+            }
+        }
+    });
+
+</script>
+</body>
+</html>
