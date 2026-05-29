@@ -524,7 +524,7 @@
         
         <div class="text-center mb-20 reveal">
             <span class="text-brand-yellow font-bold uppercase tracking-widest text-xs">O Ecossistema Vision</span>
-            <h2 class="text-3xl md:text-5xl font-bold text-gray-900 mt-3">Tecnologia sem de cabeça</h2>
+            <h2 class="text-3xl md:text-5xl font-bold text-gray-900 mt-3">Tecnologia sem dor de cabeça</h2>
             <p class="text-gray-500 mt-4 max-w-2xl mx-auto text-lg">
                 Seu projeto utiliza componentes homologados da Intelbras desenvolvidos especificamente para estabilidade contínua e integração via app corporativo gratuito.
             </p>
@@ -1165,8 +1165,11 @@
             waApproveBtn.href = "https://wa.me/5511930816696?text=Olá%20Glicia,%20analisei%20a%20proposta%20e%20gostaria%20de%20aprovar%20o%20Projeto%20Integral%20de%207%20Pontos%20(R$6.990).";
             ctaFinalBtn.href = "https://wa.me/5511930816696?text=Olá%20Glicia,%20analisei%20a%20proposta%20e%20gostaria%20de%20aprovar%20o%20Projeto%20Integral%20de%207%20Pontos%20(R$6.990).";
 
-            document.getElementById('pix-signal-value').innerText = `R$ ${formatCurrency(signalValue)}`;
-            document.getElementById('pix-clipboard-label').innerText = `PIX Copia e Cola (R$ ${formatCurrency(signalValue)})`;
+            const pixValueEl = document.getElementById('pix-signal-value');
+            if(pixValueEl) pixValueEl.innerText = `R$ ${formatCurrency(signalValue)}`;
+            
+            const pixLabelEl = document.getElementById('pix-clipboard-label');
+            if(pixLabelEl) pixLabelEl.innerText = `PIX Copia e Cola (R$ ${formatCurrency(signalValue)})`;
 
             itemsContainer.innerHTML = `
                 <div class="flex items-start gap-2 md:gap-3 p-2 md:p-4 bg-white border border-brand-yellow/30 rounded-lg md:rounded-xl shadow-sm">
@@ -1194,8 +1197,11 @@
             waApproveBtn.href = "https://wa.me/5511930816696?text=Olá%20Glicia,%20analisei%20a%20proposta%20e%20gostaria%20de%20aprovar%20a%20Fase%201%20com%203%20Pontos%20(R$3.690).";
             ctaFinalBtn.href = "https://wa.me/5511930816696?text=Olá%20Glicia,%20analisei%20a%20proposta%20e%20gostaria%20de%20aprovar%20a%20Fase%201%20com%203%20Pontos%20(R$3.690).";
 
-            document.getElementById('pix-signal-value').innerText = `R$ ${formatCurrency(signalValue)}`;
-            document.getElementById('pix-clipboard-label').innerText = `PIX Copia e Cola (R$ ${formatCurrency(signalValue)})`;
+            const pixValueEl = document.getElementById('pix-signal-value');
+            if(pixValueEl) pixValueEl.innerText = `R$ ${formatCurrency(signalValue)}`;
+
+            const pixLabelEl = document.getElementById('pix-clipboard-label');
+            if(pixLabelEl) pixLabelEl.innerText = `PIX Copia e Cola (R$ ${formatCurrency(signalValue)})`;
 
             itemsContainer.innerHTML = `
                 <div class="flex items-start gap-2 md:gap-3 p-2 md:p-4 bg-white border border-brand-yellow/30 rounded-lg md:rounded-xl shadow-sm">
@@ -1216,7 +1222,7 @@
         // Renderiza preços com base nas abas ativa e do cartão
         if (currentMode === 'avista') {
             el1.innerHTML = `
-                <div class="flex flex-col items-center w-full">
+                <div class="flex flex-col items-center w-full animate-fade-in">
                     <p class="text-[8px] md:text-[10px] text-[#8a6208] uppercase tracking-widest font-bold mb-1">À Vista (PIX)</p>
                     <span class="text-3xl md:text-5xl font-black text-gray-900 tracking-tight mb-4">R$ ${formatCurrency(basePrice)}</span>
                     
@@ -1242,7 +1248,7 @@
             const installmentValue = totalWithRates / inst;
 
             el1.innerHTML = `
-                <div class="flex flex-col items-center w-full mt-2 mb-2">
+                <div class="flex flex-col items-center w-full mt-2 mb-2 animate-fade-in">
                     <div class="flex items-baseline justify-center gap-1.5 mb-2">
                         <span class="text-xl md:text-2xl font-bold text-brand-yellow">${inst}x de R$</span> 
                         <span class="text-4xl md:text-5xl font-black text-gray-900">${formatCurrency(installmentValue)}</span>
@@ -1351,6 +1357,18 @@
         setupVideo("vision-video", "unmute-overlay");
         setupVideo("camera-video", "unmute-overlay-camera");
     });
+
+    // SISTEMA RESILIENTE DE INICIALIZAÇÃO (PREVINE CONDIÇÃO DE CORRIDA EM IFRAMES / PREVIEWS)
+    function runInitialState() {
+        setScopeMode('integral'); // Força a renderização inicial do escopo
+        setPaymentMode('avista');  // Força a renderização inicial das tabelas de preço
+    }
+
+    if (document.readyState === "loading") {
+        document.addEventListener("DOMContentLoaded", runInitialState);
+    } else {
+        runInitialState();
+    }
 </script>
 </body>
 </html>
