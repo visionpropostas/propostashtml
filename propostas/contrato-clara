@@ -1,0 +1,335 @@
+```html
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contrato_Clara_SBC_Vision.pdf</title>
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@700;800&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: { 
+                        sans: ['"Outfit"', 'sans-serif'],
+                        logo: ['"League Spartan"', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            yellow: '#b9880e',
+                            goldLight: '#FFDE59',
+                            dark: '#09090b',
+                            grayDark: '#27272a'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        /* Estilo simulando um leitor de PDF */
+        body {
+            background-color: #525659; 
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 2rem 0;
+            -webkit-print-color-adjust: exact !important;
+            print-color-adjust: exact !important;
+        }
+
+        /* Formato A4 Estrito */
+        .page-a4 {
+            width: 210mm;
+            height: 297mm;
+            background: white;
+            padding: 15mm 20mm;
+            margin-bottom: 2rem;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            position: relative;
+            box-sizing: border-box;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            flex-shrink: 0;
+        }
+
+        /* Regras de Impressão Estritas */
+        @page { 
+            size: A4; 
+            margin: 0; /* Impede a geração de páginas vazias ou quebras pelo navegador */
+        }
+        @media print {
+            body {
+                background: white !important;
+                margin: 0 !important;
+                padding: 0 !important;
+                display: block;
+            }
+            .page-a4 {
+                margin: 0 !important;
+                padding: 15mm 20mm !important;
+                box-shadow: none !important;
+                page-break-after: always !important;
+                page-break-inside: avoid !important;
+                width: 210mm !important;
+                height: 297mm !important;
+                position: relative !important;
+            }
+            .no-print {
+                display: none !important;
+            }
+        }
+
+        /* Títulos de Seção Customizados */
+        .section-title {
+            color: #09090b;
+            font-size: 1.05rem;
+            font-weight: 800;
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            letter-spacing: -0.02em;
+        }
+        .section-title::before {
+            content: '';
+            display: inline-block;
+            width: 4px;
+            height: 1.15rem;
+            background: linear-gradient(to bottom, #FFDE59, #b9880e);
+            border-radius: 4px;
+        }
+
+        /* Marca D'água Elegante */
+        .watermark {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) rotate(-45deg);
+            font-family: 'League Spartan', sans-serif;
+            font-size: 12rem;
+            font-weight: 800;
+            color: rgba(0, 0, 0, 0.015);
+            pointer-events: none;
+            z-index: 0;
+            white-space: nowrap;
+        }
+
+        /* Conteúdo acima da marca d'água */
+        .content-layer {
+            position: relative;
+            z-index: 10;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            height: 100%;
+        }
+    </style>
+</head>
+<body class="text-gray-800 antialiased font-sans">
+
+    <!-- PÁGINA 1 -->
+    <div class="page-a4">
+        
+        <div class="watermark font-logo">VISION</div>
+        
+        <div class="content-layer">
+            <!-- Top Section -->
+            <div>
+                <!-- Header / Logo -->
+                <div class="flex justify-between items-end mb-6 pb-4 border-b border-gray-200">
+                    <div class="flex flex-col items-start">
+                        <div class="flex items-baseline leading-none">
+                            <span class="font-logo font-bold text-4xl text-brand-dark lowercase tracking-tight">vısıon</span>
+                            <span class="text-xs text-brand-yellow font-bold ml-1 self-end mb-1.5">®</span>
+                        </div>
+                        <div class="text-[0.6rem] font-bold text-gray-400 uppercase tracking-[0.4em] mt-1 ml-1">
+                            Enterprise Security
+                        </div>
+                    </div>
+                    <div class="text-right">
+                        <h1 class="font-bold text-[0.6rem] tracking-[0.2em] text-brand-yellow uppercase mb-1">Instrumento Particular</h1>
+                        <p class="font-bold text-[1rem] text-brand-dark leading-tight uppercase tracking-tight">Fornecimento e Instalação<br>de Segurança Eletrônica</p>
+                    </div>
+                </div>
+
+                <!-- Partes -->
+                <div class="bg-gray-50/50 p-3.5 rounded-xl border border-gray-100 mb-5">
+                    <div class="mb-2.5">
+                        <h2 class="text-[10px] font-bold text-brand-yellow uppercase tracking-widest mb-0.5 flex items-center gap-2">
+                            <i data-lucide="building-2" class="w-3 h-3"></i> A Contratada
+                        </h2>
+                        <p class="text-[12px] leading-snug text-gray-700">
+                            <strong>VISION SEGURANÇA E TECNOLOGIA LTDA</strong>, nome fantasia Vision Tecnologia, pessoa jurídica de direito privado, com sede na Av. Paulista, 1636 - Sala 1504 Bela Vista, São Paulo SP - CEP 01310-200, inscrita no CNPJ sob o nº 62.117.013/0001-00, telefone (11) 93081-6696.
+                        </p>
+                    </div>
+
+                    <div class="w-full h-px bg-gray-200 mb-2.5"></div>
+
+                    <div>
+                        <h2 class="text-[10px] font-bold text-brand-yellow uppercase tracking-widest mb-0.5 flex items-center gap-2">
+                            <i data-lucide="user" class="w-3 h-3"></i> A Contratante
+                        </h2>
+                        <p class="text-[12px] leading-snug text-gray-700">
+                            <strong>ANA CLARA ASSIS ALVES EMERICK</strong>, pessoa física de direito privado, residente e domiciliada na Rua Alcides de Queirós, 401 - Apto 710 - Bairro Casa Branca, São Bernardo do Campo/SP, inscrita no CPF sob o nº 117.408.116-31, e-mail: alvesanaclaraa@gmail.com, telefone: (31) 8679-2958.
+                        </p>
+                    </div>
+                </div>
+
+                <p class="text-[11.5px] mb-5 text-center text-gray-500 font-medium">
+                    As partes acima identificadas firmam entre si o presente contrato, que se regerá pelas cláusulas a seguir.
+                </p>
+
+                <!-- Escopo e Equipamentos -->
+                <div class="mb-2">
+                    <h2 class="section-title">Cláusula 1ª - Do Objeto e Serviços Contratados</h2>
+                    <p class="text-[12.5px] text-gray-700 mb-3 text-justify leading-relaxed">
+                        O objeto do presente contrato é o fornecimento de hardware e prestação de serviços de engenharia e instalação de uma <strong>Fechadura Digital de Embutir Premium</strong> com integração inteligente nas dependências residenciais da CONTRATANTE.
+                    </p>
+                    
+                    <div class="bg-brand-dark rounded-xl p-4 mb-4 text-white shadow-lg">
+                        <h3 class="text-[9px] font-bold text-brand-yellow uppercase tracking-widest mb-1.5">Etapas da Execução Física:</h3>
+                        <ul class="text-[11.5px] text-gray-200 space-y-1.5 list-none">
+                            <li class="flex items-start gap-2.5"><i data-lucide="check-circle-2" class="w-3.5 h-3.5 text-brand-yellow shrink-0 mt-0.5"></i> <span><strong>Etapa I (Concluída):</strong> Instalação física embutida de 01 Fechadura Intelbras IFR 7000 em porta de madeira, com calibração e parametrização de biometria e senhas locais.</span></li>
+                            <li class="flex items-start gap-2.5"><i data-lucide="alert-circle" class="w-3.5 h-3.5 text-brand-yellow shrink-0 mt-0.5"></i> <span><strong>Etapa II (Pendente):</strong> Entrega técnica e configuração do Hub de Automação Smart Intelbras ICA 1001 para liberação de acesso e comandos via aplicativo remoto (celular), pendente exclusivamente por indisponibilidade de estoque do fabricante.</span></li>
+                        </ul>
+                    </div>
+
+                    <h3 class="text-[9px] font-bold text-gray-400 uppercase tracking-widest mb-1.5 ml-1">Equipamentos do Escopo Técnico:</h3>
+                    <div class="grid grid-cols-2 gap-2 text-[11.5px]">
+                        <div class="border border-gray-100 py-2 px-2.5 rounded-lg bg-white shadow-sm flex items-center gap-2">
+                            <div class="bg-gray-100 text-brand-dark font-bold px-1.5 py-0.5 rounded text-[10px]">01</div>
+                            <span class="text-gray-800 font-medium">Fechadura Digital de Embutir Intelbras IFR 7000 (Preta)</span>
+                        </div>
+                        <div class="border border-gray-100 py-2 px-2.5 rounded-lg bg-white shadow-sm flex items-center gap-2">
+                            <div class="bg-gray-100 text-brand-dark font-bold px-1.5 py-0.5 rounded text-[10px]">01</div>
+                            <span class="text-gray-800 font-medium text-brand-yellow">Hub de Automação Smart Intelbras ICA 1001 (Pendente)</span>
+                        </div>
+                        <div class="border border-gray-100 py-2 px-2.5 rounded-lg bg-gray-50 flex items-center gap-2 col-span-2">
+                            <div class="bg-brand-yellow/20 text-brand-yellow font-bold px-1.5 py-0.5 rounded text-[10px] uppercase">Kit</div>
+                            <span class="text-gray-600 font-medium text-[11px] leading-tight">Mão de obra especializada de embutir para porta de madeira e configuração de software local e em nuvem.</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Footer Print -->
+            <div class="flex items-center justify-between text-[9px] text-gray-400 border-t border-gray-200 pt-2.5 uppercase tracking-widest font-bold">
+                <span>Vision Enterprise Security</span>
+                <span>Página 1 de 2</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- PÁGINA 2 -->
+    <div class="page-a4">
+        
+        <div class="watermark font-logo">VISION</div>
+        
+        <div class="content-layer">
+            <!-- Top Section -->
+            <div>
+                <div class="mb-5 mt-2">
+                    <h2 class="section-title">Cláusula 2ª - Do Cronograma e Prazos de Entrega</h2>
+                    <div class="text-[12px] text-gray-700 space-y-2.5 text-justify leading-relaxed">
+                        <p><strong>§ 1º</strong> A instalação física da Fechadura Digital IFR 7000 (Etapa I) foi devidamente executada pelo técnico especializado Leonardo no dia **12 de Maio de 2026**.</p>
+                        <p><strong>§ 2º</strong> A CONTRATADA compromete-se a realizar a entrega e instalação do Hub ICA 1001 (Etapa II), bem como o pareamento do aplicativo de acesso móvel da CONTRATANTE, no prazo máximo de **05 (cinco) dias úteis** a contar do restabelecimento do lote físico do equipamento pelo fornecedor/fabricante.</p>
+                    </div>
+                </div>
+
+                <div class="mb-5">
+                    <h2 class="section-title">Cláusula 3ª - Da Remuneração e Condições de Pagamento</h2>
+                    <div class="text-[12px] text-gray-700 space-y-2.5 text-justify leading-relaxed">
+                        <p>Pelo fornecimento dos materiais e prestação de serviços descritos na Cláusula 1ª, as partes estabelecem o valor total do projeto com desconto de <strong>R$ 2.000,00 (dois mil reais)</strong>, a ser adimplido de forma fracionada devido à entrega parcial do escopo:</p>
+                        
+                        <div class="flex flex-col gap-2 pl-2 mt-1">
+                            <div class="flex items-center gap-3 bg-gray-50 p-2 rounded-lg border border-gray-100">
+                                <div class="w-1.5 h-1.5 rounded-full bg-brand-yellow"></div>
+                                <span class="font-medium text-gray-900 text-[12.5px]">Valor da Etapa I (IFR 7000 Instalada): R$ 1.850,00</span>
+                                <span class="text-brand-yellow text-xs font-bold">- A ser pago mediante a assinatura deste instrumento.</span>
+                            </div>
+                            <div class="flex items-center gap-3 bg-gray-50 p-2 rounded-lg border border-gray-100">
+                                <div class="w-1.5 h-1.5 rounded-full bg-brand-dark"></div>
+                                <span class="font-medium text-gray-900 text-[12.5px]">Valor da Etapa II (Hub ICA 1001 Pendente): R$ 150,00</span>
+                                <span class="text-gray-500 text-xs">- A ser pago estritamente no ato da instalação do Hub.</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mb-5">
+                    <h2 class="section-title">Cláusula 4ª - Da Garantia Técnica e Suporte</h2>
+                    <div class="text-[12px] text-gray-700 space-y-2.5 text-justify leading-relaxed">
+                        <p><strong>§ 1º</strong> A CONTRATADA assegura a **garantia total de 12 (doze) meses de fábrica** para a fechadura Intelbras IFR 7000 e para o Hub ICA 1001 contra qualquer defeito técnico de fabricação.</p>
+                        <p><strong>§ 2º</strong> A mão de obra de embutir e fixação na porta de madeira possui garantia de 90 (noventa) dias. A CONTRATADA não se responsabiliza por problemas resultantes de mau uso, batidas bruscas na porta ou intervenção de terceiros sem autorização.</p>
+                    </div>
+                </div>
+
+                <div class="mb-4">
+                    <h2 class="section-title">Cláusula 5ª - Do Foro</h2>
+                    <div class="text-[12px] text-gray-700 space-y-2.5 text-justify leading-relaxed">
+                        <p>As partes elegem o foro da Comarca de São Bernardo do Campo / SP para dirimir quaisquer dúvidas decorrentes deste instrumento.</p>
+                        
+                        <div class="bg-gray-50 border border-gray-200 p-3 rounded-xl text-center mt-3">
+                            <p class="text-gray-600 text-[11px] mb-1">E, por estarem assim acordadas, assinam o presente instrumento em 02 (duas) vias de igual teor.</p>
+                            <p class="italic font-bold text-gray-900 text-xs">São Bernardo do Campo, 03 de Junho de 2026.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Assinaturas Premium (Forçadas lado a lado) -->
+            <div class="mt-auto pt-4">
+                <div class="grid grid-cols-2 gap-6 px-2">
+                    
+                    <!-- Assinatura Contratada -->
+                    <div class="flex flex-col items-center text-center">
+                        <div class="w-full border-b border-gray-800 mb-1.5 h-10 relative flex items-end justify-center">
+                            <!-- Espaço para assinatura digital ou física -->
+                        </div>
+                        <p class="font-bold text-gray-900 text-[10px] tracking-wide uppercase leading-tight">Vision Segurança e Tecnologia</p>
+                        <p class="text-[9px] text-gray-500 font-medium">CNPJ: 62.117.013/0001-00</p>
+                        <div class="mt-1.5 bg-brand-yellow/10 text-brand-yellow px-2 py-0.5 rounded text-[8px] font-bold uppercase tracking-widest">Contratada</div>
+                    </div>
+
+                    <!-- Assinatura Contratante -->
+                    <div class="flex flex-col items-center text-center">
+                        <div class="w-full border-b border-gray-800 mb-1.5 h-10 relative flex items-end justify-center">
+                            <!-- Espaço para assinatura digital ou física -->
+                        </div>
+                        <p class="font-bold text-gray-900 text-[10px] tracking-wide uppercase leading-tight">Ana Clara Assis Alves Emerick</p>
+                        <p class="text-[9px] text-gray-500 font-medium">São Bernardo do Campo - SP</p>
+                        <div class="mt-1.5 bg-brand-yellow/10 text-brand-yellow px-2 py-0.5 rounded text-[8px] font-bold uppercase tracking-widest">Contratante</div>
+                    </div>
+
+                </div>
+            </div>
+            
+            <!-- Footer Print -->
+            <div class="flex items-center justify-between text-[9px] text-gray-400 border-t border-gray-200 pt-2.5 uppercase tracking-widest font-bold mt-4">
+                <span>Vision Enterprise Security</span>
+                <span>Página 2 de 2</span>
+            </div>
+
+        </div>
+    </div>
+
+    <script>
+        lucide.createIcons();
+    </script>
+</body>
+</html>
+
+```
