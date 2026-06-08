@@ -925,15 +925,8 @@
                     </div>
 
                     <!-- FOTO DOS EQUIPAMENTOS EM DESTAQUE COM MUDANÇA CONFORME CONFIGURAÇÃO -->
-                    <div class="mb-6 grid grid-cols-2 gap-4 items-center p-4 bg-gray-50 border border-gray-100 rounded-2xl relative z-10" id="tech-preview-container">
-                        <div class="flex flex-col items-center text-center p-2 bg-white rounded-xl shadow-sm border border-gray-100">
-                            <span class="text-[8px] font-bold text-gray-400 uppercase tracking-widest mb-1.5">Câmera IP Dome (10 Unidades)</span>
-                            <img src="https://res.cloudinary.com/dptcuckhf/image/upload/v1777380050/vip-1220-d-fc_-esq_mnjcds.png" alt="Câmera IP Intelbras" class="h-16 md:h-20 object-contain">
-                        </div>
-                        <div class="flex flex-col items-center text-center p-2 bg-white rounded-xl shadow-sm border border-gray-100 animate-fade-in" id="preview-secundario">
-                            <span class="text-[8px] font-bold text-gray-400 uppercase tracking-widest mb-1.5">Nobreak Attiv 600VA</span>
-                            <img src="https://res.cloudinary.com/dptcuckhf/image/upload/v1770981166/nobreak_attiv_600_bi_capa_1_uyzwmo.png" alt="Nobreak Intelbras Attiv" class="h-16 md:h-20 object-contain">
-                        </div>
+                    <div class="mb-6 p-4 bg-gray-50 border border-gray-100 rounded-2xl relative z-10 transition-all duration-300" id="tech-preview-container">
+                        <!-- Renderizado dinamicamente via Javascript para evitar oscilações -->
                     </div>
 
                     <div class="space-y-2 md:space-y-3 mb-4 md:mb-8 flex-1 relative z-10 text-left">
@@ -1165,21 +1158,60 @@
     // Taxas Exatas da InfinitePay + Markup do Cofre correspondente aos cálculos exatos
     const cardRates = {
         1: 1.0438,
-        2: 1.0609,
-        3: 1.0701,
-        4: 1.0791,
-        5: 1.0880,
+        2: 1.0560,
+        3: 1.0690,
+        4: 1.0820,
+        5: 1.0940,
         6: 1.1071, // Exatamente 15.548,61 no Premium (6x de 2.591,44)
-        7: 1.1259,
-        8: 1.1342,
-        9: 1.1425,
-        10: 1.1506,
-        11: 1.1587,
+        7: 1.1220,
+        8: 1.1370,
+        9: 1.1520,
+        10: 1.1680,
+        11: 1.1840,
         12: 1.1999 // Exatamente 16.851,94 no Premium (12x de 1.404,33)
     };
     
     let currentConfig = 'premium';
     let currentMode = 'avista';
+
+    // RENDERIZAÇÃO E ATUALIZAÇÃO DA GRADE DE EQUIPAMENTOS DO COMBO SELECIONADO
+    function updateTechPreview() {
+        const container = document.getElementById('tech-preview-container');
+        if (!container) return;
+        
+        if (currentConfig === 'premium') {
+            container.className = "mb-6 grid grid-cols-1 sm:grid-cols-3 gap-4 items-center p-4 bg-gray-50 border border-gray-100 rounded-2xl relative z-10 animate-fade-in";
+            container.innerHTML = `
+                <div class="flex flex-col items-center text-center p-2 bg-white rounded-xl shadow-sm border border-gray-100 min-h-[140px] justify-between">
+                    <span class="text-[8px] font-bold text-gray-400 uppercase tracking-widest mb-1.5">Câmera IP Dome (10 un)</span>
+                    <img src="https://res.cloudinary.com/dptcuckhf/image/upload/v1777380050/vip-1220-d-fc_-esq_mnjcds.png" alt="Câmera IP Intelbras" class="h-16 md:h-20 object-contain">
+                </div>
+                <div class="flex flex-col items-center text-center p-2 bg-white rounded-xl shadow-sm border border-gray-100 min-h-[140px] justify-between">
+                    <span class="text-[8px] font-bold text-gray-400 uppercase tracking-widest mb-1.5">Nobreak Attiv 600VA (1 un)</span>
+                    <img src="https://res.cloudinary.com/dptcuckhf/image/upload/v1770981166/nobreak_attiv_600_bi_capa_1_uyzwmo.png" alt="Nobreak Intelbras Attiv" class="h-16 md:h-20 object-contain">
+                </div>
+                <div class="flex flex-col items-center text-center p-2 bg-white rounded-xl shadow-sm border border-gray-100 min-h-[140px] justify-between">
+                    <span class="text-[8px] font-bold text-gray-400 uppercase tracking-widest mb-1.5">Fonte Nobreak EFB (10 un)</span>
+                    <img src="https://res.cloudinary.com/dptcuckhf/image/upload/v1777044434/efb_1202_persp_dir_pq6dkg.png" alt="Fonte Nobreak Intelbras" class="h-16 md:h-20 object-contain">
+                </div>
+            `;
+        } else {
+            container.className = "mb-6 grid grid-cols-1 sm:grid-cols-2 gap-4 items-center p-4 bg-gray-50 border border-gray-100 rounded-2xl relative z-10 animate-fade-in";
+            container.innerHTML = `
+                <div class="flex flex-col items-center text-center p-2 bg-white rounded-xl shadow-sm border border-gray-100 min-h-[140px] justify-between">
+                    <span class="text-[8px] font-bold text-gray-400 uppercase tracking-widest mb-1.5">Câmera IP Dome (10 un)</span>
+                    <img src="https://res.cloudinary.com/dptcuckhf/image/upload/v1777380050/vip-1220-d-fc_-esq_mnjcds.png" alt="Câmera IP Intelbras" class="h-16 md:h-20 object-contain">
+                </div>
+                <div class="flex flex-col items-center text-center p-2 bg-white rounded-xl shadow-sm border border-gray-100 min-h-[140px] justify-between">
+                    <span class="text-[8px] font-bold text-gray-400 uppercase tracking-widest mb-1.5">Amplificador Touch em Parede</span>
+                    <div class="h-16 md:h-20 flex items-center justify-center text-brand-yellow">
+                        <i data-lucide="tablet" class="w-10 h-10"></i>
+                    </div>
+                </div>
+            `;
+        }
+        lucide.createIcons();
+    }
 
     function setProjectConfig(config) {
         currentConfig = config;
@@ -1189,7 +1221,6 @@
         const cardNobreak = document.getElementById('nobreak-inclusion-card');
         const badgeConfig = document.getElementById('badge-config');
         const titleConfig = document.getElementById('title-config');
-        const previewSecundario = document.getElementById('preview-secundario');
         const btnTextAprova = document.getElementById('btn-text-aprova');
 
         if (config === 'premium') {
@@ -1202,12 +1233,6 @@
                 badgeConfig.className = "bg-brand-yellow text-black text-[7px] md:text-[10px] font-extrabold px-2 py-0.5 md:px-3 md:py-1 rounded-full uppercase tracking-widest shadow-glow";
             }
             if(titleConfig) titleConfig.textContent = "Combo Corporativo Premium";
-            if(previewSecundario) {
-                previewSecundario.innerHTML = `
-                    <span class="text-[8px] font-bold text-gray-400 uppercase tracking-widest mb-1.5">Nobreak Central Attiv 600VA</span>
-                    <img src="https://res.cloudinary.com/dptcuckhf/image/upload/v1770981166/nobreak_attiv_600_bi_capa_1_uyzwmo.png" alt="Nobreak Intelbras Attiv" class="h-16 md:h-20 object-contain animate-fade-in">
-                `;
-            }
             if(btnTextAprova) btnTextAprova.textContent = "Aprovar Projeto Premium com Nobreak";
         } else {
             btnEssencial.className = "relative z-10 px-5 md:px-8 py-3 text-xs md:text-sm font-bold text-white transition-all w-48 md:w-64 text-center rounded-xl bg-brand-yellow shadow-md flex items-center justify-center gap-2";
@@ -1219,20 +1244,11 @@
                 badgeConfig.className = "bg-gray-200 text-gray-700 text-[7px] md:text-[10px] font-extrabold px-2 py-0.5 md:px-3 md:py-1 rounded-full uppercase tracking-widest";
             }
             if(titleConfig) titleConfig.textContent = "Combo Essencial de Câmeras & Som";
-            if(previewSecundario) {
-                previewSecundario.innerHTML = `
-                    <span class="text-[8px] font-bold text-gray-400 uppercase tracking-widest mb-1.5">Amplificador Touch em Parede</span>
-                    <div class="h-16 md:h-20 flex items-center justify-center text-brand-yellow animate-fade-in">
-                        <i data-lucide="tablet" class="w-10 h-10"></i>
-                    </div>
-                `;
-            }
             if(btnTextAprova) btnTextAprova.textContent = "Aprovar Projeto Essencial";
         }
         
+        updateTechPreview();
         updatePrices();
-        lucide.createIcons();
-        if (window.clarity) window.clarity("event", "Toggle_Configuracao_" + config);
     }
 
     function setPaymentMode(mode) {
@@ -1274,7 +1290,6 @@
             }
         }
         updatePrices();
-        if (window.clarity) window.clarity("event", "Toggle_Pagamento_" + mode);
     }
 
     function formatCurrency(value) {
@@ -1333,6 +1348,12 @@
         }
         lucide.createIcons();
     }
+
+    // SINCRONIZAÇÃO COMPLETA NO CARREGAMENTO DA PÁGINA
+    window.addEventListener("load", () => {
+        setProjectConfig('premium');
+        setPaymentMode('avista');
+    });
 
     // REVEAL ON SCROLL
     const observer = new IntersectionObserver((entries) => {
