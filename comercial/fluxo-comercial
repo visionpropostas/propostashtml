@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Organograma de Processo Comercial Integrado com IA</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Lucide Icons para ícones modernos -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght=300;400;500;600;700;800&display=swap');
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+        }
+        .flow-line {
+            background-image: linear-gradient(to bottom, #3b82f6 50%, transparent 50%);
+            background-size: 2px 8px;
+            background-repeat: repeat-y;
+        }
+    </style>
+</head>
+<body class="bg-slate-900 text-slate-100 min-h-screen flex flex-col">
+
+    <!-- Header Principal -->
+    <header class="border-b border-slate-800 bg-slate-950/50 backdrop-blur-md sticky top-0 z-50 px-6 py-4">
+        <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-4">
+            <div class="flex items-center gap-3">
+                <div class="bg-blue-600 p-2.5 rounded-xl shadow-lg shadow-blue-500/20">
+                    <i data-lucide="git-branch" class="w-6 h-6 text-white"></i>
+                </div>
+                <div>
+                    <h1 class="text-xl font-bold tracking-tight text-white flex items-center gap-2">
+                        Fluxo de Atendimento & Orçamento
+                    </h1>
+                    <p class="text-xs text-slate-400">Automatização e Inteligência Artificial no Funil de Vendas</p>
+                </div>
+            </div>
+            <div class="flex gap-2">
+                <button onclick="switchView('visual')" id="btn-visual" class="px-4 py-2 rounded-lg text-sm font-medium transition-all bg-blue-600 text-white shadow-lg shadow-blue-500/10">
+                    Visualização em Fluxo
+                </button>
+                <button onclick="switchView('lista')" id="btn-lista" class="px-4 py-2 rounded-lg text-sm font-medium transition-all bg-slate-800 text-slate-300 hover:bg-slate-700">
+                    Detalhamento de Etapas
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <main class="flex-grow max-w-7xl w-full mx-auto p-4 md:p-8">
+        
+        <!-- VISUALIZAÇÃO EM FLUXO -->
+        <div id="view-visual" class="space-y-8">
+            
+            <!-- Introdução do processo -->
+            <div class="bg-slate-950/40 border border-slate-800/80 rounded-2xl p-6 flex flex-col md:flex-row md:items-center justify-between gap-6">
+                <div class="space-y-2">
+                    <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-medium bg-emerald-500/10 text-emerald-400">
+                        <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span> Processo Otimizado
+                    </span>
+                    <h2 class="text-lg font-semibold text-white">Visão Geral do Funil Inteligente</h2>
+                    <p class="text-sm text-slate-400 max-w-2xl">
+                        Este organograma ilustra a jornada desde o contato do cliente, passando pelo enriquecimento de IA, o **ponto de controle e exceção humana de validação técnica**, até o cálculo final de margem e entrega do orçamento.
+                    </p>
+                </div>
+                <div class="flex gap-4 text-xs text-slate-400 border-l border-slate-800 pl-6 hidden md:block">
+                    <div class="flex items-center gap-2 mb-1.5"><span class="w-3 h-3 rounded-full bg-emerald-500"></span> Entrada & Triagem</div>
+                    <div class="flex items-center gap-2 mb-1.5"><span class="w-3 h-3 rounded-full bg-amber-500"></span> Validação Técnica Humana</div>
+                    <div class="flex items-center gap-2 mb-1.5"><span class="w-3 h-3 rounded-full bg-blue-500"></span> Processamento de IAs</div>
+                    <div class="flex items-center gap-2"><span class="w-3 h-3 rounded-full bg-purple-500"></span> Decisão & Fechamento</div>
+                </div>
+            </div>
+
+            <!-- Grid do Organograma -->
+            <div class="relative">
+                
+                <!-- ETAPA 1 -->
+                <div class="relative pl-8 md:pl-0 md:grid md:grid-cols-12 md:gap-8 items-center group mb-12">
+                    <!-- Linha Conectora Vertical (Mobile) -->
+                    <div class="absolute left-3 top-8 bottom-0 w-0.5 flow-line md:hidden"></div>
+                    <!-- Indicador Esquerdo (Desktop) -->
+                    <div class="hidden md:flex md:col-span-4 justify-end items-center pr-8 text-right">
+                        <div>
+                            <span class="text-xs font-bold text-emerald-400 uppercase tracking-widest">Etapa 1</span>
+                            <h3 class="text-lg font-bold text-white mt-1">Contato Inicial</h3>
+                            <p class="text-sm text-slate-400 mt-1">Atendimento ativo via WhatsApp</p>
+                        </div>
+                    </div>
+                    <!-- Ícone Centralizador -->
+                    <div class="absolute left-0 md:relative md:col-span-1 flex justify-center z-10">
+                        <div class="w-7 h-7 md:w-10 md:h-10 rounded-full bg-emerald-500/10 border-2 border-emerald-500 flex items-center justify-center text-emerald-400 font-bold text-xs md:text-sm group-hover:scale-110 transition-transform bg-slate-900 shadow-lg shadow-emerald-500/5">
+                            1
+                        </div>
+                    </div>
+                    <!-- Card de Conteúdo -->
+                    <div class="md:col-span-7 bg-slate-950/40 border border-slate-800 hover:border-emerald-500/30 transition-all rounded-2xl p-6 shadow-xl">
+                        <div class="flex items-start gap-4">
+                            <div class="p-3 bg-emerald-500/10 rounded-xl text-emerald-400">
+                                <i data-lucide="message-square-text" class="w-6 h-6"></i>
+                            </div>
+                            <div class="space-y-3 flex-1">
+                                <div class="flex items-center justify-between">
+                                    <span class="text-xs font-semibold text-emerald-400 tracking-wider uppercase md:hidden">Etapa 1</span>
+                                    <span class="px-2.5 py-0.5 rounded text-[10px] font-medium bg-emerald-500/10 text-emerald-400">WhatsApp</span>
+                                </div>
+                                <h4 class="text-base font-bold text-white md:hidden">Contato Inicial & Triagem</h4>
+                                <p class="text-sm text-slate-300 leading-relaxed">
+                                    O cliente entra em contato através do WhatsApp. É realizada uma triagem ativa para identificar o interesse e a necessidade imediata dele.
+                                </p>
+                                <div class="border-t border-slate-800/80 pt-3 mt-2">
+                                    <span class="text-xs text-slate-400 font-medium">Categorias identificadas na triagem:</span>
+                                    <div class="grid grid-cols-2 md:grid-cols-4 gap-2 mt-2">
+                                        <div class="bg-slate-900/60 p-2 rounded-lg border border-slate-800 text-center">
+                                            <i data-lucide="wrench" class="w-4 h-4 mx-auto mb-1 text-sky-400"></i>
+                                            <span class="text-[11px] block text-slate-300">Instalação Própria</span>
+                                        </div>
+                                        <div class="bg-slate-900/60 p-2 rounded-lg border border-slate-800 text-center">
+                                            <i data-lucide="activity" class="w-4 h-4 mx-auto mb-1 text-amber-400"></i>
+                                            <span class="text-[11px] block text-slate-300">Manutenção</span>
+                                        </div>
+                                        <div class="bg-slate-900/60 p-2 rounded-lg border border-slate-800 text-center">
+                                            <i data-lucide="map-pin" class="w-4 h-4 mx-auto mb-1 text-purple-400"></i>
+                                            <span class="text-[11px] block text-slate-300">Visita Técnica</span>
+                                        </div>
+                                        <div class="bg-slate-900/60 p-2 rounded-lg border border-slate-800 text-center">
+                                            <i data-lucide="shield-check" class="w-4 h-4 mx-auto mb-1 text-emerald-400"></i>
+                                            <span class="text-[11px] block text-slate-300">Compra + Instalação</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ETAPA 2 -->
+                <div class="relative pl-8 md:pl-0 md:grid md:grid-cols-12 md:gap-8 items-center group mb-12">
+                    <div class="absolute left-3 top-8 bottom-0 w-0.5 flow-line md:hidden"></div>
+                    <div class="hidden md:flex md:col-span-4 justify-end items-center pr-8 text-right">
+                        <div>
+                            <span class="text-xs font-bold text-blue-400 uppercase tracking-widest">Etapa 2</span>
+                            <h3 class="text-lg font-bold text-white mt-1">Contextualização</h3>
+                            <p class="text-sm text-slate-400 mt-1">Inteligência Artificial Generativa</p>
+                        </div>
+                    </div>
+                    <div class="absolute left-0 md:relative md:col-span-1 flex justify-center z-10">
+                        <div class="w-7 h-7 md:w-10 md:h-10 rounded-full bg-blue-500/10 border-2 border-blue-500 flex items-center justify-center text-blue-400 font-bold text-xs md:text-sm group-hover:scale-110 transition-transform bg-slate-900 shadow-lg shadow-blue-500/5">
+                            2
+                        </div>
+                    </div>
+                    <div class="md:col-span-7 bg-slate-950/40 border border-slate-800 hover:border-blue-500/30 transition-all rounded-2xl p-6 shadow-xl">
+                        <div class="flex items-start gap-4">
+                            <div class="p-3 bg-blue-500/10 rounded-xl text-blue-400">
+                                <i data-lucide="sparkles" class="w-6 h-6"></i>
+                            </div>
+                            <div class="space-y-2 flex-1">
+                                <div class="flex items-center justify-between">
+                                    <span class="text-xs font-semibold text-blue-400 tracking-wider uppercase md:hidden">Etapa 2</span>
+                                    <span class="px-2.5 py-0.5 rounded text-[10px] font-medium bg-blue-500/10 text-blue-400">Gemini IA</span>
+                                </div>
+                                <h4 class="text-base font-bold text-white md:hidden">Contexto & Listagem</h4>
+                                <p class="text-sm text-slate-300 leading-relaxed">
+                                    As informações coletadas na triagem são enviadas ao <strong>Gemini</strong>. Ele analisa o caso de uso e cria um escopo técnico estruturado, detalhando a listagem preliminar de materiais necessários de acordo com a demanda do cliente.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ETAPA 3 -->
+                <div class="relative pl-8 md:pl-0 md:grid md:grid-cols-12 md:gap-8 items-center group mb-12">
+                    <div class="absolute left-3 top-8 bottom-0 w-0.5 flow-line md:hidden"></div>
+                    <div class="hidden md:flex md:col-span-4 justify-end items-center pr-8 text-right">
+                        <div>
+                            <span class="text-xs font-bold text-indigo-400 uppercase tracking-widest">Etapa 3</span>
+                            <h3 class="text-lg font-bold text-white mt-1">Cotação & Validação</h3>
+                            <p class="text-sm text-slate-400 mt-1">Busca de Preços e Conciliação</p>
+                        </div>
+                    </div>
+                    <div class="absolute left-0 md:relative md:col-span-1 flex justify-center z-10">
+                        <div class="w-7 h-7 md:w-10 md:h-10 rounded-full bg-indigo-500/10 border-2 border-indigo-500 flex items-center justify-center text-indigo-400 font-bold text-xs md:text-sm group-hover:scale-110 transition-transform bg-slate-900 shadow-lg shadow-indigo-500/5">
+                            3
+                        </div>
+                    </div>
+                    <div class="md:col-span-7 bg-slate-950/40 border border-slate-800 hover:border-indigo-500/30 transition-all rounded-2xl p-6 shadow-xl">
+                        <div class="flex items-start gap-4">
+                            <div class="p-3 bg-indigo-500/10 rounded-xl text-indigo-400">
+                                <i data-lucide="book-open" class="w-6 h-6"></i>
+                            </div>
+                            <div class="space-y-2 flex-1">
+                                <div class="flex items-center justify-between">
+                                    <span class="text-xs font-semibold text-indigo-400 tracking-wider uppercase md:hidden">Etapa 3</span>
+                                    <span class="px-2.5 py-0.5 rounded text-[10px] font-medium bg-indigo-500/10 text-indigo-400">NotebookLM</span>
+                                </div>
+                                <h4 class="text-base font-bold text-white md:hidden">Cotação de Valores</h4>
+                                <p class="text-sm text-slate-300 leading-relaxed">
+                                    Os dados refinados são importados no <strong>NotebookLM</strong>. Esta etapa é essencial para consultar a base de preços atualizada, realizar a validação de compatibilidade dos materiais e certificar-se de que nada foi esquecido para fechar o orçamento bruto.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ETAPA 4 (NOVA: EXCEÇÃO / VALIDAÇÃO TÉCNICA HUMANA) -->
+                <div class="relative pl-8 md:pl-0 md:grid md:grid-cols-12 md:gap-8 items-center group mb-12">
+                    <div class="absolute left-3 top-8 bottom-0 w-0.5 flow-line md:hidden"></div>
+                    <div class="hidden md:flex md:col-span-4 justify-end items-center pr-8 text-right">
+                        <div>
+                            <span class="text-xs font-bold text-amber-500 uppercase tracking-widest">Etapa 4 (Humana)</span>
+                            <h3 class="text-lg font-bold text-white mt-1">Validação do Técnico</h3>
+                            <p class="text-sm text-amber-500 mt-1">Controle de Qualidade de Campo</p>
+                        </div>
+                    </div>
+                    <div class="absolute left-0 md:relative md:col-span-1 flex justify-center z-10">
+                        <div class="w-7 h-7 md:w-10 md:h-10 rounded-full bg-amber-500/10 border-2 border-amber-500 flex items-center justify-center text-amber-500 font-bold text-xs md:text-sm group-hover:scale-110 transition-transform bg-slate-900 shadow-lg shadow-amber-500/10">
+                            4
+                        </div>
+                    </div>
+                    <div class="md:col-span-7 bg-slate-950/40 border border-amber-500/30 bg-amber-950/5 hover:border-amber-500/50 transition-all rounded-2xl p-6 shadow-xl">
+                        <div class="flex items-start gap-4">
+                            <div class="p-3 bg-amber-500/10 rounded-xl text-amber-500">
+                                <i data-lucide="user-check" class="w-6 h-6"></i>
+                            </div>
+                            <div class="space-y-2 flex-1">
+                                <div class="flex items-center justify-between">
+                                    <span class="text-xs font-semibold text-amber-500 tracking-wider uppercase md:hidden">Etapa 4</span>
+                                    <span class="px-2.5 py-0.5 rounded text-[10px] font-bold bg-amber-500/10 text-amber-500">Validação Humana</span>
+                                </div>
+                                <h4 class="text-base font-bold text-white md:hidden">Validação Técnica de Materiais</h4>
+                                <p class="text-sm text-slate-300 leading-relaxed">
+                                    <strong>Ponto de Controle Técnico:</strong> Antes de prosseguir, a lista de materiais estruturada é compartilhada com o **técnico de campo**. Ele valida fisicamente se as especificações estão corretas para o local da instalação, eliminando gargalos ou compras incorretas de materiais extras.
+                                </p>
+                                <div class="flex items-center gap-1.5 text-xs text-amber-400 font-medium bg-amber-500/5 p-2 rounded-lg border border-amber-500/10 mt-2">
+                                    <i data-lucide="alert-circle" class="w-4 h-4 shrink-0"></i>
+                                    <span>Só avança para o Gemini após a autorização verbal/escrita do técnico.</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ETAPA 5 (ANTERIOR ETAPA 4) -->
+                <div class="relative pl-8 md:pl-0 md:grid md:grid-cols-12 md:gap-8 items-center group mb-12">
+                    <div class="absolute left-3 top-8 bottom-0 w-0.5 flow-line md:hidden"></div>
+                    <div class="hidden md:flex md:col-span-4 justify-end items-center pr-8 text-right">
+                        <div>
+                            <span class="text-xs font-bold text-purple-400 uppercase tracking-widest">Etapa 5</span>
+                            <h3 class="text-lg font-bold text-white mt-1">Margem & Divisão de Fluxo</h3>
+                            <p class="text-sm text-slate-400 mt-1">Cálculo de Tier e Direcionamento</p>
+                        </div>
+                    </div>
+                    <div class="absolute left-0 md:relative md:col-span-1 flex justify-center z-10">
+                        <div class="w-7 h-7 md:w-10 md:h-10 rounded-full bg-purple-500/10 border-2 border-purple-500 flex items-center justify-center text-purple-400 font-bold text-xs md:text-sm group-hover:scale-110 transition-transform bg-slate-900 shadow-lg shadow-purple-500/5">
+                            5
+                        </div>
+                    </div>
+                    <div class="md:col-span-7 bg-slate-950/40 border border-slate-800 hover:border-purple-500/30 transition-all rounded-2xl p-6 shadow-xl">
+                        <div class="flex items-start gap-4">
+                            <div class="p-3 bg-purple-500/10 rounded-xl text-purple-400">
+                                <i data-lucide="scale" class="w-6 h-6"></i>
+                            </div>
+                            <div class="space-y-2 flex-1">
+                                <div class="flex items-center justify-between">
+                                    <span class="text-xs font-semibold text-purple-400 tracking-wider uppercase md:hidden">Etapa 5</span>
+                                    <span class="px-2.5 py-0.5 rounded text-[10px] font-medium bg-purple-500/10 text-purple-400 font-bold">Decisão de Tier</span>
+                                </div>
+                                <h4 class="text-base font-bold text-white md:hidden">Margem & Divisão de Fluxo</h4>
+                                <p class="text-sm text-slate-300 leading-relaxed">
+                                    Retorno ao <strong>Gemini</strong> com os preços consolidados e o aval do técnico. A IA aplica a regra de negócio do <strong>Tier</strong> (margem de lucro calculada com base no projeto) e divide o processo em duas rotas com base no valor de <strong>R$ 3.000</strong>.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- LINHA HORIZONTAL/VERTICAL BIFURCAÇÃO (DESKTOP) -->
+                <div class="hidden md:grid md:grid-cols-12 md:gap-8 my-4 relative">
+                    <div class="col-span-4"></div>
+                    <div class="col-span-1 flex justify-center">
+                        <div class="w-0.5 h-16 flow-line"></div>
+                    </div>
+                    <div class="col-span-7"></div>
+                </div>
+
+                <!-- BIFURCAÇÃO DAS DUAS ROTAS (ETAPA 6) -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 relative">
+                    
+                    <!-- ROTA A: ATÉ R$ 3.000 (Direto) -->
+                    <div class="relative pl-8 md:pl-0 group">
+                        <!-- Linha interna mobile -->
+                        <div class="absolute left-3 top-8 bottom-0 w-0.5 flow-line md:hidden"></div>
+                        <div class="bg-gradient-to-br from-slate-950/60 to-emerald-950/10 border border-slate-800 hover:border-emerald-500/40 rounded-2xl p-6 shadow-xl transition-all relative">
+                            <!-- Indicador de Status -->
+                            <div class="absolute top-4 right-4 bg-emerald-500/10 text-emerald-400 text-xs font-bold px-2.5 py-1 rounded-full border border-emerald-500/20">
+                                Tier A (Até R$ 3k)
+                            </div>
+                            <div class="flex gap-4">
+                                <div class="w-8 h-8 rounded-full bg-emerald-500/20 border border-emerald-400 flex items-center justify-center text-emerald-400 font-extrabold shrink-0">
+                                    6A
+                                </div>
+                                <div class="space-y-3 pt-1">
+                                    <h3 class="text-lg font-bold text-white">Elaboração Rápida</h3>
+                                    <p class="text-sm text-slate-300">
+                                        Se o orçamento totalizou <strong>até R$ 3.000</strong>, o <strong>Gemini</strong> cria a proposta comercial formatada imediatamente.
+                                    </p>
+                                    <div class="bg-slate-900/80 p-3 rounded-xl border border-slate-800/80 mt-2">
+                                        <div class="flex items-center gap-2 text-xs font-semibold text-emerald-400 mb-1">
+                                            <i data-lucide="send" class="w-3.5 h-3.5"></i> Envio Imediato
+                                        </div>
+                                        <p class="text-xs text-slate-400">
+                                            A proposta em formato texto/mensagem estruturada é gerada na hora e copiada para envio ao cliente direto no WhatsApp.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- ROTA B: MAIS DE R$ 3.000 (Interativo/Premium) -->
+                    <div class="relative pl-8 md:pl-0 group">
+                        <div class="bg-gradient-to-br from-slate-950/60 to-blue-950/10 border border-slate-800 hover:border-blue-500/40 rounded-2xl p-6 shadow-xl transition-all relative">
+                            <!-- Indicador de Status -->
+                            <div class="absolute top-4 right-4 bg-blue-500/10 text-blue-400 text-xs font-bold px-2.5 py-1 rounded-full border border-blue-500/20">
+                                Tier B (+ de R$ 3k)
+                            </div>
+                            <div class="flex gap-4">
+                                <div class="w-8 h-8 rounded-full bg-blue-500/20 border border-blue-400 flex items-center justify-center text-blue-400 font-extrabold shrink-0">
+                                    6B
+                                </div>
+                                <div class="space-y-3 pt-1">
+                                    <h3 class="text-lg font-bold text-white">Elaboração Premium</h3>
+                                    <p class="text-sm text-slate-300">
+                                        Para projetos robustos de <strong>mais de R$ 3.000</strong>, o processo exige um formato de apresentação comercial de altíssimo nível.
+                                    </p>
+                                    
+                                    <!-- Mini Fluxo GitHub/HTML -->
+                                    <div class="space-y-2 mt-4 bg-slate-900/80 p-3 rounded-xl border border-slate-800/80 text-xs">
+                                        <div class="flex items-center gap-2 text-blue-400 font-semibold">
+                                            <i data-lucide="code" class="w-3.5 h-3.5"></i> Workflow HTML Premium
+                                        </div>
+                                        
+                                        <!-- Passo a Passo Interno -->
+                                        <div class="grid grid-cols-3 gap-2 mt-2">
+                                            <div class="bg-slate-950/50 p-2 rounded border border-slate-800">
+                                                <span class="text-[10px] block text-slate-400 mb-1">Passo 1</span>
+                                                <span class="text-slate-200 font-medium">Gera HTML no Gemini</span>
+                                            </div>
+                                            <div class="bg-slate-950/50 p-2 rounded border border-slate-800">
+                                                <span class="text-[10px] block text-slate-400 mb-1">Passo 2</span>
+                                                <span class="text-slate-200 font-medium">Hospeda no GitHub Pages</span>
+                                            </div>
+                                            <div class="bg-slate-950/50 p-2 rounded border border-slate-800">
+                                                <span class="text-[10px] block text-slate-400 mb-1">Passo 3</span>
+                                                <span class="text-slate-200 font-medium">Envia Link no Whats</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+
+        <!-- DETALHAMENTO DE ETAPAS -->
+        <div id="view-lista" class="space-y-6 hidden">
+            
+            <div class="bg-slate-950/40 border border-slate-800 rounded-2xl p-6">
+                <h2 class="text-lg font-bold text-white mb-2">Detalhamento das Ferramentas & Atividades</h2>
+                <p class="text-sm text-slate-400">Consulte abaixo as responsabilidades e entregas exatas de cada ferramenta do fluxo.</p>
+            </div>
+
+            <!-- Tabela/Lista Expandida -->
+            <div class="space-y-4">
+                <!-- WhatsApp -->
+                <div class="bg-slate-950/40 border border-slate-800 rounded-xl p-5 hover:bg-slate-950/60 transition-colors">
+                    <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
+                        <div class="flex items-center gap-3">
+                            <div class="p-2 bg-emerald-500/15 rounded-lg text-emerald-400">
+                                <i data-lucide="message-square" class="w-5 h-5"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-bold text-white text-base">1. Triagem & Captação</h3>
+                                <p class="text-xs text-emerald-400 font-medium">Canal: WhatsApp</p>
+                            </div>
+                        </div>
+                        <div class="text-xs text-slate-400 max-w-lg md:text-right">
+                            Foco em mapear se a demanda é instalação simples, manutenção, visita técnica ou o pacote integrado (fechaduras, câmeras, controle de acesso).
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Gemini Listagem -->
+                <div class="bg-slate-950/40 border border-slate-800 rounded-xl p-5 hover:bg-slate-950/60 transition-colors">
+                    <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
+                        <div class="flex items-center gap-3">
+                            <div class="p-2 bg-blue-500/15 rounded-lg text-blue-400">
+                                <i data-lucide="cpu" class="w-5 h-5"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-bold text-white text-base">2. Análise Técnica e Listagem</h3>
+                                <p class="text-xs text-blue-400 font-medium">Ferramenta: Gemini (Primeiro Turno)</p>
+                            </div>
+                        </div>
+                        <div class="text-xs text-slate-400 max-w-lg md:text-right">
+                            Transforma o briefing bruto do WhatsApp em uma listagem de materiais lógica e detalhada (quantidades, conectores, cabos).
+                        </div>
+                    </div>
+                </div>
+
+                <!-- NotebookLM -->
+                <div class="bg-slate-950/40 border border-slate-800 rounded-xl p-5 hover:bg-slate-950/60 transition-colors">
+                    <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
+                        <div class="flex items-center gap-3">
+                            <div class="p-2 bg-indigo-500/15 rounded-lg text-indigo-400">
+                                <i data-lucide="table" class="w-5 h-5"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-bold text-white text-base">3. Validação Financeira</h3>
+                                <p class="text-xs text-indigo-400 font-medium">Ferramenta: NotebookLM</p>
+                            </div>
+                        </div>
+                        <div class="text-xs text-slate-400 max-w-lg md:text-right">
+                            Mapeia preços internos em documentos e PDF carregados na fonte e realiza a conferência técnica cruzada se algo crucial ficou de fora.
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Validação do Técnico -->
+                <div class="bg-slate-950/40 border border-amber-500/20 bg-amber-950/5 rounded-xl p-5 hover:bg-slate-950/60 transition-colors">
+                    <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
+                        <div class="flex items-center gap-3">
+                            <div class="p-2 bg-amber-500/15 rounded-lg text-amber-500">
+                                <i data-lucide="user-check" class="w-5 h-5"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-bold text-white text-base">4. Validação Técnica</h3>
+                                <p class="text-xs text-amber-500 font-medium">Responsável: Técnico de Campo (Humano)</p>
+                            </div>
+                        </div>
+                        <div class="text-xs text-slate-400 max-w-lg md:text-right">
+                            Garante que os materiais orçados estão adequados à infraestrutura real do cliente antes de gerar o cálculo de margem comercial.
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Gemini Tier -->
+                <div class="bg-slate-950/40 border border-slate-800 rounded-xl p-5 hover:bg-slate-950/60 transition-colors">
+                    <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
+                        <div class="flex items-center gap-3">
+                            <div class="p-2 bg-purple-500/15 rounded-lg text-purple-400">
+                                <i data-lucide="dollar-sign" class="w-5 h-5"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-bold text-white text-base">5. Margem & Tiering</h3>
+                                <p class="text-xs text-purple-400 font-medium">Ferramenta: Gemini (Segundo Turno)</p>
+                            </div>
+                        </div>
+                        <div class="text-xs text-slate-400 max-w-lg md:text-right">
+                            Aplica a margem de acordo com o tier do cliente. Realiza a tomada de decisão inteligente com base no teto de R$ 3.000 para a proposta.
+                        </div>
+                    </div>
+                </div>
+
+                <!-- GitHub / HTML -->
+                <div class="bg-slate-950/40 border border-slate-800 rounded-xl p-5 hover:bg-slate-950/60 transition-colors">
+                    <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
+                        <div class="flex items-center gap-3">
+                            <div class="p-2 bg-amber-500/15 rounded-lg text-amber-400">
+                                <i data-lucide="github" class="w-5 h-5"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-bold text-white text-base">6. Publicação de Propostas Premium</h3>
+                                <p class="text-xs text-amber-400 font-medium">Ferramentas: Gemini + GitHub (HTML)</p>
+                            </div>
+                        </div>
+                        <div class="text-xs text-slate-400 max-w-lg md:text-right">
+                            Cópia do código estruturado de orçamento rico, criação da página estática e envio do link personalizado de visualização móvel.
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="border-t border-slate-800 bg-slate-950/50 py-6 px-4 text-center text-xs text-slate-500">
+        <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-4">
+            <p>© 2026 Processo Inteligente de Orçamentação. Desenvolvido para máxima conversão.</p>
+            <div class="flex gap-4">
+                <span class="flex items-center gap-1"><span class="w-2 h-2 rounded-full bg-emerald-400"></span> WhatsApp Ativo</span>
+                <span class="flex items-center gap-1"><span class="w-2 h-2 rounded-full bg-blue-400"></span> IAs Ativas</span>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Inicializa os ícones do Lucide
+        lucide.createIcons();
+
+        // Função de alternância de abas/visualizações
+        function switchView(view) {
+            const viewVisual = document.getElementById('view-visual');
+            const viewLista = document.getElementById('view-lista');
+            const btnVisual = document.getElementById('btn-visual');
+            const btnLista = document.getElementById('btn-lista');
+
+            if (view === 'visual') {
+                viewVisual.classList.remove('hidden');
+                viewLista.classList.add('hidden');
+                
+                btnVisual.className = "px-4 py-2 rounded-lg text-sm font-medium transition-all bg-blue-600 text-white shadow-lg shadow-blue-500/10";
+                btnLista.className = "px-4 py-2 rounded-lg text-sm font-medium transition-all bg-slate-800 text-slate-300 hover:bg-slate-700";
+            } else {
+                viewVisual.classList.add('hidden');
+                viewLista.classList.remove('hidden');
+
+                btnVisual.className = "px-4 py-2 rounded-lg text-sm font-medium transition-all bg-slate-800 text-slate-300 hover:bg-slate-700";
+                btnLista.className = "px-4 py-2 rounded-lg text-sm font-medium transition-all bg-blue-600 text-white shadow-lg shadow-blue-500/10";
+            }
+        }
+    </script>
+</body>
+</html>
