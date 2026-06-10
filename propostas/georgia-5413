@@ -369,7 +369,7 @@
                     </div>
                     <div class="text-lg sm:text-2xl font-extrabold text-gray-900 truncate">Invisível</div>
                 </div>
-                <div class="text-[10px] sm:text-xs text-gray-500 font-semibold mt-2 uppercase tracking-wider truncate">Fiação no Gesso</div>
+                <div class="text-[10px] sm:text-xs text-gray-500 font-semibold mt-2 uppercase tracking-wider">Fiação no Gesso</div>
             </div>
             <!-- Card 4 -->
             <div class="bg-white rounded-2xl p-4 sm:p-6 shadow-glass border border-gray-100 text-center hover:border-brand-yellow/40 transition-all flex flex-col justify-between animate-float" style="animation-delay:1.2s;">
@@ -379,7 +379,7 @@
                     </div>
                     <div class="text-lg sm:text-2xl font-extrabold text-gray-900 truncate">Alinhado</div>
                 </div>
-                <div class="text-[10px] sm:text-xs text-gray-500 font-semibold mt-2 uppercase tracking-wider truncate">Com seu Gesseiro</div>
+                <div class="text-[10px] sm:text-xs text-gray-500 font-semibold mt-2 uppercase tracking-wider">Final de Semana</div>
             </div>
         </div>
     </div>
@@ -772,30 +772,16 @@
     <div class="max-w-7xl mx-auto px-4 relative z-10">
 
         <div class="text-center mb-10 md:mb-12 reveal">
-            <span class="text-brand-yellow font-bold uppercase tracking-widest text-xs">Análise de Custos</span>
+            <span class="text-brand-yellow font-bold uppercase tracking-widest text-xs">Orçamento Único do Projeto</span>
             <h2 class="text-2xl md:text-5xl font-extrabold text-gray-900 mt-2 md:mt-3">Investimento do Projeto</h2>
             <p class="text-gray-500 mt-3 md:mt-4 max-w-xl mx-auto text-sm md:text-lg leading-relaxed px-4">
-                Comparamos a configuração recomendada pela engenharia contra a básica, para que você avalie as vantagens técnicas de proteção ativa:
+                Veja o resumo financeiro estruturado com todos os materiais de engenharia e mão de obra técnica inclusos de ponta a ponta:
             </p>
         </div>
 
-        <!-- SELETOR DE CONFIGURAÇÃO DO PROJETO -->
-        <div class="flex flex-col items-center justify-center mb-6 reveal">
-            <p class="text-xs font-bold text-gray-500 uppercase tracking-widest mb-3">Escolha a Configuração:</p>
-            <div class="bg-gray-100 p-1.5 rounded-2xl inline-flex relative shadow-inner">
-                <button onclick="setProjectConfig('premium')" id="config-premium" class="relative z-10 px-5 md:px-8 py-3 text-xs md:text-sm font-bold text-white transition-all w-48 md:w-64 text-center rounded-xl bg-brand-yellow shadow-md flex items-center justify-center gap-2">
-                    <i data-lucide="shield-check" class="w-4 h-4"></i>
-                    <span>Premium (Fullcolor + 2TB)</span>
-                </button>
-                <button onclick="setProjectConfig('essencial')" id="config-essencial" class="relative z-10 px-5 md:px-8 py-3 text-xs md:text-sm font-bold text-gray-500 transition-all w-48 md:w-64 text-center rounded-xl hover:text-black flex items-center justify-center gap-2">
-                    <i data-lucide="video" class="w-4 h-4"></i>
-                    <span>Essencial (Comum + 1TB)</span>
-                </button>
-            </div>
-        </div>
-
-        <!-- TOGGLE DE PAGAMENTO (PIX VS CARTÃO) -->
+        <!-- TOGGLE DE PAGAMENTO (PIX VS CARTÃO COM EXIBIÇÃO DE TAXAS) -->
         <div class="flex flex-col items-center justify-center mb-8 md:mb-10 reveal">
+            <p class="text-xs font-bold text-gray-400 uppercase tracking-widest mb-3">Selecione o Método de Pagamento:</p>
             <div class="bg-gray-100 p-1.5 rounded-full inline-flex relative shadow-inner">
                 <div id="toggle-bg" class="absolute top-1.5 bottom-1.5 w-[calc(50%-3px)] bg-white rounded-full shadow-sm transition-transform duration-300 ease-in-out" style="transform: translateX(0); left: 2px;"></div>
                 
@@ -803,22 +789,22 @@
                 <button onclick="setPaymentMode('parcelado')" id="btn-parcelado" class="relative z-10 px-5 md:px-8 py-2.5 text-xs md:text-sm font-bold text-gray-500 transition-colors w-36 md:w-48 text-center rounded-full focus:outline-none hover:text-black">Parcelado (Cartão)</button>
             </div>
 
-            <!-- Select de Parcelas -->
+            <!-- Seletor de Parcelas com Taxas Integradas -->
             <div id="installment-container" class="mt-4 md:mt-6 flex flex-col items-center transition-all duration-300 opacity-0 pointer-events-none hidden">
                 <div class="relative">
-                    <select id="installment-select" class="appearance-none bg-white border border-gray-300 text-gray-950 text-xs md:text-sm font-bold rounded-xl focus:ring-brand-yellow focus:border-brand-yellow block w-40 md:w-56 p-2.5 md:p-3 pl-3 md:pl-4 pr-8 md:pr-10 shadow-sm outline-none cursor-pointer hover:border-gray-400 transition-colors" onchange="updatePrices()">
-                        <option value="1">1x no Cartão</option>
-                        <option value="2">2x no Cartão</option>
-                        <option value="3">3x no Cartão</option>
-                        <option value="4">4x no Cartão</option>
-                        <option value="5">5x no Cartão</option>
-                        <option value="6">6x no Cartão</option>
-                        <option value="7">7x no Cartão</option>
-                        <option value="8">8x no Cartão</option>
-                        <option value="9">9x no Cartão</option>
-                        <option value="10">10x no Cartão</option>
-                        <option value="11">11x no Cartão</option>
-                        <option value="12" selected>12x no Cartão</option>
+                    <select id="installment-select" class="appearance-none bg-white border border-gray-300 text-gray-950 text-xs md:text-sm font-bold rounded-xl focus:ring-brand-yellow focus:border-brand-yellow block w-48 md:w-64 p-2.5 md:p-3 pl-3 md:pl-4 pr-8 md:pr-10 shadow-sm outline-none cursor-pointer hover:border-gray-400 transition-colors" onchange="updatePrices()">
+                        <option value="1">1x (Taxa: 4.38%)</option>
+                        <option value="2">2x (Taxa: 5.60%)</option>
+                        <option value="3">3x (Taxa: 6.90%)</option>
+                        <option value="4">4x (Taxa: 8.20%)</option>
+                        <option value="5">5x (Taxa: 9.40%)</option>
+                        <option value="6">6x (Taxa: 10.71%)</option>
+                        <option value="7">7x (Taxa: 12.20%)</option>
+                        <option value="8">8x (Taxa: 13.70%)</option>
+                        <option value="9">9x (Taxa: 15.20%)</option>
+                        <option value="10">10x (Taxa: 16.80%)</option>
+                        <option value="11">11x (Taxa: 18.40%)</option>
+                        <option value="12" selected>12x (Taxa: 20.00%)</option>
                     </select>
                     <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 md:px-3 text-brand-yellow">
                         <i data-lucide="chevron-down" class="w-3 h-3 md:w-4 md:h-4"></i>
@@ -834,12 +820,12 @@
                 <div class="premium-border-inner flex flex-col relative bg-white p-4 md:p-8">
                     <div class="absolute top-0 right-0 w-24 h-24 md:w-32 md:h-32 bg-brand-yellow/10 rounded-full blur-[30px] md:blur-[50px] pointer-events-none"></div>
                     <div class="absolute top-2 right-2 md:top-4 md:right-4 z-20">
-                        <span id="badge-config" class="bg-brand-yellow text-black text-[7px] md:text-[10px] font-extrabold px-2 py-0.5 md:px-3 md:py-1 rounded-full uppercase tracking-widest shadow-glow">Recomendado</span>
+                        <span id="badge-config" class="bg-brand-yellow text-black text-[7px] md:text-[10px] font-extrabold px-2 py-0.5 md:px-3 md:py-1 rounded-full uppercase tracking-widest shadow-glow">Premium Homologado</span>
                     </div>
 
                     <div class="mb-4 md:mb-6 text-center md:text-left relative z-10">
                         <p class="text-[8px] md:text-[10px] font-bold uppercase tracking-widest text-brand-yellow mb-1 md:mb-2 mt-1 md:mt-2">CFTV IP Intelbras & Infraestrutura Embutida</p>
-                        <h3 id="title-config" class="font-bold text-gray-900 text-xl md:text-3xl leading-tight">Configuração Premium</h3>
+                        <h3 id="title-config" class="font-bold text-gray-900 text-xl md:text-3xl leading-tight">Configuração de Segurança Máxima</h3>
                     </div>
 
                     <div class="mb-4 md:mb-6 p-4 md:p-8 bg-brand-yellow/5 border border-brand-yellow/20 rounded-xl md:rounded-2xl min-h-[120px] md:min-h-[160px] flex flex-col items-center justify-center text-center relative z-10">
@@ -851,13 +837,13 @@
 
                     <!-- PREVIEW TÉCNICO INTERATIVO DE COMPONENTES DO CENÁRIO -->
                     <div class="mb-6 p-4 bg-gray-50 border border-gray-100 rounded-2xl relative z-10 transition-all duration-300" id="tech-preview-container">
-                        <!-- Renderizado dinamicamente via Javascript para evitar oscilações -->
+                        <!-- Renderizado dinamicamente via Javascript -->
                     </div>
 
                     <div class="space-y-2 md:space-y-3 mb-4 md:mb-8 flex-1 relative z-10 text-left">
                         <h4 class="font-semibold text-gray-700 text-[10px] md:text-sm uppercase tracking-wider mb-2 md:mb-3 font-tech">O que inclui de ponta a ponta:</h4>
                         
-                        <!-- Lista Dinâmica de Equipamentos será alterada conforme cenário selecionado -->
+                        <!-- Lista Dinâmica de Equipamentos -->
                         <div id="equipment-list-container" class="space-y-2">
                             <!-- Injetado dinamicamente via JS -->
                         </div>
@@ -869,7 +855,7 @@
                         
                         <div class="flex items-start gap-2 md:gap-3 p-3 bg-white border border-brand-yellow/30 rounded-lg md:rounded-xl shadow-sm">
                             <i data-lucide="clock" class="w-4 h-4 text-brand-yellow shrink-0 mt-0.5"></i>
-                            <p class="text-[10px] md:text-sm text-gray-800 leading-snug md:leading-relaxed"><strong>Ativação em Finais de Semana Inclusa:</strong> Agendamento flexível para a passagem física de infraestrutura, garantindo impacto operacional zero na GR Jóias.</p>
+                            <p class="text-[10px] md:text-sm text-gray-800 leading-snug md:leading-relaxed"><strong>Ativação aos Finais de Semana Inclusa:</strong> Agendamento flexível para a passagem física de infraestrutura, garantindo impacto operacional zero na GR Jóias.</p>
                         </div>
                         
                         <!-- BÔNUS TAG -->
@@ -881,7 +867,7 @@
 
                     <a id="btn-aprova-link" href="#" target="_blank" class="w-full bg-brand-yellow hover:bg-brand-goldLight text-black font-bold py-3 md:py-4 rounded-xl md:rounded-2xl flex items-center justify-center gap-1.5 md:gap-2 transition-all shadow-glow-md text-[10px] md:text-[12px] uppercase tracking-widest group relative overflow-hidden mt-auto z-10">
                         <div class="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-300 rounded-xl md:rounded-2xl"></div>
-                        <span id="btn-text-aprova" class="relative z-10">Aprovar Proposta Premium</span>
+                        <span id="btn-text-aprova" class="relative z-10">Aprovar Proposta do Projeto</span>
                         <i data-lucide="arrow-right" class="w-4 h-4 md:w-5 md:h-5 relative z-10 group-hover:translate-x-1 transition-transform"></i>
                     </a>
                 </div>
@@ -1068,29 +1054,25 @@
         }
     }
 
-    // BASE DE PREÇOS COMERCIAL DO SISTEMA DA GR JÓIAS
-    const configPrices = {
-        premium: 3390.00,  // Cenário Premium com 4 faciais/fullcolor + 2TB
-        essencial: 2790.00 // Cenário Essencial com 4 padrão + 1TB
-    };
+    // VALOR BASE DO INVESTIMENTO PREMIUM CFTV FULLCOLOR (R$ 3.390,00)
+    const basePrice = 3390.00;
     
-    // Taxas financeiras de parcelamento do cartão de crédito (True Markup exato)
+    // Taxas financeiras de parcelamento do cartão de crédito (Markup de custos corporativo)
     const cardRates = {
-        1: 1.0438,
-        2: 1.0560,
-        3: 1.0690,
-        4: 1.0820,
-        5: 1.0940,
-        6: 1.1071, 
-        7: 1.1220,
-        8: 1.1370,
-        9: 1.1520,
-        10: 1.1680,
-        11: 1.1840,
-        12: 1.2000 // Exatamente R$ 4.068,00 no Premium (12x de R$ 339,00)
+        1: 1.0438,  // Taxa de 4.38%
+        2: 1.0560,  // Taxa de 5.60%
+        3: 1.0690,  // Taxa de 6.90%
+        4: 1.0820,  // Taxa de 8.20%
+        5: 1.0940,  // Taxa de 9.40%
+        6: 1.1071,  // Taxa de 10.71%
+        7: 1.1220,  // Taxa de 12.20%
+        8: 1.1370,  // Taxa de 13.70%
+        9: 1.1520,  // Taxa de 15.20%
+        10: 1.1680, // Taxa de 16.80%
+        11: 1.1840, // Taxa de 18.40%
+        12: 1.2000  // Taxa de 20.00% (Exatamente R$ 4.068,00 divididos em 12x de R$ 339,00)
     };
     
-    let currentConfig = 'premium';
     let currentMode = 'avista';
 
     // ATUALIZAÇÃO DO CONTEXTO VISUAL DE PRODUTOS E INSUMOS
@@ -1099,136 +1081,59 @@
         const equipmentList = document.getElementById('equipment-list-container');
         if (!container || !equipmentList) return;
         
-        if (currentConfig === 'premium') {
-            container.className = "mb-6 grid grid-cols-1 sm:grid-cols-3 gap-4 items-center p-4 bg-gray-50 border border-gray-100 rounded-2xl relative z-10 animate-fade-in";
-            container.innerHTML = `
-                <div class="flex flex-col items-center text-center p-2 bg-white rounded-xl shadow-sm border border-gray-100 min-h-[140px] justify-between">
-                    <span class="text-[8px] font-bold text-gray-400 uppercase tracking-widest mb-1.5">Câmera Fullcolor (4 un)</span>
-                    <img src="https://res.cloudinary.com/dptcuckhf/image/upload/v1777380050/vip-1220-d-fc_-esq_mnjcds.png" alt="Câmera Fullcolor" class="h-16 md:h-20 object-contain">
+        container.className = "mb-6 grid grid-cols-1 sm:grid-cols-3 gap-4 items-center p-4 bg-gray-50 border border-gray-100 rounded-2xl relative z-10 animate-fade-in";
+        container.innerHTML = `
+            <div class="flex flex-col items-center text-center p-2 bg-white rounded-xl shadow-sm border border-gray-100 min-h-[140px] justify-between">
+                <span class="text-[8px] font-bold text-gray-400 uppercase tracking-widest mb-1.5">Câmera Fullcolor (4 un)</span>
+                <img src="https://res.cloudinary.com/dptcuckhf/image/upload/v1777380050/vip-1220-d-fc_-esq_mnjcds.png" alt="Câmera Fullcolor" class="h-16 md:h-20 object-contain">
+            </div>
+            <div class="flex flex-col items-center text-center p-2 bg-white rounded-xl shadow-sm border border-gray-100 min-h-[140px] justify-between">
+                <span class="text-[8px] font-bold text-gray-400 uppercase tracking-widest mb-1.5">HD WD Purple 2TB (1 un)</span>
+                <img src="https://res.cloudinary.com/dptcuckhf/image/upload/v1771880502/WD-PURPLE_2TB-removebg-preview_f1micz.png" alt="HD WD Purple" class="h-16 md:h-20 object-contain">
+            </div>
+            <div class="flex flex-col items-center text-center p-2 bg-white rounded-xl shadow-sm border border-gray-100 min-h-[140px] justify-between">
+                <span class="text-[8px] font-bold text-gray-400 uppercase tracking-widest mb-1.5">Caixas VBOX (4 un)</span>
+                <div class="h-16 md:h-20 flex items-center justify-center text-brand-yellow">
+                    <i data-lucide="package" class="w-10 h-10"></i>
                 </div>
-                <div class="flex flex-col items-center text-center p-2 bg-white rounded-xl shadow-sm border border-gray-100 min-h-[140px] justify-between">
-                    <span class="text-[8px] font-bold text-gray-400 uppercase tracking-widest mb-1.5">HD WD Purple 2TB (1 un)</span>
-                    <img src="https://res.cloudinary.com/dptcuckhf/image/upload/v1771880502/WD-PURPLE_2TB-removebg-preview_f1micz.png" alt="HD WD Purple" class="h-16 md:h-20 object-contain">
-                </div>
-                <div class="flex flex-col items-center text-center p-2 bg-white rounded-xl shadow-sm border border-gray-100 min-h-[140px] justify-between">
-                    <span class="text-[8px] font-bold text-gray-400 uppercase tracking-widest mb-1.5">Caixas VBOX (4 un)</span>
-                    <div class="h-16 md:h-20 flex items-center justify-center text-brand-yellow">
-                        <i data-lucide="package" class="w-10 h-10"></i>
-                    </div>
-                </div>
-            `;
+            </div>
+        `;
 
-            equipmentList.innerHTML = `
-                <div class="flex items-start gap-2 md:gap-3 p-3 bg-white border border-brand-yellow/30 rounded-lg md:rounded-xl shadow-sm">
-                    <i data-lucide="video" class="w-4 h-4 text-brand-yellow shrink-0 mt-0.5 animate-pulse"></i>
-                    <p class="text-[10px] md:text-sm text-gray-800 leading-snug md:leading-relaxed"><strong>04x Câmeras Intelbras Fullcolor Full HD:</strong> Sendo 2 Bullet de alta resistência para a calçada/fachada e 2 Dome de acabamento estético discreto para o interior.</p>
-                </div>
-                <div class="flex items-start gap-2 md:gap-3 p-3 bg-white border border-brand-yellow/30 rounded-lg md:rounded-xl shadow-sm">
-                    <i data-lucide="hard-drive" class="w-4 h-4 text-brand-yellow shrink-0 mt-0.5"></i>
-                    <p class="text-[10px] md:text-sm text-gray-800 leading-snug md:leading-relaxed"><strong>01x HD WD Purple de 2TB:</strong> Linha de alta performance para segurança contínua, com armazenamento robusto homologado para manter 30 dias de histórico ininterrupto.</p>
-                </div>
-                <div class="flex items-start gap-2 md:gap-3 p-3 bg-white border border-brand-yellow/30 rounded-lg md:rounded-xl shadow-sm">
-                    <i data-lucide="box" class="w-4 h-4 text-brand-yellow shrink-0 mt-0.5"></i>
-                    <p class="text-[10px] md:text-sm text-gray-800 leading-snug md:leading-relaxed"><strong>04x Caixas de Passagem VBOX de Embutir:</strong> Suportes de alta classe para ocultação completa de cabos, adaptados rente ao teto de gesso pintado.</p>
-                </div>
-            `;
-        } else {
-            container.className = "mb-6 grid grid-cols-1 sm:grid-cols-2 gap-4 items-center p-4 bg-gray-50 border border-gray-100 rounded-2xl relative z-10 animate-fade-in";
-            container.innerHTML = `
-                <div class="flex flex-col items-center text-center p-2 bg-white rounded-xl shadow-sm border border-gray-100 min-h-[140px] justify-between">
-                    <span class="text-[8px] font-bold text-gray-400 uppercase tracking-widest mb-1.5">Câmera Infravermelho Standard (4 un)</span>
-                    <div class="h-16 md:h-20 flex items-center justify-center text-brand-yellow">
-                        <i data-lucide="video" class="w-10 h-10"></i>
-                    </div>
-                </div>
-                <div class="flex flex-col items-center text-center p-2 bg-white rounded-xl shadow-sm border border-gray-100 min-h-[140px] justify-between">
-                    <span class="text-[8px] font-bold text-gray-400 uppercase tracking-widest mb-1.5">HD Comum 1TB (1 un)</span>
-                    <div class="h-16 md:h-20 flex items-center justify-center text-brand-yellow">
-                        <i data-lucide="hard-drive" class="w-10 h-10"></i>
-                    </div>
-                </div>
-            `;
-
-            equipmentList.innerHTML = `
-                <div class="flex items-start gap-2 md:gap-3 p-3 bg-white border border-brand-yellow/30 rounded-lg md:rounded-xl shadow-sm">
-                    <i data-lucide="video" class="w-4 h-4 text-brand-yellow shrink-0 mt-0.5 animate-pulse"></i>
-                    <p class="text-[10px] md:text-sm text-gray-800 leading-snug md:leading-relaxed"><strong>04x Câmeras Infravermelhas Comuns:</strong> Modelo comum que captura imagens em preto e branco no escuro e provoca reflexo esbranquiçado nos balcões.</p>
-                </div>
-                <div class="flex items-start gap-2 md:gap-3 p-3 bg-white border border-brand-yellow/30 rounded-lg md:rounded-xl shadow-sm">
-                    <i data-lucide="hard-drive" class="w-4 h-4 text-brand-yellow shrink-0 mt-0.5"></i>
-                    <p class="text-[10px] md:text-sm text-gray-800 leading-snug md:leading-relaxed"><strong>01x HD Comum de 1TB:</strong> Histórico básico de gravação limitado para até 15 dias corridos.</p>
-                </div>
-                <div class="flex items-start gap-2 md:gap-3 p-3 bg-white border border-brand-yellow/30 rounded-lg md:rounded-xl shadow-sm">
-                    <i data-lucide="box" class="w-4 h-4 text-brand-yellow shrink-0 mt-0.5"></i>
-                    <p class="text-[10px] md:text-sm text-gray-800 leading-snug md:leading-relaxed"><strong>Caixas de Sobrepor Standard:</strong> Suportes comuns aparentes fixados abaixo do gesso.</p>
-                </div>
-            `;
-        }
+        equipmentList.innerHTML = `
+            <div class="flex items-start gap-2 md:gap-3 p-3 bg-white border border-brand-yellow/30 rounded-lg md:rounded-xl shadow-sm">
+                <i data-lucide="video" class="w-4 h-4 text-brand-yellow shrink-0 mt-0.5 animate-pulse"></i>
+                <p class="text-[10px] md:text-sm text-gray-800 leading-snug md:leading-relaxed"><strong>04x Câmeras Intelbras Fullcolor Full HD:</strong> Sendo 2 Bullet de alta resistência para a calçada/fachada e 2 Dome de acabamento estético discreto para o interior.</p>
+            </div>
+            <div class="flex items-start gap-2 md:gap-3 p-3 bg-white border border-brand-yellow/30 rounded-lg md:rounded-xl shadow-sm">
+                <i data-lucide="hard-drive" class="w-4 h-4 text-brand-yellow shrink-0 mt-0.5"></i>
+                <p class="text-[10px] md:text-sm text-gray-800 leading-snug md:leading-relaxed"><strong>01x HD WD Purple de 2TB:</strong> Linha de alta performance para segurança contínua, com armazenamento robusto homologado para manter 30 dias de histórico ininterrupto.</p>
+            </div>
+            <div class="flex items-start gap-2 md:gap-3 p-3 bg-white border border-brand-yellow/30 rounded-lg md:rounded-xl shadow-sm">
+                <i data-lucide="box" class="w-4 h-4 text-brand-yellow shrink-0 mt-0.5"></i>
+                <p class="text-[10px] md:text-sm text-gray-800 leading-snug md:leading-relaxed"><strong>04x Caixas de Passagem VBOX de Embutir:</strong> Suportes de alta classe para ocultação completa de cabos, adaptados rente ao teto de gesso pintado.</p>
+            </div>
+        `;
         lucide.createIcons();
     }
 
-    // DINAMIZAÇÃO DO CONTEXTO DE CONVERSA COM WHATSAPP
+    // DINAMIZAÇÃO DO LINK DE WHATSAPP CONFORME OPÇÃO DE PAGAMENTO
     function updateWhatsAppLink() {
         const btnLink = document.getElementById('btn-aprova-link');
         if (!btnLink) return;
 
         let message = '';
-        if (currentConfig === 'premium') {
-            if (currentMode === 'avista') {
-                message = "Olá Glícia, analisei a proposta técnica e comercial e gostaria de aprovar o Projeto GR Jóias no plano Premium à Vista no PIX.";
-            } else {
-                const select = document.getElementById('installment-select');
-                const installments = select ? select.value : '12';
-                message = `Olá Glícia, analisei a proposta técnica e gostaria de aprovar o Projeto GR Jóias no plano Premium parcelado em ${installments}x no Cartão de Crédito.`;
-            }
+        if (currentMode === 'avista') {
+            message = "Olá Glícia, analisei a proposta e gostaria de aprovar o Projeto GR Jóias no plano de pagamento à Vista via PIX.";
         } else {
-            if (currentMode === 'avista') {
-                message = "Olá Glícia, analisei a proposta e gostaria de aprovar o Projeto GR Jóias no plano Essencial à Vista no PIX.";
-            } else {
-                const select = document.getElementById('installment-select');
-                const installments = select ? select.value : '12';
-                message = `Olá Glícia, analisei a proposta e gostaria de aprovar o Projeto GR Jóias no plano Essencial parcelado em ${installments}x no Cartão de Crédito.`;
-            }
+            const select = document.getElementById('installment-select');
+            const installments = select ? select.value : '12';
+            message = `Olá Glícia, analisei a proposta e gostaria de aprovar o Projeto GR Jóias no plano parcelado em ${installments}x no Cartão de Crédito.`;
         }
 
         btnLink.href = "https://wa.me/5511930816696?text=" + encodeURIComponent(message);
     }
 
-    function setProjectConfig(config) {
-        currentConfig = config;
-        
-        const btnPremium = document.getElementById('config-premium');
-        const btnEssencial = document.getElementById('config-essencial');
-        const badgeConfig = document.getElementById('badge-config');
-        const titleConfig = document.getElementById('title-config');
-        const btnTextAprova = document.getElementById('btn-text-aprova');
-
-        if (config === 'premium') {
-            btnPremium.className = "relative z-10 px-5 md:px-8 py-3 text-xs md:text-sm font-bold text-white transition-all w-48 md:w-64 text-center rounded-xl bg-brand-yellow shadow-md flex items-center justify-center gap-2";
-            btnEssencial.className = "relative z-10 px-5 md:px-8 py-3 text-xs md:text-sm font-bold text-gray-500 transition-all w-48 md:w-64 text-center rounded-xl hover:text-black flex items-center justify-center gap-2";
-            
-            if(badgeConfig) {
-                badgeConfig.textContent = "Recomendado";
-                badgeConfig.className = "bg-brand-yellow text-black text-[7px] md:text-[10px] font-extrabold px-2 py-0.5 md:px-3 md:py-1 rounded-full uppercase tracking-widest shadow-glow";
-            }
-            if(titleConfig) titleConfig.textContent = "Configuração Premium";
-            if(btnTextAprova) btnTextAprova.textContent = "Aprovar Proposta Premium";
-        } else {
-            btnEssencial.className = "relative z-10 px-5 md:px-8 py-3 text-xs md:text-sm font-bold text-white transition-all w-48 md:w-64 text-center rounded-xl bg-brand-yellow shadow-md flex items-center justify-center gap-2";
-            btnPremium.className = "relative z-10 px-5 md:px-8 py-3 text-xs md:text-sm font-bold text-gray-500 transition-all w-48 md:w-64 text-center rounded-xl hover:text-black flex items-center justify-center gap-2";
-            
-            if(badgeConfig) {
-                badgeConfig.textContent = "Básico";
-                badgeConfig.className = "bg-gray-200 text-gray-700 text-[7px] md:text-[10px] font-extrabold px-2 py-0.5 md:px-3 md:py-1 rounded-full uppercase tracking-widest";
-            }
-            if(titleConfig) titleConfig.textContent = "Configuração Essencial";
-            if(btnTextAprova) btnTextAprova.textContent = "Aprovar Proposta Essencial";
-        }
-        
-        updateTechPreview();
-        updatePrices();
-    }
-
+    // ALTERAÇÃO DO MODO DE PAGAMENTO (PIX VS CARTÃO)
     function setPaymentMode(mode) {
         currentMode = mode;
         const bg = document.getElementById('toggle-bg');
@@ -1274,10 +1179,10 @@
         return value.toLocaleString('pt-BR', {minimumFractionDigits: 2, maximumFractionDigits: 2});
     }
 
+    // CÁLCULO DINÂMICO DE VALORES COM TAXAS ADMINISTRATIVAS
     function updatePrices() {
         const el1 = document.getElementById('price-opt1');
         const select = document.getElementById('installment-select');
-        const basePrice = configPrices[currentConfig];
 
         if (!el1) return;
 
@@ -1286,18 +1191,18 @@
 
             el1.innerHTML = `
                 <div class="flex flex-col items-center w-full animate-fade-in">
-                    <p class="text-[8px] md:text-[10px] text-[#8a6208] uppercase tracking-widest font-bold mb-1">À Vista (PIX)</p>
+                    <p class="text-[8px] md:text-[10px] text-[#8a6208] uppercase tracking-widest font-bold mb-1">À Vista no PIX (Sem Juros)</p>
                     <span class="text-4xl md:text-5xl font-black text-gray-900 tracking-tight mb-4">R$ ${formatCurrency(basePrice)}</span>
                     
                     <div class="w-full space-y-2">
                         <div class="bg-white border border-gray-200 rounded-xl py-2.5 flex flex-col items-center justify-center relative overflow-hidden shadow-sm">
                             <div class="absolute top-0 left-0 w-1 h-full bg-[#34d399] rounded-l-lg"></div>
-                            <span class="text-[8px] font-bold uppercase tracking-widest text-brand-goldDark mb-0.5">Sinal para Lançamento e Infraestrutura</span>
+                            <span class="text-[8px] font-bold uppercase tracking-widest text-brand-goldDark mb-0.5">Sinal para Lançamento e Infraestrutura (50%)</span>
                             <span class="text-sm font-bold text-gray-900">R$ ${formatCurrency(h1)}</span>
                         </div>
                         <div class="bg-white border border-gray-200 rounded-xl py-2.5 flex flex-col items-center justify-center relative overflow-hidden shadow-sm">
                             <div class="absolute top-0 left-0 w-1.5 h-full bg-[#c8a048] rounded-l-lg"></div>
-                            <span class="text-[8px] font-bold uppercase tracking-widest text-brand-goldDark mb-0.5">Saldo na Conclusão e Configuração</span>
+                            <span class="text-[8px] font-bold uppercase tracking-widest text-brand-goldDark mb-0.5">Saldo na Conclusão e Configuração (50%)</span>
                             <span class="text-sm font-bold text-gray-900">R$ ${formatCurrency(h1)}</span>
                         </div>
                     </div>
@@ -1307,20 +1212,21 @@
             const inst = parseInt(select.value);
             const rateMultiplier = cardRates[inst];
             
-            const t1 = basePrice * rateMultiplier;
-            const val1 = t1 / inst;
+            const totalWithRate = basePrice * rateMultiplier;
+            const installmentValue = totalWithRate / inst;
+            const ratePercentage = ((rateMultiplier - 1) * 100).toFixed(2);
 
             el1.innerHTML = `
                 <div class="flex flex-col items-center w-full mt-2 mb-2 animate-fade-in">
                     <div class="flex items-baseline justify-center gap-1.5 mb-2">
                         <span class="text-xl md:text-2xl font-bold text-brand-yellow">${inst}x de R$</span> 
-                        <span class="text-4xl md:text-5xl font-black text-gray-900">${formatCurrency(val1)}</span>
+                        <span class="text-4xl md:text-5xl font-black text-gray-900">${formatCurrency(installmentValue)}</span>
                     </div>
                     <div class="inline-flex items-center gap-1.5 bg-blue-50 border border-blue-200 text-blue-700 px-3 py-1 rounded-full w-fit shadow-sm mt-2 mb-3">
                         <i data-lucide="credit-card" class="w-4 h-4"></i>
-                        <span class="text-[10px] md:text-[11px] font-bold uppercase tracking-widest">Cartão de Crédito Corporativo</span>
+                        <span class="text-[10px] md:text-[11px] font-bold uppercase tracking-widest">Cartão (Taxa de ${ratePercentage}%)</span>
                     </div>
-                    <p class="text-[10px] text-gray-500 font-medium">Total com taxas administrativas: R$ ${formatCurrency(t1)}</p>
+                    <p class="text-[10px] text-gray-500 font-medium">Total do Projeto Parcelado: R$ ${formatCurrency(totalWithRate)}</p>
                 </div>
             `;
         }
@@ -1331,7 +1237,7 @@
 
     // DINAMIZAÇÃO INICIAL DO PROJETO
     window.addEventListener("load", () => {
-        setProjectConfig('premium');
+        updateTechPreview();
         setPaymentMode('avista');
     });
 
