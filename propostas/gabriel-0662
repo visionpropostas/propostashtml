@@ -65,7 +65,6 @@
                         'premium-card': '0 16px 50px -10px rgba(0, 0, 0, 0.08)',
                         'glow': '0 0 20px rgba(185,136,14,0.15)',
                         'glow-md': '0 0 35px rgba(185,136,14,0.25)',
-                        'glow-strong': '0 0 40px rgba(185,136,14,0.5)',
                     },
                     animation: {
                         'slide-up': 'slideUp 0.9s cubic-bezier(0.16,1,0.3,1) forwards',
@@ -201,6 +200,7 @@
             height: 100%;
             display: flex;
             flex-direction: column;
+            padding: 2.5rem;
             overflow: hidden;
         }
 
@@ -215,7 +215,7 @@
         }
     </style>
 </head>
-<body class="bg-[#fafafa] text-gray-800 antialiased overflow-hidden h-screen" id="body-root">
+<body class="bg-[#fafafa] text-gray-800 antialiased selection:bg-brand-yellow selection:text-white overflow-x-hidden h-screen" id="body-root">
 
 <!-- ===================== TELA DE BLOQUEIO (LOCK SCREEN) ===================== -->
 <div id="lock-screen" class="fixed inset-0 z-[100] bg-[#09090b] flex flex-col items-center justify-center text-center p-4 transition-opacity duration-700 ease-out touch-none" style="overscroll-behavior: none;">
@@ -235,15 +235,15 @@
         <div class="space-y-1.5">
             <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-brand-yellow/30 bg-brand-yellow/10 mb-3">
                 <i data-lucide="lock" class="w-3.5 h-3.5 text-brand-yellow"></i>
-                <span class="text-brand-yellow text-[10px] font-bold uppercase tracking-widest">Acesso Restrito</span>
+                <span class="text-brand-yellow text-[10px] font-bold uppercase tracking-widest">Acesso Corporativo Restrito</span>
             </div>
             <h2 class="text-white font-bold text-2xl">Escritório Gabriel</h2>
             <p class="text-zinc-400 text-sm">Alarme Monitorado & Controle de Acesso Corporativo — Avenida Paulista</p>
         </div>
 
         <div>
-            <!-- SENHAS CONFIGURADAS: PAULISTA10, GABRIEL, VISION -->
-            <input type="password" id="password-input" class="lock-input w-full py-4 px-4 uppercase" placeholder="SENHA DE ACESSO" autocomplete="off" onkeydown="if(event.key==='Enter') checkPassword()">
+            <!-- SENHAS CONFIGURADAS: PAULISTA10, GABRIEL ou VISION -->
+            <input type="password" id="password-input" class="lock-input w-full py-4 px-4" placeholder="SENHA DE ACESSO" autocomplete="off" onkeydown="if(event.key==='Enter') checkPassword()">
             <p id="error-msg" class="text-red-400 text-xs mt-2 hidden">
                 <span class="flex items-center justify-center gap-1"><i data-lucide="x-circle" class="w-4 h-4"></i> Credencial inválida.</span>
             </p>
@@ -252,11 +252,11 @@
         <button onclick="checkPassword()" class="w-full bg-brand-yellow hover:bg-brand-goldLight text-black font-bold py-4 rounded-2xl transition-all shadow-glow flex items-center justify-center gap-2 group relative overflow-hidden">
             <div class="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-300 rounded-2xl"></div>
             <i data-lucide="shield-check" class="w-5 h-5 relative z-10"></i>
-            <span class="relative z-10 text-sm uppercase tracking-widest">Desbloquear Proposta Técnica</span>
+            <span class="relative z-10 text-sm uppercase tracking-widest">Acessar Documento Técnico</span>
             <i data-lucide="arrow-right" class="w-4 h-4 relative z-10 group-hover:translate-x-1 transition-transform"></i>
         </button>
 
-        <p class="text-zinc-600 text-xs">Documento de Engenharia Exclusivo · Vision Tecnologia © 2026</p>
+        <p class="text-zinc-600 text-xs">Documento restrito · Válido por 15 dias · Vision Business © 2026</p>
     </div>
 </div>
 
@@ -273,7 +273,8 @@
             </div>
             <div class="hidden md:flex items-center space-x-7 text-xs font-semibold text-gray-500 uppercase tracking-wider">
                 <a href="#diagnostico" class="hover:text-brand-yellow transition-colors">Diagnóstico</a>
-                <a href="#tecnologia" class="hover:text-brand-yellow transition-colors">Tecnologia</a>
+                <a href="#solucao" class="hover:text-brand-yellow transition-colors">Tecnologia</a>
+                <a href="#empresa" class="hover:text-brand-yellow transition-colors">A Vision</a>
                 <a href="#investimento" class="hover:text-brand-yellow transition-colors">Orçamento</a>
             </div>
             <div class="flex items-center gap-4">
@@ -289,35 +290,47 @@
     </div>
 </nav>
 
-<!-- ===================== HERO ===================== -->
-<header class="pt-32 pb-20 lg:pt-40 relative overflow-hidden bg-white">
-    <div class="absolute inset-0 bg-tech-pattern pointer-events-none"></div>
-    <div class="absolute right-0 top-0 -translate-y-1/4 translate-x-1/4 w-[800px] h-[800px] bg-brand-yellow/5 rounded-full blur-[120px] pointer-events-none"></div>
+<!-- ===================== HERO COM VÍDEO ===================== -->
+<header class="pt-32 pb-20 lg:pt-40 relative overflow-hidden bg-[#f8f9fa]">
+    <div class="absolute inset-0 bg-grid pointer-events-none"></div>
+    <div class="absolute right-0 top-0 w-1/2 h-full bg-gradient-to-l from-white to-transparent z-0 pointer-events-none hidden lg:block"></div>
     
     <div class="max-w-7xl mx-auto px-4 relative z-10">
-        <div class="flex flex-col lg:flex-row items-center gap-12 lg:gap-16">
+        <div class="flex flex-col lg:flex-row items-center gap-12 lg:gap-20">
             
-            <!-- Coluna Texto -->
-            <div class="w-full lg:w-1/2 text-center lg:text-left animate-slide-up">
-                <div class="inline-flex items-center gap-2 px-5 py-2 rounded-full border border-brand-yellow/30 bg-brand-yellow/5 text-brand-yellow text-[10px] font-bold uppercase tracking-widest mb-8 mx-auto lg:mx-0 shadow-sm">
-                    <i data-lucide="shield" class="w-4 h-4"></i>
-                    ESCRITÓRIO CORPORATIVO — AVENIDA PAULISTA
+            <!-- Text Column -->
+            <div class="w-full lg:w-[55%] text-center lg:text-left animate-slide-up">
+                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-white border border-gray-200 text-gray-600 text-[10px] font-bold uppercase tracking-widest mb-8 mx-auto lg:mx-0 shadow-sm">
+                    <div class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></div>
+                    Cliente <span class="text-brand-yellow drop-shadow-sm font-black">Gabriel</span> | Avenida Paulista, SP
                 </div>
                 
-                <h1 class="text-4xl md:text-5xl lg:text-6xl font-extrabold text-gray-900 leading-[1.05] tracking-tight mb-6">
-                    Segurança inteligente <br><span class="text-gold-shine">antes da reforma acabar.</span>
+                <h1 class="text-4xl md:text-5xl lg:text-[3.5rem] font-extrabold text-gray-900 leading-[1.05] tracking-tight mb-6">
+                    Segurança inteligente para o novo escritório do <span class="text-gold-shine">Gabriel.</span>
                 </h1>
                 
-                <h2 class="text-base md:text-lg text-gray-500 max-w-xl mx-auto lg:mx-0 font-medium mt-6 leading-relaxed">
-                    Gabriel, desenvolvemos esta solução sob medida para a reforma do seu escritório no coração da Avenida Paulista. Com base no alinhamento técnico realizado a partir das imagens e vídeos enviados pelo WhatsApp, integramos um sistema de controle de acesso robusto para mais de 30 acessos com uma central de alarme monitorada por teclado numérico. Total controle de quem entra e sai no seu novo espaço.
-                </h2>
+                <p class="text-base md:text-lg text-gray-500 max-w-xl mx-auto lg:mx-0 font-medium mt-6 leading-relaxed">
+                    A robustez e a segurança que o seu novo escritório na Avenida Paulista exige. Tudo integrado: controle de acesso corporativo, central de alarme e monitoramento ativo.
+                </p>
+
+                <div class="mt-10 flex flex-wrap items-center justify-center lg:justify-start gap-4">
+                    <div class="flex -space-x-3">
+                        <div class="flex -space-x-3">
+                            <div class="w-10 h-10 rounded-full border-2 border-white bg-gray-100 flex items-center justify-center text-gray-500"><i data-lucide="key" class="w-4 h-4"></i></div>
+                            <div class="w-10 h-10 rounded-full border-2 border-white bg-gray-100 flex items-center justify-center text-gray-500"><i data-lucide="shield-alert" class="w-4 h-4"></i></div>
+                            <div class="w-10 h-10 rounded-full border-2 border-white bg-brand-yellow/20 flex items-center justify-center text-brand-goldDark"><i data-lucide="bell" class="w-4 h-4"></i></div>
+                            <div class="w-10 h-10 rounded-full border-2 border-white bg-gray-100 flex items-center justify-center text-gray-500"><i data-lucide="lock" class="w-4 h-4"></i></div>
+                        </div>
+                    </div>
+                    <span class="text-xs font-bold text-gray-500 uppercase tracking-widest">Setup Completo</span>
+                </div>
             </div>
 
-            <!-- Coluna Mockup de Notebook com Vídeo Vision -->
-            <div class="w-full lg:w-1/2 mt-4 lg:mt-0 reveal animate-slide-up" style="animation-delay: 200ms;">
-                <div class="relative w-full max-w-lg mx-auto group z-10 mt-4">
+            <!-- Video/Visual Column -->
+            <div class="w-full lg:w-[45%] mt-4 lg:mt-0 reveal animate-slide-up" style="animation-delay: 200ms;">
+                <div class="relative w-full max-w-lg mx-auto group z-10">
                     <div class="relative w-full aspect-video bg-black border-[6px] md:border-[10px] border-zinc-800 rounded-t-[1rem] md:rounded-t-[1.5rem] overflow-hidden shadow-2xl">
-                        
+                        <!-- Vídeo de Destaque -->
                         <video id="vision-video" class="w-full h-full object-cover cursor-pointer opacity-90" autoplay muted loop playsinline>
                             <source src="https://res.cloudinary.com/dptcuckhf/video/upload/v1771711323/Vict%C3%B3ria_-_Vision_gdqnrk.mp4" type="video/mp4">
                         </video>
@@ -325,9 +338,10 @@
                         <div id="unmute-overlay" class="absolute inset-0 bg-black/50 backdrop-blur-sm flex flex-col items-center justify-center cursor-pointer transition-opacity duration-500 z-30 hover:bg-black/40">
                             <div class="bg-brand-yellow text-black font-bold px-6 py-3 md:px-8 md:py-4 rounded-full flex items-center gap-2 md:gap-3 shadow-glow animate-pulse transform group-hover:scale-105 transition-all">
                                 <i data-lucide="volume-2" class="w-4 h-4 fill-black"></i>
-                                <span class="text-[10px] font-bold tracking-wide uppercase">Clique para Ouvir</span>
+                                <span class="text-[10px] tracking-wide uppercase">Clique para Ouvir</span>
                             </div>
                         </div>
+
                         <div class="absolute top-1.5 md:top-2 left-1/2 -translate-x-1/2 w-1.5 h-1.5 md:w-2 md:h-2 bg-zinc-950 rounded-full z-20"></div>
                     </div>
                     <div class="relative w-[114%] -ml-[7%] h-3 md:h-5 bg-gradient-to-b from-zinc-300 to-zinc-400 rounded-b-xl md:rounded-b-2xl shadow-[0_20px_40px_rgba(0,0,0,0.5)] flex justify-center border-t border-zinc-200">
@@ -339,47 +353,35 @@
         </div>
 
         <!-- Floating Quick Stats -->
-        <div class="mt-16 lg:mt-24 grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-5 max-w-4xl mx-auto reveal">
-            <!-- Card 1 -->
-            <div class="bg-white rounded-2xl p-4 sm:p-6 shadow-glass border border-gray-100 text-center hover:border-brand-yellow/40 transition-all flex flex-col justify-between animate-float" style="animation-delay:0s;">
-                <div>
-                    <div class="w-10 h-10 bg-brand-yellow/10 rounded-xl flex items-center justify-center mx-auto mb-3 shrink-0">
-                        <i data-lucide="users" class="w-5 h-5 text-brand-yellow"></i>
-                    </div>
-                    <div class="text-2xl sm:text-3xl font-extrabold text-gray-900 counter-num" data-target="30">0</div>
+        <div class="mt-16 lg:mt-24 grid grid-cols-2 md:grid-cols-4 gap-5 max-w-4xl mx-auto reveal font-tech">
+            <div class="bg-white rounded-2xl p-6 shadow-glass border border-gray-100 text-center hover:border-brand-yellow/40 transition-all animate-float" style="animation-delay:0s;">
+                <div class="w-10 h-10 bg-brand-yellow/10 rounded-xl flex items-center justify-center mx-auto mb-3">
+                    <i data-lucide="users" class="w-5 h-5 text-brand-yellow"></i>
                 </div>
-                <div class="text-[10px] sm:text-xs text-gray-500 font-semibold mt-2 uppercase tracking-wider truncate">Usuários de Acesso</div>
+                <div class="text-3xl font-extrabold text-gray-900 counter-num" data-target="30">0</div>
+                <div class="text-xs text-gray-500 font-medium mt-1 uppercase tracking-wider">Usuários de Acesso</div>
             </div>
-            <!-- Card 2 -->
-            <div class="bg-white rounded-2xl p-4 sm:p-6 shadow-glass border border-gray-100 text-center hover:border-brand-yellow/40 transition-all flex flex-col justify-between animate-float" style="animation-delay:0.8s;">
-                <div>
-                    <div class="w-10 h-10 bg-brand-yellow/10 rounded-xl flex items-center justify-center mx-auto mb-3 shrink-0">
-                        <i data-lucide="bell" class="w-5 h-5 text-brand-yellow"></i>
-                    </div>
-                    <div class="text-xl sm:text-2xl font-extrabold text-gray-900 whitespace-normal leading-tight">Monitorado</div>
+            <div class="bg-white rounded-2xl p-6 shadow-glass border border-gray-100 text-center hover:border-brand-yellow/40 transition-all animate-float" style="animation-delay:0.8s;">
+                <div class="w-10 h-10 bg-brand-yellow/10 rounded-xl flex items-center justify-center mx-auto mb-3">
+                    <i data-lucide="bell" class="w-5 h-5 text-brand-yellow"></i>
                 </div>
-                <div class="text-[10px] sm:text-xs text-gray-500 font-semibold mt-2 uppercase tracking-wider truncate">Alarme Ativo</div>
+                <div class="text-3xl font-extrabold text-gray-900 whitespace-normal leading-tight">Monitorado</div>
+                <div class="text-xs text-gray-500 font-medium mt-1 uppercase tracking-wider">Alarme Ativo</div>
             </div>
-            <!-- Card 3 -->
-            <div class="bg-white rounded-2xl p-4 sm:p-6 shadow-glass border border-gray-100 text-center hover:border-brand-yellow/40 transition-all flex flex-col justify-between animate-float" style="animation-delay:0.4s;">
-                <div>
-                    <div class="w-10 h-10 bg-brand-yellow/10 rounded-xl flex items-center justify-center mx-auto mb-3 shrink-0">
-                        <i data-lucide="scissors" class="w-5 h-5 text-brand-yellow"></i>
-                    </div>
-                    <div class="text-xl sm:text-2xl font-extrabold text-gray-900 whitespace-normal">Invisível</div>
+            <div class="bg-white rounded-2xl p-6 shadow-glass border border-gray-100 text-center hover:border-brand-yellow/40 transition-all animate-float" style="animation-delay:0.4s;">
+                <div class="w-10 h-10 bg-brand-yellow/10 rounded-xl flex items-center justify-center mx-auto mb-3">
+                    <i data-lucide="scissors" class="w-5 h-5 text-brand-yellow"></i>
                 </div>
-                <div class="text-[10px] sm:text-xs text-gray-500 font-semibold mt-2 uppercase tracking-wider truncate">Acabamento Embutido</div>
+                <div class="text-3xl font-extrabold text-gray-900">Invisível</div>
+                <div class="text-xs text-gray-500 font-medium mt-1 uppercase tracking-wider">Acabamento Embutido</div>
             </div>
-            <!-- Card 4 -->
-            <div class="bg-white rounded-2xl p-4 sm:p-6 shadow-glass border border-gray-100 text-center hover:border-brand-yellow/40 transition-all flex flex-col justify-between animate-float" style="animation-delay:1.2s;">
-                <div>
-                    <div class="w-10 h-10 bg-brand-yellow/10 rounded-xl flex items-center justify-center mx-auto mb-3 shrink-0">
-                        <i data-lucide="calendar" class="w-5 h-5 text-brand-yellow"></i>
-                    </div>
-                    <!-- Garante espaçamento confortável sem cortes no desktop ou mobile -->
-                    <div class="text-sm sm:text-base lg:text-lg font-extrabold text-gray-900 whitespace-normal break-words leading-tight">Finais de Semana</div>
+            <div class="bg-white rounded-2xl p-6 shadow-glass border border-gray-100 text-center hover:border-brand-yellow/40 transition-all animate-float" style="animation-delay:1.2s;">
+                <div class="w-10 h-10 bg-brand-yellow/10 rounded-xl flex items-center justify-center mx-auto mb-3">
+                    <i data-lucide="calendar" class="w-5 h-5 text-brand-yellow"></i>
                 </div>
-                <div class="text-[10px] sm:text-xs text-gray-500 font-semibold mt-2 uppercase tracking-wider truncate">Instalação Inclusa</div>
+                <!-- Garante espaçamento confortável sem cortes no desktop ou mobile -->
+                <div class="text-sm sm:text-base lg:text-lg font-extrabold text-gray-900 whitespace-normal break-words leading-tight">Finais de Semana</div>
+                <div class="text-xs text-gray-500 font-medium mt-1 uppercase tracking-wider">Instalação Inclusa</div>
             </div>
         </div>
     </div>
@@ -390,293 +392,343 @@
     <div class="max-w-7xl mx-auto px-4">
         <div class="text-center mb-16 reveal">
             <span class="text-brand-yellow font-bold uppercase tracking-widest text-xs">Pente-Fino de Engenharia</span>
-            <h2 class="text-3xl md:text-5xl font-bold text-gray-900 mt-3 leading-tight">Os 3 pilares de segurança <br class="hidden md:block">para o seu novo escritório</h2>
+            <h2 class="text-3xl md:text-5xl font-bold text-gray-900 mt-3 leading-tight font-tech">Os 3 pilares de segurança <br class="hidden md:block">para o seu novo escritório</h2>
             <p class="text-gray-500 mt-5 max-w-3xl mx-auto text-lg leading-relaxed font-sans">
-                <strong>Gabriel</strong>, projetamos um sistema integrado que blinda o escritório contra invasões e resolve a automação do fluxo de pessoas, aproveitando a fase de reforma para embutir toda a infraestrutura física de forma impecável:
+                <strong>Gabriel</strong>, projetamos um sistema integrado que blinda o escritório contra invasões e resolve a automação do fluxo de pessoas, aproveitando a fase de reforma para embutir toda a infraestrutura física de forma impecável, conforme alinhamento pelas imagens e vídeos enviados pelo WhatsApp:
             </p>
         </div>
 
         <div class="grid md:grid-cols-3 gap-8 reveal">
-            
             <!-- Card 1 -->
-            <div class="bg-white rounded-[2rem] p-8 shadow-premium border border-gray-100 relative overflow-hidden group hover:-translate-y-1 transition-transform duration-300 flex flex-col text-left h-full">
+            <div class="bg-white rounded-[2rem] p-8 shadow-premium border border-gray-100 relative overflow-hidden group hover:-translate-y-1 transition-transform duration-300 flex flex-col h-full">
                 <div class="absolute top-0 right-0 w-32 h-32 bg-yellow-50 rounded-full blur-3xl transition-colors"></div>
                 <div class="w-14 h-14 bg-yellow-50 rounded-2xl flex items-center justify-center mb-6 relative z-10 shrink-0">
                     <i data-lucide="key-round" class="w-7 h-7 text-brand-yellow"></i>
                 </div>
-                <h3 class="text-xl font-bold text-gray-900 mb-3 relative z-10">Controle de Entrada</h3>
+                <h3 class="text-xl font-bold text-gray-900 mb-3 relative z-10 font-tech">Controle de Entrada</h3>
                 <p class="text-gray-600 text-sm mb-6 relative z-10 leading-relaxed flex-1 font-sans">
-                    A porta de entrada receberá um controle de acesso corporativo com capacidade para mais de 30 usuários, garantindo agilidade no acesso por senha numérica ou tag.
+                    A porta de entrada receberá um controle de acesso de embutir de alta robustez com capacidade para mais de 30 usuários, garantindo agilidade no acesso por senha ou tag.
                 </p>
-                <div class="mt-auto pt-5 border-t border-gray-100 relative z-10 w-full">
-                    <div class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-emerald-50 border border-emerald-100 text-emerald-700 text-[10px] font-bold uppercase tracking-widest mb-3">
-                        <i data-lucide="check-circle-2" class="w-3.5 h-3.5 shrink-0"></i> Solução Vision
-                    </div>
-                    <ul class="space-y-2 text-xs text-emerald-800 font-semibold font-tech">
-                        <li class="flex items-center gap-2">
-                            <i data-lucide="check" class="w-3.5 h-3.5 shrink-0 text-emerald-600"></i>
-                            <span>Cadastro de até 100 senhas ou tags</span>
-                        </li>
-                        <li class="flex items-center gap-2">
-                            <i data-lucide="check" class="w-3.5 h-3.5 shrink-0 text-emerald-600"></i>
-                            <span>Travamento automático instantâneo</span>
-                        </li>
-                    </ul>
+                <div class="mt-auto p-4 bg-emerald-50 rounded-xl border border-emerald-100 relative z-10">
+                    <p class="text-xs text-emerald-800 leading-relaxed flex items-start gap-2">
+                        <i data-lucide="check-circle-2" class="w-4 h-4 shrink-0 mt-0.5"></i>
+                        <span><strong>A Solução Vision:</strong> Instalação de controle de acesso de embutir integrado. Cadastro flexível de senhas ou chaveiros por aproximação (tags) com travamento instantâneo por eletroímã.</span>
+                    </p>
                 </div>
             </div>
 
             <!-- Card 2 -->
-            <div class="bg-white rounded-[2rem] p-8 shadow-premium border border-gray-100 relative overflow-hidden group hover:-translate-y-1 transition-transform duration-300 flex flex-col text-left h-full">
+            <div class="bg-white rounded-[2rem] p-8 shadow-premium border border-gray-100 relative overflow-hidden group hover:-translate-y-1 transition-transform duration-300 flex flex-col h-full">
                 <div class="absolute top-0 right-0 w-32 h-32 bg-zinc-50 rounded-full blur-3xl transition-colors"></div>
                 <div class="w-14 h-14 bg-zinc-50 rounded-2xl flex items-center justify-center mb-6 relative z-10 shrink-0">
                     <i data-lucide="radar" class="w-7 h-7 text-zinc-600"></i>
                 </div>
-                <h3 class="text-xl font-bold text-gray-900 mb-3 relative z-10">Alarme e Sensores</h3>
+                <h3 class="text-xl font-bold text-gray-900 mb-3 relative z-10 font-tech">Alarme e Sensores</h3>
                 <p class="text-gray-600 text-sm mb-6 relative z-10 leading-relaxed flex-1 font-sans">
                     Instalação estratégica de sensores de movimento para cobrir a extensão do corredor e sensores magnéticos de abertura na porta principal.
                 </p>
-                <div class="mt-auto pt-5 border-t border-gray-100 relative z-10 w-full">
-                    <div class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-emerald-50 border border-emerald-100 text-emerald-700 text-[10px] font-bold uppercase tracking-widest mb-3">
-                        <i data-lucide="check-circle-2" class="w-3.5 h-3.5 shrink-0"></i> Solução Vision
-                    </div>
-                    <ul class="space-y-2 text-xs text-emerald-800 font-semibold font-tech">
-                        <li class="flex items-center gap-2">
-                            <i data-lucide="check" class="w-3.5 h-3.5 shrink-0 text-emerald-600"></i>
-                            <span>Sensores inteligentes contra falsos disparos</span>
-                        </li>
-                        <li class="flex items-center gap-2">
-                            <i data-lucide="check" class="w-3.5 h-3.5 shrink-0 text-emerald-600"></i>
-                            <span>Integração de zonas de alarme no painel</span>
-                        </li>
-                    </ul>
+                <div class="mt-auto p-4 bg-emerald-50 rounded-xl border border-emerald-100 relative z-10">
+                    <p class="text-xs text-emerald-800 leading-relaxed flex items-start gap-2">
+                        <i data-lucide="check-circle-2" class="w-4 h-4 shrink-0 mt-0.5"></i>
+                        <span><strong>A Solução Vision:</strong> Central de alarme inteligente com sensores modernos contra falsos disparos no corredor e integração direta de zonas de alarme no painel eletrônico.</span>
+                    </p>
                 </div>
             </div>
 
             <!-- Card 3 -->
-            <div class="bg-white rounded-[2rem] p-8 shadow-premium border border-gray-100 relative overflow-hidden group hover:-translate-y-1 transition-transform duration-300 flex flex-col text-left h-full">
+            <div class="bg-white rounded-[2rem] p-8 shadow-premium border border-gray-100 relative overflow-hidden group hover:-translate-y-1 transition-transform duration-300 flex flex-col h-full">
                 <div class="absolute top-0 right-0 w-32 h-32 bg-yellow-50 rounded-full blur-3xl transition-colors"></div>
                 <div class="w-14 h-14 bg-yellow-50 rounded-2xl flex items-center justify-center mb-6 relative z-10 shrink-0">
                     <i data-lucide="keyboard" class="w-7 h-7 text-brand-yellow"></i>
                 </div>
-                <h3 class="text-xl font-bold text-gray-900 mb-3 relative z-10">Painel com Senha</h3>
+                <h3 class="text-xl font-bold text-gray-900 mb-3 relative z-10 font-tech">Painel com Senha</h3>
                 <p class="text-gray-600 text-sm mb-6 relative z-10 leading-relaxed flex-1 font-sans">
-                    Painel eletrônico com teclado físico posicionado na área comum, permitindo ativar ou desarmar o sistema de alarme com facilidade e senha exclusiva.
+                    Painel eletrônico com teclado físico posicionado na área comum, permitindo ativar ou desarmar o sistema de alarme com total facilidade e senha exclusiva.
                 </p>
-                <div class="mt-auto pt-5 border-t border-gray-100 relative z-10 w-full">
-                    <div class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-emerald-50 border border-emerald-100 text-emerald-700 text-[10px] font-bold uppercase tracking-widest mb-3">
-                        <i data-lucide="check-circle-2" class="w-3.5 h-3.5 shrink-0"></i> Solução Vision
-                    </div>
-                    <ul class="space-y-2 text-xs text-emerald-800 font-semibold font-tech">
-                        <li class="flex items-center gap-2">
-                            <i data-lucide="check" class="w-3.5 h-3.5 shrink-0 text-emerald-600"></i>
-                            <span>Bateria de emergência interna na central</span>
-                        </li>
-                        <li class="flex items-center gap-2">
-                            <i data-lucide="check" class="w-3.5 h-3.5 shrink-0 text-emerald-600"></i>
-                            <span>Alerta em tempo real no aplicativo</span>
-                        </li>
-                    </ul>
+                <div class="mt-auto p-4 bg-emerald-50 rounded-xl border border-emerald-100 relative z-10">
+                    <p class="text-xs text-emerald-800 leading-relaxed flex items-start gap-2">
+                        <i data-lucide="check-circle-2" class="w-4 h-4 shrink-0 mt-0.5"></i>
+                        <span><strong>A Solução Vision:</strong> Central moderna com bateria backup interna contra quedas de energia e envio de alertas em tempo real no aplicativo de segurança no seu smartphone.</span>
+                    </p>
                 </div>
             </div>
-
         </div>
     </div>
 </section>
 
 <!-- ===================== VITRINE TECNOLÓGICA ===================== -->
-<section id="tecnologia" class="py-28 bg-[#f8f9fa] border-b border-gray-200/60 relative overflow-hidden">
+<section id="solucao" class="py-28 bg-white border-b border-gray-200/60 relative overflow-hidden">
     <div class="absolute inset-0 bg-dots pointer-events-none"></div>
     <div class="max-w-7xl mx-auto px-4 relative z-10">
         
         <div class="text-center mb-20 reveal">
-            <span class="text-brand-yellow font-bold uppercase tracking-widest text-xs">A Vitrine Técnica</span>
-            <h2 class="text-3xl md:text-5xl font-bold text-gray-900 mt-3">Tecnologia Corporativa de Alta Performance</h2>
+            <span class="text-brand-yellow font-bold uppercase tracking-widest text-xs">A Tecnologia</span>
+            <h2 class="text-3xl md:text-5xl font-bold text-gray-900 mt-3 font-tech">Tecnologia Premium Corporativa</h2>
             <p class="text-gray-500 mt-4 max-w-2xl mx-auto text-lg leading-relaxed font-sans">
-                Selecionamos e organizamos os melhores equipamentos do segmento corporativo para garantir uma instalação robusta e estética impecável em seu escritório:
+                Combinamos o que há de melhor no mercado para garantir que o seu novo escritório na Avenida Paulista transmita segurança, modernidade e eficiência.
             </p>
         </div>
 
-        <div class="grid lg:grid-cols-2 gap-8 reveal">
+        <div class="grid lg:grid-cols-2 gap-12 reveal items-center mb-16">
             
-            <!-- Controle de Acesso Corporativo -->
-            <div class="bg-white rounded-[2rem] p-6 md:p-8 border border-gray-200 shadow-sm flex flex-col md:flex-row items-center md:items-start gap-8 relative overflow-hidden group hover:border-brand-yellow/40 hover:shadow-premium-card transition-all">
-                <div class="absolute top-0 right-0 w-48 h-48 bg-brand-yellow/10 rounded-full blur-3xl transition-transform group-hover:scale-150"></div>
-                
-                <div class="w-32 h-44 shrink-0 bg-white rounded-2xl p-4 flex flex-col items-center justify-center border border-gray-100 shadow-sm relative z-10">
-                    <div class="h-full w-full flex flex-col items-center justify-center text-brand-yellow gap-2">
-                        <i data-lucide="key-round" class="w-14 h-16 drop-shadow-md"></i>
-                        <span class="text-[9px] font-bold text-gray-400 uppercase tracking-widest text-center">Controle Digital</span>
-                    </div>
+            <!-- COLUNA ESQUERDA: FOTOS DO PRODUTO -->
+            <div class="w-full flex flex-col gap-6">
+                <!-- Controle de Acesso de Embutir -->
+                <div class="bg-gray-50 rounded-[2rem] p-8 border border-gray-200 shadow-premium flex flex-col items-center justify-center relative overflow-hidden group hover:border-brand-yellow/50 transition-all">
+                    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-brand-yellow/10 rounded-full blur-[80px] pointer-events-none"></div>
+                    <i data-lucide="key-round" class="w-24 h-24 text-brand-yellow drop-shadow-xl relative z-10 transform group-hover:scale-105 transition-transform duration-500 mb-4"></i>
+                    <span class="text-gray-400 text-[10px] font-bold uppercase tracking-widest relative z-10 font-tech">Controle de Acesso de Embutir</span>
                 </div>
-                
-                <div class="flex-1 text-left relative z-10 flex flex-col h-full">
-                    <div class="mb-4">
-                        <div class="inline-flex items-center gap-2 px-3 py-1 bg-white border border-brand-yellow/30 text-brand-goldDark rounded-full text-[10px] font-bold uppercase tracking-widest mb-3">
-                            <i data-lucide="lock" class="w-3 h-3"></i> Alta Capacidade
-                        </div>
-                        <h3 class="font-bold text-gray-900 text-xl md:text-2xl mb-2">Controle de Acesso de Embutir</h3>
+
+                <!-- Sub-grid: Central e Sensores -->
+                <div class="grid grid-cols-2 gap-6">
+                    <div class="bg-gray-50 rounded-2xl p-6 border border-gray-200 shadow-sm flex flex-col items-center justify-center hover:border-brand-yellow transition-colors relative group">
+                        <i data-lucide="shield-alert" class="w-12 h-12 text-brand-yellow mb-3 transform group-hover:scale-110 transition-transform"></i>
+                        <span class="text-[9px] text-gray-500 font-bold uppercase tracking-widest text-center font-tech">Central de Alarme<br>Teclado de Senha</span>
                     </div>
-                    <ul class="flex flex-col gap-3 mt-auto pt-4 border-t border-gray-100 font-sans">
-                        <li class="flex items-start gap-3">
-                            <div class="w-5 h-5 rounded-full bg-brand-yellow/10 flex items-center justify-center shrink-0 mt-0.5 border border-brand-yellow/20">
-                                <i data-lucide="check" class="w-3 h-3 text-brand-goldDark"></i>
-                            </div>
-                            <p class="text-sm text-gray-700 leading-relaxed"><strong>Controle Completo:</strong> Ideal para os seus mais de 30 funcionários. Permite abertura rápida por senhas ou chaveiro por aproximação (tags).</p>
-                        </li>
-                        <li class="flex items-start gap-3">
-                            <div class="w-5 h-5 rounded-full bg-brand-yellow/10 flex items-center justify-center shrink-0 mt-0.5 border border-brand-yellow/20">
-                                <i data-lucide="check" class="w-3 h-3 text-brand-goldDark"></i>
-                            </div>
-                            <p class="text-sm text-gray-700 leading-relaxed"><strong>Instalação de Embutir:</strong> Mantém a porta com visual clean, de forma integrada e visualmente leve.</p>
-                        </li>
-                    </ul>
+                    <div class="bg-gray-50 rounded-2xl p-6 border border-gray-200 shadow-sm flex flex-col items-center justify-center hover:border-brand-yellow transition-colors relative group">
+                        <div class="flex items-center gap-2 mb-3">
+                            <i data-lucide="radar" class="w-8 h-8 text-brand-yellow transform group-hover:scale-110 transition-transform"></i>
+                            <i data-lucide="bell" class="w-8 h-8 text-brand-yellow transform group-hover:scale-110 transition-transform"></i>
+                        </div>
+                        <span class="text-[9px] text-gray-500 font-bold uppercase tracking-widest text-center font-tech">Sensores de Presença<br>& Magnéticos</span>
+                    </div>
                 </div>
             </div>
 
-            <!-- Central de Alarme Inteligente -->
-            <div class="bg-white rounded-[2rem] p-6 md:p-8 border border-gray-200 shadow-sm flex flex-col md:flex-row items-center md:items-start gap-8 relative overflow-hidden group hover:border-brand-yellow/40 hover:shadow-premium-card transition-all">
-                <div class="absolute top-0 right-0 w-48 h-48 bg-brand-yellow/10 rounded-full blur-3xl transition-transform group-hover:scale-150"></div>
+            <!-- COLUNA DIREITA: CARDS DE BENEFÍCIOS -->
+            <div class="space-y-5">
                 
-                <div class="w-32 h-44 shrink-0 bg-white rounded-2xl p-4 flex flex-col items-center justify-center border border-gray-100 shadow-sm relative z-10">
-                    <div class="h-full w-full flex flex-col items-center justify-center text-brand-yellow gap-2">
-                        <i data-lucide="shield-alert" class="w-14 h-16 drop-shadow-md"></i>
-                        <span class="text-[9px] font-bold text-gray-400 uppercase tracking-widest text-center">Proteção Ativa</span>
+                <div class="bg-white rounded-2xl p-5 border border-gray-100 shadow-glass flex items-start gap-5 relative overflow-hidden group hover:shadow-premium-card hover:border-brand-yellow/30 transition-all">
+                    <div class="w-12 h-12 shrink-0 bg-brand-yellow/10 rounded-xl flex items-center justify-center border border-brand-yellow/20">
+                        <i data-lucide="lock" class="w-5 h-5 text-brand-goldDark"></i>
+                    </div>
+                    <div>
+                        <h3 class="font-bold text-gray-900 text-base mb-1 font-tech">Controle de Acesso Corporativo</h3>
+                        <p class="text-sm text-gray-600 leading-relaxed font-sans">
+                            Equipamento de embutir ultra-robusto com teclado numérico. Permite o cadastro e gerenciamento independente de mais de 30 usuários por tags de aproximação e senhas individuais.
+                        </p>
                     </div>
                 </div>
-                
-                <div class="flex-1 text-left relative z-10 flex flex-col h-full">
-                    <div class="mb-4">
-                        <div class="inline-flex items-center gap-2 px-3 py-1 bg-white border border-brand-yellow/30 text-brand-goldDark rounded-full text-[10px] font-bold uppercase tracking-widest mb-3">
-                            <i data-lucide="bell" class="w-3 h-3"></i> Monitoramento
-                        </div>
-                        <h3 class="font-bold text-gray-900 text-xl md:text-2xl mb-2">Central de Alarme Monitorada</h3>
-                    </div>
-                    <ul class="flex flex-col gap-3 mt-auto pt-4 border-t border-gray-100 font-sans">
-                        <li class="flex items-start gap-3">
-                            <div class="w-5 h-5 rounded-full bg-brand-yellow/10 flex items-center justify-center shrink-0 mt-0.5 border border-brand-yellow/20">
-                                <i data-lucide="check" class="w-3 h-3 text-brand-goldDark"></i>
-                            </div>
-                            <p class="text-sm text-gray-700 leading-relaxed"><strong>Sinalizadores Perimetrais:</strong> Sensor magnético de abertura rápida para a porta de entrada e sensores de presença para o corredor longo.</p>
-                        </li>
-                        <li class="flex items-start gap-3">
-                            <div class="w-5 h-5 rounded-full bg-brand-yellow/10 flex items-center justify-center shrink-0 mt-0.5 border border-brand-yellow/20">
-                                <i data-lucide="check" class="w-3 h-3 text-brand-goldDark"></i>
-                            </div>
-                            <p class="text-sm text-gray-700 leading-relaxed"><strong>Ativação por Teclado:</strong> Painel de parede digital e iluminado para ativação fácil do monitoramento perimetral ao encerrar o expediente.</p>
-                        </li>
-                    </ul>
-                </div>
-            </div>
 
+                <div class="bg-white rounded-2xl p-5 border border-gray-100 shadow-glass flex items-start gap-5 relative overflow-hidden group hover:shadow-premium-card hover:border-brand-yellow/30 transition-all">
+                    <div class="w-12 h-12 shrink-0 bg-brand-yellow/10 rounded-xl flex items-center justify-center border border-brand-yellow/20">
+                        <i data-lucide="shield-alert" class="w-5 h-5 text-brand-goldDark"></i>
+                    </div>
+                    <div>
+                        <h3 class="font-bold text-gray-900 text-base mb-1 font-tech">Central de Alarme de Parede</h3>
+                        <p class="text-sm text-gray-600 leading-relaxed font-sans">
+                            Central de segurança inteligente acionada por teclado de senha. Permite ativar ou desarmar o monitoramento de forma rápida e segura ao encerrar o expediente.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-2xl p-5 border border-gray-100 shadow-glass flex items-start gap-5 relative overflow-hidden group hover:shadow-premium-card hover:border-brand-yellow/30 transition-all">
+                    <div class="w-12 h-12 shrink-0 bg-brand-yellow/10 rounded-xl flex items-center justify-center border border-brand-yellow/20">
+                        <i data-lucide="radar" class="w-5 h-5 text-brand-goldDark"></i>
+                    </div>
+                    <div>
+                        <h3 class="font-bold text-gray-900 text-base mb-1 font-tech">Sensores de Alta Precisão</h3>
+                        <p class="text-sm text-gray-600 leading-relaxed font-sans">
+                            Tecnologia de ponta com compensação de temperatura automática para evitar falsos alarmes no corredor e sensores de abertura magnética na porta de entrada.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-2xl p-5 border border-gray-100 shadow-glass flex items-start gap-5 relative overflow-hidden group hover:shadow-premium-card hover:border-brand-yellow/30 transition-all">
+                    <div class="w-12 h-12 shrink-0 bg-brand-yellow/10 rounded-xl flex items-center justify-center border border-brand-yellow/20">
+                        <i data-lucide="battery-charging" class="w-5 h-5 text-brand-goldDark"></i>
+                    </div>
+                    <div>
+                        <h3 class="font-bold text-gray-900 text-base mb-1 font-tech">Energia Ininterrupta Ativa</h3>
+                        <p class="text-sm text-gray-600 leading-relaxed font-sans">
+                            Bateria backup selada recarregável interna instalada na central de alarme, garantindo que o sistema de monitoramento continue ativo por várias horas mesmo sem luz.
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<!-- ===================== VÍDEO DEMONSTRATIVO ===================== -->
+<section class="py-20 bg-[#f8f9fa] border-y border-gray-100">
+    <div class="max-w-4xl mx-auto px-4 text-center reveal">
+        <div class="inline-block bg-brand-yellow/10 text-brand-yellow text-xs font-bold px-4 py-1.5 rounded-full uppercase tracking-widest mb-4 border border-brand-yellow/20">Veja na Prática</div>
+        <h2 class="text-3xl font-bold text-gray-900 mb-8 font-tech">Demonstração do Alarme e Acesso</h2>
+        <p class="text-gray-500 mb-10 max-w-2xl mx-auto font-sans">Confira a robustez técnica do monitoramento ativo com controle por senhas integradas, garantindo um fluxo ágil, prático e totalmente seguro.</p>
+        
+        <div class="relative w-full max-w-[320px] mx-auto aspect-[9/16] rounded-[2.5rem] overflow-hidden shadow-premium border-[8px] border-zinc-900 bg-black">
+            <iframe 
+                class="absolute inset-0 w-full h-full scale-[1.02]" 
+                src="https://www.youtube.com/embed/gP4lOX7qOlQ?autoplay=0&loop=1&playlist=gP4lOX7qOlQ&rel=0&controls=0" 
+                title="Demonstração Sistema de Alarme" 
+                frameborder="0" 
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                allowfullscreen>
+            </iframe>
         </div>
     </div>
 </section>
 
-<!-- ===================== PROPOSTA DE INVESTIMENTO ===================== -->
-<section id="investimento" class="py-20 md:py-28 bg-white relative overflow-hidden">
-    <div class="absolute inset-0 bg-dots pointer-events-none z-0"></div>
-    <div class="max-w-7xl mx-auto px-4 relative z-10">
+<!-- ===================== A VISION ===================== -->
+<section id="empresa" class="py-24 bg-white relative border-b border-gray-100">
+    <div class="max-w-6xl mx-auto px-4">
+         <div class="text-center mb-16 reveal">
+             <span class="text-brand-yellow font-bold uppercase tracking-widest text-xs">Padrão Ouro Vision</span>
+             <h2 class="text-3xl font-bold text-gray-900 mt-2 mb-4 font-tech">A Parceria de Segurança Ideal</h2>
+             <p class="text-gray-500 max-w-2xl mx-auto text-lg leading-relaxed font-sans">
+                 Estruturamos soluções integradas de alarme e acesso que combinam perfeitamente com o layout, a conformidade técnica e a estética corporativa que o seu novo escritório exige.
+             </p>
+         </div>
 
-        <div class="text-center mb-10 md:mb-12 reveal">
-            <span class="text-brand-yellow font-bold uppercase tracking-widest text-xs">Orçamento do Projeto</span>
-            <h2 class="text-2xl md:text-5xl font-extrabold text-gray-900 mt-2 md:mt-3">Orçamento Unificado</h2>
-            <p class="text-gray-500 mt-3 md:mt-4 max-w-xl mx-auto text-sm md:text-lg leading-relaxed px-4 font-sans">
-                Consulte os custos integrados do ecossistema de segurança e escolha a forma de pagamento ideal para o seu planejamento:
+         <div class="grid md:grid-cols-3 gap-8 reveal mb-16">
+             <!-- Card 1 -->
+             <div class="p-8 bg-[#f8f9fa] rounded-2xl border border-gray-100 shadow-sm hover:shadow-lg transition-all group flex flex-col justify-between h-full">
+                 <div>
+                     <div class="w-14 h-14 bg-brand-black text-white rounded-xl flex items-center justify-center text-2xl mb-6 group-hover:bg-brand-yellow group-hover:text-brand-black transition-colors shrink-0">
+                         ⚡
+                     </div>
+                     <h3 class="text-xl font-bold text-gray-900 mb-4 font-tech">Velocidade de Implantação</h3>
+                     <p class="text-gray-600 text-sm leading-relaxed font-sans">
+                         Nossa equipe técnica focará 100% na fixação estética, nas configurações lógicas de comunicação e na ativação rápida do sistema integrado de alarme e acesso em seu escritório.
+                     </p>
+                 </div>
+             </div>
+
+             <!-- Card 2 -->
+             <div class="p-8 bg-[#f8f9fa] rounded-2xl border border-gray-100 shadow-sm hover:shadow-lg transition-all group flex flex-col justify-between h-full">
+                 <div>
+                     <div class="w-14 h-14 bg-brand-black text-white rounded-xl flex items-center justify-center text-2xl mb-6 group-hover:bg-brand-yellow group-hover:text-brand-black transition-colors shrink-0">
+                        📱
+                     </div>
+                     <h3 class="text-xl font-bold text-gray-900 mb-4 font-tech">Configuração Executiva</h3>
+                     <p class="text-gray-600 text-sm leading-relaxed font-sans">
+                         Acompanhamos o processo até o fim. Faremos a parametrização dos sensores de movimento, cadastro de usuários corporativos e o teste completo do sistema com você.
+                     </p>
+                 </div>
+             </div>
+
+             <!-- Card 3 -->
+             <div class="p-8 bg-[#f8f9fa] rounded-2xl border border-gray-100 shadow-sm hover:shadow-lg transition-all group flex flex-col justify-between h-full">
+                 <div>
+                     <div class="w-14 h-14 bg-brand-black text-white rounded-xl flex items-center justify-center text-2xl mb-6 group-hover:bg-brand-yellow group-hover:text-brand-black transition-colors shrink-0">
+                        🤝
+                     </div>
+                     <h3 class="text-xl font-bold text-gray-900 mb-4 font-tech">Garantia e Confiança</h3>
+                     <p class="text-gray-600 text-sm leading-relaxed font-sans">
+                         Mantemos nosso padrão ouro de atendimento. Se algum componente apresentar qualquer falha técnica, nossa equipe faz a substituição com agilidade e sem custos adicionais.
+                     </p>
+                 </div>
+             </div>
+         </div>
+
+    </div>
+</section>
+
+<!-- ===================== PROPOSTA COMERCIAL ===================== -->
+<section id="investimento" class="py-28 bg-white relative overflow-hidden">
+    <div class="absolute inset-0 bg-dots pointer-events-none z-0"></div>
+    <div class="max-w-5xl mx-auto px-4 relative z-10">
+
+        <div class="text-center mb-12 reveal">
+            <span class="text-brand-yellow font-bold uppercase tracking-widest text-xs font-tech">Transparência Total</span>
+            <h2 class="text-3xl md:text-5xl font-bold text-gray-900 mt-3 font-tech">O Investimento na sua Operação</h2>
+            <p class="text-gray-500 mt-4 max-w-xl mx-auto text-lg leading-relaxed font-sans">
+                Apresentamos o pacote executivo completo (equipamentos + engenharia) para blindar a entrada e o perímetro do escritório do Gabriel.
             </p>
         </div>
 
-        <!-- TOGGLE DE PAGAMENTO (PIX VS CARTÃO COM EXIBIÇÃO DE TAXAS) -->
-        <div class="flex flex-col items-center justify-center mb-8 md:mb-10 reveal">
-            <p class="text-xs font-bold text-gray-400 uppercase tracking-widest mb-3">Selecione o Método de Pagamento:</p>
-            <div class="bg-gray-100 p-1.5 rounded-full inline-flex relative shadow-inner">
-                <div id="toggle-bg" class="absolute top-1.5 bottom-1.5 w-[calc(50%-3px)] bg-white rounded-full shadow-sm transition-transform duration-300 ease-in-out" style="transform: translateX(0); left: 2px;"></div>
-                
-                <button onclick="setPaymentMode('avista')" id="btn-avista" class="relative z-10 px-5 md:px-8 py-2.5 text-xs md:text-sm font-bold text-gray-900 transition-colors w-32 md:w-40 text-center rounded-full focus:outline-none">À Vista (PIX)</button>
-                <button onclick="setPaymentMode('parcelado')" id="btn-parcelado" class="relative z-10 px-5 md:px-8 py-2.5 text-xs md:text-sm font-bold text-gray-500 transition-colors w-36 md:w-48 text-center rounded-full focus:outline-none hover:text-black">Parcelado (Cartão)</button>
-            </div>
-
-            <!-- Seletor de Parcelas com Taxas Integradas -->
-            <div id="installment-container" class="mt-4 md:mt-6 flex flex-col items-center transition-all duration-300 opacity-0 pointer-events-none hidden">
-                <div class="relative">
-                    <select id="installment-select" class="appearance-none bg-white border border-gray-300 text-gray-950 text-xs md:text-sm font-bold rounded-xl focus:ring-brand-yellow focus:border-brand-yellow block w-48 md:w-64 p-2.5 md:p-3 pl-3 md:pl-4 pr-8 md:pr-10 shadow-sm outline-none cursor-pointer hover:border-gray-400 transition-colors" onchange="updatePrices()">
-                        <option value="1">1x (Taxa: 4.38%)</option>
-                        <option value="2">2x (Taxa: 5.60%)</option>
-                        <option value="3">3x (Taxa: 6.90%)</option>
-                        <option value="4">4x (Taxa: 8.20%)</option>
-                        <option value="5">5x (Taxa: 9.40%)</option>
-                        <option value="6">6x (Taxa: 10.71%)</option>
-                        <option value="7">7x (Taxa: 12.20%)</option>
-                        <option value="8">8x (Taxa: 13.70%)</option>
-                        <option value="9">9x (Taxa: 15.20%)</option>
-                        <option value="10">10x (Taxa: 16.80%)</option>
-                        <option value="11">11x (Taxa: 18.40%)</option>
-                        <option value="12" selected>12x (Taxa: 19.99%)</option>
-                    </select>
-                    <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 md:px-3 text-brand-yellow">
-                        <i data-lucide="chevron-down" class="w-3 h-3 md:w-4 md:h-4"></i>
-                    </div>
-                </div>
+        <!-- TOGGLE DE PAGAMENTO (PIX vs CARTÃO) -->
+        <div class="flex justify-center mb-12 reveal">
+            <div class="bg-gray-100 p-1.5 rounded-full inline-flex border border-gray-200 shadow-inner">
+                <button id="btn-pix" onclick="togglePayment(true)" class="px-6 py-2.5 rounded-full text-sm font-bold bg-brand-yellow text-black shadow-md transition-all font-tech">
+                    À Vista (PIX)
+                </button>
+                <button id="btn-card" onclick="togglePayment(false)" class="px-6 py-2.5 rounded-full text-sm font-bold bg-transparent text-gray-500 hover:text-gray-700 transition-all font-tech">
+                    Parcelado (Cartão)
+                </button>
             </div>
         </div>
 
-        <!-- GRID DE PREÇOS (PROJETO ÚNICO CENTRALIZADO) -->
-        <div class="reveal items-stretch flex justify-center animate-fade-in">
+        <div class="grid lg:grid-cols-1 gap-8 reveal items-stretch">
             
-            <div class="premium-border-glow group relative z-20 w-full max-w-2xl">
-                <div class="premium-border-inner flex flex-col relative bg-white p-4 md:p-8">
-                    <div class="absolute top-0 right-0 w-24 h-24 md:w-32 md:h-32 bg-brand-yellow/10 rounded-full blur-[30px] md:blur-[50px] pointer-events-none"></div>
-                    <div class="absolute top-2 right-2 md:top-4 md:right-4 z-20">
-                        <span id="badge-config" class="bg-brand-yellow text-black text-[7px] md:text-[10px] font-extrabold px-2 py-0.5 md:px-3 md:py-1 rounded-full uppercase tracking-widest shadow-glow">Recomendado</span>
-                    </div>
-
-                    <div class="mb-4 md:mb-6 text-center md:text-left relative z-10">
-                        <p class="text-[8px] md:text-[10px] font-bold uppercase tracking-widest text-brand-yellow mb-1 md:mb-2 mt-1 md:mt-2">SISTEMA INTEGRADO DE SEGURANÇA E ACESSO</p>
-                        <h3 id="title-config" class="font-bold text-gray-900 text-xl md:text-3xl leading-tight font-tech">Escritório Premium Paulista</h3>
-                    </div>
-
-                    <div class="mb-4 md:mb-6 p-4 md:p-8 bg-brand-yellow/5 border border-brand-yellow/20 rounded-xl md:rounded-2xl min-h-[120px] md:min-h-[160px] flex flex-col items-center justify-center text-center relative z-10">
-                        <p class="text-[9px] md:text-xs text-brand-goldDark uppercase tracking-widest font-bold mb-2">Orçamento Integrado (Equipamentos + Mão de Obra Inclusa)</p>
-                        <div class="w-full" id="price-opt1">
-                            <!-- Conteúdo dinâmico JS injetado aqui -->
+            <div class="premium-border-glow group relative z-20">
+                <div class="premium-border-inner flex flex-col lg:flex-row relative overflow-hidden bg-white p-0">
+                    <div class="absolute top-0 left-0 w-64 h-64 bg-brand-yellow/5 rounded-full blur-[80px] pointer-events-none"></div>
+                    
+                    <div class="w-full lg:w-7/12 p-8 md:p-12 relative z-10 border-b lg:border-b-0 lg:border-r border-gray-100">
+                        <div class="mb-6">
+                            <span class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-black text-brand-yellow text-[10px] font-bold uppercase tracking-widest mb-4 shadow-md font-tech">
+                                ⭐ Escopo Corporativo Completo
+                            </span>
+                            <h3 class="text-3xl font-bold text-gray-900 font-tech">Projeto Alarme & Controle de Acesso (Avenida Paulista)</h3>
+                            <p class="text-sm text-gray-500 mt-2 font-medium font-sans">A central de alarme monitorada, teclado de parede, sensores de presença e controle de acesso corporativo de embutir.</p>
                         </div>
+
+                        <ul class="space-y-3 mb-2 font-sans">
+                            <li class="flex items-center gap-2"><i data-lucide="check-circle-2" class="w-5 h-5 text-brand-yellow shrink-0"></i> <span class="text-sm text-gray-700">Fornecimento do <strong>Controle de Acesso de Embutir</strong> corporativo.</span></li>
+                            <li class="flex items-center gap-2"><i data-lucide="check-circle-2" class="w-5 h-5 text-brand-yellow shrink-0"></i> <span class="text-sm text-gray-700">Fornecimento da <strong>Central de Alarme Monitorada</strong> com Teclado de Parede.</span></li>
+                            <li class="flex items-center gap-2"><i data-lucide="check-circle-2" class="w-5 h-5 text-brand-yellow shrink-0"></i> <span class="text-sm text-gray-700">Fornecimento de sensores de movimento perimetrais, sensor de porta e sirene.</span></li>
+                            <li class="flex items-center gap-2"><i data-lucide="check-circle-2" class="w-5 h-5 text-brand-yellow shrink-0"></i> <span class="text-sm text-gray-700">Fornecimento da <strong>Mola Aérea Hidráulica</strong> e Bateria Backup de Emergência (Nobreak).</span></li>
+                            <li class="flex items-start gap-2"><i data-lucide="check-circle-2" class="w-5 h-5 text-brand-yellow shrink-0 mt-1"></i> <span class="text-sm text-gray-700"><strong>Instalação Premium:</strong> Fixação de todos os dispositivos, embutimento invisível de cabeamento, calibração, treinamento técnico e ativação lógica.</span></li>
+                        </ul>
                     </div>
 
-                    <div class="space-y-2 md:space-y-3 mb-4 md:mb-8 flex-1 relative z-10 text-left">
-                        <h4 class="font-semibold text-gray-700 text-[10px] md:text-sm uppercase tracking-wider mb-2 md:mb-3 font-tech">O que inclui de ponta a ponta:</h4>
-                        
-                        <!-- Lista de Equipamentos e Serviços -->
-                        <div class="space-y-2 font-sans">
-                            <div class="flex items-start gap-2 md:gap-3 p-3 bg-white border border-brand-yellow/30 rounded-lg md:rounded-xl shadow-sm">
-                                <i data-lucide="lock" class="w-4 h-4 text-brand-yellow shrink-0 mt-0.5"></i>
-                                <p class="text-[10px] md:text-sm text-gray-800 leading-snug md:leading-relaxed"><strong>Controle de Acesso de Embutir:</strong> Controle de acesso inteligente com capacidade para mais de 30 usuários por tags e senha numérica.</p>
-                            </div>
-                            <div class="flex items-start gap-2 md:gap-3 p-3 bg-white border border-brand-yellow/30 rounded-lg md:rounded-xl shadow-sm">
-                                <i data-lucide="shield" class="w-4 h-4 text-brand-yellow shrink-0 mt-0.5"></i>
-                                <p class="text-[10px] md:text-sm text-gray-800 leading-snug md:leading-relaxed"><strong>Sistema de Alarme Monitorado:</strong> 1 central inteligente com teclado numérico de parede, sensores de presença para o corredor longo e sensores de porta.</p>
-                            </div>
-                            <div class="flex items-start gap-2 md:gap-3 p-3 bg-white border border-brand-yellow/30 rounded-lg md:rounded-xl shadow-sm">
-                                <i data-lucide="calendar" class="w-4 h-4 text-brand-yellow shrink-0 mt-0.5"></i>
-                                <p class="text-[10px] md:text-sm text-gray-800 leading-snug md:leading-relaxed whitespace-normal break-words leading-tight"><strong>Instalação Especializada em Finais de Semana:</strong> Toda a montagem e calibração serão efetuadas aos sábados ou domingos, com zero barulho ou impacto na rotina comercial de trabalho do escritório.</p>
-                            </div>
-                        </div>
-                        
-                        <!-- BÔNUS TAG -->
-                        <div class="mt-2 md:mt-4 bg-brand-yellow/10 border border-brand-yellow/30 p-2 md:p-3 rounded-lg md:rounded-xl flex items-center justify-center gap-2 shadow-sm text-center">
-                            <i data-lucide="award" class="w-4 h-4 md:w-5 md:h-5 text-brand-yellow shrink-0 animate-pulse"></i>
-                            <p class="text-[10px] md:text-sm text-gray-800 leading-tight"><strong>GARANTIA EXCLUSIVA:</strong> 1 Ano de Garantia Completa (Mão de Obra de Instalação e Equipamentos).</p>
-                        </div>
-                    </div>
+                    <!-- Lado Direito: Preço Dinâmico -->
+                    <div class="w-full lg:w-5/12 bg-[#f8f9fa] p-8 md:p-12 flex flex-col items-center justify-center text-center relative z-10 min-h-[300px]">
+                        <p class="text-[11px] font-bold text-gray-400 uppercase tracking-widest mb-4 font-tech" id="label-price">Investimento Total</p>
 
-                    <a id="btn-aprova-link" href="#" target="_blank" class="w-full bg-brand-yellow hover:bg-brand-goldLight text-black font-bold py-3 md:py-4 rounded-xl md:rounded-2xl flex items-center justify-center gap-1.5 md:gap-2 transition-all shadow-glow-md text-[10px] md:text-[12px] uppercase tracking-widest group relative overflow-hidden mt-auto z-10">
-                        <div class="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-300 rounded-xl md:rounded-2xl"></div>
-                        <span class="relative z-10">Aprovar Proposta Escritório Gabriel</span>
-                        <i data-lucide="arrow-right" class="w-4 h-4 md:w-5 md:h-5 relative z-10 group-hover:translate-x-1 transition-transform"></i>
-                    </a>
+                        <!-- Bloco PIX (Default) -->
+                        <div id="price-pix-block" class="flex flex-col items-center justify-center w-full transition-opacity duration-300">
+                            <div class="flex items-baseline justify-center gap-1.5 mb-2 font-tech">
+                                <span class="text-2xl font-bold text-gray-400">R$</span>
+                                <span class="text-5xl md:text-6xl font-extrabold text-[#111827] tracking-tighter leading-none">3.540<span class="text-3xl text-gray-400">,00</span></span>
+                            </div>
+                            <div class="inline-flex items-center gap-1.5 bg-emerald-50 border border-emerald-200 text-emerald-700 px-3 py-1.5 rounded-full text-[10px] font-bold uppercase tracking-widest mt-2 font-tech">
+                                <i data-lucide="zap" class="w-3 h-3"></i> Pagamento à vista (PIX)
+                            </div>
+                            
+                            <!-- Breakdown do PIX -->
+                            <div class="w-full mt-6 space-y-2 font-sans">
+                                <div class="bg-white border border-gray-200 rounded-xl p-3 shadow-sm relative overflow-hidden text-center opacity-90">
+                                    <div class="absolute top-0 left-0 w-1.5 h-full bg-emerald-400"></div>
+                                    <div class="pl-2">
+                                        <span class="text-[10px] font-bold uppercase tracking-widest text-gray-500 block mb-0.5 font-tech">Sinal (Aprovação)</span>
+                                        <span class="font-bold text-gray-900 text-sm">R$ 1.770,00</span>
+                                    </div>
+                                </div>
+                                <div class="bg-white border border-gray-200 rounded-xl p-3 shadow-sm relative overflow-hidden text-center opacity-90">
+                                    <div class="absolute top-0 left-0 w-1.5 h-full bg-brand-yellow"></div>
+                                    <div class="pl-2">
+                                        <span class="text-[10px] font-bold uppercase tracking-widest text-gray-500 block mb-0.5 font-tech">Finalização (Pós-Entrega)</span>
+                                        <span class="font-bold text-gray-900 text-sm">R$ 1.770,00</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Bloco CARTÃO (Hidden) -->
+                        <div id="price-card-block" class="hidden flex flex-col items-center justify-center w-full transition-opacity duration-300">
+                            <span class="text-sm font-bold text-gray-400 mb-1 font-sans">Pague parcelado em</span>
+                            <div class="flex items-baseline justify-center gap-1.5 mb-4 font-tech">
+                                <span class="text-3xl font-bold text-[#111827]">12x de R$</span>
+                                <span class="text-6xl font-extrabold text-[#111827] tracking-tighter leading-none">354<span class="text-4xl text-gray-400">,15</span></span>
+                            </div>
+                            <div class="inline-flex items-center gap-1.5 bg-blue-50 border border-blue-200 text-blue-700 px-3 py-1.5 rounded-full w-fit shadow-sm mt-1 font-tech">
+                                <i data-lucide="credit-card" class="w-4 h-4"></i>
+                                <span class="text-[10px] font-bold uppercase tracking-widest">Cartão de Crédito</span>
+                            </div>
+                            <p class="text-xs text-gray-400 font-medium mt-4 font-sans">Valor total parcelado: R$ 4.250,00</p>
+                        </div>
+
+                    </div>
                 </div>
             </div>
 
         </div>
-
     </div>
 </section>
 
@@ -685,39 +737,51 @@
     <div class="max-w-3xl mx-auto px-4">
         <div class="text-center mb-14 reveal">
             <span class="text-brand-yellow font-bold uppercase tracking-widest text-xs">Dúvidas Frequentes</span>
-            <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mt-3">Para sua total tranquilidade</h2>
+            <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mt-3 font-tech">Perguntas & Respostas</h2>
         </div>
         
-        <div class="space-y-4 reveal" id="accordion">
+        <div class="space-y-4 reveal font-sans" id="accordion">
+            
             <div class="accordion-item bg-white rounded-2xl border border-gray-100 shadow-sm overflow-hidden transition-all hover:border-brand-yellow/50">
-                <button onclick="toggleAccordion(this)" class="w-full flex items-center justify-between p-6 text-left font-bold text-gray-900 focus:outline-none">
-                    <span>Como funciona o controle para mais de 30 usuários?</span>
+                <button onclick="toggleAccordion(this)" class="w-full flex items-center justify-between p-6 text-left font-bold text-gray-900 focus:outline-none font-tech">
+                    <span>Como funciona o controle de acesso para mais de 30 usuários?</span>
                     <i data-lucide="chevron-down" class="w-5 h-5 text-brand-yellow acc-arrow shrink-0"></i>
                 </button>
-                <div class="accordion-content text-left font-sans">
+                <div class="accordion-content">
                     <p class="px-6 pb-6 text-gray-600 text-sm leading-relaxed">Nosso sistema de controle de acesso de embutir é desenhado para suportar alto tráfego diário. Ele permite registrar até 100 usuários com senhas independentes ou tags. É possível adicionar ou excluir os funcionários de forma fácil no teclado mestre do equipamento.</p>
                 </div>
             </div>
 
             <div class="accordion-item bg-white rounded-2xl border border-gray-100 shadow-sm overflow-hidden transition-all hover:border-brand-yellow/50">
-                <button onclick="toggleAccordion(this)" class="w-full flex items-center justify-between p-6 text-left font-bold text-gray-900 focus:outline-none">
+                <button onclick="toggleAccordion(this)" class="w-full flex items-center justify-between p-6 text-left font-bold text-gray-900 focus:outline-none font-tech">
                     <span>Vocês realizam a instalação nos finais de semana?</span>
                     <i data-lucide="chevron-down" class="w-5 h-5 text-brand-yellow acc-arrow shrink-0"></i>
                 </button>
-                <div class="accordion-content text-left font-sans">
+                <div class="accordion-content">
                     <p class="px-6 pb-6 text-gray-600 text-sm leading-relaxed">Sim! Nossa equipe de engenharia pode executar furações, passagem e embutimento de fiação e testes de sensores aos sábados ou domingos. Assim, sua equipe inicia o expediente na segunda-feira com o escritório 100% limpo e seguro.</p>
                 </div>
             </div>
 
             <div class="accordion-item bg-white rounded-2xl border border-gray-100 shadow-sm overflow-hidden transition-all hover:border-brand-yellow/50">
-                <button onclick="toggleAccordion(this)" class="w-full flex items-center justify-between p-6 text-left font-bold text-gray-900 focus:outline-none">
+                <button onclick="toggleAccordion(this)" class="w-full flex items-center justify-between p-6 text-left font-bold text-gray-900 focus:outline-none font-tech">
                     <span>O que acontece se faltar energia elétrica no escritório?</span>
                     <i data-lucide="chevron-down" class="w-5 h-5 text-brand-yellow acc-arrow shrink-0"></i>
                 </button>
-                <div class="accordion-content text-left font-sans">
+                <div class="accordion-content">
                     <p class="px-6 pb-6 text-gray-600 text-sm leading-relaxed">O controle de acesso opera de forma independente com energia auxiliar segura. Para a central de alarme e os sensores, incluímos uma bateria backup recarregável interna na central, mantendo o monitoramento de forma contínua por várias horas mesmo sob quedas de energia na Paulista.</p>
                 </div>
             </div>
+
+            <div class="accordion-item bg-white rounded-2xl border border-gray-100 shadow-sm overflow-hidden transition-all hover:border-brand-yellow/50">
+                <button onclick="toggleAccordion(this)" class="w-full flex items-center justify-between p-6 text-left font-bold text-gray-900 focus:outline-none font-tech">
+                    <span>A instalação vai gerar muita sujeira no escritório novo?</span>
+                    <i data-lucide="chevron-down" class="w-5 h-5 text-brand-yellow acc-arrow shrink-0"></i>
+                </button>
+                <div class="accordion-content">
+                    <p class="px-6 pb-6 text-gray-600 text-sm leading-relaxed">Não. Nossa equipe utiliza técnicas de instalação limpa (White Glove). Como estamos na fase final de reforma, planejamos toda a passagem da fiação com tubulação embutida e acabamento discreto, sem danificar a pintura nova do seu escritório.</p>
+                </div>
+            </div>
+
         </div>
     </div>
 </section>
@@ -728,15 +792,15 @@
     <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-brand-yellow/10 rounded-full blur-[100px] pointer-events-none"></div>
     
     <div class="max-w-4xl mx-auto px-4 text-center relative z-10 reveal">
-        <span class="text-brand-yellow font-bold uppercase tracking-widest text-xs mb-4 block">Parceria Estratégica</span>
+        <span class="text-brand-yellow font-bold uppercase tracking-widest text-xs mb-4 block font-tech">Decisão Executiva</span>
         <h2 class="text-3xl md:text-5xl font-extrabold text-white leading-tight mb-6 font-tech">
-            Inaugure seu novo escritório com<br><span class="text-gold-shine">tecnologia fina de segurança e controle de acesso.</span>
+            Inaugure seu novo escritório com <span class="text-gold-shine">tecnologia fina de segurança e controle de acesso.</span>
         </h2>
         <p class="text-zinc-400 text-lg mb-10 leading-relaxed max-w-2xl mx-auto font-sans">
-            Gabriel, conte com a experiência da nossa equipe técnica para entregar a infraestrutura de alarme e controle de acesso em sincronia com o fim da sua reforma, com impacto zero na sua rotina.
+            Gabriel, conte com a experiência da nossa equipe técnica para entregar a infraestrutura de alarme e controle de acesso em sincronia com o fim da sua reforma, com impacto zero na sua rotina de trabalho.
         </p>
 
-        <a href="https://wa.me/5511930816696?text=Olá%20Glicia,%20analisei%20a%20proposta%20do%20Gabriel%20e%20gostaria%20de%20dar%20andamento%20no%20projeto%20do%20escritório%20na%20Paulista." target="_blank" class="inline-flex items-center gap-3 bg-brand-yellow hover:bg-brand-goldLight text-brand-black font-bold px-10 py-5 rounded-full transition-all shadow-glow-md text-sm uppercase tracking-widest transform hover:scale-[1.03] font-tech">
+        <a href="https://wa.me/5511930816696?text=Olá%20Glicia,%20analisei%20a%20proposta%20do%20Gabriel%20e%20gostaria%20de%20dar%20andamento%20no%20projeto%20do%20escritório%20na%20Paulista." target="_blank" onclick="if(window.clarity) window.clarity('event', 'Clique_WhatsApp_Principal');" class="inline-flex items-center gap-3 bg-brand-yellow hover:bg-brand-goldLight text-brand-black font-bold px-10 py-5 rounded-full transition-all shadow-glow-md text-sm uppercase tracking-widest transform hover:scale-[1.03] font-tech">
             <i data-lucide="check-circle" class="w-5 h-5"></i>
             Aprovar Projeto Urgente (Falar com Glícia)
             <i data-lucide="arrow-right" class="w-4 h-4 ml-1"></i>
@@ -746,19 +810,20 @@
 
 <!-- ===================== FOOTER ===================== -->
 <footer class="bg-black py-16 text-center border-t border-zinc-900 group">
-    <div class="max-w-4xl mx-auto px-4">
+    <div class="max-w-4xl mx-auto px-4 font-sans">
         
         <div class="flex flex-col items-center justify-center leading-none opacity-40 group-hover:opacity-100 transition-opacity duration-500 cursor-default mb-10">
             <div class="flex flex-col items-center">
                 <div class="relative flex items-baseline leading-none">
                     <span class="font-logo font-bold text-[3.5rem] text-white lowercase tracking-[-0.05em] leading-none">vısıon</span>
+                    <!-- R circulado rebaixado milimetricamente -->
                     <span class="absolute -right-3.5 top-2.5 text-[0.75rem] text-brand-yellow font-bold">®</span>
                 </div>
                 <span class="font-tech text-[0.75rem] font-bold text-zinc-500 lowercase -mt-3 ml-1.5 text-center w-full" style="letter-spacing: 0.53em;">tecnologia</span>
             </div>
         </div>
 
-        <div class="text-zinc-500 text-xs md:text-sm leading-relaxed space-y-1 mb-8 opacity-60 font-sans">
+        <div class="text-zinc-500 text-xs md:text-sm leading-relaxed space-y-1 mb-8 opacity-60">
             <p><strong>A/C Gabriel</strong> | Alarme de Intrusão &amp; Controle de Acesso Corporativo</p>
             <p>Proposta Comercial Retrofit #GAB-2026-0610 | Emitida em Junho de 2026</p>
             <p>Escritório Comercial - Avenida Paulista - SP</p>
@@ -766,28 +831,83 @@
 
         <div class="inline-flex items-center justify-center gap-2 border border-zinc-800 bg-zinc-900/50 px-5 py-2.5 rounded-full mb-6 shadow-sm">
             <i data-lucide="lock" class="w-3.5 h-3.5 text-brand-yellow"></i>
-            <span class="text-[10px] md:text-xs text-zinc-400 uppercase tracking-widest font-bold font-sans">Documento de engenharia restrito</span>
+            <span class="text-[10px] md:text-xs text-zinc-400 uppercase tracking-widest font-bold">Documento confidencial corporativo</span>
         </div>
         
-        <p class="text-[10px] text-zinc-700 uppercase tracking-widest font-bold mt-6 font-tech">Engenharia de Redes, Segurança IP &amp; Alarme Monitorado</p>
+        <p class="text-[10px] text-zinc-700 uppercase tracking-widest font-bold mt-6 font-tech">Engenharia de Segurança Corporativa</p>
     </div>
 </footer>
 
 <!-- WHATSAPP CTA FLUTUANTE -->
-<div id="cta-float" class="fixed bottom-6 right-6 z-40 hidden md:block opacity-0 translate-y-10 pointer-events-none transition-all duration-500">
-    <a href="https://wa.me/5511930816696?text=Olá%20Glicia,%20tenho%20uma%20dúvida%20sobre%20o%20projeto%20de%20alarme%20do%20Gabriel." target="_blank" class="flex items-center gap-3 bg-brand-yellow text-black font-bold px-6 py-4 rounded-full shadow-glow-md hover:shadow-glow transition-all group font-tech">
-        <i data-lucide="message-circle" class="w-5 h-5"></i>
-        <span class="text-sm tracking-wide uppercase">Falar com Glícia</span>
+<div id="cta-float" class="fixed bottom-6 right-6 z-40 hidden md:block">
+    <a href="https://wa.me/5511930816696?text=Olá%20Glicia,%20tenho%20uma%20dúvida%20sobre%20o%20projeto%20de%20alarme%20do%20Gabriel." target="_blank" onclick="if(window.clarity) window.clarity('event', 'Clique_WhatsApp_Flutuante');" class="flex items-center gap-3 bg-brand-yellow text-black font-bold px-6 py-4 rounded-full shadow-glow-md hover:shadow-glow transition-all group font-tech">
+        <i data-lucide="calendar-check" class="w-5 h-5"></i>
+        <span class="text-sm tracking-wide uppercase">Aprovar Projeto</span>
         <i data-lucide="arrow-right" class="w-4 h-4 group-hover:translate-x-1 transition-transform"></i>
     </a>
 </div>
 
 <!-- ===================== SCRIPTS ===================== -->
 <script>
-    // INICIALIZAÇÃO DOS ÍCONES LUCIDE
+    // INIT LUCIDE ICONS
     lucide.createIcons();
 
-    // Verificação de senha corporativa (PAULISTA10, GABRIEL ou VISION)
+    // LÓGICA DO TOGGLE DE PAGAMENTO (PIX VS CARTÃO)
+    let isPix = true;
+    function togglePayment(toPix) {
+        if(isPix === toPix) return; // Já está na aba certa
+        isPix = toPix;
+
+        const btnPix = document.getElementById('btn-pix');
+        const btnCard = document.getElementById('btn-card');
+        const pixBlock = document.getElementById('price-pix-block');
+        const cardBlock = document.getElementById('price-card-block');
+
+        // Fade out
+        pixBlock.classList.add('opacity-0');
+        cardBlock.classList.add('opacity-0');
+
+        setTimeout(() => {
+            if(isPix) {
+                // Ativa estilo botão PIX
+                btnPix.classList.add('bg-brand-yellow', 'text-black');
+                btnPix.classList.remove('bg-transparent', 'text-gray-500');
+                // Desativa estilo botão Cartão
+                btnCard.classList.remove('bg-brand-yellow', 'text-black');
+                btnCard.classList.add('bg-transparent', 'text-gray-500', 'hover:text-gray-700');
+
+                // Mostra bloco PIX
+                pixBlock.classList.remove('hidden');
+                cardBlock.classList.add('hidden');
+                
+            } else {
+                // Ativa estilo botão Cartão
+                btnCard.classList.add('bg-brand-yellow', 'text-black');
+                btnCard.classList.remove('bg-transparent', 'text-gray-500', 'hover:text-gray-700');
+                // Desativa estilo botão PIX
+                btnPix.classList.remove('bg-brand-yellow', 'text-black');
+                btnPix.classList.add('bg-transparent', 'text-gray-500');
+
+                // Mostra bloco Cartão
+                pixBlock.classList.add('hidden');
+                cardBlock.classList.remove('hidden');
+            }
+
+            lucide.createIcons();
+
+            // Efeito de fade in 
+            setTimeout(() => {
+                pixBlock.classList.remove('opacity-0');
+                cardBlock.classList.remove('opacity-0');
+            }, 50);
+
+        }, 300);
+
+        // Registro no Clarity 
+        if (window.clarity) window.clarity("event", isPix ? "Selecionou_PIX" : "Selecionou_Cartao");
+    }
+
+    // LOCK SCREEN + FORMSUBMIT
     function checkPassword() {
         const input = document.getElementById('password-input').value;
         const errorMsg = document.getElementById('error-msg');
@@ -797,14 +917,15 @@
             const lockScreen = document.getElementById('lock-screen');
             lockScreen.style.opacity = '0';
 
-            // Iniciar o vídeo automaticamente após o login
+            // Start Video Se houver
             const video = document.getElementById("vision-video");
             if (video && video.paused) {
                 video.muted = true;
+                video.loop = false;
                 video.play().catch(e => {});
             }
 
-            // Identificação no Clarity
+            // --- CLARITY API TRACKING ---
             if (window.clarity) {
                 window.clarity("consent");
                 window.clarity("identify", "gabriel-paulista", undefined, undefined, "Gabriel (Escritório Paulista)");
@@ -812,7 +933,7 @@
                 window.clarity("event", "Proposta_Desbloqueada");
             }
 
-            // Envio silencioso do webhook de monitoramento para o StaticForms
+            // Envio silencioso do alerta de acesso
             fetch('https://api.staticforms.dev/submit', {
                 method: 'POST',
                 headers: { 
@@ -824,9 +945,9 @@
                     subject: "🚨 ALERTA: Proposta Acessada (Gabriel - Escritório Paulista)",
                     name: "Sistema Vision",
                     email: "diretoria@visionsp.com.br",
-                    message: "O cliente Gabriel acabou de abrir o projeto de Alarme e Acesso do Escritório (Avenida Paulista)!\n\n👤 Cliente: Gabriel\n🔑 Senha Utilizada: " + input + "\n🕒 Horário: " + new Date().toLocaleString('pt-BR')
+                    message: `O cliente Gabriel abriu a proposta do escritório (R$ 3.540)!\n\n👤 Cliente: Gabriel (Paulista - São Paulo)\n🔑 Senha Utilizada: ${input}\n🕒 Horário: ${new Date().toLocaleString('pt-BR')}`
                 })
-            }).catch(error => console.log('Registro de segurança corporativo realizado.'));
+            }).catch(error => console.log('Log de acesso registrado.'));
 
             setTimeout(() => { 
                 lockScreen.style.display = 'none'; 
@@ -847,168 +968,27 @@
         }
     }
 
-    // PARÂMETROS COMERCIAIS
-    const priceDetails = {
-        avista: 3540.00,
-        parcelado: 4250.00
-    };
-    
-    // Multiplicadores da InfinitePay por parcela (True Markup)
-    const cardRates = {
-        1: 1.0438,  
-        2: 1.0560,  
-        3: 1.0690,  
-        4: 1.0820,  
-        5: 1.0940,  
-        6: 1.1071,  
-        7: 1.1220,  
-        8: 1.1370,  
-        9: 1.1520,  
-        10: 1.1680, 
-        11: 1.1840, 
-        12: 1.200508 // Hitting exatamente R$ 354,15 por parcela
-    };
-    
-    let currentMode = 'avista';
-
-    // Conversor de moedas pt-BR
-    function formatCurrency(value) {
-        return value.toLocaleString('pt-BR', {minimumFractionDigits: 2, maximumFractionDigits: 2});
-    }
-
-    // DINAMIZAÇÃO DO LINK DE WHATSAPP CONFORME CONDICAO FINANCEIRA
-    function updateWhatsAppLink() {
-        const btnLink = document.getElementById('btn-aprova-link');
-        if (!btnLink) return;
-
-        let message = '';
-        if (currentMode === 'avista') {
-            message = `Olá Glícia, analisei a proposta e gostaria de aprovar o Projeto de Alarme e Controle de Acesso no valor à Vista de R$ ${formatCurrency(priceDetails.avista)} via PIX para o meu escritório na Paulista.`;
-        } else {
-            const select = document.getElementById('installment-select');
-            const installments = select ? select.value : '12';
-            message = `Olá Glícia, analisei a proposta e gostaria de aprovar o Projeto de Alarme e Controle de Acesso parcelado em ${installments}x no Cartão de Crédito para o meu escritório na Paulista.`;
+    // Permitir submeter com a tecla Enter
+    document.getElementById('password-input').addEventListener('keypress', function(e) {
+        if (e.key === 'Enter') {
+            checkPassword();
         }
-
-        btnLink.href = "https://wa.me/5511930816696?text=" + encodeURIComponent(message);
-    }
-
-    // ALTERAÇÃO DO MODO DE PAGAMENTO (PIX VS CARTÃO)
-    function setPaymentMode(mode) {
-        currentMode = mode;
-        const bg = document.getElementById('toggle-bg');
-        const btnPix = document.getElementById('btn-avista');
-        const btnParcelado = document.getElementById('btn-parcelado');
-        const selectContainer = document.getElementById('installment-container');
-
-        if (mode === 'avista') {
-            if (bg) bg.style.transform = 'translateX(0)';
-            if (btnPix) {
-                btnPix.classList.remove('text-gray-500');
-                btnPix.classList.add('text-gray-900');
-            }
-            if (btnParcelado) {
-                btnParcelado.classList.remove('text-gray-900');
-                btnParcelado.classList.add('text-gray-500');
-            }
-            
-            if (selectContainer) {
-                selectContainer.classList.add('opacity-0', 'pointer-events-none');
-                setTimeout(() => { if(selectContainer) selectContainer.classList.add('hidden'); }, 300);
-            }
-        } else {
-            if (bg) bg.style.transform = 'translateX(100%)';
-            if (btnParcelado) {
-                btnParcelado.classList.remove('text-gray-500');
-                btnParcelado.classList.add('text-black');
-            }
-            if (btnPix) {
-                btnPix.classList.remove('text-black');
-                btnPix.classList.add('text-gray-500');
-            }
-            
-            if (selectContainer) {
-                selectContainer.classList.remove('hidden');
-                setTimeout(() => { if(selectContainer) selectContainer.classList.remove('opacity-0', 'pointer-events-none'); }, 10);
-            }
-        }
-        updatePrices();
-    }
-
-    // CÁLCULO DINÂMICO DE VALORES COM TAXAS ADMINISTRATIVAS DA INFINITEPAY
-    function updatePrices() {
-        const el1 = document.getElementById('price-opt1');
-        const select = document.getElementById('installment-select');
-
-        if (!el1) return;
-
-        if (currentMode === 'avista') {
-            const finalPixPrice = priceDetails.avista;
-            const h1 = finalPixPrice / 2;
-
-            el1.innerHTML = `
-                <div class="flex flex-col items-center w-full animate-fade-in font-sans">
-                    <p class="text-[8px] md:text-[10px] text-[#8a6208] uppercase tracking-widest font-bold mb-1">À Vista no PIX (Sem Juros)</p>
-                    <span class="text-4xl md:text-5xl font-black text-gray-900 tracking-tight mb-4">R$ ${formatCurrency(finalPixPrice)}</span>
-                    
-                    <div class="w-full space-y-2">
-                        <div class="bg-white border border-gray-200 rounded-xl py-2.5 flex flex-col items-center justify-center relative overflow-hidden shadow-sm">
-                            <div class="absolute top-0 left-0 w-1 h-full bg-[#34d399] rounded-l-lg"></div>
-                            <span class="text-[8px] font-bold uppercase tracking-widest text-brand-goldDark mb-0.5">Sinal para Lançamento do Projeto (50%)</span>
-                            <span class="text-sm font-bold text-gray-900">R$ ${formatCurrency(h1)}</span>
-                        </div>
-                        <div class="bg-white border border-gray-200 rounded-xl py-2.5 flex flex-col items-center justify-center relative overflow-hidden shadow-sm">
-                            <div class="absolute top-0 left-0 w-1.5 h-full bg-[#c8a048] rounded-l-lg"></div>
-                            <span class="text-[8px] font-bold uppercase tracking-widest text-brand-goldDark mb-0.5">Saldo na Conclusão e Entrega da Instalação (50%)</span>
-                            <span class="text-sm font-bold text-gray-900">R$ ${formatCurrency(h1)}</span>
-                        </div>
-                    </div>
-                </div>
-            `;
-        } else {
-            const inst = parseInt(select.value);
-            const rateMultiplier = cardRates[inst];
-            const baseValueForCard = priceDetails.avista;
-            
-            const totalWithRate = baseValueForCard * rateMultiplier;
-            const installmentValue = totalWithRate / inst;
-            const ratePercentage = ((rateMultiplier - 1) * 100).toFixed(2);
-
-            el1.innerHTML = `
-                <div class="flex flex-col items-center w-full mt-2 mb-2 animate-fade-in font-sans">
-                    <div class="flex items-baseline justify-center gap-1.5 mb-2">
-                        <span class="text-xl md:text-2xl font-bold text-brand-yellow">${inst}x de R$</span> 
-                        <span class="text-4xl md:text-5xl font-black text-gray-900">${formatCurrency(installmentValue)}</span>
-                    </div>
-                    <div class="inline-flex items-center gap-1.5 bg-blue-50 border border-blue-200 text-blue-700 px-3 py-1 rounded-full w-fit shadow-sm mt-2 mb-3">
-                        <i data-lucide="credit-card" class="w-4 h-4"></i>
-                        <span class="text-[10px] md:text-[11px] font-bold uppercase tracking-widest">Cartão de Crédito (Taxa: ${ratePercentage}%)</span>
-                    </div>
-                    <p class="text-[10px] text-gray-500 font-medium">Total do Projeto Parcelado: R$ ${formatCurrency(totalWithRate)}</p>
-                </div>
-            `;
-        }
-        
-        updateWhatsAppLink();
-        lucide.createIcons();
-    }
-
-    window.addEventListener("load", () => {
-        setPaymentMode('avista');
     });
 
-    // SISTEMA DE REVELAÇÃO NO SCROLL (LAZY LOAD DE ANIMAÇÃO)
+    // REVEAL ON SCROLL
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
-            if (entry.isIntersecting) entry.target.classList.add('active');
+            if (entry.isIntersecting) {
+                entry.target.classList.add('active');
+            }
         });
     }, { threshold: 0.1 });
     document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
-    // ANIMADORES DOS CONTADORES ESTATÍSTICOS
+    // ANIMATE COUNTERS
     function animateCounter(el, target) {
         let current = 0;
-        const increment = Math.ceil(target / 40) || 1;
+        const increment = Math.ceil(target / 40);
         const interval = setInterval(() => {
             current = Math.min(current + increment, target);
             el.textContent = current;
@@ -1027,7 +1007,7 @@
     }, { threshold: 0.5 });
     document.querySelectorAll('[data-target]').forEach(el => counterObserver.observe(el));
 
-    // CONTROLE DE ACCORDIONS
+    // ACCORDION
     function toggleAccordion(btn) {
         const item = btn.parentElement;
         const isOpen = item.classList.contains('open');
@@ -1036,59 +1016,50 @@
         lucide.createIcons();
     }
 
-    // INTERAÇÕES NO SCROLL DE PÁGINA
+    // NAVBAR E CTA SCROLL
     window.addEventListener('scroll', () => {
         const navbar = document.getElementById('navbar');
         const ctaFloat = document.getElementById('cta-float');
         
         if (window.scrollY > 50) {
-            if(navbar) navbar.classList.add('shadow-md');
+            navbar.classList.add('shadow-md');
         } else {
-            if(navbar) navbar.classList.remove('shadow-md');
+            navbar.classList.remove('shadow-md');
         }
 
         if (window.scrollY > 400) {
-            if(ctaFloat) {
-                ctaFloat.classList.remove('hidden', 'opacity-0', 'translate-y-10', 'pointer-events-none');
-                ctaFloat.classList.add('opacity-100', 'translate-y-0');
-            }
+            ctaFloat.classList.remove('hidden');
         } else {
-            if(ctaFloat) {
-                ctaFloat.classList.add('opacity-0', 'translate-y-10', 'pointer-events-none');
-            }
+            ctaFloat.classList.add('hidden');
         }
     });
 
-    // SISTEMA DE REPRODUÇÃO AUDIOVISUAL COM CLIQUE PARA DESMUDAR
+    // VIDEO UNMUTE
     document.addEventListener("DOMContentLoaded", function() {
-        function setupVideo(videoId, overlayId) {
-            const video = document.getElementById(videoId);
-            const overlay = document.getElementById(overlayId);
-            if (video && overlay) {
-                overlay.addEventListener("click", function(e) {
-                    e.stopPropagation(); 
-                    video.muted = false;
-                    video.loop = false; 
-                    video.currentTime = 0;
-                    video.play().catch(err => {
-                        console.warn("Autoplay bloqueado pelo navegador", err);
-                    });
-                    overlay.style.opacity = "0";
-                    setTimeout(() => { overlay.style.display = "none"; }, 500); 
+        const videoHero = document.getElementById("vision-video");
+        const overlayHero = document.getElementById("unmute-overlay");
+        
+        if (videoHero && overlayHero) {
+            overlayHero.addEventListener("click", function(e) {
+                e.stopPropagation(); 
+                videoHero.muted = false;
+                videoHero.loop = false; 
+                videoHero.currentTime = 0;
+                videoHero.play();
+                overlayHero.style.opacity = "0";
+                setTimeout(() => { overlayHero.style.display = "none"; }, 500); 
+                
+                if (window.clarity) {
+                    window.clarity("event", "Video_Assistido");
+                }
+            });
 
-                    if (window.clarity) {
-                        window.clarity("event", "Video_Assistido_" + videoId);
-                    }
-                });
-                video.addEventListener("click", function() {
-                    if (overlay.style.display === "none") {
-                        if (video.paused) { video.play(); } else { video.pause(); }
-                    }
-                });
-            }
+            videoHero.addEventListener("click", function() {
+                if (overlayHero.style.display === "none") {
+                    if (videoHero.paused) { videoHero.play(); } else { videoHero.pause(); }
+                }
+            });
         }
-
-        setupVideo("vision-video", "unmute-overlay");
     });
 </script>
 </body>
