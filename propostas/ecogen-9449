@@ -22,7 +22,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@700;800&family=Quicksand:wght@500;600;700&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-    <script src="https://unpkg.com/lucide@latest"></script>
+    <script src="https://unpkg.com/lucide@0.400.0"></script>
 
     <!-- Google Analytics 4 -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-KTGEL92B0F"></script>
@@ -168,7 +168,7 @@
             box-shadow: 0 0 35px rgba(185,136,14,0.15);
             transition: transform 0.3s cubic-bezier(0.4,0,0.2,1);
         }
-        .premium-border-glow:hover { transform: scale(1.01); }
+        .premium-border-glow:hover { transform: scale(1.005); }
         .premium-border-glow::before {
             content: '';
             position: absolute;
@@ -210,15 +210,19 @@
         details > summary::-webkit-details-marker { display: none; }
         
         @media print {
-            #lock-screen, #navbar, #cta-float { display: none !important; }
+            #lock-screen, #navbar, #cta-float, .no-print { display: none !important; }
             .reveal { opacity: 1 !important; transform: none !important; }
+            body { background: #ffffff !important; color: #000000 !important; }
+            .premium-border-glow { background: #e5e7eb !important; border: 1px solid #d1d5db !important; border-radius: 12px !important; box-shadow: none !important; }
+            .premium-border-glow::before { display: none !important; }
+            .premium-border-inner { background: #ffffff !important; border-radius: 12px !important; }
         }
     </style>
 </head>
 <body class="bg-[#fafafa] text-gray-800 antialiased overflow-hidden h-screen" id="body-root">
 
 <!-- ===================== TELA DE BLOQUEIO (LOCK SCREEN) ===================== -->
-<div id="lock-screen" class="fixed inset-0 z-[100] bg-[#09090b] flex flex-col items-center justify-center text-center p-4 transition-opacity duration-700 ease-out touch-none" style="overscroll-behavior: none;">
+<div id="lock-screen" class="fixed inset-0 z-[100] bg-[#09090b] flex flex-col items-center justify-center text-center p-4 transition-opacity duration-700 ease-out" style="overscroll-behavior: none;">
     <div class="bg-grid absolute inset-0 opacity-10 pointer-events-none"></div>
     <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-brand-yellow/5 rounded-full blur-[100px] pointer-events-none"></div>
 
@@ -249,11 +253,11 @@
             </p>
         </div>
 
-        <button onclick="checkPassword()" class="w-full bg-brand-yellow hover:bg-brand-goldLight text-black font-bold py-4 rounded-2xl transition-all shadow-glow flex items-center justify-center gap-2 group relative overflow-hidden">
+        <button onclick="checkPassword()" id="btn-unlock" class="w-full bg-brand-yellow hover:bg-brand-goldLight text-black font-bold py-4 rounded-2xl transition-all shadow-glow flex items-center justify-center gap-2 group relative overflow-hidden">
             <div class="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-300 rounded-2xl"></div>
-            <i data-lucide="shield-check" class="w-5 h-5 relative z-10"></i>
-            <span class="relative z-10 text-sm uppercase tracking-widest">Desbloquear Proposta Técnica</span>
-            <i data-lucide="arrow-right" class="w-4 h-4 relative z-10 group-hover:translate-x-1 transition-transform"></i>
+            <i data-lucide="shield-check" class="w-5 h-5 relative z-10" id="unlock-icon"></i>
+            <span class="relative z-10 text-sm uppercase tracking-widest" id="unlock-text">Desbloquear Proposta Técnica</span>
+            <i data-lucide="arrow-right" class="w-4 h-4 relative z-10 group-hover:translate-x-1 transition-transform" id="unlock-arrow"></i>
         </button>
 
         <p class="text-zinc-600 text-xs">Documento de Engenharia Exclusivo · Vision Tecnologia © 2026</p>
@@ -261,7 +265,7 @@
 </div>
 
 <!-- ===================== NAVBAR ===================== -->
-<nav id="navbar" class="fixed w-full z-50 top-0 bg-white/90 backdrop-blur-xl border-b border-gray-200/50 shadow-sm transition-all duration-300">
+<nav id="navbar" class="fixed w-full z-50 top-0 bg-white/95 backdrop-blur-xl border-b border-gray-200/50 shadow-sm transition-all duration-300">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex justify-between h-20 items-center">
             <div class="flex flex-col items-center justify-center cursor-pointer" onclick="window.scrollTo(0,0)">
@@ -283,7 +287,7 @@
                     <span class="text-[10px] font-bold uppercase tracking-widest hidden sm:block">PDF</span>
                 </button>
                 <a href="#investimento" class="bg-zinc-900 text-white px-5 py-2.5 rounded-full text-[10px] font-bold uppercase tracking-widest hover:bg-brand-yellow hover:text-black transition-all shadow-md">
-                    Ver Projeto
+                    Ver Orçamento
                 </a>
             </div>
         </div>
@@ -292,7 +296,7 @@
 
 <!-- ===================== HERO ===================== -->
 <header class="pt-32 pb-20 lg:pt-40 relative overflow-hidden bg-white">
-    <div class="absolute inset-0 bg-tech-pattern pointer-events-none"></div>
+    <div class="absolute inset-0 bg-grid pointer-events-none"></div>
     <div class="absolute right-0 top-0 -translate-y-1/4 translate-x-1/4 w-[800px] h-[800px] bg-brand-yellow/5 rounded-full blur-[120px] pointer-events-none"></div>
     
     <div class="max-w-7xl mx-auto px-4 relative z-10">
@@ -367,9 +371,9 @@
                     <div class="w-10 h-10 bg-brand-yellow/10 rounded-xl flex items-center justify-center mx-auto mb-3 shrink-0">
                         <i data-lucide="cpu" class="w-5 h-5 text-brand-yellow"></i>
                     </div>
-                    <div class="text-base sm:text-lg lg:text-xl font-extrabold text-gray-900 whitespace-normal">Reaproveitadas</div>
+                    <div class="text-base sm:text-lg lg:text-xl font-extrabold text-gray-950 whitespace-normal">Reaproveitadas</div>
                 </div>
-                <div class="text-[10px] sm:text-xs text-gray-500 font-semibold mt-2 uppercase tracking-wider truncate">Botoeiras de Saída</div>
+                <div class="text-[10px] sm:text-xs text-gray-500 font-semibold mt-2 uppercase tracking-wider truncate">Botoeiras e Infra</div>
             </div>
             <!-- Card 4 -->
             <div class="bg-white rounded-2xl p-4 sm:p-6 shadow-glass border border-gray-100 text-center hover:border-brand-yellow/40 transition-all flex flex-col justify-between animate-float" style="animation-delay:1.2s;">
@@ -377,7 +381,6 @@
                     <div class="w-10 h-10 bg-brand-yellow/10 rounded-xl flex items-center justify-center mx-auto mb-3 shrink-0">
                         <i data-lucide="calendar" class="w-5 h-5 text-brand-yellow"></i>
                     </div>
-                    <!-- Resolvido quebra de texto para finais de semana -->
                     <div class="text-base sm:text-lg lg:text-xl font-extrabold text-gray-900 whitespace-normal break-words leading-tight">Finais de Semana</div>
                 </div>
                 <div class="text-[10px] sm:text-xs text-gray-500 font-semibold mt-2 uppercase tracking-wider truncate">Instalação Inclusa</div>
@@ -411,7 +414,7 @@
                 </p>
                 <div class="mt-auto pt-5 border-t border-gray-100 relative z-10 w-full">
                     <div class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-emerald-50 border border-emerald-100 text-emerald-700 text-[10px] font-bold uppercase tracking-widest mb-3">
-                        <i data-lucide="check-circle-2" class="w-3.5 h-3.5 shrink-0"></i> Solução Vision
+                        <i data-lucide="check-circle-2" class="w-3.5 h-3.5 shrink-0 text-emerald-600"></i> Solução Vision
                     </div>
                     <ul class="space-y-2 text-xs text-emerald-800 font-semibold">
                         <li class="flex items-center gap-2">
@@ -434,11 +437,11 @@
                 </div>
                 <h3 class="text-xl font-bold text-gray-900 mb-3 relative z-10">Reaproveitamento de Insumos</h3>
                 <p class="text-gray-600 text-sm mb-6 relative z-10 leading-relaxed flex-1">
-                    Redução de custos desnecessários. Validamos a integração completa de suas botoeiras de saída de aço inox já existentes no local.
+                    Redução de custos operacionais e desperdício. Validamos em vistoria que todas as suas botoeiras de saída de aço inox atuais serão integralmente reaproveitadas.
                 </p>
                 <div class="mt-auto pt-5 border-t border-gray-100 relative z-10 w-full">
                     <div class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-emerald-50 border border-emerald-100 text-emerald-700 text-[10px] font-bold uppercase tracking-widest mb-3">
-                        <i data-lucide="check-circle-2" class="w-3.5 h-3.5 shrink-0"></i> Solução Vision
+                        <i data-lucide="check-circle-2" class="w-3.5 h-3.5 shrink-0 text-emerald-600"></i> Solução Vision
                     </div>
                     <ul class="space-y-2 text-xs text-emerald-800 font-semibold">
                         <li class="flex items-center gap-2">
@@ -447,7 +450,7 @@
                         </li>
                         <li class="flex items-center gap-2">
                             <i data-lucide="check" class="w-3.5 h-3.5 shrink-0 text-emerald-600"></i>
-                            <span>Foco no investimento do hardware facial</span>
+                            <span>Investimento focado em hardware e engenharia</span>
                         </li>
                     </ul>
                 </div>
@@ -461,11 +464,11 @@
                 </div>
                 <h3 class="text-xl font-bold text-gray-900 mb-3 relative z-10">Execução sem Impacto</h3>
                 <p class="text-gray-600 text-sm mb-6 relative z-10 leading-relaxed flex-1">
-                    A operação da Ecogen não pode parar. Executar a passagem de cabos e a troca técnica das controladoras durante a semana causaria interrupções indesejadas.
+                    A operação da Ecogen não pode sofrer paradas. A passagem do cabo e fixação sobre o piso elevado pesado exige cronograma de fim de semana técnica e esteticamente limpo.
                 </p>
                 <div class="mt-auto pt-5 border-t border-gray-100 relative z-10 w-full">
                     <div class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-emerald-50 border border-emerald-100 text-emerald-700 text-[10px] font-bold uppercase tracking-widest mb-3">
-                        <i data-lucide="check-circle-2" class="w-3.5 h-3.5 shrink-0"></i> Solução Vision
+                        <i data-lucide="check-circle-2" class="w-3.5 h-3.5 shrink-0 text-emerald-600"></i> Solução Vision
                     </div>
                     <ul class="space-y-2 text-xs text-emerald-800 font-semibold">
                         <li class="flex items-center gap-2">
@@ -515,7 +518,7 @@
                 <div class="space-y-2 flex-1 text-sm text-gray-700">
                     <div class="flex items-start gap-2">
                         <i data-lucide="check-circle" class="w-4 h-4 text-emerald-600 shrink-0 mt-0.5"></i>
-                        <span>Entrada via controle facial de alta velocidade</span>
+                        <span>Entrada via leitor SS 1530 de alta velocidade</span>
                     </div>
                     <div class="flex items-start gap-2">
                         <i data-lucide="check-circle" class="w-4 h-4 text-emerald-600 shrink-0 mt-0.5"></i>
@@ -565,11 +568,11 @@
                 <div class="space-y-2 flex-1 text-sm text-gray-700">
                     <div class="flex items-start gap-2">
                         <i data-lucide="check-circle" class="w-4 h-4 text-emerald-600 shrink-0 mt-0.5"></i>
-                        <span>Entrada por leitura facial otimizada</span>
+                        <span>Entrada por leitura facial otimizada SS 1530</span>
                     </div>
                     <div class="flex items-start gap-2">
                         <i data-lucide="check-circle" class="w-4 h-4 text-emerald-600 shrink-0 mt-0.5"></i>
-                        <span>Passagem de infraestrutura CAT6 estendida de 85 metros</span>
+                        <span>Passagem de infraestrutura CAT6 sob piso elevado</span>
                     </div>
                 </div>
             </div>
@@ -592,14 +595,13 @@
                         <i data-lucide="check-circle" class="w-4 h-4 text-emerald-600 shrink-0 mt-0.5"></i>
                         <span>Entrada via validação biométrica facial robusta</span>
                     </div>
-                    <!-- Dinamismo Cenário 1 vs Cenário 2 no CCO -->
                     <div class="flex items-start gap-2 border-t border-dashed border-gray-200 pt-2 mt-2">
                         <i data-lucide="info" class="w-4 h-4 text-brand-yellow shrink-0 mt-0.5"></i>
-                        <span class="text-xs text-gray-600"><strong class="text-gray-900">Cenário 1:</strong> Saída por botoeira existente + controle remoto sem fio.</span>
+                        <span class="text-xs text-gray-600"><strong class="text-gray-900">Cenário 1:</strong> Saída por botoeira existente + receptor de controle sem fio.</span>
                     </div>
                     <div class="flex items-start gap-2">
                         <i data-lucide="info" class="w-4 h-4 text-brand-yellow shrink-0 mt-0.5"></i>
-                        <span class="text-xs text-gray-600"><strong class="text-gray-900">Cenário 2:</strong> Saída por duas botoeiras físicas de parede.</span>
+                        <span class="text-xs text-gray-600"><strong class="text-gray-900">Cenário 2:</strong> Saída por botoeira dupla física de parede.</span>
                     </div>
                 </div>
             </div>
@@ -620,16 +622,15 @@
                 <div class="space-y-2 flex-1 text-sm text-gray-700">
                     <div class="flex items-start gap-2">
                         <i data-lucide="check-circle" class="w-4 h-4 text-emerald-600 shrink-0 mt-0.5"></i>
-                        <span>Ponto crítico de fluxo corporativo e triagem</span>
+                        <span>Ponto crítico de fluxo e triagem principal</span>
                     </div>
-                    <!-- Dinamismo Cenário 1 vs Cenário 2 na Recepção -->
                     <div class="flex items-start gap-2 border-t border-dashed border-gray-200 pt-2 mt-2">
                         <i data-lucide="info" class="w-4 h-4 text-brand-yellow shrink-0 mt-0.5"></i>
                         <span class="text-xs text-gray-600"><strong class="text-gray-900">Cenário 1:</strong> 02 Controladoras faciais (entrada/saída) + 1 botoeira.</span>
                     </div>
                     <div class="flex items-start gap-2">
                         <i data-lucide="info" class="w-4 h-4 text-brand-yellow shrink-0 mt-0.5"></i>
-                        <span class="text-xs text-gray-600"><strong class="text-gray-900">Cenário 2:</strong> 01 Controladora facial (entrada) + 2 botoeiras (saída).</span>
+                        <span class="text-xs text-gray-600"><strong class="text-gray-900">Cenário 2:</strong> 01 Controladora facial (entrada) + botoeira (saída).</span>
                     </div>
                 </div>
             </div>
@@ -654,6 +655,45 @@
 
         <div class="grid lg:grid-cols-2 gap-8 reveal">
             
+            <!-- Controladora Facial Intelbras SS 1530 MF W -->
+            <div class="bg-white rounded-[2rem] p-6 md:p-8 border border-gray-200 shadow-sm flex flex-col md:flex-row items-center md:items-start gap-8 relative overflow-hidden group hover:border-brand-yellow/40 hover:shadow-premium-card transition-all">
+                <div class="absolute top-0 right-0 w-48 h-48 bg-brand-yellow/10 rounded-full blur-3xl transition-transform group-hover:scale-150"></div>
+                
+                <div class="w-32 h-44 shrink-0 bg-white rounded-2xl p-2 flex flex-col items-center justify-center border border-gray-100 shadow-sm relative z-10">
+                    <img src="https://res.cloudinary.com/dptcuckhf/image/upload/v1781279570/ss1530-2-s4s5dx0x0g_nhnlpk.webp" 
+                         alt="Controlador Facial Intelbras SS 1530 MF W" 
+                         class="w-full h-full object-contain transform group-hover:scale-105 transition-transform duration-500 drop-shadow-md rounded-lg"
+                         onerror="this.style.display='none'; this.nextElementSibling.classList.remove('hidden');">
+                    <div class="hidden flex flex-col items-center justify-center text-brand-yellow">
+                        <i data-lucide="contact" class="w-12 h-12 mb-2"></i>
+                        <span class="text-[10px] font-bold text-gray-400">Intelbras SS 1530</span>
+                    </div>
+                </div>
+                
+                <div class="flex-1 text-left relative z-10 flex flex-col h-full">
+                    <div class="mb-4">
+                        <div class="inline-flex items-center gap-2 px-3 py-1 bg-white border border-brand-yellow/30 text-brand-goldDark rounded-full text-[10px] font-bold uppercase tracking-widest mb-3">
+                            <i data-lucide="cpu" class="w-3 h-3"></i> Leitor Facial com Excelente Custo-Benefício
+                        </div>
+                        <h3 class="font-bold text-gray-900 text-xl md:text-2xl mb-2">Intelbras SS 1530 MF W</h3>
+                    </div>
+                    <ul class="flex flex-col gap-3 mt-auto pt-4 border-t border-gray-100">
+                        <li class="flex items-start gap-3">
+                            <div class="w-5 h-5 rounded-full bg-brand-yellow/10 flex items-center justify-center shrink-0 mt-0.5 border border-brand-yellow/20">
+                                <i data-lucide="check" class="w-3 h-3 text-brand-goldDark"></i>
+                            </div>
+                            <p class="text-sm text-gray-700 leading-relaxed"><strong>Leitura Ultra-Veloz:</strong> Leitura em menos de 0.2 segundos com vivacidade inteligente 2D contra tentativas de fraude.</p>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <div class="w-5 h-5 rounded-full bg-brand-yellow/10 flex items-center justify-center shrink-0 mt-0.5 border border-brand-yellow/20">
+                                <i data-lucide="check" class="w-3 h-3 text-brand-goldDark"></i>
+                            </div>
+                            <p class="text-sm text-gray-700 leading-relaxed"><strong>Aplicação Discreta:</strong> Ideal para as portas do CPD, Sala TI, ADM e CCO.</p>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
             <!-- Controladora Facial Intelbras SS 3532 MF W -->
             <div class="bg-white rounded-[2rem] p-6 md:p-8 border border-gray-200 shadow-sm flex flex-col md:flex-row items-center md:items-start gap-8 relative overflow-hidden group hover:border-brand-yellow/40 hover:shadow-premium-card transition-all">
                 <div class="absolute top-0 right-0 w-48 h-48 bg-brand-yellow/10 rounded-full blur-3xl transition-transform group-hover:scale-150"></div>
@@ -672,7 +712,7 @@
                 <div class="flex-1 text-left relative z-10 flex flex-col h-full">
                     <div class="mb-4">
                         <div class="inline-flex items-center gap-2 px-3 py-1 bg-white border border-brand-yellow/30 text-brand-goldDark rounded-full text-[10px] font-bold uppercase tracking-widest mb-3">
-                            <i data-lucide="cpu" class="w-3 h-3"></i> Leitor Facial com Inteligência Artificial
+                            <i data-lucide="shield" class="w-3 h-3"></i> Leitor Premium para Alto Fluxo
                         </div>
                         <h3 class="font-bold text-gray-900 text-xl md:text-2xl mb-2">Intelbras SS 3532 MF W</h3>
                     </div>
@@ -681,13 +721,13 @@
                             <div class="w-5 h-5 rounded-full bg-brand-yellow/10 flex items-center justify-center shrink-0 mt-0.5 border border-brand-yellow/20">
                                 <i data-lucide="check" class="w-3 h-3 text-brand-goldDark"></i>
                             </div>
-                            <p class="text-sm text-gray-700 leading-relaxed"><strong>Algoritmo Anti-Fake e Vivacidade:</strong> Realiza autenticação inteligente em menos de 0.2 segundos, impedindo tentativas de acesso via fotos ou vídeos.</p>
+                            <p class="text-sm text-gray-700 leading-relaxed"><strong>Capacidade Expandida:</strong> Reconhecimento ultra rápido para até 10.000 usuários, perfeito para a recepção principal.</p>
                         </li>
                         <li class="flex items-start gap-3">
                             <div class="w-5 h-5 rounded-full bg-brand-yellow/10 flex items-center justify-center shrink-0 mt-0.5 border border-brand-yellow/20">
                                 <i data-lucide="check" class="w-3 h-3 text-brand-goldDark"></i>
                             </div>
-                            <p class="text-sm text-gray-700 leading-relaxed"><strong>Conectividade Autônoma Wi-Fi/IP:</strong> Integrada de forma transparente à sua infraestrutura de servidores e switches existentes.</p>
+                            <p class="text-sm text-gray-700 leading-relaxed"><strong>Ergonomia Avançada:</strong> Visão ampla de detecção por câmera dupla, mesmo em locais com luminosidade instável.</p>
                         </li>
                     </ul>
                 </div>
@@ -716,13 +756,48 @@
                             <div class="w-5 h-5 rounded-full bg-brand-yellow/10 flex items-center justify-center shrink-0 mt-0.5 border border-brand-yellow/20">
                                 <i data-lucide="check" class="w-3 h-3 text-brand-goldDark"></i>
                             </div>
-                            <p class="text-sm text-gray-700 leading-relaxed"><strong>Fidelidade e Blindagem de Sinal:</strong> Insumo de rede padrão Gigabit Furukawa de altíssimo padrão, crucial para tráfego veloz de dados biométricos.</p>
+                            <p class="text-sm text-gray-700 leading-relaxed"><strong>Transmissão Sem Ruídos:</strong> Insumo de rede profissional blindado que garante tráfego estrátegico Gigabit sem atenuação de dados.</p>
                         </li>
                         <li class="flex items-start gap-3">
                             <div class="w-5 h-5 rounded-full bg-brand-yellow/10 flex items-center justify-center shrink-0 mt-0.5 border border-brand-yellow/20">
                                 <i data-lucide="check" class="w-3 h-3 text-brand-goldDark"></i>
                             </div>
-                            <p class="text-sm text-gray-700 leading-relaxed"><strong>Longas Distâncias Sem Atenuação:</strong> Suporta perfeitamente os pontos de 85m (ADM) e 130m (Recepção) do projeto da Marble Tower.</p>
+                            <p class="text-sm text-gray-700 leading-relaxed"><strong>Piso Elevado:</strong> Rigidez estrutural mecânica ideal para passagem sob o cabeamento de piso elevado da Marble Tower.</p>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Fontes Industriais Intelbras EF-1205+ -->
+            <div class="bg-white rounded-[2rem] p-6 md:p-8 border border-gray-200 shadow-sm flex flex-col md:flex-row items-center md:items-start gap-8 relative overflow-hidden group hover:border-brand-yellow/40 hover:shadow-premium-card transition-all">
+                <div class="absolute top-0 right-0 w-48 h-48 bg-brand-yellow/10 rounded-full blur-3xl transition-transform group-hover:scale-150"></div>
+                
+                <div class="w-32 h-44 shrink-0 bg-white rounded-2xl p-4 flex flex-col items-center justify-center border border-gray-100 shadow-sm relative z-10">
+                    <div class="h-full w-full flex flex-col items-center justify-center text-brand-yellow gap-2">
+                        <i data-lucide="zap" class="w-16 h-16 drop-shadow-md animate-pulse"></i>
+                        <span class="text-[9px] font-bold text-gray-400 uppercase tracking-widest text-center">Intelbras 5A</span>
+                    </div>
+                </div>
+                
+                <div class="flex-1 text-left relative z-10 flex flex-col h-full">
+                    <div class="mb-4">
+                        <div class="inline-flex items-center gap-2 px-3 py-1 bg-white border border-brand-yellow/30 text-brand-goldDark rounded-full text-[10px] font-bold uppercase tracking-widest mb-3">
+                            <i data-lucide="activity" class="w-3 h-3"></i> Alimentação Estabilizada
+                        </div>
+                        <h3 class="font-bold text-gray-900 text-xl md:text-2xl mb-2">Intelbras 12V 5A (EF-1205+)</h3>
+                    </div>
+                    <ul class="flex flex-col gap-3 mt-auto pt-4 border-t border-gray-100">
+                        <li class="flex items-start gap-3">
+                            <div class="w-5 h-5 rounded-full bg-brand-yellow/10 flex items-center justify-center shrink-0 mt-0.5 border border-brand-yellow/20">
+                                <i data-lucide="check" class="w-3 h-3 text-brand-goldDark"></i>
+                            </div>
+                            <p class="text-sm text-gray-700 leading-relaxed"><strong>Energia Estabilizada:</strong> Substituição das fontes convencionais por fontes 12V 5A com rabicho dedicado, garantindo fluxo limpo para as travas.</p>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <div class="w-5 h-5 rounded-full bg-brand-yellow/10 flex items-center justify-center shrink-0 mt-0.5 border border-brand-yellow/20">
+                                <i data-lucide="check" class="w-3 h-3 text-brand-goldDark"></i>
+                            </div>
+                            <p class="text-sm text-gray-700 leading-relaxed"><strong>Rabicho Integrado:</strong> Facilidade de conexão rápida e organizada dentro do rack ou painel técnico de energia.</p>
                         </li>
                     </ul>
                 </div>
@@ -831,13 +906,12 @@
 
                         <div class="flex items-start gap-2 md:gap-3 p-3 bg-white border border-brand-yellow/30 rounded-lg md:rounded-xl shadow-sm">
                             <i data-lucide="wrench" class="w-4 h-4 text-brand-yellow shrink-0 mt-0.5"></i>
-                            <p class="text-[10px] md:text-sm text-gray-800 leading-snug md:leading-relaxed"><strong>Mão de Obra Técnica Especializada:</strong> Passagem, conectorização e fusão estruturada dos pontos CAT6, alinhamento físico das controladoras faciais Intelbras e integração com servidores Ecogen.</p>
+                            <p class="text-[10px] md:text-sm text-gray-800 leading-snug md:leading-relaxed font-medium"><strong>Mão de Obra Técnica de Elite:</strong> Instalação cirúrgica das 5 portas executada estritamente aos sábados e domingos pelo Ernani e equipe de campo. Desmontagem e passagem de cabeamento CAT6 blindado sob piso elevado pesado, furação industrial nos batentes de aço escovado e posicionamento ergonômico ideal.</p>
                         </div>
-                        
+
                         <div class="flex items-start gap-2 md:gap-3 p-3 bg-white border border-brand-yellow/30 rounded-lg md:rounded-xl shadow-sm">
-                            <!-- Resolvido o corte da palavra Finais de Semana -->
-                            <i data-lucide="clock" class="w-4 h-4 text-brand-yellow shrink-0 mt-0.5"></i>
-                            <p class="text-[10px] md:text-sm text-gray-800 leading-snug md:leading-relaxed whitespace-normal break-words"><strong>Cronograma de Instalação em Finais de Semana:</strong> Mobilização integral da equipe técnica de campo aos sábados e domingos, assegurando impacto operacional zero na Ecogen.</p>
+                            <i data-lucide="shield-check" class="w-4 h-4 text-brand-yellow shrink-0 mt-0.5"></i>
+                            <p class="text-[10px] md:text-sm text-gray-800 leading-snug md:leading-relaxed font-medium"><strong>Reaproveitamento Operacional Inteligente:</strong> Validação de reuso para todas as suas botoeiras de inox de parede atuais, garantindo custo reduzido de insumos e focando no hardware de processamento facial Intelbras.</p>
                         </div>
                         
                         <!-- BÔNUS TAG -->
@@ -875,27 +949,27 @@
                     <i data-lucide="chevron-down" class="w-5 h-5 text-brand-yellow acc-arrow shrink-0"></i>
                 </button>
                 <div class="accordion-content text-left">
-                    <p class="px-6 pb-6 text-gray-600 text-sm leading-relaxed">Sim! Nossa equipe técnica realizou a validação de engenharia e confirmou que as botoeiras de saída em aço inox atualmente instaladas na Ecogen são perfeitamente compatíveis com as novas controladoras faciais Intelbras SS 3532. Isso reduz significativamente os custos de insumos adicionais no projeto.</p>
+                    <p class="px-6 pb-6 text-gray-600 text-sm leading-relaxed">Sim! Nossa equipe de engenharia realizou o mapeamento estrutural e validou que as botoeiras de parede existentes na Marble Tower serão 100% integradas às novas controladoras Intelbras SS 1530 e SS 3532, garantindo que o seu teto orçamentário seja otimizado.</p>
                 </div>
             </div>
 
             <div class="accordion-item bg-white rounded-2xl border border-gray-100 shadow-sm overflow-hidden transition-all hover:border-brand-yellow/50">
                 <button onclick="toggleAccordion(this)" class="w-full flex items-center justify-between p-6 text-left font-bold text-gray-900 focus:outline-none">
-                    <span>A instalação em finais de semana gera custos operacionais adicionais?</span>
+                    <span>A instalação aos finais de semana gera custo adicional ao orçamento final?</span>
                     <i data-lucide="chevron-down" class="w-5 h-5 text-brand-yellow acc-arrow shrink-0"></i>
                 </button>
                 <div class="accordion-content text-left">
-                    <p class="px-6 pb-6 text-gray-600 text-sm leading-relaxed">Não. Para esta proposta corporativa, a mobilização da nossa equipe técnica especializada em regime de finais de semana (sábados e domingos) já está 100% inclusa nos custos de mão de obra integrados apresentados, garantindo tranquilidade total para sua operação comercial.</p>
+                    <p class="px-6 pb-6 text-gray-600 text-sm leading-relaxed">Não. Compreendemos a criticidade das operações comerciais da Ecogen, por isso o cronograma em janelas alternativas aos sábados e domingos já foi totalmente provisionado e integrado nos valores finais apresentados.</p>
                 </div>
             </div>
 
             <div class="accordion-item bg-white rounded-2xl border border-gray-100 shadow-sm overflow-hidden transition-all hover:border-brand-yellow/50">
                 <button onclick="toggleAccordion(this)" class="w-full flex items-center justify-between p-6 text-left font-bold text-gray-900 focus:outline-none">
-                    <span>As controladoras faciais necessitam de conexão com internet ou funcionam localmente?</span>
+                    <span>Como funciona a gestão unificada e centralizada de todas as controladoras?</span>
                     <i data-lucide="chevron-down" class="w-5 h-5 text-brand-yellow acc-arrow shrink-0"></i>
                 </button>
                 <div class="accordion-content text-left">
-                    <p class="px-6 pb-6 text-gray-600 text-sm leading-relaxed">O modelo corporativo Intelbras SS 3532 MF W funciona de forma híbrida. Ele pode operar totalmente isolado de internet, utilizando comunicação Ethernet TCP/IP com o servidor ou switch que vocês já possuem na Marble Tower, garantindo total privacidade, conformidade e velocidade na validação dos dados de acesso.</p>
+                    <p class="px-6 pb-6 text-gray-600 text-sm leading-relaxed">Diga adeus à configuração pontual por porta! Nossa solução unificada permite a gestão centralizada via rede. Você poderá cadastrar o rosto do usuário uma única vez de forma global, definir horários e níveis de acesso específicos para cada uma das 5 portas e extrair relatórios integrados diretamente no servidor atual de vocês, sem qualquer taxa de licenciamento recorrente.</p>
                 </div>
             </div>
         </div>
@@ -963,59 +1037,79 @@
 
 <!-- ===================== SCRIPTS ===================== -->
 <script>
-    // INICIALIZAÇÃO DOS ÍCONES LUCIDE
-    lucide.createIcons();
+    // INICIALIZAÇÃO SEGURA DOS ÍCONES
+    function initIcons() {
+        if (window.lucide && typeof window.lucide.createIcons === 'function') {
+            window.lucide.createIcons();
+        }
+    }
+    document.addEventListener("DOMContentLoaded", initIcons);
 
     // TELA DE BLOQUEIO & SUBMISSÃO DO ALERTA SILENCIOSO
     function checkPassword() {
         const input = document.getElementById('password-input').value;
         const errorMsg = document.getElementById('error-msg');
         const formattedInput = input.trim().toUpperCase();
+        const btnUnlock = document.getElementById('btn-unlock');
+        const unlockIcon = document.getElementById('unlock-icon');
+        const unlockText = document.getElementById('unlock-text');
+        const unlockArrow = document.getElementById('unlock-arrow');
         
         if (formattedInput === 'WENIO2026' || formattedInput === 'ECOGEN' || formattedInput === 'VISION') {
-            const lockScreen = document.getElementById('lock-screen');
-            lockScreen.style.opacity = '0';
+            
+            // Visual feedback de carregamento rápido
+            btnUnlock.disabled = true;
+            if (unlockText) unlockText.textContent = "Validando Acesso...";
+            if (unlockIcon) unlockIcon.className = "w-5 h-5 animate-spin text-black";
+            if (unlockArrow) unlockArrow.style.display = 'none';
 
-            // Iniciar o vídeo automaticamente após o login
-            const video = document.getElementById("vision-video");
-            if (video && video.paused) {
-                video.muted = true;
-                video.play().catch(e => {});
-            }
+            setTimeout(() => {
+                const lockScreen = document.getElementById('lock-screen');
+                lockScreen.style.opacity = '0';
 
-            // Identificação de Consentimento no Clarity
-            if (window.clarity) {
-                window.clarity("consent");
-                window.clarity("identify", "wenio-ecogen", undefined, undefined, "Wênio Lopes (Ecogen)");
-                window.clarity("set", "Proposta", "Projeto_Controle_Acesso_Ecogen");
-                window.clarity("event", "Proposta_Desbloqueada");
-            }
-
-            // Envio silencioso do webhook de monitoramento para o StaticForms
-            fetch('https://api.staticforms.dev/submit', {
-                method: 'POST',
-                headers: { 
-                    'Content-Type': 'application/json',
-                    'Accept': 'application/json'
-                },
-                body: JSON.stringify({
-                    accessKey: "sf_077ej49gjha153gk3m6ceecf",
-                    subject: "🚨 ALERTA: Proposta Acessada (Wênio Lopes - Ecogen)",
-                    name: "Sistema Vision",
-                    email: "diretoria@visionsp.com.br",
-                    message: "O cliente Wênio Lopes acabou de abrir o projeto da Ecogen (Controle de Acesso - Marble Tower)!\n\n👤 Cliente: Wênio Lopes (Ecogen)\n🔑 Senha Utilizada: " + input + "\n🕒 Horário: " + new Date().toLocaleString('pt-BR')
-                })
-            }).catch(error => console.log('Registro de segurança corporativo realizado.'));
-
-            setTimeout(() => { 
-                lockScreen.style.display = 'none'; 
-                const htmlRoot = document.getElementById('html-root');
-                if(htmlRoot) {
-                    htmlRoot.classList.remove('overflow-hidden', 'h-screen');
-                    htmlRoot.classList.add('overflow-x-hidden');
+                // Iniciar o vídeo automaticamente após o login
+                const video = document.getElementById("vision-video");
+                if (video && video.paused) {
+                    video.muted = true;
+                    video.play().catch(e => {});
                 }
-                document.body.classList.remove('overflow-hidden', 'h-screen');
-            }, 700);
+
+                // Identificação de Consentimento no Clarity
+                if (window.clarity) {
+                    window.clarity("consent");
+                    window.clarity("identify", "wenio-ecogen", undefined, undefined, "Wênio Lopes (Ecogen)");
+                    window.clarity("set", "Proposta", "Projeto_Controle_Acesso_Ecogen");
+                    window.clarity("event", "Proposta_Desbloqueada");
+                }
+
+                // Envio silencioso do webhook de monitoramento para o StaticForms
+                fetch('https://api.staticforms.dev/submit', {
+                    method: 'POST',
+                    headers: { 
+                        'Content-Type': 'application/json',
+                        'Accept': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        accessKey: "sf_077ej49gjha153gk3m6ceecf",
+                        subject: "🚨 ALERTA: Proposta Acessada (Wênio Lopes - Ecogen)",
+                        name: "Sistema Vision",
+                        email: "diretoria@visionsp.com.br",
+                        message: "O cliente Wênio Lopes acabou de abrir o projeto da Ecogen (Controle de Acesso - Marble Tower)!\n\n👤 Cliente: Wênio Lopes (Ecogen)\n🔑 Senha Utilizada: " + input + "\n🕒 Horário: " + new Date().toLocaleString('pt-BR')
+                    })
+                }).catch(error => console.log('Registro de segurança corporativo realizado.'));
+
+                setTimeout(() => { 
+                    lockScreen.style.display = 'none'; 
+                    const htmlRoot = document.getElementById('html-root');
+                    if(htmlRoot) {
+                        htmlRoot.classList.remove('overflow-hidden', 'h-screen');
+                        htmlRoot.classList.add('overflow-x-hidden');
+                    }
+                    document.body.classList.remove('overflow-hidden', 'h-screen');
+                }, 700);
+
+            }, 800);
+
         } else {
             errorMsg.classList.remove('hidden');
             document.getElementById('password-input').style.borderColor = 'rgba(239,68,68,0.5)';
@@ -1031,31 +1125,32 @@
         cenario1: {
             title: "Cenário 1 — Recepção Dupla Facial & CCO Remoto",
             badge: "Segurança Máxima",
-            basePrice: 13910.00,
-            totalCard: 16690.00,
-            instalmentPrice: 1390.83,
+            basePrice: 14705.00,
+            totalCard: 17644.53,
+            instalmentPrice: 1470.37,
             desc: "Solução robusta que contempla controle facial de entrada e saída na Recepção, saída remota via controle sem fio no CCO e cabeamento estendido Furukawa Soho CAT6.",
-            cabling: "320 metros de cabo de rede Furukawa Soho Plus CAT6",
+            cabling: "305 metros de cabo de rede Furukawa Soho Plus CAT6",
             hardwareList: [
-                "<strong>06x Controladores Faciais Intelbras SS 3532 MF W:</strong> Sendo 4 para CPD, Sala TI, ADM, CCO e 2 instalados na Recepção de forma cruzada (entrada/saída).",
-                "<strong>02x Caixas de Cabo de Rede Furukawa Soho Plus CAT6:</strong> Cabeamento Gigabit blindado profissional para suportar as longas distâncias.",
-                "<strong>01x Receptor com Controle Remoto Sem Fio XAC 4000:</strong> Solução Intelbras para liberação da porta do CCO de forma remota à distância.",
-                "<strong>Fontes Nobreak Intelbras EFB 1201 + Baterias VRLA XB 1270:</strong> Proteção de energia ativa contra quedas elétricas inclusa no CPD."
+                "<strong>04x Controladores Faciais Intelbras SS 1530 MF W:</strong> Equipamentos dedicados para CPD, Sala TI, ADM e CCO.",
+                "<strong>02x Controladores Faciais Intelbras SS 3532 MF W:</strong> Sendo 1 para entrada e 1 para saída cruzada na Recepção principal.",
+                "<strong>01x Sistema de Controle Remoto XAC 4000:</strong> Receptor (R$ 209,90) + Bateria 12V (R$ 62,90) + Controle TX (R$ 18,80) para o CCO.",
+                "<strong>05x Fontes de Alimentação Intelbras 12V 5A (EF-1205+):</strong> Com rabicho dedicado para fornecimento de energia estabilizada às travas.",
+                "<strong>01x Caixa de Cabo UTP Cat6 305m (Furukawa):</strong> Cabeamento Gigabit blindado de alto desempenho."
             ]
         },
         cenario2: {
             title: "Cenário 2 — Recepção Facial Única & Botoeiras",
             badge: "Eficiência & Economia",
-            basePrice: 13060.00,
-            totalCard: 15670.00,
-            instalmentPrice: 1305.83,
-            desc: "Solução otimizada com controle facial apenas para entrada na Recepção (saída livre por botoeira dupla) e CCO com duas botoeiras físicas de aço inox.",
-            cabling: "260 metros de cabo de rede Furukawa Soho Plus CAT6",
+            basePrice: 12990.00,
+            totalCard: 15586.70,
+            instalmentPrice: 1298.89,
+            desc: "Solução otimizada com controle facial apenas para entrada na Recepção (saída livre por botoeiras reutilizadas), mantendo a integridade das demais portas.",
+            cabling: "305 metros de cabo de rede Furukawa Soho Plus CAT6",
             hardwareList: [
-                "<strong>05x Controladores Faciais Intelbras SS 3532 MF W:</strong> Instalados para autenticação de entrada no CPD, Sala TI, ADM, CCO e Recepção.",
-                "<strong>02x Caixas de Cabo de Rede Furukawa Soho Plus CAT6:</strong> Infraestrutura estendida dimensionada para a metragem real da planta do escritório.",
-                "<strong>Integração com Botoeiras Físicas Duplas em Inox:</strong> Solução com botões de saída para liberação rápida de fluxo na Recepção e CCO.",
-                "<strong>Fontes Nobreak Intelbras EFB 1201 + Baterias VRLA XB 1270:</strong> Proteção de energia ativa contra quedas elétricas inclusa no CPD."
+                "<strong>04x Controladores Faciais Intelbras SS 1530 MF W:</strong> Equipamentos dedicados para CPD, Sala TI, ADM e CCO.",
+                "<strong>01x Controlador Facial Intelbras SS 3532 MF W:</strong> Dedicado para controle biométrico de entrada na Recepção.",
+                "<strong>05x Fontes de Alimentação Intelbras 12V 5A (EF-1205+):</strong> Com rabicho dedicado para fornecimento de energia estabilizada às travas.",
+                "<strong>01x Caixa de Cabo UTP Cat6 305m (Furukawa):</strong> Cabeamento Gigabit blindado de alto desempenho para longa distância."
             ]
         }
     };
@@ -1073,7 +1168,7 @@
         9: 1.1520,  
         10: 1.1680, 
         11: 1.1840, 
-        12: 1.199856  // Resulta exatamente em R$ 16.690,00 no Cenário 1 (12x de R$ 1.390,83)
+        12: 1.199856
     };
     
     let currentCenario = 'cenario1';
@@ -1088,18 +1183,20 @@
         container.className = "mb-6 grid grid-cols-1 sm:grid-cols-3 gap-4 items-center p-4 bg-gray-50 border border-gray-100 rounded-2xl relative z-10 animate-fade-in";
         container.innerHTML = `
             <div class="flex flex-col items-center text-center p-2 bg-white rounded-xl shadow-sm border border-gray-100 min-h-[140px] justify-between">
-                <span class="text-[8px] font-bold text-gray-400 uppercase tracking-widest mb-1.5">Controladora Facial Intelbras</span>
-                <img src="https://res.cloudinary.com/dptcuckhf/image/upload/v1770745467/ss-3532-mf-w-frontal_2_c82tua.png" alt="Leitor Facial Intelbras SS 3532" class="h-24 md:h-28 object-contain">
+                <span class="text-[8px] font-bold text-gray-400 uppercase tracking-widest mb-1.5">Controladora SS 1530</span>
+                <img src="https://res.cloudinary.com/dptcuckhf/image/upload/v1781279570/ss1530-2-s4s5dx0x0g_nhnlpk.webp" alt="Leitor Facial Intelbras SS 1530" class="h-24 md:h-28 object-contain rounded-lg">
             </div>
             <div class="flex flex-col items-center text-center p-2 bg-white rounded-xl shadow-sm border border-gray-100 min-h-[140px] justify-between">
-                <span class="text-[8px] font-bold text-gray-400 uppercase tracking-widest mb-1.5">Furukawa Soho CAT6</span>
+                <span class="text-[8px] font-bold text-gray-400 uppercase tracking-widest mb-1.5">Furukawa CAT6 305m</span>
                 <div class="h-24 md:h-28 flex items-center justify-center text-brand-yellow">
                     <i data-lucide="cable" class="w-12 h-12"></i>
                 </div>
             </div>
             <div class="flex flex-col items-center text-center p-2 bg-white rounded-xl shadow-sm border border-gray-100 min-h-[140px] justify-between">
-                <span class="text-[8px] font-bold text-gray-400 uppercase tracking-widest mb-1.5">Fonte EFB Intelbras + Bateria</span>
-                <img src="https://res.cloudinary.com/dptcuckhf/image/upload/v1777044434/efb_1202_persp_dir_pq6dkg.png" alt="Fonte Nobreak Intelbras EFB" class="h-20 md:h-24 object-contain">
+                <span class="text-[8px] font-bold text-gray-400 uppercase tracking-widest mb-1.5">Fonte Estabilizada EF-1205+</span>
+                <div class="h-24 md:h-28 flex items-center justify-center text-brand-yellow">
+                    <i data-lucide="zap" class="w-12 h-12"></i>
+                </div>
             </div>
         `;
 
@@ -1110,12 +1207,12 @@
             equipmentList.innerHTML += `
                 <div class="flex items-start gap-2 md:gap-3 p-3 bg-white border border-brand-yellow/30 rounded-lg md:rounded-xl shadow-sm">
                     <i data-lucide="check-square" class="w-4 h-4 text-brand-yellow shrink-0 mt-0.5 animate-pulse"></i>
-                    <p class="text-[10px] md:text-sm text-gray-800 leading-snug md:leading-relaxed">${item}</p>
+                    <p class="text-[10px] md:text-sm text-gray-800 leading-snug md:leading-relaxed font-semibold">${item}</p>
                 </div>
             `;
         });
         
-        lucide.createIcons();
+        initIcons();
     }
 
     // DINAMIZAÇÃO DO LINK DE WHATSAPP CONFORME OPÇÃO DE PAGAMENTO E CENÁRIO
@@ -1124,15 +1221,15 @@
         if (!btnLink) return;
 
         let message = '';
-        const cenarioText = currentCenario === 'cenario1' ? 'Cenário 1 (Dupla Facial na Recepção)' : 'Cenário 2 (Facial Única na Recepção)';
+        const cenarioText = currentCenario === 'cenario1' ? 'Cenário 1 (Dupla Facial na Recepção + Remoto no CCO)' : 'Cenário 2 (Facial Única na Recepção)';
         
         if (currentMode === 'avista') {
             const price = configData[currentCenario].basePrice;
-            message = `Olá Glícia, analisei a proposta e gostaria de aprovar o controle de acesso corporativo no ${cenarioText} da Ecogen, no pagamento à Vista de R$ ${formatCurrency(price)} via PIX.`;
+            message = `Olá Glícia, analisei a proposta e gostaria de aprovar o projeto de controle de acesso corporativo no ${cenarioText} da Ecogen, no pagamento à Vista de R$ ${formatCurrency(price)} via PIX.`;
         } else {
             const select = document.getElementById('installment-select');
             const installments = select ? select.value : '12';
-            message = `Olá Glícia, analisei a proposta e gostaria de aprovar o controle de acesso corporativo no ${cenarioText} da Ecogen, no plano parcelado em ${installments}x no Cartão de Crédito.`;
+            message = `Olá Glícia, analisei a proposta e gostaria de aprovar o projeto de controle de acesso corporativo no ${cenarioText} da Ecogen, no plano parcelado em ${installments}x no Cartão de Crédito.`;
         }
 
         btnLink.href = "https://wa.me/5511930816696?text=" + encodeURIComponent(message);
@@ -1274,7 +1371,7 @@
         }
         
         updateWhatsAppLink();
-        lucide.createIcons();
+        initIcons();
     }
 
     // DINAMIZAÇÃO INICIAL DO PROJETO
@@ -1289,7 +1386,7 @@
         entries.forEach(entry => {
             if (entry.isIntersecting) entry.target.classList.add('active');
         });
-    }, { threshold: 0.1 });
+    }, { threshold: 0.05 });
     document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
     // ANIMADORES DOS CONTADORES ESTATÍSTICOS
@@ -1320,7 +1417,7 @@
         const isOpen = item.classList.contains('open');
         document.querySelectorAll('.accordion-item').forEach(i => i.classList.remove('open'));
         if (!isOpen) item.classList.add('open');
-        lucide.createIcons();
+        initIcons();
     }
 
     // INTERAÇÕES NO SCROLL DE PÁGINA
