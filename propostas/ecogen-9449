@@ -138,6 +138,7 @@
             transition: all 0.3s;
             letter-spacing: 0.2em;
             border-radius: 14px;
+            text-transform: uppercase;
         }
         .lock-input:focus {
             border-color: #b9880e;
@@ -150,6 +151,7 @@
             font-family: 'Outfit', sans-serif;
             font-weight: 300;
             letter-spacing: normal;
+            text-transform: none;
         }
 
         .reveal { opacity: 0; transform: translateY(30px); transition: all 0.8s cubic-bezier(0.16,1,0.3,1); }
@@ -260,7 +262,7 @@
 
         <div>
             <!-- SENHAS CONFIGURADAS: WENIO2026, ECOGEN, VISION -->
-            <input type="password" id="password-input" class="lock-input w-full py-4 px-4 uppercase" placeholder="SENHA DE ACESSO" autocomplete="off" onkeydown="if(event.key==='Enter') checkPassword()">
+            <input type="password" id="password-input" class="lock-input w-full py-4 px-4" placeholder="SENHA DE ACESSO" autocomplete="off" onkeydown="if(event.key==='Enter') checkPassword()">
             <p id="error-msg" class="text-red-400 text-xs mt-2 hidden">
                 <span class="flex items-center justify-center gap-1"><i data-lucide="x-circle" class="w-4 h-4"></i> Credencial inválida.</span>
             </p>
@@ -291,7 +293,6 @@
             <div class="hidden md:flex items-center space-x-7 text-xs font-semibold text-gray-500 uppercase tracking-wider">
                 <a href="#diagnostico" class="hover:text-brand-yellow transition-colors">Diagnóstico</a>
                 <a href="#locais" class="hover:text-brand-yellow transition-colors">Mapeamento</a>
-                <a href="#simulador" class="hover:text-brand-yellow transition-colors">Sistema InControl</a>
                 <a href="#tecnologia" class="hover:text-brand-yellow transition-colors">Tecnologia</a>
                 <a href="#investimento" class="hover:text-brand-yellow transition-colors">Orçamento</a>
             </div>
@@ -328,7 +329,7 @@
                 </h1>
                 
                 <h2 class="text-base md:text-lg text-gray-500 max-w-xl mx-auto lg:mx-0 font-medium mt-6 leading-relaxed">
-                    Wênio, o projeto de segurança para as 5 portas da **Ecogen** exige sincronia técnica perfeita, alta velocidade de processamento e total discrição visual. Nossa equipe de engenharia estruturou o retrofit do seu controle de acesso utilizando tecnologia de biometria facial **Intelbras** integrada à sua rede de servidores local, com cabeamento CAT6 blindado. Tudo instalado em horários alternativos para impacto operacional zero em seus escritórios corporativos.
+                    Wênio, o projeto de segurança para as 5 portas da <strong>Ecogen</strong> exige sincronia técnica perfeita, alta velocidade de processamento e total discrição visual. Nossa equipe de engenharia estruturou o retrofit do seu controle de acesso utilizando tecnologia de biometria facial <strong>Intelbras</strong> integrada à sua rede de servidores local, com cabeamento CAT6 blindado. Tudo instalado em horários alternativos para impacto operacional zero em seus escritórios corporativos.
                 </h2>
             </div>
 
@@ -363,7 +364,7 @@
 <section class="py-8 bg-gray-50 border-y border-gray-200/50 no-print">
     <div class="max-w-7xl mx-auto px-4 flex flex-col sm:flex-row items-center justify-between gap-6">
         
-        <!-- Google Full Trademark Logo -->
+        <!-- Google Wordmark Logo -->
         <div class="flex items-center gap-4">
             <img src="https://upload.wikimedia.org/wikipedia/commons/2/2f/Google_2015_logo.svg" alt="Google Logo" class="h-6 md:h-7 w-auto object-contain shrink-0" />
             <div class="h-8 w-px bg-gray-300"></div>
@@ -383,7 +384,7 @@
                 <i data-lucide="star" class="w-5 h-5 fill-current"></i>
                 <i data-lucide="star" class="w-5 h-5 fill-current"></i>
             </div>
-            <div class="h-6 w-px bg-gray-300 hidden sm:block"></div>
+            <div class="h-6 w-px bg-gray-300浏览 hidden sm:block"></div>
             <p class="text-xs font-bold text-gray-500 uppercase tracking-widest hidden sm:block">118 avaliações de excelência técnica</p>
         </div>
 
@@ -704,7 +705,7 @@
 </section>
 
 <!-- ===================== TOPOLOGIA INTERATIVA INTELBRAS INCONTROL ===================== -->
-<section id="simulador" class="py-24 bg-zinc-950 text-white relative overflow-hidden no-print">
+<section id="simulador-topologia" class="py-24 bg-zinc-950 text-white relative overflow-hidden no-print">
     <div class="absolute inset-0 bg-grid opacity-10 pointer-events-none"></div>
     <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[700px] bg-brand-yellow/5 rounded-full blur-[120px] pointer-events-none"></div>
     
@@ -713,7 +714,7 @@
             <span class="text-brand-yellow font-bold uppercase tracking-widest text-xs">Topologia de Rede Local — Ecogen</span>
             <h2 class="text-3xl md:text-5xl font-bold mt-3 text-white">Integração Total InControl Server</h2>
             <p class="text-zinc-400 mt-4 max-w-2xl mx-auto text-sm md:text-base">
-                Esquema simplificado que ilustra o sincronismo direto das controladoras faciais com o servidor local e o monitoramento da recepção.
+                Esquema simplificado que ilustra o sincronismo direto das controladoras faciais com o servidor local e o monitoramento central.
             </p>
         </div>
 
@@ -911,7 +912,7 @@
                 <div class="w-32 h-44 shrink-0 bg-white rounded-2xl p-4 flex flex-col items-center justify-center border border-gray-100 shadow-sm relative z-10">
                     <div class="h-full w-full flex flex-col items-center justify-center text-brand-yellow gap-2">
                         <i data-lucide="cable" class="w-16 h-16 drop-shadow-md"></i>
-                        <span class="text-[9px] font-bold text-gray-400 uppercase tracking-widest text-center">Furukawa CAT6</span>
+                        <span class="text-[9px] font-bold text-gray-400 uppercase tracking-widest text-center font-tech">Furukawa CAT6</span>
                     </div>
                 </div>
                 
@@ -927,7 +928,7 @@
                             <div class="w-5 h-5 rounded-full bg-brand-yellow/10 flex items-center justify-center shrink-0 mt-0.5 border border-brand-yellow/20">
                                 <i data-lucide="check" class="w-3 h-3 text-brand-goldDark"></i>
                             </div>
-                            <p class="text-sm text-gray-700 leading-relaxed"><strong>Transmissão Sem Ruídos:</strong> Insumo de rede profissional que garante tráfego estratégico Gigabit sem atenuação de dados.</p>
+                            <p class="text-sm text-gray-700 leading-relaxed"><strong>Cabo de Rede Premium Homologado:</strong> Item original de alta engenharia, ideal para tráfego estratégico Gigabit sem atenuação de dados corporativos.</p>
                         </li>
                         <li class="flex items-start gap-3">
                             <div class="w-5 h-5 rounded-full bg-brand-yellow/10 flex items-center justify-center shrink-0 mt-0.5 border border-brand-yellow/20">
@@ -946,7 +947,7 @@
                 <div class="w-32 h-44 shrink-0 bg-white rounded-2xl p-4 flex flex-col items-center justify-center border border-gray-100 shadow-sm relative z-10">
                     <div class="h-full w-full flex flex-col items-center justify-center text-brand-yellow gap-2">
                         <i data-lucide="zap" class="w-16 h-16 drop-shadow-md animate-pulse"></i>
-                        <span class="text-[9px] font-bold text-gray-400 uppercase tracking-widest text-center">Intelbras 5A</span>
+                        <span class="text-[9px] font-bold text-gray-400 uppercase tracking-widest text-center font-tech">Intelbras 5A</span>
                     </div>
                 </div>
                 
@@ -1012,20 +1013,20 @@
             <div class="bg-gray-100 p-1.5 rounded-2xl inline-flex relative shadow-inner">
                 <button onclick="setProjectCenario('cenario1')" id="config-cenario1" class="relative z-10 px-5 md:px-8 py-3 text-xs md:text-sm font-bold text-white transition-all w-44 md:w-56 text-center rounded-xl bg-brand-yellow shadow-md flex items-center justify-center gap-2">
                     <i data-lucide="shield-check" class="w-4 h-4"></i>
-                    <span>Cenário 1 (Duplo Facial)</span>
+                    <span>Cenário 1</span>
                 </button>
                 <button onclick="setProjectCenario('cenario2')" id="config-cenario2" class="relative z-10 px-5 md:px-8 py-3 text-xs md:text-sm font-bold text-gray-500 transition-all w-44 md:w-56 text-center rounded-xl hover:text-black flex items-center justify-center gap-2">
                     <i data-lucide="shield" class="w-4 h-4"></i>
-                    <span>Cenário 2 (Facial Único)</span>
+                    <span>Cenário 2</span>
                 </button>
             </div>
         </div>
 
-        <!-- NOVO SELETOR DE TVIP (MONITOR DE VÍDEO IP) -->
+        <!-- SELETOR INTEGRADO DE TVIP (MONITOR DE VÍDEO IP) -->
         <div class="flex flex-col items-center justify-center mb-8 reveal">
             <div class="bg-gray-50 border border-gray-200/80 rounded-2xl p-4 flex flex-col sm:flex-row items-center justify-between gap-6 max-w-xl w-full shadow-xs">
                 <div class="flex items-center gap-3 text-left">
-                    <img src="https://res.cloudinary.com/dptcuckhf/image/upload/v1777408533/Terminal-de-video-IP-TVIP_2221_ynnumd.png" alt="TVIP 2221 HF" class="w-14 h-14 object-contain">
+                    <img src="https://res.cloudinary.com/dptcuckhf/image/upload/v1777408533/Terminal-de-video-IP-TVIP_2221_ynnumd.png" alt="TVIP 2221 HF" class="w-14 h-14 object-contain shrink-0">
                     <div>
                         <h4 class="font-bold text-sm text-gray-900">Adicionar Monitor de Vídeo IP TVIP na Recepção</h4>
                         <p class="text-[11px] text-gray-500 leading-tight">Permite triagem e liberação remota das eclusas por vídeo/áudio na mesa de atendimento.</p>
@@ -1117,7 +1118,7 @@
 
                     <a id="btn-aprova-link" href="#" target="_blank" class="w-full bg-brand-yellow hover:bg-brand-goldLight text-black font-bold py-3 md:py-4 rounded-xl md:rounded-2xl flex items-center justify-center gap-1.5 md:gap-2 transition-all shadow-glow-md text-[10px] md:text-[12px] uppercase tracking-widest group relative overflow-hidden mt-auto z-10">
                         <div class="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-300 rounded-xl md:rounded-2xl"></div>
-                        <span id="btn-text-aprova" class="relative z-10">Aprovar Proposta do Projeto</span>
+                        <span id="btn-text-aprova" class="relative z-10 font-tech">Aprovar Proposta do Projeto</span>
                         <i data-lucide="arrow-right" class="w-4 h-4 md:w-5 md:h-5 relative z-10 group-hover:translate-x-1 transition-transform"></i>
                     </a>
                 </div>
@@ -1144,7 +1145,7 @@
                         <i data-lucide="wrench" class="w-5 h-5 text-brand-yellow"></i>
                         Reaproveitamento de botoeiras
                     </h3>
-                    <p class="text-xs text-gray-500 leading-relaxed">Sim! Nossa equipe de engenharia validou que as botoeiras de inox atuais da Marble Tower são 100% integráveis à nova controladora biométrica facial Intelbras SS 3532, reduzindo drasticamente o desperdício de insumos no local.</p>
+                    <p class="text-xs text-gray-500 leading-relaxed">Sim! Nossa equipe de engenharia validou que as botoeiras de inox atuais da Marble Tower são 100% integráveis à nova controladora biométrica facial Intelbras, reduzindo drasticamente o desperdício de insumos no local.</p>
                 </div>
             </div>
 
@@ -1162,9 +1163,9 @@
                 <div>
                     <h3 class="font-bold text-gray-900 text-sm md:text-base flex items-center gap-2 mb-2">
                         <i data-lucide="activity" class="w-5 h-5 text-brand-yellow"></i>
-                        Como o sistema opera sem energia?
+                        Como o sistema se comporta sem energia?
                     </h3>
-                    <p class="text-xs text-gray-500 leading-relaxed">Nossas 5 novas fontes estabilizadas Intelbras EF-1205+ de 5A operam em sincronia ativa com nobreak e baterias VRLA XB 1270, garantindo autonomia de trancamento elétrico por mais de 4h em caso de apagão total na região.</p>
+                    <p class="text-xs text-gray-500 leading-relaxed">As novas fontes estáveis Intelbras EF-1205+ de 5A são alimentadas pela rede estável do prédio. Caso queira redundância total contra apagões no CPD ou recepção, indicamos a integração de Nobreaks corporativos, garantindo energia dedicada de emergência em tempo integral.</p>
                 </div>
             </div>
 
@@ -1275,6 +1276,12 @@
                     video.play().catch(e => {});
                 }
 
+                const demoVideo = document.getElementById("demo-shorts-video");
+                if (demoVideo && demoVideo.paused) {
+                    demoVideo.muted = true;
+                    demoVideo.play().catch(e => {});
+                }
+
                 if (window.clarity) {
                     window.clarity("consent");
                     window.clarity("identify", "wenio-ecogen", undefined, undefined, "Wênio Lopes (Ecogen)");
@@ -1358,7 +1365,7 @@
                 hardwareList: [
                     "<strong>04x Controladores Faciais Intelbras SS 1530 MF W:</strong> CPD, Sala TI, ADM e CCO.",
                     "<strong>02x Controladores Faciais Intelbras SS 3532 MF W:</strong> Sendo 1 de entrada e 1 de saída na Recepção.",
-                    "<strong>01x Terminal de Vídeo IP TVIP 2221 HF:</strong> Monitor touch para triagem e liberação remota por áudio/vídeo.",
+                    "<strong>01x Terminal de Vídeo IP TVIP 2221 HF:</strong> Monitor touch para triagem e liberação remota por áudio/vídeo na Recepção.",
                     "<strong>01x Sistema de Controle Remoto XAC 4000:</strong> Solução de liberação à distância no CCO.",
                     "<strong>05x Fontes de Alimentação Intelbras 12V 5A (EF-1205+):</strong> Com rabicho de ligação.",
                     "<strong>01x Caixa de Cabo LAN Furukawa CAT6 Azul (Código 23400174):</strong> Caixa com 305 metros."
@@ -1389,20 +1396,20 @@
             com_tvip: {
                 title: "Cenário 2 — Recepção Facial Única & Botoeiras (Com Monitor IP)",
                 badge: "Eficiência + Atendimento IP",
-                basePrice: 14356.00,
+                basePrice: 14855.00,
                 rates: {
-                    1: 14984.00,
-                    2: 15286.00,
-                    3: 15437.00,
-                    4: 15637.00,
-                    5: 15790.00,
-                    6: 15994.00,
-                    12: 17225.00
+                    1: 15478.91,
+                    2: 15790.34,
+                    3: 15946.21,
+                    4: 16102.10,
+                    5: 16259.34,
+                    6: 16415.72,
+                    12: 17824.51
                 },
                 hardwareList: [
                     "<strong>04x Controladores Faciais Intelbras SS 1530 MF W:</strong> CPD, Sala TI, ADM e CCO.",
                     "<strong>01x Controlador Facial Intelbras SS 3532 MF W:</strong> Dedicado para controle biométrico de entrada na Recepção.",
-                    "<strong>01x Terminal de Vídeo IP TVIP 2221 HF:</strong> Monitor touch para triagem e liberação remota por áudio/vídeo.",
+                    "<strong>01x Terminal de Vídeo IP TVIP 2221 HF:</strong> Monitor touch para triagem e liberação remota por áudio/vídeo na Recepção.",
                     "<strong>05x Fontes de Alimentação Intelbras 12V 5A (EF-1205+):</strong> Com rabicho de ligação.",
                     "<strong>01x Caixa de Cabo LAN Furukawa CAT6 Azul (Código 23400174):</strong> Caixa com 305 metros."
                 ]
@@ -1487,6 +1494,7 @@
         } else {
             const select = document.getElementById('installment-select');
             const installments = select ? select.value : '12';
+            const rateMultiplierValue = data.rates[installments] || data.basePrice;
             message = `Olá Glícia, analisei a proposta e gostaria de aprovar o projeto de controle de acesso corporativo no ${cenarioText} da Ecogen, no plano parcelado em ${installments}x no Cartão de Crédito.`;
         }
 
@@ -1701,14 +1709,6 @@
         });
     }, { threshold: 0.5 });
     document.querySelectorAll('[data-target]').forEach(el => counterObserver.observe(el));
-
-    function toggleAccordion(btn) {
-        const item = btn.parentElement;
-        const isOpen = item.classList.contains('open');
-        document.querySelectorAll('.accordion-item').forEach(i => i.classList.remove('open'));
-        if (!isOpen) item.classList.add('open');
-        initIcons();
-    }
 
     window.addEventListener('scroll', () => {
         const navbar = document.getElementById('navbar');
