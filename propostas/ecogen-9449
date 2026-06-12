@@ -374,7 +374,7 @@
             </div>
         </div>
 
-        <!-- Stars and count -->
+        <!-- Estrelas e Contadores -->
         <div class="flex items-center gap-3">
             <span class="text-3xl font-black text-gray-900">5.0</span>
             <div class="flex text-amber-500 gap-0.5">
@@ -384,7 +384,7 @@
                 <i data-lucide="star" class="w-5 h-5 fill-current"></i>
                 <i data-lucide="star" class="w-5 h-5 fill-current"></i>
             </div>
-            <div class="h-6 w-px bg-gray-300浏览 hidden sm:block"></div>
+            <div class="h-6 w-px bg-gray-300 hidden sm:block"></div>
             <p class="text-xs font-bold text-gray-500 uppercase tracking-widest hidden sm:block">118 avaliações de excelência técnica</p>
         </div>
 
@@ -395,7 +395,7 @@
 <section class="py-8 bg-white border-b border-gray-100 relative overflow-hidden no-print">
     <div class="relative w-full flex overflow-x-hidden">
         <div class="flex gap-16 items-center whitespace-nowrap animate-marquee">
-            <!-- Logos Originais Desaturadas e Suaves -->
+            <!-- Logos das Marcas -->
             <img src="https://res.cloudinary.com/dptcuckhf/image/upload/v1772363839/fatz-delicias-logo-removebg-preview_zr4bhr.png" alt="Fatz Delícias" class="h-8 md:h-9 object-contain filter grayscale opacity-45 hover:grayscale-0 hover:opacity-90 transition-all duration-300">
             <img src="https://res.cloudinary.com/dptcuckhf/image/upload/v1772305396/image_lbkjkn.webp" alt="Parceiro 2" class="h-8 md:h-9 object-contain filter grayscale opacity-45 hover:grayscale-0 hover:opacity-90 transition-all duration-300">
             <!-- Level Group forçada para visualização escura e nítida -->
@@ -632,7 +632,7 @@
                 <div class="space-y-2 flex-1 text-sm text-gray-700">
                     <div class="flex items-start gap-2">
                         <i data-lucide="check-circle" class="w-4 h-4 text-emerald-600 shrink-0 mt-0.5"></i>
-                        <span>Entrada por leitura facial otimizada SS 1530</span>
+                        <span>Entrada por leitura facial SS 1530</span>
                     </div>
                     <div class="flex items-start gap-2">
                         <i data-lucide="check-circle" class="w-4 h-4 text-emerald-600 shrink-0 mt-0.5"></i>
@@ -912,7 +912,7 @@
                 <div class="w-32 h-44 shrink-0 bg-white rounded-2xl p-4 flex flex-col items-center justify-center border border-gray-100 shadow-sm relative z-10">
                     <div class="h-full w-full flex flex-col items-center justify-center text-brand-yellow gap-2">
                         <i data-lucide="cable" class="w-16 h-16 drop-shadow-md"></i>
-                        <span class="text-[9px] font-bold text-gray-400 uppercase tracking-widest text-center font-tech">Furukawa CAT6</span>
+                        <span class="text-[9px] font-bold text-gray-400 uppercase tracking-widest text-center">Furukawa CAT6</span>
                     </div>
                 </div>
                 
@@ -947,7 +947,7 @@
                 <div class="w-32 h-44 shrink-0 bg-white rounded-2xl p-4 flex flex-col items-center justify-center border border-gray-100 shadow-sm relative z-10">
                     <div class="h-full w-full flex flex-col items-center justify-center text-brand-yellow gap-2">
                         <i data-lucide="zap" class="w-16 h-16 drop-shadow-md animate-pulse"></i>
-                        <span class="text-[9px] font-bold text-gray-400 uppercase tracking-widest text-center font-tech">Intelbras 5A</span>
+                        <span class="text-[9px] font-bold text-gray-400 uppercase tracking-widest text-center">Intelbras 5A</span>
                     </div>
                 </div>
                 
@@ -986,10 +986,18 @@
         <h2 class="text-3xl font-bold text-gray-900 mb-8">Velocidade do Acesso Facial</h2>
         <p class="text-gray-500 mb-10 max-w-2xl mx-auto">Confira a agilidade do sistema de reconhecimento facial integrado, garantindo um fluxo sem filas e sem contato físico.</p>
         
-        <div class="relative w-full max-w-[280px] mx-auto aspect-[9/16] rounded-[2.5rem] overflow-hidden shadow-premium border-[8px] border-zinc-900 bg-black">
-            <video class="absolute inset-0 w-full h-full scale-[1.02] object-cover" autoplay muted loop playsinline id="demo-shorts-video">
+        <div class="relative w-full max-w-[280px] mx-auto aspect-[9/16] rounded-[2.5rem] overflow-hidden shadow-premium border-[8px] border-zinc-900 bg-black group">
+            <video class="absolute inset-0 w-full h-full scale-[1.02] object-cover cursor-pointer" autoplay muted loop playsinline id="demo-shorts-video">
                 <source src="https://res.cloudinary.com/dptcuckhf/video/upload/v1779472606/YTDown_Shorts_Controle-de-acesso-facial-Intelbras-SS35_Media_1dvh4e3mdL8_001_1080p_smpeil.mp4" type="video/mp4">
             </video>
+
+            <!-- Sobreposição interativa igual ao da Victoria no Hero -->
+            <div id="unmute-overlay-shorts" class="absolute inset-0 bg-black/50 backdrop-blur-sm flex flex-col items-center justify-center cursor-pointer transition-opacity duration-500 z-30 hover:bg-black/40">
+                <div class="bg-brand-yellow text-black font-bold px-5 py-3 rounded-full flex items-center gap-2 shadow-glow animate-pulse transform group-hover:scale-105 transition-all text-center">
+                    <i data-lucide="volume-2" class="w-4 h-4 fill-black"></i>
+                    <span class="text-[9px] font-bold tracking-wide uppercase">Clique para Ativar Som</span>
+                </div>
+            </div>
         </div>
     </div>
 </section>
@@ -1270,12 +1278,14 @@
                 const lockScreen = document.getElementById('lock-screen');
                 lockScreen.style.opacity = '0';
 
+                // Iniciar vídeo da Victoria mutado
                 const video = document.getElementById("vision-video");
                 if (video && video.paused) {
                     video.muted = true;
                     video.play().catch(e => {});
                 }
 
+                // Iniciar vídeo prático do SS35 mutado
                 const demoVideo = document.getElementById("demo-shorts-video");
                 if (demoVideo && demoVideo.paused) {
                     demoVideo.muted = true;
@@ -1740,7 +1750,7 @@
                 overlay.addEventListener("click", function(e) {
                     e.stopPropagation(); 
                     video.muted = false;
-                    video.loop = false; 
+                    video.loop = true; 
                     video.currentTime = 0;
                     video.play().catch(err => {
                         console.warn("Autoplay bloqueado pelo navegador", err);
@@ -1761,6 +1771,7 @@
         }
 
         setupVideo("vision-video", "unmute-overlay");
+        setupVideo("demo-shorts-video", "unmute-overlay-shorts");
     });
 </script>
 </body>
