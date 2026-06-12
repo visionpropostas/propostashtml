@@ -72,6 +72,7 @@
                         'float': 'float 6s ease-in-out infinite',
                         'fade-in': 'fadeIn 0.6s ease forwards',
                         'shine-pulse': 'shinePulse 3s ease-in-out infinite',
+                        'marquee': 'marquee 35s linear infinite',
                     },
                     keyframes: {
                         slideUp: {
@@ -89,6 +90,10 @@
                         shinePulse: {
                             '0%,100%': { opacity: '0.6' },
                             '50%': { opacity: '1' }
+                        },
+                        marquee: {
+                            '0%': { transform: 'translateX(0%)' },
+                            '100%': { transform: 'translateX(-50%)' }
                         }
                     }
                 }
@@ -205,9 +210,17 @@
         }
 
         .counter-num { font-variant-numeric: tabular-nums; }
-        
-        details > summary { list-style: none; }
-        details > summary::-webkit-details-marker { display: none; }
+
+        /* Animação de Fluxo de Dados na Topologia */
+        @keyframes dash {
+            to {
+                stroke-dashoffset: -40;
+            }
+        }
+        .flow-line {
+            stroke-dasharray: 8, 4;
+            animation: dash 2s linear infinite;
+        }
         
         @media print {
             #lock-screen, #navbar, #cta-float, .no-print { display: none !important; }
@@ -278,6 +291,7 @@
             <div class="hidden md:flex items-center space-x-7 text-xs font-semibold text-gray-500 uppercase tracking-wider">
                 <a href="#diagnostico" class="hover:text-brand-yellow transition-colors">Diagnóstico</a>
                 <a href="#locais" class="hover:text-brand-yellow transition-colors">Mapeamento</a>
+                <a href="#simulador" class="hover:text-brand-yellow transition-colors">Sistema InControl</a>
                 <a href="#tecnologia" class="hover:text-brand-yellow transition-colors">Tecnologia</a>
                 <a href="#investimento" class="hover:text-brand-yellow transition-colors">Orçamento</a>
             </div>
@@ -295,7 +309,7 @@
 </nav>
 
 <!-- ===================== HERO ===================== -->
-<header class="pt-32 pb-20 lg:pt-40 relative overflow-hidden bg-white">
+<header class="pt-32 pb-12 lg:pt-40 relative overflow-hidden bg-white">
     <div class="absolute inset-0 bg-grid pointer-events-none"></div>
     <div class="absolute right-0 top-0 -translate-y-1/4 translate-x-1/4 w-[800px] h-[800px] bg-brand-yellow/5 rounded-full blur-[120px] pointer-events-none"></div>
     
@@ -342,55 +356,107 @@
             </div>
 
         </div>
-
-        <!-- Floating Quick Stats -->
-        <div class="mt-16 lg:mt-24 grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-5 max-w-4xl mx-auto reveal">
-            <!-- Card 1 -->
-            <div class="bg-white rounded-2xl p-4 sm:p-6 shadow-glass border border-gray-100 text-center hover:border-brand-yellow/40 transition-all flex flex-col justify-between animate-float" style="animation-delay:0s;">
-                <div>
-                    <div class="w-10 h-10 bg-brand-yellow/10 rounded-xl flex items-center justify-center mx-auto mb-3 shrink-0">
-                        <i data-lucide="key-round" class="w-5 h-5 text-brand-yellow"></i>
-                    </div>
-                    <div class="text-2xl sm:text-3xl font-extrabold text-gray-900 counter-num" data-target="5">0</div>
-                </div>
-                <div class="text-[10px] sm:text-xs text-gray-500 font-semibold mt-2 uppercase tracking-wider truncate">Pontos de Acesso</div>
-            </div>
-            <!-- Card 2 -->
-            <div class="bg-white rounded-2xl p-4 sm:p-6 shadow-glass border border-gray-100 text-center hover:border-brand-yellow/40 transition-all flex flex-col justify-between animate-float" style="animation-delay:0.8s;">
-                <div>
-                    <div class="w-10 h-10 bg-brand-yellow/10 rounded-xl flex items-center justify-center mx-auto mb-3 shrink-0">
-                        <i data-lucide="shield-check" class="w-5 h-5 text-brand-yellow"></i>
-                    </div>
-                    <div class="text-xl sm:text-2xl font-extrabold text-gray-900 whitespace-normal leading-tight">Garantido</div>
-                </div>
-                <div class="text-[10px] sm:text-xs text-gray-500 font-semibold mt-2 uppercase tracking-wider truncate">1 Ano de Garantia</div>
-            </div>
-            <!-- Card 3 -->
-            <div class="bg-white rounded-2xl p-4 sm:p-6 shadow-glass border border-gray-100 text-center hover:border-brand-yellow/40 transition-all flex flex-col justify-between animate-float" style="animation-delay:0.4s;">
-                <div>
-                    <div class="w-10 h-10 bg-brand-yellow/10 rounded-xl flex items-center justify-center mx-auto mb-3 shrink-0">
-                        <i data-lucide="cpu" class="w-5 h-5 text-brand-yellow"></i>
-                    </div>
-                    <div class="text-base sm:text-lg lg:text-xl font-extrabold text-gray-950 whitespace-normal">Reaproveitadas</div>
-                </div>
-                <div class="text-[10px] sm:text-xs text-gray-500 font-semibold mt-2 uppercase tracking-wider truncate">Botoeiras e Infra</div>
-            </div>
-            <!-- Card 4 -->
-            <div class="bg-white rounded-2xl p-4 sm:p-6 shadow-glass border border-gray-100 text-center hover:border-brand-yellow/40 transition-all flex flex-col justify-between animate-float" style="animation-delay:1.2s;">
-                <div>
-                    <div class="w-10 h-10 bg-brand-yellow/10 rounded-xl flex items-center justify-center mx-auto mb-3 shrink-0">
-                        <i data-lucide="calendar" class="w-5 h-5 text-brand-yellow"></i>
-                    </div>
-                    <div class="text-base sm:text-lg lg:text-xl font-extrabold text-gray-900 whitespace-normal break-words leading-tight">Finais de Semana</div>
-                </div>
-                <div class="text-[10px] sm:text-xs text-gray-500 font-semibold mt-2 uppercase tracking-wider truncate">Instalação Inclusa</div>
-            </div>
-        </div>
     </div>
 </header>
 
+<!-- ===================== PROVA SOCIAL: GOOGLE REVIEWS ===================== -->
+<section class="py-8 bg-gray-50 border-y border-gray-200/50 no-print">
+    <div class="max-w-7xl mx-auto px-4 flex flex-col sm:flex-row items-center justify-between gap-6">
+        
+        <!-- Google Full Trademark Logo -->
+        <div class="flex items-center gap-4">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/2/2f/Google_2015_logo.svg" alt="Google Logo" class="h-6 md:h-7 w-auto object-contain shrink-0">
+            <div class="h-8 w-px bg-gray-300"></div>
+            <div class="flex flex-col text-left">
+                <span class="text-gray-900 font-extrabold text-sm tracking-tight leading-none">Avaliações de Clientes</span>
+                <span class="text-[10px] text-gray-500 font-bold uppercase tracking-wider mt-1">Plataforma Corporativa</span>
+            </div>
+        </div>
+
+        <!-- Stars and count -->
+        <div class="flex items-center gap-3">
+            <span class="text-3xl font-black text-gray-900">5.0</span>
+            <div class="flex text-amber-500 gap-0.5">
+                <i data-lucide="star" class="w-5 h-5 fill-current"></i>
+                <i data-lucide="star" class="w-5 h-5 fill-current"></i>
+                <i data-lucide="star" class="w-5 h-5 fill-current"></i>
+                <i data-lucide="star" class="w-5 h-5 fill-current"></i>
+                <i data-lucide="star" class="w-5 h-5 fill-current"></i>
+            </div>
+            <div class="h-6 w-px bg-gray-300 hidden sm:block"></div>
+            <p class="text-xs font-bold text-gray-500 uppercase tracking-widest hidden sm:block">118 avaliações de excelência técnica</p>
+        </div>
+
+    </div>
+</section>
+
+<!-- ===================== MARCAS QUE CONFIAAM NA VISION (ACINZENTADO) ===================== -->
+<section class="py-8 bg-white border-b border-gray-100 relative overflow-hidden no-print">
+    <div class="relative w-full flex overflow-x-hidden">
+        <div class="flex gap-16 items-center whitespace-nowrap animate-marquee">
+            <!-- Logos Originais Desaturadas e Suaves -->
+            <img src="https://res.cloudinary.com/dptcuckhf/image/upload/v1772363839/fatz-delicias-logo-removebg-preview_zr4bhr.png" alt="Fatz Delícias" class="h-8 md:h-9 object-contain filter grayscale opacity-45 hover:grayscale-0 hover:opacity-90 transition-all duration-300">
+            <img src="https://res.cloudinary.com/dptcuckhf/image/upload/v1772305396/image_lbkjkn.webp" alt="Parceiro 2" class="h-8 md:h-9 object-contain filter grayscale opacity-45 hover:grayscale-0 hover:opacity-90 transition-all duration-300">
+            <!-- Level Group forçada para visualização escura e nítida -->
+            <img src="https://res.cloudinary.com/dptcuckhf/image/upload/v1772305484/level-group_jqrgeb.webp" alt="Level Group" class="h-8 md:h-9 object-contain filter grayscale brightness-[0.2] opacity-80 hover:opacity-100 transition-all duration-300">
+            <img src="https://res.cloudinary.com/dptcuckhf/image/upload/v1772304631/Horizontal-Cores-Group_osa37z.png" alt="Horizontal Cores" class="h-8 md:h-9 object-contain filter grayscale opacity-45 hover:grayscale-0 hover:opacity-90 transition-all duration-300">
+            <img src="https://res.cloudinary.com/dptcuckhf/image/upload/v1772304350/pertech_edited_edited_qtgrqc.png" alt="Pertech" class="h-8 md:h-9 object-contain filter grayscale opacity-45 hover:grayscale-0 hover:opacity-90 transition-all duration-300">
+            <img src="https://res.cloudinary.com/dptcuckhf/image/upload/v1772304278/Xpbox-clientes-logos-200-padding-sicoob_gjcfly.webp" alt="Sicoob" class="h-8 md:h-9 object-contain filter grayscale opacity-45 hover:grayscale-0 hover:opacity-90 transition-all duration-300">
+            <img src="https://res.cloudinary.com/dptcuckhf/image/upload/v1772305237/FormelD_Logo-svg_edited_ihhm8j.png" alt="Formel D" class="h-8 md:h-9 object-contain filter grayscale opacity-45 hover:grayscale-0 hover:opacity-90 transition-all duration-300">
+            <img src="https://res.cloudinary.com/dptcuckhf/image/upload/v1772364465/ImageToStl.com_Emblema_PC_1551453377220_s8zzrn.avif" alt="Emblema PC" class="h-8 md:h-9 object-contain filter grayscale opacity-45 hover:grayscale-0 hover:opacity-90 transition-all duration-300">
+            <img src="https://res.cloudinary.com/dptcuckhf/image/upload/v1772305530/Santander-Logo_so8gqh.png" alt="Santander" class="h-8 md:h-9 object-contain filter grayscale opacity-45 hover:grayscale-0 hover:opacity-90 transition-all duration-300">
+            
+            <!-- Duplicados para Loop Marquee perfeito -->
+            <img src="https://res.cloudinary.com/dptcuckhf/image/upload/v1772363839/fatz-delicias-logo-removebg-preview_zr4bhr.png" alt="Fatz Delícias" class="h-8 md:h-9 object-contain filter grayscale opacity-45 hover:grayscale-0 hover:opacity-90 transition-all duration-300">
+            <img src="https://res.cloudinary.com/dptcuckhf/image/upload/v1772305396/image_lbkjkn.webp" alt="Parceiro 2" class="h-8 md:h-9 object-contain filter grayscale opacity-45 hover:grayscale-0 hover:opacity-90 transition-all duration-300">
+            <img src="https://res.cloudinary.com/dptcuckhf/image/upload/v1772305484/level-group_jqrgeb.webp" alt="Level Group" class="h-8 md:h-9 object-contain filter grayscale brightness-[0.2] opacity-80 hover:opacity-100 transition-all duration-300">
+            <img src="https://res.cloudinary.com/dptcuckhf/image/upload/v1772304631/Horizontal-Cores-Group_osa37z.png" alt="Horizontal Cores" class="h-8 md:h-9 object-contain filter grayscale opacity-45 hover:grayscale-0 hover:opacity-90 transition-all duration-300">
+            <img src="https://res.cloudinary.com/dptcuckhf/image/upload/v1772304350/pertech_edited_edited_qtgrqc.png" alt="Pertech" class="h-8 md:h-9 object-contain filter grayscale opacity-45 hover:grayscale-0 hover:opacity-90 transition-all duration-300">
+            <img src="https://res.cloudinary.com/dptcuckhf/image/upload/v1772304278/Xpbox-clientes-logos-200-padding-sicoob_gjcfly.webp" alt="Sicoob" class="h-8 md:h-9 object-contain filter grayscale opacity-45 hover:grayscale-0 hover:opacity-90 transition-all duration-300">
+            <img src="https://res.cloudinary.com/dptcuckhf/image/upload/v1772305237/FormelD_Logo-svg_edited_ihhm8j.png" alt="Formel D" class="h-8 md:h-9 object-contain filter grayscale opacity-45 hover:grayscale-0 hover:opacity-90 transition-all duration-300">
+            <img src="https://res.cloudinary.com/dptcuckhf/image/upload/v1772364465/ImageToStl.com_Emblema_PC_1551453377220_s8zzrn.avif" alt="Emblema PC" class="h-8 md:h-9 object-contain filter grayscale opacity-45 hover:grayscale-0 hover:opacity-90 transition-all duration-300">
+            <img src="https://res.cloudinary.com/dptcuckhf/image/upload/v1772305530/Santander-Logo_so8gqh.png" alt="Santander" class="h-8 md:h-9 object-contain filter grayscale opacity-45 hover:grayscale-0 hover:opacity-90 transition-all duration-300">
+        </div>
+    </div>
+</section>
+
+<!-- ===================== CREDENCIAIS CORPORATIVAS ===================== -->
+<section class="py-12 bg-white">
+    <div class="max-w-7xl mx-auto px-4">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div class="bg-gray-50 rounded-2xl p-6 border border-gray-100 flex items-start gap-4 hover:border-brand-yellow/30 transition-all">
+                <div class="w-16 h-16 shrink-0 flex items-center justify-center bg-white rounded-xl shadow-sm overflow-hidden p-1">
+                    <img src="https://res.cloudinary.com/dptcuckhf/image/upload/v1781281963/revenda_intelbras_ejxynb.png" alt="Revenda Autorizada Intelbras" class="w-full h-full object-contain">
+                </div>
+                <div>
+                    <h4 class="font-bold text-gray-900 text-sm md:text-base">Revenda Autorizada Intelbras</h4>
+                    <p class="text-xs text-gray-500 mt-1">Garantia de faturamento direto do distribuidor oficial, suporte emergencial prioritário e peças originais de reposição.</p>
+                </div>
+            </div>
+            <div class="bg-gray-50 rounded-2xl p-6 border border-gray-100 flex items-start gap-4 hover:border-brand-yellow/30 transition-all">
+                <div class="p-3 bg-brand-yellow/10 rounded-xl text-brand-yellow shrink-0">
+                    <i data-lucide="file-check" class="w-8 h-8"></i>
+                </div>
+                <div>
+                    <h4 class="font-bold text-gray-900 text-sm md:text-base">Certificações Técnicas</h4>
+                    <p class="text-xs text-gray-500 mt-1">Equipe de engenharia credenciada pelo CREA. Emissão regular de Nota Fiscal de Serviços (NF-e) e conformidade jurídica.</p>
+                </div>
+            </div>
+            <div class="bg-gray-50 rounded-2xl p-6 border border-gray-100 flex items-start gap-4 hover:border-brand-yellow/30 transition-all">
+                <div class="p-3 bg-brand-yellow/10 rounded-xl text-brand-yellow shrink-0">
+                    <i data-lucide="clock" class="w-8 h-8"></i>
+                </div>
+                <div>
+                    <h4 class="font-bold text-gray-900 text-sm md:text-base">Atendimento de Fim de Semana</h4>
+                    <p class="text-xs text-gray-500 mt-1">Planejamento focado em downtime nulo. Instalação e virada de chaves lógicas realizadas integralmente aos sábados e domingos.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
 <!-- ===================== DIAGNÓSTICO DO CENÁRIO ===================== -->
-<section id="diagnostico" class="py-28 bg-gradient-to-b from-gray-50 to-white border-y border-gray-200/60 relative">
+<section id="diagnostico" class="py-24 bg-gradient-to-b from-gray-50 to-white border-y border-gray-200/50 relative">
     <div class="max-w-7xl mx-auto px-4">
         <div class="text-center mb-16 reveal">
             <span class="text-brand-yellow font-bold uppercase tracking-widest text-xs">Pente-Fino de Engenharia</span>
@@ -401,7 +467,6 @@
         </div>
 
         <div class="grid md:grid-cols-3 gap-8 reveal">
-            
             <!-- Card 1 -->
             <div class="bg-white rounded-[2rem] p-8 shadow-premium border border-gray-100 relative overflow-hidden group hover:-translate-y-1 transition-transform duration-300 flex flex-col text-left h-full">
                 <div class="absolute top-0 right-0 w-32 h-32 bg-yellow-50 rounded-full blur-3xl transition-colors"></div>
@@ -482,7 +547,6 @@
                     </ul>
                 </div>
             </div>
-
         </div>
     </div>
 </section>
@@ -491,7 +555,6 @@
 <section id="locais" class="py-24 bg-white relative overflow-hidden border-b border-gray-100">
     <div class="absolute inset-0 bg-dots pointer-events-none"></div>
     <div class="max-w-7xl mx-auto px-4 relative z-10">
-        
         <div class="text-center mb-16 reveal">
             <span class="text-brand-yellow font-bold uppercase tracking-widest text-xs">Mapeamento do Projeto</span>
             <h2 class="text-3xl md:text-5xl font-bold text-gray-900 mt-3">Mapeamento das 5 Portas Corporativas</h2>
@@ -640,6 +703,115 @@
     </div>
 </section>
 
+<!-- ===================== TOPOLOGIA INTERATIVA INTELBRAS INCONTROL ===================== -->
+<section id="simulador" class="py-24 bg-zinc-950 text-white relative overflow-hidden no-print">
+    <div class="absolute inset-0 bg-grid opacity-10 pointer-events-none"></div>
+    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[700px] bg-brand-yellow/5 rounded-full blur-[120px] pointer-events-none"></div>
+    
+    <div class="max-w-7xl mx-auto px-4 relative z-10">
+        <div class="text-center mb-16">
+            <span class="text-brand-yellow font-bold uppercase tracking-widest text-xs">Topologia de Rede Local — Ecogen</span>
+            <h2 class="text-3xl md:text-5xl font-bold mt-3 text-white">Integração Total InControl Server</h2>
+            <p class="text-zinc-400 mt-4 max-w-2xl mx-auto text-sm md:text-base">
+                Simulação visual de como as 5 portas da Marble Tower se comunicam de forma centralizada e direta com o servidor de banco de dados unificado Intelbras.
+            </p>
+        </div>
+
+        <div class="bg-[#121214] border border-zinc-800 rounded-3xl p-6 md:p-8 shadow-2xl relative">
+            <!-- Diagrama Esquemático -->
+            <div class="relative min-h-[350px] w-full flex flex-col md:flex-row items-center justify-between gap-8 md:gap-4">
+                
+                <!-- SVG Canvas para as linhas de conexão -->
+                <svg class="absolute inset-0 w-full h-full pointer-events-none hidden md:block" id="topology-svg">
+                    <!-- Linhas com id para simular fluxo de dados por animação class -->
+                    <path d="M 120 175 L 420 175" stroke="#27272a" stroke-width="2" fill="none" id="line-1"/>
+                    <path d="M 230 75 L 420 175" stroke="#27272a" stroke-width="2" fill="none" id="line-2"/>
+                    <path d="M 230 275 L 420 175" stroke="#27272a" stroke-width="2" fill="none" id="line-3"/>
+                    <path d="M 720 75 L 530 175" stroke="#27272a" stroke-width="2" fill="none" id="line-4"/>
+                    <path d="M 720 275 L 530 175" stroke="#27272a" stroke-width="2" fill="none" id="line-5"/>
+                </svg>
+
+                <!-- Coluna Esquerda: Pontos de Acesso -->
+                <div class="flex flex-col gap-4 w-full md:w-1/3 relative z-10">
+                    <span class="text-[10px] font-bold text-zinc-500 uppercase tracking-widest text-center md:text-left">Pontos de Acesso Corporativos</span>
+                    
+                    <div class="bg-zinc-900 border border-zinc-800 rounded-xl p-3 flex items-center justify-between transition-all" id="topo-cpd">
+                        <div class="flex items-center gap-3">
+                            <div class="p-2 bg-brand-yellow/10 rounded-lg text-brand-yellow"><i data-lucide="server" class="w-4 h-4"></i></div>
+                            <div class="text-left"><p class="text-xs font-bold text-white leading-none">CPD</p><span class="text-[9px] text-zinc-500 font-mono">192.168.1.150</span></div>
+                        </div>
+                        <span class="w-2 h-2 rounded-full bg-emerald-500" id="pulse-cpd"></span>
+                    </div>
+
+                    <div class="bg-zinc-900 border border-zinc-800 rounded-xl p-3 flex items-center justify-between transition-all" id="topo-ti">
+                        <div class="flex items-center gap-3">
+                            <div class="p-2 bg-brand-yellow/10 rounded-lg text-brand-yellow"><i data-lucide="terminal" class="w-4 h-4"></i></div>
+                            <div class="text-left"><p class="text-xs font-bold text-white leading-none">Sala TI</p><span class="text-[9px] text-zinc-500 font-mono">192.168.1.151</span></div>
+                        </div>
+                        <span class="w-2 h-2 rounded-full bg-emerald-500" id="pulse-ti"></span>
+                    </div>
+
+                    <div class="bg-zinc-900 border border-zinc-800 rounded-xl p-3 flex items-center justify-between transition-all" id="topo-adm">
+                        <div class="flex items-center gap-3">
+                            <div class="p-2 bg-brand-yellow/10 rounded-lg text-brand-yellow"><i data-lucide="briefcase" class="w-4 h-4"></i></div>
+                            <div class="text-left"><p class="text-xs font-bold text-white leading-none">ADM</p><span class="text-[9px] text-zinc-500 font-mono">192.168.1.152</span></div>
+                        </div>
+                        <span class="w-2 h-2 rounded-full bg-emerald-500" id="pulse-adm"></span>
+                    </div>
+                </div>
+
+                <!-- Centro: Servidor unificado -->
+                <div class="flex flex-col items-center justify-center w-full md:w-1/3 relative z-10 my-8 md:my-0">
+                    <div class="bg-zinc-900 border-2 border-brand-yellow rounded-3xl p-6 text-center shadow-glow max-w-[220px] relative transition-transform duration-300" id="central-server-node">
+                        <div class="w-14 h-14 bg-brand-yellow text-zinc-950 rounded-2xl flex items-center justify-center mx-auto mb-4"><i data-lucide="database" class="w-8 h-8"></i></div>
+                        <h4 class="font-bold text-sm text-white">InControl Web</h4>
+                        <p class="text-[10px] text-zinc-400 mt-1">Servidor Local Ecogen</p>
+                        <span class="mt-3 block text-[9px] bg-zinc-800 text-emerald-400 font-mono font-bold tracking-widest px-3 py-1 rounded-full w-max mx-auto" id="server-status-tag">INTEGRADO</span>
+                    </div>
+                </div>
+
+                <!-- Coluna Direita: Recepção e CCO -->
+                <div class="flex flex-col gap-4 w-full md:w-1/3 relative z-10">
+                    <span class="text-[10px] font-bold text-zinc-500 uppercase tracking-widest text-center md:text-left">Triagem & Monitoramento</span>
+
+                    <div class="bg-zinc-900 border border-zinc-800 rounded-xl p-3 flex items-center justify-between transition-all" id="topo-cco">
+                        <div class="flex items-center gap-3">
+                            <div class="p-2 bg-brand-yellow/10 rounded-lg text-brand-yellow"><i data-lucide="shield-check" class="w-4 h-4"></i></div>
+                            <div class="text-left"><p class="text-xs font-bold text-white leading-none">CCO</p><span class="text-[9px] text-zinc-500 font-mono">192.168.1.153</span></div>
+                        </div>
+                        <span class="w-2 h-2 rounded-full bg-emerald-500" id="pulse-cco"></span>
+                    </div>
+
+                    <!-- SS 3532 Premium destacado e maior no visual -->
+                    <div class="bg-zinc-900 border-2 border-zinc-700/80 rounded-2xl p-4 flex items-center justify-between transition-all hover:border-brand-yellow shadow-md" id="topo-recepcao">
+                        <div class="flex items-center gap-3">
+                            <div class="p-2.5 bg-brand-yellow text-black rounded-xl"><i data-lucide="users" class="w-5 h-5"></i></div>
+                            <div class="text-left">
+                                <p class="text-sm font-black text-white leading-none">Recepção Principal</p>
+                                <span class="text-[9px] text-brand-yellow font-bold uppercase tracking-wider block mt-1">Leitor SS 3532</span>
+                                <span class="text-[9px] text-zinc-500 font-mono">192.168.1.154</span>
+                            </div>
+                        </div>
+                        <span class="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse shrink-0" id="pulse-recepcao"></span>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Controles do Simulador -->
+            <div class="mt-8 pt-6 border-t border-zinc-800/60 flex flex-col sm:flex-row justify-between items-center gap-4">
+                <p class="text-xs text-zinc-500 text-center sm:text-left flex items-center gap-1.5"><i data-lucide="info" class="w-4 h-4 text-brand-yellow shrink-0"></i> Clique nos comandos rápidos ao lado para verificar a integridade da comunicação.</p>
+                <div class="flex flex-wrap gap-3">
+                    <button onclick="simulateAccessPulse()" class="bg-brand-yellow hover:bg-brand-goldLight text-black font-bold px-5 py-2.5 rounded-lg text-xs transition-all flex items-center gap-2 shadow-glow">
+                        <i data-lucide="zap" class="w-3.5 h-3.5"></i> Simular Sincronismo Geral
+                    </button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
 <!-- ===================== VITRINE TECNOLÓGICA ===================== -->
 <section id="tecnologia" class="py-28 bg-[#f8f9fa] border-b border-gray-200/60 relative overflow-hidden">
     <div class="absolute inset-0 bg-dots pointer-events-none"></div>
@@ -688,20 +860,20 @@
                             <div class="w-5 h-5 rounded-full bg-brand-yellow/10 flex items-center justify-center shrink-0 mt-0.5 border border-brand-yellow/20">
                                 <i data-lucide="check" class="w-3 h-3 text-brand-goldDark"></i>
                             </div>
-                            <p class="text-sm text-gray-700 leading-relaxed"><strong>Aplicação Discreta:</strong> Ideal para as portas do CPD, Sala TI, ADM e CCO.</p>
+                            <p class="text-sm text-gray-700 leading-relaxed"><strong>Aplicação Discreta:</strong> Perfeito para as portas do CPD, Sala TI, ADM e CCO.</p>
                         </li>
                     </ul>
                 </div>
             </div>
 
-            <!-- Controladora Facial Intelbras SS 3532 MF W -->
-            <div class="bg-white rounded-[2rem] p-6 md:p-8 border border-gray-200 shadow-sm flex flex-col md:flex-row items-center md:items-start gap-8 relative overflow-hidden group hover:border-brand-yellow/40 hover:shadow-premium-card transition-all">
-                <div class="absolute top-0 right-0 w-48 h-48 bg-brand-yellow/10 rounded-full blur-3xl transition-transform group-hover:scale-150"></div>
+            <!-- Controladora Facial Intelbras SS 3532 MF W (ENLARGED & HIGHLIGHTED) -->
+            <div class="bg-white rounded-[2rem] p-8 md:p-10 border-2 border-brand-yellow shadow-glow-md flex flex-col md:flex-row items-center md:items-start gap-8 relative overflow-hidden group hover:shadow-premium-card transition-all lg:col-span-1">
+                <div class="absolute top-0 right-0 w-64 h-64 bg-brand-yellow/15 rounded-full blur-3xl transition-transform group-hover:scale-150"></div>
                 
-                <div class="w-32 h-44 shrink-0 bg-white rounded-2xl p-2 flex flex-col items-center justify-center border border-gray-100 shadow-sm relative z-10">
+                <div class="w-40 h-56 shrink-0 bg-white rounded-2xl p-4 flex flex-col items-center justify-center border border-gray-100 shadow-md relative z-10">
                     <img src="https://res.cloudinary.com/dptcuckhf/image/upload/v1770745467/ss-3532-mf-w-frontal_2_c82tua.png" 
                          alt="Controlador Facial Intelbras SS 3532 MF W" 
-                         class="w-full h-full object-contain transform group-hover:scale-105 transition-transform duration-500 drop-shadow-md"
+                         class="w-full h-full object-contain transform group-hover:scale-110 transition-transform duration-500 drop-shadow-xl"
                          onerror="this.style.display='none'; this.nextElementSibling.classList.remove('hidden');">
                     <div class="hidden flex flex-col items-center justify-center text-brand-yellow">
                         <i data-lucide="contact" class="w-12 h-12 mb-2"></i>
@@ -711,10 +883,10 @@
                 
                 <div class="flex-1 text-left relative z-10 flex flex-col h-full">
                     <div class="mb-4">
-                        <div class="inline-flex items-center gap-2 px-3 py-1 bg-white border border-brand-yellow/30 text-brand-goldDark rounded-full text-[10px] font-bold uppercase tracking-widest mb-3">
+                        <div class="inline-flex items-center gap-2 px-3 py-1 bg-zinc-900 text-brand-yellow rounded-full text-[10px] font-bold uppercase tracking-widest mb-3">
                             <i data-lucide="shield" class="w-3 h-3"></i> Leitor Premium para Alto Fluxo
                         </div>
-                        <h3 class="font-bold text-gray-900 text-xl md:text-2xl mb-2">Intelbras SS 3532 MF W</h3>
+                        <h3 class="font-bold text-gray-900 text-2xl md:text-3xl mb-2">Intelbras SS 3532 MF W</h3>
                     </div>
                     <ul class="flex flex-col gap-3 mt-auto pt-4 border-t border-gray-100">
                         <li class="flex items-start gap-3">
@@ -807,7 +979,7 @@
     </div>
 </section>
 
-<!-- ===================== PROPOSTA DE INVESTIMENTO ===================== -->
+<!-- ===================== PROPOSTA DE INVESTIMENTO (CLEAN) ===================== -->
 <section id="investimento" class="py-20 md:py-28 bg-white relative overflow-hidden">
     <div class="absolute inset-0 bg-dots pointer-events-none z-0"></div>
     <div class="max-w-7xl mx-auto px-4 relative z-10">
@@ -816,7 +988,7 @@
             <span class="text-brand-yellow font-bold uppercase tracking-widest text-xs">Comparativo Financeiro</span>
             <h2 class="text-2xl md:text-5xl font-extrabold text-gray-900 mt-2 md:mt-3">Orçamento Interativo</h2>
             <p class="text-gray-500 mt-3 md:mt-4 max-w-xl mx-auto text-sm md:text-lg leading-relaxed px-4">
-                Veja o resumo financeiro estruturado com todos os materiais de engenharia e mão de obra técnica inclusos. Alterne entre os cenários abaixo:
+                Veja o resumo financeiro estruturado com todos os materiais de engenharia e mão de obra técnica de fim de semana inclusos. Alterne entre os cenários abaixo:
             </p>
         </div>
 
@@ -835,7 +1007,7 @@
             </div>
         </div>
 
-        <!-- TOGGLE DE PAGAMENTO (PIX VS CARTÃO COM EXIBIÇÃO DE TAXAS) -->
+        <!-- TOGGLE DE PAGAMENTO -->
         <div class="flex flex-col items-center justify-center mb-8 md:mb-10 reveal">
             <p class="text-xs font-bold text-gray-400 uppercase tracking-widest mb-3">Selecione o Método de Pagamento:</p>
             <div class="bg-gray-100 p-1.5 rounded-full inline-flex relative shadow-inner">
@@ -869,7 +1041,7 @@
             </div>
         </div>
 
-        <!-- GRID DE PREÇOS (PROJETO ÚNICO CENTRALIZADO) -->
+        <!-- GRID DE PREÇOS (PROJETO ÚNICO CENTRALIZADO E LIMPO - SEM IMAGENS) -->
         <div class="reveal items-stretch flex justify-center animate-fade-in">
             
             <div class="premium-border-glow group relative z-20 w-full max-w-2xl">
@@ -891,11 +1063,6 @@
                         </div>
                     </div>
 
-                    <!-- PREVIEW TÉCNICO INTERATIVO DE COMPONENTES DO CENÁRIO -->
-                    <div class="mb-6 p-4 bg-gray-50 border border-gray-100 rounded-2xl relative z-10 transition-all duration-300" id="tech-preview-container">
-                        <!-- Renderizado dinamicamente via Javascript -->
-                    </div>
-
                     <div class="space-y-2 md:space-y-3 mb-4 md:mb-8 flex-1 relative z-10 text-left">
                         <h4 class="font-semibold text-gray-700 text-[10px] md:text-sm uppercase tracking-wider mb-2 md:mb-3 font-tech">O que inclui de ponta a ponta:</h4>
                         
@@ -906,7 +1073,7 @@
 
                         <div class="flex items-start gap-2 md:gap-3 p-3 bg-white border border-brand-yellow/30 rounded-lg md:rounded-xl shadow-sm">
                             <i data-lucide="wrench" class="w-4 h-4 text-brand-yellow shrink-0 mt-0.5"></i>
-                            <p class="text-[10px] md:text-sm text-gray-800 leading-snug md:leading-relaxed font-medium"><strong>Mão de Obra Técnica de Elite:</strong> Instalação cirúrgica das 5 portas executada estritamente aos sábados e domingos pelo Ernani e equipe de campo. Desmontagem e passagem de cabeamento CAT6 blindado sob piso elevado pesado, furação industrial nos batentes de aço escovado e posicionamento ergonômico ideal.</p>
+                            <p class="text-[10px] md:text-sm text-gray-800 leading-snug md:leading-relaxed font-medium"><strong>Mão de Obra Técnica de Elite:</strong> Instalação cirúrgica das 5 portas executada estritamente aos finais de semana pelo Ernani e equipe de campo. Desmontagem e passagem de cabeamento CAT6 blindado sob piso elevado pesado, furação industrial nos batentes de aço escovado e posicionamento ergonômico ideal.</p>
                         </div>
 
                         <div class="flex items-start gap-2 md:gap-3 p-3 bg-white border border-brand-yellow/30 rounded-lg md:rounded-xl shadow-sm">
@@ -934,42 +1101,53 @@
     </div>
 </section>
 
-<!-- ===================== FAQ ===================== -->
-<section id="faq" class="py-24 bg-[#f8f9fa] border-t border-gray-200/60">
-    <div class="max-w-3xl mx-auto px-4">
-        <div class="text-center mb-14 reveal">
-            <span class="text-brand-yellow font-bold uppercase tracking-widest text-xs">Dúvidas Frequentes</span>
-            <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mt-3">Para sua total tranquilidade</h2>
+<!-- ===================== FAQ EXPOSTO POR PADRÃO ===================== -->
+<section id="faq" class="py-24 bg-gray-50 border-t border-gray-200/50">
+    <div class="max-w-4xl mx-auto px-4">
+        <div class="text-center mb-16 reveal">
+            <span class="text-brand-yellow font-bold uppercase tracking-widest text-xs">Perguntas & Respostas</span>
+            <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mt-3">Para Sua Total Tranquilidade</h2>
+            <p class="text-gray-500 mt-4 max-w-xl mx-auto text-sm leading-relaxed">Entenda todos os detalhes de engenharia e faturamento do retrofit de controle de acesso da Ecogen:</p>
         </div>
         
-        <div class="space-y-4 reveal" id="accordion">
-            <div class="accordion-item bg-white rounded-2xl border border-gray-100 shadow-sm overflow-hidden transition-all hover:border-brand-yellow/50">
-                <button onclick="toggleAccordion(this)" class="w-full flex items-center justify-between p-6 text-left font-bold text-gray-900 focus:outline-none">
-                    <span>Conseguimos de fato reaproveitar todas as botoeiras de saída atuais?</span>
-                    <i data-lucide="chevron-down" class="w-5 h-5 text-brand-yellow acc-arrow shrink-0"></i>
-                </button>
-                <div class="accordion-content text-left">
-                    <p class="px-6 pb-6 text-gray-600 text-sm leading-relaxed">Sim! Nossa equipe de engenharia realizou o mapeamento estrutural e validou que as botoeiras de parede existentes na Marble Tower serão 100% integradas às novas controladoras Intelbras SS 1530 e SS 3532, garantindo que o seu teto orçamentário seja otimizado.</p>
+        <div class="grid md:grid-cols-2 gap-6 text-left reveal">
+            <div class="bg-white p-6 rounded-2xl border border-gray-150 shadow-sm flex flex-col justify-between">
+                <div>
+                    <h3 class="font-bold text-gray-900 text-sm md:text-base flex items-center gap-2 mb-2">
+                        <i data-lucide="wrench" class="w-5 h-5 text-brand-yellow"></i>
+                        Reaproveitamento de botoeiras
+                    </h3>
+                    <p class="text-xs text-gray-500 leading-relaxed">Sim! Nossa equipe de engenharia validou que as botoeiras de inox atuais da Marble Tower são 100% integráveis à nova controladora biométrica facial Intelbras SS 3532, reduzindo drasticamente o desperdício de insumos no local.</p>
                 </div>
             </div>
 
-            <div class="accordion-item bg-white rounded-2xl border border-gray-100 shadow-sm overflow-hidden transition-all hover:border-brand-yellow/50">
-                <button onclick="toggleAccordion(this)" class="w-full flex items-center justify-between p-6 text-left font-bold text-gray-900 focus:outline-none">
-                    <span>A instalação aos finais de semana gera custo adicional ao orçamento final?</span>
-                    <i data-lucide="chevron-down" class="w-5 h-5 text-brand-yellow acc-arrow shrink-0"></i>
-                </button>
-                <div class="accordion-content text-left">
-                    <p class="px-6 pb-6 text-gray-600 text-sm leading-relaxed">Não. Compreendemos a criticidade das operações comerciais da Ecogen, por isso o cronograma em janelas alternativas aos sábados e domingos já foi totalmente provisionado e integrado nos valores finais apresentados.</p>
+            <div class="bg-white p-6 rounded-2xl border border-gray-150 shadow-sm flex flex-col justify-between">
+                <div>
+                    <h3 class="font-bold text-gray-900 text-sm md:text-base flex items-center gap-2 mb-2">
+                        <i data-lucide="calendar" class="w-5 h-5 text-brand-yellow"></i>
+                        Instalação em finais de semana
+                    </h3>
+                    <p class="text-xs text-gray-500 leading-relaxed">Não há nenhum custo adicional por janelas de trabalho premium. O valor orçado já contempla a mobilização completa de campo técnica da Vision aos sábados e domingos para downtime zero na operação da Ecogen.</p>
                 </div>
             </div>
 
-            <div class="accordion-item bg-white rounded-2xl border border-gray-100 shadow-sm overflow-hidden transition-all hover:border-brand-yellow/50">
-                <button onclick="toggleAccordion(this)" class="w-full flex items-center justify-between p-6 text-left font-bold text-gray-900 focus:outline-none">
-                    <span>Como funciona a gestão unificada e centralizada de todas as controladoras?</span>
-                    <i data-lucide="chevron-down" class="w-5 h-5 text-brand-yellow acc-arrow shrink-0"></i>
-                </button>
-                <div class="accordion-content text-left">
-                    <p class="px-6 pb-6 text-gray-600 text-sm leading-relaxed">Diga adeus à configuração pontual por porta! Nossa solução unificada permite a gestão centralizada via rede. Você poderá cadastrar o rosto do usuário uma única vez de forma global, definir horários e níveis de acesso específicos para cada uma das 5 portas e extrair relatórios integrados diretamente no servidor atual de vocês, sem qualquer taxa de licenciamento recorrente.</p>
+            <div class="bg-white p-6 rounded-2xl border border-gray-150 shadow-sm flex flex-col justify-between">
+                <div>
+                    <h3 class="font-bold text-gray-900 text-sm md:text-base flex items-center gap-2 mb-2">
+                        <i data-lucide="activity" class="w-5 h-5 text-brand-yellow"></i>
+                        Como o sistema opera sem energia?
+                    </h3>
+                    <p class="text-xs text-gray-500 leading-relaxed">Nossas 5 novas fontes estabilizadas Intelbras EF-1205+ de 5A operam em sincronia ativa com nobreak e baterias VRLA XB 1270, garantindo autonomia de trancamento elétrico por mais de 4h em caso de apagão total na região.</p>
+                </div>
+            </div>
+
+            <div class="bg-white p-6 rounded-2xl border border-gray-150 shadow-sm flex flex-col justify-between">
+                <div>
+                    <h3 class="font-bold text-gray-900 text-sm md:text-base flex items-center gap-2 mb-2">
+                        <i data-lucide="lock" class="w-5 h-5 text-brand-yellow"></i>
+                        Existe taxa de licenciamento recorrente?
+                    </h3>
+                    <p class="text-xs text-gray-500 leading-relaxed">Nenhuma! O ecossistema Intelbras InControl funciona sem taxas recorrentes (SaaS) ou licenças por usuário para este escopo, resultando em custo de propriedade vitalício zero para o faturamento da Ecogen.</p>
                 </div>
             </div>
         </div>
@@ -990,7 +1168,7 @@
             Wênio, conte com o rigor de engenharia da Vision para implantar seu ecossistema de controle de acesso de alta tecnologia na Ecogen, sem dor de cabeça e com impacto operacional zero.
         </p>
 
-        <a href="https://wa.me/5511930816696?text=Olá%20Glicia,%20analisei%20o%20projeto%20de%20controle%20de%20acesso%20da%20Ecogen%20e%20gostaria%20de%20dar%20andamento." target="_blank" class="inline-flex items-center gap-3 bg-brand-yellow hover:bg-brand-goldLight text-brand-black font-bold px-10 py-5 rounded-full transition-all shadow-glow-md text-sm uppercase tracking-widest transform hover:scale-[1.03]">
+        <a href="https://wa.me/5511930816696?text=Ola%20Glicia,%20analisei%20o%20projeto%20de%20controle%20de%20acesso%20da%20Ecogen%20e%20gostaria%20de%20dar%20andamento." target="_blank" class="inline-flex items-center gap-3 bg-brand-yellow hover:bg-brand-goldLight text-brand-black font-bold px-10 py-5 rounded-full transition-all shadow-glow-md text-sm uppercase tracking-widest transform hover:scale-[1.03]">
             <i data-lucide="check-circle" class="w-5 h-5"></i>
             Aprovar Projeto (Falar com Glícia)
             <i data-lucide="arrow-right" class="w-4 h-4 ml-1"></i>
@@ -1028,7 +1206,7 @@
 
 <!-- WHATSAPP CTA FLUTUANTE -->
 <div id="cta-float" class="fixed bottom-6 right-6 z-40 hidden md:block opacity-0 translate-y-10 pointer-events-none transition-all duration-500">
-    <a href="https://wa.me/5511930816696?text=Olá%20Glicia,%20tenho%20uma%20dúvida%20sobre%20o%20projeto%20da%20Ecogen." target="_blank" class="flex items-center gap-3 bg-brand-yellow text-black font-bold px-6 py-4 rounded-full shadow-glow-md hover:shadow-glow transition-all group">
+    <a href="https://wa.me/5511930816696?text=Ola%20Glicia,%20tenho%20uma%20duvida%20sobre%20o%20projeto%20da%20Ecogen." target="_blank" class="flex items-center gap-3 bg-brand-yellow text-black font-bold px-6 py-4 rounded-full shadow-glow-md hover:shadow-glow transition-all group">
         <i data-lucide="message-circle" class="w-5 h-5"></i>
         <span class="text-sm tracking-wide uppercase">Falar com Glícia</span>
         <i data-lucide="arrow-right" class="w-4 h-4 group-hover:translate-x-1 transition-transform"></i>
@@ -1174,6 +1352,66 @@
     let currentCenario = 'cenario1';
     let currentMode = 'avista';
 
+    // INTERAÇÃO DO SIMULADOR DE TOPOLOGIA
+    function simulateAccessPulse() {
+        const pulseCpd = document.getElementById('pulse-cpd');
+        const pulseTi = document.getElementById('pulse-ti');
+        const pulseAdm = document.getElementById('pulse-adm');
+        const pulseCco = document.getElementById('pulse-cco');
+        const pulseRecepcao = document.getElementById('pulse-recepcao');
+        
+        const lines = [
+            document.getElementById('line-1'),
+            document.getElementById('line-2'),
+            document.getElementById('line-3'),
+            document.getElementById('line-4'),
+            document.getElementById('line-5')
+        ];
+
+        const serverTag = document.getElementById('server-status-tag');
+        const serverNode = document.getElementById('central-server-node');
+
+        // Ativa pulsações e linhas animadas
+        lines.forEach(line => {
+            if(line) {
+                line.setAttribute('stroke', '#b9880e');
+                line.classList.add('flow-line');
+            }
+        });
+
+        if (serverTag) {
+            serverTag.textContent = "SINCRONIZANDO...";
+            serverTag.classList.remove('text-emerald-400');
+            serverTag.classList.add('text-brand-yellow', 'animate-pulse');
+        }
+
+        if (serverNode) {
+            serverNode.classList.add('scale-105');
+        }
+
+        setTimeout(() => {
+            lines.forEach(line => {
+                if(line) {
+                    line.setAttribute('stroke', '#27272a');
+                    line.classList.remove('flow-line');
+                }
+            });
+            if (serverTag) {
+                serverTag.textContent = "CONCLUÍDO";
+                serverTag.classList.remove('text-brand-yellow', 'animate-pulse');
+                serverTag.classList.add('text-emerald-400');
+            }
+            if (serverNode) {
+                serverNode.classList.remove('scale-105');
+            }
+            setTimeout(() => {
+                if (serverTag) {
+                    serverTag.textContent = "INTEGRADO";
+                }
+            }, 1500);
+        }, 3000);
+    }
+
     // ATUALIZAÇÃO DO CONTEXTO VISUAL DE PRODUTOS E INSUMOS
     function updateTechPreview() {
         const container = document.getElementById('tech-preview-container');
@@ -1206,8 +1444,8 @@
         data.hardwareList.forEach(item => {
             equipmentList.innerHTML += `
                 <div class="flex items-start gap-2 md:gap-3 p-3 bg-white border border-brand-yellow/30 rounded-lg md:rounded-xl shadow-sm">
-                    <i data-lucide="check-square" class="w-4 h-4 text-brand-yellow shrink-0 mt-0.5 animate-pulse"></i>
-                    <p class="text-[10px] md:text-sm text-gray-800 leading-snug md:leading-relaxed font-semibold">${item}</p>
+                    <i data-lucide="check-square" class="w-4 h-4 text-brand-yellow shrink-0 mt-0.5 border border-brand-yellow/20"></i>
+                    <p class="text-[10px] md:text-sm text-gray-800 leading-snug md:leading-relaxed font-medium">${item}</p>
                 </div>
             `;
         });
