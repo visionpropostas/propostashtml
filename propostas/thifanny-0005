@@ -1,0 +1,1276 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth overflow-x-hidden h-screen overflow-hidden" id="html-root">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projeto de Segurança Corporativa Paraíso | Vision Tecnologia</title>
+    <meta name="description" content="Projeto de CFTV Analógico com Captação de Áudio e Controle de Acesso Facial para o Escritório Corporativo Paraíso – Vision Tecnologia">
+    <meta name="theme-color" content="#b9880e">
+    
+    <!-- CONTROLE DE PRIVACIDADE: Proteção absoluta contra indexadores e buscas públicas -->
+    <meta name="robots" content="noindex, nofollow">
+
+    <!-- Open Graph / Link Preview Tags -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Projeto de CFTV e Controle de Acesso - Vision Tecnologia">
+    <meta property="og:description" content="Sistema de monitoramento com áudio integrado e controle facial de alta velocidade para portas de vidro pivotantes no Paraíso.">
+    <meta property="og:image" content="https://res.cloudinary.com/dptcuckhf/image/upload/v1772152427/C%C3%B3pia_de_LOGO_VISION_2025_cpcpuh.png">
+    <meta property="og:locale" content="pt_BR">
+
+    <!-- Fontes & Ícones -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <!-- Google Analytics 4 -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-KTGEL92B0F"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-KTGEL92B0F');
+    </script>
+
+    <!-- Microsoft Clarity -->
+    <script type="text/javascript">
+        (function(c,l,a,r,i,t,y){
+            c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+            t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+            y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+        })(window, document, "clarity", "script", "vifq10es5o");
+    </script>
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"Outfit"', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            yellow: '#b9880e',
+                            goldLight: '#FFDE59',
+                            goldDark: '#8a6208',
+                            black: '#09090b',
+                        }
+                    },
+                    boxShadow: {
+                        'glass': '0 4px 24px 0 rgba(0,0,0,0.04)',
+                        'premium': '0 16px 50px -10px rgba(0,0,0,0.08)',
+                        'glow': '0 0 20px rgba(185,136,14,0.15)',
+                        'glow-md': '0 0 35px rgba(185,136,14,0.25)',
+                    },
+                    animation: {
+                        'slide-up': 'slideUp 0.9s cubic-bezier(0.16,1,0.3,1) forwards',
+                        'fade-in': 'fadeIn 0.6s ease forwards',
+                        'marquee': 'marquee 35s linear infinite',
+                    },
+                    keyframes: {
+                        slideUp: {
+                            '0%': { opacity: '0', transform: 'translateY(40px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' }
+                        },
+                        fadeIn: {
+                            '0%': { opacity: '0' },
+                            '100%': { opacity: '1' }
+                        },
+                        marquee: {
+                            '0%': { transform: 'translateX(0%)' },
+                            '100%': { transform: 'translateX(-50%)' }
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: #f9fafb; }
+        ::-webkit-scrollbar-thumb { background: #d1d5db; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #b9880e; }
+
+        .text-gold-shine {
+            background: linear-gradient(to right, #b9880e 20%, #FFDE59 50%, #b9880e 80%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-size: 200% auto;
+            animation: shine 4s linear infinite;
+        }
+        @keyframes shine { to { background-position: 200% center; } }
+
+        .bg-grid {
+            background-image: linear-gradient(rgba(185,136,14,0.04) 1px, transparent 1px),
+                              linear-gradient(90deg, rgba(185,136,14,0.04) 1px, transparent 1px);
+            background-size: 40px 40px;
+        }
+        .bg-dots {
+            background-image: radial-gradient(#b9880e 1.2px, transparent 1.2px);
+            background-size: 22px 22px;
+            opacity: 0.035;
+        }
+
+        .lock-input {
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.1);
+            color: #b9880e;
+            font-size: 1.5rem;
+            text-align: center;
+            outline: none;
+            transition: all 0.3s;
+            letter-spacing: 0.2em;
+            border-radius: 14px;
+            text-transform: uppercase;
+        }
+        .lock-input:focus {
+            border-color: #b9880e;
+            background: rgba(255,255,255,0.08);
+            box-shadow: 0 0 20px rgba(185,136,14,0.25);
+        }
+        .lock-input::placeholder {
+            color: #52525b;
+            font-size: 0.85rem;
+            font-weight: 300;
+            letter-spacing: normal;
+            text-transform: none;
+        }
+
+        .reveal { opacity: 0; transform: translateY(30px); transition: all 0.8s cubic-bezier(0.16,1,0.3,1); }
+        .reveal.active { opacity: 1; transform: translateY(0); }
+
+        /* Borda Animada Premium */
+        .premium-border-glow {
+            position: relative;
+            border-radius: 2rem;
+            padding: 2px;
+            background-color: #b9880e;
+            overflow: hidden;
+            box-shadow: 0 0 35px rgba(185,136,14,0.15);
+            transition: transform 0.3s cubic-bezier(0.4,0,0.2,1);
+        }
+        .premium-border-glow:hover { transform: scale(1.002); }
+        .premium-border-glow::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: conic-gradient(
+                from 0deg, 
+                transparent 0deg, 
+                transparent 175deg, 
+                rgba(255, 222, 89, 0.6) 178deg, 
+                #ffffff 180deg, 
+                rgba(255, 222, 89, 0.6) 182deg, 
+                transparent 185deg, 
+                transparent 360deg
+            );
+            animation: rotate-border 12s linear infinite;
+            z-index: 0;
+        }
+        @keyframes rotate-border {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        .premium-border-inner {
+            position: relative;
+            z-index: 1;
+            background-color: #ffffff;
+            border-radius: calc(2rem - 2px);
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+        }
+
+        .counter-num { font-variant-numeric: tabular-nums; }
+        
+        @media print {
+            #lock-screen, #navbar, #cta-float, .no-print { display: none !important; }
+            .reveal { opacity: 1 !important; transform: none !important; }
+            body { background: #ffffff !important; color: #000000 !important; }
+            .premium-border-glow { background: #e5e7eb !important; border: 1px solid #d1d5db !important; border-radius: 12px !important; box-shadow: none !important; }
+            .premium-border-glow::before { display: none !important; }
+            .premium-border-inner { background: #ffffff !important; border-radius: 12px !important; }
+        }
+    </style>
+</head>
+<body class="bg-[#fafafa] text-gray-800 antialiased overflow-hidden h-screen" id="body-root">
+
+<!-- ===================== TELA DE BLOQUEIO (LOCK SCREEN) ===================== -->
+<div id="lock-screen" class="fixed inset-0 z-[100] bg-[#09090b] flex flex-col items-center justify-center text-center p-4 transition-opacity duration-700 ease-out" style="overscroll-behavior: none;">
+    <div class="bg-grid absolute inset-0 opacity-10 pointer-events-none"></div>
+    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-brand-yellow/5 rounded-full blur-[100px] pointer-events-none"></div>
+
+    <div class="relative w-16 h-16 border border-zinc-800 rounded-2xl flex items-center justify-center mb-8 bg-zinc-950 shadow-glow">
+        <i data-lucide="shield-check" class="w-8 h-8 text-brand-yellow"></i>
+    </div>
+
+    <!-- Logo -->
+    <div class="relative flex flex-col items-center mb-8 z-10">
+        <div class="relative flex items-baseline leading-none">
+            <span class="font-bold text-[4.5rem] md:text-[5rem] text-gold-shine lowercase tracking-[-0.05em] leading-none">vısıon</span>
+            <span class="absolute -right-5 top-4 text-[1.1rem] text-brand-yellow font-bold">®</span>
+        </div>
+        <span class="text-[1.0rem] font-bold text-zinc-500 lowercase -mt-4 ml-2.5 text-center w-full" style="letter-spacing:0.53em;">tecnologia</span>
+    </div>
+
+    <div class="w-full max-w-sm space-y-5 z-10">
+        <div class="space-y-1.5">
+            <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-brand-yellow/30 bg-brand-yellow/10 mb-1">
+                <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+                <span class="text-brand-yellow text-[10px] font-bold uppercase tracking-widest">PROPOSTA PROTEGIDA</span>
+            </div>
+            <h2 class="text-white font-black text-2xl tracking-tight">A/C Thifanny</h2>
+            <p class="text-zinc-400 text-xs uppercase tracking-widest font-semibold">Salas Comerciais 101/102 • Paraíso, SP</p>
+        </div>
+
+        <div>
+            <!-- SENHAS CONFIGURADAS: THIFANNY2026, VISION -->
+            <input type="password" id="password-input" class="lock-input w-full py-4 px-4 border border-zinc-800" placeholder="INSIRA SUA SENHA DE ACESSO" autocomplete="off">
+            <p id="error-msg" class="text-red-400 text-xs mt-2 hidden">
+                <span class="flex items-center justify-center gap-1"><i data-lucide="alert-triangle" class="w-4 h-4"></i> Credencial inválida. Tente novamente.</span>
+            </p>
+        </div>
+
+        <button onclick="checkPassword()" id="btn-unlock" class="w-full bg-brand-yellow hover:bg-brand-goldLight text-black font-extrabold py-4 rounded-2xl transition-all shadow-glow flex items-center justify-center gap-2 group relative overflow-hidden">
+            <div class="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-300 rounded-2xl"></div>
+            <i data-lucide="key-round" class="w-5 h-5 relative z-10" id="unlock-icon"></i>
+            <span class="relative z-10 text-xs uppercase tracking-widest font-extrabold" id="unlock-text">Autenticar e Desbloquear</span>
+            <i data-lucide="arrow-right" class="w-4 h-4 relative z-10 group-hover:translate-x-1 transition-transform" id="unlock-arrow"></i>
+        </button>
+
+        <p class="text-zinc-600 text-[10px] uppercase tracking-wider font-semibold">Criptografia Vision Proposta Segura • 2026</p>
+    </div>
+</div>
+
+<!-- ===================== NAVBAR ===================== -->
+<nav id="navbar" class="fixed w-full z-50 top-0 bg-white/95 backdrop-blur-xl border-b border-gray-200/50 shadow-sm transition-all duration-300">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-between h-20 items-center">
+            
+            <div class="flex items-center gap-4">
+                <div class="flex flex-col items-center justify-center cursor-pointer" onclick="window.scrollTo(0,0)">
+                    <div class="relative flex items-baseline leading-none">
+                        <span class="font-bold text-[2.6rem] text-gold-shine lowercase tracking-[-0.05em] leading-none">vısıon</span>
+                        <span class="absolute -right-2.5 top-1.5 text-[0.6rem] text-brand-yellow font-bold">®</span>
+                    </div>
+                    <span class="text-[0.6rem] font-bold text-gray-400 lowercase -mt-2 ml-1.5" style="letter-spacing:0.53em;">tecnologia</span>
+                </div>
+                <div class="h-8 w-px bg-gray-200"></div>
+                <div class="flex items-center">
+                    <span class="text-zinc-400 text-xs uppercase tracking-widest font-bold">SP — CAPITAL</span>
+                </div>
+            </div>
+
+            <div class="hidden lg:flex items-center space-x-7 text-xs font-bold text-gray-500 uppercase tracking-wider">
+                <a href="#diagnostico" class="hover:text-brand-yellow transition-colors">Planejamento</a>
+                <a href="#mapeamento" class="hover:text-brand-yellow transition-colors">Zonas do Projeto</a>
+                <a href="#tecnologia" class="hover:text-brand-yellow transition-colors">Especificações</a>
+                <a href="#investimento" class="hover:text-brand-yellow transition-colors">Orçamento</a>
+            </div>
+            <div class="flex items-center gap-4">
+                <button onclick="window.print()" class="text-gray-400 hover:text-brand-yellow transition-colors flex items-center gap-1.5" title="Salvar em PDF">
+                    <i data-lucide="download" class="w-4 h-4"></i>
+                    <span class="text-[10px] font-bold uppercase tracking-widest hidden sm:block">PDF</span>
+                </button>
+                <a href="#investimento" class="bg-zinc-900 text-white px-5 py-2.5 rounded-full text-[10px] font-bold uppercase tracking-widest hover:bg-brand-yellow hover:text-black transition-all shadow-md">
+                    Ver Orçamento
+                </a>
+            </div>
+        </div>
+    </div>
+</nav>
+
+<!-- ===================== HERO ===================== -->
+<header class="pt-28 pb-16 lg:pt-36 relative overflow-hidden bg-white">
+    <div class="absolute inset-0 bg-grid pointer-events-none"></div>
+    <div class="absolute right-0 top-0 -translate-y-1/4 translate-x-1/4 w-[800px] h-[800px] bg-brand-yellow/5 rounded-full blur-[120px] pointer-events-none"></div>
+    
+    <div class="max-w-7xl mx-auto px-4 relative z-10">
+        <div class="flex flex-col lg:flex-row items-center gap-12 lg:gap-16">
+            
+            <!-- Coluna Texto -->
+            <div class="w-full lg:w-1/2 text-left animate-slide-up">
+                <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-brand-yellow/30 bg-brand-yellow/5 text-brand-yellow text-[9px] font-bold uppercase tracking-widest shadow-xs mb-6">
+                    <i data-lucide="shield" class="w-3.5 h-3.5"></i>
+                    PROJETO EXCLUSIVO DE SEGURANÇA CORPORATIVA
+                </div>
+                
+                <h1 class="text-4xl md:text-5xl lg:text-6xl font-black text-gray-950 leading-[1.05] tracking-tight mb-4">
+                    Monitoramento Integrado <br><span class="text-gold-shine">e Controle Facial para o Paraíso.</span>
+                </h1>
+                
+                <p class="text-sm md:text-base text-gray-500 font-medium leading-relaxed mb-8 max-w-xl">
+                    Thifanny, projetamos um sistema sob medida de alta segurança para as **Salas 101/102**. Combinamos 5 câmeras dome com captação de áudio em tempo real e controle de acesso biométrico facial para suas portas pivotantes de vidro.
+                </p>
+
+                <!-- Métricas Rápidas -->
+                <div class="grid grid-cols-3 gap-4 p-4 bg-zinc-900 rounded-3xl text-white shadow-premium">
+                    <div class="border-r border-zinc-800 last:border-0 pr-2">
+                        <span class="text-[9px] uppercase font-bold text-zinc-500 block">Câmeras Dome</span>
+                        <div class="flex items-baseline gap-1 mt-1">
+                            <span class="text-xl font-black text-brand-goldLight">5</span>
+                            <span class="text-[8px] text-zinc-400 font-semibold">Canais</span>
+                        </div>
+                    </div>
+                    <div class="border-r border-zinc-800 last:border-0 pl-2 pr-2">
+                        <span class="text-[9px] uppercase font-bold text-zinc-500 block">Leitores Faciais</span>
+                        <div class="flex items-baseline gap-1 mt-1">
+                            <span class="text-xl font-black text-brand-goldLight">2</span>
+                            <span class="text-[8px] text-zinc-400 font-semibold">Portas</span>
+                        </div>
+                    </div>
+                    <div class="pl-2">
+                        <span class="text-[9px] uppercase font-bold text-zinc-500 block">Implantação</span>
+                        <div class="flex items-baseline gap-1 mt-1">
+                            <span class="text-xl font-black text-brand-goldLight">Noturna</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Coluna Vídeo demonstrativo -->
+            <div class="w-full lg:w-1/2 reveal animate-slide-up" style="animation-delay: 200ms;">
+                <div class="relative w-full max-w-lg mx-auto group z-10 mt-4">
+                    <div class="relative w-full aspect-video bg-black border-[8px] md:border-[12px] border-zinc-950 rounded-t-[1.5rem] overflow-hidden shadow-premium">
+                        <video id="vision-video" class="w-full h-full object-cover cursor-pointer opacity-90" autoplay muted loop playsinline>
+                            <source src="https://res.cloudinary.com/dptcuckhf/video/upload/v1771711323/Vict%C3%B3ria_-_Vision_gdqnrk.mp4" type="video/mp4">
+                        </video>
+                        <div id="unmute-overlay" class="absolute inset-0 bg-black/60 backdrop-blur-sm flex flex-col items-center justify-center cursor-pointer transition-opacity duration-500 z-30 hover:bg-black/40">
+                            <div class="bg-brand-yellow text-black font-extrabold px-6 py-3 rounded-full flex items-center gap-2.5 shadow-glow animate-pulse transform group-hover:scale-105 transition-all text-xs uppercase tracking-widest">
+                                <i data-lucide="volume-2" class="w-4 h-4 fill-black"></i>
+                                Ouvir Apresentação
+                            </div>
+                        </div>
+                    </div>
+                    <div class="relative w-[114%] -ml-[7%] h-4 bg-gradient-to-b from-zinc-300 to-zinc-400 rounded-b-xl shadow-premium flex justify-center border-t border-zinc-200">
+                        <div class="w-1/5 h-2 bg-zinc-400 rounded-b-md shadow-inner"></div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</header>
+
+<!-- ===================== PILARES DO DIAGNÓSTICO (SPIN SELLING) ===================== -->
+<section id="diagnostico" class="py-24 bg-[#fafafa] relative">
+    <div class="absolute inset-0 bg-dots pointer-events-none"></div>
+    <div class="max-w-7xl mx-auto px-4 relative z-10">
+        
+        <div class="text-center mb-16 reveal">
+            <span class="text-brand-yellow font-extrabold uppercase tracking-widest text-xs">Visão Técnica</span>
+            <h2 class="text-3xl md:text-5xl font-black text-gray-900 mt-2 tracking-tight">Planejamento e Desafios do Local</h2>
+            <p class="text-gray-500 mt-3 max-w-2xl mx-auto text-sm md:text-base">
+                Análise minuciosa efetuada pela nossa engenharia de campo para garantir uma implantação de alta performance sem comprometer as salas comerciais:
+            </p>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 reveal">
+            
+            <!-- Pilar 1 -->
+            <div class="bg-white border border-gray-150 rounded-3xl p-8 shadow-sm flex flex-col justify-between hover:border-brand-yellow/30 hover:shadow-premium transition-all duration-300 relative overflow-hidden group">
+                <div class="absolute top-0 right-0 w-24 h-24 bg-brand-yellow/5 rounded-bl-[100px]"></div>
+                <div>
+                    <div class="w-12 h-12 rounded-2xl bg-brand-yellow/10 flex items-center justify-center text-brand-goldDark mb-6 border border-brand-yellow/20">
+                        <i data-lucide="moon" class="w-5 h-5"></i>
+                    </div>
+                    <span class="text-[10px] font-bold text-brand-yellow uppercase tracking-widest block mb-1">Ação Silenciosa</span>
+                    <h4 class="font-extrabold text-gray-900 text-xl mb-4">Trabalho Fora de Horário</h4>
+                    <p class="text-xs text-gray-500 leading-relaxed font-semibold">
+                        Por se tratar de um condomínio comercial de alto padrão em SP, todas as passagens de cabos e furações barulhentas serão executadas no período noturno, garantindo que o expediente do seu escritório não sofra interrupções.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Pilar 2 -->
+            <div class="bg-white border border-gray-150 rounded-3xl p-8 shadow-sm flex flex-col justify-between hover:border-brand-yellow/30 hover:shadow-premium transition-all duration-300 relative overflow-hidden group">
+                <div class="absolute top-0 right-0 w-24 h-24 bg-brand-yellow/5 rounded-bl-[100px]"></div>
+                <div>
+                    <div class="w-12 h-12 rounded-2xl bg-brand-yellow/10 flex items-center justify-center text-brand-goldDark mb-6 border border-brand-yellow/20">
+                        <i data-lucide="lock" class="w-5 h-5"></i>
+                    </div>
+                    <span class="text-[10px] font-bold text-brand-yellow uppercase tracking-widest block mb-1">Portas Pivotantes</span>
+                    <h4 class="font-extrabold text-gray-900 text-xl mb-4">Fixação Sem Furação em Vidro</h4>
+                    <p class="text-xs text-gray-500 leading-relaxed font-semibold">
+                        Suportes de compressão industrial em aço inoxidável da Intelbras. Permitem ancorar as fechaduras eletroímãs de 150kg nas portas de vidro pivotantes sem necessidade de furos, eliminando totalmente o risco de trincas.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Pilar 3 -->
+            <div class="bg-white border border-gray-150 rounded-3xl p-8 shadow-sm flex flex-col justify-between hover:border-brand-yellow/30 hover:shadow-premium transition-all duration-300 relative overflow-hidden group">
+                <div class="absolute top-0 right-0 w-24 h-24 bg-brand-yellow/5 rounded-bl-[100px]"></div>
+                <div>
+                    <div class="w-12 h-12 rounded-2xl bg-brand-yellow/10 flex items-center justify-center text-brand-goldDark mb-6 border border-brand-yellow/20">
+                        <i data-lucide="battery-charging" class="w-5 h-5"></i>
+                    </div>
+                    <span class="text-[10px] font-bold text-brand-yellow uppercase tracking-widest block mb-1">Proteção Elétrica</span>
+                    <h4 class="font-extrabold text-gray-900 text-xl mb-4">Fontes Nobreak Flutuantes</h4>
+                    <p class="text-xs text-gray-500 leading-relaxed font-semibold">
+                        Sua segurança não pode parar em quedas de energia. Instalamos fontes carregadoras de bateria inteligente Intelbras que mantêm o controle de acesso facial e as travas ativas continuamente, mesmo com blecautes na região.
+                    </p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<!-- ===================== MAPEAMENTO FÍSICO COM SELEÇÃO DE ABAS ===================== -->
+<section id="mapeamento" class="py-24 bg-white relative border-b border-gray-100">
+    <div class="max-w-7xl mx-auto px-4 relative z-10">
+        
+        <div class="text-center mb-16 reveal">
+            <span class="text-brand-yellow font-extrabold uppercase tracking-widest text-xs">Especificações das Zonas</span>
+            <h2 class="text-3xl md:text-5xl font-black text-gray-900 mt-2 tracking-tight">Estrutura Operacional Solicitada</h2>
+            <p class="text-gray-500 mt-3 max-w-2xl mx-auto text-sm md:text-base">
+                Nossa equipe de engenharia validou o local do projeto e definiu as seguintes especificações para as portas e monitoramento:
+            </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto reveal">
+            
+            <!-- Zona 1: CFTV -->
+            <div class="bg-[#fafafa] border border-gray-200 rounded-3xl p-8 flex flex-col justify-between hover:border-brand-yellow/50 hover:shadow-premium-card">
+                <div>
+                    <div class="flex items-center gap-4 mb-6">
+                        <div class="w-12 h-12 rounded-full bg-brand-yellow/10 flex items-center justify-center text-brand-goldDark shrink-0">
+                            <i data-lucide="video" class="w-6 h-6"></i>
+                        </div>
+                        <div>
+                            <span class="text-[9px] text-brand-yellow font-bold uppercase tracking-widest block">Projeto 1</span>
+                            <h4 class="font-black text-gray-900 text-lg">CFTV de Alta Fidelidade (Áudio + Vídeo)</h4>
+                        </div>
+                    </div>
+                    <ul class="space-y-4 text-xs font-semibold text-gray-600">
+                        <li class="flex items-start gap-3">
+                            <i data-lucide="check" class="w-4 h-4 text-emerald-600 shrink-0 mt-0.5"></i>
+                            <span><strong>3x Câmeras Dome com Microfone Integrado:</strong> Perfeitas para as recepções e salas de atendimento comercial com registro sonoro em tempo real.</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <i data-lucide="check" class="w-4 h-4 text-emerald-600 shrink-0 mt-0.5"></i>
+                            <span><strong>2x Câmeras Dome Comuns:</strong> Focadas no monitoramento geral de circulação interna das salas.</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <i data-lucide="check" class="w-4 h-4 text-emerald-600 shrink-0 mt-0.5"></i>
+                            <span><strong>DVR de 8 canais com Dual Áudio:</strong> Tecnologia de ponta da Intelbras para gravação síncrona local de vídeo e som.</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Zona 2: Controle de Acesso -->
+            <div class="bg-[#fafafa] border border-gray-200 rounded-3xl p-8 flex flex-col justify-between hover:border-brand-yellow/50 hover:shadow-premium-card">
+                <div>
+                    <div class="flex items-center gap-4 mb-6">
+                        <div class="w-12 h-12 rounded-full bg-brand-yellow/10 flex items-center justify-center text-brand-goldDark shrink-0">
+                            <i data-lucide="fingerprint" class="w-6 h-6"></i>
+                        </div>
+                        <div>
+                            <span class="text-[9px] text-brand-yellow font-bold uppercase tracking-widest block">Projeto 2</span>
+                            <h4 class="font-black text-gray-900 text-lg">Controle de Acesso Facial Biométrico</h4>
+                        </div>
+                    </div>
+                    <ul class="space-y-4 text-xs font-semibold text-gray-600">
+                        <li class="flex items-start gap-3">
+                            <i data-lucide="check" class="w-4 h-4 text-emerald-600 shrink-0 mt-0.5"></i>
+                            <span><strong>2x Controladores Faciais Intelbras (SS 1530 MF W):</strong> Biometria sem toque, liberação rápida no cartão, chave digital ou reconhecimento de face com suporte a Wi-Fi.</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <i data-lucide="check" class="w-4 h-4 text-emerald-600 shrink-0 mt-0.5"></i>
+                            <span><strong>Eletroímãs e Suportes Pivotantes de Pressão:</strong> Travamento seguro de até 150kg sem comprometer as folhas de vidro das salas.</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <i data-lucide="check" class="w-4 h-4 text-emerald-600 shrink-0 mt-0.5"></i>
+                            <span><strong>Botoeiras de Saída Inox Embutidas:</strong> Sistema robusto e elegante de destravamento no corredor para as pessoas saírem.</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+</section>
+
+<!-- ===================== VITRINE TECNOLÓGICA TIPO E-COMMERCE ===================== -->
+<section id="tecnologia" class="py-24 bg-[#f8f9fa] border-b border-gray-200/60 relative overflow-hidden">
+    <div class="absolute inset-0 bg-dots pointer-events-none"></div>
+    <div class="max-w-7xl mx-auto px-4 relative z-10">
+        
+        <div class="text-center mb-20 reveal">
+            <span class="text-brand-yellow font-extrabold uppercase tracking-widest text-xs">Portfólio de Equipamentos</span>
+            <h2 class="text-3xl md:text-5xl font-black text-gray-900 mt-2 tracking-tight">Equipamentos Intelbras Selecionados</h2>
+            <p class="text-gray-500 mt-3 max-w-2xl mx-auto text-sm md:text-base">
+                Somente produtos originais de alta qualidade e com garantia oficial de 1 ano do fabricante:
+            </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 reveal">
+            
+            <!-- Câmera com Áudio -->
+            <div class="bg-white border border-gray-200 rounded-3xl p-6 shadow-sm hover:border-brand-yellow/30 transition-all duration-300 flex flex-col justify-between group">
+                <div>
+                    <div class="w-full aspect-[4/3] bg-zinc-50 rounded-2xl flex items-center justify-center relative overflow-hidden mb-6 border border-gray-150">
+                        <img src="https://res.cloudinary.com/dptcuckhf/image/upload/v1771011144/vhd-1220-d-full-color-g8-font-1_fbwg6f.png" alt="Câmera com Áudio" class="h-32 object-contain transition-transform group-hover:scale-105 duration-500 filter drop-shadow-md">
+                        <span class="absolute top-3 left-3 bg-brand-yellow text-black font-extrabold text-[8px] px-2.5 py-1 rounded tracking-widest uppercase">ÁUDIO EMBUTIDO</span>
+                    </div>
+                    <h4 class="font-extrabold text-gray-950 text-lg mb-2">Câmera Dome c/ Microfone</h4>
+                    <span class="text-xs text-brand-goldDark font-bold uppercase tracking-wider block mb-2">VHD 1220 MIC G9</span>
+                    <p class="text-xs text-gray-500 leading-relaxed font-semibold">Sensor de alta definição analógico que capta imagem colorida nítida e som integrado de altíssima fidelidade pelo próprio cabo de transmissão coaxial.</p>
+                </div>
+            </div>
+
+            <!-- Câmera Comum -->
+            <div class="bg-white border border-gray-200 rounded-3xl p-6 shadow-sm hover:border-brand-yellow/30 transition-all duration-300 flex flex-col justify-between group">
+                <div>
+                    <div class="w-full aspect-[4/3] bg-zinc-50 rounded-2xl flex items-center justify-center relative overflow-hidden mb-6 border border-gray-150">
+                        <img src="https://res.cloudinary.com/dptcuckhf/image/upload/v1773319978/ImageToStl.com_vhl_1220_d-frontal_l3qbq2.avif" alt="Câmera Dome" class="h-32 object-contain transition-transform group-hover:scale-105 duration-500 filter drop-shadow-md">
+                        <span class="absolute top-3 left-3 bg-zinc-950 text-white font-extrabold text-[8px] px-2.5 py-1 rounded tracking-widest uppercase">MONITORAMENTO GERAL</span>
+                    </div>
+                    <h4 class="font-extrabold text-gray-950 text-lg mb-2">Câmera Dome Simples</h4>
+                    <span class="text-xs text-brand-goldDark font-bold uppercase tracking-wider block mb-2">VHL 1220 D G9</span>
+                    <p class="text-xs text-gray-500 leading-relaxed font-semibold">Câmera infravermelha analógica de alta resolução para ambientes de circulação comum, oferecendo amplo ângulo de visão.</p>
+                </div>
+            </div>
+
+            <!-- Gravador MHDX -->
+            <div class="bg-white border border-gray-200 rounded-3xl p-6 shadow-sm hover:border-brand-yellow/30 transition-all duration-300 flex flex-col justify-between group">
+                <div>
+                    <div class="w-full aspect-[4/3] bg-zinc-50 rounded-2xl flex items-center justify-center relative overflow-hidden mb-6 border border-gray-150">
+                        <img src="https://res.cloudinary.com/dptcuckhf/image/upload/v1771880910/FOTO_ee32566a02aa2e389c2f0a21db114321-removebg-preview_dwwbep.png" alt="DVR Intelbras" class="h-32 object-contain transition-transform group-hover:scale-105 duration-500 filter drop-shadow-md">
+                        <span class="absolute top-3 left-3 bg-zinc-950 text-white font-extrabold text-[8px] px-2.5 py-1 rounded tracking-widest uppercase">DUAL ÁUDIO</span>
+                    </div>
+                    <h4 class="font-extrabold text-gray-950 text-lg mb-2">DVR Intelbras 8 Canais</h4>
+                    <span class="text-xs text-brand-goldDark font-bold uppercase tracking-wider block mb-2">MHDX 1208 Compact</span>
+                    <p class="text-xs text-gray-500 leading-relaxed font-semibold">Central inteligente compacta e de alto desempenho que permite o processamento simultâneo das gravações de vídeo e dos fluxos de áudio síncronos.</p>
+                </div>
+            </div>
+
+            <!-- Controlador Facial -->
+            <div class="bg-white border border-gray-200 rounded-3xl p-6 shadow-sm hover:border-brand-yellow/30 transition-all duration-300 flex flex-col justify-between group">
+                <div>
+                    <div class="w-full aspect-[4/3] bg-zinc-50 rounded-2xl flex items-center justify-center relative overflow-hidden mb-6 border border-gray-150">
+                        <img src="https://res.cloudinary.com/dptcuckhf/image/upload/v1782232223/08_Persp_Dir.001_gobh42.webp" alt="Controle Facial" class="h-32 object-contain transition-transform group-hover:scale-105 duration-500 filter drop-shadow-md">
+                        <span class="absolute top-3 left-3 bg-brand-yellow text-black font-extrabold text-[8px] px-2.5 py-1 rounded tracking-widest uppercase">TECNOLOGIA SEM TOQUE</span>
+                    </div>
+                    <h4 class="font-extrabold text-gray-950 text-lg mb-2">Controlador Facial Biométrico</h4>
+                    <span class="text-xs text-brand-goldDark font-bold uppercase tracking-wider block mb-2">SS 1530 MF W</span>
+                    <p class="text-xs text-gray-500 leading-relaxed font-semibold">Leitor biométrico facial de entrada com Wi-Fi. Permite o registro instantâneo, identificando colaboradores sem necessidade de contato físico, cartão ou chaveiros.</p>
+                </div>
+            </div>
+
+            <!-- HD WD Purple 1TB -->
+            <div class="bg-white border border-gray-200 rounded-3xl p-6 shadow-sm hover:border-brand-yellow/30 transition-all duration-300 flex flex-col justify-between group">
+                <div>
+                    <div class="w-full aspect-[4/3] bg-zinc-50 rounded-2xl flex items-center justify-center relative overflow-hidden mb-6 border border-gray-150">
+                        <img src="https://res.cloudinary.com/dptcuckhf/image/upload/v1770981166/180_hd_1tb_wd_purple_surveillance_3_5_sata_iii_6gb_s_5400rpm_cache_64mb_wd10purz_25944474_2_b704042e5fa3f3028ce34fe08d083d04_h9i2hj.webp" alt="HD 1TB" class="h-32 object-contain transition-transform group-hover:scale-105 duration-500 filter drop-shadow-md">
+                        <span class="absolute top-3 left-3 bg-zinc-950 text-white font-extrabold text-[8px] px-2.5 py-1 rounded tracking-widest uppercase">HD SURVEILLANCE</span>
+                    </div>
+                    <h4 class="font-extrabold text-gray-950 text-lg mb-2">HD WD Purple 1TB</h4>
+                    <span class="text-xs text-brand-goldDark font-bold uppercase tracking-wider block mb-2">Opção de Armazenamento A</span>
+                    <p class="text-xs text-gray-500 leading-relaxed font-semibold">Unidade de disco SATA de 1TB focada na gravação básica e síncrona de vídeo e áudio do escritório por até 15 dias contínuos.</p>
+                </div>
+            </div>
+
+            <!-- HD WD Purple 2TB -->
+            <div class="bg-white border border-gray-200 rounded-3xl p-6 shadow-sm hover:border-brand-yellow/30 transition-all duration-300 flex flex-col justify-between group">
+                <div>
+                    <div class="w-full aspect-[4/3] bg-zinc-50 rounded-2xl flex items-center justify-center relative overflow-hidden mb-6 border border-gray-150">
+                        <img src="https://res.cloudinary.com/dptcuckhf/image/upload/v1771880502/WD-PURPLE_2TB-removebg-preview_f1micz.png" alt="HD 2TB" class="h-32 object-contain transition-transform group-hover:scale-105 duration-500 filter drop-shadow-md">
+                        <span class="absolute top-3 left-3 bg-brand-yellow text-black font-extrabold text-[8px] px-2.5 py-1 rounded tracking-widest uppercase">STORAGE ROBUSTO</span>
+                    </div>
+                    <h4 class="font-extrabold text-gray-950 text-lg mb-2">HD WD Purple 2TB</h4>
+                    <span class="text-xs text-brand-goldDark font-bold uppercase tracking-wider block mb-2">Opção de Armazenamento B</span>
+                    <p class="text-xs text-gray-500 leading-relaxed font-semibold">Unidade de disco premium SATA de 2TB de alta intensidade. Oferece o dobro de autonomia, garantindo gravação estável por até 30 dias contínuos.</p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<!-- ===================== INVESTIMENTO COM CARTÃO SIMULADO DINÂMICO ===================== -->
+<section id="investimento" class="py-24 bg-white relative overflow-hidden">
+    <div class="absolute inset-0 bg-dots pointer-events-none z-0"></div>
+    <div class="max-w-7xl mx-auto px-4 relative z-10">
+
+        <div class="text-center mb-12 reveal">
+            <span class="text-brand-yellow font-extrabold uppercase tracking-widest text-xs">Simulador Financeiro</span>
+            <h2 class="text-3xl md:text-5xl font-black text-gray-900 mt-2 tracking-tight">Investimento e Contratação</h2>
+            <p class="text-gray-500 mt-3 max-w-xl mx-auto text-xs md:text-sm leading-relaxed px-4">
+                Selecione as opções do projeto abaixo para atualizar instantaneamente o valor e as etapas de faturamento:
+            </p>
+        </div>
+
+        <!-- SELETOR DE ESCOPO DO PROJETO -->
+        <div class="max-w-4xl mx-auto mb-8 reveal">
+            <p class="text-[9px] font-black text-zinc-400 uppercase tracking-widest text-center mb-3">Escolha o Escopo do Projeto:</p>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-2 bg-zinc-100 p-1.5 rounded-2xl">
+                <button onclick="setScope('combo-2tb')" id="scope-combo-2tb" class="px-3 py-2.5 text-xs font-black rounded-xl border transition-all text-center outline-none">Combo CFTV (2TB) + Acesso</button>
+                <button onclick="setScope('combo-1tb')" id="scope-combo-1tb" class="px-3 py-2.5 text-xs font-black rounded-xl border transition-all text-center outline-none">Combo CFTV (1TB) + Acesso</button>
+                <button onclick="setScope('cftv-1tb')" id="scope-cftv-1tb" class="px-3 py-2.5 text-xs font-black rounded-xl border transition-all text-center outline-none">Apenas CFTV (1TB)</button>
+                <button onclick="setScope('access')" id="scope-access" class="px-3 py-2.5 text-xs font-black rounded-xl border transition-all text-center outline-none">Apenas Acesso Facial</button>
+            </div>
+        </div>
+
+        <!-- MODO DE PAGAMENTO COM GRADIENTE INTERATIVO -->
+        <div class="flex flex-col items-center justify-center mb-12 reveal">
+            <span class="text-[9px] font-bold text-zinc-400 uppercase tracking-widest mb-3">Escolha o Método de Pagamento:</span>
+            <div class="bg-zinc-100 p-1 rounded-full inline-flex relative shadow-inner">
+                <div id="toggle-bg" class="absolute top-1 bottom-1 w-[calc(50%-2px)] bg-white rounded-full shadow transition-transform duration-300 ease-in-out" style="transform: translateX(0); left: 1px;"></div>
+                
+                <button onclick="setPaymentMode('avista')" id="btn-avista" class="relative z-10 px-6 py-3 text-xs font-black text-gray-950 transition-colors w-32 md:w-40 text-center rounded-full outline-none">À Vista (PIX)</button>
+                <button onclick="setPaymentMode('parcelado')" id="btn-parcelado" class="relative z-10 px-6 py-3 text-xs font-black text-gray-400 transition-colors w-32 md:w-40 text-center rounded-full outline-none hover:text-black">Parcelado (Cartão)</button>
+            </div>
+
+            <!-- Seletor de Parcelas em Formato de Dropdown Premium -->
+            <div id="installment-container" class="mt-6 flex flex-col items-center transition-all duration-300 opacity-0 pointer-events-none hidden">
+                <div class="relative">
+                    <select id="installment-select" class="appearance-none bg-zinc-950 border border-zinc-800 text-white text-xs font-bold rounded-xl focus:ring-brand-yellow focus:border-brand-yellow block w-56 p-3.5 pr-10 shadow-lg outline-none cursor-pointer" onchange="updatePrices()">
+                        <option value="1">1x no cartão</option>
+                        <option value="2">2x no cartão</option>
+                        <option value="3">3x no cartão</option>
+                        <option value="4">4x no cartão</option>
+                        <option value="5">5x no cartão</option>
+                        <option value="6">6x no cartão</option>
+                        <option value="12" selected>12x de repasse</option>
+                    </select>
+                    <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-3 text-brand-yellow">
+                        <i data-lucide="chevron-down" class="w-4 h-4"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- VISUAL CHECOUT GRID -->
+        <div class="reveal max-w-4xl mx-auto flex flex-col lg:flex-row items-stretch gap-8">
+            
+            <!-- Simulador de Cartão Dinâmico / Cronograma Visual Pix (Esquerda) -->
+            <div class="w-full lg:w-1/2 flex items-center justify-center">
+                <div class="w-full max-w-sm" id="checkout-visual-panel">
+                    <!-- Injetado dinamicamente via JS (Mostra cartão de crédito ou fluxograma do PIX) -->
+                </div>
+            </div>
+
+            <!-- Dados do Plano Técnico e Botão de Aprovação (Direita) -->
+            <div class="w-full lg:w-1/2">
+                <div class="premium-border-glow h-full w-full">
+                    <div class="premium-border-inner bg-white p-6 md:p-8 flex flex-col justify-between">
+                        
+                        <div>
+                            <div class="mb-6">
+                                <span class="bg-brand-yellow text-black text-[8px] font-black px-3 py-1 rounded-full uppercase tracking-widest shadow-glow">ORÇAMENTO CORPORATIVO</span>
+                                <h3 class="font-extrabold text-gray-950 text-2xl mt-3 tracking-tight" id="active-proposal-title">Projeto de CFTV com Captação de Áudio</h3>
+                                <p class="text-[9px] text-zinc-400 font-bold uppercase tracking-widest mt-1">PARAÍSO — SÃO PAULO/SP</p>
+                            </div>
+
+                            <!-- VALORES DO PROJETO -->
+                            <div class="mb-6 p-5 bg-brand-yellow/5 border border-brand-yellow/20 rounded-2xl flex flex-col items-center justify-center text-center">
+                                <span class="text-[9px] text-brand-goldDark uppercase tracking-widest font-black mb-1">VALOR TOTAL DO INVESTIMENTO</span>
+                                <div id="price-opt1" class="w-full">
+                                    <!-- Injetado dinamicamente via JS -->
+                                </div>
+                            </div>
+
+                            <!-- Resumo dinâmico das Especificações por Escopo -->
+                            <div class="space-y-3 mb-8" id="equipment-list-container">
+                                <!-- Injetado dinamicamente via JS -->
+                            </div>
+                        </div>
+
+                        <!-- Botão de Redirecionamento -->
+                        <a id="btn-aprova-link" href="#" target="_blank" class="w-full bg-brand-yellow hover:bg-brand-goldLight text-black font-black py-4 rounded-xl flex items-center justify-center gap-2 transition-all shadow-glow-md text-xs uppercase tracking-widest group relative overflow-hidden">
+                            <div class="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-300"></div>
+                            <span id="btn-text-aprova" class="relative z-10 font-black">Aprovar Proposta e Iniciar Projeto</span>
+                            <i data-lucide="arrow-right" class="w-4 h-4 relative z-10 group-hover:translate-x-1 transition-transform"></i>
+                        </a>
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+</section>
+
+<!-- ===================== FAQ COM ACORDEÃO ===================== -->
+<section id="faq" class="py-24 bg-[#f8f9fa] border-t border-gray-200/60 font-sans">
+    <div class="max-w-3xl mx-auto px-4">
+        <div class="text-center mb-14 reveal">
+            <span class="text-brand-yellow font-extrabold uppercase tracking-widest text-xs">Perguntas Frequentes</span>
+            <h2 class="text-3xl md:text-4xl font-black text-gray-900 mt-2 tracking-tight">Para Sua Total Tranquilidade</h2>
+        </div>
+        
+        <div class="space-y-4 reveal" id="accordion">
+            <div class="accordion-item bg-white rounded-2xl border border-gray-150 shadow-sm overflow-hidden transition-all hover:border-brand-yellow/50">
+                <button onclick="toggleAccordion(this)" class="w-full flex items-center justify-between p-6 text-left font-extrabold text-gray-900 focus:outline-none">
+                    <span class="text-sm md:text-base">Há alguma taxa mensal pelo uso do aplicativo das câmeras ou do acesso facial?</span>
+                    <i data-lucide="chevron-down" class="w-5 h-5 text-brand-yellow acc-arrow shrink-0"></i>
+                </button>
+                <div class="accordion-content">
+                    <p class="px-6 pb-6 text-gray-600 text-xs md:text-sm leading-relaxed font-semibold">Não! Todo o monitoramento de CFTV e controle de acesso facial funciona de maneira 100% autônoma e local no escritório corporativo. O aplicativo para visualização em tempo real e a liberação dos acessos pelo smartphone são gratuitos, sem nenhuma mensalidade ou assinatura de nuvem.</p>
+                </div>
+            </div>
+
+            <div class="accordion-item bg-white rounded-2xl border border-gray-150 shadow-sm overflow-hidden transition-all hover:border-brand-yellow/50">
+                <button onclick="toggleAccordion(this)" class="w-full flex items-center justify-between p-6 text-left font-extrabold text-gray-900 focus:outline-none">
+                    <span class="text-sm md:text-base">Como é feita a instalação das fechaduras sem danificar as portas de vidro?</span>
+                    <i data-lucide="chevron-down" class="w-5 h-5 text-brand-yellow acc-arrow shrink-0"></i>
+                </button>
+                <div class="accordion-content">
+                    <p class="px-6 pb-6 text-gray-600 text-xs md:text-sm leading-relaxed font-semibold">Utilizamos suportes específicos da Intelbras para portas de vidro pivotantes sem furação. Eles atuam por meio de uma pressão de tração estrutural com encaixe emborrachado na folha de vidro temperado, eliminando completamente vibrações e furos que poderiam causar trincas.</p>
+                </div>
+            </div>
+
+            <div class="accordion-item bg-white rounded-2xl border border-gray-150 shadow-sm overflow-hidden transition-all hover:border-brand-yellow/50">
+                <button onclick="toggleAccordion(this)" class="w-full flex items-center justify-between p-6 text-left font-extrabold text-gray-900 focus:outline-none">
+                    <span class="text-sm md:text-base">As câmeras gravam áudio mesmo se as luzes do escritório forem apagadas?</span>
+                    <i data-lucide="chevron-down" class="w-5 h-5 text-brand-yellow acc-arrow shrink-0"></i>
+                </button>
+                <div class="accordion-content">
+                    <p class="px-6 pb-6 text-gray-600 text-xs md:text-sm leading-relaxed font-semibold">Sim. O microfone embutido de alta fidelidade das câmeras VHD 1220 MIC capta som ambiente contínuo de forma síncrona com o vídeo, que conta com iluminação infravermelha automática para registrar tudo com nitidez sob escuridão total.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ===================== CTA FINAL ===================== -->
+<section class="py-24 bg-[#09090b] relative overflow-hidden font-sans">
+    <div class="bg-grid absolute inset-0 opacity-10 pointer-events-none z-0"></div>
+    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-brand-yellow/10 rounded-full blur-[100px] pointer-events-none z-0"></div>
+    
+    <div class="max-w-4xl mx-auto px-4 text-center relative z-10 reveal">
+        <span class="text-brand-yellow font-extrabold uppercase tracking-widest text-xs mb-4 block">Parceria de Confiança</span>
+        <h2 class="text-3xl md:text-5xl font-black text-white leading-tight mb-6">
+            Estrutura Inteligente e Discreta <br><span class="text-gold-shine">com Instalação em Regime Especial.</span>
+        </h2>
+        <p class="text-zinc-400 text-xs md:text-sm mb-10 leading-relaxed max-w-xl mx-auto font-semibold">
+            Thifanny, conte com o rigor técnico da Vision para blindar o acesso e o monitoramento das suas salas no Paraíso com cabeamento camuflado e padrão estético intocável.
+        </p>
+
+        <a href="https://wa.me/5511930816696?text=Olá%20Glicia,%20analisei%20o%20projeto%20de%20segurança%20das%20salas%20no%20Paraíso%20e%20gostaríamos%20de%20dar%20andamento." target="_blank" class="inline-flex items-center gap-3 bg-brand-yellow hover:bg-brand-goldLight text-brand-black font-black px-10 py-5 rounded-full transition-all shadow-glow-md text-xs uppercase tracking-widest transform hover:scale-[1.03]">
+            <i data-lucide="check-circle" class="w-5 h-5"></i>
+            Falar com Glícia para Iniciar
+            <i data-lucide="arrow-right" class="w-4 h-4 ml-1"></i>
+        </a>
+    </div>
+</section>
+
+<!-- ===================== FOOTER ===================== -->
+<footer class="bg-black py-16 text-center border-t border-zinc-900 group">
+    <div class="max-w-4xl mx-auto px-4 font-sans">
+        
+        <div class="flex flex-col items-center justify-center leading-none opacity-40 group-hover:opacity-100 transition-opacity duration-500 cursor-default mb-10">
+            <div class="flex flex-col items-center">
+                <div class="relative flex items-baseline leading-none">
+                    <span class="font-bold text-[3.5rem] text-white lowercase tracking-[-0.05em] leading-none">vısıon</span>
+                    <span class="absolute -right-3.5 top-2.5 text-[0.75rem] text-brand-yellow font-bold">®</span>
+                </div>
+                <span class="text-[0.75rem] font-bold text-zinc-500 lowercase -mt-3 ml-1.5 text-center w-full" style="letter-spacing: 0.53em;">tecnologia</span>
+            </div>
+        </div>
+
+        <div class="text-zinc-500 text-xs leading-relaxed space-y-1 mb-8 opacity-60 font-semibold">
+            <p><strong>A/C Thifanny</strong> | Salas Comerciais 101/102 - Rua Leôncio de Carvalho, 306 - Paraíso - São Paulo - SP</p>
+            <p>Proposta Comercial Retrofit #THIFANNY-2026-0618 | Emitida em Junho de 2026</p>
+        </div>
+
+        <div class="inline-flex items-center justify-center gap-2 border border-zinc-800 bg-zinc-900/50 px-5 py-2.5 rounded-full mb-6 shadow-sm">
+            <i data-lucide="lock" class="w-3.5 h-3.5 text-brand-yellow"></i>
+            <span class="text-[9px] text-zinc-400 uppercase tracking-widest font-black">Documento confidencial restrito</span>
+        </div>
+        
+        <p class="text-[9px] text-zinc-700 uppercase tracking-widest font-black mt-6">Projetos de Rede, Segurança IP &amp; Monitoramento Corporativo</p>
+    </div>
+</footer>
+
+<!-- WHATSAPP CTA FLUTUANTE -->
+<div id="cta-float" class="fixed bottom-6 right-6 z-40 hidden md:block opacity-0 translate-y-10 pointer-events-none transition-all duration-500">
+    <a href="https://wa.me/5511930816696?text=Olá%20Glicia,%20tenho%20uma%20dúvida%20sobre%20o%20projeto%20comercial%20do%20Paraíso." target="_blank" class="flex items-center gap-3 bg-brand-yellow text-black font-black px-6 py-4 rounded-full shadow-glow-md hover:shadow-glow transition-all group">
+        <i data-lucide="message-circle" class="w-5 h-5"></i>
+        <span class="text-xs tracking-widest uppercase">Falar com Glícia</span>
+        <i data-lucide="arrow-right" class="w-4 h-4 group-hover:translate-x-1 transition-transform"></i>
+    </a>
+</div>
+
+<!-- ===================== SCRIPTS ===================== -->
+<script>
+    // INICIALIZAÇÃO DOS ÍCONES LUCIDE
+    function initIcons() {
+        if (window.lucide && typeof window.lucide.createIcons === 'function') {
+            window.lucide.createIcons();
+        }
+    }
+    document.addEventListener("DOMContentLoaded", initIcons);
+
+    // VALIDADOR DA CHAVE DE ACESSO
+    function checkPassword() {
+        const inputEl = document.getElementById('password-input');
+        const input = inputEl.value;
+        const errorMsg = document.getElementById('error-msg');
+        const formattedInput = input.trim().toUpperCase();
+        
+        const btnUnlock = document.getElementById('btn-unlock');
+        const unlockIcon = document.getElementById('unlock-icon');
+        const unlockText = document.getElementById('unlock-text');
+        const unlockArrow = document.getElementById('unlock-arrow');
+        
+        if (formattedInput === 'THIFANNY2026' || formattedInput === 'VISION') {
+            
+            btnUnlock.disabled = true;
+            if (unlockText) unlockText.textContent = "AUTENTICANDO...";
+            if (unlockIcon) unlockIcon.className = "w-5 h-5 animate-spin text-black";
+            if (unlockArrow) unlockArrow.style.display = 'none';
+
+            setTimeout(() => {
+                const lockScreen = document.getElementById('lock-screen');
+                lockScreen.style.opacity = '0';
+
+                // Play nos vídeos com fallbacks de segurança
+                const video = document.getElementById("vision-video");
+                if (video && video.paused) {
+                    video.muted = true;
+                    video.play().catch(e => {});
+                }
+
+                const demoVideo = document.getElementById("demo-shorts-video");
+                if (demoVideo && demoVideo.paused) {
+                    demoVideo.muted = true;
+                    demoVideo.play().catch(e => {});
+                }
+
+                if (window.clarity) {
+                    window.clarity("consent");
+                    window.clarity("identify", "thifanny-paraiso", undefined, undefined, "Thifanny (Escritório Paraíso)");
+                    window.clarity("set", "Proposta", "Projeto_Corporativo_Paraiso_SP");
+                    window.clarity("event", "Proposta_Desbloqueada");
+                }
+
+                // Envio para registro de telemetria de segurança staticforms
+                fetch('https://api.staticforms.dev/submit', {
+                    method: 'POST',
+                    headers: { 
+                        'Content-Type': 'application/json',
+                        'Accept': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        accessKey: "sf_077ej49gjha153gk3m6ceecf",
+                        subject: "🚨 ALERTA: Proposta Acessada (Thifanny - Paraíso)",
+                        name: "Sistema Vision",
+                        email: "diretoria@visionsp.com.br",
+                        message: "O cliente Thifanny acabou de abrir o projeto de segurança perimetral do Escritório Paraíso em SP!\n\n👤 Cliente: Thifanny\n🔑 Senha Utilizada: " + input + "\n🕒 Horário: " + new Date().toLocaleString('pt-BR')
+                    })
+                }).catch(error => console.log('Registro efetuado.'));
+
+                setTimeout(() => { 
+                    lockScreen.style.display = 'none'; 
+                    const htmlRoot = document.getElementById('html-root');
+                    if(htmlRoot) {
+                        htmlRoot.classList.remove('overflow-hidden', 'h-screen');
+                        htmlRoot.classList.add('overflow-x-hidden');
+                    }
+                    document.body.classList.remove('overflow-hidden', 'h-screen');
+                }, 700);
+
+            }, 800);
+
+        } else {
+            errorMsg.classList.remove('hidden');
+            document.getElementById('password-input').style.borderColor = 'rgba(239,68,68,0.5)';
+            setTimeout(() => {
+                errorMsg.classList.add('hidden');
+                document.getElementById('password-input').style.borderColor = '';
+            }, 3000);
+        }
+    }
+
+    // SUBMIT COM ENTER NA SENHA
+    document.getElementById('password-input').addEventListener('keypress', function(e) {
+        if (e.key === 'Enter') {
+            checkPassword();
+        }
+    });
+
+    // SISTEMA DE ACORDEÃO DO FAQ
+    function toggleAccordion(button) {
+        const item = button.closest('.accordion-item');
+        if (!item) return;
+        
+        const isOpen = item.classList.contains('open');
+        
+        const allItems = document.querySelectorAll('.accordion-item');
+        allItems.forEach(currItem => {
+            if (currItem !== item) {
+                currItem.classList.remove('open');
+            }
+        });
+
+        if (isOpen) {
+            item.classList.remove('open');
+        } else {
+            item.classList.add('open');
+        }
+    }
+
+    // BASE DE DADOS DOS PREÇOS (MATRIZ EXATA COM DIVISOR 0.62)
+    const projectState = {
+        scope: 'combo-2tb', // combo-2tb, combo-1tb, cftv-1tb, access
+        paymentMode: 'avista',
+        basePrice: {
+            'combo-2tb': 11677, // R$ 5288 (cftv-2tb) + R$ 6389 (access) = 11677 PIX
+            'combo-1tb': 11401, // R$ 5012 (cftv-1tb) + R$ 6389 (access) = 11401 PIX
+            'cftv-1tb': 5012,
+            'access': 6389
+        },
+        rates: {
+            'combo-2tb': { 1: 12144, 2: 12305, 3: 12465, 4: 12625, 5: 12785, 6: 12946, 12: 14011 },
+            'combo-1tb': { 1: 11857, 2: 11965, 3: 12150, 4: 12290, 5: 12450, 6: 12610, 12: 13680 },
+            'cftv-1tb': { 1: 5212, 2: 5280, 3: 5350, 4: 5410, 5: 5480, 6: 5550, 12: 6014 },
+            'access': { 1: 6644, 2: 6730, 3: 6815, 4: 6900, 5: 6985, 6: 7070, 12: 7666 }
+        }
+    };
+
+    // ALTERAÇÃO DO ESCOPO DE CONTRATAÇÃO
+    function setScope(scope) {
+        projectState.scope = scope;
+        
+        // Atualizar estilos dos botões de escopo
+        const scopes = ['combo-2tb', 'combo-1tb', 'cftv-1tb', 'access'];
+        scopes.forEach(s => {
+            const btn = document.getElementById(`scope-${s}`);
+            if (btn) {
+                if (s === scope) {
+                    btn.className = "px-3 py-2.5 text-xs font-black rounded-xl border border-brand-yellow bg-zinc-950 text-white transition-all text-center outline-none shadow-glow";
+                } else {
+                    btn.className = "px-3 py-2.5 text-xs font-black rounded-xl border border-gray-250 bg-white text-gray-500 transition-all text-center outline-none hover:text-black";
+                }
+            }
+        });
+
+        // Configurar títulos dinâmicos
+        const mainTitle = document.getElementById('active-proposal-title');
+        if (mainTitle) {
+            if (scope === 'combo-2tb') mainTitle.textContent = "Combo CFTV (2TB) + Controle de Acesso";
+            if (scope === 'combo-1tb') mainTitle.textContent = "Combo CFTV (1TB) + Controle de Acesso";
+            if (scope === 'cftv-1tb') mainTitle.textContent = "Projeto de CFTV com Captação de Áudio (1TB)";
+            if (scope === 'access') mainTitle.textContent = "Projeto de Controle de Acesso Facial Biométrico";
+        }
+
+        updatePrices();
+    }
+
+    // ALTERAÇÃO DO MÉTODO DE PAGAMENTO (PIX OU CARTÃO) COM ATUALIZAÇÃO VISUAL DINÂMICA
+    function setPaymentMode(mode) {
+        projectState.paymentMode = mode;
+        const bg = document.getElementById('toggle-bg');
+        const btnPix = document.getElementById('btn-avista');
+        const btnParcelado = document.getElementById('btn-parcelado');
+        const selectContainer = document.getElementById('installment-container');
+
+        if (mode === 'avista') {
+            if (bg) bg.style.transform = 'translateX(0)';
+            if (btnPix) {
+                btnPix.classList.remove('text-gray-400');
+                btnPix.classList.add('text-gray-950');
+            }
+            if (btnParcelado) {
+                btnParcelado.classList.remove('text-gray-950');
+                btnParcelado.classList.add('text-gray-400');
+            }
+            
+            if (selectContainer) {
+                selectContainer.classList.add('opacity-0', 'pointer-events-none');
+                setTimeout(() => { if(selectContainer) selectContainer.classList.add('hidden'); }, 300);
+            }
+        } else {
+            if (bg) bg.style.transform = 'translateX(100%)';
+            if (btnParcelado) {
+                btnParcelado.classList.remove('text-gray-400');
+                btnParcelado.classList.add('text-zinc-950');
+            }
+            if (btnPix) {
+                btnPix.classList.remove('text-zinc-950');
+                btnPix.classList.add('text-gray-400');
+            }
+            
+            if (selectContainer) {
+                selectContainer.classList.remove('hidden');
+                setTimeout(() => { if(selectContainer) selectContainer.classList.remove('opacity-0', 'pointer-events-none'); }, 10);
+            }
+        }
+        updatePrices();
+    }
+
+    // MOSTRAR FORMATO DE MOEDA SEM CASAS DECIMAIS
+    function formatCurrency(value) {
+        return Math.round(value).toLocaleString('pt-BR', { maximumFractionDigits: 0 });
+    }
+
+    // ATUALIZAÇÃO DE LINK DE ACORDO COM MÉTODOS DE PAGAMENTO
+    function updateWhatsAppLink(basePrice, installments, installmentValue) {
+        const btnLink = document.getElementById('btn-aprova-link');
+        if (!btnLink) return;
+
+        let message = '';
+        let scopeText = '';
+        if (projectState.scope === 'combo-2tb') scopeText = 'Combo Completo CFTV (2TB) + Controle de Acesso';
+        if (projectState.scope === 'combo-1tb') scopeText = 'Combo Completo CFTV (1TB) + Controle de Acesso';
+        if (projectState.scope === 'cftv-1tb') scopeText = 'Apenas CFTV (1TB)';
+        if (projectState.scope === 'access') scopeText = 'Apenas Controle de Acesso';
+
+        if (projectState.paymentMode === 'avista') {
+            message = `Olá Glícia, analisei a proposta das salas no Paraíso e gostaríamos de aprovar o projeto [${scopeText}] com pagamento à Vista de R$ ${formatCurrency(basePrice)} via PIX.`;
+        } else {
+            message = `Olá Glícia, analisei a proposta das salas no Paraíso e gostaríamos de aprovar o projeto [${scopeText}] parcelado em ${installments}x de R$ ${formatCurrency(installmentValue)} no cartão de crédito.`;
+        }
+
+        btnLink.href = "https://wa.me/5511930816696?text=" + encodeURIComponent(message);
+    }
+
+    // CALCULA PREÇO E INJETA DADOS COM COMPONENTES VISUAIS DINÂMICOS
+    function updatePrices() {
+        const el1 = document.getElementById('price-opt1');
+        const select = document.getElementById('installment-select');
+        const visualPanel = document.getElementById('checkout-visual-panel');
+        const specContainer = document.getElementById('equipment-list-container');
+
+        if (!el1 || !visualPanel || !specContainer) return;
+
+        // Calcular valor base do escopo selecionado
+        let baseTotal = projectState.basePrice[projectState.scope];
+
+        // Atualizar especificações textuais dinâmicas
+        let specHtml = '';
+        if (projectState.scope.includes('cftv') || projectState.scope.includes('combo')) {
+            specHtml += `
+                <div class="flex gap-2 text-xs">
+                    <i data-lucide="check-square" class="w-4 h-4 text-brand-yellow shrink-0 mt-0.5"></i>
+                    <p class="text-gray-700 font-semibold leading-relaxed"><strong>5 Câmeras Dome Intelbras:</strong> 3 canais com microfones integrados e 2 normais.</p>
+                </div>
+            `;
+            if (projectState.scope.includes('2tb')) {
+                specHtml += `
+                    <div class="flex gap-2 text-xs">
+                        <i data-lucide="check-square" class="w-4 h-4 text-brand-yellow shrink-0 mt-0.5 animate-pulse"></i>
+                        <p class="text-gray-700 font-semibold leading-relaxed"><strong>Gravação HD WD Purple 2TB:</strong> Alta durabilidade, autonomia para mais de 30 dias.</p>
+                    </div>
+                `;
+            } else {
+                specHtml += `
+                    <div class="flex gap-2 text-xs">
+                        <i data-lucide="check-square" class="w-4 h-4 text-brand-yellow shrink-0 mt-0.5"></i>
+                        <p class="text-gray-700 font-semibold leading-relaxed"><strong>Gravação HD WD Purple 1TB:</strong> Autonomia aproximada de 15 dias.</p>
+                    </div>
+                `;
+            }
+        }
+
+        if (projectState.scope.includes('access') || projectState.scope.includes('combo')) {
+            specHtml += `
+                <div class="flex gap-2 text-xs">
+                    <i data-lucide="check-square" class="w-4 h-4 text-brand-yellow shrink-0 mt-0.5"></i>
+                    <p class="text-gray-700 font-semibold leading-relaxed"><strong>Acesso Facial SS 1530:</strong> 2 leitores biométricos de alta velocidade com Wi-Fi.</p>
+                </div>
+                <div class="flex gap-2 text-xs">
+                    <i data-lucide="check-square" class="w-4 h-4 text-brand-yellow shrink-0 mt-0.5"></i>
+                    <p class="text-gray-700 font-semibold leading-relaxed"><strong>Suportes SV-20150:</strong> Travas eletroímã por compressão sem furar vidro pivotante.</p>
+                </div>
+            `;
+        }
+
+        specHtml += `
+            <div class="flex gap-2 text-xs">
+                <i data-lucide="shield-check" class="w-4 h-4 text-brand-yellow shrink-0 mt-0.5"></i>
+                <p class="text-gray-700 font-semibold leading-relaxed"><strong>Mão de Obra Noturna Inclusa:</strong> Instalação realizada fora do expediente comercial com cabos camuflados.</p>
+            </div>
+        `;
+        specContainer.innerHTML = specHtml;
+
+        let activeInstallments = '12';
+
+        if (projectState.paymentMode === 'avista') {
+            const h1 = Math.round(baseTotal / 2);
+            const h2 = baseTotal - h1;
+
+            el1.innerHTML = `
+                <div class="flex flex-col items-center w-full animate-fade-in">
+                    <span class="text-4xl md:text-5xl font-black text-gray-900 tracking-tight">R$ ${formatCurrency(baseTotal)}</span>
+                    <span class="text-[9px] font-bold text-emerald-600 uppercase tracking-widest mt-1">PIX • SEM JUROS</span>
+                </div>
+            `;
+
+            // Painel Lateral Esquerdo: Fluxo de Cobrança PIX Estilizado
+            visualPanel.innerHTML = `
+                <div class="bg-gray-50 border border-gray-200 rounded-3xl p-6 shadow-sm space-y-4 animate-fade-in">
+                    <span class="text-[10px] font-extrabold text-zinc-400 uppercase tracking-widest block font-sans">ETAPAS DE PAGAMENTO (50/50):</span>
+                    
+                    <div class="relative pl-6 border-l-2 border-emerald-500 space-y-6">
+                        <div class="relative">
+                            <span class="absolute -left-[31px] top-0 w-4 h-4 rounded-full bg-emerald-500 border-4 border-white"></span>
+                            <span class="text-[9px] font-extrabold text-emerald-600 uppercase block leading-none mb-1">Aprovação / Sinal (50%)</span>
+                            <span class="text-lg font-black text-gray-900">R$ ${formatCurrency(h1)}</span>
+                            <p class="text-[10px] text-gray-500 mt-1">Faturamento imediato do estoque de controle de acessos e CFTV.</p>
+                        </div>
+                        <div class="relative">
+                            <span class="absolute -left-[31px] top-0 w-4 h-4 rounded-full bg-brand-yellow border-4 border-white"></span>
+                            <span class="text-[9px] font-extrabold text-brand-goldDark uppercase block leading-none mb-1">Conclusão / Entrega (50%)</span>
+                            <span class="text-lg font-black text-gray-900">R$ ${formatCurrency(h2)}</span>
+                            <p class="text-[10px] text-gray-500 mt-1">Garantido após testes noturnos finais e pareamento no app.</p>
+                        </div>
+                    </div>
+                </div>
+            `;
+
+            updateWhatsAppLink(baseTotal, '12', 0);
+
+        } else {
+            const selectEl = document.getElementById('installment-select');
+            activeInstallments = selectEl ? selectEl.value : '12';
+            
+            // Calculo da parcela com taxa do markup real do repasse
+            const scopeRates = projectState.rates[projectState.scope];
+            const finalCardTotal = scopeRates[activeInstallments] || baseTotal;
+            const installmentValue = finalCardTotal / parseInt(activeInstallments);
+
+            el1.innerHTML = `
+                <div class="flex flex-col items-center w-full animate-fade-in">
+                    <div class="flex items-baseline justify-center gap-1.5">
+                        <span class="text-xl md:text-2xl font-black text-brand-yellow">${activeInstallments}x R$</span> 
+                        <span class="text-4xl md:text-5xl font-black text-gray-900 tracking-tight">${formatCurrency(installmentValue)}</span>
+                    </div>
+                    <span class="text-[9px] text-zinc-400 font-bold uppercase tracking-widest mt-1">Total Parcelado: R$ ${formatCurrency(finalCardTotal)}</span>
+                </div>
+            `;
+
+            // Painel Lateral Esquerdo: Cartão de Crédito Dinâmico Premium
+            visualPanel.innerHTML = `
+                <div class="bg-gradient-to-br from-zinc-900 via-zinc-950 to-black text-white p-6 rounded-3xl shadow-glow-md border border-zinc-800 space-y-8 relative overflow-hidden aspect-[1.58/1] w-full max-w-sm animate-fade-in">
+                    <div class="absolute top-0 right-0 w-24 h-24 bg-brand-yellow/10 rounded-full blur-2xl pointer-events-none"></div>
+                    
+                    <div class="flex justify-between items-start">
+                        <div class="flex flex-col leading-none">
+                            <span class="text-[9px] text-brand-yellow uppercase tracking-widest font-bold">Cartão de Crédito</span>
+                            <span class="text-sm font-black tracking-tight mt-1">VISION PAY</span>
+                        </div>
+                        <div class="w-8 h-8 rounded-full bg-white/5 border border-white/10 flex items-center justify-center">
+                            <i data-lucide="credit-card" class="w-4 h-4 text-brand-yellow"></i>
+                        </div>
+                    </div>
+
+                    <div class="space-y-1">
+                        <span class="text-[10px] text-zinc-500 uppercase tracking-widest font-bold block">Valor da Parcela:</span>
+                        <div class="flex items-baseline gap-1">
+                            <span class="text-xs text-brand-yellow font-bold">${activeInstallments}x de</span>
+                            <span class="text-2xl font-black tracking-tight">R$ ${formatCurrency(installmentValue)}</span>
+                        </div>
+                    </div>
+
+                    <div class="flex justify-between items-end">
+                        <div class="flex flex-col leading-none">
+                            <span class="text-[8px] text-zinc-600 uppercase tracking-widest">Escritório</span>
+                            <span class="text-xs font-bold tracking-wider mt-1 text-zinc-300">THIFANNY</span>
+                        </div>
+                        <span class="text-[9px] font-bold text-zinc-400">•••• 2026</span>
+                    </div>
+                </div>
+            `;
+            
+            updateWhatsAppLink(finalCardTotal, activeInstallments, installmentValue);
+        }
+        
+        initIcons();
+    }
+
+    // LOAD EVENTS
+    window.addEventListener("load", () => {
+        setScope('combo-2tb');
+        setPaymentMode('avista');
+    });
+
+    // REVELAÇÃO NO SCROLL
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) entry.target.classList.add('active');
+        });
+    }, { threshold: 0.05 });
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+    // SCROLL NAVBAR E CTA FLUTUANTE
+    window.addEventListener('scroll', () => {
+        const navbar = document.getElementById('navbar');
+        const ctaFloat = document.getElementById('cta-float');
+        
+        if (window.scrollY > 50) {
+            if(navbar) navbar.classList.add('shadow-md');
+        } else {
+            if(navbar) navbar.classList.remove('shadow-md');
+        }
+
+        if (window.scrollY > 400) {
+            if(ctaFloat) {
+                ctaFloat.classList.remove('hidden', 'opacity-0', 'translate-y-10', 'pointer-events-none');
+                ctaFloat.classList.add('opacity-100', 'translate-y-0');
+            }
+        } else {
+            if(ctaFloat) {
+                ctaFloat.classList.add('opacity-0', 'translate-y-10', 'pointer-events-none');
+            }
+        }
+    });
+
+    // AUDIOVISUAL PLAYERS E UNMUTES
+    document.addEventListener("DOMContentLoaded", function() {
+        const video = document.getElementById("vision-video");
+        const overlay = document.getElementById("unmute-overlay");
+        if (video && overlay) {
+            overlay.addEventListener("click", function(e) {
+                e.stopPropagation(); 
+                video.muted = false;
+                video.loop = true; 
+                video.currentTime = 0;
+                video.play().catch(err => {
+                    console.warn("Autoplay bloqueado", err);
+                });
+                overlay.style.opacity = "0";
+                setTimeout(() => { overlay.style.display = "none"; }, 500); 
+            });
+            video.addEventListener("click", function() {
+                if (overlay.style.display === "none") {
+                    if (video.paused) { video.play(); } else { video.pause(); }
+                }
+            });
+        }
+
+        const videoShorts = document.getElementById("demo-shorts-video");
+        const overlayShorts = document.getElementById("unmute-overlay-shorts");
+        if (videoShorts && overlayShorts) {
+            overlayShorts.addEventListener("click", function(e) {
+                e.stopPropagation(); 
+                videoShorts.muted = false;
+                videoShorts.loop = true; 
+                videoShorts.currentTime = 0;
+                videoShorts.play().catch(err => {
+                    console.warn("Autoplay bloqueado", err);
+                });
+                overlayShorts.style.opacity = "0";
+                setTimeout(() => { overlayShorts.style.display = "none"; }, 500); 
+            });
+            videoShorts.addEventListener("click", function() {
+                if (overlayShorts.style.display === "none") {
+                    if (videoShorts.paused) { videoShorts.play(); } else { videoShorts.pause(); }
+                }
+            });
+        }
+    });
+</script>
+</body>
+</html>
