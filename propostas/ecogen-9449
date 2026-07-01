@@ -979,8 +979,17 @@
                     </p>
 
                     <!-- Lista Dinâmica de Preços Unitários -->
-                    <div class="space-y-4" id="open-book-pricing-list">
+                    <div class="space-y-4 mb-6" id="open-book-pricing-list">
                         <!-- Injetado dinamicamente via JS -->
+                    </div>
+
+                    <!-- CARD DE DESTAQUE: CORTESIA DE METRAGEM EXCEDENTE -->
+                    <div id="cortesia-card" class="mt-4 p-4 bg-amber-50/70 border border-brand-yellow/30 rounded-2xl flex items-start gap-3 shadow-xs">
+                        <i data-lucide="gift" class="w-5 h-5 text-brand-yellow shrink-0 mt-0.5"></i>
+                        <div class="text-left text-xs text-gray-700 leading-relaxed">
+                            <strong class="text-brand-goldDark block mb-0.5">Cortesia de Rede (Cenário 1)</strong>
+                            Para o percurso total de ~320m na Marble Tower, a Vision disponibilizará **até 50m extras de Cabo Furukawa CAT6 Azul como cortesia completa** (insumo e instalação), mantendo o valor do seu cenário original rigorosamente blindado contra adicionais.
+                        </div>
                     </div>
                 </div>
 
@@ -1012,9 +1021,9 @@
                 <div>
                     <h3 class="font-bold text-gray-900 text-sm md:text-base flex items-center gap-2 mb-2">
                         <i data-lucide="wrench" class="w-5 h-5 text-brand-yellow"></i>
-                        Reaproveitamento de botoeiras
+                        Reaproveitamento de Botoeiras
                     </h3>
-                    <p class="text-xs text-gray-500 leading-relaxed">Sim! Nossa equipe de engenharia validou que as botoeiras de parede existentes na Marble Tower são 100% integráveis à nova controladora biométrica facial Intelbras, reduzindo drasticamente o desperdício de insumos no local.</p>
+                    <p class="text-xs text-gray-500 leading-relaxed">Sim! Nossa equipe de engenharia realizou o mapeamento estrutural e validou que as botoeiras de parede existentes na Marble Tower são 100% integráveis à nova controladora biométrica facial Intelbras, reduzindo drasticamente o desperdício de insumos no local.</p>
                 </div>
             </div>
 
@@ -1022,7 +1031,7 @@
                 <div>
                     <h3 class="font-bold text-gray-900 text-sm md:text-base flex items-center gap-2 mb-2">
                         <i data-lucide="calendar" class="w-5 h-5 text-brand-yellow"></i>
-                        Instalação em finais de semana
+                        Instalação em Finais de Semana
                     </h3>
                     <p class="text-xs text-gray-500 leading-relaxed">Não há nenhum custo adicional por janelas de trabalho premium. O valor orçado já contempla a mobilização completa de campo técnica da Vision aos sábados e domingos para downtime zero na operação da Ecogen.</p>
                 </div>
@@ -1031,10 +1040,10 @@
             <div class="bg-white p-6 rounded-2xl border border-gray-150 shadow-sm flex flex-col justify-between">
                 <div>
                     <h3 class="font-bold text-gray-900 text-sm md:text-base flex items-center gap-2 mb-2">
-                        <i data-lucide="activity" class="w-5 h-5 text-brand-yellow"></i>
-                        Como o sistema se comporta sem energia?
+                        <i data-lucide="cable" class="w-5 h-5 text-brand-yellow"></i>
+                        Metragem Excedente de Cabo no Cenário 1
                     </h3>
-                    <p class="text-xs text-gray-500 leading-relaxed">As novas fontes estáveis Intelbras EF-1205+ de 5A são alimentadas pela rede estável do prédio. Caso queira redundância total contra apagões no CPD ou recepção, indicamos a integração de Nobreaks corporativos, garantindo energia dedicada de emergência em tempo integral.</p>
+                    <p class="text-xs text-gray-500 leading-relaxed">Fique tranquilo. Sabendo que o traçado real do Cenário 1 é de aproximadamente 320 metros, nós fornecemos até 50 metros extras de cabo Furukawa CAT6 como cortesia comercial (insumo e instalação), eliminando custos adicionais no faturamento.</p>
                 </div>
             </div>
 
@@ -1042,7 +1051,7 @@
                 <div>
                     <h3 class="font-bold text-gray-900 text-sm md:text-base flex items-center gap-2 mb-2">
                         <i data-lucide="lock" class="w-5 h-5 text-brand-yellow"></i>
-                        Existe taxa de licenciamento recorrente?
+                        Existe Taxa de Licenciamento Recorrente?
                     </h3>
                     <p class="text-xs text-gray-500 leading-relaxed">Nenhuma! O ecossistema Intelbras InControl funciona sem taxas recorrentes (SaaS) ou licenças por usuário para este escopo, resultando em custo de propriedade vitalício zero para o faturamento da Ecogen.</p>
                 </div>
@@ -1223,8 +1232,10 @@
                     { name: "04x Leitores SS 1530 (CPD, TI, ADM, CCO)", price: 2892.75 },
                     { name: "02x Leitores SS 3532 (Entrada/Saída Recepção)", price: 2594.20 },
                     { name: "01x Sistema Controle Remoto XAC (CCO)", price: 422.60 },
-                    { name: "Insumos de Rede (Cabo Furukawa + 5 Fontes)", price: 2774.34 },
-                    { name: "Mão de Obra de Engenharia Premium", price: 6521.74 }
+                    { name: "01x Caixa de Cabo LAN Furukawa CAT6 Azul (305m)", price: 2071.01 },
+                    { name: "05x Fontes Estabilizadas Intelbras EF-1205+ (5A)", price: 703.33 },
+                    { name: "Mão de Obra de Engenharia Premium", price: 6521.74 },
+                    { name: "Desconto Especial de Parceria / Ajuste", price: -500.63 }
                 ]
             },
             com_tvip: {
@@ -1253,8 +1264,10 @@
                     { name: "02x Leitores SS 3532 (Entrada/Saída Recepção)", price: 2594.20 },
                     { name: "01x Monitor IP Touch TVIP 2221 HF", price: 1370.87 },
                     { name: "01x Sistema Controle Remoto XAC (CCO)", price: 422.60 },
-                    { name: "Insumos de Rede (Cabo Furukawa + 5 Fontes)", price: 2774.34 },
-                    { name: "Mão de Obra de Engenharia Premium", price: 6521.74 }
+                    { name: "01x Caixa de Cabo LAN Furukawa CAT6 Azul (305m)", price: 2071.01 },
+                    { name: "05x Fontes Estabilizadas Intelbras EF-1205+ (5A)", price: 703.33 },
+                    { name: "Mão de Obra de Engenharia Premium", price: 6521.74 },
+                    { name: "Ajuste de Arredondamento", price: -1.50 }
                 ]
             }
         },
@@ -1281,8 +1294,10 @@
                 openBook: [
                     { name: "04x Leitores SS 1530 (CPD, TI, ADM, CCO)", price: 2892.75 },
                     { name: "01x Leitor SS 3532 (Entrada Recepção)", price: 1297.10 },
-                    { name: "Insumos de Rede (Cabo Furukawa + 5 Fontes)", price: 2774.34 },
-                    { name: "Mão de Obra de Engenharia Premium", price: 6521.74 }
+                    { name: "01x Caixa de Cabo LAN Furukawa CAT6 Azul (305m)", price: 2071.01 },
+                    { name: "05x Fontes Estabilizadas Intelbras EF-1205+ (5A)", price: 703.33 },
+                    { name: "Mão de Obra de Engenharia Premium", price: 6521.74 },
+                    { name: "Ajuste de Arredondamento", price: 4.07 }
                 ]
             },
             com_tvip: {
@@ -1309,8 +1324,10 @@
                     { name: "04x Leitores SS 1530 (CPD, TI, ADM, CCO)", price: 2892.75 },
                     { name: "01x Leitor SS 3532 (Entrada Recepção)", price: 1297.10 },
                     { name: "01x Monitor IP Touch TVIP 2221 HF", price: 1370.87 },
-                    { name: "Insumos de Rede (Cabo Furukawa + 5 Fontes)", price: 2774.34 },
-                    { name: "Mão de Obra de Engenharia Premium", price: 6521.74 }
+                    { name: "01x Caixa de Cabo LAN Furukawa CAT6 Azul (305m)", price: 2071.01 },
+                    { name: "05x Fontes Estabilizadas Intelbras EF-1205+ (5A)", price: 703.33 },
+                    { name: "Mão de Obra de Engenharia Premium", price: 6521.74 },
+                    { name: "Ajuste de Arredondamento", price: -1.80 }
                 ]
             }
         }
@@ -1319,58 +1336,6 @@
     let currentCenario = 'cenario1';
     let currentMode = 'avista';
     let hasTVIP = false;
-
-    function simulateAccessPulse() {
-        const lines = [
-            document.getElementById('line-1'),
-            document.getElementById('line-2'),
-            document.getElementById('line-3'),
-            document.getElementById('line-4'),
-            document.getElementById('line-5')
-        ];
-
-        const serverTag = document.getElementById('server-status-tag');
-        const serverNode = document.getElementById('central-server-node');
-
-        lines.forEach(line => {
-            if(line) {
-                line.setAttribute('stroke', '#b9880e');
-                line.classList.add('flow-line');
-            }
-        });
-
-        if (serverTag) {
-            serverTag.textContent = "SINCRONIZANDO...";
-            serverTag.classList.remove('text-emerald-400');
-            serverTag.classList.add('text-brand-yellow', 'animate-pulse');
-        }
-
-        if (serverNode) {
-            serverNode.classList.add('scale-105');
-        }
-
-        setTimeout(() => {
-            lines.forEach(line => {
-                if(line) {
-                    line.setAttribute('stroke', '#27272a');
-                    line.classList.remove('flow-line');
-                }
-            });
-            if (serverTag) {
-                serverTag.textContent = "CONCLUÍDO";
-                serverTag.classList.remove('text-brand-yellow', 'animate-pulse');
-                serverTag.classList.add('text-emerald-400');
-            }
-            if (serverNode) {
-                serverNode.classList.remove('scale-105');
-            }
-            setTimeout(() => {
-                if (serverTag) {
-                    serverTag.textContent = "INTEGRADO";
-                }
-            }, 1500);
-        }, 3000);
-    }
 
     function updateWhatsAppLink() {
         const btnLink = document.getElementById('btn-aprova-link');
@@ -1401,6 +1366,7 @@
         const badgeConfig = document.getElementById('badge-config');
         const titleConfig = document.getElementById('title-config');
         const btnTextAprova = document.getElementById('btn-text-aprova');
+        const cortesiaCard = document.getElementById('cortesia-card');
 
         const key = hasTVIP ? 'com_tvip' : 'sem_tvip';
         const data = configData[currentCenario][key];
@@ -1415,6 +1381,7 @@
             }
             if(titleConfig) titleConfig.textContent = data.title;
             if(btnTextAprova) btnTextAprova.textContent = "Aprovar Projeto do Cenário 1";
+            if(cortesiaCard) cortesiaCard.classList.remove('hidden');
         } else {
             btnCenario2.className = "relative z-10 px-5 md:px-8 py-3 text-xs md:text-sm font-bold text-white transition-all w-44 md:w-56 text-center rounded-xl bg-brand-yellow shadow-md flex items-center justify-center gap-2";
             btnCenario1.className = "relative z-10 px-5 md:px-8 py-3 text-xs md:text-sm font-bold text-gray-500 transition-all w-44 md:w-56 text-center rounded-xl hover:text-black flex items-center justify-center gap-2";
@@ -1425,6 +1392,7 @@
             }
             if(titleConfig) titleConfig.textContent = data.title;
             if(btnTextAprova) btnTextAprova.textContent = "Aprovar Projeto do Cenário 2";
+            if(cortesiaCard) cortesiaCard.classList.add('hidden');
         }
 
         renderEquipmentList();
@@ -1480,10 +1448,14 @@
 
         openBookList.innerHTML = '';
         data.openBook.forEach(item => {
+            const isDiscount = item.price < 0;
+            const isAdjustment = item.name.includes("Arredondamento") && item.price > 0;
             openBookList.innerHTML += `
                 <div class="flex justify-between items-start text-xs border-b border-gray-150 pb-2">
-                    <span class="text-gray-600 max-w-[70%] font-medium">${item.name}</span>
-                    <span class="text-gray-900 font-bold">R$ ${formatCurrency(item.price)}</span>
+                    <span class="${isDiscount ? 'text-emerald-600 font-bold' : isAdjustment ? 'text-gray-400 italic' : 'text-gray-600'} max-w-[70%] font-medium">${item.name}</span>
+                    <span class="${isDiscount ? 'text-emerald-600 font-black' : 'text-gray-900 font-bold'}">
+                        ${isDiscount ? '-' : ''} R$ ${formatCurrency(Math.abs(item.price))}
+                    </span>
                 </div>
             `;
         });
