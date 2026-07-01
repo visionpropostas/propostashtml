@@ -1348,7 +1348,7 @@
         const data = configData[currentCenario][key];
 
         if (currentMode === 'avista') {
-            message = `Olá Glícia, analisei a proposta e gostaria de aprovar o projeto de controle de acesso corporativo no ${cenarioText} da Ecogen, no pagamento à Vista de R$ ${formatCurrency(data.basePrice)} via PIX.`;
+            message = `Olá Glícia, analisei a proposta e gostaria de aprovar o projeto de controle de acesso corporativo no ${cenarioText} da Ecogen, no pagamento à Vista (Sinal de 50% + Saldo 30 dias) no valor de R$ ${formatCurrency(data.basePrice)} via PIX.`;
         } else {
             const select = document.getElementById('installment-select');
             const installments = select ? select.value : '12';
@@ -1524,18 +1524,18 @@
 
             el1.innerHTML = `
                 <div class="flex flex-col items-center w-full animate-fade-in">
-                    <p class="text-[8px] md:text-[10px] text-[#8a6208] uppercase tracking-widest font-bold mb-1">À Vista no PIX (Sem Juros)</p>
+                    <p class="text-[8px] md:text-[10px] text-[#8a6208] uppercase tracking-widest font-bold mb-1">PIX (Sinal 50% + Saldo 30 dias)</p>
                     <span class="text-4xl md:text-5xl font-black text-gray-900 tracking-tight mb-4">R$ ${formatCurrency(data.basePrice)}</span>
                     
                     <div class="w-full space-y-2">
                         <div class="bg-white border border-gray-200 rounded-xl py-2.5 flex flex-col items-center justify-center relative overflow-hidden shadow-sm">
                             <div class="absolute top-0 left-0 w-1 h-full bg-[#34d399] rounded-l-lg"></div>
-                            <span class="text-[8px] font-bold uppercase tracking-widest text-brand-goldDark mb-0.5">Sinal para Lançamento e Cabeamento Estruturado (50%)</span>
+                            <span class="text-[8px] font-bold uppercase tracking-widest text-brand-goldDark mb-0.5">Sinal para Lançamento e Mobilização (50%)</span>
                             <span class="text-sm font-bold text-gray-900">R$ ${formatCurrency(h1)}</span>
                         </div>
                         <div class="bg-white border border-gray-200 rounded-xl py-2.5 flex flex-col items-center justify-center relative overflow-hidden shadow-sm">
-                            <div class="absolute top-0 left-0 w-1.5 h-full bg-[#c8a048] rounded-l-lg"></div>
-                            <span class="text-[8px] font-bold uppercase tracking-widest text-brand-goldDark mb-0.5">Saldo na Conclusão e Treinamento do Sistema (50%)</span>
+                            <div class="absolute top-0 left-0 w-1.5 h-full bg-brand-yellow rounded-l-lg"></div>
+                            <span class="text-[8px] font-bold uppercase tracking-widest text-brand-goldDark mb-0.5">Saldo para 30 dias (50%)</span>
                             <span class="text-sm font-bold text-gray-900">R$ ${formatCurrency(h1)}</span>
                         </div>
                     </div>
