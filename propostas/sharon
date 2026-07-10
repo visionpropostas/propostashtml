@@ -1,0 +1,1547 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth overflow-x-hidden" id="html-root">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projeto de Controle de Acesso Ecogen | Vision Tecnologia</title>
+    <meta name="description" content="Projeto Corporativo de Retrofit de Controle de Acesso Facial Intelbras e Infraestrutura de Rede – Vision Tecnologia">
+    <meta name="theme-color" content="#b9880e">
+    
+    <!-- CONTROLE DE PRIVACIDADE: Proteção absoluta contra indexadores e buscas públicas -->
+    <meta name="robots" content="noindex, nofollow">
+
+    <!-- Open Graph / Link Preview Tags -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Projeto de Controle de Acesso Ecogen – Vision Tecnologia">
+    <meta property="og:description" content="Infraestrutura digital e controle de acesso facial de alta performance para a Ecogen (Marble Tower).">
+    <meta property="og:image" content="https://res.cloudinary.com/dptcuckhf/image/upload/v1772152427/C%C3%B3pia_de_LOGO_VISION_2025_cpcpuh.png">
+    <meta property="og:locale" content="pt_BR">
+
+    <!-- Fontes & Ícones -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@700;800&family=Quicksand:wght@500;600;700&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@0.400.0"></script>
+
+    <!-- Google Analytics 4 -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-KTGEL92B0F"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-KTGEL92B0F');
+    </script>
+
+    <!-- Microsoft Clarity -->
+    <script type="text/javascript">
+        (function(c,l,a,r,i,t,y){
+            c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+            t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+            y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+        })(window, document, "clarity", "script", "vifq10es5o");
+    </script>
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"Outfit"', 'sans-serif'],
+                        logo: ['"League Spartan"', 'sans-serif'],
+                        tech: ['"Quicksand"', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            yellow: '#b9880e',
+                            goldLight: '#FFDE59',
+                            goldDark: '#8a6208',
+                            black: '#09090b',
+                        }
+                    },
+                    boxShadow: {
+                        'glass': '0 4px 24px 0 rgba(0,0,0,0.04)',
+                        'premium': '0 16px 50px -10px rgba(0,0,0,0.08)',
+                        'premium-card': '0 16px 50px -10px rgba(0, 0, 0, 0.08)',
+                        'glow': '0 0 20px rgba(185,136,14,0.15)',
+                        'glow-md': '0 0 35px rgba(185,136,14,0.25)',
+                        'glow-strong': '0 0 40px rgba(185,136,14,0.5)',
+                    },
+                    animation: {
+                        'slide-up': 'slideUp 0.9s cubic-bezier(0.16,1,0.3,1) forwards',
+                        'float': 'float 6s ease-in-out infinite',
+                        'fade-in': 'fadeIn 0.6s ease forwards',
+                        'shine-pulse': 'shinePulse 3s ease-in-out infinite',
+                        'marquee': 'marquee 35s linear infinite',
+                    },
+                    keyframes: {
+                        slideUp: {
+                            '0%': { opacity: '0', transform: 'translateY(40px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' }
+                        },
+                        float: {
+                            '0%,100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-12px)' }
+                        },
+                        fadeIn: {
+                            '0%': { opacity: '0' },
+                            '100%': { opacity: '1' }
+                        },
+                        shinePulse: {
+                            '0%,100%': { opacity: '0.6' },
+                            '50%': { opacity: '1' }
+                        },
+                        marquee: {
+                            '0%': { transform: 'translateX(0%)' },
+                            '100%': { transform: 'translateX(-50%)' }
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: #f9fafb; }
+        ::-webkit-scrollbar-thumb { background: #d1d5db; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #b9880e; }
+
+        .text-gold-shine {
+            background: linear-gradient(to right, #b9880e 20%, #FFDE59 50%, #b9880e 80%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-size: 200% auto;
+            animation: shine 4s linear infinite;
+        }
+        @keyframes shine { to { background-position: 200% center; } }
+
+        .bg-grid {
+            background-image: linear-gradient(rgba(185,136,14,0.04) 1px, transparent 1px),
+                              linear-gradient(90deg, rgba(185,136,14,0.04) 1px, transparent 1px);
+            background-size: 40px 40px;
+        }
+        .bg-dots {
+            background-image: radial-gradient(#b9880e 1.2px, transparent 1.2px);
+            background-size: 22px 22px;
+            opacity: 0.035;
+        }
+
+        .lock-input {
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.1);
+            color: #b9880e;
+            font-family: 'League Spartan', sans-serif;
+            font-size: 1.5rem;
+            text-align: center;
+            outline: none;
+            transition: all 0.3s;
+            letter-spacing: 0.2em;
+            border-radius: 14px;
+            text-transform: uppercase;
+        }
+        .lock-input:focus {
+            border-color: #b9880e;
+            background: rgba(255,255,255,0.08);
+            box-shadow: 0 0 20px rgba(185,136,14,0.25);
+        }
+        .lock-input::placeholder {
+            color: #52525b;
+            font-size: 0.85rem;
+            font-family: 'Outfit', sans-serif;
+            font-weight: 300;
+            letter-spacing: normal;
+            text-transform: none;
+        }
+
+        .reveal { opacity: 0; transform: translateY(30px); transition: all 0.8s cubic-bezier(0.16,1,0.3,1); }
+        .reveal.active { opacity: 1; transform: translateY(0); }
+
+        .service-card:hover { transform: translateY(-4px); box-shadow: 0 20px 40px -8px rgba(0,0,0,0.1); }
+        .service-card { transition: all 0.3s cubic-bezier(0.4,0,0.2,1); }
+
+        .accordion-content { max-height: 0; overflow: hidden; transition: max-height 0.45s cubic-bezier(0.4,0,0.2,1); }
+        .accordion-item.open .accordion-content { max-height: 600px; }
+        .accordion-item.open .acc-arrow { transform: rotate(180deg); }
+        .acc-arrow { transition: transform 0.3s; }
+
+        /* Borda Animada Premium */
+        .premium-border-glow {
+            position: relative;
+            border-radius: 2rem;
+            padding: 2px;
+            background-color: #b9880e;
+            overflow: hidden;
+            box-shadow: 0 0 35px rgba(185,136,14,0.15);
+            transition: transform 0.3s cubic-bezier(0.4,0,0.2,1);
+        }
+        .premium-border-glow:hover { transform: scale(1.005); }
+        .premium-border-glow::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: conic-gradient(
+                from 0deg, 
+                transparent 0deg, 
+                transparent 175deg, 
+                rgba(255, 222, 89, 0.6) 178deg, 
+                #ffffff 180deg, 
+                rgba(255, 222, 89, 0.6) 182deg, 
+                transparent 185deg, 
+                transparent 360deg
+            );
+            animation: rotate-border 12s linear infinite;
+            z-index: 0;
+        }
+        @keyframes rotate-border {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        .premium-border-inner {
+            position: relative;
+            z-index: 1;
+            background-color: #ffffff;
+            border-radius: calc(2rem - 2px);
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+        }
+
+        .counter-num { font-variant-numeric: tabular-nums; }
+        
+        @media print {
+            html, body {
+                height: auto !important;
+                overflow: visible !important;
+                overflow-x: visible !important;
+                background: #ffffff !important;
+                color: #000000 !important;
+            }
+            body {
+                padding: 0 !important;
+                margin: 0 !important;
+            }
+            #lock-screen, #navbar, #cta-float, .no-print, video, iframe, button, select, label, .accent-brand-yellow { 
+                display: none !important; 
+            }
+            .reveal { 
+                opacity: 1 !important; 
+                transform: none !important; 
+                transition: none !important;
+            }
+            .absolute, .bg-grid, .bg-dots, [class*="blur-"], [class*="bg-brand-yellow/10"] {
+                display: none !important;
+            }
+            *, *:before, *:after {
+                animation: none !important;
+                transition: none !important;
+                box-shadow: none !important;
+                text-shadow: none !important;
+            }
+            section, header, footer, .premium-border-glow, .bg-gray-50 {
+                page-break-inside: avoid !important;
+                break-inside: avoid !important;
+            }
+            h1, h2, h3, h4, h5, h6 {
+                page-break-after: avoid !important;
+                break-after: avoid !important;
+                color: #000000 !important;
+            }
+            p, span, li, strong, div {
+                color: #000000 !important;
+            }
+            .premium-border-glow { 
+                background: #ffffff !important; 
+                border: 2px solid #b9880e !important; 
+                border-radius: 16px !important; 
+            }
+            .premium-border-glow::before { 
+                display: none !important; 
+            }
+            .premium-border-inner { 
+                background: #ffffff !important; 
+                border-radius: 16px !important; 
+                padding: 1.5rem !important;
+            }
+            @page {
+                size: A4;
+                margin: 1.2cm;
+            }
+        }
+    </style>
+</head>
+<body class="bg-[#fafafa] text-gray-800 antialiased overflow-hidden h-screen" id="body-root">
+
+<!-- ===================== TELA DE BLOQUEIO (LOCK SCREEN) ===================== -->
+<div id="lock-screen" class="fixed inset-0 z-[100] bg-[#09090b] flex flex-col items-center justify-center text-center p-4 transition-opacity duration-700 ease-out" style="overscroll-behavior: none;">
+    <div class="bg-grid absolute inset-0 opacity-10 pointer-events-none"></div>
+    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-brand-yellow/5 rounded-full blur-[100px] pointer-events-none"></div>
+
+    <!-- Logo -->
+    <div class="relative flex flex-col items-center mb-10 z-10">
+        <div class="relative flex items-baseline leading-none">
+            <span class="font-logo font-bold text-[5.5rem] md:text-[6rem] text-gold-shine lowercase tracking-[-0.05em] leading-none">vısıon</span>
+            <span class="absolute -right-5 top-4 text-[1.1rem] text-brand-yellow font-bold">®</span>
+        </div>
+        <span class="font-tech text-[1.1rem] font-bold text-zinc-500 lowercase -mt-4 ml-2.5 text-center w-full" style="letter-spacing:0.53em;">tecnologia</span>
+    </div>
+
+    <div class="w-full max-w-sm space-y-5 z-10">
+        <div class="space-y-1.5">
+            <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-brand-yellow/30 bg-brand-yellow/10 mb-3">
+                <i data-lucide="lock" class="w-3.5 h-3.5 text-brand-yellow"></i>
+                <span class="text-brand-yellow text-[10px] font-bold uppercase tracking-widest">Acesso Restrito</span>
+            </div>
+            <h2 class="text-white font-bold text-2xl">Helena Lopes</h2>
+            <p class="text-zinc-400 text-sm">Escritório de Advocacia — Alphaville Barueri</p>
+        </div>
+
+        <div>
+            <!-- SENHAS CONFIGURADAS: HELENA2026, HELENA, VISION -->
+            <input type="password" id="password-input" class="lock-input w-full py-4 px-4" placeholder="SENHA DE ACESSO" autocomplete="off" onkeydown="if(event.key==='Enter') checkPassword()">
+            <p id="error-msg" class="text-red-400 text-xs mt-2 hidden">
+                <span class="flex items-center justify-center gap-1"><i data-lucide="x-circle" class="w-4 h-4"></i> Credencial inválida.</span>
+            </p>
+        </div>
+
+        <button onclick="checkPassword()" id="btn-unlock" class="w-full bg-brand-yellow hover:bg-brand-goldLight text-black font-bold py-4 rounded-2xl transition-all shadow-glow flex items-center justify-center gap-2 group relative overflow-hidden">
+            <div class="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-300 rounded-2xl"></div>
+            <i data-lucide="shield-check" class="w-5 h-5 relative z-10" id="unlock-icon"></i>
+            <span class="relative z-10 text-sm uppercase tracking-widest" id="unlock-text">Desbloquear Proposta Técnica</span>
+            <i data-lucide="arrow-right" class="w-4 h-4 relative z-10 group-hover:translate-x-1 transition-transform" id="unlock-arrow"></i>
+        </button>
+
+        <p class="text-zinc-600 text-xs">Documento de Engenharia Exclusivo · Vision Tecnologia © 2026</p>
+    </div>
+</div>
+
+<!-- ===================== NAVBAR ===================== -->
+<nav id="navbar" class="fixed w-full z-50 top-0 bg-white/95 backdrop-blur-xl border-b border-gray-200/50 shadow-sm transition-all duration-300">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-between h-20 items-center">
+            <div class="flex flex-col items-center justify-center cursor-pointer" onclick="window.scrollTo(0,0)">
+                <div class="relative flex items-baseline leading-none">
+                    <span class="font-logo font-bold text-[2.6rem] text-gold-shine lowercase tracking-[-0.05em] leading-none">vısıon</span>
+                    <span class="absolute -right-2.5 top-1.5 text-[0.6rem] text-brand-yellow font-bold">®</span>
+                </div>
+                <span class="font-tech text-[0.6rem] font-bold text-gray-400 lowercase -mt-2 ml-1.5" style="letter-spacing:0.53em;">tecnologia</span>
+            </div>
+            <div class="hidden md:flex items-center space-x-7 text-xs font-semibold text-gray-500 uppercase tracking-wider">
+                <a href="#diagnostico" class="hover:text-brand-yellow transition-colors">Diagnóstico</a>
+                <a href="#tecnologia" class="hover:text-brand-yellow transition-colors">Equipamentos</a>
+                <a href="#investimento" class="hover:text-brand-yellow transition-colors">Orçamento</a>
+            </div>
+            <div class="flex items-center gap-4">
+                <button onclick="window.print()" class="text-gray-400 hover:text-brand-yellow transition-colors flex items-center gap-1.5" title="Salvar em PDF">
+                    <i data-lucide="download" class="w-4 h-4"></i>
+                    <span class="text-[10px] font-bold uppercase tracking-widest hidden sm:block">PDF</span>
+                </button>
+                <a href="#investimento" class="bg-zinc-900 text-white px-5 py-2.5 rounded-full text-[10px] font-bold uppercase tracking-widest hover:bg-brand-yellow hover:text-black transition-all shadow-md">
+                    Ver Orçamento
+                </a>
+            </div>
+        </div>
+    </div>
+</nav>
+
+<!-- ===================== HERO ===================== -->
+<header class="pt-32 pb-12 lg:pt-40 relative overflow-hidden bg-white">
+    <div class="absolute inset-0 bg-grid pointer-events-none"></div>
+    <div class="absolute right-0 top-0 -translate-y-1/4 translate-x-1/4 w-[800px] h-[800px] bg-brand-yellow/5 rounded-full blur-[120px] pointer-events-none"></div>
+    
+    <div class="max-w-7xl mx-auto px-4 relative z-10">
+        <div class="flex flex-col lg:flex-row items-center gap-12 lg:gap-16">
+            
+            <!-- Coluna Texto -->
+            <div class="w-full lg:w-1/2 text-center lg:text-left animate-slide-up">
+                <div class="inline-flex items-center gap-2 px-5 py-2 rounded-full border border-brand-yellow/30 bg-brand-yellow/5 text-brand-yellow text-[10px] font-bold uppercase tracking-widest mb-8 mx-auto lg:mx-0 shadow-sm">
+                    <i data-lucide="shield" class="w-4 h-4"></i>
+                    PROJETO EXCLUSIVO DE SEGURANÇA INTEGRADA — ALPHAVILLE
+                </div>
+                
+                <h1 class="text-4xl md:text-5xl lg:text-6xl font-extrabold text-gray-900 leading-[1.05] tracking-tight mb-6">
+                    A blindagem e o controle <br><span class="text-gold-shine">com a sofisticação que seu escritório exige.</span>
+                </h1>
+                
+                <h2 class="text-base md:text-lg text-gray-500 max-w-xl mx-auto lg:mx-0 font-medium mt-6 leading-relaxed">
+                    Helena, estruturamos uma solução de engenharia estética e tecnologia avançada para a sua sala 62 em Alphaville. Integramos <strong>biometria facial Intelbras anti-fake</strong> (com rastreabilidade por software livre de mensalidades) e <strong>6 pontos de câmeras de alta fidelidade</strong> para eliminar as vulnerabilidades de acessos com acabamento 100% discreto.
+                </h2>
+            </div>
+
+            <!-- Coluna Mockup de Notebook com Vídeo Vision -->
+            <div class="w-full lg:w-1/2 mt-4 lg:mt-0 reveal animate-slide-up" style="animation-delay: 200ms;">
+                <div class="relative w-full max-w-lg mx-auto group z-10 mt-4">
+                    <div class="relative w-full aspect-video bg-black border-[6px] md:border-[10px] border-zinc-800 rounded-t-[1rem] md:rounded-t-[1.5rem] overflow-hidden shadow-2xl">
+                        
+                        <video id="vision-video" class="w-full h-full object-cover cursor-pointer opacity-90" autoplay muted loop playsinline>
+                            <source src="https://res.cloudinary.com/dptcuckhf/video/upload/v1771711323/Vict%C3%B3ria_-_Vision_gdqnrk.mp4" type="video/mp4">
+                        </video>
+                        
+                        <div id="unmute-overlay" class="absolute inset-0 bg-black/50 backdrop-blur-sm flex flex-col items-center justify-center cursor-pointer transition-opacity duration-500 z-30 hover:bg-black/40">
+                            <div class="bg-brand-yellow text-black font-bold px-6 py-3 md:px-8 md:py-4 rounded-full flex items-center gap-2 md:gap-3 shadow-glow animate-pulse transform group-hover:scale-105 transition-all">
+                                <i data-lucide="volume-2" class="w-4 h-4 fill-black"></i>
+                                <span class="text-[10px] font-bold tracking-wide uppercase">Clique para Ouvir</span>
+                            </div>
+                        </div>
+                        <div class="absolute top-1.5 md:top-2 left-1/2 -translate-x-1/2 w-1.5 h-1.5 md:w-2 md:h-2 bg-zinc-950 rounded-full z-20"></div>
+                    </div>
+                    <div class="relative w-[114%] -ml-[7%] h-3 md:h-5 bg-gradient-to-b from-zinc-300 to-zinc-400 rounded-b-xl md:rounded-b-2xl shadow-[0_20px_40px_rgba(0,0,0,0.5)] flex justify-center border-t border-zinc-200">
+                        <div class="w-1/5 h-1.5 md:h-2 bg-zinc-300 rounded-b-md shadow-inner"></div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</header>
+
+<!-- ===================== PROVA SOCIAL: GOOGLE REVIEWS ===================== -->
+<section class="py-8 bg-gray-50 border-y border-gray-200/50 no-print">
+    <div class="max-w-7xl mx-auto px-4 flex flex-col sm:flex-row items-center justify-between gap-6">
+        
+        <div class="flex items-center gap-4">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/2/2f/Google_2015_logo.svg" alt="Google Logo" class="h-6 md:h-7 w-auto object-contain shrink-0" />
+            <div class="h-8 w-px bg-gray-300"></div>
+            <div class="flex flex-col text-left">
+                <span class="text-gray-900 font-extrabold text-sm tracking-tight leading-none">Avaliações no Google</span>
+                <span class="text-[10px] text-gray-500 font-bold uppercase tracking-wider mt-1">Parceiro Oficial de Tecnologia</span>
+            </div>
+        </div>
+
+        <!-- Estrelas e Contadores -->
+        <div class="flex items-center gap-3">
+            <span class="text-3xl font-black text-gray-900">5.0</span>
+            <div class="flex text-amber-500 gap-0.5">
+                <i data-lucide="star" class="w-5 h-5 fill-current"></i>
+                <i data-lucide="star" class="w-5 h-5 fill-current"></i>
+                <i data-lucide="star" class="w-5 h-5 fill-current"></i>
+                <i data-lucide="star" class="w-5 h-5 fill-current"></i>
+                <i data-lucide="star" class="w-5 h-5 fill-current"></i>
+            </div>
+            <div class="h-6 w-px bg-gray-300 hidden sm:block"></div>
+            <p class="text-xs font-bold text-gray-500 uppercase tracking-widest hidden sm:block">123 avaliações corporativas 5 estrelas</p>
+        </div>
+
+    </div>
+</section>
+
+<!-- ===================== MARCAS QUE CONFIAM NA VISION ===================== -->
+<section class="py-8 bg-white border-b border-gray-100 relative overflow-hidden no-print">
+    <div class="relative w-full flex overflow-x-hidden">
+        <div class="flex gap-16 items-center whitespace-nowrap animate-marquee">
+            <img src="https://res.cloudinary.com/dptcuckhf/image/upload/v1772363839/fatz-delicias-logo-removebg-preview_zr4bhr.png" alt="Fatz Delícias" class="h-8 md:h-9 object-contain filter grayscale opacity-45 hover:grayscale-0 hover:opacity-90 transition-all duration-300">
+            <img src="https://res.cloudinary.com/dptcuckhf/image/upload/v1772305396/image_lbkjkn.webp" alt="Parceiro" class="h-8 md:h-9 object-contain filter grayscale opacity-45 hover:grayscale-0 hover:opacity-90 transition-all duration-300">
+            <img src="https://res.cloudinary.com/dptcuckhf/image/upload/v1772305484/level-group_jqrgeb.webp" alt="Level Group" class="h-8 md:h-9 object-contain filter brightness-0 opacity-70 contrast-200 transition-all duration-300">
+            <img src="https://res.cloudinary.com/dptcuckhf/image/upload/v1772304631/Horizontal-Cores-Group_osa37z.png" alt="Horizontal Cores" class="h-8 md:h-9 object-contain filter grayscale opacity-45 hover:grayscale-0 hover:opacity-90 transition-all duration-300">
+            <img src="https://res.cloudinary.com/dptcuckhf/image/upload/v1772304350/pertech_edited_edited_qtgrqc.png" alt="Pertech" class="h-8 md:h-9 object-contain filter grayscale opacity-45 hover:grayscale-0 hover:opacity-90 transition-all duration-300">
+            <img src="https://res.cloudinary.com/dptcuckhf/image/upload/v1772304278/Xpbox-clientes-logos-200-padding-sicoob_gjcfly.webp" alt="Sicoob" class="h-8 md:h-9 object-contain filter grayscale opacity-45 hover:grayscale-0 hover:opacity-90 transition-all duration-300">
+            <img src="https://res.cloudinary.com/dptcuckhf/image/upload/v1772305237/FormelD_Logo-svg_edited_ihhm8j.png" alt="Formel D" class="h-8 md:h-9 object-contain filter grayscale opacity-45 hover:grayscale-0 hover:opacity-90 transition-all duration-300">
+            <img src="https://res.cloudinary.com/dptcuckhf/image/upload/v1772364465/ImageToStl.com_Emblema_PC_1551453377220_s8zzrn.avif" alt="Emblema PC" class="h-8 md:h-9 object-contain filter grayscale opacity-45 hover:grayscale-0 hover:opacity-90 transition-all duration-300">
+            <img src="https://res.cloudinary.com/dptcuckhf/image/upload/v1772305530/Santander-Logo_so8gqh.png" alt="Santander" class="h-8 md:h-9 object-contain filter grayscale opacity-45 hover:grayscale-0 hover:opacity-90 transition-all duration-300">
+            
+            <!-- Duplicados para Loop Marquee perfeito -->
+            <img src="https://res.cloudinary.com/dptcuckhf/image/upload/v1772363839/fatz-delicias-logo-removebg-preview_zr4bhr.png" alt="Fatz Delícias" class="h-8 md:h-9 object-contain filter grayscale opacity-45 hover:grayscale-0 hover:opacity-90 transition-all duration-300">
+            <img src="https://res.cloudinary.com/dptcuckhf/image/upload/v1772305396/image_lbkjkn.webp" alt="Parceiro" class="h-8 md:h-9 object-contain filter grayscale opacity-45 hover:grayscale-0 hover:opacity-90 transition-all duration-300">
+            <img src="https://res.cloudinary.com/dptcuckhf/image/upload/v1772305484/level-group_jqrgeb.webp" alt="Level Group" class="h-8 md:h-9 object-contain filter brightness-0 opacity-70 contrast-200 transition-all duration-300">
+            <img src="https://res.cloudinary.com/dptcuckhf/image/upload/v1772304631/Horizontal-Cores-Group_osa37z.png" alt="Horizontal Cores" class="h-8 md:h-9 object-contain filter grayscale opacity-45 hover:grayscale-0 hover:opacity-90 transition-all duration-300">
+            <img src="https://res.cloudinary.com/dptcuckhf/image/upload/v1772304350/pertech_edited_edited_qtgrqc.png" alt="Pertech" class="h-8 md:h-9 object-contain filter grayscale opacity-45 hover:grayscale-0 hover:opacity-90 transition-all duration-300">
+            <img src="https://res.cloudinary.com/dptcuckhf/image/upload/v1772304278/Xpbox-clientes-logos-200-padding-sicoob_gjcfly.webp" alt="Sicoob" class="h-8 md:h-9 object-contain filter grayscale opacity-45 hover:grayscale-0 hover:opacity-90 transition-all duration-300">
+            <img src="https://res.cloudinary.com/dptcuckhf/image/upload/v1772305237/FormelD_Logo-svg_edited_ihhm8j.png" alt="Formel D" class="h-8 md:h-9 object-contain filter grayscale opacity-45 hover:grayscale-0 hover:opacity-90 transition-all duration-300">
+            <img src="https://res.cloudinary.com/dptcuckhf/image/upload/v1772364465/ImageToStl.com_Emblema_PC_1551453377220_s8zzrn.avif" alt="Emblema PC" class="h-8 md:h-9 object-contain filter grayscale opacity-45 hover:grayscale-0 hover:opacity-90 transition-all duration-300">
+            <img src="https://res.cloudinary.com/dptcuckhf/image/upload/v1772305530/Santander-Logo_so8gqh.png" alt="Santander" class="h-8 md:h-9 object-contain filter grayscale opacity-45 hover:grayscale-0 hover:opacity-90 transition-all duration-300">
+        </div>
+    </div>
+</section>
+
+<!-- ===================== CREDENCIAIS CORPORATIVAS ===================== -->
+<section class="py-12 bg-white border-b border-gray-150">
+    <div class="max-w-7xl mx-auto px-4">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div class="bg-gray-50 rounded-2xl p-6 border border-gray-150 flex items-start gap-4 hover:border-brand-yellow/30 transition-all">
+                <div class="w-16 h-16 shrink-0 flex items-center justify-center bg-white rounded-xl shadow-sm overflow-hidden p-1">
+                    <img src="https://res.cloudinary.com/dptcuckhf/image/upload/v1781281963/revenda_intelbras_ejxynb.png" alt="Revenda Autorizada Intelbras" class="w-full h-full object-contain">
+                </div>
+                <div>
+                    <h4 class="font-bold text-gray-900 text-sm md:text-base">Distribuição Oficial Intelbras</h4>
+                    <p class="text-xs text-gray-500 mt-1">Garantia direta de fábrica, equipamentos 100% originais e suporte local prioritário.</p>
+                </div>
+            </div>
+            <div class="bg-gray-50 rounded-2xl p-6 border border-gray-150 flex items-start gap-4 hover:border-brand-yellow/30 transition-all">
+                <div class="p-3 bg-brand-yellow/10 rounded-xl text-brand-yellow shrink-0">
+                    <i data-lucide="file-check" class="w-8 h-8"></i>
+                </div>
+                <div>
+                    <h4 class="font-bold text-gray-900 text-sm md:text-base">Mão de Obra de Engenharia</h4>
+                    <p class="text-xs text-gray-500 mt-1">Furação precisa sob batente blindex, infraestrutura invisível e conformidade com forro e alvenaria existentes.</p>
+                </div>
+            </div>
+            <div class="bg-gray-50 rounded-2xl p-6 border border-gray-150 flex items-start gap-4 hover:border-brand-yellow/30 transition-all">
+                <div class="p-3 bg-brand-yellow/10 rounded-xl text-brand-yellow shrink-0">
+                    <i data-lucide="clock" class="w-8 h-8"></i>
+                </div>
+                <div>
+                    <h4 class="font-bold text-gray-900 text-sm md:text-base">Downtime Operacional Zero</h4>
+                    <p class="text-xs text-gray-500 mt-1">Instalação e infraestrutura feitas de maneira limpa e silenciosa para não interromper os atendimentos e despachos da equipe jurídica.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ===================== DIAGNÓSTICO DO CENÁRIO & MAPEAMENTO ===================== -->
+<section id="diagnostico" class="py-24 bg-white border-b border-gray-150 relative">
+    <div class="absolute inset-0 bg-grid opacity-10 pointer-events-none"></div>
+    <div class="max-w-7xl mx-auto px-4 relative z-10">
+        <div class="text-center mb-16 reveal">
+            <span class="text-brand-yellow font-bold uppercase tracking-widest text-xs">Vistoria & Engenharia Estética</span>
+            <h2 class="text-3xl md:text-5xl font-bold text-gray-900 mt-3 leading-tight">Laudo de Diagnóstico Técnico — Sala 62</h2>
+            <p class="text-gray-500 mt-5 max-w-3xl mx-auto text-sm md:text-base leading-relaxed">
+                Após a inspeção minuciosa conduzida pelo nosso técnico Elton no endereço Al. Mamoré, 503, desenhamos um projeto cirúrgico que resolve as vulnerabilidades de furto e preserva integralmente o requinte do escritório de advocacia:
+            </p>
+        </div>
+
+        <div class="grid md:grid-cols-3 gap-8 reveal">
+            <!-- Ponto 1: Porta de Vidro Blindex -->
+            <div class="bg-gray-50 rounded-2xl p-8 border border-gray-200 flex flex-col justify-between hover:border-brand-yellow/40 transition-colors">
+                <div>
+                    <div class="p-3 bg-brand-yellow/10 text-brand-goldDark rounded-xl w-fit mb-6">
+                        <i data-lucide="key" class="w-6 h-6"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-gray-900 mb-3">Fixação Premium em Blindex</h3>
+                    <p class="text-xs text-gray-500 leading-relaxed">Instalação de fechadura magnética utilizando suportes especiais para vidro em U, eliminando a necessidade de furações invasivas no blindex e mantendo a leveza estética da entrada principal.</p>
+                </div>
+            </div>
+
+            <!-- Ponto 2: Rastreabilidade Total (Sem Furtos) -->
+            <div class="bg-gray-50 rounded-2xl p-8 border border-gray-200 flex flex-col justify-between hover:border-brand-yellow/40 transition-colors">
+                <div>
+                    <div class="p-3 bg-brand-yellow/10 text-brand-goldDark rounded-xl w-fit mb-6">
+                        <i data-lucide="scan-face" class="w-6 h-6"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-gray-900 mb-3">Controle Facial Anti-Fake</h3>
+                    <p class="text-xs text-gray-500 leading-relaxed">O terminal de biometria gerencia de forma ágil e segura os 18 colaboradores. Com leitura tridimensional e algoritmos inteligentes, bloqueia tentativas de fraudes com fotos ou celulares, gravando logs exatos de acesso.</p>
+                </div>
+            </div>
+
+            <!-- Ponto 3: Infraestrutura Slim e Silenciosa -->
+            <div class="bg-gray-50 rounded-2xl p-8 border border-gray-200 flex flex-col justify-between hover:border-brand-yellow/40 transition-colors">
+                <div>
+                    <div class="p-3 bg-brand-yellow/10 text-brand-goldDark rounded-xl w-fit mb-6">
+                        <i data-lucide="activity" class="w-6 h-6"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-gray-900 mb-3">Infraestrutura Oculta no Gesso</h3>
+                    <p class="text-xs text-gray-500 leading-relaxed">Toda a passagem de cabos de rede e fontes de alimentação das câmeras será embutida inteiramente acima do forro de gesso existente. Nenhum adaptador, tomada ou cabo ficará visível nas salas.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ===================== VITRINE TECNOLÓGICA ===================== -->
+<section id="tecnologia" class="py-28 bg-[#f8f9fa] border-b border-gray-200/60 relative overflow-hidden">
+    <div class="absolute inset-0 bg-dots pointer-events-none"></div>
+    <div class="max-w-7xl mx-auto px-4 relative z-10">
+        
+        <div class="text-center mb-20 reveal">
+            <span class="text-brand-yellow font-bold uppercase tracking-widest text-xs">Especificações Técnicas</span>
+            <h2 class="text-3xl md:text-5xl font-bold text-gray-900 mt-3">Tecnologia Corporativa Homologada</h2>
+            <p class="text-gray-500 mt-4 max-w-2xl mx-auto text-lg leading-relaxed">
+                Separamos as soluções de CFTV (Monitoramento de Alta Resolução) e Controle de Acesso (Porta Blindex) para detalhar os ativos aplicados.
+            </p>
+        </div>
+
+        <!-- CATEGORIA 1: CFTV (MONITORAMENTO) -->
+        <div class="mb-20">
+            <div class="flex items-center gap-3 mb-10 border-b border-gray-200 pb-4 reveal">
+                <div class="p-2 bg-zinc-900 text-white rounded-lg"><i data-lucide="eye" class="w-6 h-6"></i></div>
+                <h3 class="text-2xl font-bold text-zinc-900">Solução de Monitoramento (CFTV)</h3>
+            </div>
+            
+            <div class="grid lg:grid-cols-2 gap-8 reveal">
+                <!-- SEGMENTO IP (Wi-Fi + Mesh) -->
+                <div class="bg-white rounded-[2rem] p-6 md:p-8 border-2 border-brand-yellow shadow-glow-md flex flex-col gap-6 relative overflow-hidden group hover:shadow-premium-card transition-all">
+                    <div class="absolute top-0 right-0 w-48 h-48 bg-brand-yellow/10 rounded-full blur-3xl transition-transform group-hover:scale-150"></div>
+                    
+                    <div class="relative z-10">
+                        <div class="inline-flex items-center gap-2 px-3 py-1 bg-zinc-900 border border-brand-yellow/30 text-brand-goldLight rounded-full text-[10px] font-bold uppercase tracking-widest mb-3">
+                            <i data-lucide="cpu" class="w-3 h-3"></i> IP Digital Premium (Design Invisível)
+                        </div>
+                        <h3 class="font-bold text-gray-900 text-xl md:text-2xl mb-4">Equipamentos do Monitoramento IP</h3>
+                    </div>
+
+                    <!-- Lista de Itens do IP -->
+                    <div class="space-y-6 relative z-10 flex-1">
+                        <!-- Item 1: Câmera VIP -->
+                        <div class="flex flex-col md:flex-row items-center md:items-start gap-4 pb-4 border-b border-gray-100">
+                            <div class="w-24 h-24 shrink-0 bg-white rounded-xl p-1 flex items-center justify-center border border-gray-100 shadow-xs">
+                                <img src="https://res.cloudinary.com/dptcuckhf/image/upload/v1777380050/vip-1220-d-fc_-esq_mnjcds.png" alt="Câmera IP Wi-Fi Intelbras Full Color" class="w-full h-full object-contain">
+                            </div>
+                            <div class="text-left flex-1">
+                                <h4 class="font-bold text-gray-900 text-sm">Intelbras - Câmera IP Wi-Fi Full Color</h4>
+                                <p class="text-xs text-gray-500 mt-1 leading-relaxed"><strong>Qualidade Digital Superior:</strong> Imagens de altíssima definição transmitidas digitalmente, captando áudio de excelente qualidade com o microfone embutido e mantendo as imagens coloridas no escuro total do escritório.</p>
+                            </div>
+                        </div>
+
+                        <!-- Item 2: Roteador Mesh -->
+                        <div class="flex flex-col md:flex-row items-center md:items-start gap-4 pb-4 border-b border-gray-100">
+                            <div class="w-24 h-24 shrink-0 bg-white rounded-xl p-1 flex items-center justify-center border border-gray-100 shadow-xs">
+                                <img src="https://res.cloudinary.com/dptcuckhf/image/upload/v1773187758/Twibi_giga_force_conjunto_frontal_inclinado_leds_on_qtwznd.png" alt="Roteador Mesh" class="w-full h-full object-contain">
+                            </div>
+                            <div class="text-left flex-1">
+                                <h4 class="font-bold text-gray-900 text-sm">Intelbras - Roteador Mesh Giga Force</h4>
+                                <p class="text-xs text-gray-500 mt-1 leading-relaxed"><strong>Estabilidade Máxima de Rede:</strong> Cria uma rede exclusiva e isolada apenas para as câmeras de segurança, eliminando lentidões e garantindo que o Wi-Fi clássico do escritório permaneça leve e sem travamentos.</p>
+                            </div>
+                        </div>
+
+                        <!-- Item 3: Cartão SD -->
+                        <div class="flex flex-col md:flex-row items-center md:items-start gap-4 pb-4">
+                            <div class="w-24 h-24 shrink-0 bg-white rounded-xl p-1 flex items-center justify-center border border-gray-100 shadow-xs">
+                                <img src="https://placehold.co/120x120/ffffff/b9880e?text=SD+32GB" alt="Cartão SD" class="w-full h-full object-contain">
+                            </div>
+                            <div class="text-left flex-1">
+                                <h4 class="font-bold text-gray-900 text-sm">WD - Cartão Micro SD 32GB Especializado</h4>
+                                <p class="text-xs text-gray-500 mt-1 leading-relaxed"><strong>Gravação Segura Descentralizada:</strong> Instalado internamente em cada câmera, mantém as gravações protegidas no teto de forma individualizada. Mesmo que haja sabotagem em uma das salas, as gravações das outras permanecem intactas.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- SEGMENTO ANALÓGICO -->
+                <div class="bg-white rounded-[2rem] p-6 md:p-8 border border-gray-200 shadow-sm flex flex-col gap-6 relative overflow-hidden group hover:border-brand-yellow/40 hover:shadow-premium-card transition-all">
+                    <div class="absolute top-0 right-0 w-48 h-48 bg-brand-yellow/10 rounded-full blur-3xl transition-transform group-hover:scale-150"></div>
+                    
+                    <div class="relative z-10">
+                        <div class="inline-flex items-center gap-2 px-3 py-1 bg-white border border-brand-yellow/30 text-brand-goldDark rounded-full text-[10px] font-bold uppercase tracking-widest mb-3">
+                            <i data-lucide="volume-2" class="w-3 h-3"></i> Monitoramento Coaxial Convencional
+                        </div>
+                        <h3 class="font-bold text-gray-900 text-xl md:text-2xl mb-4">Equipamentos do Monitoramento Analógico</h3>
+                    </div>
+
+                    <!-- Lista de Itens do Analógico -->
+                    <div class="space-y-6 relative z-10 flex-1">
+                        <!-- Item 1: Câmera Analógica -->
+                        <div class="flex flex-col md:flex-row items-center md:items-start gap-4 pb-4 border-b border-gray-100">
+                            <div class="w-24 h-24 shrink-0 bg-white rounded-xl p-1 flex items-center justify-center border border-gray-100 shadow-xs">
+                                <img src="https://res.cloudinary.com/dptcuckhf/image/upload/v1773319978/ImageToStl.com_vhl_1220_d-frontal_l3qbq2.avif" alt="Câmera Dome Intelbras" class="w-full h-full object-contain">
+                            </div>
+                            <div class="text-left flex-1">
+                                <h4 class="font-bold text-gray-900 text-sm">Intelbras - Câmera Dome Analógica com Microfone</h4>
+                                <p class="text-xs text-gray-500 mt-1 leading-relaxed"><strong>Vídeo Tradicional + Som:</strong> Transmissão física de imagem em definição clássica e áudio ambiente integrado através de canais de cabo coaxial diretamente ao gravador central do escritório.</p>
+                            </div>
+                        </div>
+
+                        <!-- Item 2: DVR Gravador -->
+                        <div class="flex flex-col md:flex-row items-center md:items-start gap-4 pb-4 border-b border-gray-100">
+                            <div class="w-24 h-24 shrink-0 bg-white rounded-xl p-1 flex items-center justify-center border border-gray-100 shadow-xs">
+                                <img src="https://res.cloudinary.com/dptcuckhf/image/upload/v1771880910/FOTO_ee32566a02aa2e389c2f0a21db114321-removebg-preview_dwwbep.png" alt="DVR Intelbras" class="w-full h-full object-contain">
+                            </div>
+                            <div class="text-left flex-1">
+                                <h4 class="font-bold text-gray-900 text-sm">Intelbras - Gravador de Vídeo Digital (DVR)</h4>
+                                <p class="text-xs text-gray-500 mt-1 leading-relaxed"><strong>Gerenciamento Centralizado:</strong> Aparelho central que recebe e processa os sinais físicos de vídeo e som de todas as câmeras. Necessita de conexões físicas por fios em todos os pontos.</p>
+                            </div>
+                        </div>
+
+                        <!-- Item 3: HD Purple -->
+                        <div class="flex flex-col md:flex-row items-center md:items-start gap-4">
+                            <div class="w-24 h-24 shrink-0 bg-white rounded-xl p-1 flex items-center justify-center border border-gray-100 shadow-xs">
+                                <img src="https://res.cloudinary.com/dptcuckhf/image/upload/v1771880502/WD-PURPLE_2TB-removebg-preview_f1micz.png" alt="HD WD Purple" class="w-full h-full object-contain">
+                            </div>
+                            <div class="text-left flex-1">
+                                <h4 class="font-bold text-gray-900 text-sm">WD Purple - Disco Rígido Profissional</h4>
+                                <p class="text-xs text-gray-500 mt-1 leading-relaxed"><strong>Estabilidade 24 Horas:</strong> HD de alta confiabilidade mecânica projetado especificamente para sistemas de CFTV, rodando de forma ininterrupta e armazenando semanas de vídeos sem falhas.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- VÍDEO INTEGRADO 1: CFTV FULL COLOR (HORIZONTAL 16:9) -->
+            <div class="mt-12 bg-white rounded-[2rem] p-6 md:p-8 border border-gray-200/80 shadow-sm reveal">
+                <div class="grid md:grid-cols-12 gap-8 items-center">
+                    <div class="md:col-span-5 text-left">
+                        <span class="inline-block bg-[#09090b] text-brand-goldLight text-[10px] font-bold px-3 py-1 rounded-full uppercase tracking-wider mb-3">Tecnologia em Foco</span>
+                        <h4 class="text-xl font-bold text-gray-900">A Diferença do Sensor Full Color</h4>
+                        <p class="text-xs text-gray-500 mt-2 leading-relaxed">
+                            Assista no player ao lado a demonstração prática da tecnologia de visão noturna colorida. Veja como o sensor óptico premium preserva a fidelidade cromática e nitidez de rostos mesmo na escuridão total do escritório, eliminando o fantasma do preto e branco analógico.
+                        </p>
+                    </div>
+                    <div class="md:col-span-7">
+                        <div class="relative w-full aspect-video bg-black rounded-2xl overflow-hidden shadow-premium border-[6px] border-zinc-950 group">
+                            <video class="absolute inset-0 w-full h-full object-cover cursor-pointer scale-[1.01]" autoplay muted loop playsinline id="demo-horizontal-video">
+                                <source src="https://res.cloudinary.com/dptcuckhf/video/upload/v1779797525/YTDown_YouTube_Cameras-Full-Color-Serie-3000-Intelbras_Media_fKQjjwa9n8k_002_720p_y6fnum.mp4" type="video/mp4">
+                            </video>
+                            <!-- Overlay de Unmute -->
+                            <div id="unmute-overlay-horizontal" class="absolute inset-0 bg-black/60 backdrop-blur-xs flex flex-col items-center justify-center cursor-pointer transition-opacity duration-500 z-30 hover:bg-black/40">
+                                <div class="bg-brand-yellow text-black font-bold px-5 py-3 rounded-full flex items-center gap-2 shadow-glow animate-pulse transform group-hover:scale-105 transition-all">
+                                    <i data-lucide="volume-2" class="w-4 h-4 fill-black"></i>
+                                    <span class="text-[10px] font-bold tracking-wide uppercase">Ouvir Explicação Técnica</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- CATEGORIA 2: CONTROLE DE ACESSO -->
+        <div>
+            <div class="flex items-center gap-3 mb-10 border-b border-gray-200 pb-4 reveal">
+                <div class="p-2 bg-zinc-900 text-white rounded-lg"><i data-lucide="scan-face" class="w-6 h-6"></i></div>
+                <h3 class="text-2xl font-bold text-zinc-900">Solução de Controle de Acesso (Porta de Vidro Principal)</h3>
+            </div>
+            
+            <div class="grid lg:grid-cols-2 gap-8 reveal">
+                <!-- Controladora Facial Intelbras -->
+                <div class="bg-white rounded-[2rem] p-6 md:p-8 border border-gray-200 shadow-sm flex flex-col md:flex-row items-center md:items-start gap-8 relative overflow-hidden group hover:border-brand-yellow/40 hover:shadow-premium-card transition-all">
+                    <div class="absolute top-0 right-0 w-48 h-48 bg-brand-yellow/10 rounded-full blur-3xl transition-transform group-hover:scale-150"></div>
+                    
+                    <div class="w-32 h-44 shrink-0 bg-white rounded-2xl p-2 flex flex-col items-center justify-center border border-gray-100 shadow-sm relative z-10">
+                        <img src="https://res.cloudinary.com/dptcuckhf/image/upload/v1781279570/ss1530-2-s4s5dx0x0g_nhnlpk.webp" 
+                             alt="Terminal Biométrico Facial" 
+                             class="w-full h-full object-contain transform group-hover:scale-105 transition-transform duration-500 drop-shadow-md rounded-lg">
+                    </div>
+                    
+                    <div class="flex-1 text-left relative z-10 flex flex-col h-full">
+                        <div class="mb-4">
+                            <div class="inline-flex items-center gap-2 px-3 py-1 bg-white border border-brand-yellow/30 text-brand-goldDark rounded-full text-[10px] font-bold uppercase tracking-widest mb-3">
+                                <i data-lucide="scan-face" class="w-3 h-3"></i> Leitor Facial com Algoritmo Anti-Fake
+                            </div>
+                            <h3 class="font-bold text-gray-900 text-xl md:text-2xl mb-2">Intelbras - Terminal de Reconhecimento Facial Inteligente</h3>
+                        </div>
+                        <ul class="flex flex-col gap-3 mt-auto pt-4 border-t border-gray-100">
+                            <li class="flex items-start gap-3">
+                                <div class="w-5 h-5 rounded-full bg-brand-yellow/10 flex items-center justify-center shrink-0 mt-0.5 border border-brand-yellow/20">
+                                    <i data-lucide="check" class="w-3 h-3 text-brand-goldDark"></i>
+                                </div>
+                                <p class="text-sm text-gray-700 leading-relaxed"><strong>Processamento Instantâneo:</strong> Identifica o rosto do colaborador em menos de 0,2 segundos com altíssima precisão.</p>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <div class="w-5 h-5 rounded-full bg-brand-yellow/10 flex items-center justify-center shrink-0 mt-0.5 border border-brand-yellow/20">
+                                    <i data-lucide="check" class="w-3 h-3 text-brand-goldDark"></i>
+                                </div>
+                                <p class="text-sm text-gray-700 leading-relaxed"><strong>Software Gratuito Vitalício:</strong> Gerenciamento fácil de acessos e auditoria de logs de quem entrou diretamente do computador.</p>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Eletroímã Intelbras -->
+                <div class="bg-white rounded-[2rem] p-6 md:p-8 border border-gray-200 shadow-sm flex flex-col md:flex-row items-center md:items-start gap-8 relative overflow-hidden group hover:border-brand-yellow/40 hover:shadow-premium-card transition-all">
+                    <div class="absolute top-0 right-0 w-48 h-48 bg-brand-yellow/10 rounded-full blur-3xl transition-transform group-hover:scale-150"></div>
+                    
+                    <div class="w-32 h-44 shrink-0 bg-white rounded-2xl p-2 flex flex-col items-center justify-center border border-gray-100 shadow-sm relative z-10">
+                        <img src="https://res.cloudinary.com/dptcuckhf/image/upload/v1771011341/fe_20150_persp_esquerda_v2_mwjtp0.png" 
+                             alt="Fechadura Eletroímã" 
+                             class="w-full h-full object-contain transform group-hover:scale-105 transition-transform duration-500 drop-shadow-md rounded-lg">
+                    </div>
+                    
+                    <div class="flex-1 text-left relative z-10 flex flex-col h-full">
+                        <div class="mb-4">
+                            <div class="inline-flex items-center gap-2 px-3 py-1 bg-white border border-brand-yellow/30 text-brand-goldDark rounded-full text-[10px] font-bold uppercase tracking-widest mb-3">
+                                <i data-lucide="key" class="w-3 h-3"></i> Fechadura Eletroímã Alta Tração
+                            </div>
+                            <h3 class="font-bold text-gray-900 text-xl md:text-2xl mb-2">Intelbras - Fechadura Eletroímã de Alta Tração</h3>
+                        </div>
+                        <ul class="flex flex-col gap-3 mt-auto pt-4 border-t border-gray-100">
+                            <li class="flex items-start gap-3">
+                                <div class="w-5 h-5 rounded-full bg-brand-yellow/10 flex items-center justify-center shrink-0 mt-0.5 border border-brand-yellow/20">
+                                    <i data-lucide="check" class="w-3 h-3 text-brand-goldDark"></i>
+                                </div>
+                                <p class="text-sm text-gray-700 leading-relaxed"><strong>Força Extrema:</strong> Resistência mecânica de até 150 kg contra tentativas de arrombamento de portas de vidro blindex.</p>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Fonte de Alimentação Ininterrupta Nobreak -->
+                <div class="bg-white rounded-[2rem] p-6 md:p-8 border border-gray-200 shadow-sm flex flex-col md:flex-row items-center md:items-start gap-8 relative overflow-hidden group hover:border-brand-yellow/40 hover:shadow-premium-card transition-all">
+                    <div class="absolute top-0 right-0 w-48 h-48 bg-brand-yellow/10 rounded-full blur-3xl transition-transform group-hover:scale-150"></div>
+                    
+                    <div class="w-32 h-44 shrink-0 bg-white rounded-2xl p-2 flex flex-col items-center justify-center border border-gray-100 shadow-sm relative z-10">
+                        <img src="https://res.cloudinary.com/dptcuckhf/image/upload/v1771601853/FlyerDigital_FA_1220_S_bateria_03-removebg-preview_bunqno.png" 
+                             alt="Fonte de Alimentação Ininterrupta" 
+                             class="w-full h-full object-contain transform group-hover:scale-105 transition-transform duration-500 drop-shadow-md rounded-lg">
+                    </div>
+                    
+                    <div class="flex-1 text-left relative z-10 flex flex-col h-full">
+                        <div class="mb-4">
+                            <div class="inline-flex items-center gap-2 px-3 py-1 bg-white border border-brand-yellow/30 text-brand-goldDark rounded-full text-[10px] font-bold uppercase tracking-widest mb-3">
+                                <i data-lucide="zap" class="w-3 h-3"></i> Sistema Nobreak Dedicado
+                            </div>
+                            <h3 class="font-bold text-gray-900 text-xl md:text-2xl mb-2">Intelbras - Fonte de Alimentação Ininterrupta Nobreak com Bateria</h3>
+                        </div>
+                        <ul class="flex flex-col gap-3 mt-auto pt-4 border-t border-gray-100">
+                            <li class="flex items-start gap-3">
+                                <div class="w-5 h-5 rounded-full bg-brand-yellow/10 flex items-center justify-center shrink-0 mt-0.5 border border-brand-yellow/20">
+                                    <i data-lucide="check" class="w-3 h-3 text-brand-goldDark"></i>
+                                </div>
+                                <p class="text-sm text-gray-700 leading-relaxed"><strong>Segurança Fail-Safe:</strong> Mantém a trava elétrica e o leitor facial totalmente alimentados por horas em caso de quedas de energia no prédio.</p>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Botoeira BT 3000 Inox -->
+                <div class="bg-white rounded-[2rem] p-6 md:p-8 border border-gray-200 shadow-sm flex flex-col md:flex-row items-center md:items-start gap-8 relative overflow-hidden group hover:border-brand-yellow/40 hover:shadow-premium-card transition-all">
+                    <div class="absolute top-0 right-0 w-48 h-48 bg-brand-yellow/10 rounded-full blur-3xl transition-transform group-hover:scale-150"></div>
+                    
+                    <div class="w-32 h-44 shrink-0 bg-white rounded-2xl p-2 flex flex-col items-center justify-center border border-gray-100 shadow-sm relative z-10">
+                        <img src="https://res.cloudinary.com/dptcuckhf/image/upload/v1770745467/bt_3000_in-02_0_hufak8.png" 
+                             alt="Botoeira Premium Inox de Saída" 
+                             class="w-full h-full object-contain transform group-hover:scale-105 transition-transform duration-500 drop-shadow-md rounded-lg">
+                    </div>
+                    
+                    <div class="flex-1 text-left relative z-10 flex flex-col h-full">
+                        <div class="mb-4">
+                            <div class="inline-flex items-center gap-2 px-3 py-1 bg-white border border-brand-yellow/30 text-brand-goldDark rounded-full text-[10px] font-bold uppercase tracking-widest mb-3">
+                                <i data-lucide="door-open" class="w-3 h-3"></i> Saída Prática e Segura
+                            </div>
+                            <h3 class="font-bold text-gray-900 text-xl md:text-2xl mb-2">Intelbras - Botoeira de Saída Premium em Aço Inox</h3>
+                        </div>
+                        <ul class="flex flex-col gap-3 mt-auto pt-4 border-t border-gray-100">
+                            <li class="flex items-start gap-3">
+                                <div class="w-5 h-5 rounded-full bg-brand-yellow/10 flex items-center justify-center shrink-0 mt-0.5 border border-brand-yellow/20">
+                                    <i data-lucide="check" class="w-3 h-3 text-brand-goldDark"></i>
+                                </div>
+                                <p class="text-sm text-gray-700 leading-relaxed"><strong>Saída Conveniente:</strong> Acabamento de alto padrão em aço inox para abertura rápida e confortável ao sair do escritório.</p>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- VÍDEO INTEGRADO 2: BIOMETRIA FACIAL (VERTICAL 9:16) -->
+            <div class="mt-12 bg-white rounded-[2rem] p-6 md:p-8 border border-gray-200/80 shadow-sm reveal">
+                <div class="grid md:grid-cols-12 gap-8 items-center">
+                    <div class="md:col-span-6 text-left">
+                        <span class="inline-block bg-[#09090b] text-brand-goldLight text-[10px] font-bold px-3 py-1 rounded-full uppercase tracking-wider mb-3">Rastreabilidade & Velocidade</span>
+                        <h4 class="text-xl font-bold text-gray-900 font-sans">Validação Biométrica Anti-Fake</h4>
+                        <p class="text-xs text-gray-500 mt-2 leading-relaxed">
+                            Confira na demonstração prática ao lado a agilidade do sistema biométrico facial selecionado para o seu escritório. O leitor processa a aproximação em menos de 0,2 segundos e bloqueia acessos fraudulentos que utilizem fotos impressas ou em telas de celulares, mantendo um registro inviolável no software da equipe.
+                        </p>
+                    </div>
+                    <div class="md:col-span-6 flex justify-center">
+                        <div class="relative w-full max-w-[240px] aspect-[9/16] bg-black rounded-[2rem] overflow-hidden shadow-premium border-[6px] border-zinc-950 group">
+                            <video class="absolute inset-0 w-full h-full object-cover cursor-pointer scale-[1.01]" autoplay muted loop playsinline id="demo-shorts-video">
+                                <source src="https://res.cloudinary.com/dptcuckhf/video/upload/v1779472606/YTDown_Shorts_Controle-de-acesso-facial-Intelbras-SS35_Media_1dvh4e3mdL8_001_1080p_smpeil.mp4" type="video/mp4">
+                            </video>
+                            <!-- Overlay de Unmute -->
+                            <div id="unmute-overlay-shorts" class="absolute inset-0 bg-black/60 backdrop-blur-xs flex flex-col items-center justify-center cursor-pointer transition-opacity duration-500 z-30 hover:bg-black/40">
+                                <div class="bg-brand-yellow text-black font-bold px-4 py-2.5 rounded-full flex items-center gap-1.5 shadow-glow animate-pulse transform group-hover:scale-105 transition-all text-center">
+                                    <i data-lucide="volume-2" class="w-3.5 h-3.5 fill-black"></i>
+                                    <span class="text-[9px] font-bold tracking-wide uppercase">Ativar Áudio</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<!-- ===================== PROPOSTA DE INVESTIMENTO LADO A LADO ===================== -->
+<section id="investimento" class="py-20 md:py-28 bg-[#fafafa] relative overflow-hidden">
+    <div class="absolute inset-0 bg-dots pointer-events-none z-0"></div>
+    <div class="max-w-7xl mx-auto px-4 relative z-10">
+
+        <div class="text-center mb-10 md:mb-12 reveal">
+            <span class="text-brand-yellow font-bold uppercase tracking-widest text-xs">Orçamento Estruturado</span>
+            <h2 class="text-3xl md:text-5xl font-extrabold text-gray-900 mt-2 md:mt-3">Investimento de Engenharia</h2>
+            <p class="text-gray-500 mt-3 md:mt-4 max-w-xl mx-auto text-sm md:text-lg leading-relaxed px-4">
+                Composição de ativos corporativos de alta qualidade para blindar seu escritório. Alterne abaixo para simular pagamentos à vista ou parcelados:
+            </p>
+        </div>
+
+        <!-- TOGGLE DE PAGAMENTO (PIX VS CARTÃO) -->
+        <div class="flex flex-col items-center justify-center mb-12 md:mb-16 reveal">
+            <p class="text-xs font-bold text-gray-400 uppercase tracking-widest mb-3">Método de Faturamento:</p>
+            <div class="bg-gray-200 p-1.5 rounded-full inline-flex relative shadow-inner">
+                <div id="toggle-bg" class="absolute top-1.5 bottom-1.5 w-[calc(50%-3px)] bg-white rounded-full shadow-sm transition-transform duration-300 ease-in-out" style="transform: translateX(0); left: 2px;"></div>
+                
+                <button onclick="setPaymentMode('avista')" id="btn-avista" class="relative z-10 px-5 md:px-8 py-2.5 text-xs md:text-sm font-bold text-gray-900 transition-colors w-32 md:w-44 text-center rounded-full focus:outline-none">À Vista (PIX)</button>
+                <button onclick="setPaymentMode('parcelado')" id="btn-parcelado" class="relative z-10 px-5 md:px-8 py-2.5 text-xs md:text-sm font-bold text-gray-500 transition-colors w-36 md:w-48 text-center rounded-full focus:outline-none hover:text-black">Faturamento Parcelado</button>
+            </div>
+
+            <!-- Seletor de Parcelas com Taxas Integradas -->
+            <div id="installment-container" class="mt-4 md:mt-6 flex flex-col items-center transition-all duration-300 opacity-0 pointer-events-none hidden">
+                <div class="relative">
+                    <select id="installment-select" class="appearance-none bg-white border border-gray-300 text-gray-950 text-xs md:text-sm font-bold rounded-xl focus:ring-brand-yellow focus:border-brand-yellow block w-48 md:w-64 p-2.5 md:p-3 pl-3 md:pl-4 pr-8 md:pr-10 shadow-sm outline-none cursor-pointer hover:border-gray-400 transition-colors" onchange="updatePrices()">
+                        <option value="1">1x no cartão corporativo</option>
+                        <option value="2">2x no cartão corporativo</option>
+                        <option value="3">3x no cartão corporativo</option>
+                        <option value="4">4x no cartão corporativo</option>
+                        <option value="5">5x no cartão corporativo</option>
+                        <option value="6">6x no cartão corporativo</option>
+                        <option value="12" selected>12x no cartão corporativo</option>
+                    </select>
+                    <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 md:px-3 text-brand-yellow">
+                        <i data-lucide="chevron-down" class="w-3 h-3 md:w-4 md:h-4"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- GRID DE PREÇOS (SEMPRE LADO A LADO - DESKTOP E MOBILE) -->
+        <div class="grid grid-cols-2 gap-2 sm:gap-6 md:gap-8 items-stretch justify-center reveal">
+            
+            <!-- CARD CENÁRIO A (RECOMENDADO - ESQUERDA) -->
+            <div class="premium-border-glow group relative z-20 w-full flex flex-col">
+                <div class="premium-border-inner flex flex-col relative bg-white p-3 sm:p-8 h-full">
+                    <div class="absolute top-0 right-0 w-16 h-16 sm:w-32 sm:h-32 bg-brand-yellow/10 rounded-full blur-[20px] sm:blur-[50px] pointer-events-none"></div>
+                    <div class="absolute top-2 right-2 sm:top-4 sm:right-4 z-20">
+                        <span class="bg-brand-yellow text-black text-[6px] sm:text-[10px] font-extrabold px-1.5 py-0.5 sm:px-3 sm:py-1 rounded-full uppercase tracking-widest shadow-glow">Recomendado</span>
+                    </div>
+
+                    <div class="mb-2 sm:mb-6 text-left relative z-10">
+                        <p class="text-[6px] sm:text-[10px] font-bold uppercase tracking-widest text-brand-yellow mb-0.5 sm:mb-2 font-tech font-sans">OPÇÃO DESIGN PREMIUM (ZERO FIOS)</p>
+                        <h3 class="font-bold text-gray-900 text-xs sm:text-2xl leading-tight">Cenário A — Tecnologia IP Wi-Fi &amp; Mesh</h3>
+                    </div>
+
+                    <div class="mb-3 sm:mb-6 p-2 sm:p-6 bg-brand-yellow/5 border border-brand-yellow/20 rounded-lg sm:rounded-2xl min-h-[90px] sm:min-h-[140px] flex flex-col items-center justify-center text-center relative z-10">
+                        <div class="w-full" id="price-card-a">
+                            <!-- JS injetará valores dinâmicos aqui -->
+                        </div>
+                    </div>
+
+                    <!-- COMPARATIVO DE BENEFÍCIOS (Checks vs Crosses) -->
+                    <div class="flex-1 relative z-10 text-left">
+                        <p class="text-[7px] sm:text-[11px] font-bold uppercase tracking-wider text-gray-400 mb-2 sm:mb-4 border-b border-gray-150 pb-1">Análise de Vantagens:</p>
+                        <ul class="space-y-1.5 sm:space-y-4">
+                            <li class="flex items-start gap-1 sm:gap-2.5">
+                                <i data-lucide="check" class="w-3 h-3 sm:w-4 sm:h-4 text-emerald-600 bg-emerald-50 rounded-full p-0.5 shrink-0 mt-0.5"></i>
+                                <span class="text-[8px] sm:text-xs text-gray-700 leading-normal"><strong>Estética 100% Invisível:</strong> Fontes e adaptadores embutidos no gesso.</span>
+                            </li>
+                            <li class="flex items-start gap-1 sm:gap-2.5">
+                                <i data-lucide="check" class="w-3 h-3 sm:w-4 sm:h-4 text-emerald-600 bg-emerald-50 rounded-full p-0.5 shrink-0 mt-0.5"></i>
+                                <span class="text-[8px] sm:text-xs text-gray-700 leading-normal"><strong>Qualidade IP Digital:</strong> Imagem de altíssima definição nativa nas câmeras.</span>
+                            </li>
+                            <li class="flex items-start gap-1 sm:gap-2.5">
+                                <i data-lucide="check" class="w-3 h-3 sm:w-4 sm:h-4 text-emerald-600 bg-emerald-50 rounded-full p-0.5 shrink-0 mt-0.5"></i>
+                                <span class="text-[8px] sm:text-xs text-gray-700 leading-normal"><strong>Modo Noturno Colorido:</strong> Imagens nítidas e coloridas 24h na escuridão.</span>
+                            </li>
+                            <li class="flex items-start gap-1 sm:gap-2.5">
+                                <i data-lucide="check" class="w-3 h-3 sm:w-4 sm:h-4 text-emerald-600 bg-emerald-50 rounded-full p-0.5 shrink-0 mt-0.5"></i>
+                                <span class="text-[8px] sm:text-xs text-gray-700 leading-normal"><strong>Microfone Integrado IP:</strong> Áudio de excelente fidelidade sincronizado ao app.</span>
+                            </li>
+                            <li class="flex items-start gap-1 sm:gap-2.5">
+                                <i data-lucide="check" class="w-3 h-3 sm:w-4 sm:h-4 text-emerald-600 bg-emerald-50 rounded-full p-0.5 shrink-0 mt-0.5"></i>
+                                <span class="text-[8px] sm:text-xs text-gray-700 leading-normal"><strong>Canal Mesh Exclusivo:</strong> Roteador dedicado para não congestionar o Wi-Fi.</span>
+                            </li>
+                            <li class="flex items-start gap-1 sm:gap-2.5">
+                                <i data-lucide="check" class="w-3 h-3 sm:w-4 sm:h-4 text-emerald-600 bg-emerald-50 rounded-full p-0.5 shrink-0 mt-0.5"></i>
+                                <span class="text-[8px] sm:text-xs text-gray-700 leading-normal"><strong>Maior Resiliência Física:</strong> Se roubarem o gravador físico, a gravação de borda no SD permanece.</span>
+                            </li>
+                            <li class="flex items-start gap-1 sm:gap-2.5">
+                                <i data-lucide="check" class="w-3 h-3 sm:w-4 sm:h-4 text-emerald-600 bg-emerald-50 rounded-full p-0.5 shrink-0 mt-0.5"></i>
+                                <span class="text-[8px] sm:text-xs text-gray-700 leading-normal"><strong>Furação Limpa Blindex:</strong> Controle de acesso facial instalado sem furar o vidro.</span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <a id="btn-aprova-a" href="#" target="_blank" class="w-full bg-brand-yellow hover:bg-brand-goldLight text-black font-bold py-2 sm:py-3.5 rounded-lg sm:rounded-xl flex items-center justify-center gap-1.5 transition-all shadow-glow-md text-[8px] sm:text-[11px] uppercase tracking-widest mt-4 sm:mt-8 group relative overflow-hidden z-10">
+                        <div class="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-300 rounded-lg"></div>
+                        <span class="relative z-10 font-tech">Aprovar Cenário A</span>
+                        <i data-lucide="arrow-right" class="w-3 h-3 sm:w-4 sm:h-4 relative z-10 group-hover:translate-x-1 transition-transform"></i>
+                    </a>
+                </div>
+            </div>
+
+            <!-- CARD CENÁRIO B (SECUNDÁRIO - DIREITA) -->
+            <div class="bg-white rounded-[1rem] sm:rounded-[2rem] border border-gray-250 shadow-premium flex flex-col justify-between p-1">
+                <div class="flex flex-col p-3 sm:p-8 h-full justify-between">
+                    <div>
+                        <div class="mb-2 sm:mb-6 text-left relative">
+                            <p class="text-[6px] sm:text-[10px] font-bold uppercase tracking-widest text-zinc-500 mb-0.5 sm:mb-2 font-tech">OPÇÃO CABEADA CONVENCIONAL</p>
+                            <h3 class="font-bold text-gray-900 text-xs sm:text-2xl leading-tight font-sans">Cenário B — Coaxial Analógico Tradicional</h3>
+                        </div>
+
+                        <div class="mb-3 sm:mb-6 p-2 sm:p-6 bg-zinc-50 border border-zinc-200 rounded-lg sm:rounded-2xl min-h-[90px] sm:min-h-[140px] flex flex-col items-center justify-center text-center">
+                            <div class="w-full" id="price-card-b">
+                                <!-- JS injetará valores dinâmicos aqui -->
+                            </div>
+                        </div>
+
+                        <!-- COMPARATIVO DE BENEFÍCIOS (Checks vs Crosses) -->
+                        <div class="text-left">
+                            <p class="text-[7px] sm:text-[11px] font-bold uppercase tracking-wider text-gray-400 mb-2 sm:mb-4 border-b border-gray-150 pb-1">Análise de Vantagens:</p>
+                            <ul class="space-y-1.5 sm:space-y-4">
+                                <li class="flex items-start gap-1 sm:gap-2.5">
+                                    <i data-lucide="x" class="w-3 h-3 sm:w-4 sm:h-4 text-red-500 bg-red-50 rounded-full p-0.5 shrink-0 mt-0.5"></i>
+                                    <span class="text-[8px] sm:text-xs text-zinc-500 leading-normal"><strong>Estética 100% Invisível:</strong> Risco de canaletas se os conduítes estiverem cheios.</span>
+                                </li>
+                                <li class="flex items-start gap-1 sm:gap-2.5">
+                                    <i data-lucide="x" class="w-3 h-3 sm:w-4 sm:h-4 text-red-500 bg-red-50 rounded-full p-0.5 shrink-0 mt-0.5"></i>
+                                    <span class="text-[8px] sm:text-xs text-zinc-500 leading-normal"><strong>Qualidade IP Digital:</strong> Resolução analógica sujeita a ruídos e distorções.</span>
+                                </li>
+                                <li class="flex items-start gap-1 sm:gap-2.5">
+                                    <i data-lucide="x" class="w-3 h-3 sm:w-4 sm:h-4 text-red-500 bg-red-50 rounded-full p-0.5 shrink-0 mt-0.5"></i>
+                                    <span class="text-[8px] sm:text-xs text-zinc-500 leading-normal"><strong>Modo Noturno Colorido:</strong> Câmeras analógicas gravam em P&amp;B no escuro.</span>
+                                </li>
+                                <li class="flex items-start gap-1 sm:gap-2.5">
+                                    <i data-lucide="check" class="w-3 h-3 sm:w-4 sm:h-4 text-emerald-600 bg-emerald-50 rounded-full p-0.5 shrink-0 mt-0.5"></i>
+                                    <span class="text-[8px] sm:text-xs text-zinc-600 leading-normal"><strong>Microfone Integrado:</strong> Áudio analógico transmitido pelo cabo.</span>
+                                </li>
+                                <li class="flex items-start gap-1 sm:gap-2.5">
+                                    <i data-lucide="x" class="w-3 h-3 sm:w-4 sm:h-4 text-red-500 bg-red-50 rounded-full p-0.5 shrink-0 mt-0.5"></i>
+                                    <span class="text-[8px] sm:text-xs text-zinc-500 leading-normal"><strong>Rede Mesh Exclusiva:</strong> Sem sinal isolado dedicado às câmeras.</span>
+                                </li>
+                                <li class="flex items-start gap-1 sm:gap-2.5">
+                                    <i data-lucide="x" class="w-3 h-3 sm:w-4 sm:h-4 text-red-500 bg-red-50 rounded-full p-0.5 shrink-0 mt-0.5"></i>
+                                    <span class="text-[8px] sm:text-xs text-zinc-500 leading-normal"><strong>Gargalo de Gravador:</strong> Se roubarem o DVR físico, perdem-se todas as imagens de uma vez.</span>
+                                </li>
+                                <li class="flex items-start gap-1 sm:gap-2.5">
+                                    <i data-lucide="check" class="w-3 h-3 sm:w-4 sm:h-4 text-emerald-600 bg-emerald-50 rounded-full p-0.5 shrink-0 mt-0.5"></i>
+                                    <span class="text-[8px] sm:text-xs text-zinc-600 leading-normal"><strong>Furação Limpa Blindex:</strong> Controle de acesso facial instalado sem furar o vidro.</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <a id="btn-aprova-b" href="#" target="_blank" class="w-full bg-zinc-900 hover:bg-zinc-800 text-white font-bold py-2 sm:py-3.5 rounded-lg sm:rounded-xl flex items-center justify-center gap-1.5 transition-all text-[8px] sm:text-[11px] uppercase tracking-widest mt-4 sm:mt-8 group relative overflow-hidden">
+                        <div class="absolute inset-0 bg-white/10 translate-y-full group-hover:translate-y-0 transition-transform duration-300 rounded-lg"></div>
+                        <span class="relative z-10 font-tech">Aprovar Cenário B</span>
+                        <i data-lucide="arrow-right" class="w-3 h-3 sm:w-4 sm:h-4 relative z-10 group-hover:translate-x-1 transition-transform"></i>
+                    </a>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+</section>
+
+<!-- ===================== FAQ EXPOSTO POR PADRÃO (VERTICAL CLEAN) ===================== -->
+<section id="faq" class="py-24 bg-gray-50 border-t border-gray-200/50">
+    <div class="max-w-4xl mx-auto px-4">
+        <div class="text-center mb-16 reveal">
+            <span class="text-brand-yellow font-bold uppercase tracking-widest text-xs">Perguntas &amp; Respostas</span>
+            <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mt-3">Para Sua Total Tranquilidade</h2>
+            <p class="text-gray-500 mt-4 max-w-xl mx-auto text-sm leading-relaxed font-sans">Entenda os detalhes de implantação e pós-obra para o escritório de advocacia:</p>
+        </div>
+        
+        <!-- FAQ Estruturado um embaixo do outro, primeiro aberto por padrão, comportamento accordion dinâmico de fechamento mútuo -->
+        <div class="max-w-3xl mx-auto flex flex-col gap-4 reveal">
+            
+            <!-- Item 1 (Aberto por padrão) -->
+            <div class="bg-white rounded-2xl border border-gray-150 shadow-sm transition-all faq-item" id="faq-item-1">
+                <button onclick="toggleFaq('1')" class="w-full text-left p-6 flex justify-between items-center focus:outline-none">
+                    <h3 class="font-bold text-gray-900 text-sm md:text-base flex items-center gap-2">
+                        <i data-lucide="wrench" class="w-5 h-5 text-brand-yellow shrink-0"></i>
+                        A instalação danifica as portas ou o gesso?
+                    </h3>
+                    <i data-lucide="chevron-down" class="w-5 h-5 text-gray-400 transition-transform duration-300 rotate-180 faq-arrow" id="faq-arrow-1"></i>
+                </button>
+                <div class="transition-all duration-300 max-h-screen overflow-hidden border-t border-gray-100/50" id="faq-content-1">
+                    <p class="p-6 text-xs sm:text-sm text-gray-500 leading-relaxed font-sans">
+                        De forma alguma. No cenário de câmeras IP Wi-Fi, toda a passagem de energia é embutida acima do gesso, preservando as paredes intactas. No controle de acesso facial, descemos com perfilados Slim micro-canaletados nas quinas e suportes específicos em U, sem furações invasivas no blindex.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Item 2 (Fechado) -->
+            <div class="bg-white rounded-2xl border border-gray-150 shadow-sm transition-all faq-item" id="faq-item-2">
+                <button onclick="toggleFaq('2')" class="w-full text-left p-6 flex justify-between items-center focus:outline-none">
+                    <h3 class="font-bold text-gray-900 text-sm md:text-base flex items-center gap-2">
+                        <i data-lucide="eye" class="w-5 h-5 text-brand-yellow shrink-0"></i>
+                        As câmeras do cenário IP são coloridas no escuro?
+                    </h3>
+                    <i data-lucide="chevron-down" class="w-5 h-5 text-gray-400 transition-transform duration-300 faq-arrow" id="faq-arrow-2"></i>
+                </button>
+                <div class="transition-all duration-300 max-h-0 overflow-hidden border-t border-gray-100/50" id="faq-content-2">
+                    <p class="p-6 text-xs sm:text-sm text-gray-500 leading-relaxed font-sans">
+                        Sim! O cenário IP recomendado utiliza tecnologia avançada de luminosidade inteligente da Intelbras (Full Color). Elas possuem sensores ultrassensíveis que mantêm as imagens coloridas e de alta definição, mesmo em escuridão total no escritório de advocacia.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Item 3 (Fechado) -->
+            <div class="bg-white rounded-2xl border border-gray-150 shadow-sm transition-all faq-item" id="faq-item-3">
+                <button onclick="toggleFaq('3')" class="w-full text-left p-6 flex justify-between items-center focus:outline-none">
+                    <h3 class="font-bold text-gray-900 text-sm md:text-base flex items-center gap-2">
+                        <i data-lucide="lock" class="w-5 h-5 text-brand-yellow shrink-0"></i>
+                        E se acabar a energia no escritório?
+                    </h3>
+                    <i data-lucide="chevron-down" class="w-5 h-5 text-gray-400 transition-transform duration-300 faq-arrow" id="faq-arrow-3"></i>
+                </button>
+                <div class="transition-all duration-300 max-h-0 overflow-hidden border-t border-gray-100/50" id="faq-content-3">
+                    <p class="p-6 text-xs sm:text-sm text-gray-500 leading-relaxed font-sans">
+                        Fique tranquila. A Vision incluiu na proposta um sistema Nobreak inteligente com bateria acoplada. Em qualquer apagão, a trava elétrica e o sistema facial operam de forma ininterrupta, impedindo o destravamento acidental da porta.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Item 4 (Fechado) -->
+            <div class="bg-white rounded-2xl border border-gray-150 shadow-sm transition-all faq-item" id="faq-item-4">
+                <button onclick="toggleFaq('4')" class="w-full text-left p-6 flex justify-between items-center focus:outline-none">
+                    <h3 class="font-bold text-gray-900 text-sm md:text-base flex items-center gap-2">
+                        <i data-lucide="file-check" class="w-5 h-5 text-brand-yellow shrink-0"></i>
+                        Qual a garantia do projeto?
+                    </h3>
+                    <i data-lucide="chevron-down" class="w-5 h-5 text-gray-400 transition-transform duration-300 faq-arrow" id="faq-arrow-4"></i>
+                </button>
+                <div class="transition-all duration-300 max-h-0 overflow-hidden border-t border-gray-100/50" id="faq-content-4">
+                    <p class="p-6 text-xs sm:text-sm text-gray-500 leading-relaxed font-sans">
+                        Oferecemos 12 meses de garantia integral (tanto nos equipamentos originais Intelbras obtidos diretamente do distribuidor oficial quanto em toda a nossa mão de obra especializada de infraestrutura).
+                    </p>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+</section>
+
+<!-- ===================== CTA FINAL ===================== -->
+<section class="py-28 bg-[#09090b] relative overflow-hidden">
+    <div class="bg-grid absolute inset-0 opacity-10 pointer-events-none z-0"></div>
+    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-brand-yellow/10 rounded-full blur-[100px] pointer-events-none"></div>
+    
+    <div class="max-w-4xl mx-auto px-4 text-center relative z-10 reveal">
+        <span class="text-brand-yellow font-bold uppercase tracking-widest text-xs mb-4 block">Parceria Estratégica</span>
+        <h2 class="text-3xl md:text-5xl font-extrabold text-white leading-tight mb-6">
+            Segurança definitiva e estética impecável<br><span class="text-gold-shine">para proteger o seu escritório de advocacia.</span>
+        </h2>
+        <p class="text-zinc-400 text-lg mb-10 leading-relaxed max-w-2xl mx-auto">
+            Helena, conte com a excelência técnica da Vision para blindar o escritório contra qualquer tipo de vulnerabilidade, garantindo rastreabilidade e tranquilidade para sua equipe.
+        </p>
+
+        <a href="https://wa.me/5511930816696?text=Ol%C3%A1%20Glicia%2C%20analisei%20o%20projeto%20da%20sala%2062%20e%20gostaria%20de%20dar%20andamento%20para%20proteger%20nosso%20escrit%C3%B3rio." target="_blank" class="inline-flex items-center gap-3 bg-brand-yellow hover:bg-brand-goldLight text-brand-black font-bold px-10 py-5 rounded-full transition-all shadow-glow-md text-sm uppercase tracking-widest transform hover:scale-[1.03]">
+            <i data-lucide="check-circle" class="w-5 h-5"></i>
+            Aprovar Projeto (Falar com Glícia)
+            <i data-lucide="arrow-right" class="w-4 h-4 ml-1"></i>
+        </a>
+    </div>
+</section>
+
+<!-- ===================== FOOTER ===================== -->
+<footer class="bg-black py-16 text-center border-t border-zinc-900 group">
+    <div class="max-w-4xl mx-auto px-4">
+        
+        <div class="flex flex-col items-center justify-center leading-none opacity-40 group-hover:opacity-100 transition-opacity duration-500 cursor-default mb-10">
+            <div class="flex flex-col items-center">
+                <div class="relative flex items-baseline leading-none">
+                    <span class="font-logo font-bold text-[3.5rem] text-white lowercase tracking-[-0.05em] leading-none">vısıon</span>
+                    <span class="absolute -right-3.5 top-2.5 text-[0.75rem] text-brand-yellow font-bold">®</span>
+                </div>
+                <span class="font-tech text-[0.75rem] font-bold text-zinc-500 lowercase -mt-3 ml-1.5 text-center w-full" style="letter-spacing: 0.53em;">tecnologia</span>
+            </div>
+        </div>
+
+        <div class="text-zinc-500 text-xs md:text-sm leading-relaxed space-y-1 mb-8 opacity-60">
+            <p><strong>A/C Helena Lopes</strong> | Advocacia Corporativa - Sala 62 (Mamoré, Alphaville)</p>
+            <p>Proposta Comercial Retrofit #HELENA-2026-0708 | Emitida em Julho de 2026</p>
+        </div>
+
+        <div class="inline-flex items-center justify-center gap-2 border border-zinc-800 bg-zinc-900/50 px-5 py-2.5 rounded-full mb-6 shadow-sm">
+            <i data-lucide="lock" class="w-3.5 h-3.5 text-brand-yellow"></i>
+            <span class="text-[10px] md:text-xs text-zinc-400 uppercase tracking-widest font-bold">Documento corporativo restrito</span>
+        </div>
+        
+        <p class="text-[10px] text-zinc-700 uppercase tracking-widest font-bold mt-6">Engenharia de Redes, Segurança IP &amp; Controle de Acesso Facial</p>
+    </div>
+</footer>
+
+<!-- WHATSAPP CTA FLUTUANTE -->
+<div id="cta-float" class="fixed bottom-6 right-6 z-40 hidden md:block opacity-0 translate-y-10 pointer-events-none transition-all duration-500">
+    <a href="https://wa.me/5511930816696?text=Ol%C3%A1%20Glicia%2C%20tenho%20uma%20d%C3%BAvida%20sobre%20o%20projeto%20da%20sala%2062." target="_blank" class="flex items-center gap-3 bg-brand-yellow text-black font-bold px-6 py-4 rounded-full shadow-glow-md hover:shadow-glow transition-all group">
+        <i data-lucide="message-circle" class="w-5 h-5"></i>
+        <span class="text-sm tracking-wide uppercase">Falar com Glícia</span>
+        <i data-lucide="arrow-right" class="w-4 h-4 group-hover:translate-x-1 transition-transform"></i>
+    </a>
+</div>
+
+<!-- ===================== SCRIPTS ===================== -->
+<script>
+    function initIcons() {
+        if (window.lucide && typeof window.lucide.createIcons === 'function') {
+            window.lucide.createIcons();
+        }
+    }
+    document.addEventListener("DOMContentLoaded", initIcons);
+
+    function checkPassword() {
+        const input = document.getElementById('password-input').value;
+        const errorMsg = document.getElementById('error-msg');
+        const formattedInput = input.trim().toUpperCase();
+        const btnUnlock = document.getElementById('btn-unlock');
+        const unlockIcon = document.getElementById('unlock-icon');
+        const unlockText = document.getElementById('unlock-text');
+        const unlockArrow = document.getElementById('unlock-arrow');
+        
+        if (formattedInput === 'HELENA2026' || formattedInput === 'HELENA' || formattedInput === 'VISION') {
+            
+            btnUnlock.disabled = true;
+            if (unlockText) unlockText.textContent = "Validando Acesso...";
+            if (unlockIcon) unlockIcon.className = "w-5 h-5 animate-spin text-black";
+            if (unlockArrow) unlockArrow.style.display = 'none';
+
+            setTimeout(() => {
+                const lockScreen = document.getElementById('lock-screen');
+                lockScreen.style.opacity = '0';
+
+                // Iniciar vídeo da Victoria mutado
+                const video = document.getElementById("vision-video");
+                if (video && video.paused) {
+                    video.muted = true;
+                    video.play().catch(e => {});
+                }
+
+                // Iniciar vídeo prático de câmeras mutado
+                const horizontalVideo = document.getElementById("demo-horizontal-video");
+                if (horizontalVideo && horizontalVideo.paused) {
+                    horizontalVideo.muted = true;
+                    horizontalVideo.play().catch(e => {});
+                }
+
+                // Iniciar vídeo prático do controle de acesso mutado
+                const demoVideo = document.getElementById("demo-shorts-video");
+                if (demoVideo && demoVideo.paused) {
+                    demoVideo.muted = true;
+                    demoVideo.play().catch(e => {});
+                }
+
+                if (window.clarity) {
+                    window.clarity("consent");
+                    window.clarity("identify", "wenio-ecogen", undefined, undefined, "Wênio Lopes (Ecogen)");
+                    window.clarity("set", "Proposta", "Projeto_Controle_Acesso_Ecogen");
+                    window.clarity("event", "Proposta_Desbloqueada");
+                }
+
+                fetch('https://api.staticforms.dev/submit', {
+                    method: 'POST',
+                    headers: { 
+                        'Content-Type': 'application/json',
+                        'Accept': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        accessKey: "sf_077ej49gjha153gk3m6ceecf",
+                        subject: "🚨 ALERTA: Proposta Acessada (Helena - Advocacia)",
+                        name: "Sistema Vision",
+                        email: "diretoria@visionsp.com.br",
+                        message: "A cliente Helena Lopes acabou de abrir o projeto da sala 62!\n\n👤 Cliente: Helena Lopes (Advocacia Alphaville)\n🔑 Senha Utilizada: " + input + "\n🕒 Horário: " + new Date().toLocaleString('pt-BR')
+                    })
+                }).catch(error => console.log('Registro de segurança corporativo realizado.'));
+
+                setTimeout(() => { 
+                    lockScreen.style.display = 'none'; 
+                    const htmlRoot = document.getElementById('html-root');
+                    if(htmlRoot) {
+                        htmlRoot.classList.remove('overflow-hidden', 'h-screen');
+                        htmlRoot.classList.add('overflow-x-hidden');
+                    }
+                    document.body.classList.remove('overflow-hidden', 'h-screen');
+                }, 700);
+
+            }, 800);
+
+        } else {
+            errorMsg.classList.remove('hidden');
+            document.getElementById('password-input').style.borderColor = 'rgba(239,68,68,0.5)';
+            setTimeout(() => {
+                errorMsg.classList.add('hidden');
+                document.getElementById('password-input').style.borderColor = '';
+            }, 3000);
+        }
+    }
+
+    const configData = {
+        cenario1: { // Cenário A (IP Wi-Fi + Mesh)
+            basePrice: 10424,
+            rates: {
+                1: 10424,
+                2: 10736,
+                3: 10860,
+                4: 10986,
+                5: 11124,
+                6: 11310,
+                12: 12507
+            }
+        },
+        cenario2: { // Cenário B (Analógico Coaxial)
+            basePrice: 9294,
+            rates: {
+                1: 9294,
+                2: 9572,
+                3: 9680,
+                4: 9800,
+                5: 9910,
+                6: 10100,
+                12: 11152
+            }
+        }
+    };
+    
+    let currentMode = 'avista';
+
+    function formatCurrency(value) {
+        return value.toLocaleString('pt-BR', { minimumFractionDigits: 0, maximumFractionDigits: 0 });
+    }
+
+    function setPaymentMode(mode) {
+        currentMode = mode;
+        const bg = document.getElementById('toggle-bg');
+        const btnPix = document.getElementById('btn-avista');
+        const btnParcelado = document.getElementById('btn-parcelado');
+        const selectContainer = document.getElementById('installment-container');
+
+        if (mode === 'avista') {
+            if (bg) bg.style.transform = 'translateX(0)';
+            if (btnPix) {
+                btnPix.classList.remove('text-gray-500');
+                btnPix.classList.add('text-gray-900');
+            }
+            if (btnParcelado) {
+                btnParcelado.classList.remove('text-gray-900');
+                btnParcelado.classList.add('text-gray-500');
+            }
+            
+            if (selectContainer) {
+                selectContainer.classList.add('opacity-0', 'pointer-events-none');
+                setTimeout(() => { if(selectContainer) selectContainer.classList.add('hidden'); }, 300);
+            }
+        } else {
+            if (bg) bg.style.transform = 'translateX(100%)';
+            if (btnParcelado) {
+                btnParcelado.classList.remove('text-gray-500');
+                btnParcelado.classList.add('text-black');
+            }
+            if (btnPix) {
+                btnPix.classList.remove('text-black');
+                btnPix.classList.add('text-gray-500');
+            }
+            
+            if (selectContainer) {
+                selectContainer.classList.remove('hidden');
+                setTimeout(() => { if(selectContainer) selectContainer.classList.remove('opacity-0', 'pointer-events-none'); }, 10);
+            }
+        }
+        updatePrices();
+        updateWhatsAppLinks();
+    }
+
+    function updatePrices() {
+        const select = document.getElementById('installment-select');
+        const inst = select ? parseInt(select.value) : 12;
+
+        const containerA = document.getElementById('price-card-a');
+        const containerB = document.getElementById('price-card-b');
+
+        if (!containerA || !containerB) return;
+
+        // CENÁRIO A
+        const dataA = configData.cenario1;
+        if (currentMode === 'avista') {
+            const hA = Math.floor(dataA.basePrice / 2);
+            containerA.innerHTML = `
+                <div class="flex flex-col items-center w-full animate-fade-in">
+                    <p class="text-[5px] sm:text-[10px] text-brand-goldDark uppercase tracking-widest font-bold mb-0.5 sm:mb-1">À Vista (PIX)</p>
+                    <span class="text-xs sm:text-4xl font-black text-gray-900 tracking-tight mb-1 sm:mb-4">R$ ${formatCurrency(dataA.basePrice)}</span>
+                    <div class="w-full space-y-1 sm:space-y-2">
+                        <div class="bg-white border border-gray-150 rounded-md sm:rounded-xl py-0.5 sm:py-2 flex flex-col items-center justify-center relative overflow-hidden shadow-xs">
+                            <div class="absolute top-0 left-0 w-0.5 sm:w-1 h-full bg-[#34d399]"></div>
+                            <span class="text-[5px] sm:text-[8px] font-bold uppercase tracking-widest text-brand-goldDark">Sinal de entrada (50%)</span>
+                            <span class="text-[8px] sm:text-sm font-bold text-gray-900">R$ ${formatCurrency(hA)}</span>
+                        </div>
+                        <div class="bg-white border border-gray-150 rounded-md sm:rounded-xl py-0.5 sm:py-2 flex flex-col items-center justify-center relative overflow-hidden shadow-xs">
+                            <div class="absolute top-0 left-0 w-0.5 sm:w-1 h-full bg-brand-yellow"></div>
+                            <span class="text-[5px] sm:text-[8px] font-bold uppercase tracking-widest text-brand-goldDark">Saldo para entrega (50%)</span>
+                            <span class="text-[8px] sm:text-sm font-bold text-gray-900">R$ ${formatCurrency(hA)}</span>
+                        </div>
+                    </div>
+                </div>
+            `;
+        } else {
+            const totalWithRateA = dataA.rates[inst] || dataA.basePrice;
+            const installmentValueA = Math.floor(totalWithRateA / inst);
+            containerA.innerHTML = `
+                <div class="flex flex-col items-center w-full animate-fade-in">
+                    <div class="flex items-baseline justify-center gap-0.5 sm:gap-1.5 mb-1 sm:mb-2">
+                        <span class="text-[8px] sm:text-xl font-bold text-brand-yellow">${inst}x de</span> 
+                        <span class="text-xs sm:text-4xl font-black text-gray-900">R$ ${formatCurrency(installmentValueA)}</span>
+                    </div>
+                    <div class="inline-flex items-center gap-0.5 sm:gap-1 bg-blue-50 border border-blue-200 text-blue-700 px-1 sm:px-3 py-0.5 rounded-full shadow-xs mb-1 sm:mb-2">
+                        <i data-lucide="credit-card" class="w-2.5 h-2.5 sm:w-3.5 sm:h-3.5"></i>
+                        <span class="text-[5px] sm:text-[9px] font-bold uppercase tracking-widest">Cartão Corporativo</span>
+                    </div>
+                    <p class="text-[6px] sm:text-[10px] text-gray-400">Total: R$ ${formatCurrency(totalWithRateA)}</p>
+                </div>
+            `;
+        }
+
+        // CENÁRIO B
+        const dataB = configData.cenario2;
+        if (currentMode === 'avista') {
+            const hB = Math.floor(dataB.basePrice / 2);
+            containerB.innerHTML = `
+                <div class="flex flex-col items-center w-full animate-fade-in">
+                    <p class="text-[5px] sm:text-[10px] text-zinc-500 uppercase tracking-widest font-bold mb-0.5 sm:mb-1">À Vista (PIX)</p>
+                    <span class="text-xs sm:text-4xl font-black text-gray-900 tracking-tight mb-1 sm:mb-4">R$ ${formatCurrency(dataB.basePrice)}</span>
+                    <div class="w-full space-y-1 sm:space-y-2">
+                        <div class="bg-white border border-gray-150 rounded-md sm:rounded-xl py-0.5 sm:py-2 flex flex-col items-center justify-center relative overflow-hidden shadow-xs">
+                            <div class="absolute top-0 left-0 w-0.5 sm:w-1 h-full bg-[#34d399]"></div>
+                            <span class="text-[5px] sm:text-[8px] font-bold uppercase tracking-widest text-zinc-500">Sinal de entrada (50%)</span>
+                            <span class="text-[8px] sm:text-sm font-bold text-gray-900">R$ ${formatCurrency(hB)}</span>
+                        </div>
+                        <div class="bg-white border border-gray-150 rounded-md sm:rounded-xl py-0.5 sm:py-2 flex flex-col items-center justify-center relative overflow-hidden shadow-xs">
+                            <div class="absolute top-0 left-0 w-0.5 sm:w-1 h-full bg-zinc-400"></div>
+                            <span class="text-[5px] sm:text-[8px] font-bold uppercase tracking-widest text-zinc-500">Saldo para entrega (50%)</span>
+                            <span class="text-[8px] sm:text-sm font-bold text-gray-900">R$ ${formatCurrency(hB)}</span>
+                        </div>
+                    </div>
+                </div>
+            `;
+        } else {
+            const totalWithRateB = dataB.rates[inst] || dataB.basePrice;
+            const installmentValueB = Math.floor(totalWithRateB / inst);
+            containerB.innerHTML = `
+                <div class="flex flex-col items-center w-full animate-fade-in">
+                    <div class="flex items-baseline justify-center gap-0.5 sm:gap-1.5 mb-1 sm:mb-2">
+                        <span class="text-[8px] sm:text-xl font-bold text-zinc-400">${inst}x de</span> 
+                        <span class="text-xs sm:text-4xl font-black text-gray-900">R$ ${formatCurrency(installmentValueB)}</span>
+                    </div>
+                    <div class="inline-flex items-center gap-0.5 sm:gap-1 bg-zinc-100 border border-zinc-200 text-zinc-700 px-1 sm:px-3 py-0.5 rounded-full shadow-xs mb-1 sm:mb-2">
+                        <i data-lucide="credit-card" class="w-2.5 h-2.5 sm:w-3.5 sm:h-3.5"></i>
+                        <span class="text-[5px] sm:text-[9px] font-bold uppercase tracking-widest">Cartão Corporativo</span>
+                    </div>
+                    <p class="text-[6px] sm:text-[10px] text-gray-400">Total: R$ ${formatCurrency(totalWithRateB)}</p>
+                </div>
+            `;
+        }
+
+        initIcons();
+    }
+
+    function updateWhatsAppLinks() {
+        const linkA = document.getElementById('btn-aprova-a');
+        const linkB = document.getElementById('btn-aprova-b');
+        const select = document.getElementById('installment-select');
+        const inst = select ? select.value : '12';
+
+        if (linkA) {
+            let msgA = '';
+            if (currentMode === 'avista') {
+                msgA = `Olá Glícia, analisei a proposta e gostaria de aprovar o Cenário A (design invisível IP Wi-Fi + Mesh) para a sala 62 no faturamento à Vista (Sinal de 50% + Saldo na Entrega) de R$ ${formatCurrency(configData.cenario1.basePrice)} via PIX.`;
+            } else {
+                msgA = `Olá Glícia, analisei a proposta e gostaria de aprovar o Cenário A (design invisível IP Wi-Fi + Mesh) para a sala 62 no faturamento parcelado em ${inst}x no Cartão Corporativo.`;
+            }
+            linkA.href = "https://wa.me/5511930816696?text=" + encodeURIComponent(msgA);
+        }
+
+        if (linkB) {
+            let msgB = '';
+            if (currentMode === 'avista') {
+                msgB = `Olá Glícia, analisei a proposta e gostaria de aprovar o Cenário B (coaxial analógico) para a sala 62 no faturamento à Vista (Sinal de 50% + Saldo na Entrega) de R$ ${formatCurrency(configData.cenario2.basePrice)} via PIX.`;
+            } else {
+                msgB = `Olá Glícia, analisei a proposta e gostaria de aprovar o Cenário B (coaxial analógico) para a sala 62 no faturamento parcelado em ${inst}x no Cartão Corporativo.`;
+            }
+            linkB.href = "https://wa.me/5511930816696?text=" + encodeURIComponent(msgB);
+        }
+    }
+
+    function toggleFaq(id) {
+        const allItems = [1, 2, 3, 4];
+        
+        allItems.forEach(i => {
+            const content = document.getElementById('faq-content-' + i);
+            const arrow = document.getElementById('faq-arrow-' + i);
+            if (!content || !arrow) return;
+
+            if (i.toString() === id.toString()) {
+                if (content.style.maxHeight === '0px' || content.classList.contains('max-h-0')) {
+                    content.classList.remove('max-h-0');
+                    content.style.maxHeight = content.scrollHeight + 'px';
+                    arrow.style.transform = 'rotate(180deg)';
+                } else {
+                    content.style.maxHeight = '0px';
+                    content.classList.add('max-h-0');
+                    arrow.style.transform = 'rotate(0deg)';
+                }
+            } else {
+                content.style.maxHeight = '0px';
+                content.classList.add('max-h-0');
+                arrow.style.transform = 'rotate(0deg)';
+            }
+        });
+    }
+
+    window.addEventListener("load", () => {
+        setPaymentMode('avista');
+        // Inicializa o primeiro FAQ como aberto de forma suave
+        const firstContent = document.getElementById('faq-content-1');
+        const firstArrow = document.getElementById('faq-arrow-1');
+        if (firstContent && firstArrow) {
+            firstContent.classList.remove('max-h-0');
+            firstContent.style.maxHeight = firstContent.scrollHeight + 'px';
+            firstArrow.style.transform = 'rotate(180deg)';
+        }
+    });
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) entry.target.classList.add('active');
+        });
+    }, { threshold: 0.05 });
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+    window.addEventListener('scroll', () => {
+        const navbar = document.getElementById('navbar');
+        const ctaFloat = document.getElementById('cta-float');
+        
+        if (window.scrollY > 50) {
+            if(navbar) navbar.classList.add('shadow-md');
+        } else {
+            if(navbar) navbar.classList.remove('shadow-md');
+        }
+
+        if (window.scrollY > 400) {
+            if(ctaFloat) {
+                ctaFloat.classList.remove('hidden', 'opacity-0', 'translate-y-10', 'pointer-events-none');
+                ctaFloat.classList.add('opacity-100', 'translate-y-0');
+            }
+        } else {
+            if(ctaFloat) {
+                ctaFloat.classList.add('opacity-0', 'translate-y-10', 'pointer-events-none');
+            }
+        }
+    });
+
+    document.addEventListener("DOMContentLoaded", function() {
+        function setupVideo(videoId, overlayId) {
+            const video = document.getElementById(videoId);
+            const overlay = document.getElementById(overlayId);
+            if (video && overlay) {
+                overlay.addEventListener("click", function(e) {
+                    e.stopPropagation(); 
+                    video.muted = false;
+                    video.loop = true; 
+                    video.currentTime = 0;
+                    video.play().catch(err => {
+                        console.warn("Autoplay bloqueado pelo navegador", err);
+                    });
+                    overlay.style.opacity = "0";
+                    setTimeout(() => { overlay.style.display = "none"; }, 500); 
+
+                    if (window.clarity) {
+                        window.clarity("event", "Video_Assistido_" + videoId);
+                    }
+                });
+                video.addEventListener("click", function() {
+                    if (overlay.style.display === "none") {
+                        if (video.paused) { video.play(); } else { video.pause(); }
+                    }
+                });
+            }
+        }
+
+        setupVideo("vision-video", "unmute-overlay");
+        setupVideo("demo-horizontal-video", "unmute-overlay-horizontal");
+        setupVideo("demo-shorts-video", "unmute-overlay-shorts");
+    });
+</script>
+</body>
+</html>
