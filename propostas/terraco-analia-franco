@@ -1,0 +1,1181 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth overflow-x-hidden" id="html-root">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Proposta de Manutenção | Condomínio Terraço Anália Franco – Vision</title>
+    <meta name="description" content="Proposta Técnica de Manutenção Preventiva e Corretiva de CFTV, Controle de Acesso, LPR e Interfonia – Vision Tecnologia">
+    <meta name="theme-color" content="#b9880e">
+
+    <!-- Open Graph / Link Preview Tags -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Contrato de Manutenção & SLA 24h | Terraço Anália Franco – Vision">
+    <meta property="og:description" content="Gestão e manutenção técnica de 65 Câmeras, Faciais, LPR, Interfonia Maxcom e Portões Automatizados.">
+    <meta property="og:image" content="https://res.cloudinary.com/dptcuckhf/image/upload/v1772152427/C%C3%B3pia_de_LOGO_VISION_2025_cpcpuh.png">
+    <meta property="og:locale" content="pt_BR">
+    
+    <!-- Fonts & Icons -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@700;800&family=Quicksand:wght@500;600;700&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"Outfit"', 'sans-serif'],
+                        logo: ['"League Spartan"', 'sans-serif'],
+                        tech: ['"Quicksand"', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            yellow: '#b9880e',
+                            goldLight: '#FFDE59',
+                            goldDark: '#8a6208',
+                            black: '#09090b',
+                            red: '#ef4444',
+                        }
+                    },
+                    boxShadow: {
+                        'glass': '0 4px 24px 0 rgba(0,0,0,0.04)',
+                        'premium': '0 16px 50px -10px rgba(0,0,0,0.08)',
+                        'glow': '0 0 20px rgba(185,136,14,0.15)',
+                        'glow-md': '0 0 35px rgba(185,136,14,0.25)',
+                        'glow-red': '0 0 25px rgba(239,68,68,0.15)',
+                    },
+                    animation: {
+                        'slide-up': 'slideUp 0.9s cubic-bezier(0.16,1,0.3,1) forwards',
+                        'float': 'float 6s ease-in-out infinite',
+                        'fade-in': 'fadeIn 0.6s ease forwards',
+                    },
+                    keyframes: {
+                        slideUp: {
+                            '0%': { opacity: '0', transform: 'translateY(40px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' }
+                        },
+                        float: {
+                            '0%,100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-10px)' }
+                        },
+                        fadeIn: {
+                            '0%': { opacity: '0' },
+                            '100%': { opacity: '1' }
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: #f9fafb; }
+        ::-webkit-scrollbar-thumb { background: #d1d5db; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #b9880e; }
+
+        .text-gold-shine {
+            background: linear-gradient(to right, #b9880e 20%, #FFDE59 50%, #b9880e 80%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-size: 200% auto;
+            animation: shine 4s linear infinite;
+        }
+        @keyframes shine { to { background-position: 200% center; } }
+
+        .bg-grid {
+            background-image: linear-gradient(rgba(185,136,14,0.03) 1px, transparent 1px),
+                              linear-gradient(90deg, rgba(185,136,14,0.03) 1px, transparent 1px);
+            background-size: 40px 40px;
+        }
+        .bg-grid-dark {
+            background-image: linear-gradient(rgba(239,68,68,0.02) 1px, transparent 1px),
+                              linear-gradient(90deg, rgba(239,68,68,0.02) 1px, transparent 1px);
+            background-size: 45px 45px;
+        }
+        .bg-dots {
+            background-image: radial-gradient(#b9880e 1.2px, transparent 1.2px);
+            background-size: 22px 22px;
+            opacity: 0.035;
+        }
+        .bg-tech-pattern {
+            background-image: radial-gradient(rgba(185, 136, 14, 0.1) 1px, transparent 0);
+            background-size: 24px 24px;
+            opacity: 0.4;
+        }
+
+        .lock-input {
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.1);
+            color: #b9880e;
+            font-family: 'League Spartan', sans-serif;
+            font-size: 1.125rem;
+            text-align: center;
+            outline: none;
+            transition: all 0.3s;
+            letter-spacing: 0.1em;
+            border-radius: 12px;
+        }
+        .lock-input:focus {
+            border-color: #b9880e;
+            background: rgba(255,255,255,0.08);
+            box-shadow: 0 0 15px rgba(185,136,14,0.2);
+        }
+
+        .reveal { opacity: 0; transform: translateY(30px); transition: all 0.8s cubic-bezier(0.16,1,0.3,1); }
+        .reveal.active { opacity: 1; transform: translateY(0); }
+
+        .premium-border-glow {
+            position: relative;
+            border-radius: 2rem;
+            padding: 2px;
+            background-color: #b9880e;
+            overflow: hidden;
+            box-shadow: 0 0 35px rgba(185,136,14,0.15);
+            transition: transform 0.3s cubic-bezier(0.4,0,0.2,1);
+        }
+        .premium-border-glow:hover { transform: scale(1.01); }
+        .premium-border-glow::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: conic-gradient(
+                from 0deg, 
+                transparent 0deg, 
+                transparent 175deg, 
+                rgba(255, 222, 89, 0.6) 178deg, 
+                #ffffff 180deg, 
+                rgba(255, 222, 89, 0.6) 182deg, 
+                transparent 185deg, 
+                transparent 360deg
+            );
+            animation: rotate-border 12s linear infinite;
+            z-index: 0;
+        }
+        @keyframes rotate-border {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        .premium-border-inner {
+            position: relative;
+            z-index: 1;
+            background-color: #ffffff;
+            border-radius: calc(2rem - 2px);
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            padding: 2.25rem;
+            overflow: hidden;
+        }
+
+        .accordion-content { max-height: 0; overflow: hidden; transition: max-height 0.45s cubic-bezier(0.4,0,0.2,1); }
+        .accordion-item.open .accordion-content { max-height: 600px; }
+        .accordion-item.open .acc-arrow { transform: rotate(180deg); }
+        .acc-arrow { transition: transform 0.3s ease; }
+
+        .img-placeholder-dasher {
+            background-image: url("data:image/svg+xml,%3csvg width='100%25' height='100%25' xmlns='http://www.w3.org/2000/svg'%3e%3crect width='100%25' height='100%25' fill='none' rx='16' ry='16' stroke='%23D1D5DBFF' stroke-width='2' stroke-dasharray='8%2c 8' stroke-dashoffset='0' stroke-linecap='square'/%3e%3c/svg%3e");
+            border-radius: 16px;
+        }
+
+        @media print {
+            #lock-screen, #navbar, #cta-float, .no-print { 
+                display: none !important; 
+            }
+            body { background: #ffffff !important; color: #111111 !important; overflow: visible !important; }
+            .reveal { opacity: 1 !important; transform: none !important; }
+            .accordion-content { max-height: none !important; display: block !important; padding-bottom: 12px !important; }
+        }
+    </style>
+</head>
+<body class="bg-[#fafafa] text-gray-800 antialiased selection:bg-brand-yellow selection:text-white h-screen overflow-hidden">
+
+<!-- ===================== LOCK SCREEN ===================== -->
+<div id="lock-screen" class="fixed inset-0 z-[100] bg-[#09090b] flex flex-col items-center justify-center text-center p-4 transition-opacity duration-700 ease-out touch-none" style="overscroll-behavior: none;">
+    <div class="bg-grid absolute inset-0 opacity-10 pointer-events-none"></div>
+    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-brand-yellow/5 rounded-full blur-[100px] pointer-events-none"></div>
+
+    <!-- Logo -->
+    <div class="relative flex flex-col items-center mb-10 z-10">
+        <div class="relative flex items-baseline leading-none">
+            <span class="font-logo font-bold text-[5.5rem] md:text-[6rem] text-gold-shine lowercase tracking-[-0.05em] leading-none">vısıon</span>
+            <span class="absolute -right-5 top-4 text-[1.1rem] text-brand-yellow font-bold">®</span>
+        </div>
+        <span class="font-tech text-[1.1rem] font-bold text-zinc-500 lowercase -mt-4 ml-2.5 text-center w-full" style="letter-spacing:0.53em;">tecnologia</span>
+    </div>
+
+    <div class="w-full max-w-sm space-y-5 z-10">
+        <div class="space-y-1.5">
+            <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-brand-yellow/30 bg-brand-yellow/10 mb-3">
+                <i data-lucide="lock" class="w-3.5 h-3.5 text-brand-yellow"></i>
+                <span class="text-brand-yellow text-[10px] font-bold uppercase tracking-widest">Acesso Corporativo do Condomínio</span>
+            </div>
+            <h2 class="text-white font-bold text-2xl">Condomínio Terraço Anália Franco</h2>
+            <p class="text-zinc-400 text-sm">A/C: Carol & Síndico • Vila Mafra / SP</p>
+        </div>
+
+        <div class="relative">
+            <!-- SENHAS CONFIGURADAS: TERRACO2026 / ANALIAFRANCO / CAROL / VISION -->
+            <input type="password" id="password-input" class="lock-input w-full py-4 px-4 pr-12" placeholder="SENHA DE ACESSO" autocomplete="off">
+            <button type="button" onclick="togglePasswordVisibility()" class="absolute right-4 top-1/2 -translate-y-1/2 text-zinc-500 hover:text-brand-yellow transition-colors focus:outline-none">
+                <i data-lucide="eye" id="eye-icon" class="w-5 h-5"></i>
+            </button>
+            <p id="error-msg" class="text-red-400 text-xs mt-2 hidden">
+                <span class="flex items-center justify-center gap-1"><i data-lucide="x-circle" class="w-4 h-4"></i> Senha incorreta. Tente novamente.</span>
+            </p>
+        </div>
+
+        <button onclick="checkPassword()" class="w-full bg-brand-yellow hover:bg-brand-goldLight text-black font-bold py-4 rounded-2xl transition-all shadow-glow flex items-center justify-center gap-2 group relative overflow-hidden">
+            <div class="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-300 rounded-2xl"></div>
+            <i data-lucide="shield-check" class="w-5 h-5 relative z-10"></i>
+            <span class="relative z-10 text-sm uppercase tracking-widest">Acessar Proposta Técnica</span>
+            <i data-lucide="arrow-right" class="w-4 h-4 relative z-10 group-hover:translate-x-1 transition-transform"></i>
+        </button>
+
+        <p class="text-zinc-600 text-xs">Documento de Gestão B2B · Vision Tecnologia © 2026</p>
+    </div>
+</div>
+
+<!-- ===================== NAVBAR ===================== -->
+<nav id="navbar" class="fixed w-full z-50 top-0 bg-white/90 backdrop-blur-xl border-b border-gray-200/50 shadow-sm transition-all duration-300">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-between h-20 items-center">
+            <div class="flex flex-col items-center justify-center cursor-pointer" onclick="window.scrollTo({top:0, behavior:'smooth'})">
+                <div class="relative flex items-baseline leading-none">
+                    <span class="font-logo font-bold text-[2.6rem] text-gold-shine lowercase tracking-[-0.05em] leading-none">vısıon</span>
+                    <span class="absolute -right-2.5 top-1.5 text-[0.6rem] text-brand-yellow font-bold">®</span>
+                </div>
+                <span class="font-tech text-[0.6rem] font-bold text-gray-400 lowercase -mt-2 ml-1.5" style="letter-spacing:0.53em;">tecnologia</span>
+            </div>
+            <div class="hidden lg:flex items-center space-x-7 text-xs font-semibold text-gray-500 uppercase tracking-wider">
+                <a href="#diagnostico" class="hover:text-brand-yellow transition-colors">Diagnóstico</a>
+                <a href="#inventario" class="hover:text-brand-yellow transition-colors">Parque Tecnológico</a>
+                <a href="#solucao" class="hover:text-brand-yellow transition-colors">Padrão Vision</a>
+                <a href="#escopo" class="hover:text-brand-yellow transition-colors">Escopo Técnico</a>
+                <a href="#garantia" class="hover:text-brand-yellow transition-colors">Garantia & SLA</a>
+                <a href="#planos" class="hover:text-brand-yellow transition-colors">Planos de Manutenção</a>
+            </div>
+            <div class="flex items-center gap-3">
+                <button onclick="window.print()" class="hidden sm:inline-flex items-center gap-1.5 border border-gray-200 hover:border-gray-300 hover:bg-gray-50 text-gray-600 px-4 py-2 rounded-full text-xs font-bold uppercase tracking-wider transition-all">
+                    <i data-lucide="printer" class="w-3.5 h-3.5"></i> Imprimir PDF
+                </button>
+                <a href="#planos" class="bg-zinc-900 text-white px-5 py-2.5 rounded-full text-[10px] font-bold uppercase tracking-widest hover:bg-brand-yellow hover:text-black transition-all shadow-md">
+                    Ver Planos
+                </a>
+            </div>
+        </div>
+    </div>
+</nav>
+
+<!-- ===================== HERO ===================== -->
+<header class="pt-32 pb-20 lg:pt-40 relative overflow-hidden bg-white">
+    <div class="absolute inset-0 bg-tech-pattern pointer-events-none"></div>
+    <div class="absolute right-0 top-0 -translate-y-1/4 translate-x-1/4 w-[800px] h-[800px] bg-brand-yellow/5 rounded-full blur-[120px] pointer-events-none"></div>
+    
+    <div class="max-w-7xl mx-auto px-4 relative z-10">
+        <div class="flex flex-col lg:flex-row items-center gap-12 lg:gap-16">
+            
+            <!-- Coluna Texto -->
+            <div class="w-full lg:w-1/2 text-center lg:text-left animate-slide-up">
+                <div class="inline-flex items-center gap-2 px-5 py-2 rounded-full border border-brand-yellow/30 bg-brand-yellow/5 text-brand-yellow text-[10px] font-bold uppercase tracking-widest mb-8 mx-auto lg:mx-0">
+                    <i data-lucide="shield" class="w-4 h-4 text-brand-yellow"></i>
+                    PROPOSTA TÉCNICA #SLA-2026-TERRACO | MANUTENÇÃO RECORRENTE
+                </div>
+                
+                <h1 class="text-4xl md:text-5xl lg:text-6xl font-extrabold text-gray-900 leading-[1.05] tracking-tight mb-6">
+                    Gestão Integrada &<br>
+                    <span class="text-gold-shine">SLA Crítico 24 Horas.</span>
+                </h1>
+                
+                <h2 class="text-base md:text-lg text-gray-500 max-w-xl mx-auto lg:mx-0 font-medium mt-6 leading-relaxed">
+                    Contrato de Manutenção Preventiva e Corretiva para o <strong>Condomínio Terraço Anália Franco</strong>. Assumimos a gestão contínua de 65 câmeras, 4 leitoras faciais, LPR veicular, central de interfonia com 60 ramais, cerca elétrica e automação de portões.
+                </h2>
+
+                <!-- Selo de Atendimento Prioritário -->
+                <div class="mt-6 inline-flex items-center gap-3 px-4 py-3 bg-amber-50 border border-amber-200/80 rounded-2xl text-xs font-semibold text-amber-900 shadow-sm text-left">
+                    <div class="w-8 h-8 bg-brand-yellow/20 rounded-xl flex items-center justify-center shrink-0">
+                        <i data-lucide="zap" class="w-4 h-4 text-brand-yellow"></i>
+                    </div>
+                    <span><strong>Plantão Emergencial 24h:</strong> SLA prioritário em caso de travamento de portões principais, queda total do CFTV ou falha no leitor LPR veicular.</span>
+                </div>
+            </div>
+
+            <!-- Coluna Vídeo Demonstrativo (Victória - Vision) -->
+            <div class="w-full lg:w-1/2 mt-4 lg:mt-0 reveal animate-slide-up" style="animation-delay: 200ms;">
+                <div class="relative w-full rounded-[2rem] shadow-[0_20px_50px_-10px_rgba(0,0,0,0.3)] border-[3px] border-brand-yellow/80 group hover:shadow-[0_25px_60px_-10px_rgba(0,0,0,0.4)] transition-shadow duration-500 bg-black overflow-hidden">
+                    <div class="relative w-full aspect-video rounded-[1.8rem] overflow-hidden bg-black shadow-inner flex items-center justify-center">
+                        <video id="vision-video" class="w-full h-full object-cover cursor-pointer opacity-90" autoplay muted loop playsinline>
+                            <source src="https://res.cloudinary.com/dptcuckhf/video/upload/v1771711323/Vict%C3%B3ria_-_Vision_gdqnrk.mp4" type="video/mp4">
+                            Seu navegador não suporta a reprodução do vídeo.
+                        </video>
+
+                        <div id="unmute-overlay" class="absolute inset-0 bg-black/50 backdrop-blur-sm flex flex-col items-center justify-center cursor-pointer transition-opacity duration-500 z-10 hover:bg-black/40">
+                            <div class="bg-brand-yellow text-black font-bold px-6 py-3 md:px-8 md:py-4 rounded-full flex items-center gap-2 md:gap-3 shadow-glow animate-pulse transform group-hover:scale-105 transition-all">
+                                <i data-lucide="volume-2" class="w-5 h-5 md:w-6 md:h-6 animate-bounce"></i>
+                                <span class="text-xs md:text-sm tracking-wide uppercase font-bold text-black">Apresentação Vision Tecnologia</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Floating Quick Stats -->
+        <div class="mt-16 lg:mt-24 grid grid-cols-2 md:grid-cols-4 gap-5 max-w-4xl mx-auto reveal">
+            <div class="bg-white rounded-2xl p-6 shadow-glass border border-gray-100 text-center hover:border-brand-yellow/40 transition-all">
+                <div class="w-10 h-10 bg-brand-yellow/10 rounded-xl flex items-center justify-center mx-auto mb-3">
+                    <i data-lucide="camera" class="w-5 h-5 text-brand-yellow"></i>
+                </div>
+                <div class="text-3xl font-extrabold text-gray-900">65 Câmeras</div>
+                <div class="text-xs text-gray-500 font-medium mt-1 uppercase tracking-wider">04 DVRs Intelbras</div>
+            </div>
+            <div class="bg-white rounded-2xl p-6 shadow-glass border border-gray-100 text-center hover:border-brand-yellow/40 transition-all">
+                <div class="w-10 h-10 bg-brand-yellow/10 rounded-xl flex items-center justify-center mx-auto mb-3">
+                    <i data-lucide="scan-face" class="w-5 h-5 text-brand-yellow"></i>
+                </div>
+                <div class="text-3xl font-extrabold text-gray-900">04 Faciais</div>
+                <div class="text-xs text-gray-500 font-medium mt-1 uppercase tracking-wider">+ LPR Hikvision</div>
+            </div>
+            <div class="bg-white rounded-2xl p-6 shadow-glass border border-gray-100 text-center hover:border-brand-yellow/40 transition-all">
+                <div class="w-10 h-10 bg-brand-yellow/10 rounded-xl flex items-center justify-center mx-auto mb-3">
+                    <i data-lucide="phone-call" class="w-5 h-5 text-brand-yellow"></i>
+                </div>
+                <div class="text-3xl font-extrabold text-gray-900">60 Ramais</div>
+                <div class="text-xs text-gray-500 font-medium mt-1 uppercase tracking-wider">Interfonia Maxcom</div>
+            </div>
+            <div class="bg-white rounded-2xl p-6 shadow-glass border border-gray-100 text-center hover:border-brand-yellow/40 transition-all">
+                <div class="w-10 h-10 bg-brand-yellow/10 rounded-xl flex items-center justify-center mx-auto mb-3">
+                    <i data-lucide="shield-check" class="w-5 h-5 text-brand-yellow"></i>
+                </div>
+                <div class="text-3xl font-extrabold text-gray-900">06 Portões</div>
+                <div class="text-xs text-gray-500 font-medium mt-1 uppercase tracking-wider">Pedestres e Veículos</div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- ===================== DIAGNÓSTICO DO CONDOMÍNIO ===================== -->
+<section id="diagnostico" class="py-24 bg-zinc-950 text-white relative border-y border-red-500/10 overflow-hidden">
+    <div class="bg-grid-dark absolute inset-0 opacity-20 pointer-events-none"></div>
+    <div class="absolute -top-40 -left-40 w-[600px] h-[600px] bg-red-950/10 rounded-full blur-[120px] pointer-events-none"></div>
+    
+    <div class="max-w-7xl mx-auto px-4 relative z-10">
+        <div class="text-center mb-16 reveal">
+            <span class="text-brand-red font-bold uppercase tracking-widest text-xs">Mapeamento de Vulnerabilidades</span>
+            <h2 class="text-3xl md:text-5xl font-bold text-white mt-3 leading-tight">O Risco de Trabalhar Sem Contrato de Gestão</h2>
+            <p class="text-zinc-400 mt-5 max-w-3xl mx-auto text-lg leading-relaxed">
+                A ausência de uma empresa responsável pela manutenção preventiva e com compromisso formal de SLA no <strong>Condomínio Terraço Anália Franco</strong> expõe a portaria e os condôminos a fragilidades operacionais graves:
+            </p>
+        </div>
+
+        <div class="grid md:grid-cols-3 gap-8 reveal">
+            <!-- Risco 1 -->
+            <div class="bg-zinc-900/60 rounded-[2rem] p-8 border border-red-500/20 hover:border-red-500/60 shadow-glow-red transition-all duration-300 flex flex-col justify-between">
+                <div>
+                    <div class="w-14 h-14 bg-red-950/40 rounded-2xl flex items-center justify-center mb-6 border border-red-500/30">
+                        <i data-lucide="video-off" class="w-7 h-7 text-brand-red"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-3">Gravadores Fora do Ar sem Rastreio</h3>
+                    <p class="text-zinc-400 text-sm leading-relaxed mb-6">
+                        Em um parque com 65 câmeras e 4 DVRs, a ausência de auditoria mensal faz com que discos rígidos falhem silenciosamente. As imagens só são consultadas em sinistros, momento em que se descobre que não havia gravação.
+                    </p>
+                </div>
+                <div class="border-t border-red-500/15 pt-4 text-xs text-brand-red flex items-center gap-2">
+                    <i data-lucide="shield-alert" class="w-4 h-4 text-brand-red shrink-0"></i> Perda irrecuperável de provas de segurança
+                </div>
+            </div>
+
+            <!-- Risco 2 -->
+            <div class="bg-zinc-900/60 rounded-[2rem] p-8 border border-red-500/20 hover:border-red-500/60 shadow-glow-red transition-all duration-300 flex flex-col justify-between">
+                <div>
+                    <div class="w-14 h-14 bg-red-950/40 rounded-2xl flex items-center justify-center mb-6 border border-red-500/30">
+                        <i data-lucide="lock" class="w-7 h-7 text-brand-red"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-3">Parada de Acessos em Horário de Pico</h3>
+                    <p class="text-zinc-400 text-sm leading-relaxed mb-6">
+                        Travamento nos leitores faciais ou na câmera LPR veicular sem suporte emergencial retém a entrada de moradores, gera filas na calçada e sobrecarrega a portaria no período noturno e finais de semana.
+                    </p>
+                </div>
+                <div class="border-t border-red-500/15 pt-4 text-xs text-brand-red flex items-center gap-2">
+                    <i data-lucide="shield-alert" class="w-4 h-4 text-brand-red shrink-0"></i> Filas de carros e reclamações de moradores
+                </div>
+            </div>
+
+            <!-- Risco 3 -->
+            <div class="bg-zinc-900/60 rounded-[2rem] p-8 border border-red-500/20 hover:border-red-500/60 shadow-glow-red transition-all duration-300 flex flex-col justify-between">
+                <div>
+                    <div class="w-14 h-14 bg-red-950/40 rounded-2xl flex items-center justify-center mb-6 border border-red-500/30">
+                        <i data-lucide="key-round" class="w-7 h-7 text-brand-red"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-3">Perda de Credenciais e Desorganização</h3>
+                    <p class="text-zinc-400 text-sm leading-relaxed mb-6">
+                        Sem documentação centralizada de senhas de DVRs, software iVMS e central Maxcom, o condomínio fica refém do histórico antigo e sofre com trocas de técnicos sem padronização.
+                    </p>
+                </div>
+                <div class="border-t border-red-500/15 pt-4 text-xs text-brand-red flex items-center gap-2">
+                    <i data-lucide="shield-alert" class="w-4 h-4 text-brand-red shrink-0"></i> Dependência e vulnerabilidade operacional
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ===================== PARQUE TECNOLÓGICO INVENTARIADO ===================== -->
+<section id="inventario" class="py-24 bg-white relative">
+    <div class="max-w-7xl mx-auto px-4 relative z-10">
+        <div class="text-center mb-16 reveal">
+            <span class="text-brand-yellow font-bold uppercase tracking-widest text-xs">Inventário da Vistoria Técnica</span>
+            <h2 class="text-3xl md:text-5xl font-bold text-gray-900 mt-3">Mapeamento da Infraestrutura Atual</h2>
+            <p class="text-gray-500 mt-4 max-w-3xl mx-auto text-base font-medium">Levantamento de campo realizado pelo nosso especialista Elton para consolidação da matriz de atendimento do Terraço Anália Franco.</p>
+        </div>
+
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 reveal">
+            <!-- Bloco 1 -->
+            <div class="bg-gray-50 rounded-3xl p-6 border border-gray-200/80 shadow-sm hover:border-brand-yellow/40 transition-all flex flex-col justify-between">
+                <div>
+                    <div class="w-12 h-12 bg-brand-yellow/10 rounded-2xl flex items-center justify-center mb-4">
+                        <i data-lucide="camera" class="w-6 h-6 text-brand-yellow"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-gray-900 mb-2">CFTV — 65 Câmeras & DVRs</h3>
+                    <p class="text-xs text-gray-600 leading-relaxed">
+                        Parque de 65 câmeras Intelbras distribuídas por perímetro, halls, elevadores e garagem, integradas a 04 gravadores DVR com HDs Purple.
+                    </p>
+                </div>
+                <div class="mt-4 pt-3 border-t border-gray-200/60 text-[11px] text-gray-500 flex items-center gap-1.5 font-semibold">
+                    <i data-lucide="check-circle-2" class="w-3.5 h-3.5 text-emerald-600"></i> Auditoria de gravações e imagens
+                </div>
+            </div>
+
+            <!-- Bloco 2 -->
+            <div class="bg-gray-50 rounded-3xl p-6 border border-gray-200/80 shadow-sm hover:border-brand-yellow/40 transition-all flex flex-col justify-between">
+                <div>
+                    <div class="w-12 h-12 bg-brand-yellow/10 rounded-2xl flex items-center justify-center mb-4">
+                        <i data-lucide="scan-face" class="w-6 h-6 text-brand-yellow"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-gray-900 mb-2">Acesso Facial & LPR Hikvision</h3>
+                    <p class="text-xs text-gray-600 leading-relaxed">
+                        04 leitores faciais Hikvision nos acessos sociais/serviço + 01 câmera com leitor de placas (LPR) integrada ao software iVMS no portão veicular.
+                    </p>
+                </div>
+                <div class="mt-4 pt-3 border-t border-gray-200/60 text-[11px] text-gray-500 flex items-center gap-1.5 font-semibold">
+                    <i data-lucide="check-circle-2" class="w-3.5 h-3.5 text-emerald-600"></i> Gestão via iVMS e parametrização
+                </div>
+            </div>
+
+            <!-- Bloco 3 -->
+            <div class="bg-gray-50 rounded-3xl p-6 border border-gray-200/80 shadow-sm hover:border-brand-yellow/40 transition-all flex flex-col justify-between">
+                <div>
+                    <div class="w-12 h-12 bg-brand-yellow/10 rounded-2xl flex items-center justify-center mb-4">
+                        <i data-lucide="phone-call" class="w-6 h-6 text-brand-yellow"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-gray-900 mb-2">Interfonia — Central Maxcom</h3>
+                    <p class="text-xs text-gray-600 leading-relaxed">
+                        Central PABX Maxcom Intelbras configurada para 60 ramais conectando os apartamentos, guarita, áreas de convivência e portaria.
+                    </p>
+                </div>
+                <div class="mt-4 pt-3 border-t border-gray-200/60 text-[11px] text-gray-500 flex items-center gap-1.5 font-semibold">
+                    <i data-lucide="check-circle-2" class="w-3.5 h-3.5 text-emerald-600"></i> Teste de linha e comunicação interna
+                </div>
+            </div>
+
+            <!-- Bloco 4 -->
+            <div class="bg-gray-50 rounded-3xl p-6 border border-gray-200/80 shadow-sm hover:border-brand-yellow/40 transition-all flex flex-col justify-between">
+                <div>
+                    <div class="w-12 h-12 bg-brand-yellow/10 rounded-2xl flex items-center justify-center mb-4">
+                        <i data-lucide="shield-alert" class="w-6 h-6 text-brand-yellow"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-gray-900 mb-2">Cerca Elétrica Perimetral</h3>
+                    <p class="text-xs text-gray-600 leading-relaxed">
+                        01 central de choque cobrindo a extensão frontal do condomínio, alinhada com hastes de alta tensão e aterramento dedicado.
+                    </p>
+                </div>
+                <div class="mt-4 pt-3 border-t border-gray-200/60 text-[11px] text-gray-500 flex items-center gap-1.5 font-semibold">
+                    <i data-lucide="check-circle-2" class="w-3.5 h-3.5 text-emerald-600"></i> Verificação de pulso e sirene
+                </div>
+            </div>
+
+            <!-- Bloco 5 -->
+            <div class="bg-gray-50 rounded-3xl p-6 border border-gray-200/80 shadow-sm hover:border-brand-yellow/40 transition-all flex flex-col justify-between">
+                <div>
+                    <div class="w-12 h-12 bg-brand-yellow/10 rounded-2xl flex items-center justify-center mb-4">
+                        <i data-lucide="door-closed" class="w-6 h-6 text-brand-yellow"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-gray-900 mb-2">Automação de 06 Portões</h3>
+                    <p class="text-xs text-gray-600 leading-relaxed">
+                        04 portões de pedestres com fechos eletroímãs + 02 portões veiculares (1º via Controle Remoto Nice / 2º via LPR Hikvision).
+                    </p>
+                </div>
+                <div class="mt-4 pt-3 border-t border-gray-200/60 text-[11px] text-gray-500 flex items-center gap-1.5 font-semibold">
+                    <i data-lucide="check-circle-2" class="w-3.5 h-3.5 text-emerald-600"></i> Placas, receptores e botoeiras
+                </div>
+            </div>
+
+            <!-- Bloco 6 -->
+            <div class="bg-zinc-900 text-white rounded-3xl p-6 border border-zinc-800 shadow-sm flex flex-col justify-between">
+                <div>
+                    <span class="text-[10px] font-bold bg-brand-yellow/20 text-brand-yellow px-3 py-1 rounded-full uppercase tracking-widest">ETAPA CRÍTICA</span>
+                    <h3 class="text-lg font-bold text-white mt-4 mb-2">Setup Inicial & Audit (3 Dias)</h3>
+                    <p class="text-xs text-zinc-400 leading-relaxed">
+                        Mapeamento minucioso dos cabos, recuperação de senhas ativas dos DVRs e do iVMS, limpeza e reorganização do rack principal da portaria.
+                    </p>
+                </div>
+                <div class="p-3 bg-zinc-800/80 rounded-xl border border-zinc-700 mt-4 text-[11px] text-zinc-300">
+                    <i data-lucide="check-circle" class="w-3.5 h-3.5 text-brand-yellow inline mr-1"></i> Base sólida para evitar falsos chamados.
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ===================== O DIFERENCIAL Padrão Vision ===================== -->
+<section id="solucao" class="py-24 bg-gray-50 border-t border-gray-200/60">
+    <div class="max-w-7xl mx-auto px-4 relative z-10">
+        <div class="text-center mb-16 reveal">
+            <span class="text-brand-yellow font-bold uppercase tracking-widest text-xs">Engenharia de Serviços</span>
+            <h2 class="text-3xl md:text-5xl font-bold text-gray-900 mt-3">Como a Vision Atua no Condomínio</h2>
+            <p class="text-gray-500 mt-4 max-w-3xl mx-auto text-lg font-medium">Metodologia preventiva metódica combinada com resposta técnica ágil e governança para o condomínio.</p>
+        </div>
+
+        <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6 reveal">
+            <!-- Solução 1 -->
+            <div class="bg-white rounded-[2rem] p-6 border border-gray-200/80 shadow-sm hover:border-brand-yellow/40 transition-all flex flex-col justify-between">
+                <div>
+                    <div class="w-12 h-12 bg-brand-yellow/10 rounded-2xl flex items-center justify-center mb-5">
+                        <i data-lucide="clipboard-check" class="w-6 h-6 text-brand-yellow"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-gray-900 mb-2">1 Visita Preventiva Mensal</h3>
+                    <p class="text-gray-600 text-xs leading-relaxed mb-4">
+                        Inspeção técnica programada para limpeza de lentes, testes de carga de fontes de alimentação e baterias, auditoria de gravação nos 04 DVRs e teste de retenção dos eletroímãs dos portões.
+                    </p>
+                </div>
+                <div class="p-3.5 bg-emerald-50 rounded-xl border border-emerald-100 mt-auto">
+                    <p class="text-[11px] text-emerald-800 leading-relaxed flex items-start gap-1.5">
+                        <i data-lucide="check-circle" class="w-4 h-4 shrink-0 text-emerald-600 mt-0.5"></i>
+                        <span>Redução de até 80% das paradas repentinas.</span>
+                    </p>
+                </div>
+            </div>
+
+            <!-- Solução 2 -->
+            <div class="bg-white rounded-[2rem] p-6 border border-gray-200/80 shadow-sm hover:border-brand-yellow/40 transition-all flex flex-col justify-between">
+                <div>
+                    <div class="w-12 h-12 bg-brand-yellow/10 rounded-2xl flex items-center justify-center mb-5">
+                        <i data-lucide="headset" class="w-6 h-6 text-brand-yellow"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-gray-900 mb-2">Suporte Remoto & Vídeos</h3>
+                    <p class="text-gray-600 text-xs leading-relaxed mb-4">
+                        Atendimento remoto direto para auxílio na extração de imagens solicitadas pela administração/síndico, cadastros e parametrizações de usuários no iVMS Hikvision.
+                    </p>
+                </div>
+                <div class="p-3.5 bg-emerald-50 rounded-xl border border-emerald-100 mt-auto">
+                    <p class="text-[11px] text-emerald-800 leading-relaxed flex items-start gap-1.5">
+                        <i data-lucide="check-circle" class="w-4 h-4 shrink-0 text-emerald-600 mt-0.5"></i>
+                        <span>Agilidade na busca e download de ocorrências.</span>
+                    </p>
+                </div>
+            </div>
+
+            <!-- Solução 3 -->
+            <div class="bg-white rounded-[2rem] p-6 border border-gray-200/80 shadow-sm hover:border-brand-yellow/40 transition-all flex flex-col justify-between">
+                <div>
+                    <div class="w-12 h-12 bg-brand-yellow/10 rounded-2xl flex items-center justify-center mb-5">
+                        <i data-lucide="wrench" class="w-6 h-6 text-brand-yellow"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-gray-900 mb-2">Manutenção Corretiva</h3>
+                    <p class="text-gray-600 text-xs leading-relaxed mb-4">
+                        Ocorrências do dia a dia contam com visitas técnicas para diagnósticos, mão de obra de reparo, substituição de conectores e reconfigurações sem custo extra de mão de obra.
+                    </p>
+                </div>
+                <div class="p-3.5 bg-emerald-50 rounded-xl border border-emerald-100 mt-auto">
+                    <p class="text-[11px] text-emerald-800 leading-relaxed flex items-start gap-1.5">
+                        <i data-lucide="check-circle" class="w-4 h-4 shrink-0 text-emerald-600 mt-0.5"></i>
+                        <span>Previsibilidade orçamentária total e sem surpresas.</span>
+                    </p>
+                </div>
+            </div>
+
+            <!-- Solução 4 -->
+            <div class="bg-white rounded-[2rem] p-6 border border-gray-200/80 shadow-sm hover:border-brand-yellow/40 transition-all flex flex-col justify-between">
+                <div>
+                    <div class="w-12 h-12 bg-brand-yellow/10 rounded-2xl flex items-center justify-center mb-5">
+                        <i data-lucide="file-text" class="w-6 h-6 text-brand-yellow"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-gray-900 mb-2">Relatórios Técnicos</h3>
+                    <p class="text-gray-600 text-xs leading-relaxed mb-4">
+                        Envio de laudo técnico digital após as preventivas, detalhando a saúde dos DVRs, status das câmeras e eventuais recomendações para apreciação do síndico.
+                    </p>
+                </div>
+                <div class="p-3.5 bg-emerald-50 rounded-xl border border-emerald-100 mt-auto">
+                    <p class="text-[11px] text-emerald-800 leading-relaxed flex items-start gap-1.5">
+                        <i data-lucide="check-circle" class="w-4 h-4 shrink-0 text-emerald-600 mt-0.5"></i>
+                        <span>Transparência e prestação de contas periódica.</span>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ===================== CLÁUSULAS TÉCNICAS E ESCOPO ===================== -->
+<section id="escopo" class="py-24 bg-zinc-950 text-white relative border-t border-zinc-900">
+    <div class="bg-grid-dark absolute inset-0 opacity-10 pointer-events-none"></div>
+    <div class="max-w-6xl mx-auto px-4 relative z-10">
+        <div class="text-center mb-16 reveal">
+            <span class="text-brand-yellow font-bold uppercase tracking-widest text-xs">Transparência & Governança</span>
+            <h2 class="text-3xl md:text-5xl font-bold text-white mt-3">Escopo Contratual Detalhado</h2>
+            <p class="text-zinc-400 mt-4 max-w-2xl mx-auto text-sm">Diretrizes transparentes para garantir segurança jurídica e operacional ao condomínio.</p>
+        </div>
+
+        <div class="grid md:grid-cols-2 gap-8 reveal">
+            <!-- Card Inclusões -->
+            <div class="bg-zinc-900/80 rounded-3xl p-8 border border-zinc-800">
+                <h3 class="text-xl font-bold text-white mb-6 flex items-center gap-3">
+                    <div class="w-10 h-10 bg-emerald-500/10 rounded-xl flex items-center justify-center">
+                        <i data-lucide="check-circle-2" class="w-6 h-6 text-emerald-500"></i>
+                    </div>
+                    Incluso no Escopo do Contrato
+                </h3>
+                <ul class="space-y-4 text-xs text-zinc-300">
+                    <li class="flex items-start gap-3">
+                        <i data-lucide="check" class="w-4 h-4 text-emerald-400 shrink-0 mt-0.5"></i>
+                        <span><strong>Mão de Obra de Reparo e Configuração:</strong> Diagnósticos, reconfigurações de rede, reorientação de câmeras e ajustes nas leitoras.</span>
+                    </li>
+                    <li class="flex items-start gap-3">
+                        <i data-lucide="check" class="w-4 h-4 text-emerald-400 shrink-0 mt-0.5"></i>
+                        <span><strong>Automação de Acessos dos Portões:</strong> Mão de obra para manutenção da placa de comando, leitores LPR, leitores faciais, receptores e cadastro de tags/controles.</span>
+                    </li>
+                    <li class="flex items-start gap-3">
+                        <i data-lucide="check" class="w-4 h-4 text-emerald-400 shrink-0 mt-0.5"></i>
+                        <span><strong>Interfonia e Cerca Elétrica:</strong> Teste contínuo de ramais do PABX Maxcom e pulso elétrico da cerca perimetral.</span>
+                    </li>
+                    <li class="flex items-start gap-3">
+                        <i data-lucide="check" class="w-4 h-4 text-emerald-400 shrink-0 mt-0.5"></i>
+                        <span><strong>Atendimento Emergencial 24h (Nos planos 24h Críticos):</strong> Cobertura para indisponibilidade total de gravações ou travamento de acessos.</span>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Card Exclusões Tecnicas -->
+            <div class="bg-zinc-900/80 rounded-3xl p-8 border border-zinc-800">
+                <h3 class="text-xl font-bold text-white mb-6 flex items-center gap-3">
+                    <div class="w-10 h-10 bg-amber-500/10 rounded-xl flex items-center justify-center">
+                        <i data-lucide="alert-triangle" class="w-6 h-6 text-amber-500"></i>
+                    </div>
+                    Exclusões e Faturamento À Parte
+                </h3>
+                <ul class="space-y-4 text-xs text-zinc-300">
+                    <li class="flex items-start gap-3">
+                        <i data-lucide="x" class="w-4 h-4 text-amber-400 shrink-0 mt-0.5"></i>
+                        <span><strong>Mecânica Pesada de Portões:</strong> Troca de fuso, soldas estruturais, roldanas, cabos de aço e substituição de motores mecânicos queimados são orçados separadamente.</span>
+                    </li>
+                    <li class="flex items-start gap-3">
+                        <i data-lucide="x" class="w-4 h-4 text-amber-400 shrink-0 mt-0.5"></i>
+                        <span><strong>Fornecimento de Peças de Reposição:</strong> Câmeras, DVRs, HDs ou fontes danificados por picos de energia elétrica ou vandalismo serão faturados a preço de custo (com mão de obra de troca 100% isenta).</span>
+                    </li>
+                    <li class="flex items-start gap-3">
+                        <i data-lucide="x" class="w-4 h-4 text-amber-400 shrink-0 mt-0.5"></i>
+                        <span><strong>Serviços de Infraestrutura Civil:</strong> Tubulações sob o solo, obras de alvenaria ou poda de vegetação para liberação de linhas de visão.</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ===================== AUTORIDADE & GARANTIA VISION ===================== -->
+<section id="garantia" class="py-24 bg-white relative overflow-hidden border-t border-zinc-100">
+    <div class="absolute inset-0 bg-dots pointer-events-none"></div>
+    <div class="max-w-6xl mx-auto px-4 relative z-10">
+        <div class="text-center mb-16 reveal">
+            <span class="text-brand-yellow font-bold uppercase tracking-widest text-xs">Selo de Confiança Vision</span>
+            <h2 class="text-3xl md:text-5xl font-bold text-gray-900 mt-3 leading-tight">Credibilidade Comprovada</h2>
+            <p class="text-gray-500 mt-5 max-w-2xl mx-auto text-lg leading-relaxed">
+                Tranquilidade e respaldo operacional para a administração e o conselho do condomínio.
+            </p>
+        </div>
+
+        <div class="grid md:grid-cols-3 gap-8 reveal">
+            <!-- Google Card -->
+            <div class="bg-gray-50 rounded-3xl p-8 border border-gray-100 flex flex-col justify-between text-center md:text-left">
+                <div class="flex items-center justify-center md:justify-start gap-3 mb-6">
+                    <svg class="w-10 h-10 shrink-0" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/>
+                        <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/>
+                        <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.06H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.94l3.66-2.85z" fill="#FBBC05"/>
+                        <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.06l3.66 2.85c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/>
+                    </svg>
+                    <div>
+                        <h4 class="font-extrabold text-gray-900 text-lg">Nota Máxima 5.0</h4>
+                        <p class="text-xs text-gray-500">Perfil Oficial no Google</p>
+                    </div>
+                </div>
+                <div class="flex items-center justify-center md:justify-start gap-1 text-amber-500 mb-4">
+                    <i data-lucide="star" class="w-5 h-5 fill-current"></i>
+                    <i data-lucide="star" class="w-5 h-5 fill-current"></i>
+                    <i data-lucide="star" class="w-5 h-5 fill-current"></i>
+                    <i data-lucide="star" class="w-5 h-5 fill-current"></i>
+                    <i data-lucide="star" class="w-5 h-5 fill-current"></i>
+                </div>
+                <p class="text-sm text-gray-600 mb-6">
+                    Avaliados com nota 5.0 por síndicos e administradoras de São Paulo pela pontualidade e transparência nos diagnósticos.
+                </p>
+                <div class="border-t border-gray-200/60 pt-4 text-xs font-semibold text-brand-yellow flex items-center justify-center md:justify-start gap-2">
+                    <i data-lucide="check-circle" class="w-4 h-4"></i> Excelência Técnica
+                </div>
+            </div>
+
+            <!-- Intelbras / Hikvision Certificacao Card -->
+            <div class="bg-gray-50 rounded-3xl p-8 border border-gray-100 flex flex-col justify-between text-center md:text-left">
+                <div class="flex items-center justify-center md:justify-start gap-3 mb-6">
+                    <div class="w-10 h-10 bg-emerald-50 rounded-xl flex items-center justify-center border border-emerald-100 shrink-0">
+                        <i data-lucide="award" class="w-6 h-6 text-emerald-600"></i>
+                    </div>
+                    <div>
+                        <h4 class="font-extrabold text-gray-900 text-lg">Especialistas Multimarcas</h4>
+                        <p class="text-xs text-emerald-600 font-semibold uppercase tracking-wider">Intelbras & Hikvision</p>
+                    </div>
+                </div>
+                <p class="text-sm text-gray-600 mb-6 mt-2">
+                    Equipe capacitada para operar tanto a linha Intelbras (CFTV e PABX) quanto a linha Hikvision (Acesso Facial, LPR e software iVMS).
+                </p>
+                <div class="border-t border-gray-200/60 pt-4 text-xs font-semibold text-emerald-600 flex items-center justify-center md:justify-start gap-2">
+                    <i data-lucide="shield-check" class="w-4 h-4"></i> Domínio dos Softwares
+                </div>
+            </div>
+
+            <!-- Garantia Card -->
+            <div class="bg-gray-50 rounded-3xl p-8 border border-gray-100 flex flex-col justify-between text-center md:text-left">
+                <div class="flex items-center justify-center md:justify-start gap-3 mb-6">
+                    <div class="w-10 h-10 bg-amber-50 rounded-xl flex items-center justify-center border border-amber-100 shrink-0">
+                        <i data-lucide="shield" class="w-6 h-6 text-brand-yellow"></i>
+                    </div>
+                    <div>
+                        <h4 class="font-extrabold text-gray-900 text-lg">Garantia de Mão de Obra</h4>
+                        <p class="text-xs text-brand-yellow font-semibold uppercase tracking-wider">Isenção de Visitas</p>
+                    </div>
+                </div>
+                <p class="text-sm text-gray-600 mb-6 mt-2">
+                    Qualquer reparo realizado por nossa equipe técnica possui garantia integral de mão de obra durante a vigência do contrato.
+                </p>
+                <div class="border-t border-gray-200/60 pt-4 text-xs font-semibold text-brand-yellow flex items-center justify-center md:justify-start gap-2">
+                    <i data-lucide="check-circle" class="w-4 h-4"></i> Suporte Contínuo
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ===================== PLANOS & INVESTIMENTO ===================== -->
+<section id="planos" class="py-28 bg-[#fafafa] relative overflow-hidden border-t border-gray-200/60">
+    <div class="absolute inset-0 bg-dots pointer-events-none"></div>
+    <div class="max-w-7xl mx-auto px-4 relative z-10">
+        <div class="text-center mb-16 reveal">
+            <span class="text-brand-yellow font-bold uppercase tracking-widest text-xs">Opções de Contratação</span>
+            <h2 class="text-3xl md:text-5xl font-bold text-gray-900 mt-3">Matriz de Planos de Manutenção</h2>
+            <p class="text-gray-500 mt-4 max-w-2xl mx-auto text-lg font-medium">Escolha o nível de cobertura e SLA ideal para a rotina do Condomínio Terraço Anália Franco.</p>
+        </div>
+
+        <div class="grid lg:grid-cols-3 gap-8 reveal">
+            
+            <!-- PLANO 1: COMERCIAL -->
+            <div class="bg-white rounded-3xl p-8 border border-gray-200/80 shadow-glass flex flex-col justify-between hover:border-gray-300 transition-all">
+                <div>
+                    <div class="flex items-center justify-between mb-4">
+                        <span class="text-[10px] font-bold bg-gray-100 text-gray-700 px-3 py-1 rounded-full uppercase">12 MESES</span>
+                        <i data-lucide="clock" class="w-5 h-5 text-gray-400"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-gray-900 mb-1">Plano Comercial</h3>
+                    <p class="text-xs text-gray-500 mb-6">Atendimento de Segunda a Sexta (08h às 18h)</p>
+
+                    <div class="p-4 bg-gray-50 rounded-2xl mb-6 border border-gray-100">
+                        <p class="text-[11px] text-gray-500 uppercase tracking-wider font-semibold">Taxa de Implantação / Setup</p>
+                        <p class="text-xl font-bold text-gray-900 mt-0.5">R$ 2.450,00 <span class="text-xs font-normal text-gray-500">(Único)</span></p>
+                    </div>
+
+                    <div class="mb-6">
+                        <p class="text-xs text-gray-500 uppercase tracking-wider font-semibold">Mensalidade Recorrente</p>
+                        <div class="flex items-baseline gap-1 mt-1">
+                            <span class="text-4xl font-extrabold text-gray-900">R$ 2.200</span>
+                            <span class="text-gray-500 font-semibold text-sm">/ mês</span>
+                        </div>
+                    </div>
+
+                    <ul class="space-y-3 text-xs text-gray-600 mb-8 border-t border-gray-100 pt-6">
+                        <li class="flex items-start gap-2.5">
+                            <i data-lucide="check" class="w-4 h-4 text-emerald-600 shrink-0 mt-0.5"></i>
+                            <span>1 Visita Preventiva Mensal Programada</span>
+                        </li>
+                        <li class="flex items-start gap-2.5">
+                            <i data-lucide="check" class="w-4 h-4 text-emerald-600 shrink-0 mt-0.5"></i>
+                            <span>Manutenção Corretiva Comercial (Seg. a Sex.)</span>
+                        </li>
+                        <li class="flex items-start gap-2.5">
+                            <i data-lucide="check" class="w-4 h-4 text-emerald-600 shrink-0 mt-0.5"></i>
+                            <span>SLA de Atendimento Presencial: Até 24h úteis</span>
+                        </li>
+                        <li class="flex items-start gap-2.5">
+                            <i data-lucide="check" class="w-4 h-4 text-emerald-600 shrink-0 mt-0.5"></i>
+                            <span>Suporte Remoto para extração de vídeos</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <a href="https://wa.me/5511930816696?text=Olá%20Gabriel,%20gostaria%20de%20confirmar%20a%20opção%20do%20Plano%20Comercial%20(R$%202.200/mês)%20para%20o%20Condomínio%20Terraço%20Anália%20Franco." target="_blank" class="w-full bg-gray-100 hover:bg-gray-200 text-gray-800 font-bold py-4 rounded-2xl flex items-center justify-center gap-2 transition-all text-xs uppercase tracking-wider">
+                    <span>Selecionar Comercial</span>
+                    <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                </a>
+            </div>
+
+            <!-- PLANO 2: 24H CRÍTICO (12 MESES) -->
+            <div class="bg-white rounded-3xl p-8 border border-gray-200/80 shadow-glass flex flex-col justify-between hover:border-gray-300 transition-all">
+                <div>
+                    <div class="flex items-center justify-between mb-4">
+                        <span class="text-[10px] font-bold bg-amber-100 text-amber-900 px-3 py-1 rounded-full uppercase">12 MESES</span>
+                        <i data-lucide="shield-alert" class="w-5 h-5 text-amber-600"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-gray-900 mb-1">Plano 24h Crítico</h3>
+                    <p class="text-xs text-gray-500 mb-6">Plantão 24/7 para Emergências Graves</p>
+
+                    <div class="p-4 bg-gray-50 rounded-2xl mb-6 border border-gray-100">
+                        <p class="text-[11px] text-gray-500 uppercase tracking-wider font-semibold">Taxa de Implantação / Setup</p>
+                        <p class="text-xl font-bold text-gray-900 mt-0.5">R$ 2.450,00 <span class="text-xs font-normal text-gray-500">(Único)</span></p>
+                    </div>
+
+                    <div class="mb-6">
+                        <p class="text-xs text-gray-500 uppercase tracking-wider font-semibold">Mensalidade Recorrente</p>
+                        <div class="flex items-baseline gap-1 mt-1">
+                            <span class="text-4xl font-extrabold text-gray-900">R$ 2.900</span>
+                            <span class="text-gray-500 font-semibold text-sm">/ mês</span>
+                        </div>
+                    </div>
+
+                    <ul class="space-y-3 text-xs text-gray-600 mb-8 border-t border-gray-100 pt-6">
+                        <li class="flex items-start gap-2.5">
+                            <i data-lucide="check" class="w-4 h-4 text-emerald-600 shrink-0 mt-0.5"></i>
+                            <span>Tudo do Plano Comercial incluso</span>
+                        </li>
+                        <li class="flex items-start gap-2.5">
+                            <i data-lucide="check" class="w-4 h-4 text-emerald-600 shrink-0 mt-0.5"></i>
+                            <span><strong>Plantão Emergencial 24/7:</strong> Finais de semana e noites</span>
+                        </li>
+                        <li class="flex items-start gap-2.5">
+                            <i data-lucide="check" class="w-4 h-4 text-emerald-600 shrink-0 mt-0.5"></i>
+                            <span><strong>SLA Prioritário Crítico:</strong> Atendimento presencial rápido</span>
+                        </li>
+                        <li class="flex items-start gap-2.5">
+                            <i data-lucide="check" class="w-4 h-4 text-emerald-600 shrink-0 mt-0.5"></i>
+                            <span>Cobertura contra paradas de portões e CFTV</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <a href="https://wa.me/5511930816696?text=Olá%20Gabriel,%20gostaria%20de%20confirmar%20a%20opção%20do%20Plano%2024h%20Crítico%2012m%20(R$%202.900/mês)%20para%20o%20Condomínio%20Terraço%20Anália%20Franco." target="_blank" class="w-full bg-zinc-900 hover:bg-black text-white font-bold py-4 rounded-2xl flex items-center justify-center gap-2 transition-all text-xs uppercase tracking-wider">
+                    <span>Selecionar 24h (12m)</span>
+                    <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                </a>
+            </div>
+
+            <!-- PLANO 3: 24H CRÍTICO ESTENDIDO (24 MESES) — RECOMENDADO -->
+            <div class="premium-border-glow">
+                <div class="premium-border-inner">
+                    <div class="flex items-center justify-between mb-4">
+                        <span class="text-[10px] font-bold bg-brand-yellow text-black px-3.5 py-1 rounded-full uppercase tracking-widest">⭐ RECOMENDADO</span>
+                        <i data-lucide="star" class="w-5 h-5 text-brand-yellow fill-current"></i>
+                    </div>
+                    <h3 class="text-2xl font-extrabold text-gray-900 mb-1">24h Crítico Estendido</h3>
+                    <p class="text-xs text-brand-goldDark font-semibold mb-6">Contrato de 24 Meses c/ Economia de Setup</p>
+
+                    <div class="p-4 bg-emerald-50 rounded-2xl mb-6 border border-emerald-200/80">
+                        <p class="text-[11px] text-emerald-800 uppercase tracking-wider font-bold">Bônus Exclusivo de Assinatura</p>
+                        <p class="text-lg font-extrabold text-emerald-700 mt-0.5 flex items-center gap-1">
+                            <i data-lucide="check-circle-2" class="w-4 h-4"></i> Setup ISENTO (Bônus R$ 2.450)
+                        </p>
+                    </div>
+
+                    <div class="mb-6">
+                        <p class="text-xs text-gray-500 uppercase tracking-wider font-semibold">Mensalidade Recorrente</p>
+                        <div class="flex items-baseline gap-1 mt-1">
+                            <span class="text-4xl font-extrabold text-gray-900">R$ 2.800</span>
+                            <span class="text-gray-500 font-semibold text-sm">/ mês</span>
+                        </div>
+                        <p class="text-[11px] text-emerald-600 font-semibold mt-1.5">Desconto contínuo de R$ 100/mês no plano 24h</p>
+                    </div>
+
+                    <ul class="space-y-3 text-xs text-gray-700 mb-8 border-t border-gray-100 pt-6">
+                        <li class="flex items-start gap-2.5">
+                            <i data-lucide="check" class="w-4 h-4 text-brand-yellow shrink-0 mt-0.5"></i>
+                            <span><strong>Isenção Total do Setup de R$ 2.450,00</strong></span>
+                        </li>
+                        <li class="flex items-start gap-2.5">
+                            <i data-lucide="check" class="w-4 h-4 text-brand-yellow shrink-0 mt-0.5"></i>
+                            <span><strong>Plantão Emergencial 24/7 Ilimitado</strong></span>
+                        </li>
+                        <li class="flex items-start gap-2.5">
+                            <i data-lucide="check" class="w-4 h-4 text-brand-yellow shrink-0 mt-0.5"></i>
+                            <span>Previsibilidade total de custos por 24 meses</span>
+                        </li>
+                        <li class="flex items-start gap-2.5">
+                            <i data-lucide="check" class="w-4 h-4 text-brand-yellow shrink-0 mt-0.5"></i>
+                            <span>1 Visita Preventiva Mensal + Suporte Remoto</span>
+                        </li>
+                    </ul>
+
+                    <a href="https://wa.me/5511930816696?text=Olá%20Gabriel,%20gostaria%20de%20aprovar%20o%20Plano%2024h%20Crítico%20Estendido%20de%2024%20meses%20(R$%202.800/mês%20com%20Setup%20ISENTO)%20para%20o%20Condomínio%20Terraço%20Anália%20Franco." target="_blank" class="w-full bg-brand-yellow hover:bg-brand-goldLight text-black font-bold py-4 rounded-2xl flex items-center justify-center gap-2 transition-all shadow-glow text-xs uppercase tracking-wider group relative overflow-hidden mt-auto">
+                        <div class="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-300 rounded-2xl"></div>
+                        <i data-lucide="check-circle" class="w-4 h-4 relative z-10"></i>
+                        <span class="relative z-10">Aprovar Plano Recomendado</span>
+                        <i data-lucide="arrow-right" class="w-4 h-4 relative z-10 group-hover:translate-x-1 transition-transform"></i>
+                    </a>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<!-- ===================== FAQ ===================== -->
+<section class="py-24 bg-[#f8f9fa] border-t border-gray-200/60">
+    <div class="max-w-3xl mx-auto px-4">
+        <div class="text-center mb-14 reveal">
+            <span class="text-brand-yellow font-bold uppercase tracking-widest text-xs">Esclarecimentos Técnicos</span>
+            <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mt-3">Perguntas Frequentes do Conselho</h2>
+        </div>
+        
+        <div class="space-y-4 reveal" id="accordion">
+            <div class="accordion-item bg-white rounded-2xl border border-gray-100 shadow-glass overflow-hidden">
+                <button onclick="toggleAccordion(this)" class="w-full flex items-center justify-between p-6 text-left font-semibold text-gray-800 focus:outline-none">
+                    <span>O que está incluso na etapa de Setup / Mapeamento Inicial?</span>
+                    <i data-lucide="chevron-down" class="w-5 h-5 text-gray-400 acc-arrow shrink-0"></i>
+                </button>
+                <div class="accordion-content">
+                    <p class="px-6 pb-6 text-gray-500 text-sm leading-relaxed">São até 3 dias de trabalho técnico dedicado para rastreamento dos cabos de câmeras e interfonia, recuperação de senhas ativas dos DVRs e do iVMS, teste de pulso da cerca elétrica e organização do rack principal da portaria. No plano de 24 meses, esse valor é totalmente bonificado.</p>
+                </div>
+            </div>
+
+            <div class="accordion-item bg-white rounded-2xl border border-gray-100 shadow-glass overflow-hidden">
+                <button onclick="toggleAccordion(this)" class="w-full flex items-center justify-between p-6 text-left font-semibold text-gray-800 focus:outline-none">
+                    <span>O que se enquadra como Chamado Emergencial 24h?</span>
+                    <i data-lucide="chevron-down" class="w-5 h-5 text-gray-400 acc-arrow shrink-0"></i>
+                </button>
+                <div class="accordion-content">
+                    <p class="px-6 pb-6 text-gray-500 text-sm leading-relaxed">Consideram-se emergências críticas: parada geral do sistema de câmeras, travamento das fechaduras dos portões principais de pedestres/veículos ou falha total na leitora LPR do portão. Problemas individuais em câmeras secundárias ou ramais específicos são atendidos no próximo dia útil.</p>
+                </div>
+            </div>
+
+            <div class="accordion-item bg-white rounded-2xl border border-gray-100 shadow-glass overflow-hidden">
+                <button onclick="toggleAccordion(this)" class="w-full flex items-center justify-between p-6 text-left font-semibold text-gray-800 focus:outline-none">
+                    <span>Como funciona a substituição de equipamentos queimados?</span>
+                    <i data-lucide="chevron-down" class="w-5 h-5 text-gray-400 acc-arrow shrink-0"></i>
+                </button>
+                <div class="accordion-content">
+                    <p class="px-6 pb-6 text-gray-500 text-sm leading-relaxed">Quando um equipamento (câmera, DVR ou fonte) é danificado por descarga elétrica ou desgaste natural, a Vision apresenta o orçamento do novo hardware a preço de custo. Após aprovação do síndico, a instalação e configuração são realizadas sem cobrança de mão de obra.</p>
+                </div>
+            </div>
+
+            <div class="accordion-item bg-white rounded-2xl border border-gray-100 shadow-glass overflow-hidden">
+                <button onclick="toggleAccordion(this)" class="w-full flex items-center justify-between p-6 text-left font-semibold text-gray-800 focus:outline-none">
+                    <span>Qual o formato do faturamento das mensalidades?</span>
+                    <i data-lucide="chevron-down" class="w-5 h-5 text-gray-400 acc-arrow shrink-0"></i>
+                </button>
+                <div class="accordion-content">
+                    <p class="px-6 pb-6 text-gray-500 text-sm leading-relaxed">O faturamento é realizado mensalmente via boleto bancário corporativo faturado em nome do Condomínio Terraço Anália Franco, com envio prévio de Nota Fiscal de Serviços.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ===================== FOOTER CENTRALIZADO ===================== -->
+<footer class="bg-[#09090b] py-16 text-center border-t border-zinc-900 group">
+    <div class="max-w-4xl mx-auto px-4">
+        <div class="flex flex-col items-center justify-center leading-none opacity-40 group-hover:opacity-100 transition-opacity duration-500 cursor-default mb-10">
+            <div class="flex flex-col items-center">
+                <div class="relative flex items-baseline leading-none">
+                    <span class="font-logo font-bold text-[3.5rem] text-white lowercase tracking-[-0.05em] leading-none">vısıon</span>
+                    <span class="absolute -right-3.5 top-2.5 text-[0.75rem] text-brand-yellow font-bold">®</span>
+                </div>
+                <span class="font-tech text-[0.75rem] font-bold text-zinc-500 lowercase -mt-3 ml-1.5 text-center w-full" style="letter-spacing: 0.53em;">tecnologia</span>
+            </div>
+        </div>
+
+        <div class="text-zinc-500 text-xs md:text-sm leading-relaxed space-y-1 mb-8 opacity-60">
+            <p>Av. Paulista, 1636 - Sala 1504 | Bela Vista, São Paulo SP - CEP 01310-200</p>
+            <p>CNPJ: 62.117.013/0001-00</p>
+        </div>
+
+        <div class="inline-flex items-center justify-center gap-2 border border-zinc-800 bg-zinc-900/50 px-5 py-2.5 rounded-full mb-6 shadow-sm">
+            <i data-lucide="lock" class="w-3.5 h-3.5 text-brand-yellow"></i>
+            <span class="text-[10px] md:text-xs text-zinc-400 uppercase tracking-widest font-bold">Proposta de Escopo Técnico Restrito ao Condomínio</span>
+        </div>
+        
+        <p class="text-[10px] text-zinc-700 uppercase tracking-widest font-bold mt-6">ID-VISION-CORP-TERRACO-2026</p>
+    </div>
+</footer>
+
+<!-- ===================== CTA FLUTUANTE (WHATSAPP VISION) ===================== -->
+<div id="cta-float" class="fixed bottom-6 right-6 z-50 transition-all duration-500 opacity-0 translate-y-10 pointer-events-none no-print">
+    <a href="https://wa.me/5511930816696?text=Olá%20Gabriel,%20estou%20analisando%20a%20proposta%20de%20manutenção%20do%20Condomínio%20Terraço%20Anália%20Franco%20e%20gostaria%20de%20tirar%20uma%20dúvida." target="_blank" class="flex items-center justify-center w-14 h-14 bg-brand-yellow text-black rounded-full shadow-glow-md hover:shadow-glow hover:scale-110 transition-transform group" aria-label="Falar pelo WhatsApp">
+        <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="currentColor" viewBox="0 0 16 16">
+            <path d="M13.601 2.326A7.854 7.854 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c0 1.399.366 2.76 1.057 3.965L0 16l4.204-1.102a7.933 7.933 0 0 0 3.79.965h.004c4.368 0 7.926-3.558 7.93-7.93A7.898 7.898 0 0 0 13.6 2.326zM7.994 14.521a6.573 6.573 0 0 1-3.356-.92l-.24-.144-2.494.654.666-2.433-.156-.251a6.56 6.56 0 0 1-1.007-3.505c0-3.626 2.957-6.584 6.591-6.584a6.56 6.56 0 0 1 4.66 1.931 6.557 6.557 0 0 1 1.928 4.66c-.004 3.639-2.961 6.592-6.592 6.592zm3.615-4.934c-.197-.099-1.17-.578-1.353-.646-.182-.065-.315-.099-.445.099-.133.197-.513.646-.627.775-.114.133-.232.148-.43.05-.197-.1-.836-.308-1.592-.985-.59-.525-.985-1.175-1.103-1.372-.114-.198-.011-.304.088-.403.087-.088.197-.232.296-.346.1-.114.133-.198.198-.33.065-.134.034-.248-.015-.347-.05-.099-.445-1.076-.612-1.47-.16-.389-.323-.335-.445-.34-.114-.005-.247-.007-.38-.007a.729.729 0 0 0-.529.247c-.182.198-.691.677-.691 1.654 0 .977.71 1.916.81 2.049.098.133 1.394 2.132 3.383 2.992.47.205.84.326 1.129.418.475.152.904.129 1.246.08.38-.058 1.171-.48 1.338-.943.164-.464.164-.86.114-.943-.049-.084-.182-.133-.38-.232z"/>
+        </svg>
+    </a>
+</div>
+
+<!-- ===================== SCRIPTS ===================== -->
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+        lucide.createIcons();
+        
+        const pwdInput = document.getElementById('password-input');
+        if (pwdInput) {
+            pwdInput.addEventListener('keypress', function (e) {
+                if (e.key === 'Enter') {
+                    e.preventDefault();
+                    checkPassword();
+                }
+            });
+            setTimeout(() => pwdInput.focus(), 300);
+        }
+    });
+
+    function togglePasswordVisibility() {
+        const input = document.getElementById('password-input');
+        const icon = document.getElementById('eye-icon');
+        if (input && icon) {
+            if (input.type === 'password') {
+                input.type = 'text';
+                icon.setAttribute('data-lucide', 'eye-off');
+            } else {
+                input.type = 'password';
+                icon.setAttribute('data-lucide', 'eye');
+            }
+            lucide.createIcons();
+        }
+    }
+
+    function checkPassword() {
+        const inputElement = document.getElementById('password-input');
+        if (!inputElement) return;
+
+        const input = inputElement.value.trim().toUpperCase();
+        const errorMsg = document.getElementById('error-msg');
+        
+        if (input === 'TERRACO2026' || input === 'ANALIAFRANCO' || input === 'CAROL' || input === 'VISION') {
+            const lockScreen = document.getElementById('lock-screen');
+            lockScreen.style.opacity = '0';
+
+            const video = document.getElementById("vision-video");
+            if (video && video.paused) {
+                video.muted = true;
+                video.play().catch(e => { console.log('Autoplay preservado pelo navegador.'); });
+            }
+
+            /* Log de acesso silencioso via StaticForms */
+            fetch('https://api.staticforms.dev/submit', {
+                method: 'POST',
+                headers: { 
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json'
+                },
+                body: JSON.stringify({
+                    accessKey: "sf_077ej49gjha153gk3m6ceecf", 
+                    apiKey: "sf_077ej49gjha153gk3m6ceecf", 
+                    subject: "🚨 ALERTA: Proposta Vision Acessada (Condomínio Terraço Anália Franco)",
+                    name: "Vision Business Logger",
+                    email: "diretoria@visionsp.com.br",
+                    message: `O acesso à proposta do Condomínio Terraço Anália Franco foi liberado!\n\n🏢 Local: Rua São Constâncio, 72 - Vila Mafra\n🔑 Chave Utilizada: ${input}\n🕒 Horário Local: ${new Date().toLocaleString('pt-BR')}`
+                })
+            }).catch(error => console.log('Log local mantido.'));
+
+            setTimeout(() => { 
+                lockScreen.style.display = 'none'; 
+                const htmlRoot = document.getElementById('html-root');
+                if (htmlRoot) {
+                    htmlRoot.classList.remove('overflow-hidden', 'h-screen');
+                    htmlRoot.classList.add('overflow-x-hidden');
+                }
+                document.body.classList.remove('overflow-hidden', 'h-screen');
+            }, 700);
+        } else {
+            errorMsg.classList.remove('hidden');
+            inputElement.style.borderColor = 'rgba(239,68,68,0.5)';
+            setTimeout(() => {
+                errorMsg.classList.add('hidden');
+                inputElement.style.borderColor = '';
+            }, 3000);
+        }
+    }
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('active');
+            }
+        });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+    window.addEventListener('scroll', () => {
+        const navbar = document.getElementById('navbar');
+        const ctaFloat = document.getElementById('cta-float');
+        if (!navbar || !ctaFloat) return;
+        
+        if (window.scrollY > 50) {
+            navbar.classList.add('shadow-md', 'py-1');
+        } else {
+            navbar.classList.remove('shadow-md', 'py-1');
+        }
+
+        if (window.scrollY > 400) {
+            ctaFloat.classList.remove('opacity-0', 'translate-y-10', 'pointer-events-none');
+            ctaFloat.classList.add('opacity-100', 'translate-y-0');
+        } else {
+            ctaFloat.classList.add('opacity-0', 'translate-y-10', 'pointer-events-none');
+            ctaFloat.classList.remove('opacity-100', 'translate-y-0');
+        }
+    });
+
+    function toggleAccordion(btn) {
+        const item = btn.parentElement;
+        if (!item) return;
+        const isOpen = item.classList.contains('open');
+        document.querySelectorAll('.accordion-item').forEach(i => i.classList.remove('open'));
+        if (!isOpen) {
+            item.classList.add('open');
+        }
+    }
+
+    document.addEventListener("DOMContentLoaded", function() {
+        const heroVideo = document.getElementById("vision-video");
+        const heroOverlay = document.getElementById("unmute-overlay");
+        
+        if (heroVideo && heroOverlay) {
+            heroOverlay.addEventListener("click", function(e) {
+                e.stopPropagation(); 
+                heroVideo.muted = false;
+                heroVideo.loop = false; 
+                heroVideo.currentTime = 0;
+                heroVideo.play().catch(err => { console.log("Mídia bloqueada:", err); });
+                heroOverlay.style.opacity = "0";
+                setTimeout(() => { heroOverlay.style.display = "none"; }, 500); 
+            });
+
+            heroVideo.addEventListener("click", function() {
+                if (heroOverlay.style.display === "none") {
+                    if (heroVideo.paused) { 
+                        heroVideo.play(); 
+                    } else { 
+                        heroVideo.pause(); 
+                    }
+                }
+            });
+        }
+    });
+</script>
+</body>
+</html>
