@@ -1,0 +1,1380 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth overflow-x-hidden" id="html-root">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Proposta de Modernização & Gestão de CFTV | Condomínio 162 Aptos – Vision</title>
+    <meta name="description" content="Análise comparativa de custos, projeto de 64 Câmeras e 6 Faciais para o Condomínio Residencial (162 Aptos) - Vision Tecnologia">
+    <meta name="theme-color" content="#b9880e">
+
+    <!-- Open Graph / Link Preview Tags -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Estudo de Viabilidade & Economia de R$ 140k | Condomínio 162 Aptos – Vision">
+    <meta property="og:description" content="Projeto de substituição total de CFTV 64 Câmeras Intelbras + 6 Acessos Faciais. Economia de mais de 50% frente ao comodato.">
+    <meta property="og:image" content="https://res.cloudinary.com/dptcuckhf/image/upload/v1772152427/C%C3%B3pia_de_LOGO_VISION_2025_cpcpuh.png">
+    <meta property="og:locale" content="pt_BR">
+    
+    <!-- Fonts & Icons -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@700;800&family=Quicksand:wght@400;500;600;700&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"Outfit"', 'sans-serif'],
+                        logo: ['"League Spartan"', 'sans-serif'],
+                        tech: ['"Quicksand"', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            yellow: '#b9880e',
+                            goldLight: '#FFDE59',
+                            goldDark: '#8a6208',
+                            black: '#09090b',
+                            red: '#ef4444',
+                            emerald: '#10b981',
+                        }
+                    },
+                    boxShadow: {
+                        'glass': '0 4px 24px 0 rgba(0,0,0,0.04)',
+                        'premium': '0 16px 50px -10px rgba(0,0,0,0.08)',
+                        'glow': '0 0 20px rgba(185,136,14,0.15)',
+                        'glow-md': '0 0 35px rgba(185,136,14,0.25)',
+                        'glow-green': '0 0 25px rgba(16,185,129,0.15)',
+                    },
+                    animation: {
+                        'slide-up': 'slideUp 0.8s cubic-bezier(0.16,1,0.3,1) forwards',
+                        'float': 'float 6s ease-in-out infinite',
+                        'fade-in': 'fadeIn 0.5s ease forwards',
+                    },
+                    keyframes: {
+                        slideUp: {
+                            '0%': { opacity: '0', transform: 'translateY(30px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' }
+                        },
+                        float: {
+                            '0%,100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-10px)' }
+                        },
+                        fadeIn: {
+                            '0%': { opacity: '0' },
+                            '100%': { opacity: '1' }
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: #f9fafb; }
+        ::-webkit-scrollbar-thumb { background: #d1d5db; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #b9880e; }
+
+        .text-gold-shine {
+            background: linear-gradient(to right, #b9880e 20%, #FFDE59 50%, #b9880e 80%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-size: 200% auto;
+            animation: shine 4s linear infinite;
+        }
+        @keyframes shine { to { background-position: 200% center; } }
+
+        .bg-grid {
+            background-image: linear-gradient(rgba(185,136,14,0.03) 1px, transparent 1px),
+                              linear-gradient(90deg, rgba(185,136,14,0.03) 1px, transparent 1px);
+            background-size: 40px 40px;
+        }
+        .bg-grid-dark {
+            background-image: linear-gradient(rgba(239,68,68,0.03) 1px, transparent 1px),
+                              linear-gradient(90deg, rgba(239,68,68,0.03) 1px, transparent 1px);
+            background-size: 45px 45px;
+        }
+        .bg-dots {
+            background-image: radial-gradient(#b9880e 1.2px, transparent 1.2px);
+            background-size: 22px 22px;
+            opacity: 0.035;
+        }
+
+        .lock-input-simple {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            color: #d1d5db;
+            font-family: 'Outfit', sans-serif;
+            font-size: 0.875rem;
+            font-weight: 300;
+            text-align: center;
+            outline: none;
+            transition: all 0.25s ease;
+            letter-spacing: 0.15em;
+            border-radius: 12px;
+        }
+        .lock-input-simple:focus {
+            border-color: #b9880e;
+            background: rgba(255, 255, 255, 0.06);
+            color: #ffffff;
+            box-shadow: 0 0 12px rgba(185,136,14,0.15);
+        }
+
+        .reveal { opacity: 0; transform: translateY(30px); transition: all 0.8s cubic-bezier(0.16,1,0.3,1); }
+        .reveal.active { opacity: 1; transform: translateY(0); }
+
+        .premium-border-glow {
+            position: relative;
+            border-radius: 2rem;
+            padding: 2px;
+            background-color: #b9880e;
+            overflow: hidden;
+            box-shadow: 0 0 35px rgba(185,136,14,0.15);
+            transition: transform 0.3s cubic-bezier(0.4,0,0.2,1);
+        }
+        .premium-border-glow:hover { transform: scale(1.01); }
+        .premium-border-glow::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: conic-gradient(
+                from 0deg, 
+                transparent 0deg, 
+                transparent 175deg, 
+                rgba(255, 222, 89, 0.6) 178deg, 
+                #ffffff 180deg, 
+                rgba(255, 222, 89, 0.6) 182deg, 
+                transparent 185deg, 
+                transparent 360deg
+            );
+            animation: rotate-border 12s linear infinite;
+            z-index: 0;
+        }
+        @keyframes rotate-border {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        .premium-border-inner {
+            position: relative;
+            z-index: 1;
+            background-color: #ffffff;
+            border-radius: calc(2rem - 2px);
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            padding: 2.25rem;
+            overflow: hidden;
+        }
+
+        .accordion-content { max-height: 0; overflow: hidden; transition: max-height 0.45s cubic-bezier(0.4,0,0.2,1); }
+        .accordion-item.open .accordion-content { max-height: 600px; }
+        .accordion-item.open .acc-arrow { transform: rotate(180deg); }
+        .acc-arrow { transition: transform 0.3s ease; }
+
+        @media print {
+            #lock-screen, #navbar, #cta-float, .no-print, #mobile-menu-drawer, #quick-copy-bar { 
+                display: none !important; 
+            }
+            body { background: #ffffff !important; color: #111111 !important; overflow: visible !important; }
+            .reveal { opacity: 1 !important; transform: none !important; }
+            .accordion-content { max-height: none !important; display: block !important; padding-bottom: 12px !important; }
+            section { page-break-inside: avoid; }
+        }
+    </style>
+</head>
+<body class="bg-[#fafafa] text-gray-800 antialiased selection:bg-brand-yellow selection:text-white h-screen overflow-hidden">
+
+<!-- ===================== LOCK SCREEN ===================== -->
+<div id="lock-screen" class="fixed inset-0 z-[100] bg-[#09090b] flex flex-col items-center justify-center text-center p-4 transition-opacity duration-700 ease-out touch-none" style="overscroll-behavior: none;">
+    <div class="bg-grid absolute inset-0 opacity-10 pointer-events-none"></div>
+    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-brand-yellow/5 rounded-full blur-[100px] pointer-events-none"></div>
+
+    <!-- Logo Vision -->
+    <div class="relative flex flex-col items-center mb-8 z-10">
+        <div class="relative flex items-baseline leading-none">
+            <span class="font-logo font-bold text-[4.5rem] md:text-[5.5rem] text-gold-shine lowercase tracking-[-0.05em] leading-none">vısıon</span>
+            <span class="absolute -right-4 top-3 text-[0.9rem] text-brand-yellow font-bold">®</span>
+        </div>
+        <span class="font-tech text-[0.9rem] md:text-[1rem] font-bold text-zinc-500 lowercase -mt-3 ml-2 text-center w-full" style="letter-spacing:0.5em;">tecnologia</span>
+    </div>
+
+    <div class="w-full max-w-sm space-y-5 z-10">
+        <div class="space-y-1.5">
+            <div class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full border border-brand-yellow/30 bg-brand-yellow/10 mb-2">
+                <i data-lucide="lock" class="w-3 h-3 text-brand-yellow"></i>
+                <span class="text-brand-yellow text-[10px] font-bold uppercase tracking-widest">Acesso Restrito ao Conselho</span>
+            </div>
+            <h2 class="text-white font-bold text-xl md:text-2xl">Condomínio Residencial (162 Aptos)</h2>
+            <p class="text-zinc-400 text-xs md:text-sm font-light">A/C: Jeferson (Conselheiro) & Síndico • CNPJ: 59.452.784/0001-31</p>
+        </div>
+
+        <div class="relative max-w-[280px] mx-auto">
+            <!-- SENHAS PERMITIDAS: JEFERSON / CONDOMINIO / VISION / SINDICO / 162APTOS -->
+            <input type="password" id="password-input" class="lock-input-simple w-full py-2.5 px-3 pr-10" placeholder="Digite a senha" autocomplete="off">
+            <button type="button" onclick="togglePasswordVisibility()" class="absolute right-3 top-1/2 -translate-y-1/2 text-zinc-500 hover:text-brand-yellow transition-colors focus:outline-none" aria-label="Mostrar/ocultar senha">
+                <i data-lucide="eye" id="eye-icon" class="w-4 h-4"></i>
+            </button>
+            <p id="error-msg" class="text-red-400 text-xs mt-2 hidden">
+                <span class="flex items-center justify-center gap-1"><i data-lucide="x-circle" class="w-3.5 h-3.5"></i> Senha incorreta.</span>
+            </p>
+        </div>
+
+        <button onclick="checkPassword()" class="w-full max-w-[280px] mx-auto bg-brand-yellow hover:bg-brand-goldLight text-black font-semibold py-3 rounded-xl transition-all shadow-glow flex items-center justify-center gap-2 group relative overflow-hidden text-xs uppercase tracking-wider">
+            <i data-lucide="shield-check" class="w-4 h-4 relative z-10"></i>
+            <span class="relative z-10">Acessar Estudo de Custos</span>
+            <i data-lucide="arrow-right" class="w-3.5 h-3.5 relative z-10 group-hover:translate-x-1 transition-transform"></i>
+        </button>
+
+        <p class="text-zinc-600 text-[11px] font-light">Análise Financeira & Engenharia de Segurança · Vision Tecnologia © 2026</p>
+    </div>
+</div>
+
+<!-- ===================== NAVBAR ===================== -->
+<nav id="navbar" class="fixed w-full z-50 top-0 bg-white/90 backdrop-blur-xl border-b border-gray-200/50 shadow-sm transition-all duration-300">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-between h-20 items-center">
+            <div class="flex flex-col items-center justify-center cursor-pointer" onclick="window.scrollTo({top:0, behavior:'smooth'})">
+                <div class="relative flex items-baseline leading-none">
+                    <span class="font-logo font-bold text-[2.4rem] text-gold-shine lowercase tracking-[-0.05em] leading-none">vısıon</span>
+                    <span class="absolute -right-2 top-1 text-[0.55rem] text-brand-yellow font-bold">®</span>
+                </div>
+                <span class="font-tech text-[0.55rem] font-bold text-gray-400 lowercase -mt-2 ml-1" style="letter-spacing:0.5em;">tecnologia</span>
+            </div>
+
+            <!-- Desktop Links -->
+            <div class="hidden lg:flex items-center space-x-5 text-[11px] font-semibold text-gray-500 uppercase tracking-wider">
+                <a href="#analise-risco" class="hover:text-brand-yellow transition-colors">Armadilhas do Comodato</a>
+                <a href="#comparativo" class="hover:text-brand-yellow transition-colors">Comparativo de Custos</a>
+                <a href="#simulador" class="hover:text-brand-yellow transition-colors font-bold text-brand-yellow">Simulador ROI</a>
+                <a href="#ecossistema" class="hover:text-brand-yellow transition-colors">Ecossistema</a>
+                <a href="#vision-care" class="hover:text-brand-yellow transition-colors">Planos Care</a>
+                <a href="#assinatura" class="hover:text-brand-yellow transition-colors">Assinatura OPEX</a>
+                <a href="#cronograma" class="hover:text-brand-yellow transition-colors">Cronograma</a>
+            </div>
+
+            <div class="flex items-center gap-2.5">
+                <button onclick="window.print()" class="hidden md:inline-flex items-center gap-1.5 border border-gray-200 hover:border-gray-300 hover:bg-gray-50 text-gray-600 px-3 py-2 rounded-full text-[10px] font-bold uppercase tracking-wider transition-all">
+                    <i data-lucide="printer" class="w-3.5 h-3.5"></i> PDF
+                </button>
+                <button onclick="toggleMobileMenu()" class="lg:hidden p-2 text-gray-700 hover:text-brand-yellow focus:outline-none" aria-label="Menu">
+                    <i data-lucide="menu" id="menu-icon" class="w-6 h-6"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Mobile Navigation Drawer -->
+    <div id="mobile-menu-drawer" class="hidden lg:hidden bg-white border-b border-gray-200 px-6 py-5 space-y-3 text-xs font-semibold uppercase tracking-wider text-gray-700 shadow-xl">
+        <a href="#analise-risco" onclick="toggleMobileMenu()" class="block py-2 border-b border-gray-100 hover:text-brand-yellow">Armadilhas do Contrato</a>
+        <a href="#comparativo" onclick="toggleMobileMenu()" class="block py-2 border-b border-gray-100 hover:text-brand-yellow">Comparativo de Custos</a>
+        <a href="#simulador" onclick="toggleMobileMenu()" class="block py-2 border-b border-gray-100 text-brand-yellow font-bold">Simulador Interativo ROI</a>
+        <a href="#ecossistema" onclick="toggleMobileMenu()" class="block py-2 border-b border-gray-100 hover:text-brand-yellow">Ecossistema Vision</a>
+        <a href="#vision-care" onclick="toggleMobileMenu()" class="block py-2 border-b border-gray-100 hover:text-brand-yellow">Planos Vision Care</a>
+        <a href="#assinatura" onclick="toggleMobileMenu()" class="block py-2 border-b border-gray-100 hover:text-brand-yellow">Assinatura OPEX</a>
+        <a href="#cronograma" onclick="toggleMobileMenu()" class="block py-2 text-gray-700">Cronograma de Obra</a>
+    </div>
+</nav>
+
+<!-- ===================== HERO HEADER ===================== -->
+<header class="pt-32 pb-16 lg:pt-36 relative overflow-hidden bg-white">
+    <div class="absolute inset-0 bg-dots pointer-events-none"></div>
+    <div class="absolute right-0 top-0 -translate-y-1/4 translate-x-1/4 w-[700px] h-[700px] bg-brand-yellow/5 rounded-full blur-[120px] pointer-events-none"></div>
+    
+    <div class="max-w-7xl mx-auto px-4 relative z-10">
+        <div class="flex flex-col lg:flex-row items-center gap-12 lg:gap-16">
+            
+            <!-- Hero Left Column -->
+            <div class="w-full lg:w-1/2 text-center lg:text-left animate-slide-up">
+                <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-brand-yellow/30 bg-brand-yellow/5 text-brand-yellow text-[10px] font-bold uppercase tracking-widest mb-6 mx-auto lg:mx-0">
+                    <i data-lucide="calculator" class="w-3.5 h-3.5 text-brand-yellow"></i>
+                    ESTUDO FINANCEIRO EXCLUSIVO • CONDOMÍNIO 162 APTOS
+                </div>
+                
+                <h1 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-gray-900 leading-[1.1] tracking-tight mb-5">
+                    Economia de até <span class="text-gold-shine">R$ 140.910</span> e Patrimônio Próprio.
+                </h1>
+                
+                <p class="text-sm md:text-base text-gray-600 max-w-xl mx-auto lg:mx-0 font-normal leading-relaxed mb-6">
+                    Apresentação comparativa elaborada para o conselheiro <strong>Jeferson</strong> e corpo diretivo. Demonstramos como substituir a "pegadinha do comodato" por infraestrutura 100% própria Intelbras de última geração para os 27 andares e 4 subsolos.
+                </p>
+
+                <div class="p-4 bg-amber-50 border border-amber-200/70 rounded-2xl text-xs text-amber-900 flex items-start gap-3 text-left max-w-xl mx-auto lg:mx-0">
+                    <i data-lucide="alert-circle" class="w-5 h-5 text-brand-yellow shrink-0 mt-0.5"></i>
+                    <div>
+                        <strong class="font-bold">Alerta do Conselho:</strong> O modelo atual do concorrente prevê o pagamento de R$ 270.000,00 em 48 meses por equipamentos que nem passam a ser do condomínio no primeiro dia, cobrando peças por fora após 12 meses.
+                    </div>
+                </div>
+            </div>
+
+            <!-- Hero Right Column (Institutional Video) -->
+            <div class="w-full lg:w-1/2 reveal animate-slide-up" style="animation-delay: 150ms;">
+                <div class="relative w-full rounded-[2rem] shadow-[0_20px_50px_-10px_rgba(0,0,0,0.25)] border-[3px] border-brand-yellow/80 group hover:shadow-[0_25px_60px_-10px_rgba(0,0,0,0.35)] transition-shadow duration-500 bg-black overflow-hidden">
+                    <div class="relative w-full aspect-video rounded-[1.8rem] overflow-hidden bg-black shadow-inner flex items-center justify-center">
+                        <video id="vision-video" class="w-full h-full object-cover cursor-pointer opacity-90" autoplay muted loop playsinline aria-label="Vídeo institucional Vision">
+                            <source src="https://res.cloudinary.com/dptcuckhf/video/upload/v1771711323/Vict%C3%B3ria_-_Vision_gdqnrk.mp4" type="video/mp4">
+                        </video>
+
+                        <div id="unmute-overlay" class="absolute inset-0 bg-black/50 backdrop-blur-sm flex flex-col items-center justify-center cursor-pointer transition-opacity duration-500 z-10 hover:bg-black/40">
+                            <div class="bg-brand-yellow text-black font-bold px-6 py-3 rounded-full flex items-center gap-2 shadow-glow animate-pulse transform group-hover:scale-105 transition-all text-xs uppercase tracking-wider">
+                                <i data-lucide="volume-2" class="w-4 h-4 animate-bounce"></i>
+                                <span>Apresentação Inst. Vision Tecnologia</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Quick Specs Banner -->
+        <div class="mt-14 grid grid-cols-2 md:grid-cols-4 gap-4 max-w-5xl mx-auto reveal">
+            <div class="bg-white rounded-2xl p-5 shadow-glass border border-gray-100 text-center">
+                <div class="text-2xl md:text-3xl font-extrabold text-gray-900">64 Câmeras</div>
+                <div class="text-[11px] text-gray-500 font-medium mt-1 uppercase tracking-wider">CFTV Full HD Intelbras</div>
+            </div>
+            <div class="bg-white rounded-2xl p-5 shadow-glass border border-gray-100 text-center">
+                <div class="text-2xl md:text-3xl font-extrabold text-gray-900">06 Faciais</div>
+                <div class="text-[11px] text-gray-500 font-medium mt-1 uppercase tracking-wider">Acessos Sociais e Garagem</div>
+            </div>
+            <div class="bg-white rounded-2xl p-5 shadow-glass border border-gray-100 text-center">
+                <div class="text-2xl md:text-3xl font-extrabold text-gray-900">162 Aptos</div>
+                <div class="text-[11px] text-gray-500 font-medium mt-1 uppercase tracking-wider">27 Andares + 4 Subsolos</div>
+            </div>
+            <div class="bg-white rounded-2xl p-5 shadow-glass border border-gray-100 text-center border-emerald-500/20 bg-emerald-50/30">
+                <div class="text-2xl md:text-3xl font-extrabold text-emerald-600">-52.1%</div>
+                <div class="text-[11px] text-emerald-700 font-bold mt-1 uppercase tracking-wider">Economia Direta no PIX</div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- ===================== ANÁLISE DE ARMADILHAS DO COMODATO ===================== -->
+<section id="analise-risco" class="py-20 bg-zinc-950 text-white relative border-y border-red-500/10 overflow-hidden">
+    <div class="bg-grid-dark absolute inset-0 opacity-20 pointer-events-none"></div>
+    
+    <div class="max-w-7xl mx-auto px-4 relative z-10">
+        <div class="text-center mb-14 reveal">
+            <span class="text-brand-red font-bold uppercase tracking-widest text-xs">Mapeamento Financeiro & Pegadinhas</span>
+            <h2 class="text-2xl md:text-4xl font-bold text-white mt-2 leading-tight">As 3 Pegadinhas do Contrato Atual do Concorrente</h2>
+            <p class="text-zinc-400 mt-3 max-w-3xl mx-auto text-sm md:text-base">
+                O modelo de comodato tradicional aparenta um custo mensal suave, mas embute um sobrepreço expressivo e riscos operacionais velados para o condomínio.
+            </p>
+        </div>
+
+        <div class="grid md:grid-cols-3 gap-6 reveal">
+            <!-- Pegadinha 1 -->
+            <div class="bg-zinc-900/80 rounded-3xl p-7 border border-red-500/20 hover:border-red-500/50 transition-all flex flex-col justify-between">
+                <div>
+                    <div class="w-12 h-12 bg-red-950/50 rounded-2xl flex items-center justify-center mb-5 border border-red-500/30">
+                        <i data-lucide="dollar-sign" class="w-6 h-6 text-brand-red"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-white mb-2">1. Entrada Maquiada + Preço Triplicado</h3>
+                    <p class="text-zinc-400 text-xs leading-relaxed mb-4">
+                        O concorrente exige R$ 30.000,00 de implantação + R$ 5.000,00/mês durante 48 meses. Ao final de 4 anos, o condomínio desembolsa <strong>R$ 270.000,00</strong> por um sistema que custa quase um terço no mercado.
+                    </p>
+                </div>
+                <div class="p-3 bg-red-950/30 border border-red-500/20 rounded-xl text-[11px] text-red-300 font-semibold">
+                    <i data-lucide="alert-triangle" class="w-3.5 h-3.5 inline mr-1 text-brand-red"></i> Custo total 109% mais caro que a compra direta.
+                </div>
+            </div>
+
+            <!-- Pegadinha 2 -->
+            <div class="bg-zinc-900/80 rounded-3xl p-7 border border-red-500/20 hover:border-red-500/50 transition-all flex flex-col justify-between">
+                <div>
+                    <div class="w-12 h-12 bg-red-950/50 rounded-2xl flex items-center justify-center mb-5 border border-red-500/30">
+                        <i data-lucide="wrench" class="w-6 h-6 text-brand-red"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-white mb-2">2. Falsa Sensação de Cobertura</h3>
+                    <p class="text-zinc-400 text-xs leading-relaxed mb-4">
+                        A mensalidade de R$ 5.000,00 cobre apenas a mão de obra preventiva. Se um leitor facial ou câmera queimar após 12 meses (fim da garantia do fabricante), a substituição da peça é <strong>faturada do bolso do condomínio</strong>.
+                    </p>
+                </div>
+                <div class="p-3 bg-red-950/30 border border-red-500/20 rounded-xl text-[11px] text-red-300 font-semibold">
+                    <i data-lucide="alert-triangle" class="w-3.5 h-3.5 inline mr-1 text-brand-red"></i> Risco de surpresas orçamentárias mensais.
+                </div>
+            </div>
+
+            <!-- Pegadinha 3 -->
+            <div class="bg-zinc-900/80 rounded-3xl p-7 border border-red-500/20 hover:border-red-500/50 transition-all flex flex-col justify-between">
+                <div>
+                    <div class="w-12 h-12 bg-red-950/50 rounded-2xl flex items-center justify-center mb-5 border border-red-500/30">
+                        <i data-lucide="box" class="w-6 h-6 text-brand-red"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-white mb-2">3. Posse de Equipamentos Defasados</h3>
+                    <p class="text-zinc-400 text-xs leading-relaxed mb-4">
+                        Apenas após pagar R$ 270 mil em 48 meses os equipamentos passam a ser do condomínio. Contudo, após 4 anos de uso intenso, a infraestrutura já estará tecnologicamente obsoleta.
+                    </p>
+                </div>
+                <div class="p-3 bg-red-950/30 border border-red-500/20 rounded-xl text-[11px] text-red-300 font-semibold">
+                    <i data-lucide="alert-triangle" class="w-3.5 h-3.5 inline mr-1 text-brand-red"></i> Patrimônio nulo durante todo o contrato.
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ===================== MATRIZ COMPARATIVA DE CUSTOS ===================== -->
+<section id="comparativo" class="py-24 bg-white relative">
+    <div class="max-w-7xl mx-auto px-4 relative z-10">
+        <div class="text-center mb-16 reveal">
+            <span class="text-brand-yellow font-bold uppercase tracking-widest text-xs">Visão do Conselho e Diretoria</span>
+            <h2 class="text-3xl md:text-5xl font-bold text-gray-900 mt-2">Cruzamento de Dados e Economia Real</h2>
+            <p class="text-gray-500 mt-3 max-w-2xl mx-auto text-base">Comparativo transparente entre a proposta do concorrente e as alternativas Vision para 48 meses.</p>
+        </div>
+
+        <!-- Table Container -->
+        <div class="overflow-x-auto reveal shadow-premium rounded-3xl border border-gray-200/80 bg-white">
+            <table class="w-full text-left border-collapse min-w-[850px]">
+                <thead>
+                    <tr class="bg-gray-900 text-white text-xs uppercase tracking-wider">
+                        <th class="py-5 px-6 font-bold">Indicador de Projeto</th>
+                        <th class="py-5 px-6 font-bold text-red-400">Concorrente Atual (Comodato)</th>
+                        <th class="py-5 px-6 font-bold text-brand-yellow bg-zinc-800">Vision Aquisição (PIX)</th>
+                        <th class="py-5 px-6 font-bold text-amber-400">Vision Assinatura (OPEX 48m)*</th>
+                        <th class="py-5 px-6 font-bold text-emerald-400">Vision Aquisição + Care Business</th>
+                    </tr>
+                </thead>
+                <tbody class="divide-y divide-gray-100 text-xs md:text-sm">
+                    <tr class="hover:bg-gray-50/80 transition-colors">
+                        <td class="py-4 px-6 font-semibold text-gray-900">Investimento Inicial (Setup)</td>
+                        <td class="py-4 px-6 text-gray-700">R$ 30.000,00</td>
+                        <td class="py-4 px-6 font-bold text-brand-goldDark bg-amber-50/40">R$ 129.090,00</td>
+                        <td class="py-4 px-6 font-bold text-emerald-600">R$ 0,00 <span class="text-[10px] text-gray-400 block font-normal">(Entrada Zero)</span></td>
+                        <td class="py-4 px-6 font-bold text-gray-900">R$ 129.090,00</td>
+                    </tr>
+                    <tr class="hover:bg-gray-50/80 transition-colors">
+                        <td class="py-4 px-6 font-semibold text-gray-900">Mensalidade Recorrente</td>
+                        <td class="py-4 px-6 text-red-600 font-bold">R$ 5.000,00 / mês</td>
+                        <td class="py-4 px-6 font-bold text-emerald-600 bg-amber-50/40">R$ 0,00 / mês</td>
+                        <td class="py-4 px-6 font-bold text-amber-600">R$ 4.630,77 / mês <span class="text-[10px] text-gray-400 block font-normal">(48 parcelas fixas)</span></td>
+                        <td class="py-4 px-6 font-bold text-gray-700">R$ 1.800,00 / mês <span class="text-[10px] text-gray-400 block font-normal">(Plano Care Opcional)</span></td>
+                    </tr>
+                    <tr class="hover:bg-gray-50/80 transition-colors">
+                        <td class="py-4 px-6 font-semibold text-gray-900">Custo Total em 48 Meses (4 Anos)</td>
+                        <td class="py-4 px-6 text-red-600 font-extrabold text-base">R$ 270.000,00</td>
+                        <td class="py-4 px-6 font-extrabold text-gray-900 text-base bg-amber-50/40">R$ 129.090,00</td>
+                        <td class="py-4 px-6 font-extrabold text-amber-700 text-base">R$ 222.276,96</td>
+                        <td class="py-4 px-6 font-extrabold text-emerald-700 text-base">R$ 215.490,00</td>
+                    </tr>
+                    <tr class="bg-gray-50/80 font-bold">
+                        <td class="py-5 px-6 text-gray-900">Economia em Relação ao Concorrente</td>
+                        <td class="py-5 px-6 text-gray-400">Base de Comparação</td>
+                        <td class="py-5 px-6 text-emerald-600 bg-emerald-50/60 font-extrabold text-base">
+                            <i data-lucide="trending-down" class="w-4 h-4 inline mr-1"></i> Economia de R$ 140.910,00 (-52,1%)
+                        </td>
+                        <td class="py-5 px-6 text-emerald-600 font-extrabold">
+                            <i data-lucide="trending-down" class="w-4 h-4 inline mr-1"></i> Economia de R$ 47.723,04 (-17,7%)
+                        </td>
+                        <td class="py-5 px-6 text-emerald-600 font-extrabold">
+                            <i data-lucide="trending-down" class="w-4 h-4 inline mr-1"></i> Economia de R$ 54.510,00 (-20,1%)
+                        </td>
+                    </tr>
+                    <tr class="hover:bg-gray-50/80 transition-colors">
+                        <td class="py-4 px-6 font-semibold text-gray-900">Propriedade do Equipamento</td>
+                        <td class="py-4 px-6 text-gray-500">Do condomínio só após 48m</td>
+                        <td class="py-4 px-6 font-bold text-gray-900 bg-amber-50/40">Patrimônio do Condomínio no Dia 1</td>
+                        <td class="py-4 px-6 font-semibold text-gray-700">Locação Operacional (OPEX)</td>
+                        <td class="py-4 px-6 font-bold text-gray-900">Patrimônio do Condomínio no Dia 1</td>
+                    </tr>
+                    <tr class="hover:bg-gray-50/80 transition-colors">
+                        <td class="py-4 px-6 font-semibold text-gray-900">Troca de Peças Danificadas</td>
+                        <td class="py-4 px-6 text-red-600">Cobrada à parte após 12m</td>
+                        <td class="py-4 px-6 text-gray-700 bg-amber-50/40">Garantia do Fabricante (12m)</td>
+                        <td class="py-4 px-6 text-gray-700">Sujeito à aprovação bancária</td>
+                        <td class="py-4 px-6 text-emerald-700 font-semibold">Gerenciada & Acompanhada via Care</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Parcelamento no Cartão Card -->
+        <div class="mt-8 bg-amber-50/60 rounded-2xl p-6 border border-amber-200/80 flex flex-col md:flex-row items-center justify-between gap-4 reveal">
+            <div class="flex items-center gap-4">
+                <div class="w-12 h-12 bg-brand-yellow/20 rounded-xl flex items-center justify-center shrink-0">
+                    <i data-lucide="credit-card" class="w-6 h-6 text-brand-yellow"></i>
+                </div>
+                <div>
+                    <h4 class="font-bold text-gray-900 text-sm md:text-base">Condição de Parcelamento em Cartão Corporativo</h4>
+                    <p class="text-xs text-gray-600">Proposta PIX de R$ 129.090,00 parcelável em até 12x no cartão de crédito do condomínio.</p>
+                </div>
+            </div>
+            <div class="text-right shrink-0">
+                <span class="text-xs text-gray-500 uppercase font-semibold block">12x Fixas no Cartão</span>
+                <span class="text-xl md:text-2xl font-extrabold text-gray-900">R$ 12.907,92 <span class="text-xs text-gray-500 font-normal">/ mês</span></span>
+                <span class="text-[10px] text-gray-400 block">(Total parcelado: R$ 154.895,09)</span>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ===================== SIMULADOR INTERATIVO DE ECONOMIA ===================== -->
+<section id="simulador" class="py-20 bg-zinc-900 text-white relative border-t border-zinc-800">
+    <div class="bg-grid-dark absolute inset-0 opacity-10 pointer-events-none"></div>
+    <div class="max-w-5xl mx-auto px-4 relative z-10">
+        <div class="text-center mb-12 reveal">
+            <span class="text-brand-yellow font-bold uppercase tracking-widest text-xs">Ferramenta Interativa para Reunião de Conselho</span>
+            <h2 class="text-2xl md:text-4xl font-bold text-white mt-2">Simulador de Economia ao Vivo</h2>
+            <p class="text-zinc-400 mt-2 text-xs md:text-sm">
+                Alterne as opções de contratação Vision e compare a economia de caixa estimada para 4 anos frente aos R$ 270.000,00 do comodato atual.
+            </p>
+        </div>
+
+        <div class="bg-zinc-950 p-6 md:p-8 rounded-3xl border border-zinc-800 shadow-2xl grid md:grid-cols-2 gap-8 items-center reveal">
+            <!-- Controls -->
+            <div class="space-y-6">
+                <div>
+                    <label class="block text-xs font-bold text-zinc-300 uppercase tracking-wider mb-2">1. Modalidade de Aquisição / Equipamentos</label>
+                    <div class="grid grid-cols-1 gap-2.5">
+                        <button type="button" onclick="updateSimulator('pix')" id="sim-btn-pix" class="sim-opt-btn p-3 rounded-xl border border-brand-yellow bg-brand-yellow/10 text-white font-bold text-xs flex justify-between items-center transition-all">
+                            <span>Vision CAPEX (PIX à vista)</span>
+                            <span class="text-brand-yellow font-extrabold">R$ 129.090</span>
+                        </button>
+                        <button type="button" onclick="updateSimulator('card')" id="sim-btn-card" class="sim-opt-btn p-3 rounded-xl border border-zinc-800 bg-zinc-900 text-zinc-400 font-bold text-xs flex justify-between items-center hover:border-zinc-700 transition-all">
+                            <span>Vision CAPEX (Cartão 12x)</span>
+                            <span class="text-zinc-300 font-semibold">12x R$ 12.907,92</span>
+                        </button>
+                        <button type="button" onclick="updateSimulator('opex48')" id="sim-btn-opex48" class="sim-opt-btn p-3 rounded-xl border border-zinc-800 bg-zinc-900 text-zinc-400 font-bold text-xs flex justify-between items-center hover:border-zinc-700 transition-all">
+                            <span>Vision OPEX Assinatura (48 Meses)</span>
+                            <span class="text-zinc-300 font-semibold">48x R$ 4.630,77</span>
+                        </button>
+                    </div>
+                </div>
+
+                <div>
+                    <label class="block text-xs font-bold text-zinc-300 uppercase tracking-wider mb-2">2. Plano de Manutenção Vision Care</label>
+                    <div class="grid grid-cols-3 gap-2 text-center">
+                        <button type="button" onclick="updateSimulatorCare('none')" id="care-btn-none" class="care-opt-btn p-2.5 rounded-xl border border-zinc-800 bg-zinc-900 text-zinc-400 font-bold text-[11px] hover:border-zinc-700 transition-all">
+                            Sem Plano
+                        </button>
+                        <button type="button" onclick="updateSimulatorCare('business')" id="care-btn-business" class="care-opt-btn p-2.5 rounded-xl border border-brand-yellow bg-brand-yellow/10 text-brand-yellow font-bold text-[11px] transition-all">
+                            Care Business ⭐
+                        </button>
+                        <button type="button" onclick="updateSimulatorCare('enterprise')" id="care-btn-enterprise" class="care-opt-btn p-2.5 rounded-xl border border-zinc-800 bg-zinc-900 text-zinc-400 font-bold text-[11px] hover:border-zinc-700 transition-all">
+                            Enterprise 24/7
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Result Box -->
+            <div class="bg-zinc-900 p-6 rounded-2xl border border-zinc-800 text-center flex flex-col justify-between h-full space-y-4">
+                <div>
+                    <span class="text-[10px] text-zinc-400 uppercase tracking-widest font-semibold block mb-1">Custo Total Vision em 48 Meses</span>
+                    <span class="text-3xl md:text-4xl font-extrabold text-white block" id="sim-total-display">R$ 215.490,00</span>
+                    <span class="text-[11px] text-zinc-500 block mt-1" id="sim-monthly-breakdown">Equipamentos R$ 129.090 + Care R$ 1.800/mês</span>
+                </div>
+
+                <div class="p-4 bg-emerald-950/40 border border-emerald-500/30 rounded-xl">
+                    <span class="text-[11px] text-emerald-400 font-bold uppercase tracking-wider block">Economia Direta p/ o Condomínio</span>
+                    <span class="text-2xl md:text-3xl font-extrabold text-emerald-400 block mt-0.5" id="sim-savings-display">R$ 54.510,00</span>
+                    <span class="text-[10px] text-emerald-300 font-medium block mt-1" id="sim-savings-percent">Economia de -20.1% em relação aos R$ 270k</span>
+                </div>
+
+                <div class="text-[11px] text-zinc-400 flex items-center justify-center gap-1.5 pt-2">
+                    <i data-lucide="shield-check" class="w-4 h-4 text-brand-yellow"></i>
+                    <span>Patrimônio do Condomínio Garantido desde o Dia 1</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ===================== ECOSSISTEMA VISION ===================== -->
+<section id="ecossistema" class="py-24 bg-gray-50 border-t border-gray-200/60">
+    <div class="max-w-7xl mx-auto px-4 relative z-10">
+        <div class="text-center mb-16 reveal">
+            <span class="text-brand-yellow font-bold uppercase tracking-widest text-xs">A Abordagem Madura de Segurança</span>
+            <h2 class="text-3xl md:text-5xl font-bold text-gray-900 mt-2">O Portfólio de Soluções Vision</h2>
+            <p class="text-gray-500 mt-3 max-w-2xl mx-auto text-base">Não vendemos apenas a instalação: gerenciamos todo o ciclo de vida da infraestrutura do condomínio.</p>
+        </div>
+
+        <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6 reveal">
+            <!-- Pilar 1 -->
+            <div class="bg-white rounded-3xl p-6 border border-gray-200/80 shadow-sm hover:border-brand-yellow/50 transition-all flex flex-col justify-between">
+                <div>
+                    <div class="w-12 h-12 bg-brand-yellow/10 rounded-2xl flex items-center justify-center mb-5">
+                        <i data-lucide="shopping-bag" class="w-6 h-6 text-brand-yellow"></i>
+                    </div>
+                    <span class="text-[10px] font-bold bg-gray-100 text-gray-700 px-2.5 py-1 rounded-full uppercase">CAPEX</span>
+                    <h3 class="text-lg font-bold text-gray-900 mt-3 mb-2">1. Vision Aquisição</h3>
+                    <p class="text-xs text-gray-600 leading-relaxed mb-4">
+                        Compra definitiva dos equipamentos e serviços de implantação. Propriedade imediata do condomínio no Dia 1, sem mensalidades compulsórias.
+                    </p>
+                </div>
+                <div class="pt-3 border-t border-gray-100 text-[11px] font-bold text-brand-yellow">
+                    Máxima Economia Direta (PIX / Cartão)
+                </div>
+            </div>
+
+            <!-- Pilar 2 -->
+            <div class="bg-white rounded-3xl p-6 border border-gray-200/80 shadow-sm hover:border-brand-yellow/50 transition-all flex flex-col justify-between">
+                <div>
+                    <div class="w-12 h-12 bg-brand-yellow/10 rounded-2xl flex items-center justify-center mb-5">
+                        <i data-lucide="repeat" class="w-6 h-6 text-brand-yellow"></i>
+                    </div>
+                    <span class="text-[10px] font-bold bg-amber-100 text-amber-900 px-2.5 py-1 rounded-full uppercase">OPEX</span>
+                    <h3 class="text-lg font-bold text-gray-900 mt-3 mb-2">2. Vision Assinatura</h3>
+                    <p class="text-xs text-gray-600 leading-relaxed mb-4">
+                        Locação operacional viabilizada por parceiros financeiros credenciados. Permite trocar a tecnologia com R$ 0,00 de investimento inicial.
+                    </p>
+                </div>
+                <div class="pt-3 border-t border-gray-100 text-[11px] font-bold text-amber-700">
+                    Preserva o Caixa do Condomínio
+                </div>
+            </div>
+
+            <!-- Pilar 3 -->
+            <div class="bg-white rounded-3xl p-6 border border-gray-200/80 shadow-sm hover:border-brand-yellow/50 transition-all flex flex-col justify-between">
+                <div>
+                    <div class="w-12 h-12 bg-brand-yellow/10 rounded-2xl flex items-center justify-center mb-5">
+                        <i data-lucide="shield-check" class="w-6 h-6 text-brand-yellow"></i>
+                    </div>
+                    <span class="text-[10px] font-bold bg-emerald-100 text-emerald-800 px-2.5 py-1 rounded-full uppercase">SERVICES</span>
+                    <h3 class="text-lg font-bold text-gray-900 mt-3 mb-2">3. Vision Care</h3>
+                    <p class="text-xs text-gray-600 leading-relaxed mb-4">
+                        Planos de gestão de serviços, manutenção preventiva metódica, relatórios periódicos e suporte remoto contínuo (Planos Business e Enterprise).
+                    </p>
+                </div>
+                <div class="pt-3 border-t border-gray-100 text-[11px] font-bold text-emerald-600">
+                    Saúde Operacional Permanente
+                </div>
+            </div>
+
+            <!-- Pilar 4 -->
+            <div class="bg-white rounded-3xl p-6 border border-gray-200/80 shadow-sm hover:border-brand-yellow/50 transition-all flex flex-col justify-between">
+                <div>
+                    <div class="w-12 h-12 bg-brand-yellow/10 rounded-2xl flex items-center justify-center mb-5">
+                        <i data-lucide="trending-up" class="w-6 h-6 text-brand-yellow"></i>
+                    </div>
+                    <span class="text-[10px] font-bold bg-blue-100 text-blue-800 px-2.5 py-1 rounded-full uppercase">UPGRADES</span>
+                    <h3 class="text-lg font-bold text-gray-900 mt-3 mb-2">4. Vision Evolution</h3>
+                    <p class="text-xs text-gray-600 leading-relaxed mb-4">
+                        Acompanhamento tecnológico para modernizações futuras, expansão de pontos e integração de novas inteligências artificiais sem reaproveitamento forçado.
+                    </p>
+                </div>
+                <div class="pt-3 border-t border-gray-100 text-[11px] font-bold text-blue-600">
+                    Acompanhamento de Longo Prazo
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ===================== PLANOS VISION CARE ===================== -->
+<section id="vision-care" class="py-24 bg-white relative border-t border-gray-200/60">
+    <div class="max-w-7xl mx-auto px-4 relative z-10">
+        <div class="text-center mb-16 reveal">
+            <span class="text-brand-yellow font-bold uppercase tracking-widest text-xs">Gestão de Serviços & Suporte Contínuo</span>
+            <h2 class="text-3xl md:text-5xl font-bold text-gray-900 mt-2">Níveis de Serviço Vision Care</h2>
+            <p class="text-gray-500 mt-3 max-w-2xl mx-auto text-base">Planos sob medida de suporte e manutenção preventiva para após a aquisição dos equipamentos.</p>
+        </div>
+
+        <div class="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto reveal">
+
+            <!-- CARE BUSINESS (RECOMENDADO) -->
+            <div class="premium-border-glow">
+                <div class="premium-border-inner">
+                    <div class="flex items-center justify-between mb-4">
+                        <span class="text-[10px] font-bold bg-brand-yellow text-black px-3 py-1 rounded-full uppercase tracking-widest">⭐ RECOMENDADO</span>
+                        <i data-lucide="star" class="w-5 h-5 text-brand-yellow fill-current"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-gray-900 mb-1">Vision Care Business</h3>
+                    <p class="text-xs text-brand-goldDark font-semibold mb-6">Preventiva + Corretiva Comercial</p>
+
+                    <div class="mb-6">
+                        <p class="text-xs text-gray-500 uppercase tracking-wider font-semibold">Valor Estimado Opcional</p>
+                        <div class="flex items-baseline gap-1 mt-1">
+                            <span class="text-4xl font-extrabold text-gray-900">R$ 1.800</span>
+                            <span class="text-gray-500 font-semibold text-sm">/ mês</span>
+                        </div>
+                        <p class="text-[11px] text-emerald-600 font-semibold mt-1">Garante suporte presencial prioritário</p>
+                    </div>
+
+                    <ul class="space-y-3 text-xs text-gray-700 mb-8 border-t border-gray-100 pt-6">
+                        <li class="flex items-start gap-2.5">
+                            <i data-lucide="check" class="w-4 h-4 text-brand-yellow shrink-0 mt-0.5"></i>
+                            <span><strong>Visita Preventiva Mensal Programada e Laudo Técnico</strong></span>
+                        </li>
+                        <li class="flex items-start gap-2.5">
+                            <i data-lucide="check" class="w-4 h-4 text-brand-yellow shrink-0 mt-0.5"></i>
+                            <span><strong>Mão de Obra Corretiva Comercial sem custo extra</strong></span>
+                        </li>
+                        <li class="flex items-start gap-2.5">
+                            <i data-lucide="check" class="w-4 h-4 text-brand-yellow shrink-0 mt-0.5"></i>
+                            <span>Prioridade de atendimento presencial em chamados</span>
+                        </li>
+                        <li class="flex items-start gap-2.5">
+                            <i data-lucide="check" class="w-4 h-4 text-brand-yellow shrink-0 mt-0.5"></i>
+                            <span>Suporte remoto para extração de vídeos da portaria</span>
+                        </li>
+                        <li class="flex items-start gap-2.5">
+                            <i data-lucide="check" class="w-4 h-4 text-brand-yellow shrink-0 mt-0.5"></i>
+                            <span>Contato direto com especialistas Vision</span>
+                        </li>
+                    </ul>
+
+                    <button onclick="openPlanModal('Vision Care Business', 'R$ 1.800/mês', 'Incluso no escopo pós-compra')" class="w-full bg-brand-yellow hover:bg-brand-goldLight text-black font-bold py-4 rounded-2xl flex items-center justify-center gap-2 transition-all shadow-glow text-xs uppercase tracking-wider group relative overflow-hidden mt-auto">
+                        <div class="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-300 rounded-2xl"></div>
+                        <i data-lucide="check-circle" class="w-4 h-4 relative z-10"></i>
+                        <span class="relative z-10">Selecionar Plano Recomendado</span>
+                        <i data-lucide="arrow-right" class="w-4 h-4 relative z-10 group-hover:translate-x-1 transition-transform"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- CARE ENTERPRISE -->
+            <div class="bg-white rounded-3xl p-8 border border-gray-200/80 shadow-glass flex flex-col justify-between hover:border-gray-300 transition-all">
+                <div>
+                    <div class="flex items-center justify-between mb-4">
+                        <span class="text-[10px] font-bold bg-amber-100 text-amber-900 px-3 py-1 rounded-full uppercase">ENTERPRISE</span>
+                        <i data-lucide="shield-alert" class="w-5 h-5 text-amber-600"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-gray-900 mb-1">Vision Care Enterprise</h3>
+                    <p class="text-xs text-gray-500 mb-6">Plantão 24/7 & SLA Reduzido</p>
+
+                    <div class="mb-6">
+                        <p class="text-xs text-gray-500 uppercase tracking-wider font-semibold">Valor Estimado</p>
+                        <div class="flex items-baseline gap-1 mt-1">
+                            <span class="text-3xl font-extrabold text-gray-900">R$ 2.500</span>
+                            <span class="text-gray-500 font-semibold text-sm">/ mês</span>
+                        </div>
+                    </div>
+
+                    <ul class="space-y-3 text-xs text-gray-600 mb-8 border-t border-gray-100 pt-6">
+                        <li class="flex items-start gap-2.5">
+                            <i data-lucide="check" class="w-4 h-4 text-emerald-600 shrink-0 mt-0.5"></i>
+                            <span>Tudo do Plano Business incluso</span>
+                        </li>
+                        <li class="flex items-start gap-2.5">
+                            <i data-lucide="check" class="w-4 h-4 text-emerald-600 shrink-0 mt-0.5"></i>
+                            <span><strong>Plantão Emergencial 24/7 (Finais de Semana e Noites)</strong></span>
+                        </li>
+                        <li class="flex items-start gap-2.5">
+                            <i data-lucide="check" class="w-4 h-4 text-emerald-600 shrink-0 mt-0.5"></i>
+                            <span>SLA Crítico Presencial Reduzido</span>
+                        </li>
+                        <li class="flex items-start gap-2.5">
+                            <i data-lucide="check" class="w-4 h-4 text-emerald-600 shrink-0 mt-0.5"></i>
+                            <span>Visitas extras de emergência sem cobrança de deslocamento</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <button onclick="openPlanModal('Vision Care Enterprise', 'R$ 2.500/mês', 'Incluso no escopo pós-compra')" class="w-full bg-zinc-900 hover:bg-black text-white font-bold py-3.5 rounded-2xl flex items-center justify-center gap-2 transition-all text-xs uppercase tracking-wider">
+                    <span>Selecionar Enterprise</span>
+                    <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                </button>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<!-- ===================== VISION ASSINATURA OPEX ===================== -->
+<section id="assinatura" class="py-24 bg-zinc-950 text-white relative">
+    <div class="bg-grid-dark absolute inset-0 opacity-10 pointer-events-none"></div>
+    <div class="max-w-6xl mx-auto px-4 relative z-10">
+        <div class="text-center mb-16 reveal">
+            <span class="text-brand-yellow font-bold uppercase tracking-widest text-xs">Locação Operacional (OPEX)</span>
+            <h2 class="text-3xl md:text-5xl font-bold text-white mt-2">Vision Assinatura: Investimento R$ 0,00 Inicial*</h2>
+            <p class="text-zinc-400 mt-3 max-w-2xl mx-auto text-sm">
+                A Vision possui parceiros financeiros credenciados que permitem transformar o projeto em uma assinatura mensal previsível.
+            </p>
+        </div>
+
+        <div class="bg-zinc-900/90 rounded-3xl p-8 border border-zinc-800 shadow-2xl reveal">
+            <div class="grid md:grid-cols-2 gap-8 items-center">
+                <div>
+                    <span class="text-xs font-bold text-brand-yellow uppercase tracking-widest">Modalidade Flexível</span>
+                    <h3 class="text-2xl font-bold text-white mt-1 mb-4">Como Funciona a Assinatura Vision?</h3>
+                    <p class="text-xs text-zinc-300 leading-relaxed space-y-3 mb-6">
+                        Em vez de desembolsar o capital de uma só vez, o condomínio passa por uma análise cadastral de crédito no CNPJ 59.452.784/0001-31. Após a aprovação do parceiro financeiro, a obra é executada sem entrada.
+                    </p>
+                    
+                    <div class="space-y-3 text-xs text-zinc-300">
+                        <div class="flex items-center gap-2.5">
+                            <i data-lucide="check-circle-2" class="w-4 h-4 text-emerald-400"></i>
+                            <span>Investimento inicial: <strong>R$ 0,00*</strong></span>
+                        </div>
+                        <div class="flex items-center gap-2.5">
+                            <i data-lucide="check-circle-2" class="w-4 h-4 text-emerald-400"></i>
+                            <span>Mensalidades abatidas como despesa operacional do condomínio</span>
+                        </div>
+                        <div class="flex items-center gap-2.5">
+                            <i data-lucide="check-circle-2" class="w-4 h-4 text-emerald-400"></i>
+                            <span>Prazos disponíveis de 12 a 60 meses</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Simulation Grid -->
+                <div class="bg-zinc-950 p-6 rounded-2xl border border-zinc-800">
+                    <h4 class="font-bold text-white text-sm mb-4 flex items-center justify-between">
+                        <span>Prazos de Simulação (Assinatura)</span>
+                        <span class="text-[10px] text-brand-yellow font-semibold">*Estimativa c/ aprovação</span>
+                    </h4>
+
+                    <div class="space-y-2.5 text-xs">
+                        <div class="p-3 bg-zinc-900 rounded-xl border border-zinc-800 flex justify-between items-center hover:border-brand-yellow/40 transition-colors">
+                            <span class="text-zinc-300 font-semibold">12 Meses</span>
+                            <span class="text-brand-yellow font-extrabold text-sm">12x R$ 12.530,23 <span class="text-[10px] text-zinc-400 font-normal">/ mês</span></span>
+                        </div>
+                        <div class="p-3 bg-zinc-900 rounded-xl border border-zinc-800 flex justify-between items-center hover:border-brand-yellow/40 transition-colors">
+                            <span class="text-zinc-300 font-semibold">24 Meses</span>
+                            <span class="text-brand-yellow font-extrabold text-sm">24x R$ 7.165,41 <span class="text-[10px] text-zinc-400 font-normal">/ mês</span></span>
+                        </div>
+                        <div class="p-3 bg-zinc-900 rounded-xl border border-zinc-800 flex justify-between items-center hover:border-brand-yellow/40 transition-colors">
+                            <span class="text-zinc-300 font-semibold">36 Meses</span>
+                            <span class="text-brand-yellow font-extrabold text-sm">36x R$ 5.419,15 <span class="text-[10px] text-zinc-400 font-normal">/ mês</span></span>
+                        </div>
+                        <div class="p-3 bg-zinc-900 rounded-xl border border-zinc-800 flex justify-between items-center hover:border-brand-yellow/40 transition-colors">
+                            <span class="text-zinc-300 font-semibold">48 Meses</span>
+                            <span class="text-brand-yellow font-extrabold text-sm">48x R$ 4.630,77 <span class="text-[10px] text-zinc-400 font-normal">/ mês</span></span>
+                        </div>
+                        <div class="p-3 bg-zinc-900 rounded-xl border border-zinc-800 flex justify-between items-center hover:border-brand-yellow/40 transition-colors">
+                            <span class="text-zinc-300 font-semibold">60 Meses</span>
+                            <span class="text-brand-yellow font-extrabold text-sm">60x R$ 4.159,22 <span class="text-[10px] text-zinc-400 font-normal">/ mês</span></span>
+                        </div>
+                    </div>
+
+                    <p class="text-[10px] text-zinc-400 mt-4 leading-normal">
+                        *Valores apresentados como estimativa prévia. A aprovação final do crédito, definição do coeficiente e formalização dependem do envio do balancete do Condomínio (CNPJ 59.452.784/0001-31) para análise junto ao agente financeiro parceiro da Vision.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ===================== PROJETO E DIMENSIONAMENTO ===================== -->
+<section id="projeto" class="py-24 bg-white relative">
+    <div class="max-w-7xl mx-auto px-4 relative z-10">
+        <div class="text-center mb-16 reveal">
+            <span class="text-brand-yellow font-bold uppercase tracking-widest text-xs">Precificação de Engenharia</span>
+            <h2 class="text-3xl md:text-5xl font-bold text-gray-900 mt-2">Dimensionamento da Infraestrutura</h2>
+            <p class="text-gray-500 mt-3 max-w-2xl mx-auto text-base">Projeto classificado como Tier 3 / Complexidade Elevada devido às características estruturais da edificação.</p>
+        </div>
+
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 reveal">
+            <!-- Box 1 -->
+            <div class="bg-gray-50 rounded-2xl p-6 border border-gray-200/80">
+                <div class="w-10 h-10 bg-brand-yellow/10 rounded-xl flex items-center justify-center mb-4">
+                    <i data-lucide="camera" class="w-5 h-5 text-brand-yellow"></i>
+                </div>
+                <h3 class="font-bold text-gray-900 text-base mb-2">CFTV Intelbras 64 Pontos</h3>
+                <p class="text-xs text-gray-600 leading-relaxed">
+                    64 câmeras Full HD Intelbras cobrindo o perímetro, portaria, halls dos 27 andares, elevadores e 4 subsolos de garagem, com gravação contínua em HDs WD Purple.
+                </p>
+            </div>
+
+            <!-- Box 2 -->
+            <div class="bg-gray-50 rounded-2xl p-6 border border-gray-200/80">
+                <div class="w-10 h-10 bg-brand-yellow/10 rounded-xl flex items-center justify-center mb-4">
+                    <i data-lucide="scan-face" class="w-5 h-5 text-brand-yellow"></i>
+                </div>
+                <h3 class="font-bold text-gray-900 text-base mb-2">06 Acessos Faciais</h3>
+                <p class="text-xs text-gray-600 leading-relaxed">
+                    6 leitores faciais de alta velocidade para pedestres (entradas social/serviço) e acessos de moradores, integrados ao controle de acesso do condomínio.
+                </p>
+            </div>
+
+            <!-- Box 3 -->
+            <div class="bg-gray-50 rounded-2xl p-6 border border-gray-200/80">
+                <div class="w-10 h-10 bg-brand-yellow/10 rounded-xl flex items-center justify-center mb-4">
+                    <i data-lucide="cpu" class="w-5 h-5 text-brand-yellow"></i>
+                </div>
+                <h3 class="font-bold text-gray-900 text-base mb-2">Central & Monitoramento</h3>
+                <p class="text-xs text-gray-600 leading-relaxed">
+                    NVRs Intelbras, Switches PoE industriais, Nobreaks para autonomia elétrica e PC de monitoramento dedicado com software de gestão para a portaria.
+                </p>
+            </div>
+
+            <!-- Box 4 -->
+            <div class="bg-gray-50 rounded-2xl p-6 border border-gray-200/80">
+                <div class="w-10 h-10 bg-brand-yellow/10 rounded-xl flex items-center justify-center mb-4">
+                    <i data-lucide="network" class="w-5 h-5 text-brand-yellow"></i>
+                </div>
+                <h3 class="font-bold text-gray-900 text-base mb-2">Cabeamento Estruturado</h3>
+                <p class="text-xs text-gray-600 leading-relaxed">
+                    Aproximadamente 4.040 metros de cabo de rede homologado 100% cobre, tubulações de proteção e conectores blindados para imunidade a ruídos.
+                </p>
+            </div>
+
+            <!-- Box 5 -->
+            <div class="bg-gray-50 rounded-2xl p-6 border border-gray-200/80">
+                <div class="w-10 h-10 bg-brand-yellow/10 rounded-xl flex items-center justify-center mb-4">
+                    <i data-lucide="users" class="w-5 h-5 text-brand-yellow"></i>
+                </div>
+                <h3 class="font-bold text-gray-900 text-base mb-2">Mão de Obra Especializada</h3>
+                <p class="text-xs text-gray-600 leading-relaxed">
+                    Equipe de técnicos qualificados com treinamento em altura (NR-35) e normas de segurança elétrica, garantindo instalação sem interrupções nas 162 famílias.
+                </p>
+            </div>
+
+            <!-- Box 6 -->
+            <div class="bg-zinc-900 text-white rounded-2xl p-6 border border-zinc-800">
+                <div class="w-10 h-10 bg-brand-yellow/20 rounded-xl flex items-center justify-center mb-4">
+                    <i data-lucide="shield-check" class="w-5 h-5 text-brand-yellow"></i>
+                </div>
+                <h3 class="font-bold text-white text-base mb-2">Garantia & Continuidade</h3>
+                <p class="text-xs text-zinc-400 leading-relaxed">
+                    Instalação planejada com paralelismo operacional: o sistema antigo só é desativado após o novo parque Intelbras estar 100% gravando e validado.
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ===================== CRONOGRAMA DE IMPLANTAÇÃO ===================== -->
+<section id="cronograma" class="py-20 bg-gray-50 border-t border-gray-200/60">
+    <div class="max-w-7xl mx-auto px-4 relative z-10">
+        <div class="text-center mb-14 reveal">
+            <span class="text-brand-yellow font-bold uppercase tracking-widest text-xs">Garantia de Não Parada</span>
+            <h2 class="text-2xl md:text-4xl font-bold text-gray-900 mt-2">Cronograma de Obra em 4 Fases</h2>
+            <p class="text-gray-500 mt-2 text-xs md:text-sm max-w-2xl mx-auto">
+                Execução por etapas para manter os 27 andares e 4 subsolos 100% protegidos durante todo o processo.
+            </p>
+        </div>
+
+        <div class="grid md:grid-cols-4 gap-4 reveal">
+            <div class="bg-white p-5 rounded-2xl border border-gray-200/80 shadow-sm relative">
+                <span class="text-2xl font-black text-brand-yellow/40 block mb-1">FASE 1</span>
+                <h4 class="font-bold text-gray-900 text-sm mb-2">Semana 1: Audit & Infra</h4>
+                <p class="text-xs text-gray-600 leading-relaxed">Mapeamento dos 64 pontos, passagem da infraestrutura de tubulação e organização inicial da guarita.</p>
+            </div>
+            <div class="bg-white p-5 rounded-2xl border border-gray-200/80 shadow-sm relative">
+                <span class="text-2xl font-black text-brand-yellow/40 block mb-1">FASE 2</span>
+                <h4 class="font-bold text-gray-900 text-sm mb-2">Semana 2: Cabeamento</h4>
+                <p class="text-xs text-gray-600 leading-relaxed">Lançamento de 4.040m de cabos 100% cobre nos 27 andares e subsolos com conectores blindados.</p>
+            </div>
+            <div class="bg-white p-5 rounded-2xl border border-gray-200/80 shadow-sm relative">
+                <span class="text-2xl font-black text-brand-yellow/40 block mb-1">FASE 3</span>
+                <h4 class="font-bold text-gray-900 text-sm mb-2">Semana 3: Dispositivos</h4>
+                <p class="text-xs text-gray-600 leading-relaxed">Fixação das 64 câmeras Intelbras, montagem do Rack Central PoE e instalação dos 6 leitores faciais.</p>
+            </div>
+            <div class="bg-white p-5 rounded-2xl border border-gray-200/80 shadow-sm relative border-emerald-500/40 bg-emerald-50/20">
+                <span class="text-2xl font-black text-emerald-500/40 block mb-1">FASE 4</span>
+                <h4 class="font-bold text-gray-900 text-sm mb-2">Semana 4: Turnover & Treinamento</h4>
+                <p class="text-xs text-gray-600 leading-relaxed">Ajustes finos de campo, homologação de gravações e treinamento operacional completo para a portaria.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ===================== FAQ ===================== -->
+<section class="py-20 bg-[#f8f9fa] border-t border-gray-200/60">
+    <div class="max-w-3xl mx-auto px-4">
+        <div class="text-center mb-12 reveal">
+            <span class="text-brand-yellow font-bold uppercase tracking-widest text-xs">Transparência Técnica</span>
+            <h2 class="text-2xl md:text-4xl font-bold text-gray-900 mt-2">Dúvidas Frequentes do Conselho</h2>
+        </div>
+        
+        <div class="space-y-3 reveal" id="accordion">
+            <div class="accordion-item bg-white rounded-2xl border border-gray-100 shadow-glass overflow-hidden">
+                <button onclick="toggleAccordion(this)" class="w-full flex items-center justify-between p-5 text-left font-semibold text-gray-800 focus:outline-none text-xs md:text-sm">
+                    <span>Por que a compra direta (CAPEX) traz mais vantagem para o condomínio?</span>
+                    <i data-lucide="chevron-down" class="w-4 h-4 text-gray-400 acc-arrow shrink-0"></i>
+                </button>
+                <div class="accordion-content">
+                    <p class="px-5 pb-5 text-gray-500 text-xs leading-relaxed">Porque o condomínio adquire a posse imediata dos equipamentos Intelbras de última geração por R$ 129.090,00, economizando R$ 140.910,00 comparado aos R$ 270.000,00 exigidos pelo concorrente no contrato de 48 meses de comodato.</p>
+                </div>
+            </div>
+
+            <div class="accordion-item bg-white rounded-2xl border border-gray-100 shadow-glass overflow-hidden">
+                <button onclick="toggleAccordion(this)" class="w-full flex items-center justify-between p-5 text-left font-semibold text-gray-800 focus:outline-none text-xs md:text-sm">
+                    <span>A contratação do plano mensal Vision Care é obrigatória após a compra?</span>
+                    <i data-lucide="chevron-down" class="w-4 h-4 text-gray-400 acc-arrow shrink-0"></i>
+                </button>
+                <div class="accordion-content">
+                    <p class="px-5 pb-5 text-gray-500 text-xs leading-relaxed">Não. O condomínio tem total liberdade para escolher se deseja contratar o plano Vision Care para ter manutenção preventiva e suporte prioritário recorrente, ou se prefere acionar a garantia direta do fabricante no primeiro ano.</p>
+                </div>
+            </div>
+
+            <div class="accordion-item bg-white rounded-2xl border border-gray-100 shadow-glass overflow-hidden">
+                <button onclick="toggleAccordion(this)" class="w-full flex items-center justify-between p-5 text-left font-semibold text-gray-800 focus:outline-none text-xs md:text-sm">
+                    <span>Como funciona a aprovação na modalidade Vision Assinatura (OPEX)?</span>
+                    <i data-lucide="chevron-down" class="w-4 h-4 text-gray-400 acc-arrow shrink-0"></i>
+                </button>
+                <div class="accordion-content">
+                    <p class="px-5 pb-5 text-gray-500 text-xs leading-relaxed">Submetemos os documentos e balancetes do CNPJ 59.452.784/0001-31 aos nossos parceiros bancários. Após a emissão do parecer favorável, o contrato é formalizado com R$ 0,00 de entrada e parcelas mensais amortizadas pelo caixa do condomínio.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ===================== FOOTER CENTRALIZADO ===================== -->
+<footer class="bg-[#09090b] py-14 text-center border-t border-zinc-900 group">
+    <div class="max-w-4xl mx-auto px-4">
+        <div class="flex flex-col items-center justify-center leading-none opacity-50 group-hover:opacity-100 transition-opacity duration-500 mb-8">
+            <div class="flex flex-col items-center">
+                <div class="relative flex items-baseline leading-none">
+                    <span class="font-logo font-bold text-[3rem] text-white lowercase tracking-[-0.05em] leading-none">vısıon</span>
+                    <span class="absolute -right-3 top-2 text-[0.65rem] text-brand-yellow font-bold">®</span>
+                </div>
+                <span class="font-tech text-[0.65rem] font-bold text-zinc-500 lowercase -mt-2.5 ml-1 text-center w-full" style="letter-spacing: 0.5em;">tecnologia</span>
+            </div>
+        </div>
+
+        <div class="text-zinc-500 text-xs leading-relaxed space-y-1 mb-6 font-light">
+            <p>Av. Paulista, 1636 - Sala 1504 | Bela Vista, São Paulo SP - CEP 01310-200</p>
+            <p>CNPJ: 62.117.013/0001-00 · Diretoria Comercial Gabriel</p>
+        </div>
+
+        <div class="inline-flex items-center justify-center gap-2 border border-zinc-800 bg-zinc-900/50 px-4 py-2 rounded-full mb-4 shadow-sm">
+            <i data-lucide="lock" class="w-3 h-3 text-brand-yellow"></i>
+            <span class="text-[10px] text-zinc-400 uppercase tracking-widest font-bold">Documento Corporativo Restrito ao Condomínio Residencial</span>
+        </div>
+        
+        <p class="text-[10px] text-zinc-700 uppercase tracking-widest font-bold mt-4">ID-VISION-CORP-162APTOS-2026</p>
+    </div>
+</footer>
+
+<!-- ===================== MODAL DE SELEÇÃO DE PLANO ===================== -->
+<div id="plan-modal" class="fixed inset-0 z-[120] bg-black/70 backdrop-blur-sm hidden items-center justify-center p-4">
+    <div class="bg-white rounded-3xl max-w-md w-full p-6 shadow-2xl border border-gray-100 relative animate-fade-in text-center">
+        <button onclick="closePlanModal()" class="absolute right-4 top-4 text-gray-400 hover:text-gray-700 p-2">
+            <i data-lucide="x" class="w-5 h-5"></i>
+        </button>
+
+        <div class="w-12 h-12 bg-brand-yellow/10 rounded-2xl flex items-center justify-center mx-auto mb-3">
+            <i data-lucide="file-check" class="w-6 h-6 text-brand-yellow"></i>
+        </div>
+
+        <h3 class="text-xl font-bold text-gray-900" id="modal-plan-title">Confirmar Seleção</h3>
+        <p class="text-xs text-gray-500 mt-0.5">Condomínio Residencial (162 Aptos)</p>
+
+        <div class="my-5 p-4 bg-gray-50 rounded-2xl text-left space-y-2 border border-gray-100">
+            <div class="flex justify-between text-xs text-gray-600">
+                <span>Plano / Opção:</span>
+                <strong class="text-gray-900" id="modal-plan-price">R$ 0</strong>
+            </div>
+            <div class="flex justify-between text-xs text-gray-600">
+                <span>Condição:</span>
+                <strong class="text-gray-900" id="modal-plan-setup">Normal</strong>
+            </div>
+            <div class="flex justify-between text-xs text-gray-600 border-t border-gray-200/60 pt-2">
+                <span>Unidade:</span>
+                <strong class="text-gray-900">Condomínio 162 Aptos (CNPJ 59.452...)</strong>
+            </div>
+        </div>
+
+        <p class="text-xs text-gray-500 mb-5 leading-relaxed">
+            Sua solicitação será direcionada ao Gabriel via WhatsApp para envio da documentação técnica completa.
+        </p>
+
+        <a id="modal-whatsapp-link" href="#" target="_blank" class="w-full bg-brand-yellow hover:bg-brand-goldLight text-black font-bold py-3.5 rounded-2xl flex items-center justify-center gap-2 transition-all shadow-glow text-xs uppercase tracking-wider">
+            <i data-lucide="message-square" class="w-4 h-4"></i>
+            <span>Confirmar Opção no WhatsApp</span>
+        </a>
+    </div>
+</div>
+
+<!-- ===================== CTA FLUTUANTE (WHATSAPP VISION) ===================== -->
+<div id="cta-float" class="fixed bottom-6 right-6 z-50 transition-all duration-500 opacity-0 translate-y-10 pointer-events-none no-print flex flex-col gap-3">
+    <button onclick="window.scrollTo({top:0, behavior:'smooth'})" class="flex items-center justify-center w-10 h-10 bg-zinc-900 text-white rounded-full shadow-md hover:bg-brand-yellow hover:text-black transition-all ml-auto" title="Voltar ao topo">
+        <i data-lucide="arrow-up" class="w-4 h-4"></i>
+    </button>
+    <a id="whatsapp-float-btn" href="https://wa.me/5511930816696?text=Olá%20Gabriel,%20sou%20o%20Jeferson%20do%20Condomínio%20162%20Aptos.%20Gostaria%20de%20agendar%20um%20Meet%20para%20revisarmos%20os%20números." target="_blank" class="flex items-center justify-center w-13 h-13 bg-brand-yellow text-black rounded-full shadow-glow-md hover:scale-110 transition-transform p-3.5" aria-label="WhatsApp">
+        <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="currentColor" viewBox="0 0 16 16">
+            <path d="M13.601 2.326A7.854 7.854 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c0 1.399.366 2.76 1.057 3.965L0 16l4.204-1.102a7.933 7.933 0 0 0 3.79.965h.004c4.368 0 7.926-3.558 7.93-7.93A7.898 7.898 0 0 0 13.6 2.326zM7.994 14.521a6.573 6.573 0 0 1-3.356-.92l-.24-.144-2.494.654.666-2.433-.156-.251a6.56 6.56 0 0 1-1.007-3.505c0-3.626 2.957-6.584 6.591-6.584a6.56 6.56 0 0 1 4.66 1.931 6.557 6.557 0 0 1 1.928 4.66c-.004 3.639-2.961 6.592-6.592 6.592zm3.615-4.934c-.197-.099-1.17-.578-1.353-.646-.182-.065-.315-.099-.445.099-.133.197-.513.646-.627.775-.114.133-.232.148-.43.05-.197-.1-.836-.308-1.592-.985-.59-.525-.985-1.175-1.103-1.372-.114-.198-.011-.304.088-.403.087-.088.197-.232.296-.346.1-.114.133-.198.198-.33.065-.134.034-.248-.015-.347-.05-.099-.445-1.076-.612-1.47-.16-.389-.323-.335-.445-.34-.114-.005-.247-.007-.38-.007a.729.729 0 0 0-.529.247c-.182.198-.691.677-.691 1.654 0 .977.71 1.916.81 2.049.098.133 1.394 2.132 3.383 2.992.47.205.84.326 1.129.418.475.152.904.129 1.246.08.38-.058 1.171-.48 1.338-.943.164-.464.164-.86.114-.943-.049-.084-.182-.133-.38-.232z"/>
+        </svg>
+    </a>
+</div>
+
+<!-- ===================== SCRIPTS ===================== -->
+<script>
+    let currentSimMode = 'pix';
+    let currentSimCare = 'business';
+
+    document.addEventListener("DOMContentLoaded", () => {
+        if (typeof lucide !== 'undefined') {
+            lucide.createIcons();
+        }
+        
+        const pwdInput = document.getElementById('password-input');
+        if (pwdInput) {
+            pwdInput.addEventListener('keypress', function (e) {
+                if (e.key === 'Enter') {
+                    e.preventDefault();
+                    checkPassword();
+                }
+            });
+            setTimeout(() => pwdInput.focus(), 300);
+        }
+
+        const heroVideo = document.getElementById("vision-video");
+        const heroOverlay = document.getElementById("unmute-overlay");
+        
+        if (heroVideo && heroOverlay) {
+            heroOverlay.addEventListener("click", function(e) {
+                e.stopPropagation(); 
+                heroVideo.muted = false;
+                heroVideo.loop = false; 
+                heroVideo.currentTime = 0;
+                heroVideo.play().catch(err => { console.log("Mídia bloqueada:", err); });
+                heroOverlay.style.opacity = "0";
+                setTimeout(() => { heroOverlay.style.display = "none"; }, 500); 
+            });
+
+            heroVideo.addEventListener("click", function() {
+                if (heroOverlay.style.display === "none") {
+                    if (heroVideo.paused) { 
+                        heroVideo.play(); 
+                    } else { 
+                        heroVideo.pause(); 
+                    }
+                }
+            });
+        }
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                }
+            });
+        }, { threshold: 0.1 });
+        
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+    });
+
+    // Interactive Simulator Calculator Logic
+    function updateSimulator(mode) {
+        currentSimMode = mode;
+        const btnPix = document.getElementById('sim-btn-pix');
+        const btnCard = document.getElementById('sim-btn-card');
+        const btnOpex = document.getElementById('sim-btn-opex48');
+
+        [btnPix, btnCard, btnOpex].forEach(b => {
+            if(b) {
+                b.className = "sim-opt-btn p-3 rounded-xl border border-zinc-800 bg-zinc-900 text-zinc-400 font-bold text-xs flex justify-between items-center hover:border-zinc-700 transition-all";
+            }
+        });
+
+        if(mode === 'pix' && btnPix) btnPix.className = "sim-opt-btn p-3 rounded-xl border border-brand-yellow bg-brand-yellow/10 text-white font-bold text-xs flex justify-between items-center transition-all";
+        if(mode === 'card' && btnCard) btnCard.className = "sim-opt-btn p-3 rounded-xl border border-brand-yellow bg-brand-yellow/10 text-white font-bold text-xs flex justify-between items-center transition-all";
+        if(mode === 'opex48' && btnOpex) btnOpex.className = "sim-opt-btn p-3 rounded-xl border border-brand-yellow bg-brand-yellow/10 text-white font-bold text-xs flex justify-between items-center transition-all";
+
+        calculateSimulator();
+    }
+
+    function updateSimulatorCare(care) {
+        currentSimCare = care;
+        const btnNone = document.getElementById('care-btn-none');
+        const btnBiz = document.getElementById('care-btn-business');
+        const btnEnt = document.getElementById('care-btn-enterprise');
+
+        [btnNone, btnBiz, btnEnt].forEach(b => {
+            if(b) b.className = "care-opt-btn p-2.5 rounded-xl border border-zinc-800 bg-zinc-900 text-zinc-400 font-bold text-[11px] hover:border-zinc-700 transition-all";
+        });
+
+        if(care === 'none' && btnNone) btnNone.className = "care-opt-btn p-2.5 rounded-xl border border-brand-yellow bg-brand-yellow/10 text-brand-yellow font-bold text-[11px] transition-all";
+        if(care === 'business' && btnBiz) btnBiz.className = "care-opt-btn p-2.5 rounded-xl border border-brand-yellow bg-brand-yellow/10 text-brand-yellow font-bold text-[11px] transition-all";
+        if(care === 'enterprise' && btnEnt) btnEnt.className = "care-opt-btn p-2.5 rounded-xl border border-brand-yellow bg-brand-yellow/10 text-brand-yellow font-bold text-[11px] transition-all";
+
+        calculateSimulator();
+    }
+
+    function calculateSimulator() {
+        let baseEquipCost = 129090; 
+        if(currentSimMode === 'card') baseEquipCost = 154895.09;
+        if(currentSimMode === 'opex48') baseEquipCost = 222276.96; // 48x 4630.77
+
+        let monthlyCareCost = 0;
+        if(currentSimCare === 'business') monthlyCareCost = 1800;
+        if(currentSimCare === 'enterprise') monthlyCareCost = 2500;
+
+        const totalCare48 = monthlyCareCost * 48;
+        const grandTotal = baseEquipCost + totalCare48;
+        const competitorTotal = 270000;
+        const savings = competitorTotal - grandTotal;
+        const savingsPct = ((savings / competitorTotal) * 100).toFixed(1);
+
+        document.getElementById('sim-total-display').innerText = 'R$ ' + grandTotal.toLocaleString('pt-BR', {minimumFractionDigits: 2, maximumFractionDigits: 2});
+        document.getElementById('sim-monthly-breakdown').innerText = `Equipamentos R$ ${baseEquipCost.toLocaleString('pt-BR')} + Care R$ ${monthlyCareCost}/mês (x48)`;
+        
+        const savingsElem = document.getElementById('sim-savings-display');
+        const savingsPctElem = document.getElementById('sim-savings-percent');
+
+        if(savings >= 0) {
+            savingsElem.innerText = 'R$ ' + savings.toLocaleString('pt-BR', {minimumFractionDigits: 2, maximumFractionDigits: 2});
+            savingsPctElem.innerText = `Economia de ${savingsPct}% em relação aos R$ 270.000,00 do concorrente`;
+            savingsElem.className = "text-2xl md:text-3xl font-extrabold text-emerald-400 block mt-0.5";
+        } else {
+            const extra = Math.abs(savings);
+            savingsElem.innerText = '+ R$ ' + extra.toLocaleString('pt-BR', {minimumFractionDigits: 2});
+            savingsPctElem.innerText = `Diferença por optar por suporte Enterprise 24/7 de alta frequência`;
+            savingsElem.className = "text-2xl md:text-3xl font-extrabold text-amber-400 block mt-0.5";
+        }
+    }
+
+    // 1-Click WhatsApp Copy Summary Generator
+    function copySummaryToClipboard() {
+        const textToCopy = `*RESUMO EXECUTIVO - PROPOSTA VISION TECNOLOGIA*
+🏢 *Condomínio 162 Aptos (CNPJ 59.452.784/0001-31)*
+A/C: Jeferson (Conselheiro) & Síndico
+
+📊 *Comparativo Financeiro (48 Meses):*
+• *Concorrente Atual (Comodato):* R$ 270.000,00 (R$ 30k + 48x R$ 5k) - Sem equipamento próprio.
+• *Vision Aquisição (PIX):* R$ 129.090,00 à vista (*Economia de R$ 140.910,00 / -52.1%*).
+• *Vision Aquisição (Cartão):* 12x de R$ 12.907,92.
+• *Vision Assinatura OPEX:* 48x de R$ 4.630,77 (R$ 0,00 de entrada).
+
+🛠️ *Projeto:* 64 Câmeras Full HD Intelbras + 06 Leitores Faciais + 4.040m de cabo 100% cobre.
+⭐ *Equipamentos 100% do Condomínio no Dia 1!*
+
+Acesse a proposta interativa online: https://vision-162aptos.tech`;
+
+        const tempTextArea = document.createElement("textarea");
+        tempTextArea.value = textToCopy;
+        document.body.appendChild(tempTextArea);
+        tempTextArea.select();
+        try {
+            document.execCommand('copy');
+            const btn = document.getElementById('quick-copy-bar');
+            if(btn) {
+                btn.innerHTML = `<i data-lucide="check" class="w-3.5 h-3.5 text-emerald-600"></i> Copiado p/ Transferência!`;
+                if (typeof lucide !== 'undefined') lucide.createIcons();
+                setTimeout(() => {
+                    btn.innerHTML = `<i data-lucide="copy" class="w-3.5 h-3.5 text-brand-yellow"></i> <span class="hidden sm:inline">Copiar Resumo p/ WhatsApp</span><span class="sm:hidden">Copiar Resumo</span>`;
+                    if (typeof lucide !== 'undefined') lucide.createIcons();
+                }, 3000);
+            }
+        } catch (err) {
+            console.error('Falha ao copiar:', err);
+        }
+        document.body.removeChild(tempTextArea);
+    }
+
+    function togglePasswordVisibility() {
+        const input = document.getElementById('password-input');
+        const icon = document.getElementById('eye-icon');
+        if (input && icon) {
+            if (input.type === 'password') {
+                input.type = 'text';
+                icon.setAttribute('data-lucide', 'eye-off');
+            } else {
+                input.type = 'password';
+                icon.setAttribute('data-lucide', 'eye');
+            }
+            if (typeof lucide !== 'undefined') lucide.createIcons();
+        }
+    }
+
+    function toggleMobileMenu() {
+        const menu = document.getElementById('mobile-menu-drawer');
+        if (menu) {
+            menu.classList.toggle('hidden');
+        }
+    }
+
+    function checkPassword() {
+        const inputElement = document.getElementById('password-input');
+        if (!inputElement) return;
+
+        const input = inputElement.value.trim().toUpperCase();
+        const errorMsg = document.getElementById('error-msg');
+        
+        if (input === 'JEFERSON' || input === 'CONDOMINIO' || input === 'VISION' || input === 'SINDICO' || input === '162APTOS') {
+            const lockScreen = document.getElementById('lock-screen');
+            lockScreen.style.opacity = '0';
+
+            const video = document.getElementById("vision-video");
+            if (video && video.paused) {
+                video.muted = true;
+                video.play().catch(e => { console.log('Autoplay preservado.'); });
+            }
+
+            fetch('https://api.staticforms.dev/submit', {
+                method: 'POST',
+                headers: { 
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json'
+                },
+                body: JSON.stringify({
+                    accessKey: "sf_077ej49gjha153gk3m6ceecf", 
+                    apiKey: "sf_077ej49gjha153gk3m6ceecf", 
+                    subject: "🚨 ALERTA: Proposta Vision Acessada (Condomínio 162 Aptos - Jeferson)",
+                    name: "Vision Business Logger",
+                    email: "diretoria@visionsp.com.br",
+                    message: `O acesso à proposta do Condomínio 162 Aptos foi liberado!\n\n🏢 CNPJ: 59.452.784/0001-31\n🔑 Chave Utilizada: ${input}\n🕒 Horário Local: ${new Date().toLocaleString('pt-BR')}`
+                })
+            }).catch(error => console.log('Log mantido localmente.'));
+
+            setTimeout(() => { 
+                lockScreen.style.display = 'none'; 
+                const htmlRoot = document.getElementById('html-root');
+                if (htmlRoot) {
+                    htmlRoot.classList.remove('overflow-hidden', 'h-screen');
+                    htmlRoot.classList.add('overflow-x-hidden');
+                }
+                document.body.classList.remove('overflow-hidden', 'h-screen');
+            }, 700);
+        } else {
+            errorMsg.classList.remove('hidden');
+            inputElement.style.borderColor = 'rgba(239,68,68,0.6)';
+            setTimeout(() => {
+                errorMsg.classList.add('hidden');
+                inputElement.style.borderColor = '';
+            }, 3000);
+        }
+    }
+
+    window.addEventListener('scroll', () => {
+        const navbar = document.getElementById('navbar');
+        const ctaFloat = document.getElementById('cta-float');
+        if (!navbar || !ctaFloat) return;
+        
+        if (window.scrollY > 50) {
+            navbar.classList.add('shadow-md', 'py-1');
+        } else {
+            navbar.classList.remove('shadow-md', 'py-1');
+        }
+
+        if (window.scrollY > 400) {
+            ctaFloat.classList.remove('opacity-0', 'translate-y-10', 'pointer-events-none');
+            ctaFloat.classList.add('opacity-100', 'translate-y-0');
+        } else {
+            ctaFloat.classList.add('opacity-0', 'translate-y-10', 'pointer-events-none');
+            ctaFloat.classList.remove('opacity-100', 'translate-y-0');
+        }
+    });
+
+    function toggleAccordion(btn) {
+        const item = btn.parentElement;
+        if (!item) return;
+        const isOpen = item.classList.contains('open');
+        document.querySelectorAll('.accordion-item').forEach(i => i.classList.remove('open'));
+        if (!isOpen) {
+            item.classList.add('open');
+        }
+    }
+
+    function openPlanModal(title, price, setup) {
+        const modal = document.getElementById('plan-modal');
+        document.getElementById('modal-plan-title').innerText = title;
+        document.getElementById('modal-plan-price').innerText = price;
+        document.getElementById('modal-plan-setup').innerText = setup;
+
+        const message = `Olá Gabriel, sou o Jeferson. Gostaria de entender melhor a opção ${title} (${price}) para o Condomínio Residencial 162 Aptos.`;
+        const waLink = `https://wa.me/5511930816696?text=${encodeURIComponent(message)}`;
+        
+        document.getElementById('modal-whatsapp-link').href = waLink;
+
+        modal.classList.remove('hidden');
+        modal.classList.add('flex');
+    }
+
+    function closePlanModal() {
+        const modal = document.getElementById('plan-modal');
+        modal.classList.add('hidden');
+        modal.classList.remove('flex');
+    }
+</script>
+</body>
+</html>
