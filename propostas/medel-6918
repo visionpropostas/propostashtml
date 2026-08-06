@@ -193,6 +193,17 @@
             overflow: hidden;
         }
 
+        .accordion-content { 
+            max-height: 0; 
+            overflow: hidden; 
+            transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1), padding 0.3s ease; 
+        }
+        .accordion-item.open .accordion-content { 
+            max-height: 500px; 
+        }
+        .accordion-item.open .acc-arrow { transform: rotate(180deg); }
+        .acc-arrow { transition: transform 0.3s; }
+
         @media print {
             #lock-screen, #navbar, #cta-float, .no-print { display: none !important; }
             .reveal { opacity: 1 !important; transform: none !important; }
@@ -273,10 +284,13 @@
 
             <div class="hidden md:flex items-center space-x-7 text-xs font-semibold text-gray-500 uppercase tracking-wider">
                 <a href="#diagnostico" class="hover:text-brand-yellow transition-colors">Vantagens</a>
+                <a href="#ficha-tecnica" class="hover:text-brand-yellow transition-colors">Ficha Técnica</a>
                 <a href="#mapeamento" class="hover:text-brand-yellow transition-colors">Portas Mapeadas</a>
                 <a href="#tecnologia" class="hover:text-brand-yellow transition-colors">Equipamentos</a>
+                <a href="#comparativo" class="hover:text-brand-yellow transition-colors">Economia</a>
+                <a href="#cronograma" class="hover:text-brand-yellow transition-colors">Cronograma</a>
                 <a href="#investimento" class="hover:text-brand-yellow transition-colors">Orçamento</a>
-                <a href="#faq" class="hover:text-brand-yellow transition-colors">Perguntas Frequentes</a>
+                <a href="#faq" class="hover:text-brand-yellow transition-colors">FAQ</a>
             </div>
             <div class="flex items-center gap-4">
                 <button onclick="safePrint()" class="text-gray-400 hover:text-brand-yellow transition-colors flex items-center gap-1.5" title="Salvar em PDF">
@@ -436,210 +450,486 @@
     </div>
 </section>
 
-<!-- ===================== MAPEAMENTO FÍSICO ===================== -->
-<section id="mapeamento" class="py-24 bg-white relative overflow-hidden border-b border-gray-100">
-    <div class="absolute inset-0 bg-dots pointer-events-none"></div>
+<!-- ===================== FICHA TÉCNICA DO PROJETO ===================== -->
+<section id="ficha-tecnica" class="py-20 bg-zinc-950 text-white relative overflow-hidden border-y border-zinc-800">
+    <div class="bg-grid absolute inset-0 opacity-10 pointer-events-none"></div>
     <div class="max-w-7xl mx-auto px-4 relative z-10">
         
-        <div class="text-center mb-16 reveal">
-            <span class="text-brand-yellow font-bold uppercase tracking-widest text-xs">Mapeamento de Acessos</span>
-            <h2 class="text-3xl md:text-5xl font-bold text-gray-900 mt-3 font-sans">Escopo das 4 Portas da Medel</h2>
-            <p class="text-gray-500 mt-4 max-w-2xl mx-auto text-lg leading-relaxed font-sans">
-                Especificação personalizada de travamento e acabamento para a planta do novo escritório:
+        <div class="text-center mb-14 reveal">
+            <span class="text-brand-yellow font-bold uppercase tracking-widest text-xs">Visão Geral B2B</span>
+            <h2 class="text-3xl md:text-5xl font-extrabold text-white mt-2 font-sans">Ficha Técnica do Projeto</h2>
+            <p class="text-zinc-400 mt-3 max-w-2xl mx-auto text-sm md:text-base font-sans">
+                Resumo executivo dos parâmetros técnicos contratados para a unidade Bela Vista da Medel:
             </p>
         </div>
 
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-7xl mx-auto reveal mb-16">
-            <!-- Point 1 -->
-            <div class="bg-[#fafafa] border border-gray-200 hover:border-brand-yellow/50 transition-all rounded-2xl p-6 text-left relative overflow-hidden flex flex-col group">
-                <div class="flex items-center gap-3 mb-4">
-                    <div class="w-10 h-10 bg-brand-yellow/10 rounded-full flex items-center justify-center border border-brand-yellow/20 shrink-0">
-                        <i data-lucide="door-closed" class="w-5 h-5 text-brand-goldDark"></i>
+        <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4 reveal">
+            
+            <div class="bg-zinc-900/80 border border-zinc-800 rounded-2xl p-4 text-center flex flex-col items-center justify-center">
+                <i data-lucide="building-2" class="w-6 h-6 text-brand-yellow mb-2"></i>
+                <span class="text-[10px] text-zinc-500 font-bold uppercase tracking-wider mb-1">Cliente</span>
+                <span class="text-xs font-bold text-white font-sans">Medel / Gerson</span>
+            </div>
+
+            <div class="bg-zinc-900/80 border border-zinc-800 rounded-2xl p-4 text-center flex flex-col items-center justify-center">
+                <i data-lucide="map-pin" class="w-6 h-6 text-brand-yellow mb-2"></i>
+                <span class="text-[10px] text-zinc-500 font-bold uppercase tracking-wider mb-1">Localização</span>
+                <span class="text-xs font-bold text-white font-sans">Rua Treze de Maio</span>
+            </div>
+
+            <div class="bg-zinc-900/80 border border-zinc-800 rounded-2xl p-4 text-center flex flex-col items-center justify-center">
+                <i data-lucide="door-closed" class="w-6 h-6 text-brand-yellow mb-2"></i>
+                <span class="text-[10px] text-zinc-500 font-bold uppercase tracking-wider mb-1">Pontos de Acesso</span>
+                <span class="text-xs font-bold text-white font-sans">04 Portas Mistas</span>
+            </div>
+
+            <div class="bg-zinc-900/80 border border-zinc-800 rounded-2xl p-4 text-center flex flex-col items-center justify-center">
+                <i data-lucide="scan-face" class="w-6 h-6 text-brand-yellow mb-2"></i>
+                <span class="text-[10px] text-zinc-500 font-bold uppercase tracking-wider mb-1">Capacidade</span>
+                <span class="text-xs font-bold text-white font-sans">3.000 Biometrias</span>
+            </div>
+
+            <div class="bg-zinc-900/80 border border-zinc-800 rounded-2xl p-4 text-center flex flex-col items-center justify-center">
+                <i data-lucide="database" class="w-6 h-6 text-brand-yellow mb-2"></i>
+                <span class="text-[10px] text-zinc-500 font-bold uppercase tracking-wider mb-1">Licenciamento</span>
+                <span class="text-xs font-bold text-emerald-400 font-sans">On-Premises ($0)</span>
+            </div>
+
+            <div class="bg-zinc-900/80 border border-zinc-800 rounded-2xl p-4 text-center flex flex-col items-center justify-center">
+                <i data-lucide="clock" class="w-6 h-6 text-brand-yellow mb-2"></i>
+                <span class="text-[10px] text-zinc-500 font-bold uppercase tracking-wider mb-1">Prazo de Execução</span>
+                <span class="text-xs font-bold text-white font-sans">3 Dias Úteis</span>
+            </div>
+
+        </div>
+
+    </div>
+</section>
+
+<!-- ===================== MAPEAMENTO DAS 4 PORTAS ===================== -->
+<section id="mapeamento" class="py-24 bg-white relative">
+    <div class="max-w-7xl mx-auto px-4 relative z-10">
+        
+        <div class="text-center mb-16 reveal">
+            <span class="text-brand-yellow font-bold uppercase tracking-widest text-xs font-sans">Detalhamento de Engenharia</span>
+            <h2 class="text-3xl md:text-5xl font-extrabold text-gray-900 mt-3 font-sans">Mapeamento Técnico das 4 Portas</h2>
+            <p class="text-gray-500 mt-4 max-w-2xl mx-auto text-base md:text-lg leading-relaxed font-sans">
+                Gerson, especificamos o tipo exato de fechadura e suporte para cada tipo de folha de porta da Medel, garantindo acabamento boutique e segurança:
+            </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto reveal">
+            
+            <!-- Porta 1: Vidro Entrada -->
+            <div class="bg-[#fafafa] border border-gray-200 rounded-3xl p-8 hover:border-brand-yellow/40 transition-all shadow-sm flex flex-col justify-between">
+                <div>
+                    <div class="flex items-center justify-between mb-4">
+                        <span class="text-[10px] font-extrabold bg-brand-yellow/10 text-brand-goldDark px-3 py-1 rounded-full uppercase tracking-wider font-sans">PORTA 01 — ENTRADA SOCIAL</span>
+                        <i data-lucide="shield-check" class="w-5 h-5 text-brand-yellow"></i>
                     </div>
-                    <div>
-                        <h4 class="font-bold text-gray-950 text-base font-sans">Porta 01: Vidro Social</h4>
-                        <p class="text-[9px] text-brand-yellow uppercase tracking-wider font-bold">Entrada Principal</p>
-                    </div>
+                    <h3 class="font-extrabold text-gray-900 text-xl mb-2 font-sans">Porta de Vidro Blindex</h3>
+                    <p class="text-xs text-gray-500 mb-6 font-sans">Acesso principal de colaboradores e clientes à recepção.</p>
+
+                    <ul class="space-y-3 font-sans text-xs text-gray-700 mb-6">
+                        <li class="flex items-start gap-2.5">
+                            <i data-lucide="check-circle" class="w-4 h-4 text-emerald-600 shrink-0 mt-0.5"></i>
+                            <span><strong>Fechadura Eletroímã FE 20150 (150kgf)</strong> + Suporte U em Alumínio SV 20150 (Abraça o vidro sem necessitar de furos)</span>
+                        </li>
+                        <li class="flex items-start gap-2.5">
+                            <i data-lucide="check-circle" class="w-4 h-4 text-emerald-600 shrink-0 mt-0.5"></i>
+                            <span><strong>Controlador Facial Intelbras SS 1532 MF W</strong> (Leitura ultrarrápida + Wi-Fi)</span>
+                        </li>
+                        <li class="flex items-start gap-2.5">
+                            <i data-lucide="check-circle" class="w-4 h-4 text-emerald-600 shrink-0 mt-0.5"></i>
+                            <span><strong>Botoeira BT 3000 IN</strong> em aço inox para acionamento interno</span>
+                        </li>
+                    </ul>
                 </div>
-                <div class="space-y-2 flex-1 text-sm text-gray-700 font-sans">
-                    <div class="flex items-start gap-2">
-                        <i data-lucide="check-circle" class="w-4 h-4 text-emerald-600 shrink-0 mt-0.5"></i>
-                        <span>Fechadura Eletroímã FE 20150 (150kgf)</span>
-                    </div>
-                    <div class="flex items-start gap-2">
-                        <i data-lucide="check-circle" class="w-4 h-4 text-emerald-600 shrink-0 mt-0.5"></i>
-                        <span>Suporte U para Blindex sem necessidade de furos</span>
-                    </div>
+                <div class="pt-4 border-t border-gray-200 text-[11px] font-bold text-gray-500 flex items-center gap-1.5 font-sans">
+                    <i data-lucide="sparkles" class="w-3.5 h-3.5 text-brand-yellow"></i> Fixação limpa sem alterar o vidro existente
                 </div>
             </div>
 
-            <!-- Point 2 -->
-            <div class="bg-[#fafafa] border border-gray-200 hover:border-brand-yellow/50 transition-all rounded-2xl p-6 text-left relative overflow-hidden flex flex-col group">
-                <div class="flex items-center gap-3 mb-4">
-                    <div class="w-10 h-10 bg-brand-yellow/10 rounded-full flex items-center justify-center border border-brand-yellow/20 shrink-0">
-                        <i data-lucide="door-open" class="w-5 h-5 text-brand-goldDark"></i>
+            <!-- Porta 2: Madeira Correr -->
+            <div class="bg-[#fafafa] border border-gray-200 rounded-3xl p-8 hover:border-brand-yellow/40 transition-all shadow-sm flex flex-col justify-between">
+                <div>
+                    <div class="flex items-center justify-between mb-4">
+                        <span class="text-[10px] font-extrabold bg-brand-yellow/10 text-brand-goldDark px-3 py-1 rounded-full uppercase tracking-wider font-sans">PORTA 02 — PASSAGEM INTERNA</span>
+                        <i data-lucide="door-closed" class="w-5 h-5 text-brand-yellow"></i>
                     </div>
-                    <div>
-                        <h4 class="font-bold text-gray-950 text-base font-sans">Porta 02: Madeira Correr</h4>
-                        <p class="text-[9px] text-brand-yellow uppercase tracking-wider font-bold">Circulação Interna</p>
-                    </div>
+                    <h3 class="font-extrabold text-gray-900 text-xl mb-2 font-sans">Porta de Madeira de Correr</h3>
+                    <p class="text-xs text-gray-500 mb-6 font-sans">Divisão entre recepção e área operacional do escritório.</p>
+
+                    <ul class="space-y-3 font-sans text-xs text-gray-700 mb-6">
+                        <li class="flex items-start gap-2.5">
+                            <i data-lucide="check-circle" class="w-4 h-4 text-emerald-600 shrink-0 mt-0.5"></i>
+                            <span><strong>Fechadura Eletroímã FE 20150 (150kgf)</strong> com cantoneira especial para batente de madeira de correr</span>
+                        </li>
+                        <li class="flex items-start gap-2.5">
+                            <i data-lucide="check-circle" class="w-4 h-4 text-emerald-600 shrink-0 mt-0.5"></i>
+                            <span><strong>Controlador Facial Intelbras SS 1532 MF W</strong> montado no alinhamento da parede</span>
+                        </li>
+                        <li class="flex items-start gap-2.5">
+                            <i data-lucide="check-circle" class="w-4 h-4 text-emerald-600 shrink-0 mt-0.5"></i>
+                            <span><strong>Botoeira BT 3000 IN</strong> inox para liberação interna</span>
+                        </li>
+                    </ul>
                 </div>
-                <div class="space-y-2 flex-1 text-sm text-gray-700 font-sans">
-                    <div class="flex items-start gap-2">
-                        <i data-lucide="check-circle" class="w-4 h-4 text-emerald-600 shrink-0 mt-0.5"></i>
-                        <span>Fechadura Eletroímã FE 20150 embutida/chumbada</span>
-                    </div>
-                    <div class="flex items-start gap-2">
-                        <i data-lucide="check-circle" class="w-4 h-4 text-emerald-600 shrink-0 mt-0.5"></i>
-                        <span>Acionamento preciso para trilho de correr</span>
-                    </div>
+                <div class="pt-4 border-t border-gray-200 text-[11px] font-bold text-gray-500 flex items-center gap-1.5 font-sans">
+                    <i data-lucide="sparkles" class="w-3.5 h-3.5 text-brand-yellow"></i> Alinhamento do ponto magnético em trilho superior
                 </div>
             </div>
 
-            <!-- Point 3 -->
-            <div class="bg-[#fafafa] border border-gray-200 hover:border-brand-yellow/50 transition-all rounded-2xl p-6 text-left relative overflow-hidden flex flex-col group">
-                <div class="flex items-center gap-3 mb-4">
-                    <div class="w-10 h-10 bg-brand-yellow/10 rounded-full flex items-center justify-center border border-brand-yellow/20 shrink-0">
-                        <i data-lucide="shield" class="w-5 h-5 text-brand-goldDark"></i>
+            <!-- Porta 3: Madeira Abrir (Diretoria) -->
+            <div class="bg-[#fafafa] border border-gray-200 rounded-3xl p-8 hover:border-brand-yellow/40 transition-all shadow-sm flex flex-col justify-between">
+                <div>
+                    <div class="flex items-center justify-between mb-4">
+                        <span class="text-[10px] font-extrabold bg-brand-yellow/10 text-brand-goldDark px-3 py-1 rounded-full uppercase tracking-wider font-sans">PORTA 03 — SALA EXECUTIVA / DIRETORIA</span>
+                        <i data-lucide="lock" class="w-5 h-5 text-brand-yellow"></i>
                     </div>
-                    <div>
-                        <h4 class="font-bold text-gray-950 text-base font-sans">Portas 03 e 04: Madeira Abrir</h4>
-                        <p class="text-[9px] text-brand-yellow uppercase tracking-wider font-bold">Salas de Reunião & Diretoria</p>
-                    </div>
+                    <h3 class="font-extrabold text-gray-900 text-xl mb-2 font-sans">Porta de Madeira de Abrir (Batente)</h3>
+                    <p class="text-xs text-gray-500 mb-6 font-sans">Garante máxima privacidade e integração técnica.</p>
+
+                    <ul class="space-y-3 font-sans text-xs text-gray-700 mb-6">
+                        <li class="flex items-start gap-2.5">
+                            <i data-lucide="check-circle" class="w-4 h-4 text-emerald-600 shrink-0 mt-0.5"></i>
+                            <span><strong>Fechadura Eletroímã FE 20150 (150kgf) / Integração Com Trava Existente</strong> (Utilização de Eletroímã e aproveitamento da estrutura pré-existente no local)</span>
+                        </li>
+                        <li class="flex items-start gap-2.5">
+                            <i data-lucide="check-circle" class="w-4 h-4 text-emerald-600 shrink-0 mt-0.5"></i>
+                            <span><strong>Controlador Facial Intelbras SS 1532 MF W</strong></span>
+                        </li>
+                        <li class="flex items-start gap-2.5">
+                            <i data-lucide="check-circle" class="w-4 h-4 text-emerald-600 shrink-0 mt-0.5"></i>
+                            <span><strong>Botoeira BT 3000 IN</strong> inox e sensor magnético interno</span>
+                        </li>
+                    </ul>
                 </div>
-                <div class="space-y-2 flex-1 text-sm text-gray-700 font-sans">
-                    <div class="flex items-start gap-2">
-                        <i data-lucide="check-circle" class="w-4 h-4 text-emerald-600 shrink-0 mt-0.5"></i>
-                        <span>Fechaduras Solenóide de Embutir FE 2010 (100% Ocultas)</span>
-                    </div>
-                    <div class="flex items-start gap-2">
-                        <i data-lucide="check-circle" class="w-4 h-4 text-emerald-600 shrink-0 mt-0.5"></i>
-                        <span>Acabamento boutique sem caixotes aparentes</span>
-                    </div>
+                <div class="pt-4 border-t border-gray-200 text-[11px] font-bold text-gray-500 flex items-center gap-1.5 font-sans">
+                    <i data-lucide="check-circle-2" class="w-3.5 h-3.5 text-brand-yellow"></i> Integração limpa sem necessidade de nova solenóide
                 </div>
             </div>
 
-            <!-- Point 4 -->
-            <div class="bg-[#fafafa] border border-gray-200 hover:border-brand-yellow/50 transition-all rounded-2xl p-6 text-left relative overflow-hidden flex flex-col group">
-                <div class="flex items-center gap-3 mb-4">
-                    <div class="w-10 h-10 bg-brand-yellow/10 rounded-full flex items-center justify-center border border-brand-yellow/20 shrink-0">
-                        <i data-lucide="cpu" class="w-5 h-5 text-brand-goldDark"></i>
+            <!-- Porta 4: Madeira Abrir (Reunião/Arquivo) -->
+            <div class="bg-[#fafafa] border border-gray-200 rounded-3xl p-8 hover:border-brand-yellow/40 transition-all shadow-sm flex flex-col justify-between">
+                <div>
+                    <div class="flex items-center justify-between mb-4">
+                        <span class="text-[10px] font-extrabold bg-brand-yellow/10 text-brand-goldDark px-3 py-1 rounded-full uppercase tracking-wider font-sans">PORTA 04 — SALA REUNIÃO / ARQUIVO</span>
+                        <i data-lucide="lock" class="w-5 h-5 text-brand-yellow"></i>
                     </div>
-                    <div>
-                        <h4 class="font-bold text-gray-950 text-base font-sans">Central de Alimentação</h4>
-                        <p class="text-[9px] text-brand-yellow uppercase tracking-wider font-bold">Nobreak & Segurança</p>
-                    </div>
+                    <h3 class="font-extrabold text-gray-900 text-xl mb-2 font-sans">Porta de Madeira de Abrir (Batente)</h3>
+                    <p class="text-xs text-gray-500 mb-6 font-sans">Proteção de documentos, equipamentos e contratos.</p>
+
+                    <ul class="space-y-3 font-sans text-xs text-gray-700 mb-6">
+                        <li class="flex items-start gap-2.5">
+                            <i data-lucide="check-circle" class="w-4 h-4 text-emerald-600 shrink-0 mt-0.5"></i>
+                            <span><strong>Fechadura Eletroímã FE 20150 (150kgf)</strong> (Fail-Safe: destrava automaticamente em emergências graves)</span>
+                        </li>
+                        <li class="flex items-start gap-2.5">
+                            <i data-lucide="check-circle" class="w-4 h-4 text-emerald-600 shrink-0 mt-0.5"></i>
+                            <span><strong>Controlador Facial Intelbras SS 1532 MF W</strong></span>
+                        </li>
+                        <li class="flex items-start gap-2.5">
+                            <i data-lucide="check-circle" class="w-4 h-4 text-emerald-600 shrink-0 mt-0.5"></i>
+                            <span><strong>Botoeira BT 3000 IN</strong> inox</span>
+                        </li>
+                    </ul>
                 </div>
-                <div class="space-y-2 flex-1 text-sm text-gray-700 font-sans">
-                    <div class="flex items-start gap-2">
-                        <i data-lucide="check-circle" class="w-4 h-4 text-emerald-600 shrink-0 mt-0.5"></i>
-                        <span>Fontes FA 1220S com bateria de gel embutida</span>
-                    </div>
-                    <div class="flex items-start gap-2">
-                        <i data-lucide="check-circle" class="w-4 h-4 text-emerald-600 shrink-0 mt-0.5"></i>
-                        <span>Botoeiras de saída BT 3000 em inox escovado</span>
-                    </div>
+                <div class="pt-4 border-t border-gray-200 text-[11px] font-bold text-gray-500 flex items-center gap-1.5 font-sans">
+                    <i data-lucide="check-circle-2" class="w-3.5 h-3.5 text-brand-yellow"></i> Instalação magnética ágil e sem ruídos
                 </div>
             </div>
+
         </div>
 
     </div>
 </section>
 
 <!-- ===================== VITRINE TECNOLÓGICA ===================== -->
-<section id="tecnologia" class="py-28 bg-[#f8f9fa] border-b border-gray-200/60 relative overflow-hidden">
-    <div class="absolute inset-0 bg-dots pointer-events-none"></div>
+<section id="tecnologia" class="py-24 bg-[#f8f9fa] border-t border-gray-200/60 relative">
     <div class="max-w-7xl mx-auto px-4 relative z-10">
         
-        <div class="text-center mb-20 reveal">
-            <span class="text-brand-yellow font-bold uppercase tracking-widest text-xs">Hardware Homologado</span>
-            <h2 class="text-3xl md:text-5xl font-bold text-gray-900 mt-3 font-sans">Equipamentos Intelbras Selecionados</h2>
-            <p class="text-gray-500 mt-4 max-w-2xl mx-auto text-lg leading-relaxed font-sans">
-                Produtos de alta durabilidade e estética refinada para o novo escritório da Medel:
+        <div class="text-center mb-16 reveal">
+            <span class="text-brand-yellow font-bold uppercase tracking-widest text-xs font-sans">Equipamentos Homologados</span>
+            <h2 class="text-3xl md:text-5xl font-extrabold text-gray-900 mt-3 font-sans">Tecnologia Intelbras de Alta Performance</h2>
+            <p class="text-gray-500 mt-4 max-w-2xl mx-auto text-base md:text-lg leading-relaxed font-sans">
+                Hardware original Intelbras com garantia direta e homologação técnica para projetos corporativos:
             </p>
         </div>
 
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 reveal mb-16">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 reveal">
             
-            <!-- Equipment 1 -->
-            <div class="bg-white border border-gray-200/80 rounded-3xl p-6 text-left shadow-sm flex flex-col group hover:border-brand-yellow/30 transition-all duration-300">
-                <div class="w-full aspect-video bg-zinc-950 rounded-2xl overflow-hidden flex items-center justify-center mb-6 relative border border-zinc-800 shadow-inner p-2">
-                    <img src="https://res.cloudinary.com/dptcuckhf/image/upload/v1781279570/ss1530-2-s4s5dx0x0g_nhnlpk.webp" alt="Intelbras SS 1530 MF W" class="w-28 h-28 object-contain filter drop-shadow-md">
-                    <span class="absolute bottom-2 right-3 text-[9px] text-gray-400 font-medium">* Leitor Facial Wi-Fi</span>
+            <!-- Equipment 1: Facial SS 1532 MF W -->
+            <div class="bg-white border border-gray-200/80 rounded-3xl p-6 text-left shadow-sm flex flex-col group hover:border-brand-yellow/30 transition-all duration-300 justify-between">
+                <div>
+                    <div class="w-full aspect-video bg-[#fafafa] rounded-2xl overflow-hidden flex items-center justify-center mb-6 relative border border-gray-150 shadow-inner p-2">
+                        <img src="https://res.cloudinary.com/dptcuckhf/image/upload/v1782232223/08_Persp_Dir.001_gobh42.webp" alt="Intelbras SS 1530 MF" class="w-28 h-28 object-contain filter drop-shadow-md">
+                        <span class="absolute bottom-2 right-3 text-[9px] text-gray-400 font-medium">* Wi-Fi & 3.000 Faces</span>
+                    </div>
+                    <h4 class="font-bold text-gray-950 text-base mb-2 font-sans">Leitor Facial Intelbras SS 1532 MF W</h4>
+                    <p class="text-xs text-gray-500 leading-relaxed font-sans">
+                        Reconhecimento facial instantâneo em menos de 0,2s com algoritmo 3D anti-fake (evita fotos no celular), Wi-Fi integrado e capacidade para 3.000 biometrias.
+                    </p>
                 </div>
-                <h4 class="font-bold text-gray-950 text-base mb-2 font-sans">Leitor Facial SS 1530 MF W</h4>
-                <p class="text-xs text-gray-500 leading-relaxed font-sans">
-                    Leitura facial 3D ultrarrápida (< 0,2s), capacidade para 3.000 faces, comunicação Wi-Fi / IP, proteção anti-fake e leitor M1 13.56MHz integrado.
-                </p>
             </div>
 
-            <!-- Equipment 2 -->
-            <div class="bg-white border border-gray-200/80 rounded-3xl p-6 text-left shadow-sm flex flex-col group hover:border-brand-yellow/30 transition-all duration-300">
-                <div class="w-full aspect-video bg-[#fafafa] rounded-2xl overflow-hidden flex items-center justify-center mb-6 relative border border-gray-150 shadow-inner p-2">
-                    <img src="https://res.cloudinary.com/dptcuckhf/image/upload/v1771011341/fe_20150_persp_esquerda_v2_mwjtp0.png" alt="Fechadura Eletroímã FE 20150" class="w-32 h-32 object-contain filter drop-shadow-md">
-                    <span class="absolute bottom-2 right-3 text-[9px] text-gray-400 font-medium">* Imagem do Produto</span>
+            <!-- Equipment 2: Eletroímã FE 20150 -->
+            <div class="bg-white border border-gray-200/80 rounded-3xl p-6 text-left shadow-sm flex flex-col group hover:border-brand-yellow/30 transition-all duration-300 justify-between">
+                <div>
+                    <div class="w-full aspect-video bg-[#fafafa] rounded-2xl overflow-hidden flex items-center justify-center mb-6 relative border border-gray-150 shadow-inner p-2">
+                        <img src="https://res.cloudinary.com/dptcuckhf/image/upload/v1771011341/fe_20150_persp_esquerda_v2_mwjtp0.png" alt="Fechadura Eletroímã FE 20150" class="w-28 h-28 object-contain filter drop-shadow-md">
+                        <span class="absolute bottom-2 right-3 text-[9px] text-gray-400 font-medium">* 150 kgf Silenciosa</span>
+                    </div>
+                    <h4 class="font-bold text-gray-950 text-base mb-2 font-sans">Eletroímã Intelbras FE 20150</h4>
+                    <p class="text-xs text-gray-500 leading-relaxed font-sans">
+                        Trava magnética de 150 kgf para porta de vidro e porta de correr. Operação totalmente silenciosa sem desgastes de engrenagens mecânicas.
+                    </p>
                 </div>
-                <h4 class="font-bold text-gray-950 text-base mb-2 font-sans">Eletroímã FE 20150 (150kgf)</h4>
-                <p class="text-xs text-gray-500 leading-relaxed font-sans">
-                    Trava magnética de alta tração e silêncio operacional, ideal para a porta de vidro com suporte U e a porta de correr.
-                </p>
             </div>
 
-            <!-- Equipment 3 -->
-            <div class="bg-white border border-gray-200/80 rounded-3xl p-6 text-left shadow-sm flex flex-col group hover:border-brand-yellow/30 transition-all duration-300">
-                <div class="w-full aspect-video bg-[#fafafa] rounded-2xl overflow-hidden flex items-center justify-center mb-6 relative border border-gray-150 shadow-inner p-2">
-                    <img src="https://res.cloudinary.com/dptcuckhf/image/upload/v1771601853/FlyerDigital_FA_1220_S_bateria_03-removebg-preview_bunqno.png" alt="Fonte FA 1220S com bateria" class="w-28 h-28 object-contain filter drop-shadow-md">
-                    <span class="absolute bottom-2 right-3 text-[9px] text-gray-400 font-medium">* Sistema Nobreak</span>
+            <!-- Equipment 3: Nobreak FA 1220S -->
+            <div class="bg-white border border-gray-200/80 rounded-3xl p-6 text-left shadow-sm flex flex-col group hover:border-brand-yellow/30 transition-all duration-300 justify-between">
+                <div>
+                    <div class="w-full aspect-video bg-[#fafafa] rounded-2xl overflow-hidden flex items-center justify-center mb-6 relative border border-gray-150 shadow-inner p-2">
+                        <img src="https://res.cloudinary.com/dptcuckhf/image/upload/v1771601853/FlyerDigital_FA_1220_S_bateria_03-removebg-preview_bunqno.png" alt="Fonte Carregadora FA 1220S" class="w-28 h-28 object-contain filter drop-shadow-md">
+                        <span class="absolute bottom-2 right-3 text-[9px] text-gray-400 font-medium">* Nobreak Dedicado</span>
+                    </div>
+                    <h4 class="font-bold text-gray-950 text-base mb-2 font-sans">Fonte Nobreak FA 1220S G2</h4>
+                    <p class="text-xs text-gray-500 leading-relaxed font-sans">
+                        Fonte carregadora com gabinete metálico e bateria de gel VRLA 12V 7Ah. Garante autonomia ininterrupta em caso de falta de energia no prédio.
+                    </p>
                 </div>
-                <h4 class="font-bold text-gray-950 text-base mb-2 font-sans">Fonte Nobreak FA 1220S + Bateria</h4>
-                <p class="text-xs text-gray-500 leading-relaxed font-sans">
-                    Fonte temporizada com gabinete e bateria VRLA selada de 12V 7Ah para manter a segurança das portas ativa em blecautes.
-                </p>
             </div>
 
-            <!-- Equipment 4 -->
-            <div class="bg-white border border-gray-200/80 rounded-3xl p-6 text-left shadow-sm flex flex-col group hover:border-brand-yellow/30 transition-all duration-300">
-                <div class="w-full aspect-video bg-[#fafafa] rounded-2xl overflow-hidden flex items-center justify-center mb-6 relative border border-gray-150 shadow-inner p-2">
-                    <img src="https://res.cloudinary.com/dptcuckhf/image/upload/v1770745467/bt_3000_in-02_0_hufak8.png" alt="Botoeira Inox BT 3000 IN" class="w-28 h-28 object-contain filter drop-shadow-md">
-                    <span class="absolute bottom-2 right-3 text-[9px] text-gray-400 font-medium">* Acionamento Interno</span>
+            <!-- Equipment 4: Botoeira BT 3000 IN -->
+            <div class="bg-white border border-gray-200/80 rounded-3xl p-6 text-left shadow-sm flex flex-col group hover:border-brand-yellow/30 transition-all duration-300 justify-between">
+                <div>
+                    <div class="w-full aspect-video bg-[#fafafa] rounded-2xl overflow-hidden flex items-center justify-center mb-6 relative border border-gray-150 shadow-inner p-2">
+                        <img src="https://res.cloudinary.com/dptcuckhf/image/upload/v1770745467/bt_3000_in-02_0_hufak8.png" alt="Botoeira Inox BT 3000 IN" class="w-28 h-28 object-contain filter drop-shadow-md">
+                        <span class="absolute bottom-2 right-3 text-[9px] text-gray-400 font-medium">* Acionamento Interno</span>
+                    </div>
+                    <h4 class="font-bold text-gray-950 text-base mb-2 font-sans">Botoeira Inox BT 3000 IN</h4>
+                    <p class="text-xs text-gray-500 leading-relaxed font-sans">
+                        Botão de saída em aço inox escovado com iluminação LED para acionamento interno prático e sofisticado.
+                    </p>
                 </div>
-                <h4 class="font-bold text-gray-950 text-base mb-2 font-sans">Botoeira Inox BT 3000 IN</h4>
-                <p class="text-xs text-gray-500 leading-relaxed font-sans">
-                    Botão de saída em aço inox escovado com iluminação LED para acionamento interno prático e sofisticado.
-                </p>
             </div>
 
         </div>
     </div>
 </section>
 
+<!-- ===================== COMPARATIVO FINANCEIRO E ECONOMIA ===================== -->
+<section id="comparativo" class="py-24 bg-white border-b border-gray-200/60 relative">
+    <div class="max-w-7xl mx-auto px-4 relative z-10">
+        
+        <div class="text-center mb-16 reveal">
+            <span class="text-brand-yellow font-bold uppercase tracking-widest text-xs font-sans">ROI & Viabilidade Financeira</span>
+            <h2 class="text-3xl md:text-5xl font-extrabold text-gray-900 mt-3 font-sans">Sua Economia com Solução On-Premises</h2>
+            <p class="text-gray-500 mt-4 max-w-2xl mx-auto text-base md:text-lg leading-relaxed font-sans">
+                Comparativo direto entre o modelo corporativo Intelbras proposto pela Vision e as soluções em nuvem tradicionais que cobram mensalidades contínuas por porta:
+            </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto reveal mb-12">
+            
+            <!-- Coluna Nuvem Tradicional -->
+            <div class="bg-rose-50/50 border border-rose-200 rounded-3xl p-8 text-left flex flex-col justify-between relative overflow-hidden">
+                <div class="absolute top-0 right-0 bg-rose-200 text-rose-800 text-[9px] font-bold px-4 py-1 rounded-bl-2xl uppercase tracking-wider">Modelo Recorrente</div>
+                <div>
+                    <div class="w-12 h-12 rounded-2xl bg-rose-100 flex items-center justify-center text-rose-600 mb-6">
+                        <i data-lucide="cloud-off" class="w-6 h-6"></i>
+                    </div>
+                    <h3 class="font-extrabold text-gray-900 text-2xl mb-2 font-sans">Sistemas Cloud em Nuvem</h3>
+                    <p class="text-xs text-gray-500 mb-6 font-sans">Custos cobrados por licença mensal de porta + armazenamento cloud.</p>
+
+                    <div class="space-y-4 font-sans text-sm text-gray-700 mb-6">
+                        <div class="flex justify-between items-center py-2 border-b border-rose-200/60">
+                            <span class="text-gray-600">Mensalidades por 4 Portas:</span>
+                            <span class="font-bold text-rose-700">~R$ 380,00 / mês</span>
+                        </div>
+                        <div class="flex justify-between items-center py-2 border-b border-rose-200/60">
+                            <span class="text-gray-600">Custo Total em 1 Ano:</span>
+                            <span class="font-bold text-rose-700">R$ 4.560,00 em mensalidades</span>
+                        </div>
+                        <div class="flex justify-between items-center py-2 border-b border-rose-200/60">
+                            <span class="text-gray-600">Custo Total em 3 Anos:</span>
+                            <span class="font-extrabold text-rose-800 text-base">R$ 13.680,00 em mensalidades</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-rose-100/80 text-rose-900 p-3.5 rounded-2xl text-xs font-semibold flex items-center gap-2">
+                    <i data-lucide="alert-circle" class="w-4 h-4 shrink-0 text-rose-700"></i>
+                    <span>O escritório fica refém da mensalidade para manter as portas funcionando.</span>
+                </div>
+            </div>
+
+            <!-- Coluna Vision Intelbras -->
+            <div class="bg-emerald-50/50 border border-emerald-300 rounded-3xl p-8 text-left flex flex-col justify-between relative overflow-hidden shadow-lg">
+                <div class="absolute top-0 right-0 bg-emerald-500 text-white text-[9px] font-bold px-4 py-1 rounded-bl-2xl uppercase tracking-wider shadow-sm">Modelo Vision Intelbras</div>
+                <div>
+                    <div class="w-12 h-12 rounded-2xl bg-emerald-100 flex items-center justify-center text-emerald-700 mb-6 border border-emerald-200">
+                        <i data-lucide="shield-check" class="w-6 h-6"></i>
+                    </div>
+                    <h3 class="font-extrabold text-gray-900 text-2xl mb-2 font-sans">Intelbras InControl Web</h3>
+                    <p class="text-xs text-gray-500 mb-6 font-sans">Propriedade total dos equipamentos e software On-Premises 100% gratuito.</p>
+
+                    <div class="space-y-4 font-sans text-sm text-gray-700 mb-6">
+                        <div class="flex justify-between items-center py-2 border-b border-emerald-200/60">
+                            <span class="text-gray-600">Mensalidades por 4 Portas:</span>
+                            <span class="font-bold text-emerald-700">R$ 0,00 / mês (ISENTO)</span>
+                        </div>
+                        <div class="flex justify-between items-center py-2 border-b border-emerald-200/60">
+                            <span class="text-gray-600">Custo de Licenças em 1 Ano:</span>
+                            <span class="font-bold text-emerald-700">R$ 0,00</span>
+                        </div>
+                        <div class="flex justify-between items-center py-2 border-b border-emerald-200/60">
+                            <span class="text-gray-600">Economia em 3 Anos:</span>
+                            <span class="font-black text-emerald-800 text-base">+ R$ 13.680,00 Economizados</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-emerald-200/80 text-emerald-950 p-3.5 rounded-2xl text-xs font-extrabold flex items-center gap-2">
+                    <i data-lucide="check-circle-2" class="w-4 h-4 shrink-0 text-emerald-700"></i>
+                    <span>A Medel adquire o ativo permanente do sistema sem cobranças recorrentes.</span>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+</section>
+
+<!-- ===================== CRONOGRAMA DE IMPLANTAÇÃO ===================== -->
+<section id="cronograma" class="py-24 bg-[#f8f9fa] border-b border-gray-200/60 relative">
+    <div class="max-w-7xl mx-auto px-4 relative z-10">
+        
+        <div class="text-center mb-16 reveal">
+            <span class="text-brand-yellow font-bold uppercase tracking-widest text-xs font-sans">Planejamento da Obra</span>
+            <h2 class="text-3xl md:text-5xl font-extrabold text-gray-900 mt-3 font-sans">Cronograma de Execução (3 Dias)</h2>
+            <p class="text-gray-500 mt-4 max-w-2xl mx-auto text-base md:text-lg leading-relaxed font-sans">
+                Etapas estruturadas para alinhamento com a equipe de arquitetura e marcenaria do novo escritório da Medel:
+            </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto reveal">
+            
+            <!-- Passo 1 -->
+            <div class="bg-white border border-gray-200/80 rounded-3xl p-8 text-left shadow-sm relative overflow-hidden flex flex-col justify-between">
+                <div class="absolute top-0 right-0 bg-brand-yellow/10 text-brand-goldDark text-xs font-extrabold px-4 py-2 rounded-bl-2xl">
+                    DIA 01
+                </div>
+                <div>
+                    <div class="w-12 h-12 bg-brand-yellow/10 rounded-2xl flex items-center justify-center text-brand-goldDark mb-6">
+                        <i data-lucide="hammer" class="w-6 h-6"></i>
+                    </div>
+                    <h4 class="font-extrabold text-gray-900 text-xl mb-3 font-sans">1. Infraestrutura & Fiação</h4>
+                    <p class="text-gray-600 text-xs leading-relaxed mb-4 font-sans">
+                        Lançamento de fiação UTP e alimentação através do teto de gesso e do forro modular. Passagem limpa e invisível até cada um dos 4 pontos de porta.
+                    </p>
+                </div>
+                <div class="pt-4 border-t border-gray-100 text-[11px] font-semibold text-gray-500 flex items-center gap-1.5 font-sans">
+                    <i data-lucide="check" class="w-4 h-4 text-emerald-600"></i> Alinhamento prévio com a marcenaria
+                </div>
+            </div>
+
+            <!-- Passo 2 -->
+            <div class="bg-white border border-gray-200/80 rounded-3xl p-8 text-left shadow-sm relative overflow-hidden flex flex-col justify-between">
+                <div class="absolute top-0 right-0 bg-brand-yellow/10 text-brand-goldDark text-xs font-extrabold px-4 py-2 rounded-bl-2xl">
+                    DIA 02
+                </div>
+                <div>
+                    <div class="w-12 h-12 bg-brand-yellow/10 rounded-2xl flex items-center justify-center text-brand-goldDark mb-6">
+                        <i data-lucide="wrench" class="w-6 h-6"></i>
+                    </div>
+                    <h4 class="font-extrabold text-gray-900 text-xl mb-3 font-sans">2. Instalação do Hardware</h4>
+                    <p class="text-gray-600 text-xs leading-relaxed mb-4 font-sans">
+                        Chumbamento das fechaduras solenóide de embutir na madeira, fixação dos eletroímãs no vidro/correr, montagem dos leitores faciais SS 1532 e botoeiras inox.
+                    </p>
+                </div>
+                <div class="pt-4 border-t border-gray-100 text-[11px] font-semibold text-gray-500 flex items-center gap-1.5 font-sans">
+                    <i data-lucide="check" class="w-4 h-4 text-emerald-600"></i> Testes mecânicos e alinhamento de trava
+                </div>
+            </div>
+
+            <!-- Passo 3 -->
+            <div class="bg-white border border-gray-200/80 rounded-3xl p-8 text-left shadow-sm relative overflow-hidden flex flex-col justify-between">
+                <div class="absolute top-0 right-0 bg-emerald-100 text-emerald-800 text-xs font-extrabold px-4 py-2 rounded-bl-2xl">
+                    DIA 03
+                </div>
+                <div>
+                    <div class="w-12 h-12 bg-emerald-100 rounded-2xl flex items-center justify-center text-emerald-700 mb-6">
+                        <i data-lucide="check-check" class="w-6 h-6"></i>
+                    </div>
+                    <h4 class="font-extrabold text-gray-900 text-xl mb-3 font-sans">3. Ativação & Treinamento TI</h4>
+                    <p class="text-gray-600 text-xs leading-relaxed mb-4 font-sans">
+                        Ativação do nobreak FA 1220S, parametrização IP/Wi-Fi, instalação do InControl Web no servidor da Medel, cadastro inicial de biometrias e treinamento.
+                    </p>
+                </div>
+                <div class="pt-4 border-t border-gray-100 text-[11px] font-semibold text-gray-500 flex items-center gap-1.5 font-sans">
+                    <i data-lucide="check" class="w-4 h-4 text-emerald-600"></i> Entrega do dossiê com senhas e as-built
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+</section>
+
+<!-- ===================== MATRIZ DE GARANTIA E DOSSIÊ ===================== -->
+<section class="py-20 bg-white border-b border-gray-200/60 relative">
+    <div class="max-w-5xl mx-auto px-4 relative z-10">
+        <div class="bg-gradient-to-br from-zinc-900 to-black text-white rounded-3xl p-8 md:p-12 shadow-2xl relative overflow-hidden">
+            <div class="absolute -bottom-10 -right-10 w-64 h-64 bg-brand-yellow/10 rounded-full blur-3xl pointer-events-none"></div>
+
+            <div class="flex flex-col md:flex-row items-center justify-between gap-8 relative z-10">
+                <div class="text-left space-y-4 max-w-xl">
+                    <div class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full border border-brand-yellow/30 bg-brand-yellow/10 text-brand-yellow text-[10px] font-extrabold uppercase tracking-widest">
+                        <i data-lucide="shield-check" class="w-3.5 h-3.5"></i> Compromisso B2B Vision
+                    </div>
+                    <h3 class="text-2xl md:text-3xl font-extrabold text-white leading-tight font-sans">Garantia Corporativa & Dossiê Técnico</h3>
+                    <p class="text-zinc-300 text-xs md:text-sm leading-relaxed font-sans">
+                        Ao final da obra, a equipe de TI da Medel receberá a pasta técnica completa contendo o mapa de IPs, senhas administrativas de fábrica redefinidas, manual de backups do InControl Web e o Certificado de Garantia Integral de 12 meses.
+                    </p>
+                </div>
+
+                <div class="shrink-0 flex flex-col items-center justify-center p-6 bg-zinc-800/80 border border-zinc-700/80 rounded-2xl text-center min-w-[220px]">
+                    <i data-lucide="award" class="w-10 h-10 text-brand-yellow mb-2"></i>
+                    <span class="text-3xl font-black text-white font-sans">12 MESES</span>
+                    <span class="text-[10px] text-zinc-400 font-bold uppercase tracking-widest mt-1">Garantia Total (Peças + M.O.)</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
 <!-- ===================== PROPOSTA DE INVESTIMENTO ===================== -->
-<section id="investimento" class="py-20 md:py-28 bg-white relative overflow-hidden">
+<section id="investimento" class="py-20 md:py-28 bg-[#fafafa] relative overflow-hidden">
     <div class="absolute inset-0 bg-dots pointer-events-none z-0"></div>
     <div class="max-w-7xl mx-auto px-4 relative z-10">
 
         <div class="text-center mb-10 md:mb-12 reveal">
-            <span class="text-brand-yellow font-bold uppercase tracking-widest text-xs">Investimento Corporativo Medel</span>
-            <h2 class="text-2xl md:text-5xl font-extrabold text-gray-900 mt-2 md:mt-3 font-sans">Orçamento de Acesso Facial</h2>
+            <span class="text-brand-yellow font-bold uppercase tracking-widest text-xs font-sans">Orçamento Unificado</span>
+            <h2 class="text-2xl md:text-5xl font-extrabold text-gray-900 mt-2 md:mt-3 font-sans">Investimento do Projeto</h2>
             <p class="text-gray-500 mt-3 md:mt-4 max-w-xl mx-auto text-sm md:text-lg leading-relaxed px-4 font-sans">
-                Escolha a forma de pagamento que melhor atende ao fluxo financeiro da sua obra:
+                Resumo financeiro exato com todos os equipamentos Intelbras, nobreak FA 1220S, fechaduras e mão de obra técnica inclusos:
             </p>
         </div>
 
         <!-- TOGGLE DE PAGAMENTO (PIX VS CARTÃO) -->
         <div class="flex flex-col items-center justify-center mb-8 md:mb-10 reveal">
-            <p class="text-xs font-bold text-gray-400 uppercase tracking-widest mb-3">Forma de Pagamento:</p>
+            <p class="text-xs font-bold text-gray-400 uppercase tracking-widest mb-3 font-sans">Selecione o Método de Pagamento:</p>
             <div class="bg-gray-100 p-1.5 rounded-full inline-flex relative shadow-inner">
                 <div id="toggle-bg" class="absolute top-1.5 bottom-1.5 w-[calc(50%-3px)] bg-white rounded-full shadow-sm transition-transform duration-300 ease-in-out" style="transform: translateX(0); left: 2px;"></div>
                 
-                <button onclick="setPaymentMode('avista')" id="btn-avista" class="relative z-10 px-5 md:px-8 py-2.5 text-xs md:text-sm font-bold text-gray-900 transition-colors w-32 md:w-40 text-center rounded-full focus:outline-none">À Vista (PIX)</button>
-                <button onclick="setPaymentMode('parcelado')" id="btn-parcelado" class="relative z-10 px-5 md:px-8 py-2.5 text-xs md:text-sm font-bold text-gray-500 transition-colors w-36 md:w-48 text-center rounded-full focus:outline-none hover:text-black">Parcelado (Cartão)</button>
+                <button onclick="setPaymentMode('avista')" id="btn-avista" class="relative z-10 px-5 md:px-8 py-2.5 text-xs md:text-sm font-bold text-gray-900 transition-colors w-32 md:w-40 text-center rounded-full focus:outline-none font-sans">À Vista (PIX)</button>
+                <button onclick="setPaymentMode('parcelado')" id="btn-parcelado" class="relative z-10 px-5 md:px-8 py-2.5 text-xs md:text-sm font-bold text-gray-500 transition-colors w-36 md:w-48 text-center rounded-full focus:outline-none hover:text-black font-sans">Parcelado (Cartão)</button>
             </div>
 
-            <!-- Seletor de Parcelas -->
+            <!-- Seletor de Parcelas Cartão -->
             <div id="installment-container" class="mt-4 md:mt-6 flex flex-col items-center transition-all duration-300 opacity-0 pointer-events-none hidden">
                 <div class="relative">
-                    <select id="installment-select" class="appearance-none bg-white border border-gray-300 text-gray-950 text-xs md:text-sm font-bold rounded-xl focus:ring-brand-yellow focus:border-brand-yellow block w-48 md:w-64 p-2.5 md:p-3 pl-3 md:pl-4 pr-8 md:pr-10 shadow-sm outline-none cursor-pointer hover:border-gray-400 transition-colors" onchange="updatePrices()">
+                    <select id="installment-select" class="appearance-none bg-white border border-gray-300 text-gray-950 text-xs md:text-sm font-bold rounded-xl focus:ring-brand-yellow focus:border-brand-yellow block w-48 md:w-64 p-2.5 md:p-3 pl-3 md:pl-4 pr-8 md:pr-10 shadow-sm outline-none cursor-pointer hover:border-gray-400 transition-colors font-sans" onchange="updatePrices()">
                         <option value="1">1x no cartão</option>
                         <option value="2">2x no cartão</option>
                         <option value="3">3x no cartão</option>
@@ -655,60 +945,59 @@
             </div>
         </div>
 
-        <!-- CARD DE PREÇO EXATO -->
+        <!-- CARD DE ORÇAMENTO -->
         <div class="reveal items-stretch flex justify-center animate-fade-in">
             
             <div class="premium-border-glow group relative z-20 w-full max-w-2xl">
                 <div class="premium-border-inner flex flex-col relative bg-white p-4 md:p-8">
                     <div class="absolute top-0 right-0 w-24 h-24 md:w-32 md:h-32 bg-brand-yellow/10 rounded-full blur-[30px] md:blur-[50px] pointer-events-none"></div>
                     <div class="absolute top-2 right-2 md:top-4 md:right-4 z-20">
-                        <span id="badge-config" class="bg-brand-yellow text-black text-[7px] md:text-[10px] font-extrabold px-2 py-0.5 md:px-3 md:py-1 rounded-full uppercase tracking-widest shadow-glow">Solução Completa</span>
+                        <span class="bg-brand-yellow text-black text-[7px] md:text-[10px] font-extrabold px-2 py-0.5 md:px-3 md:py-1 rounded-full uppercase tracking-widest shadow-glow">Homologado Intelbras</span>
                     </div>
 
                     <div class="mb-4 md:mb-6 text-center md:text-left relative z-10">
-                        <p id="label-config" class="text-[8px] md:text-[10px] font-bold uppercase tracking-widest text-brand-yellow mb-1 md:mb-2 mt-1 md:mt-2 font-sans">SEM TAXAS OU MENSALIDADES DE LICENÇAS</p>
-                        <h3 id="title-config" class="font-bold text-gray-900 text-xl md:text-3xl leading-tight font-sans">Acesso Facial Intelbras (4 Portas)</h3>
+                        <p class="text-[8px] md:text-[10px] font-bold uppercase tracking-widest text-brand-yellow mb-1 md:mb-2 mt-1 md:mt-2 font-sans">CONTROLE DE ACESSO FACIAL WI-FI (4 PORTAS)</p>
+                        <h3 class="font-bold text-gray-900 text-xl md:text-3xl leading-tight font-sans">Projeto Integrado Medel Bela Vista</h3>
                     </div>
 
                     <div class="mb-4 md:mb-6 p-4 md:p-8 bg-brand-yellow/5 border border-brand-yellow/20 rounded-xl md:rounded-2xl min-h-[120px] md:min-h-[160px] flex flex-col items-center justify-center text-center relative z-10">
-                        <p class="text-[9px] md:text-xs text-brand-goldDark uppercase tracking-widest font-bold mb-2 font-sans">Investimento Integrado (Materiais + Mão de Obra Especializada)</p>
                         <div class="w-full" id="price-opt1">
-                            <!-- Injetado dinamicamente via Javascript -->
+                            <!-- Conteúdo dinâmico JS injetado aqui -->
                         </div>
                     </div>
 
-                    <div class="space-y-2 md:space-y-3 mb-4 md:mb-8 flex-1 relative z-10 text-left">
-                        <h4 class="font-semibold text-gray-700 text-[10px] md:text-sm uppercase tracking-wider mb-2 md:mb-3 font-sans">Incluso no Projeto da Medel:</h4>
+                    <div class="space-y-2 md:space-y-3 mb-4 md:mb-8 flex-1 relative z-10 text-left font-sans">
+                        <h4 class="font-semibold text-gray-700 text-[10px] md:text-sm uppercase tracking-wider mb-2 md:mb-3">O que inclui de ponta a ponta:</h4>
                         
-                        <div class="flex items-start gap-2 md:gap-3 p-3 bg-white border border-brand-yellow/30 rounded-lg md:rounded-xl shadow-sm">
-                            <i data-lucide="scan-face" class="w-4 h-4 text-brand-yellow shrink-0 mt-0.5"></i>
-                            <p class="text-[10px] md:text-sm text-gray-800 leading-snug md:leading-relaxed font-sans"><strong>04x Leitores Faciais Intelbras SS 1530 MF W:</strong> Biometria facial Wi-Fi/IP com algoritmo anti-fake para 3.000 faces.</p>
+                        <div class="flex items-start gap-2 md:gap-3 p-3 bg-white border border-gray-200 rounded-lg md:rounded-xl shadow-xs">
+                            <i data-lucide="check-square" class="w-4 h-4 text-brand-yellow shrink-0 mt-0.5"></i>
+                            <p class="text-[10px] md:text-xs text-gray-800 leading-relaxed font-sans"><strong>04x Leitores Faciais Intelbras SS 1532 MF W:</strong> Reconhecimento Wi-Fi ultrarrápido (&lt;0.2s) com tecnologia anti-fake 3D.</p>
                         </div>
 
-                        <div class="flex items-start gap-2 md:gap-3 p-3 bg-white border border-brand-yellow/30 rounded-lg md:rounded-xl shadow-sm">
-                            <i data-lucide="lock" class="w-4 h-4 text-brand-yellow shrink-0 mt-0.5"></i>
-                            <p class="text-[10px] md:text-sm text-gray-800 leading-snug md:leading-relaxed font-sans"><strong>Kits de Travamento Misto sob Medida:</strong> 03x Eletroímãs FE 20150 (Vidro e Correr) + 01x Suporte U + Fechaduras de Embutir Solenóide.</p>
+                        <div class="flex items-start gap-2 md:gap-3 p-3 bg-white border border-gray-200 rounded-lg md:rounded-xl shadow-xs">
+                            <i data-lucide="check-square" class="w-4 h-4 text-brand-yellow shrink-0 mt-0.5"></i>
+                            <p class="text-[10px] md:text-xs text-gray-800 leading-relaxed font-sans"><strong>Fechaduras Específicas:</strong> Trava Eletroímã FE 20150 (150kgf) + Suporte U SV 20150 para porta de vidro, mantendo integração técnica com a fechadura pré-existente no local.</p>
                         </div>
 
-                        <div class="flex items-start gap-2 md:gap-3 p-3 bg-white border border-brand-yellow/30 rounded-lg md:rounded-xl shadow-sm">
-                            <i data-lucide="battery-charging" class="w-4 h-4 text-brand-yellow shrink-0 mt-0.5"></i>
-                            <p class="text-[10px] md:text-sm text-gray-800 leading-snug md:leading-relaxed font-sans"><strong>03x Fontes FA 1220S + Baterias VRLA e Botoeiras BT 3000:</strong> Sistema nobreak para não travar o escritório em falta de energia + botoeiras inox.</p>
+                        <div class="flex items-start gap-2 md:gap-3 p-3 bg-white border border-gray-200 rounded-lg md:rounded-xl shadow-xs">
+                            <i data-lucide="check-square" class="w-4 h-4 text-brand-yellow shrink-0 mt-0.5"></i>
+                            <p class="text-[10px] md:text-xs text-gray-800 leading-relaxed font-sans"><strong>Sistema de Backup Nobreak:</strong> 03 Fontes FA 1220S com baterias de gel VRLA para autonomia ininterrupta em queda de energia.</p>
                         </div>
-                        
-                        <div class="flex items-start gap-2 md:gap-3 p-3 bg-white border border-brand-yellow/30 rounded-lg md:rounded-xl shadow-sm">
+
+                        <div class="flex items-start gap-2 md:gap-3 p-3 bg-white border border-gray-200 rounded-lg md:rounded-xl shadow-xs">
                             <i data-lucide="wrench" class="w-4 h-4 text-brand-yellow shrink-0 mt-0.5"></i>
-                            <p class="text-[10px] md:text-sm text-gray-800 leading-snug md:leading-relaxed font-sans"><strong>Mão de Obra de Instalação, Infraestrutura e Treinamento:</strong> Passagem pelo gesso modular, alinhamento técnico, cadastro e treinamento do TI da Medel.</p>
+                            <p class="text-[10px] md:text-xs text-gray-800 leading-relaxed font-sans"><strong>Mão de Obra Técnica Completa:</strong> Adequação de marcenaria, fixação em vidro, infraestrutura gesso/modular, parametrização IP e treinamento da TI.</p>
                         </div>
 
-                        <div class="mt-2 md:mt-4 bg-brand-yellow/10 border border-brand-yellow/30 p-2 md:p-3 rounded-lg md:rounded-xl flex items-center justify-center gap-2 shadow-sm text-center">
-                            <i data-lucide="award" class="w-4 h-4 md:w-5 md:h-5 text-brand-yellow shrink-0"></i>
-                            <p class="text-[10px] md:text-sm text-gray-800 leading-tight font-sans"><strong>GARANTIA CORPORATIVA:</strong> 1 Ano de Garantia Completa de Mão de Obra e Equipamentos.</p>
+                        <div class="mt-2 md:mt-4 bg-brand-yellow/10 border border-brand-yellow/30 p-2 md:p-3 rounded-lg md:rounded-xl flex items-center justify-center gap-2 shadow-xs text-center">
+                            <i data-lucide="award" class="w-4 h-4 text-brand-yellow shrink-0 animate-pulse"></i>
+                            <p class="text-[10px] md:text-xs text-gray-800 leading-tight"><strong>GARANTIA CORPORATIVA:</strong> 12 Meses de Garantia Total (Equipamentos + Mão de Obra de Campo).</p>
                         </div>
                     </div>
 
-                    <a id="btn-aprova-link" href="#" target="_blank" class="w-full bg-brand-yellow hover:bg-brand-goldLight text-black font-bold py-3 md:py-4 rounded-xl md:rounded-2xl flex items-center justify-center gap-1.5 md:gap-2 transition-all shadow-glow-md text-[10px] md:text-[12px] uppercase tracking-widest group relative overflow-hidden mt-auto z-10">
+                    <a id="btn-aprova-link" href="#" target="_blank" class="w-full bg-brand-yellow hover:bg-brand-goldLight text-black font-bold py-3 md:py-4 rounded-xl md:rounded-2xl flex items-center justify-center gap-1.5 md:gap-2 transition-all shadow-glow-md text-[10px] md:text-[12px] uppercase tracking-widest group relative overflow-hidden mt-auto z-10 font-sans">
                         <div class="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-300 rounded-xl md:rounded-2xl"></div>
-                        <span id="btn-text-aprova" class="relative z-10 font-sans font-bold">Aprovar Projeto Medel</span>
+                        <span id="btn-text-aprova" class="relative z-10">Aprovar Projeto (Falar com Gabriel)</span>
                         <i data-lucide="arrow-right" class="w-4 h-4 md:w-5 md:h-5 relative z-10 group-hover:translate-x-1 transition-transform"></i>
                     </a>
                 </div>
@@ -723,40 +1012,52 @@
 <section id="faq" class="py-24 bg-[#f8f9fa] border-t border-gray-200/60 font-sans">
     <div class="max-w-3xl mx-auto px-4">
         <div class="text-center mb-14 reveal">
-            <span class="text-brand-yellow font-bold uppercase tracking-widest text-xs font-sans">Perguntas Frequentes</span>
-            <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mt-3 font-sans">Dúvidas Técnicas do Projeto</h2>
+            <span class="text-brand-yellow font-bold uppercase tracking-widest text-xs">Perguntas Frequentes</span>
+            <h2 class="text-3xl md:text-4xl font-extrabold text-gray-900 mt-3">Esclarecimentos Técnicos da Diretoria</h2>
         </div>
         
         <div class="space-y-4 reveal" id="accordion">
+            
             <div class="accordion-item bg-white rounded-2xl border border-gray-100 shadow-sm overflow-hidden transition-all hover:border-brand-yellow/50">
                 <button onclick="toggleAccordion(this)" class="w-full flex items-center justify-between p-6 text-left font-bold text-gray-900 focus:outline-none font-sans">
-                    <span>O que acontece se acabar a energia do escritório?</span>
+                    <span>O software de gestão de acesso InControl Web é realmente gratuito?</span>
                     <i data-lucide="chevron-down" class="w-5 h-5 text-brand-yellow acc-arrow shrink-0"></i>
                 </button>
                 <div class="accordion-content text-left">
-                    <p class="px-6 pb-6 text-gray-600 text-sm leading-relaxed font-sans">O projeto contempla fontes ininterruptas Intelbras FA 1220S equipadas com baterias seladas VRLA. Na falta de energia da concessionária, o sistema mantém as portas alimentadas e travadas normalmente.</p>
+                    <p class="px-6 pb-6 text-gray-600 text-sm leading-relaxed font-sans">Sim, 100% gratuito e sem cobranças futuras! O software InControl Web da Intelbras é instalado localmente (On-Premises) no servidor ou computador da Medel. A empresa adquire a licença vitalícia com zero custo de manutenção de software em nuvem.</p>
                 </div>
             </div>
 
             <div class="accordion-item bg-white rounded-2xl border border-gray-100 shadow-sm overflow-hidden transition-all hover:border-brand-yellow/50">
-                <button onclick="toggleAccordion(this)" class="w-full flex items-center justify-between p-6 text-left font-bold text-gray-900 focus:outline-none font-sans">
-                    <span>Existe alguma cobrança de mensalidade pelo software?</span>
+                <button onclick="toggleAccordion(this)" class="w-full flex items-center justify-between p-6 text-left font-semibold text-gray-800 focus:outline-none font-sans">
+                    <span>Como funciona a abertura em caso de queda de energia na Bela Vista?</span>
                     <i data-lucide="chevron-down" class="w-5 h-5 text-brand-yellow acc-arrow shrink-0"></i>
                 </button>
                 <div class="accordion-content text-left">
-                    <p class="px-6 pb-6 text-gray-600 text-sm leading-relaxed font-sans">Não. A solução da Intelbras utiliza software local On-Premises 100% gratuito e vitalício. Toda a gestão de usuários, biometrias e relatórios fica sob domínio exclusivo da TI da Medel.</p>
+                    <p class="px-6 pb-6 text-gray-600 text-sm leading-relaxed font-sans">O projeto contempla fontes ininterruptas Intelbras FA 1220S acopladas a baterias estacionárias VRLA. Caso a energia do prédio caia, as baterias assumem o sistema automaticamente, mantendo todas as portas travadas e leitores ativos sem interrupção.</p>
                 </div>
             </div>
 
             <div class="accordion-item bg-white rounded-2xl border border-gray-100 shadow-sm overflow-hidden transition-all hover:border-brand-yellow/50">
-                <button onclick="toggleAccordion(this)" class="w-full flex items-center justify-between p-6 text-left font-bold text-gray-900 focus:outline-none font-sans">
-                    <span>Como é feita a passagem dos cabos durante a obra?</span>
+                <button onclick="toggleAccordion(this)" class="w-full flex items-center justify-between p-6 text-left font-semibold text-gray-800 focus:outline-none font-sans">
+                    <span>A fechadura solenóide danifica a folha da porta de madeira?</span>
                     <i data-lucide="chevron-down" class="w-5 h-5 text-brand-yellow acc-arrow shrink-0"></i>
                 </button>
                 <div class="accordion-content text-left">
-                    <p class="px-6 pb-6 text-gray-600 text-sm leading-relaxed font-sans">Nossa equipe utiliza o espaço superior do teto de gesso e do forro modular para lançar a fiação embutida. Apenas as descidas necessárias recebem acabamento embutido ou canaletas slim combinando com a arquitetura.</p>
+                    <p class="px-6 pb-6 text-gray-600 text-sm leading-relaxed font-sans">Não. O modelo FE 2010 é embutido com usinagem limpa no topo da porta por profissionais especializados em marcenaria. Fica 100% oculta e preserva o acabamento refinado das portas de madeira convencionais.</p>
                 </div>
             </div>
+
+            <div class="accordion-item bg-white rounded-2xl border border-gray-100 shadow-sm overflow-hidden transition-all hover:border-brand-yellow/50">
+                <button onclick="toggleAccordion(this)" class="w-full flex items-center justify-between p-6 text-left font-semibold text-gray-800 focus:outline-none font-sans">
+                    <span>Como a nossa equipe de TI gerencia os cadastros?</span>
+                    <i data-lucide="chevron-down" class="w-5 h-5 text-brand-yellow acc-arrow shrink-0"></i>
+                </button>
+                <div class="accordion-content text-left">
+                    <p class="px-6 pb-6 text-gray-600 text-sm leading-relaxed font-sans">Nossa equipe realizará o treinamento completo da TI da Medel no Dia 03 da obra. O cadastro de novos funcionários pode ser feito via webcam corporativa, foto por arquivo ou diretamente nos próprios leitores faciais com sincronização imediata via Wi-Fi/IP.</p>
+                </div>
+            </div>
+
         </div>
     </div>
 </section>
@@ -1035,8 +1336,20 @@
             priceContainer.innerHTML = `
                 <div class="flex flex-col items-center w-full animate-fade-in font-sans">
                     <p class="text-[8px] md:text-[10px] text-[#8a6208] uppercase tracking-widest font-bold mb-1">À Vista no PIX (Sem Juros)</p>
-                    <span class="text-4xl md:text-5xl font-black text-gray-900 tracking-tight mb-2">R$ ${formatExactCurrency(pricingData.pixExact)}</span>
-                    <p class="text-[10px] text-gray-500 font-medium font-sans">Fornecimento de 4 Leitores Faciais Wi-Fi + Travas + Nobreak + Mão de Obra</p>
+                    <span class="text-4xl md:text-5xl font-black text-gray-900 tracking-tight mb-4">R$ ${formatExactCurrency(pricingData.pixExact)}</span>
+                    
+                    <div class="w-full space-y-2">
+                        <div class="bg-white border border-gray-200 rounded-xl py-2.5 flex flex-col items-center justify-center relative overflow-hidden shadow-xs">
+                            <div class="absolute top-0 left-0 w-1 h-full bg-[#34d399] rounded-l-lg"></div>
+                            <span class="text-[8px] font-bold uppercase tracking-widest text-brand-goldDark mb-0.5 font-sans">Sinal para Lançamento do Projeto (50%)</span>
+                            <span class="text-sm font-bold text-gray-900">R$ ${formatExactCurrency(pricingData.pixExact / 2)}</span>
+                        </div>
+                        <div class="bg-white border border-gray-200 rounded-xl py-2.5 flex flex-col items-center justify-center relative overflow-hidden shadow-xs">
+                            <div class="absolute top-0 left-0 w-1.5 h-full bg-[#c8a048] rounded-l-lg"></div>
+                            <span class="text-[8px] font-bold uppercase tracking-widest text-brand-goldDark mb-0.5 font-sans">Saldo na Conclusão e Entrega da Instalação (50%)</span>
+                            <span class="text-sm font-bold text-gray-900">R$ ${formatExactCurrency(pricingData.pixExact / 2)}</span>
+                        </div>
+                    </div>
                 </div>
             `;
         } else {
@@ -1055,7 +1368,7 @@
                         <span class="text-xl md:text-2xl font-bold text-brand-yellow">${inst}x de R$</span> 
                         <span class="text-4xl md:text-5xl font-black text-gray-900">${formatExactCurrency(instVal)}</span>
                     </div>
-                    <div class="inline-flex items-center gap-1.5 bg-blue-50 border border-blue-200 text-blue-700 px-3 py-1 rounded-full w-fit shadow-sm mt-2 mb-3 font-sans">
+                    <div class="inline-flex items-center gap-1.5 bg-blue-50 border border-blue-200 text-blue-700 px-3 py-1 rounded-full w-fit shadow-xs mt-2 mb-3 font-sans">
                         <i data-lucide="credit-card" class="w-4 h-4"></i>
                         <span class="text-[10px] md:text-[11px] font-bold uppercase tracking-widest">Cartão de Crédito Coletivo/Corporativo</span>
                     </div>
