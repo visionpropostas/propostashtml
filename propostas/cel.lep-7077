@@ -1,0 +1,1861 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth overflow-x-hidden" id="html-root">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projeto Executivo de Acesso Facial | Cel.Lep – Vision</title>
+    <meta name="description" content="Automação e Controle de Acesso Facial para o Portão da Nova Unidade Cel.Lep Vila Mariana – Vision Tecnologia">
+    <meta name="theme-color" content="#b9880e">
+    <meta name="robots" content="noindex, nofollow">
+
+    <!-- Fonts & CDN Tailwind -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@700;800&family=Quicksand:wght@500;600;700&family=Outfit:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <!-- Google Analytics 4 -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-KTGEL92B0F"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-KTGEL92B0F');
+    </script>
+
+    <!-- Microsoft Clarity -->
+    <script type="text/javascript">
+        (function(c,l,a,r,i,t,y){
+            c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+            t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+            y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+        })(window, document, "clarity", "script", "vifq10es5o");
+    </script>
+
+    <!-- Tailwind Configuração -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"Outfit"', 'sans-serif'],
+                        logo: ['"League Spartan"', 'sans-serif'],
+                        tech: ['"Quicksand"', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            yellow: '#b9880e',
+                            goldLight: '#FFDE59',
+                            goldDark: '#8a6208',
+                            black: '#09090b',
+                        }
+                    },
+                    boxShadow: {
+                        'glass': '0 4px 24px 0 rgba(0,0,0,0.04)',
+                        'premium': '0 16px 50px -10px rgba(0,0,0,0.08)',
+                        'glow': '0 0 20px rgba(185,136,14,0.18)',
+                        'glow-md': '0 0 35px rgba(185,136,14,0.28)',
+                    },
+                    animation: {
+                        'slide-up': 'slideUp 0.9s cubic-bezier(0.16,1,0.3,1) forwards',
+                        'float': 'float 6s ease-in-out infinite',
+                        'fade-in': 'fadeIn 0.4s ease forwards',
+                    },
+                    keyframes: {
+                        slideUp: {
+                            '0%': { opacity: '0', transform: 'translateY(35px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' }
+                        },
+                        float: {
+                            '0%,100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-10px)' }
+                        },
+                        fadeIn: {
+                            '0%': { opacity: '0' },
+                            '100%': { opacity: '1' }
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: #f9fafb; }
+        ::-webkit-scrollbar-thumb { background: #d1d5db; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #b9880e; }
+
+        .text-gold-shine {
+            background: linear-gradient(to right, #b9880e 20%, #FFDE59 50%, #b9880e 80%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-size: 200% auto;
+            animation: shine 4s linear infinite;
+        }
+        @keyframes shine { to { background-position: 200% center; } }
+
+        .bg-grid {
+            background-image: linear-gradient(rgba(185,136,14,0.04) 1px, transparent 1px),
+                              linear-gradient(90deg, rgba(185,136,14,0.04) 1px, transparent 1px);
+            background-size: 40px 40px;
+        }
+        .bg-dots {
+            background-image: radial-gradient(#b9880e 1.2px, transparent 1.2px);
+            background-size: 22px 22px;
+            opacity: 0.035;
+        }
+
+        .lock-input {
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.1);
+            color: #b9880e;
+            font-family: 'League Spartan', sans-serif;
+            font-size: 1.35rem;
+            text-align: center;
+            outline: none;
+            transition: all 0.3s;
+            letter-spacing: 0.18em;
+            border-radius: 14px;
+            text-transform: uppercase;
+        }
+        .lock-input:focus {
+            border-color: #b9880e;
+            background: rgba(255,255,255,0.08);
+            box-shadow: 0 0 20px rgba(185,136,14,0.25);
+        }
+        .lock-input::placeholder {
+            color: #71717a;
+            font-size: 0.8rem;
+            font-family: 'Outfit', sans-serif;
+            font-weight: 400;
+            letter-spacing: 0.05em;
+            text-transform: none;
+        }
+
+        .reveal { opacity: 0; transform: translateY(30px); transition: all 0.8s cubic-bezier(0.16,1,0.3,1); }
+        .reveal.active { opacity: 1; transform: translateY(0); }
+
+        .accordion-content { max-height: 0; overflow: hidden; transition: max-height 0.45s cubic-bezier(0.4,0,0.2,1); }
+        .accordion-item.open .accordion-content { max-height: 600px; }
+        .accordion-item.open .acc-arrow { transform: rotate(180deg); }
+        .acc-arrow { transition: transform 0.3s; }
+
+        /* Animação Contínua do Carrossel de Avaliações */
+        @keyframes marqueeReviews {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+        .reviews-marquee-track {
+            display: flex;
+            width: max-content;
+            animation: marqueeReviews 55s linear infinite;
+            will-change: transform;
+        }
+        .reviews-marquee-container:hover .reviews-marquee-track,
+        .reviews-marquee-track.paused {
+            animation-play-state: paused !important;
+        }
+
+        .premium-border-glow {
+            position: relative;
+            border-radius: 2rem;
+            padding: 2px;
+            background-color: #b9880e;
+            overflow: hidden;
+            box-shadow: 0 0 35px rgba(185,136,14,0.15);
+            transition: transform 0.3s cubic-bezier(0.4,0,0.2,1);
+        }
+        .premium-border-glow:hover { transform: scale(1.006); }
+        .premium-border-glow::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: conic-gradient(
+                from 0deg, 
+                transparent 0deg, 
+                transparent 175deg, 
+                rgba(255, 222, 89, 0.6) 178deg, 
+                #ffffff 180deg, 
+                rgba(255, 222, 89, 0.6) 182deg, 
+                transparent 185deg, 
+                transparent 360deg
+            );
+            animation: rotate-border 12s linear infinite;
+            z-index: 0;
+        }
+        @keyframes rotate-border {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        .premium-border-inner {
+            position: relative;
+            z-index: 1;
+            background-color: #ffffff;
+            border-radius: calc(2rem - 2px);
+            height: 100%;
+        }
+
+        @media print {
+            #lock-screen, #navbar, #cta-float { display: none !important; }
+            .reveal { opacity: 1 !important; transform: none !important; }
+        }
+    </style>
+</head>
+<body class="bg-[#fafafa] text-gray-800 antialiased overflow-hidden h-screen" id="body-root">
+
+<!-- ===================== LOCK SCREEN ===================== -->
+<div id="lock-screen" class="fixed inset-0 z-[100] bg-[#09090b] flex flex-col items-center justify-center text-center p-4 transition-opacity duration-700 ease-out overflow-y-auto">
+    <div class="bg-grid absolute inset-0 opacity-10 pointer-events-none"></div>
+    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-brand-yellow/5 rounded-full blur-[100px] pointer-events-none"></div>
+
+    <!-- Logo -->
+    <div class="relative flex flex-col items-center mb-8 z-10">
+        <div class="relative flex items-baseline leading-none">
+            <span class="font-logo font-bold text-[5rem] md:text-[5.5rem] text-gold-shine lowercase tracking-[-0.05em] leading-none">vısıon</span>
+            <span class="absolute -right-5 top-4 text-[1.1rem] text-brand-yellow font-bold">®</span>
+        </div>
+        <span class="font-tech text-[1.0rem] font-bold text-zinc-500 lowercase -mt-4 ml-2.5 text-center w-full" style="letter-spacing:0.53em;">tecnologia</span>
+    </div>
+
+    <div class="w-full max-w-sm space-y-5 z-10">
+        <div class="space-y-1.5">
+            <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-brand-yellow/30 bg-brand-yellow/10 mb-2">
+                <i data-lucide="lock" class="w-3.5 h-3.5 text-brand-yellow"></i>
+                <span class="text-brand-yellow text-[10px] font-bold uppercase tracking-widest">Acesso Corporativo Restrito</span>
+            </div>
+            <h2 class="text-white font-bold text-2xl">Cel.Lep Idiomas</h2>
+            <p class="text-zinc-400 text-xs">Nova Unidade Vila Mariana • A/C Kauã (Compras)</p>
+        </div>
+
+        <div>
+            <!-- SENHAS: KAUA2026, CELLEP2026, CELLEP, KAUA, VISION -->
+            <input type="password" id="password-input" class="lock-input w-full py-4 px-4" placeholder="Digite sua senha de acesso" autocomplete="off">
+            <p id="error-msg" class="text-red-400 text-xs mt-2 hidden">
+                <span class="flex items-center justify-center gap-1"><i data-lucide="x-circle" class="w-4 h-4"></i> Senha incorreta. Tente novamente.</span>
+            </p>
+        </div>
+
+        <button onclick="checkPassword()" id="btn-unlock" class="w-full bg-brand-yellow hover:bg-brand-goldLight text-black font-bold py-4 rounded-2xl transition-all shadow-glow flex items-center justify-center gap-2 group relative overflow-hidden">
+            <div class="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-300 rounded-2xl"></div>
+            <i data-lucide="shield-check" class="w-5 h-5 relative z-10" id="unlock-icon"></i>
+            <span class="relative z-10 text-sm uppercase tracking-widest font-bold" id="unlock-text">Acessar Proposta Técnica</span>
+            <i data-lucide="arrow-right" class="w-4 h-4 relative z-10 group-hover:translate-x-1 transition-transform" id="unlock-arrow"></i>
+        </button>
+
+        <p class="text-zinc-600 text-xs">Documento Confidencial B2B · Vision Tecnologia © 2026</p>
+    </div>
+</div>
+
+<!-- ===================== NAVBAR ===================== -->
+<nav id="navbar" class="fixed w-full z-50 top-0 bg-white/95 backdrop-blur-xl border-b border-gray-200/50 shadow-sm transition-all duration-300">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-between h-20 items-center">
+            
+            <div class="flex items-center gap-4 cursor-pointer" onclick="window.scrollTo({top:0, behavior:'smooth'})">
+                <div class="flex flex-col items-center justify-center">
+                    <div class="relative flex items-baseline leading-none">
+                        <span class="font-logo font-bold text-[2.4rem] text-gold-shine lowercase tracking-[-0.05em] leading-none">vısıon</span>
+                        <span class="absolute -right-2.5 top-1.5 text-[0.6rem] text-brand-yellow font-bold">®</span>
+                    </div>
+                    <span class="font-tech text-[0.55rem] font-bold text-gray-400 lowercase -mt-2 ml-1" style="letter-spacing:0.53em;">tecnologia</span>
+                </div>
+                <div class="h-7 w-px bg-gray-200 hidden sm:block"></div>
+                <span class="text-zinc-400 text-xs uppercase tracking-widest font-bold hidden sm:block">Cel.Lep Vila Mariana</span>
+            </div>
+
+            <div class="hidden md:flex items-center space-x-7 text-xs font-semibold text-gray-500 uppercase tracking-wider">
+                <a href="#diagnostico" class="hover:text-brand-yellow transition-colors">Diagnóstico</a>
+                <a href="#solucao" class="hover:text-brand-yellow transition-colors">Equipamentos</a>
+                <a href="#video-demo" class="hover:text-brand-yellow transition-colors">Na Prática</a>
+                <a href="#avaliacoes" class="hover:text-brand-yellow transition-colors">Avaliações</a>
+                <a href="#investimento" class="hover:text-brand-yellow transition-colors">Investimento</a>
+                <a href="#faq" class="hover:text-brand-yellow transition-colors">Dúvidas</a>
+            </div>
+
+            <div class="flex items-center gap-4">
+                <button onclick="window.print()" class="text-gray-400 hover:text-brand-yellow transition-colors flex items-center gap-1.5" title="Salvar em PDF">
+                    <i data-lucide="download" class="w-4 h-4"></i>
+                    <span class="text-[10px] font-bold uppercase tracking-widest hidden sm:block">PDF</span>
+                </button>
+                <a href="#investimento" class="bg-zinc-900 text-white px-5 py-2.5 rounded-full text-[10px] font-bold uppercase tracking-widest hover:bg-brand-yellow hover:text-black transition-all shadow-md">
+                    Ver Opções
+                </a>
+            </div>
+
+        </div>
+    </div>
+</nav>
+
+<!-- ===================== HERO COM VÍDEO ===================== -->
+<header class="pt-32 pb-20 lg:pt-40 relative overflow-hidden bg-[#f8f9fa]">
+    <div class="absolute inset-0 bg-grid pointer-events-none"></div>
+    <div class="absolute right-0 top-0 w-1/2 h-full bg-gradient-to-l from-white to-transparent z-0 pointer-events-none hidden lg:block"></div>
+    
+    <div class="max-w-7xl mx-auto px-4 relative z-10">
+        <div class="flex flex-col lg:flex-row items-center gap-12 lg:gap-16">
+            
+            <!-- Text Column -->
+            <div class="w-full lg:w-[55%] text-center lg:text-left animate-slide-up">
+                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-white border border-gray-200 text-gray-600 text-[10px] font-bold uppercase tracking-widest mb-6 mx-auto lg:mx-0 shadow-sm">
+                    <div class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></div>
+                    Cliente <span class="text-brand-yellow font-black">Cel.Lep Idiomas</span> | Vila Mariana
+                </div>
+                
+                <h1 class="text-4xl md:text-5xl lg:text-[3.4rem] font-extrabold text-gray-900 leading-[1.05] tracking-tight mb-6">
+                    Automação e Acesso Facial para o portão da <span class="text-gold-shine">nova unidade Cel.Lep.</span>
+                </h1>
+                
+                <p class="text-base md:text-lg text-gray-500 max-w-xl mx-auto lg:mx-0 font-medium leading-relaxed">
+                    Kauã, analisamos as fotos da unidade na Rua Pedro de Toledo, 200. Como o imóvel está em plena reforma civil (fase de drywall e acabamento), <strong>o momento exato para lançar a infraestrutura zincada e fiação é agora</strong>, garantindo proteção contra vandalismo na calçada e preservando a pintura nova após a entrega.
+                </p>
+
+                <div class="mt-8 flex flex-wrap items-center justify-center lg:justify-start gap-4">
+                    <div class="flex -space-x-3">
+                        <div class="w-10 h-10 rounded-full border-2 border-white bg-gray-100 flex items-center justify-center text-gray-600 shadow-xs"><i data-lucide="scan-face" class="w-4 h-4"></i></div>
+                        <div class="w-10 h-10 rounded-full border-2 border-white bg-gray-100 flex items-center justify-center text-gray-600 shadow-xs"><i data-lucide="hard-hat" class="w-4 h-4"></i></div>
+                        <div class="w-10 h-10 rounded-full border-2 border-white bg-brand-yellow/20 flex items-center justify-center text-brand-goldDark shadow-xs"><i data-lucide="magnet" class="w-4 h-4"></i></div>
+                    </div>
+                    <span class="text-xs font-bold text-gray-500 uppercase tracking-widest">Execução Alinhada à Reforma Civil</span>
+                </div>
+            </div>
+
+            <!-- Video Player Column -->
+            <div class="w-full lg:w-[45%] mt-4 lg:mt-0 reveal animate-slide-up" style="animation-delay: 200ms;">
+                <div class="relative w-full max-w-lg mx-auto group z-10">
+                    <div class="relative w-full aspect-video bg-black border-[6px] md:border-[10px] border-zinc-800 rounded-t-[1rem] md:rounded-t-[1.5rem] overflow-hidden shadow-2xl">
+                        
+                        <video id="vision-video" class="w-full h-full object-cover cursor-pointer opacity-90" autoplay muted loop playsinline>
+                            <source src="https://res.cloudinary.com/dptcuckhf/video/upload/v1771711323/Vict%C3%B3ria_-_Vision_gdqnrk.mp4" type="video/mp4">
+                        </video>
+                        
+                        <div id="unmute-overlay" class="absolute inset-0 bg-black/50 backdrop-blur-sm flex flex-col items-center justify-center cursor-pointer transition-opacity duration-500 z-30 hover:bg-black/40">
+                            <div class="bg-brand-yellow text-black font-bold px-6 py-3 rounded-full flex items-center gap-2 shadow-glow animate-pulse transform group-hover:scale-105 transition-all">
+                                <i data-lucide="volume-2" class="w-4 h-4 fill-black"></i>
+                                <span class="text-[10px] tracking-wide uppercase">Clique para Ouvir Apresentação</span>
+                            </div>
+                        </div>
+
+                        <div class="absolute top-1.5 md:top-2 left-1/2 -translate-x-1/2 w-1.5 h-1.5 md:w-2 md:h-2 bg-zinc-950 rounded-full z-20"></div>
+                    </div>
+                    <div class="relative w-[114%] -ml-[7%] h-3 md:h-5 bg-gradient-to-b from-zinc-300 to-zinc-400 rounded-b-xl md:rounded-b-2xl shadow-[0_20px_40px_rgba(0,0,0,0.5)] flex justify-center border-t border-zinc-200">
+                        <div class="w-1/5 h-1.5 md:h-2 bg-zinc-300 rounded-b-md shadow-inner"></div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Quick Stats -->
+        <div class="mt-14 lg:mt-20 grid grid-cols-2 md:grid-cols-4 gap-4 max-w-4xl mx-auto reveal">
+            <div class="bg-white rounded-2xl p-5 shadow-glass border border-gray-100 text-center animate-float" style="animation-delay:0s;">
+                <div class="w-9 h-9 bg-brand-yellow/10 rounded-xl flex items-center justify-center mx-auto mb-2 text-brand-goldDark">
+                    <i data-lucide="scan-face" class="w-4 h-4"></i>
+                </div>
+                <div class="text-2xl font-extrabold text-gray-900">&lt;0.5s</div>
+                <div class="text-[10px] text-gray-500 font-bold uppercase tracking-wider">Leitura Facial</div>
+            </div>
+            <div class="bg-white rounded-2xl p-5 shadow-glass border border-gray-100 text-center animate-float" style="animation-delay:0.8s;">
+                <div class="w-9 h-9 bg-brand-yellow/10 rounded-xl flex items-center justify-center mx-auto mb-2 text-brand-goldDark">
+                    <i data-lucide="magnet" class="w-4 h-4"></i>
+                </div>
+                <div class="text-2xl font-extrabold text-gray-900">150 kgf</div>
+                <div class="text-[10px] text-gray-500 font-bold uppercase tracking-wider">Força Eletroímã</div>
+            </div>
+            <div class="bg-white rounded-2xl p-5 shadow-glass border border-gray-100 text-center animate-float" style="animation-delay:0.4s;">
+                <div class="w-9 h-9 bg-brand-yellow/10 rounded-xl flex items-center justify-center mx-auto mb-2 text-brand-goldDark">
+                    <i data-lucide="battery-charging" class="w-4 h-4"></i>
+                </div>
+                <div class="text-2xl font-extrabold text-gray-900">Nobreak</div>
+                <div class="text-[10px] text-gray-500 font-bold uppercase tracking-wider">Bateria VRLA</div>
+            </div>
+            <div class="bg-white rounded-2xl p-5 shadow-glass border border-gray-100 text-center animate-float" style="animation-delay:1.2s;">
+                <div class="w-9 h-9 bg-brand-yellow/10 rounded-xl flex items-center justify-center mx-auto mb-2 text-brand-goldDark">
+                    <i data-lucide="shield-check" class="w-4 h-4"></i>
+                </div>
+                <div class="text-2xl font-extrabold text-gray-900">12 Meses</div>
+                <div class="text-[10px] text-gray-500 font-bold uppercase tracking-wider">Garantia Total</div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- ===================== DIAGNÓSTICO DO CENÁRIO ===================== -->
+<section id="diagnostico" class="py-24 bg-white border-y border-gray-200/60 relative">
+    <div class="max-w-7xl mx-auto px-4">
+        <div class="text-center mb-16 reveal">
+            <span class="text-brand-yellow font-bold uppercase tracking-widest text-xs">Engenharia Consultiva & Vistoria</span>
+            <h2 class="text-3xl md:text-5xl font-bold text-gray-900 mt-3 leading-tight">Diagnóstico Técnico: Análise do Local em Obra</h2>
+            <p class="text-gray-500 mt-4 max-w-3xl mx-auto text-base md:text-lg leading-relaxed">
+                <strong>Kauã</strong>, a partir da vistoria técnica e da análise visual do imóvel na <strong>Rua Pedro de Toledo, 200</strong>, estruturamos a implantação para tirar proveito da fase atual de reforma civil:
+            </p>
+        </div>
+
+        <!-- Banner de Oportunidade da Obra -->
+        <div class="mb-10 max-w-4xl mx-auto p-4 md:p-5 rounded-2xl bg-amber-500/10 border border-amber-500/30 flex items-center gap-4 reveal">
+            <div class="w-12 h-12 rounded-xl bg-brand-yellow text-black flex items-center justify-center shrink-0 shadow-sm">
+                <i data-lucide="hard-hat" class="w-6 h-6"></i>
+            </div>
+            <div class="text-left text-xs md:text-sm text-gray-800 leading-relaxed">
+                <strong class="text-gray-950 block text-sm md:text-base font-bold mb-0.5">Janela de Oportunidade da Reforma Civil:</strong>
+                O ambiente interno encontra-se em fase de drywall, massas e fechamento. Lançar os eletrodutos e a fiação de rede em paralelo com a equipe da obra evita perfurações posteriores, retrabalho ou cortes na pintura finalizada.
+            </div>
+        </div>
+
+        <div class="grid md:grid-cols-3 gap-8 reveal">
+            <!-- Pilar 1 -->
+            <div class="bg-[#fafafa] rounded-[2rem] p-8 border border-gray-100 shadow-sm flex flex-col justify-between hover:border-brand-yellow/40 transition-all">
+                <div>
+                    <div class="w-12 h-12 bg-amber-100 rounded-2xl flex items-center justify-center mb-6 text-brand-goldDark">
+                        <i data-lucide="shield" class="w-6 h-6"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">Infraestrutura Blindada em Aço Zincado</h3>
+                    <p class="text-gray-600 text-xs md:text-sm leading-relaxed mb-6">
+                        Com fachada em parede de pedra e calçada com piso intertravado, o cabeamento não pode ficar vulnerável. Dimensionamos eletrodutos e conduletes em <strong>aço galvanizado 3/4</strong> aparente com tampões cegos, blindando a passagem contra umidade, atrito e vandalismo.
+                    </p>
+                </div>
+                <div class="p-3.5 bg-emerald-50 rounded-xl border border-emerald-100 text-xs text-emerald-800 flex items-center gap-2">
+                    <i data-lucide="check-circle-2" class="w-4 h-4 text-emerald-600 shrink-0"></i>
+                    <span>15 eletrodutos 3/4 + 10 conduletes + cabo UTP homologado.</span>
+                </div>
+            </div>
+
+            <!-- Pilar 2 -->
+            <div class="bg-[#fafafa] rounded-[2rem] p-8 border border-gray-100 shadow-sm flex flex-col justify-between hover:border-brand-yellow/40 transition-all">
+                <div>
+                    <div class="w-12 h-12 bg-amber-100 rounded-2xl flex items-center justify-center mb-6 text-brand-goldDark">
+                        <i data-lucide="door-open" class="w-6 h-6"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">Proteção do Vidro & Fechamento Hidráulico</h3>
+                    <p class="text-gray-600 text-xs md:text-sm leading-relaxed mb-6">
+                        Para o portão de vidro de pedestres com fluxo contínuo de alunos, a combinação da <strong>Mola Hidráulica MH 104</strong> com a <strong>Trava Eletroímã de 150 kgf</strong> garante fechamento amortecido e silencioso, eliminando impacto brusco que danifica ou trinca o vidro temperado.
+                    </p>
+                </div>
+                <div class="p-3.5 bg-emerald-50 rounded-xl border border-emerald-100 text-xs text-emerald-800 flex items-center gap-2">
+                    <i data-lucide="check-circle-2" class="w-4 h-4 text-emerald-600 shrink-0"></i>
+                    <span>Suporte de alta aderência sem furos na folha de vidro.</span>
+                </div>
+            </div>
+
+            <!-- Pilar 3 -->
+            <div class="bg-[#fafafa] rounded-[2rem] p-8 border border-gray-100 shadow-sm flex flex-col justify-between hover:border-brand-yellow/40 transition-all">
+                <div>
+                    <div class="w-12 h-12 bg-amber-100 rounded-2xl flex items-center justify-center mb-6 text-brand-goldDark">
+                        <i data-lucide="battery-charging" class="w-6 h-6"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">Vídeo Recepção & Autonomia Nobreak</h3>
+                    <p class="text-gray-600 text-xs md:text-sm leading-relaxed mb-6">
+                        Comunicação direta do portão à mesa da recepção (através do monitor TVIP opcional) e autonomia energética contínua via fonte ininterrupta com bateria selada 12V VRLA, assegurando portão sempre travado e leitura facial ativa mesmo se a energia cair.
+                    </p>
+                </div>
+                <div class="p-3.5 bg-emerald-50 rounded-xl border border-emerald-100 text-xs text-emerald-800 flex items-center gap-2">
+                    <i data-lucide="check-circle-2" class="w-4 h-4 text-emerald-600 shrink-0"></i>
+                    <span>Segurança ininterrupta mesmo em oscilações elétricas.</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ===================== VITRINE TECNOLÓGICA ===================== -->
+<section id="solucao" class="py-24 bg-[#f8f9fa] border-b border-gray-200/60 relative">
+    <div class="max-w-7xl mx-auto px-4 relative z-10">
+        <div class="text-center mb-16 reveal">
+            <span class="text-brand-yellow font-bold uppercase tracking-widest text-xs">Equipamentos Homologados</span>
+            <h2 class="text-3xl md:text-5xl font-bold text-gray-900 mt-3">Tecnologia Intelbras Corporativa</h2>
+            <p class="text-gray-500 mt-4 max-w-2xl mx-auto text-sm md:text-base">
+                Hardware profissional de alta durabilidade com homologação técnica e garantia direta da Vision:
+            </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 reveal">
+            <!-- Equipamento 1: Facial -->
+            <div class="bg-white rounded-3xl p-6 border border-gray-200 shadow-sm flex flex-col justify-between hover:border-brand-yellow hover:shadow-md transition-all group">
+                <div>
+                    <div class="w-full aspect-video bg-gradient-to-br from-amber-50 to-orange-50/40 rounded-2xl flex items-center justify-center p-4 mb-4 border border-amber-100/80 relative overflow-hidden">
+                        <span class="absolute top-2.5 right-3 text-[9px] font-extrabold uppercase tracking-wider px-2.5 py-0.5 rounded-full bg-amber-500/10 text-amber-800 border border-amber-500/20">Biometria &lt;0.5s</span>
+                        <img src="https://res.cloudinary.com/dptcuckhf/image/upload/v1770745467/ss-3532-mf-w-frontal_2_c82tua.png" alt="Intelbras SS 3532 MF" class="max-h-32 object-contain group-hover:scale-105 transition-transform" onerror="this.src='https://placehold.co/200x200/f3f4f6/111827?text=Facial+SS3532'">
+                    </div>
+                    <h4 class="font-bold text-gray-900 text-base mb-1.5 flex items-center gap-2">
+                        <span class="w-2 h-2 rounded-full bg-amber-500"></span>
+                        Leitor Facial SS 3532 MF
+                    </h4>
+                    <p class="text-xs text-gray-600 leading-relaxed">
+                        Reconhecimento ultrarrápido em &lt;0.5s com câmera dupla anti-fake (evita fotos no celular), leitura adaptativa no escuro e controle de acesso integrado.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Equipamento 2: Monitor TVIP -->
+            <div class="bg-white rounded-3xl p-6 border border-gray-200 shadow-sm flex flex-col justify-between hover:border-blue-400 hover:shadow-md transition-all group">
+                <div>
+                    <div class="w-full aspect-video bg-gradient-to-br from-blue-50 to-indigo-50/40 rounded-2xl flex items-center justify-center p-4 mb-4 border border-blue-100/80 relative overflow-hidden">
+                        <span class="absolute top-2.5 right-3 text-[9px] font-extrabold uppercase tracking-wider px-2.5 py-0.5 rounded-full bg-blue-500/10 text-blue-800 border border-blue-500/20">Vídeo IP Recepção</span>
+                        <img src="https://res.cloudinary.com/dptcuckhf/image/upload/v1776122090/Terminal-de-video-IP-TVIP_2221_0_xowe8f.png" alt="Terminal TVIP 2221 HF" class="max-h-32 object-contain group-hover:scale-105 transition-transform" onerror="this.src='https://placehold.co/200x200/f3f4f6/111827?text=Monitor+TVIP'">
+                    </div>
+                    <h4 class="font-bold text-gray-900 text-base mb-1.5 flex items-center gap-2">
+                        <span class="w-2 h-2 rounded-full bg-blue-500"></span>
+                        Monitor IP TVIP 2221 HF (Opção 2)
+                    </h4>
+                    <p class="text-xs text-gray-600 leading-relaxed">
+                        Terminal de mesa dedicado para a recepção com tela touch colorida, áudio bidirecional e liberação do portão com um toque para atendimento de visitantes.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Equipamento 3: Eletroímã -->
+            <div class="bg-white rounded-3xl p-6 border border-gray-200 shadow-sm flex flex-col justify-between hover:border-rose-400 hover:shadow-md transition-all group">
+                <div>
+                    <div class="w-full aspect-video bg-gradient-to-br from-rose-50 to-red-50/40 rounded-2xl flex items-center justify-center p-4 mb-4 border border-rose-100/80 relative overflow-hidden">
+                        <span class="absolute top-2.5 right-3 text-[9px] font-extrabold uppercase tracking-wider px-2.5 py-0.5 rounded-full bg-rose-500/10 text-rose-800 border border-rose-500/20">150 kgf Silencioso</span>
+                        <img src="https://res.cloudinary.com/dptcuckhf/image/upload/v1776122154/Fechadura_eletro%C3%ADm%C3%A3_150_kgf_com_sensor_q8sphm.png" alt="Fechadura Eletroímã 150 kgf" class="max-h-32 object-contain group-hover:scale-105 transition-transform" onerror="this.src='https://placehold.co/200x200/f3f4f6/111827?text=Eletroima+150kg'">
+                    </div>
+                    <h4 class="font-bold text-gray-900 text-base mb-1.5 flex items-center gap-2">
+                        <span class="w-2 h-2 rounded-full bg-rose-500"></span>
+                        Eletroímã 150 kgf + Sensor
+                    </h4>
+                    <p class="text-xs text-gray-600 leading-relaxed">
+                        Fechadura magnética sem atrito mecânico para portas de vidro/pedestres com sensor de estado (porta aberta/fechada) e alta resistência a tentativas de violação.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Equipamento 4: Mola Aérea Hidráulica -->
+            <div class="bg-white rounded-3xl p-6 border border-gray-200 shadow-sm flex flex-col justify-between hover:border-indigo-400 hover:shadow-md transition-all group">
+                <div>
+                    <div class="w-full aspect-video bg-gradient-to-br from-indigo-50 to-slate-50 rounded-2xl flex items-center justify-center p-4 mb-4 border border-indigo-100/80 relative overflow-hidden">
+                        <span class="absolute top-2.5 right-3 text-[9px] font-extrabold uppercase tracking-wider px-2.5 py-0.5 rounded-full bg-indigo-500/10 text-indigo-800 border border-indigo-500/20">Fechamento Suave</span>
+                        <img src="https://res.cloudinary.com/dptcuckhf/image/upload/v1770745467/MH_104_MOLA_A%C3%89REA_mvjqbm.jpg" alt="Mola Aérea Hidráulica" class="max-h-28 object-contain mix-blend-multiply group-hover:scale-105 transition-transform" onerror="this.src='https://placehold.co/200x200/f3f4f6/111827?text=Mola+Aerea'">
+                    </div>
+                    <h4 class="font-bold text-gray-900 text-base mb-1.5 flex items-center gap-2">
+                        <span class="w-2 h-2 rounded-full bg-indigo-500"></span>
+                        Mola Aérea Hidráulica (MH 104)
+                    </h4>
+                    <p class="text-xs text-gray-600 leading-relaxed">
+                        Regula a velocidade de fechamento e o amortecimento final. Impede batidas bruscas que danificam o vidro e garante que o portão sempre feche sozinho.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Equipamento 5: Botoeira No Touch Inox -->
+            <div class="bg-white rounded-3xl p-6 border border-gray-200 shadow-sm flex flex-col justify-between hover:border-emerald-400 hover:shadow-md transition-all group">
+                <div>
+                    <div class="w-full aspect-video bg-gradient-to-br from-emerald-50 to-teal-50/40 rounded-2xl flex items-center justify-center p-4 mb-4 border border-emerald-100/80 relative overflow-hidden">
+                        <span class="absolute top-2.5 right-3 text-[9px] font-extrabold uppercase tracking-wider px-2.5 py-0.5 rounded-full bg-emerald-500/10 text-emerald-800 border border-emerald-500/20">Sem Toque (No Touch)</span>
+                        <img src="https://res.cloudinary.com/dptcuckhf/image/upload/v1779473336/bt_4000-front_led_verde_1_i7qgar.png" alt="Botoeira No Touch BT 4000" class="max-h-32 object-contain group-hover:scale-105 transition-transform" onerror="this.src='https://placehold.co/200x200/f3f4f6/111827?text=Botoeira+BT4000'">
+                    </div>
+                    <h4 class="font-bold text-gray-900 text-base mb-1.5 flex items-center gap-2">
+                        <span class="w-2 h-2 rounded-full bg-emerald-500"></span>
+                        Botoeira de Aproximação Inox
+                    </h4>
+                    <p class="text-xs text-gray-600 leading-relaxed">
+                        Acionamento por sensor infravermelho sem contato físico (No Touch) com sinalização em LED verde. Máxima higiene e zero desgaste mecânico interno.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Equipamento 6: Fonte Nobreak FA 1220S -->
+            <div class="bg-white rounded-3xl p-6 border border-gray-200 shadow-sm flex flex-col justify-between hover:border-amber-400 hover:shadow-md transition-all group">
+                <div>
+                    <div class="w-full aspect-video bg-gradient-to-br from-amber-50 to-yellow-50/40 rounded-2xl flex items-center justify-center p-4 mb-4 border border-amber-100/80 relative overflow-hidden">
+                        <span class="absolute top-2.5 right-3 text-[9px] font-extrabold uppercase tracking-wider px-2.5 py-0.5 rounded-full bg-amber-500/10 text-amber-800 border border-amber-500/20">Backup de Energia</span>
+                        <img src="https://res.cloudinary.com/dptcuckhf/image/upload/v1771601853/FlyerDigital_FA_1220_S_bateria_03-removebg-preview_bunqno.png" alt="Fonte Nobreak FA 1220S" class="max-h-32 object-contain group-hover:scale-105 transition-transform" onerror="this.src='https://placehold.co/200x200/f3f4f6/111827?text=Nobreak+FA1220'">
+                    </div>
+                    <h4 class="font-bold text-gray-900 text-base mb-1.5 flex items-center gap-2">
+                        <span class="w-2 h-2 rounded-full bg-amber-500"></span>
+                        Fonte Nobreak + Bateria VRLA
+                    </h4>
+                    <p class="text-xs text-gray-600 leading-relaxed">
+                        Gabinete metálico industrial com fonte inteligente e bateria selada de 12V 7Ah. Mantém o portão travado e o leitor facial ativo mesmo durante quedas de luz.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ===================== VÍDEO DEMONSTRATIVO ===================== -->
+<section id="video-demo" class="py-20 bg-white border-b border-gray-200/60">
+    <div class="max-w-4xl mx-auto px-4 text-center reveal">
+        <div class="inline-block bg-brand-yellow/10 text-brand-goldDark text-xs font-bold px-4 py-1.5 rounded-full uppercase tracking-widest mb-4 border border-brand-yellow/20">
+            Veja em Funcionamento
+        </div>
+        <h2 class="text-3xl font-bold text-gray-900 mb-4">Velocidade da Biometria Facial & Vídeo IP</h2>
+        <p class="text-gray-500 mb-10 max-w-2xl mx-auto text-sm">
+            Confira a resposta instantânea do leitor facial Intelbras e a integração de vídeo para atendimento de portaria:
+        </p>
+        
+        <div class="relative w-full max-w-[320px] mx-auto aspect-[9/16] rounded-[2.5rem] overflow-hidden shadow-premium border-[8px] border-zinc-900 bg-black">
+            <iframe 
+                class="absolute inset-0 w-full h-full scale-[1.02]" 
+                src="https://www.youtube.com/embed/1dvh4e3mdL8?autoplay=0&loop=1&playlist=1dvh4e3mdL8&rel=0&controls=0" 
+                title="Demonstração Acesso Facial Intelbras" 
+                frameborder="0" 
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                allowfullscreen>
+            </iframe>
+        </div>
+    </div>
+</section>
+
+<!-- ===================== AVALIAÇÕES GOOGLE (REPUTAÇÃO VERIFICADA) ===================== -->
+<section id="avaliacoes" class="py-24 bg-gradient-to-b from-[#f8f9fa] via-white to-[#fafafa] border-b border-gray-200/60 relative overflow-hidden">
+    <!-- Efeitos de Luz & Fundo Glassmorphism -->
+    <div class="absolute -top-24 left-1/4 w-96 h-96 bg-brand-yellow/10 rounded-full blur-[110px] pointer-events-none"></div>
+    <div class="absolute -bottom-24 right-1/4 w-96 h-96 bg-blue-500/5 rounded-full blur-[120px] pointer-events-none"></div>
+    <div class="absolute inset-0 bg-grid opacity-60 pointer-events-none"></div>
+
+    <div class="max-w-7xl mx-auto px-4 relative z-10">
+        
+        <!-- Header Central de Reputação Google -->
+        <div class="max-w-4xl mx-auto text-center mb-16 reveal">
+            
+            <!-- Badge Google Integrado -->
+            <div class="inline-flex items-center gap-3 px-5 py-2 rounded-full bg-white/80 backdrop-blur-md border border-gray-200 shadow-glass mb-6">
+                <!-- SVG Logo Google Oficial -->
+                <svg class="w-5 h-5 shrink-0" viewBox="0 0 24 24">
+                    <path fill="#4285F4" d="M23.745 12.27c0-.7-.06-1.4-.19-2.07H12v4.51h6.6c-.29 1.52-1.14 2.82-2.4 3.68v3.05h3.88c2.27-2.09 3.66-5.17 3.66-9.17z"/>
+                    <path fill="#34A853" d="M12 24c3.24 0 5.95-1.08 7.93-2.91l-3.88-3.05c-1.08.72-2.45 1.16-4.05 1.16-3.12 0-5.77-2.1-6.72-4.93H1.25v3.15C3.26 21.36 7.34 24 12 24z"/>
+                    <path fill="#FBBC05" d="M5.28 14.27c-.25-.72-.38-1.49-.38-2.27s.13-1.55.38-2.27V6.58H1.25C.45 8.18 0 9.98 0 12s.45 3.82 1.25 5.42l4.03-3.15z"/>
+                    <path fill="#EA4335" d="M12 4.75c1.77 0 3.35.61 4.6 1.8l3.42-3.42C17.95 1.19 15.24 0 12 0 7.34 0 3.26 2.64 1.25 6.58l4.03 3.15c.95-2.83 3.6-4.98 6.72-4.98z"/>
+                </svg>
+                <span class="text-xs font-bold text-gray-700 uppercase tracking-wider">Avaliações Verificadas no Google</span>
+                <span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
+                <span class="text-[11px] font-extrabold text-emerald-700">Nota 5.0 Máxima</span>
+            </div>
+
+            <h2 class="text-3xl md:text-5xl font-extrabold text-gray-900 tracking-tight leading-tight">
+                Padrão Ouro Comprovado por <span class="text-gold-shine">Quem Já Contratou</span>
+            </h2>
+            
+            <p class="text-gray-500 mt-4 max-w-2xl mx-auto text-sm md:text-base leading-relaxed">
+                Kauã, transparência e pós-venda são inegociáveis para a Vision. Veja os depoimentos reais deixados por nossos clientes corporativos e residenciais no Google:
+            </p>
+
+            <!-- Placar de Avaliações em Glassmorphism -->
+            <div class="mt-8 grid grid-cols-1 sm:grid-cols-3 gap-4 max-w-2xl mx-auto">
+                
+                <div class="bg-white/70 backdrop-blur-xl rounded-2xl p-4 border border-white/80 shadow-glass flex flex-col items-center justify-center">
+                    <div class="flex items-center gap-1.5 mb-1">
+                        <span class="text-3xl font-black text-gray-900">5.0</span>
+                        <div class="flex text-amber-400">
+                            <i data-lucide="star" class="w-4 h-4 fill-amber-400 text-amber-400"></i>
+                            <i data-lucide="star" class="w-4 h-4 fill-amber-400 text-amber-400"></i>
+                            <i data-lucide="star" class="w-4 h-4 fill-amber-400 text-amber-400"></i>
+                            <i data-lucide="star" class="w-4 h-4 fill-amber-400 text-amber-400"></i>
+                            <i data-lucide="star" class="w-4 h-4 fill-amber-400 text-amber-400"></i>
+                        </div>
+                    </div>
+                    <span class="text-[10px] font-bold text-gray-500 uppercase tracking-wider">Score Perfeito</span>
+                </div>
+
+                <div class="bg-white/70 backdrop-blur-xl rounded-2xl p-4 border border-white/80 shadow-glass flex flex-col items-center justify-center">
+                    <div class="flex items-baseline gap-1 mb-0.5">
+                        <span class="text-2xl font-black text-brand-goldDark">126</span>
+                        <span class="text-xs font-bold text-gray-500">avaliações</span>
+                    </div>
+                    <span class="text-[10px] font-extrabold text-gray-700 uppercase tracking-widest flex items-center gap-1">
+                        <i data-lucide="map-pin" class="w-3 h-3 text-brand-yellow"></i> Região do ABC
+                    </span>
+                </div>
+
+                <div class="bg-white/70 backdrop-blur-xl rounded-2xl p-4 border border-white/80 shadow-glass flex flex-col items-center justify-center">
+                    <div class="flex items-baseline gap-1 mb-0.5">
+                        <span class="text-2xl font-black text-brand-goldDark">85</span>
+                        <span class="text-xs font-bold text-gray-500">avaliações</span>
+                    </div>
+                    <span class="text-[10px] font-extrabold text-gray-700 uppercase tracking-widest flex items-center gap-1">
+                        <i data-lucide="map-pin" class="w-3 h-3 text-brand-yellow"></i> São Paulo Capital
+                    </span>
+                </div>
+
+            </div>
+
+            <p class="text-[11px] font-bold text-gray-400 uppercase tracking-widest mt-4">
+                Total de 211 avaliações 5 estrelas verificadas · 100% de recomendação
+            </p>
+        </div>
+
+        <!-- Carrossel Infinito com Pausa ao Toque e Hover -->
+        <div class="relative w-full overflow-hidden py-4 select-none reviews-marquee-container reveal" id="reviews-container">
+            
+            <!-- Sombreamento de Gradiente nas Bordas (Fade Out) -->
+            <div class="pointer-events-none absolute left-0 top-0 bottom-0 w-12 sm:w-28 bg-gradient-to-r from-[#f8f9fa] to-transparent z-20"></div>
+            <div class="pointer-events-none absolute right-0 top-0 bottom-0 w-12 sm:w-28 bg-gradient-to-l from-[#fafafa] to-transparent z-20"></div>
+
+            <!-- Trilho Móvel com Conjunto Duplicado para Loop Infinito Fluido -->
+            <div id="reviews-track" class="reviews-marquee-track flex gap-6 items-stretch">
+
+                <!-- ===== GRUPO 1 DE AVALIAÇÕES ===== -->
+
+                <!-- Review 1: Amanda Marques Mumme -->
+                <div class="w-[320px] sm:w-[380px] md:w-[410px] shrink-0 bg-white/75 backdrop-blur-xl rounded-3xl p-6 md:p-7 border border-white/80 shadow-glass hover:shadow-premium hover:border-brand-yellow/50 transition-all duration-300 flex flex-col justify-between group relative overflow-hidden">
+                    <div class="absolute -right-8 -top-8 w-28 h-28 bg-brand-yellow/5 rounded-full pointer-events-none group-hover:scale-125 transition-transform"></div>
+                    <div>
+                        <div class="flex items-center justify-between gap-3 mb-4">
+                            <div class="flex items-center gap-3">
+                                <div class="w-11 h-11 rounded-full bg-gradient-to-tr from-amber-500 to-amber-300 text-white font-bold flex items-center justify-center text-sm shadow-sm ring-2 ring-white">
+                                    AM
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-gray-900 text-sm leading-tight">Amanda Marques Mumme</h4>
+                                    <div class="flex items-center gap-1.5 mt-0.5">
+                                        <span class="inline-flex items-center gap-1 text-[9px] font-bold bg-amber-100/80 text-amber-800 px-2 py-0.5 rounded-full">
+                                            <i data-lucide="shield-check" class="w-2.5 h-2.5"></i> Local Guide
+                                        </span>
+                                        <span class="text-[10px] text-gray-400">· 72 avaliações</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <span class="text-[10px] text-gray-400 font-medium whitespace-nowrap">Há 8 meses</span>
+                        </div>
+                        <div class="flex text-amber-400 mb-3 gap-0.5">
+                            <i data-lucide="star" class="w-4 h-4 fill-amber-400 text-amber-400"></i>
+                            <i data-lucide="star" class="w-4 h-4 fill-amber-400 text-amber-400"></i>
+                            <i data-lucide="star" class="w-4 h-4 fill-amber-400 text-amber-400"></i>
+                            <i data-lucide="star" class="w-4 h-4 fill-amber-400 text-amber-400"></i>
+                            <i data-lucide="star" class="w-4 h-4 fill-amber-400 text-amber-400"></i>
+                        </div>
+                        <p class="text-gray-700 text-xs md:text-sm leading-relaxed mb-5 italic">
+                            "O atendimento no WhatsApp é diferenciado, rápido, sem enrolação. Mesmo de recesso o Gabriel me atendeu e conseguimos agendar a instalação da minha fechadura. O Leo instalou a fechadura e o puxador, me ajudou a cadastrar a senha, me ensinou a trocar a senha, caso precise. Foi nota 10 do começo ao fim. Obrigada meninos!"
+                        </p>
+                    </div>
+                    <div class="pt-4 border-t border-gray-100/80">
+                        <span class="text-[10px] font-extrabold uppercase tracking-wider text-gray-400 block mb-1.5">Destaques da experiência:</span>
+                        <div class="flex flex-wrap gap-1.5">
+                            <span class="text-[10px] bg-gray-100 text-gray-700 font-medium px-2.5 py-0.5 rounded-md">Atendimento no recesso</span>
+                            <span class="text-[10px] bg-gray-100 text-gray-700 font-medium px-2.5 py-0.5 rounded-md">Agilidade do Gabriel</span>
+                            <span class="text-[10px] bg-gray-100 text-gray-700 font-medium px-2.5 py-0.5 rounded-md">Instalação & Treinamento do Léo</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Review 2: CE Paraiso -->
+                <div class="w-[320px] sm:w-[380px] md:w-[410px] shrink-0 bg-white/75 backdrop-blur-xl rounded-3xl p-6 md:p-7 border border-white/80 shadow-glass hover:shadow-premium hover:border-brand-yellow/50 transition-all duration-300 flex flex-col justify-between group relative overflow-hidden ring-1 ring-brand-yellow/20">
+                    <div class="absolute top-0 right-0 bg-brand-yellow text-black text-[8px] font-extrabold uppercase tracking-widest px-3 py-1 rounded-bl-xl shadow-xs">
+                        Projeto Facial
+                    </div>
+                    <div>
+                        <div class="flex items-center justify-between gap-3 mb-4">
+                            <div class="flex items-center gap-3">
+                                <div class="w-11 h-11 rounded-full bg-gradient-to-tr from-zinc-900 to-zinc-700 text-brand-yellow font-black flex items-center justify-center text-sm shadow-sm ring-2 ring-white">
+                                    CP
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-gray-900 text-sm leading-tight">CE Paraiso</h4>
+                                    <div class="flex items-center gap-1.5 mt-0.5">
+                                        <span class="inline-flex items-center gap-1 text-[9px] font-bold bg-blue-100 text-blue-800 px-2 py-0.5 rounded-full">
+                                            <i data-lucide="building" class="w-2.5 h-2.5"></i> Cliente Corporativo
+                                        </span>
+                                        <span class="text-[10px] text-gray-400">· 7 avaliações</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <span class="text-[10px] text-gray-400 font-medium whitespace-nowrap mt-4 sm:mt-0">Há 11 meses</span>
+                        </div>
+                        <div class="flex text-amber-400 mb-3 gap-0.5">
+                            <i data-lucide="star" class="w-4 h-4 fill-amber-400 text-amber-400"></i>
+                            <i data-lucide="star" class="w-4 h-4 fill-amber-400 text-amber-400"></i>
+                            <i data-lucide="star" class="w-4 h-4 fill-amber-400 text-amber-400"></i>
+                            <i data-lucide="star" class="w-4 h-4 fill-amber-400 text-amber-400"></i>
+                            <i data-lucide="star" class="w-4 h-4 fill-amber-400 text-amber-400"></i>
+                        </div>
+                        <p class="text-gray-700 text-xs md:text-sm leading-relaxed mb-5 italic">
+                            "A Vision esteve aqui em nosso condomínio renovando e atualizando todos os nossos acessos para Facial. Um atendimento incrível, técnicos altamente capacitados, material de primeira linha, orientação e acompanhamento, preços mais do que justo..."
+                        </p>
+                    </div>
+                    <div class="pt-4 border-t border-gray-100/80">
+                        <span class="text-[10px] font-extrabold uppercase tracking-wider text-gray-400 block mb-1.5">Destaques da experiência:</span>
+                        <div class="flex flex-wrap gap-1.5">
+                            <span class="text-[10px] bg-amber-50 text-amber-900 border border-amber-200 font-bold px-2.5 py-0.5 rounded-md">Migração Acesso Facial</span>
+                            <span class="text-[10px] bg-gray-100 text-gray-700 font-medium px-2.5 py-0.5 rounded-md">Hardware de 1ª linha</span>
+                            <span class="text-[10px] bg-gray-100 text-gray-700 font-medium px-2.5 py-0.5 rounded-md">Preço Justo B2B</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Review 3: Renata Jábali -->
+                <div class="w-[320px] sm:w-[380px] md:w-[410px] shrink-0 bg-white/75 backdrop-blur-xl rounded-3xl p-6 md:p-7 border border-white/80 shadow-glass hover:shadow-premium hover:border-brand-yellow/50 transition-all duration-300 flex flex-col justify-between group relative overflow-hidden">
+                    <div class="absolute -right-8 -top-8 w-28 h-28 bg-emerald-500/5 rounded-full pointer-events-none group-hover:scale-125 transition-transform"></div>
+                    <div>
+                        <div class="flex items-center justify-between gap-3 mb-4">
+                            <div class="flex items-center gap-3">
+                                <div class="w-11 h-11 rounded-full bg-gradient-to-tr from-rose-500 to-rose-300 text-white font-bold flex items-center justify-center text-sm shadow-sm ring-2 ring-white">
+                                    RJ
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-gray-900 text-sm leading-tight">Renata Jábali</h4>
+                                    <div class="flex items-center gap-1.5 mt-0.5">
+                                        <span class="inline-flex items-center gap-1 text-[9px] font-bold bg-amber-100/80 text-amber-800 px-2 py-0.5 rounded-full">
+                                            <i data-lucide="shield-check" class="w-2.5 h-2.5"></i> Local Guide
+                                        </span>
+                                        <span class="text-[10px] text-gray-400">· 18 avaliações</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <span class="text-[10px] text-gray-400 font-medium whitespace-nowrap">Há 4 meses</span>
+                        </div>
+                        <div class="flex text-amber-400 mb-3 gap-0.5">
+                            <i data-lucide="star" class="w-4 h-4 fill-amber-400 text-amber-400"></i>
+                            <i data-lucide="star" class="w-4 h-4 fill-amber-400 text-amber-400"></i>
+                            <i data-lucide="star" class="w-4 h-4 fill-amber-400 text-amber-400"></i>
+                            <i data-lucide="star" class="w-4 h-4 fill-amber-400 text-amber-400"></i>
+                            <i data-lucide="star" class="w-4 h-4 fill-amber-400 text-amber-400"></i>
+                        </div>
+                        <p class="text-gray-700 text-xs md:text-sm leading-relaxed mb-5 italic">
+                            "O trabalho foi ótimo, desde o momento do primeiro atendimento e recebimento dos projetos. Os técnicos que fizeram a instalação foram atenciosos, cordiais e respeitaram totalmente os horários e a dinâmica da casa, onde moram dois idosos. A explicação do uso do aplicativo foi bem completa. Recomendo certamente a empresa!!"
+                        </p>
+                    </div>
+                    <div class="pt-4 border-t border-gray-100/80">
+                        <span class="text-[10px] font-extrabold uppercase tracking-wider text-gray-400 block mb-1.5">Destaques da experiência:</span>
+                        <div class="flex flex-wrap gap-1.5">
+                            <span class="text-[10px] bg-gray-100 text-gray-700 font-medium px-2.5 py-0.5 rounded-md">Planejamento do projeto</span>
+                            <span class="text-[10px] bg-gray-100 text-gray-700 font-medium px-2.5 py-0.5 rounded-md">Pontualidade & Cordialidade</span>
+                            <span class="text-[10px] bg-gray-100 text-gray-700 font-medium px-2.5 py-0.5 rounded-md">Explicação do app</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Review 4: Erik Sarnauskas -->
+                <div class="w-[320px] sm:w-[380px] md:w-[410px] shrink-0 bg-white/75 backdrop-blur-xl rounded-3xl p-6 md:p-7 border border-white/80 shadow-glass hover:shadow-premium hover:border-brand-yellow/50 transition-all duration-300 flex flex-col justify-between group relative overflow-hidden">
+                    <div>
+                        <div class="flex items-center justify-between gap-3 mb-4">
+                            <div class="flex items-center gap-3">
+                                <div class="w-11 h-11 rounded-full bg-gradient-to-tr from-sky-500 to-sky-300 text-white font-bold flex items-center justify-center text-sm shadow-sm ring-2 ring-white">
+                                    ES
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-gray-900 text-sm leading-tight">Erik Sarnauskas</h4>
+                                    <div class="flex items-center gap-1.5 mt-0.5">
+                                        <span class="inline-flex items-center gap-1 text-[9px] font-bold bg-amber-100/80 text-amber-800 px-2 py-0.5 rounded-full">
+                                            <i data-lucide="shield-check" class="w-2.5 h-2.5"></i> Local Guide
+                                        </span>
+                                        <span class="text-[10px] text-gray-400">· 13 avaliações</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <span class="text-[10px] text-gray-400 font-medium whitespace-nowrap">Há 7 meses</span>
+                        </div>
+                        <div class="flex text-amber-400 mb-3 gap-0.5">
+                            <i data-lucide="star" class="w-4 h-4 fill-amber-400 text-amber-400"></i>
+                            <i data-lucide="star" class="w-4 h-4 fill-amber-400 text-amber-400"></i>
+                            <i data-lucide="star" class="w-4 h-4 fill-amber-400 text-amber-400"></i>
+                            <i data-lucide="star" class="w-4 h-4 fill-amber-400 text-amber-400"></i>
+                            <i data-lucide="star" class="w-4 h-4 fill-amber-400 text-amber-400"></i>
+                        </div>
+                        <p class="text-gray-700 text-xs md:text-sm leading-relaxed mb-5 italic">
+                            "Gostei muito do serviço. Foi rápido, organizado e feito com bastante cuidado, principalmente no acabamento e na limpeza do local. O instalador também explicou tudo com clareza, orientando muito bem sobre o funcionamento e as configurações."
+                        </p>
+                    </div>
+                    <div class="pt-4 border-t border-gray-100/80">
+                        <span class="text-[10px] font-extrabold uppercase tracking-wider text-gray-400 block mb-1.5">Destaques da experiência:</span>
+                        <div class="flex flex-wrap gap-1.5">
+                            <span class="text-[10px] bg-gray-100 text-gray-700 font-medium px-2.5 py-0.5 rounded-md">Cuidado no acabamento</span>
+                            <span class="text-[10px] bg-gray-100 text-gray-700 font-medium px-2.5 py-0.5 rounded-md">Limpeza pós-instalação</span>
+                            <span class="text-[10px] bg-gray-100 text-gray-700 font-medium px-2.5 py-0.5 rounded-md">Instrução didática</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Review 5: João Pedro Alencar -->
+                <div class="w-[320px] sm:w-[380px] md:w-[410px] shrink-0 bg-white/75 backdrop-blur-xl rounded-3xl p-6 md:p-7 border border-white/80 shadow-glass hover:shadow-premium hover:border-brand-yellow/50 transition-all duration-300 flex flex-col justify-between group relative overflow-hidden">
+                    <div>
+                        <div class="flex items-center justify-between gap-3 mb-4">
+                            <div class="flex items-center gap-3">
+                                <div class="w-11 h-11 rounded-full bg-gradient-to-tr from-violet-500 to-indigo-300 text-white font-bold flex items-center justify-center text-sm shadow-sm ring-2 ring-white">
+                                    JP
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-gray-900 text-sm leading-tight">João Pedro Alencar</h4>
+                                    <span class="text-[10px] text-gray-400 block mt-0.5">5 avaliações · 1 foto</span>
+                                </div>
+                            </div>
+                            <span class="text-[10px] text-gray-400 font-medium whitespace-nowrap">Há 1 ano</span>
+                        </div>
+                        <div class="flex text-amber-400 mb-3 gap-0.5">
+                            <i data-lucide="star" class="w-4 h-4 fill-amber-400 text-amber-400"></i>
+                            <i data-lucide="star" class="w-4 h-4 fill-amber-400 text-amber-400"></i>
+                            <i data-lucide="star" class="w-4 h-4 fill-amber-400 text-amber-400"></i>
+                            <i data-lucide="star" class="w-4 h-4 fill-amber-400 text-amber-400"></i>
+                            <i data-lucide="star" class="w-4 h-4 fill-amber-400 text-amber-400"></i>
+                        </div>
+                        <p class="text-gray-700 text-xs md:text-sm leading-relaxed mb-5 italic">
+                            "Procurei a empresa para instalação de fechadura digital e o Gabriel foi muito atencioso desde o primeiro contato. Me recomendou modelos de fechadura e conseguiu a instalação com urgência para o mesmo dia. O técnico que veio foi muito atencioso e cuidadoso na instalação, limpeza e explicação. Recomendo a todos o serviço!"
+                        </p>
+                    </div>
+                    <div class="pt-4 border-t border-gray-100/80">
+                        <span class="text-[10px] font-extrabold uppercase tracking-wider text-gray-400 block mb-1.5">Destaques da experiência:</span>
+                        <div class="flex flex-wrap gap-1.5">
+                            <span class="text-[10px] bg-gray-100 text-gray-700 font-medium px-2.5 py-0.5 rounded-md">Atendimento consultivo</span>
+                            <span class="text-[10px] bg-gray-100 text-gray-700 font-medium px-2.5 py-0.5 rounded-md">Urgência no mesmo dia</span>
+                            <span class="text-[10px] bg-gray-100 text-gray-700 font-medium px-2.5 py-0.5 rounded-md">Cuidado e limpeza</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Review 6: Jairo de Araujo -->
+                <div class="w-[320px] sm:w-[380px] md:w-[410px] shrink-0 bg-white/75 backdrop-blur-xl rounded-3xl p-6 md:p-7 border border-white/80 shadow-glass hover:shadow-premium hover:border-brand-yellow/50 transition-all duration-300 flex flex-col justify-between group relative overflow-hidden">
+                    <div>
+                        <div class="flex items-center justify-between gap-3 mb-4">
+                            <div class="flex items-center gap-3">
+                                <div class="w-11 h-11 rounded-full bg-gradient-to-tr from-emerald-500 to-teal-300 text-white font-bold flex items-center justify-center text-sm shadow-sm ring-2 ring-white">
+                                    JA
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-gray-900 text-sm leading-tight">Jairo de Araujo</h4>
+                                    <div class="flex items-center gap-1.5 mt-0.5">
+                                        <span class="inline-flex items-center gap-1 text-[9px] font-bold bg-amber-100/80 text-amber-800 px-2 py-0.5 rounded-full">
+                                            <i data-lucide="shield-check" class="w-2.5 h-2.5"></i> Local Guide
+                                        </span>
+                                        <span class="text-[10px] text-gray-400">· 23 avaliações</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <span class="text-[10px] text-gray-400 font-medium whitespace-nowrap">Há 1 ano</span>
+                        </div>
+                        <div class="flex text-amber-400 mb-3 gap-0.5">
+                            <i data-lucide="star" class="w-4 h-4 fill-amber-400 text-amber-400"></i>
+                            <i data-lucide="star" class="w-4 h-4 fill-amber-400 text-amber-400"></i>
+                            <i data-lucide="star" class="w-4 h-4 fill-amber-400 text-amber-400"></i>
+                            <i data-lucide="star" class="w-4 h-4 fill-amber-400 text-amber-400"></i>
+                            <i data-lucide="star" class="w-4 h-4 fill-amber-400 text-amber-400"></i>
+                        </div>
+                        <p class="text-gray-700 text-xs md:text-sm leading-relaxed mb-5 italic">
+                            "O técnico foi extremamente profissional, pontual e educado. Instalou a fechadura eletrônica com muito cuidado e eficiência. Explicou todo o funcionamento e deixou tudo limpo e organizado após o serviço. Fiquei muito satisfeito com o atendimento — superou minhas expectativas. Recomendo fortemente!"
+                        </p>
+                    </div>
+                    <div class="pt-4 border-t border-gray-100/80">
+                        <span class="text-[10px] font-extrabold uppercase tracking-wider text-gray-400 block mb-1.5">Destaques da experiência:</span>
+                        <div class="flex flex-wrap gap-1.5">
+                            <span class="text-[10px] bg-gray-100 text-gray-700 font-medium px-2.5 py-0.5 rounded-md">Pontualidade & Educação</span>
+                            <span class="text-[10px] bg-gray-100 text-gray-700 font-medium px-2.5 py-0.5 rounded-md">Organização pós-obra</span>
+                            <span class="text-[10px] bg-gray-100 text-gray-700 font-medium px-2.5 py-0.5 rounded-md">Superou expectativas</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ===== GRUPO 2 DE AVALIAÇÕES (DUPLICAÇÃO EXATA PARA TRANSIÇÃO INFINITA CONTÍNUA) ===== -->
+
+                <!-- Review 1 Duplicate -->
+                <div class="w-[320px] sm:w-[380px] md:w-[410px] shrink-0 bg-white/75 backdrop-blur-xl rounded-3xl p-6 md:p-7 border border-white/80 shadow-glass hover:shadow-premium hover:border-brand-yellow/50 transition-all duration-300 flex flex-col justify-between group relative overflow-hidden">
+                    <div class="absolute -right-8 -top-8 w-28 h-28 bg-brand-yellow/5 rounded-full pointer-events-none group-hover:scale-125 transition-transform"></div>
+                    <div>
+                        <div class="flex items-center justify-between gap-3 mb-4">
+                            <div class="flex items-center gap-3">
+                                <div class="w-11 h-11 rounded-full bg-gradient-to-tr from-amber-500 to-amber-300 text-white font-bold flex items-center justify-center text-sm shadow-sm ring-2 ring-white">
+                                    AM
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-gray-900 text-sm leading-tight">Amanda Marques Mumme</h4>
+                                    <div class="flex items-center gap-1.5 mt-0.5">
+                                        <span class="inline-flex items-center gap-1 text-[9px] font-bold bg-amber-100/80 text-amber-800 px-2 py-0.5 rounded-full">
+                                            <i data-lucide="shield-check" class="w-2.5 h-2.5"></i> Local Guide
+                                        </span>
+                                        <span class="text-[10px] text-gray-400">· 72 avaliações</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <span class="text-[10px] text-gray-400 font-medium whitespace-nowrap">Há 8 meses</span>
+                        </div>
+                        <div class="flex text-amber-400 mb-3 gap-0.5">
+                            <i data-lucide="star" class="w-4 h-4 fill-amber-400 text-amber-400"></i>
+                            <i data-lucide="star" class="w-4 h-4 fill-amber-400 text-amber-400"></i>
+                            <i data-lucide="star" class="w-4 h-4 fill-amber-400 text-amber-400"></i>
+                            <i data-lucide="star" class="w-4 h-4 fill-amber-400 text-amber-400"></i>
+                            <i data-lucide="star" class="w-4 h-4 fill-amber-400 text-amber-400"></i>
+                        </div>
+                        <p class="text-gray-700 text-xs md:text-sm leading-relaxed mb-5 italic">
+                            "O atendimento no WhatsApp é diferenciado, rápido, sem enrolação. Mesmo de recesso o Gabriel me atendeu e conseguimos agendar a instalação da minha fechadura. O Leo instalou a fechadura e o puxador, me ajudou a cadastrar a senha, me ensinou a trocar a senha, caso precise. Foi nota 10 do começo ao fim. Obrigada meninos!"
+                        </p>
+                    </div>
+                    <div class="pt-4 border-t border-gray-100/80">
+                        <span class="text-[10px] font-extrabold uppercase tracking-wider text-gray-400 block mb-1.5">Destaques da experiência:</span>
+                        <div class="flex flex-wrap gap-1.5">
+                            <span class="text-[10px] bg-gray-100 text-gray-700 font-medium px-2.5 py-0.5 rounded-md">Atendimento no recesso</span>
+                            <span class="text-[10px] bg-gray-100 text-gray-700 font-medium px-2.5 py-0.5 rounded-md">Agilidade do Gabriel</span>
+                            <span class="text-[10px] bg-gray-100 text-gray-700 font-medium px-2.5 py-0.5 rounded-md">Instalação & Treinamento do Léo</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Review 2 Duplicate -->
+                <div class="w-[320px] sm:w-[380px] md:w-[410px] shrink-0 bg-white/75 backdrop-blur-xl rounded-3xl p-6 md:p-7 border border-white/80 shadow-glass hover:shadow-premium hover:border-brand-yellow/50 transition-all duration-300 flex flex-col justify-between group relative overflow-hidden ring-1 ring-brand-yellow/20">
+                    <div class="absolute top-0 right-0 bg-brand-yellow text-black text-[8px] font-extrabold uppercase tracking-widest px-3 py-1 rounded-bl-xl shadow-xs">
+                        Projeto Facial
+                    </div>
+                    <div>
+                        <div class="flex items-center justify-between gap-3 mb-4">
+                            <div class="flex items-center gap-3">
+                                <div class="w-11 h-11 rounded-full bg-gradient-to-tr from-zinc-900 to-zinc-700 text-brand-yellow font-black flex items-center justify-center text-sm shadow-sm ring-2 ring-white">
+                                    CP
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-gray-900 text-sm leading-tight">CE Paraiso</h4>
+                                    <div class="flex items-center gap-1.5 mt-0.5">
+                                        <span class="inline-flex items-center gap-1 text-[9px] font-bold bg-blue-100 text-blue-800 px-2 py-0.5 rounded-full">
+                                            <i data-lucide="building" class="w-2.5 h-2.5"></i> Cliente Corporativo
+                                        </span>
+                                        <span class="text-[10px] text-gray-400">· 7 avaliações</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <span class="text-[10px] text-gray-400 font-medium whitespace-nowrap mt-4 sm:mt-0">Há 11 meses</span>
+                        </div>
+                        <div class="flex text-amber-400 mb-3 gap-0.5">
+                            <i data-lucide="star" class="w-4 h-4 fill-amber-400 text-amber-400"></i>
+                            <i data-lucide="star" class="w-4 h-4 fill-amber-400 text-amber-400"></i>
+                            <i data-lucide="star" class="w-4 h-4 fill-amber-400 text-amber-400"></i>
+                            <i data-lucide="star" class="w-4 h-4 fill-amber-400 text-amber-400"></i>
+                            <i data-lucide="star" class="w-4 h-4 fill-amber-400 text-amber-400"></i>
+                        </div>
+                        <p class="text-gray-700 text-xs md:text-sm leading-relaxed mb-5 italic">
+                            "A Vision esteve aqui em nosso condomínio renovando e atualizando todos os nossos acessos para Facial. Um atendimento incrível, técnicos altamente capacitados, material de primeira linha, orientação e acompanhamento, preços mais do que justo..."
+                        </p>
+                    </div>
+                    <div class="pt-4 border-t border-gray-100/80">
+                        <span class="text-[10px] font-extrabold uppercase tracking-wider text-gray-400 block mb-1.5">Destaques da experiência:</span>
+                        <div class="flex flex-wrap gap-1.5">
+                            <span class="text-[10px] bg-amber-50 text-amber-900 border border-amber-200 font-bold px-2.5 py-0.5 rounded-md">Migração Acesso Facial</span>
+                            <span class="text-[10px] bg-gray-100 text-gray-700 font-medium px-2.5 py-0.5 rounded-md">Hardware de 1ª linha</span>
+                            <span class="text-[10px] bg-gray-100 text-gray-700 font-medium px-2.5 py-0.5 rounded-md">Preço Justo B2B</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Review 3 Duplicate -->
+                <div class="w-[320px] sm:w-[380px] md:w-[410px] shrink-0 bg-white/75 backdrop-blur-xl rounded-3xl p-6 md:p-7 border border-white/80 shadow-glass hover:shadow-premium hover:border-brand-yellow/50 transition-all duration-300 flex flex-col justify-between group relative overflow-hidden">
+                    <div class="absolute -right-8 -top-8 w-28 h-28 bg-emerald-500/5 rounded-full pointer-events-none group-hover:scale-125 transition-transform"></div>
+                    <div>
+                        <div class="flex items-center justify-between gap-3 mb-4">
+                            <div class="flex items-center gap-3">
+                                <div class="w-11 h-11 rounded-full bg-gradient-to-tr from-rose-500 to-rose-300 text-white font-bold flex items-center justify-center text-sm shadow-sm ring-2 ring-white">
+                                    RJ
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-gray-900 text-sm leading-tight">Renata Jábali</h4>
+                                    <div class="flex items-center gap-1.5 mt-0.5">
+                                        <span class="inline-flex items-center gap-1 text-[9px] font-bold bg-amber-100/80 text-amber-800 px-2 py-0.5 rounded-full">
+                                            <i data-lucide="shield-check" class="w-2.5 h-2.5"></i> Local Guide
+                                        </span>
+                                        <span class="text-[10px] text-gray-400">· 18 avaliações</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <span class="text-[10px] text-gray-400 font-medium whitespace-nowrap">Há 4 meses</span>
+                        </div>
+                        <div class="flex text-amber-400 mb-3 gap-0.5">
+                            <i data-lucide="star" class="w-4 h-4 fill-amber-400 text-amber-400"></i>
+                            <i data-lucide="star" class="w-4 h-4 fill-amber-400 text-amber-400"></i>
+                            <i data-lucide="star" class="w-4 h-4 fill-amber-400 text-amber-400"></i>
+                            <i data-lucide="star" class="w-4 h-4 fill-amber-400 text-amber-400"></i>
+                            <i data-lucide="star" class="w-4 h-4 fill-amber-400 text-amber-400"></i>
+                        </div>
+                        <p class="text-gray-700 text-xs md:text-sm leading-relaxed mb-5 italic">
+                            "O trabalho foi ótimo, desde o momento do primeiro atendimento e recebimento dos projetos. Os técnicos que fizeram a instalação foram atenciosos, cordiais e respeitaram totalmente os horários e a dinâmica da casa, onde moram dois idosos. A explicação do uso do aplicativo foi bem completa. Recomendo certamente a empresa!!"
+                        </p>
+                    </div>
+                    <div class="pt-4 border-t border-gray-100/80">
+                        <span class="text-[10px] font-extrabold uppercase tracking-wider text-gray-400 block mb-1.5">Destaques da experiência:</span>
+                        <div class="flex flex-wrap gap-1.5">
+                            <span class="text-[10px] bg-gray-100 text-gray-700 font-medium px-2.5 py-0.5 rounded-md">Planejamento do projeto</span>
+                            <span class="text-[10px] bg-gray-100 text-gray-700 font-medium px-2.5 py-0.5 rounded-md">Pontualidade & Cordialidade</span>
+                            <span class="text-[10px] bg-gray-100 text-gray-700 font-medium px-2.5 py-0.5 rounded-md">Explicação do app</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Review 4 Duplicate -->
+                <div class="w-[320px] sm:w-[380px] md:w-[410px] shrink-0 bg-white/75 backdrop-blur-xl rounded-3xl p-6 md:p-7 border border-white/80 shadow-glass hover:shadow-premium hover:border-brand-yellow/50 transition-all duration-300 flex flex-col justify-between group relative overflow-hidden">
+                    <div>
+                        <div class="flex items-center justify-between gap-3 mb-4">
+                            <div class="flex items-center gap-3">
+                                <div class="w-11 h-11 rounded-full bg-gradient-to-tr from-sky-500 to-sky-300 text-white font-bold flex items-center justify-center text-sm shadow-sm ring-2 ring-white">
+                                    ES
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-gray-900 text-sm leading-tight">Erik Sarnauskas</h4>
+                                    <div class="flex items-center gap-1.5 mt-0.5">
+                                        <span class="inline-flex items-center gap-1 text-[9px] font-bold bg-amber-100/80 text-amber-800 px-2 py-0.5 rounded-full">
+                                            <i data-lucide="shield-check" class="w-2.5 h-2.5"></i> Local Guide
+                                        </span>
+                                        <span class="text-[10px] text-gray-400">· 13 avaliações</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <span class="text-[10px] text-gray-400 font-medium whitespace-nowrap">Há 7 meses</span>
+                        </div>
+                        <div class="flex text-amber-400 mb-3 gap-0.5">
+                            <i data-lucide="star" class="w-4 h-4 fill-amber-400 text-amber-400"></i>
+                            <i data-lucide="star" class="w-4 h-4 fill-amber-400 text-amber-400"></i>
+                            <i data-lucide="star" class="w-4 h-4 fill-amber-400 text-amber-400"></i>
+                            <i data-lucide="star" class="w-4 h-4 fill-amber-400 text-amber-400"></i>
+                            <i data-lucide="star" class="w-4 h-4 fill-amber-400 text-amber-400"></i>
+                        </div>
+                        <p class="text-gray-700 text-xs md:text-sm leading-relaxed mb-5 italic">
+                            "Gostei muito do serviço. Foi rápido, organizado e feito com bastante cuidado, principalmente no acabamento e na limpeza do local. O instalador também explicou tudo com clareza, orientando muito bem sobre o funcionamento e as configurações."
+                        </p>
+                    </div>
+                    <div class="pt-4 border-t border-gray-100/80">
+                        <span class="text-[10px] font-extrabold uppercase tracking-wider text-gray-400 block mb-1.5">Destaques da experiência:</span>
+                        <div class="flex flex-wrap gap-1.5">
+                            <span class="text-[10px] bg-gray-100 text-gray-700 font-medium px-2.5 py-0.5 rounded-md">Cuidado no acabamento</span>
+                            <span class="text-[10px] bg-gray-100 text-gray-700 font-medium px-2.5 py-0.5 rounded-md">Limpeza pós-instalação</span>
+                            <span class="text-[10px] bg-gray-100 text-gray-700 font-medium px-2.5 py-0.5 rounded-md">Instrução didática</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Review 5 Duplicate -->
+                <div class="w-[320px] sm:w-[380px] md:w-[410px] shrink-0 bg-white/75 backdrop-blur-xl rounded-3xl p-6 md:p-7 border border-white/80 shadow-glass hover:shadow-premium hover:border-brand-yellow/50 transition-all duration-300 flex flex-col justify-between group relative overflow-hidden">
+                    <div>
+                        <div class="flex items-center justify-between gap-3 mb-4">
+                            <div class="flex items-center gap-3">
+                                <div class="w-11 h-11 rounded-full bg-gradient-to-tr from-violet-500 to-indigo-300 text-white font-bold flex items-center justify-center text-sm shadow-sm ring-2 ring-white">
+                                    JP
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-gray-900 text-sm leading-tight">João Pedro Alencar</h4>
+                                    <span class="text-[10px] text-gray-400 block mt-0.5">5 avaliações · 1 foto</span>
+                                </div>
+                            </div>
+                            <span class="text-[10px] text-gray-400 font-medium whitespace-nowrap">Há 1 ano</span>
+                        </div>
+                        <div class="flex text-amber-400 mb-3 gap-0.5">
+                            <i data-lucide="star" class="w-4 h-4 fill-amber-400 text-amber-400"></i>
+                            <i data-lucide="star" class="w-4 h-4 fill-amber-400 text-amber-400"></i>
+                            <i data-lucide="star" class="w-4 h-4 fill-amber-400 text-amber-400"></i>
+                            <i data-lucide="star" class="w-4 h-4 fill-amber-400 text-amber-400"></i>
+                            <i data-lucide="star" class="w-4 h-4 fill-amber-400 text-amber-400"></i>
+                        </div>
+                        <p class="text-gray-700 text-xs md:text-sm leading-relaxed mb-5 italic">
+                            "Procurei a empresa para instalação de fechadura digital e o Gabriel foi muito atencioso desde o primeiro contato. Me recomendou modelos de fechadura e conseguiu a instalação com urgência para o mesmo dia. O técnico que veio foi muito atencioso e cuidadoso na instalação, limpeza e explicação. Recomendo a todos o serviço!"
+                        </p>
+                    </div>
+                    <div class="pt-4 border-t border-gray-100/80">
+                        <span class="text-[10px] font-extrabold uppercase tracking-wider text-gray-400 block mb-1.5">Destaques da experiência:</span>
+                        <div class="flex flex-wrap gap-1.5">
+                            <span class="text-[10px] bg-gray-100 text-gray-700 font-medium px-2.5 py-0.5 rounded-md">Atendimento consultivo</span>
+                            <span class="text-[10px] bg-gray-100 text-gray-700 font-medium px-2.5 py-0.5 rounded-md">Urgência no mesmo dia</span>
+                            <span class="text-[10px] bg-gray-100 text-gray-700 font-medium px-2.5 py-0.5 rounded-md">Cuidado e limpeza</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Review 6 Duplicate -->
+                <div class="w-[320px] sm:w-[380px] md:w-[410px] shrink-0 bg-white/75 backdrop-blur-xl rounded-3xl p-6 md:p-7 border border-white/80 shadow-glass hover:shadow-premium hover:border-brand-yellow/50 transition-all duration-300 flex flex-col justify-between group relative overflow-hidden">
+                    <div>
+                        <div class="flex items-center justify-between gap-3 mb-4">
+                            <div class="flex items-center gap-3">
+                                <div class="w-11 h-11 rounded-full bg-gradient-to-tr from-emerald-500 to-teal-300 text-white font-bold flex items-center justify-center text-sm shadow-sm ring-2 ring-white">
+                                    JA
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-gray-900 text-sm leading-tight">Jairo de Araujo</h4>
+                                    <div class="flex items-center gap-1.5 mt-0.5">
+                                        <span class="inline-flex items-center gap-1 text-[9px] font-bold bg-amber-100/80 text-amber-800 px-2 py-0.5 rounded-full">
+                                            <i data-lucide="shield-check" class="w-2.5 h-2.5"></i> Local Guide
+                                        </span>
+                                        <span class="text-[10px] text-gray-400">· 23 avaliações</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <span class="text-[10px] text-gray-400 font-medium whitespace-nowrap">Há 1 ano</span>
+                        </div>
+                        <div class="flex text-amber-400 mb-3 gap-0.5">
+                            <i data-lucide="star" class="w-4 h-4 fill-amber-400 text-amber-400"></i>
+                            <i data-lucide="star" class="w-4 h-4 fill-amber-400 text-amber-400"></i>
+                            <i data-lucide="star" class="w-4 h-4 fill-amber-400 text-amber-400"></i>
+                            <i data-lucide="star" class="w-4 h-4 fill-amber-400 text-amber-400"></i>
+                            <i data-lucide="star" class="w-4 h-4 fill-amber-400 text-amber-400"></i>
+                        </div>
+                        <p class="text-gray-700 text-xs md:text-sm leading-relaxed mb-5 italic">
+                            "O técnico foi extremamente profissional, pontual e educado. Instalou a fechadura eletrônica com muito cuidado e eficiência. Explicou todo o funcionamento e deixou tudo limpo e organizado após o serviço. Fiquei muito satisfeito com o atendimento — superou minhas expectativas. Recomendo fortemente!"
+                        </p>
+                    </div>
+                    <div class="pt-4 border-t border-gray-100/80">
+                        <span class="text-[10px] font-extrabold uppercase tracking-wider text-gray-400 block mb-1.5">Destaques da experiência:</span>
+                        <div class="flex flex-wrap gap-1.5">
+                            <span class="text-[10px] bg-gray-100 text-gray-700 font-medium px-2.5 py-0.5 rounded-md">Pontualidade & Educação</span>
+                            <span class="text-[10px] bg-gray-100 text-gray-700 font-medium px-2.5 py-0.5 rounded-md">Organização pós-obra</span>
+                            <span class="text-[10px] bg-gray-100 text-gray-700 font-medium px-2.5 py-0.5 rounded-md">Superou expectativas</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- Dica de Interatividade do Carrossel -->
+        <div class="flex items-center justify-center gap-2 mt-4 text-[11px] font-semibold text-gray-400 uppercase tracking-widest reveal">
+            <i data-lucide="hand" class="w-3.5 h-3.5 text-brand-yellow"></i>
+            <span>Passe o mouse ou toque na tela para pausar o carrossel</span>
+        </div>
+
+    </div>
+</section>
+
+<!-- ===================== PROPOSTA DE INVESTIMENTO ===================== -->
+<section id="investimento" class="py-24 bg-[#fafafa] relative overflow-hidden">
+    <div class="absolute inset-0 bg-dots pointer-events-none z-0"></div>
+    <div class="max-w-5xl mx-auto px-4 relative z-10">
+
+        <div class="text-center mb-10 reveal">
+            <span class="text-brand-yellow font-bold uppercase tracking-widest text-xs">Simulador Executivo B2B</span>
+            <h2 class="text-3xl md:text-5xl font-extrabold text-gray-900 mt-2">Investimento na Operação</h2>
+            <p class="text-gray-500 mt-3 max-w-2xl mx-auto text-sm md:text-base">
+                Selecione o escopo desejado e a modalidade de pagamento ideal para o caixa do Cel.Lep:
+            </p>
+        </div>
+
+        <!-- SELETOR DE ESCOPO: OPÇÃO 1 vs OPÇÃO 2 -->
+        <div class="max-w-xl mx-auto mb-8 reveal">
+            <div class="bg-gray-200/80 p-1.5 rounded-2xl flex border border-gray-300/60 shadow-inner">
+                <button type="button" id="btn-opt1" onclick="selectScope(1)" class="w-1/2 py-3 rounded-xl text-xs md:text-sm font-bold bg-white text-gray-900 shadow-sm transition-all flex items-center justify-center gap-1.5">
+                    <i data-lucide="scan-face" class="w-4 h-4 text-brand-yellow"></i>
+                    Opção 1: Sem TVIP (Facial)
+                </button>
+                <button type="button" id="btn-opt2" onclick="selectScope(2)" class="w-1/2 py-3 rounded-xl text-xs md:text-sm font-bold bg-transparent text-gray-500 hover:text-gray-900 transition-all flex items-center justify-center gap-1.5">
+                    <i data-lucide="monitor" class="w-4 h-4 text-brand-yellow"></i>
+                    Opção 2: Com TVIP (Recepção)
+                </button>
+            </div>
+        </div>
+
+        <!-- SELETOR DE FORMA DE PAGAMENTO: PIX vs CARTÃO vs ASSINATURA -->
+        <div class="flex justify-center mb-10 reveal">
+            <div class="bg-gray-100 p-1.5 rounded-full inline-flex border border-gray-200 shadow-inner flex-wrap justify-center gap-1">
+                <button type="button" id="btn-pay-pix" onclick="selectPayment('pix')" class="px-5 py-2 rounded-full text-xs font-bold bg-brand-yellow text-black shadow-md transition-all">
+                    À Vista (PIX)
+                </button>
+                <button type="button" id="btn-pay-card" onclick="selectPayment('card')" class="px-5 py-2 rounded-full text-xs font-bold bg-transparent text-gray-500 hover:text-gray-800 transition-all">
+                    12x no Cartão
+                </button>
+                <button type="button" id="btn-pay-loc" onclick="selectPayment('loc')" class="px-5 py-2 rounded-full text-xs font-bold bg-transparent text-gray-500 hover:text-gray-800 transition-all flex items-center gap-1.5">
+                    <i data-lucide="shield-check" class="w-3.5 h-3.5 text-brand-yellow"></i>
+                    Assinatura All-Inclusive (Locação + Vision Care)
+                </button>
+            </div>
+        </div>
+
+        <!-- CARD PRINCIPAL DE INVESTIMENTO -->
+        <div class="grid lg:grid-cols-1 gap-8 reveal items-stretch max-w-4xl mx-auto">
+            
+            <div class="premium-border-glow group relative z-20">
+                <div class="premium-border-inner flex flex-col lg:flex-row relative overflow-hidden bg-white p-0">
+                    <div class="absolute top-0 left-0 w-64 h-64 bg-brand-yellow/5 rounded-full blur-[80px] pointer-events-none"></div>
+                    
+                    <!-- Lado Esquerdo: Detalhes do Escopo -->
+                    <div class="w-full lg:w-7/12 p-8 md:p-10 relative z-10 border-b lg:border-b-0 lg:border-r border-gray-100 flex flex-col justify-between">
+                        <div>
+                            <div class="mb-4">
+                                <span id="badge-scope" class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-zinc-900 text-brand-yellow text-[10px] font-bold uppercase tracking-widest shadow-xs">
+                                    ⭐ Escopo Básico: Facial + Automação
+                                </span>
+                                <h3 id="title-scope" class="text-2xl md:text-3xl font-bold text-gray-900 mt-3">Portão Facial Cel.Lep (Sem TVIP)</h3>
+                                <p id="desc-scope" class="text-xs md:text-sm text-gray-500 mt-2 leading-relaxed">
+                                    Automação de alto fluxo para o portão de pedestres/vidro com biometria facial, fechamento suave e nobreak.
+                                </p>
+                            </div>
+
+                            <ul class="space-y-3 mb-6" id="scope-items">
+                                <!-- Injetado via JS -->
+                            </ul>
+                        </div>
+
+                        <!-- Bloco Dinâmico Vision Care -->
+                        <div id="vision-care-box" class="p-3.5 bg-amber-50/70 rounded-2xl border border-amber-200/70 text-xs text-amber-900 flex items-start gap-2.5 transition-all">
+                            <i data-lucide="shield" class="w-4 h-4 text-brand-yellow shrink-0 mt-0.5"></i>
+                            <div>
+                                <span class="font-bold block" id="vision-care-title">Plano de Manutenção Vision Care Essential:</span>
+                                <span class="text-amber-800 text-[11px]" id="vision-care-desc">Visitas preventivas semestrais + suporte prioritário por R$ 150,00/mês como opcional de contratação.</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Lado Direito: Preço Dinâmico & Ação -->
+                    <div class="w-full lg:w-5/12 bg-[#f8f9fa] p-8 md:p-10 flex flex-col items-center justify-center text-center relative z-10 min-h-[360px]">
+                        
+                        <p class="text-[11px] font-bold text-gray-400 uppercase tracking-widest mb-3" id="label-pricing-mode">Investimento no PIX</p>
+
+                        <!-- Bloco de Preço -->
+                        <div id="price-display-box" class="w-full transition-opacity duration-300">
+                            <!-- Injetado dinamicamente via JS -->
+                        </div>
+
+                        <!-- Botão CTA Aprovação -->
+                        <a id="btn-whatsapp-cta" href="#" target="_blank" onclick="if(window.clarity) window.clarity('event', 'Clique_Aprovacao_CelLep');" class="mt-8 w-full bg-brand-yellow hover:bg-brand-goldLight text-black font-bold py-4 px-6 rounded-2xl transition-all shadow-glow flex items-center justify-center gap-2 group">
+                            <i data-lucide="check-circle" class="w-5 h-5"></i>
+                            <span class="text-xs md:text-sm uppercase tracking-wider font-extrabold" id="cta-btn-text">Aprovar Opção no WhatsApp</span>
+                            <i data-lucide="arrow-right" class="w-4 h-4 group-hover:translate-x-1 transition-transform"></i>
+                        </a>
+
+                        <p class="text-[11px] text-gray-400 mt-4 flex items-center gap-1.5 justify-center">
+                            <i data-lucide="calendar" class="w-3.5 h-3.5 text-brand-yellow"></i>
+                            Disponibilidade para início nesta semana
+                        </p>
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+</section>
+
+<!-- ===================== FAQ ===================== -->
+<section id="faq" class="py-24 bg-[#f8f9fa] border-t border-gray-200/60">
+    <div class="max-w-3xl mx-auto px-4">
+        <div class="text-center mb-14 reveal">
+            <span class="text-brand-yellow font-bold uppercase tracking-widest text-xs">Perguntas Frequentes</span>
+            <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mt-3">Dúvidas Técnicas do Cel.Lep</h2>
+        </div>
+        
+        <div class="space-y-4 reveal" id="accordion">
+
+            <div class="accordion-item bg-white rounded-2xl border border-gray-100 shadow-sm overflow-hidden transition-all hover:border-brand-yellow/50">
+                <button type="button" onclick="toggleAccordion(this)" class="w-full flex items-center justify-between p-6 text-left font-bold text-gray-900 focus:outline-none">
+                    <span>Por que é importante instalar a infraestrutura durante a reforma atual?</span>
+                    <i data-lucide="chevron-down" class="w-5 h-5 text-brand-yellow acc-arrow shrink-0"></i>
+                </button>
+                <div class="accordion-content">
+                    <p class="px-6 pb-6 text-gray-600 text-sm leading-relaxed">
+                        Como a unidade na Rua Pedro de Toledo está em fase de obras civis (com drywall e massas abertas), passar a tubulação de aço galvanizado e o cabeamento de rede estruturado agora evita que tenhamos que rasgar alvenaria, furar drywall pronto ou danificar a pintura nova da recepção após a entrega da escola.
+                    </p>
+                </div>
+            </div>
+
+            <div class="accordion-item bg-white rounded-2xl border border-gray-100 shadow-sm overflow-hidden transition-all hover:border-brand-yellow/50">
+                <button type="button" onclick="toggleAccordion(this)" class="w-full flex items-center justify-between p-6 text-left font-bold text-gray-900 focus:outline-none">
+                    <span>Como funciona a Assinatura All-Inclusive (Locação + Vision Care)?</span>
+                    <i data-lucide="chevron-down" class="w-5 h-5 text-brand-yellow acc-arrow shrink-0"></i>
+                </button>
+                <div class="accordion-content">
+                    <p class="px-6 pb-6 text-gray-600 text-sm leading-relaxed">
+                        Neste formato unificado, o Cel.Lep não precisa descapitalizar o caixa com custos iniciais de compra de equipamentos e instalação. Você paga uma mensalidade única que contempla a <strong>Locação de todo o Hardware</strong> (repassada via parceiro financeiro) somada ao <strong>Vision Care Essential</strong> (R$ 150,00/mês, com atendimento corretivo prioritário, suporte remoto e visitas preventivas semestrais). Além do benefício operacional de ter o portão sempre coberto e com peças sob garantia durante todo o contrato, as parcelas podem ser lançadas integralmente como OPEX (despesa operacional dedutível para empresas no lucro real).
+                    </p>
+                </div>
+            </div>
+
+            <div class="accordion-item bg-white rounded-2xl border border-gray-100 shadow-sm overflow-hidden transition-all hover:border-brand-yellow/50">
+                <button type="button" onclick="toggleAccordion(this)" class="w-full flex items-center justify-between p-6 text-left font-bold text-gray-900 focus:outline-none">
+                    <span>O que acontece se faltar energia na Rua Pedro de Toledo?</span>
+                    <i data-lucide="chevron-down" class="w-5 h-5 text-brand-yellow acc-arrow shrink-0"></i>
+                </button>
+                <div class="accordion-content">
+                    <p class="px-6 pb-6 text-gray-600 text-sm leading-relaxed">
+                        O projeto já inclui uma fonte carregadora ininterrupta com bateria selada de 12V. Em caso de queda de energia na rede da rua, o sistema comuta instantaneamente para a bateria, mantendo o eletroímã travado e o leitor facial totalmente operacional.
+                    </p>
+                </div>
+            </div>
+
+            <div class="accordion-item bg-white rounded-2xl border border-gray-100 shadow-sm overflow-hidden transition-all hover:border-brand-yellow/50">
+                <button type="button" onclick="toggleAccordion(this)" class="w-full flex items-center justify-between p-6 text-left font-bold text-gray-900 focus:outline-none">
+                    <span>O leitor facial reconhece rostos de noite ou com acessórios?</span>
+                    <i data-lucide="chevron-down" class="w-5 h-5 text-brand-yellow acc-arrow shrink-0"></i>
+                </button>
+                <div class="accordion-content">
+                    <p class="px-6 pb-6 text-gray-600 text-sm leading-relaxed">
+                        Sim! O leitor Intelbras SS 3532 MF possui iluminação infravermelha adaptativa e câmera dupla com inteligência anti-fake. Ele realiza o reconhecimento em menos de 0.5 segundo, mesmo no escuro ou com uso de óculos e máscaras.
+                    </p>
+                </div>
+            </div>
+
+            <div class="accordion-item bg-white rounded-2xl border border-gray-100 shadow-sm overflow-hidden transition-all hover:border-brand-yellow/50">
+                <button type="button" onclick="toggleAccordion(this)" class="w-full flex items-center justify-between p-6 text-left font-bold text-gray-900 focus:outline-none">
+                    <span>A instalação danifica o portão de vidro existente?</span>
+                    <i data-lucide="chevron-down" class="w-5 h-5 text-brand-yellow acc-arrow shrink-0"></i>
+                </button>
+                <div class="accordion-content">
+                    <p class="px-6 pb-6 text-gray-600 text-sm leading-relaxed">
+                        Não. Utilizamos suportes específicos para vidro (Suporte U) que abraçam a folha com proteção emborrachada de alta pressão, dispensando furos no vidro temperado e preservando a garantia estrutural do portão.
+                    </p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<!-- ===================== FOOTER ===================== -->
+<footer class="bg-black py-16 text-center border-t border-zinc-900 group">
+    <div class="max-w-4xl mx-auto px-4">
+        
+        <div class="flex flex-col items-center justify-center leading-none opacity-40 group-hover:opacity-100 transition-opacity duration-500 cursor-default mb-10">
+            <div class="flex flex-col items-center">
+                <div class="relative flex items-baseline leading-none">
+                    <span class="font-logo font-bold text-[3.5rem] text-white lowercase tracking-[-0.05em] leading-none">vısıon</span>
+                    <span class="absolute -right-3.5 top-2.5 text-[0.75rem] text-brand-yellow font-bold">®</span>
+                </div>
+                <span class="font-tech text-[0.75rem] font-bold text-zinc-500 lowercase -mt-3 ml-1.5 text-center w-full" style="letter-spacing: 0.53em;">tecnologia</span>
+            </div>
+        </div>
+
+        <div class="text-zinc-500 text-xs md:text-sm leading-relaxed space-y-1 mb-8 opacity-60">
+            <p><strong>Cel.Lep Idiomas (A/C Kauã - Compras)</strong> | Rua Pedro de Toledo, 200 - Vila Mariana, São Paulo - SP</p>
+            <p>Proposta Técnica Comercial #CELLEP-2026 | Emitida em 2026</p>
+        </div>
+
+        <div class="inline-flex items-center justify-center gap-2 border border-zinc-800 bg-zinc-900/50 px-5 py-2.5 rounded-full mb-6 shadow-sm">
+            <i data-lucide="lock" class="w-3.5 h-3.5 text-brand-yellow"></i>
+            <span class="text-[10px] md:text-xs text-zinc-400 uppercase tracking-widest font-bold">Documento confidencial corporativo</span>
+        </div>
+        
+        <p class="text-[10px] text-zinc-700 uppercase tracking-widest font-bold mt-6">Engenharia de Segurança &amp; Controle de Acesso Corporativo</p>
+    </div>
+</footer>
+
+<!-- ===================== JAVASCRIPT LOGIC ===================== -->
+<script>
+    // DADOS FINANCEIROS EXATOS (COM ASSINATURA UNIFICADA + VISION CARE R$ 150/mês)
+    const pricing = {
+        opt1: {
+            title: "Portão Facial Cel.Lep (Sem TVIP)",
+            desc: "Automação de alto fluxo para o portão de pedestres/vidro com biometria facial, fechamento suave e nobreak.",
+            badge: "⭐ Escopo Essencial: Facial + Automação",
+            pix: 4890.00,
+            pixHalf: 2445.00,
+            cardTotal: 5870.00,
+            cardMonthly: 489.17,
+            combo36: 355.28, // Unificado: 205.28 + 150.00
+            combo48: 325.41, // Unificado: 175.41 + 150.00
+            items: [
+                "<strong>01x Leitor Facial Intelbras SS 3532 MF:</strong> Reconhecimento biométrico ultrarrápido (&lt;0.5s) com câmera dupla anti-fake.",
+                "<strong>01x Fechadura Eletroímã 150 kgf</strong> com sensor integrado + <strong>01x Mola Aérea Hidráulica MH 104</strong> (fechamento suave sem impacto no vidro).",
+                "<strong>01x Botoeira de Saída Inox No Touch</strong> (abertura sem toque) + <strong>01x Fonte Nobreak com Bateria VRLA</strong> (continuidade em queda de luz).",
+                "<strong>Infraestrutura Completa Zincada:</strong> 15 eletrodutos 3/4, 10 conduletes cega, 40 tampões, 30 abraçadeiras, 5 curvas e 50m cabo de rede.",
+                "<strong>Mão de Obra Especializada Vision:</strong> Fixações mecânicas, conectorização, configurações lógicas e garantia de 12 meses."
+            ]
+        },
+        opt2: {
+            title: "Portão Facial + Monitor IP TVIP (Com Vídeo)",
+            desc: "Solução completa: biometria facial no portão + Terminal de Vídeo IP TVIP 2221 HF dedicado na mesa da recepção.",
+            badge: "🚀 Escopo Completo: Facial + Recepção de Vídeo IP",
+            pix: 6570.00,
+            pixHalf: 3285.00,
+            cardTotal: 7880.00,
+            cardMonthly: 656.66,
+            combo36: 425.80, // Unificado: 275.80 + 150.00
+            combo48: 385.68, // Unificado: 235.68 + 150.00
+            items: [
+                "<strong>01x Leitor Facial Intelbras SS 3532 MF</strong> com protocolo IP e câmera integrada no portão.",
+                "<strong>01x Terminal de Vídeo IP Intelbras TVIP 2221 HF:</strong> Tela touch de recepção para atender visitantes em vídeo e abrir o portão.",
+                "<strong>01x Fechadura Eletroímã 150 kgf</strong> + <strong>01x Mola Aérea Hidráulica MH 104</strong> (proteção total contra impacto no vidro).",
+                "<strong>01x Botoeira de Saída Inox No Touch</strong> + <strong>01x Fonte Nobreak com Bateria VRLA</strong> de backup ininterrupto.",
+                "<strong>Infraestrutura Completa Zincada:</strong> 15 eletrodutos 3/4, 10 conduletes cega, 40 tampões, 30 abraçadeiras, 5 curvas e 50m cabo de rede.",
+                "<strong>Mão de Obra Especializada Vision:</strong> Instalação mecânica, cabeamento estruturado entre portão e recepção + 12 meses garantia."
+            ]
+        }
+    };
+
+    let selectedScope = 1; // 1 = Sem TVIP, 2 = Com TVIP
+    let selectedPayment = 'pix'; // 'pix', 'card', 'loc'
+    let selectedLocTerm = 36; // 36 ou 48 meses
+
+    function formatBRL(val) {
+        return val.toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+    }
+
+    function selectScope(scopeNum) {
+        selectedScope = scopeNum;
+        const btn1 = document.getElementById('btn-opt1');
+        const btn2 = document.getElementById('btn-opt2');
+
+        if (scopeNum === 1) {
+            btn1.className = "w-1/2 py-3 rounded-xl text-xs md:text-sm font-bold bg-white text-gray-900 shadow-sm transition-all flex items-center justify-center gap-1.5";
+            btn2.className = "w-1/2 py-3 rounded-xl text-xs md:text-sm font-bold bg-transparent text-gray-500 hover:text-gray-900 transition-all flex items-center justify-center gap-1.5";
+        } else {
+            btn2.className = "w-1/2 py-3 rounded-xl text-xs md:text-sm font-bold bg-white text-gray-900 shadow-sm transition-all flex items-center justify-center gap-1.5";
+            btn1.className = "w-1/2 py-3 rounded-xl text-xs md:text-sm font-bold bg-transparent text-gray-500 hover:text-gray-900 transition-all flex items-center justify-center gap-1.5";
+        }
+
+        renderScopeDetails();
+        renderPriceDisplay();
+        if (window.clarity) window.clarity("event", "Mudou_Escopo_Opcao_" + scopeNum);
+    }
+
+    function setLocTerm(term) {
+        selectedLocTerm = term;
+        renderPriceDisplay();
+        if (window.clarity) window.clarity("event", "Mudou_Prazo_Locacao_" + term);
+    }
+
+    function selectPayment(paymentMode) {
+        selectedPayment = paymentMode;
+        const btnPix = document.getElementById('btn-pay-pix');
+        const btnCard = document.getElementById('btn-pay-card');
+        const btnLoc = document.getElementById('btn-pay-loc');
+
+        [btnPix, btnCard, btnLoc].forEach(b => {
+            if (b) b.className = "px-5 py-2 rounded-full text-xs font-bold bg-transparent text-gray-500 hover:text-gray-800 transition-all";
+        });
+
+        const careBox = document.getElementById('vision-care-box');
+        const careDesc = document.getElementById('vision-care-desc');
+        const labelMode = document.getElementById('label-pricing-mode');
+
+        if (paymentMode === 'pix') {
+            btnPix.className = "px-5 py-2 rounded-full text-xs font-bold bg-brand-yellow text-black shadow-md transition-all";
+            if (labelMode) labelMode.textContent = "Investimento no PIX";
+            if (careBox) {
+                careBox.className = "p-3.5 bg-amber-50/70 rounded-2xl border border-amber-200/70 text-xs text-amber-900 flex items-start gap-2.5 transition-all";
+            }
+            if (careDesc) {
+                careDesc.innerHTML = "Visitas preventivas semestrais + suporte prioritário por R$ 150,00/mês como opcional de contratação.";
+            }
+        } else if (paymentMode === 'card') {
+            btnCard.className = "px-5 py-2 rounded-full text-xs font-bold bg-brand-yellow text-black shadow-md transition-all";
+            if (labelMode) labelMode.textContent = "Investimento Parcelado no Cartão";
+            if (careBox) {
+                careBox.className = "p-3.5 bg-amber-50/70 rounded-2xl border border-amber-200/70 text-xs text-amber-900 flex items-start gap-2.5 transition-all";
+            }
+            if (careDesc) {
+                careDesc.innerHTML = "Visitas preventivas semestrais + suporte prioritário por R$ 150,00/mês como opcional de contratação.";
+            }
+        } else {
+            btnLoc.className = "px-5 py-2 rounded-full text-xs font-bold bg-brand-yellow text-black shadow-md transition-all flex items-center gap-1.5";
+            if (labelMode) labelMode.textContent = "Assinatura All-Inclusive (Tudo Incluso)";
+            if (careBox) {
+                careBox.className = "p-3.5 bg-emerald-50 rounded-2xl border border-emerald-200 text-xs text-emerald-950 flex items-start gap-2.5 transition-all shadow-xs";
+            }
+            if (careDesc) {
+                careDesc.innerHTML = "<strong>Plano de Manutenção e Suporte Vision Care já 100% incluso na mensalidade!</strong> Suporte prioritário, visitas semestrais e substituição de equipamentos com cobertura contínua durante todo o contrato.";
+            }
+        }
+
+        renderPriceDisplay();
+        if (window.clarity) window.clarity("event", "Mudou_Pagamento_" + paymentMode);
+    }
+
+    function renderScopeDetails() {
+        const data = selectedScope === 1 ? pricing.opt1 : pricing.opt2;
+        const badgeEl = document.getElementById('badge-scope');
+        const titleEl = document.getElementById('title-scope');
+        const descEl = document.getElementById('desc-scope');
+        const ul = document.getElementById('scope-items');
+
+        if (badgeEl) badgeEl.innerHTML = data.badge;
+        if (titleEl) titleEl.textContent = data.title;
+        if (descEl) descEl.textContent = data.desc;
+
+        if (ul) {
+            ul.innerHTML = data.items.map(item => `
+                <li class="flex items-start gap-2.5 text-xs md:text-sm text-gray-700">
+                    <i data-lucide="check-circle-2" class="w-4 h-4 text-brand-yellow shrink-0 mt-0.5"></i>
+                    <span>${item}</span>
+                </li>
+            `).join('');
+        }
+
+        if (window.lucide && typeof window.lucide.createIcons === 'function') {
+            window.lucide.createIcons();
+        }
+    }
+
+    function renderPriceDisplay() {
+        const data = selectedScope === 1 ? pricing.opt1 : pricing.opt2;
+        const box = document.getElementById('price-display-box');
+        const ctaBtn = document.getElementById('btn-whatsapp-cta');
+        const ctaText = document.getElementById('cta-btn-text');
+
+        if (!box) return;
+
+        let html = '';
+        let whatsappMsg = '';
+
+        if (selectedPayment === 'pix') {
+            html = `
+                <div class="flex flex-col items-center justify-center w-full animate-fade-in">
+                    <div class="flex items-baseline justify-center gap-1.5 mb-2">
+                        <span class="text-2xl font-bold text-gray-400">R$</span>
+                        <span class="text-5xl md:text-6xl font-extrabold text-[#111827] tracking-tighter leading-none">${formatBRL(data.pix).split(',')[0]}<span class="text-3xl text-gray-400">,${formatBRL(data.pix).split(',')[1]}</span></span>
+                    </div>
+                    <div class="inline-flex items-center gap-1.5 bg-emerald-50 border border-emerald-200 text-emerald-700 px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-widest mt-2">
+                        <i data-lucide="zap" class="w-3 h-3"></i> Pagamento à vista (PIX)
+                    </div>
+                    
+                    <div class="w-full mt-6 space-y-2 text-left">
+                        <div class="bg-white border border-gray-200 rounded-xl p-3 shadow-xs relative overflow-hidden">
+                            <div class="absolute top-0 left-0 w-1.5 h-full bg-emerald-400"></div>
+                            <div class="pl-2">
+                                <span class="text-[10px] font-bold uppercase tracking-widest text-gray-500 block">Sinal (Aprovação e Início na Obra)</span>
+                                <span class="font-bold text-gray-900 text-sm">R$ ${formatBRL(data.pixHalf)}</span>
+                            </div>
+                        </div>
+                        <div class="bg-white border border-gray-200 rounded-xl p-3 shadow-xs relative overflow-hidden">
+                            <div class="absolute top-0 left-0 w-1.5 h-full bg-brand-yellow"></div>
+                            <div class="pl-2">
+                                <span class="text-[10px] font-bold uppercase tracking-widest text-gray-500 block">Finalização (Entrega &amp; Testes Operacionais)</span>
+                                <span class="font-bold text-gray-900 text-sm">R$ ${formatBRL(data.pixHalf)}</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `;
+            whatsappMsg = `Fala Gabriel! Analisei a proposta do portão da nova unidade do Cel.Lep na Rua Pedro de Toledo. Como estamos em plena reforma por aqui, gostaríamos de aprovar a *${data.title}* no valor de *R$ ${formatBRL(data.pix)} no PIX* para já rodar a infraestrutura e o cabeamento junto com a obra esta semana. Como podemos formalizar?`;
+            if (ctaText) ctaText.textContent = `Aprovar ${selectedScope === 1 ? 'Opção 1' : 'Opção 2'} (PIX)`;
+
+        } else if (selectedPayment === 'card') {
+            html = `
+                <div class="flex flex-col items-center justify-center w-full animate-fade-in">
+                    <span class="text-xs font-bold text-gray-400 mb-1">Parcelamento Facilitado</span>
+                    <div class="flex items-baseline justify-center gap-1.5 mb-3">
+                        <span class="text-2xl font-bold text-[#111827]">12x de R$</span>
+                        <span class="text-5xl md:text-6xl font-extrabold text-[#111827] tracking-tighter leading-none">${formatBRL(data.cardMonthly).split(',')[0]}<span class="text-3xl text-gray-400">,${formatBRL(data.cardMonthly).split(',')[1]}</span></span>
+                    </div>
+                    <div class="inline-flex items-center gap-1.5 bg-blue-50 border border-blue-200 text-blue-700 px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-widest mt-1">
+                        <i data-lucide="credit-card" class="w-3 h-3"></i> Cartão de Crédito Corporativo
+                    </div>
+                    <p class="text-xs text-gray-500 font-medium mt-4">Valor total no cartão: R$ ${formatBRL(data.cardTotal)}</p>
+                </div>
+            `;
+            whatsappMsg = `Fala Gabriel! Analisei a proposta do portão do Cel.Lep Vila Mariana e gostaríamos de aprovar a *${data.title}* em *12x de R$ ${formatBRL(data.cardMonthly)} no cartão* para aproveitar a fase de reforma do imóvel esta semana.`;
+            if (ctaText) ctaText.textContent = `Aprovar ${selectedScope === 1 ? 'Opção 1' : 'Opção 2'} (12x Cartão)`;
+
+        } else {
+            const is36 = selectedLocTerm === 36;
+            const currentCombo = is36 ? data.combo36 : data.combo48;
+
+            html = `
+                <div class="flex flex-col items-center justify-center w-full animate-fade-in">
+                    
+                    <!-- Alternador de prazo 36 vs 48 -->
+                    <div class="inline-flex bg-gray-200/80 p-1 rounded-xl mb-3 border border-gray-300/50">
+                        <button type="button" onclick="setLocTerm(36)" class="px-3 py-1 rounded-lg text-[11px] font-bold transition-all ${is36 ? 'bg-zinc-900 text-white shadow-sm' : 'text-gray-600 hover:text-gray-900'}">
+                            Plano 36 Meses
+                        </button>
+                        <button type="button" onclick="setLocTerm(48)" class="px-3 py-1 rounded-lg text-[11px] font-bold transition-all ${!is36 ? 'bg-zinc-900 text-white shadow-sm' : 'text-gray-600 hover:text-gray-900'}">
+                            Plano 48 Meses
+                        </button>
+                    </div>
+
+                    <div class="flex items-baseline justify-center gap-1.5 mb-2">
+                        <span class="text-2xl font-bold text-gray-500">R$</span>
+                        <span class="text-5xl md:text-6xl font-extrabold text-[#111827] tracking-tighter leading-none">${formatBRL(currentCombo).split(',')[0]}<span class="text-3xl text-gray-400">,${formatBRL(currentCombo).split(',')[1]}</span></span>
+                        <span class="text-xs font-bold text-gray-500">/mês</span>
+                    </div>
+
+                    <div class="inline-flex items-center gap-1.5 bg-emerald-50 border border-emerald-200 text-emerald-800 px-3.5 py-1 rounded-full text-[10px] font-bold uppercase tracking-widest mt-1 shadow-xs">
+                        <i data-lucide="shield-check" class="w-3.5 h-3.5 text-emerald-600"></i> Assinatura Completa All-Inclusive
+                    </div>
+                    
+                    <!-- Bloco Único: O que está incluso (Sem desmembrar valores) -->
+                    <div class="mt-5 p-4 bg-white rounded-2xl border border-gray-200 w-full text-xs text-left shadow-xs space-y-2.5">
+                        <span class="text-[10px] font-extrabold uppercase tracking-wider text-gray-400 block pb-1 border-b border-gray-100">O que está 100% incluso na mensalidade:</span>
+                        <div class="flex items-start gap-2 text-gray-700">
+                            <i data-lucide="check-circle-2" class="w-3.5 h-3.5 text-emerald-600 shrink-0 mt-0.5"></i>
+                            <span><strong>Locação de Todo o Hardware:</strong> leitor facial, travas, infraestrutura zincada e periféricos.</span>
+                        </div>
+                        <div class="flex items-start gap-2 text-gray-700">
+                            <i data-lucide="check-circle-2" class="w-3.5 h-3.5 text-emerald-600 shrink-0 mt-0.5"></i>
+                            <span><strong>Instalação &amp; Configuração na Obra:</strong> mão de obra especializada sem taxa inicial de implantação.</span>
+                        </div>
+                        <div class="flex items-start gap-2 text-gray-700">
+                            <i data-lucide="check-circle-2" class="w-3.5 h-3.5 text-emerald-600 shrink-0 mt-0.5"></i>
+                            <span><strong>Plano Vision Care Essential:</strong> suporte prioritário, chamados corretivos e visitas preventivas semestrais.</span>
+                        </div>
+                        <div class="flex items-start gap-2 text-gray-700">
+                            <i data-lucide="check-circle-2" class="w-3.5 h-3.5 text-emerald-600 shrink-0 mt-0.5"></i>
+                            <span><strong>Garantia Contínua &amp; Troca de Peças:</strong> cobertura integral contra falhas durante toda a vigência do contrato.</span>
+                        </div>
+                    </div>
+
+                    <div class="mt-3 flex items-center justify-center gap-2 text-[10px] text-gray-500">
+                        <i data-lucide="badge-percent" class="w-3.5 h-3.5 text-brand-yellow"></i>
+                        <span>Zero taxa de implantação · Mensalidade dedutível como OPEX</span>
+                    </div>
+                </div>
+            `;
+
+            whatsappMsg = `Fala Gabriel! Vimos a proposta do Cel.Lep (Pedro de Toledo) e decidimos seguir no modelo de *Assinatura Unificada (Hardware + Vision Care)* para a *${data.title}* em *${selectedLocTerm} meses (R$ ${formatBRL(currentCombo)}/mês)*, aproveitando que o prédio está em reforma para já rodar a infraestrutura esta semana.`;
+            if (ctaText) ctaText.textContent = `Aprovar Assinatura (${selectedLocTerm}x R$ ${formatBRL(currentCombo)})`;
+        }
+
+        box.innerHTML = html;
+        if (ctaBtn) ctaBtn.href = "https://wa.me/5511930816696?text=" + encodeURIComponent(whatsappMsg);
+        
+        if (window.lucide && typeof window.lucide.createIcons === 'function') {
+            window.lucide.createIcons();
+        }
+    }
+
+    // ACCORDION TOGGLE
+    function toggleAccordion(button) {
+        const item = button.closest('.accordion-item');
+        if (!item) return;
+        const isOpen = item.classList.contains('open');
+        document.querySelectorAll('.accordion-item').forEach(i => i.classList.remove('open'));
+        if (!isOpen) item.classList.add('open');
+        if (window.lucide && typeof window.lucide.createIcons === 'function') {
+            window.lucide.createIcons();
+        }
+    }
+
+    // CONTROLE DE ACESSO (LOCK SCREEN)
+    function checkPassword() {
+        const inputEl = document.getElementById('password-input');
+        if (!inputEl) return;
+
+        const input = inputEl.value.trim().toUpperCase();
+        const errorMsg = document.getElementById('error-msg');
+        const btnUnlock = document.getElementById('btn-unlock');
+        const unlockIcon = document.getElementById('unlock-icon');
+        const unlockText = document.getElementById('unlock-text');
+        const unlockArrow = document.getElementById('unlock-arrow');
+
+        const validPasswords = ['KAUA2026', 'CELLEP2026', 'CELLEP', 'KAUA', 'VISION'];
+
+        if (validPasswords.includes(input)) {
+            if (btnUnlock) btnUnlock.disabled = true;
+            if (unlockText) unlockText.textContent = "Validando Acesso...";
+            if (unlockIcon) unlockIcon.className = "w-5 h-5 animate-spin text-black";
+            if (unlockArrow) unlockArrow.style.display = 'none';
+
+            setTimeout(() => {
+                const lockScreen = document.getElementById('lock-screen');
+                if (lockScreen) lockScreen.style.opacity = '0';
+
+                const video = document.getElementById("vision-video");
+                if (video && video.paused) {
+                    video.muted = true;
+                    video.play().catch(() => {});
+                }
+
+                if (window.clarity) {
+                    try {
+                        window.clarity("consent");
+                        window.clarity("identify", "kaua-cellep", undefined, undefined, "Kauã (Cel.Lep Vila Mariana)");
+                        window.clarity("set", "Proposta", "Projeto_Acesso_CelLep");
+                        window.clarity("event", "Proposta_Desbloqueada");
+                    } catch(e) {}
+                }
+
+                // Log silencioso de abertura
+                fetch('https://api.staticforms.dev/submit', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+                    body: JSON.stringify({
+                        accessKey: "sf_077ej49gjha153gk3m6ceecf",
+                        subject: "🚨 ALERTA: Proposta Acessada (Kauã - Cel.Lep Vila Mariana)",
+                        name: "Sistema Vision",
+                        email: "diretoria@visionsp.com.br",
+                        message: "O cliente Kauã (Cel.Lep) acessou a proposta do portão da Vila Mariana!\n\n🔑 Senha Utilizada: " + input + "\n🕒 Horário: " + new Date().toLocaleString('pt-BR')
+                    })
+                }).catch(() => {});
+
+                setTimeout(() => {
+                    if (lockScreen) lockScreen.style.display = 'none';
+                    const htmlRoot = document.getElementById('html-root');
+                    if (htmlRoot) {
+                        htmlRoot.classList.remove('overflow-hidden', 'h-screen');
+                        htmlRoot.classList.add('overflow-x-hidden');
+                    }
+                    document.body.classList.remove('overflow-hidden', 'h-screen');
+                }, 700);
+
+            }, 600);
+
+        } else {
+            if (errorMsg) errorMsg.classList.remove('hidden');
+            inputEl.style.borderColor = 'rgba(239,68,68,0.5)';
+            setTimeout(() => {
+                if (errorMsg) errorMsg.classList.add('hidden');
+                inputEl.style.borderColor = '';
+            }, 3000);
+        }
+    }
+
+    // EVENT LISTENERS & INICIALIZAÇÃO
+    document.addEventListener("DOMContentLoaded", function() {
+        if (window.lucide && typeof window.lucide.createIcons === 'function') {
+            window.lucide.createIcons();
+        }
+
+        const pwdInput = document.getElementById('password-input');
+        if (pwdInput) {
+            pwdInput.addEventListener('keypress', function(e) {
+                if (e.key === 'Enter') {
+                    e.preventDefault();
+                    checkPassword();
+                }
+            });
+        }
+
+        // Observador de elementos com reveal
+        try {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) entry.target.classList.add('active');
+                });
+            }, { threshold: 0.08 });
+            document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+        } catch(e) {
+            document.querySelectorAll('.reveal').forEach(el => el.classList.add('active'));
+        }
+
+        // Vídeo e Unmute
+        const videoHero = document.getElementById("vision-video");
+        const overlayHero = document.getElementById("unmute-overlay");
+
+        if (videoHero && overlayHero) {
+            overlayHero.addEventListener("click", function(e) {
+                e.stopPropagation();
+                videoHero.muted = false;
+                videoHero.loop = true;
+                videoHero.currentTime = 0;
+                videoHero.play().catch(() => {});
+                overlayHero.style.opacity = "0";
+                setTimeout(() => { overlayHero.style.display = "none"; }, 400);
+
+                if (window.clarity) {
+                    try { window.clarity("event", "Video_Assistido_CelLep"); } catch(err) {}
+                }
+            });
+
+            videoHero.addEventListener("click", function() {
+                if (overlayHero.style.display === "none") {
+                    if (videoHero.paused) { videoHero.play(); } else { videoHero.pause(); }
+                }
+            });
+        }
+
+        // Renderização inicial
+        renderScopeDetails();
+        renderPriceDisplay();
+
+        // Pausa no Carrossel de Avaliações com Touch no Celular
+        const reviewsTrack = document.getElementById('reviews-track');
+        const reviewsContainer = document.getElementById('reviews-container');
+        if (reviewsTrack && reviewsContainer) {
+            reviewsContainer.addEventListener('touchstart', function() {
+                reviewsTrack.classList.add('paused');
+            }, { passive: true });
+
+            reviewsContainer.addEventListener('touchend', function() {
+                reviewsTrack.classList.remove('paused');
+            }, { passive: true });
+
+            reviewsContainer.addEventListener('touchcancel', function() {
+                reviewsTrack.classList.remove('paused');
+            }, { passive: true });
+        }
+    });
+
+    // Navbar Scroll Shadow
+    window.addEventListener('scroll', () => {
+        const navbar = document.getElementById('navbar');
+        if (navbar) {
+            if (window.scrollY > 40) {
+                navbar.classList.add('shadow-md');
+            } else {
+                navbar.classList.remove('shadow-md');
+            }
+        }
+    });
+</script>
+</body>
+</html>
