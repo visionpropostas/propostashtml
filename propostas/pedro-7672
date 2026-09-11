@@ -329,7 +329,7 @@
                 </h1>
                 
                 <p class="text-base md:text-lg text-gray-500 max-w-xl mx-auto lg:mx-0 font-medium leading-relaxed">
-                    Pedro, com base na visita técnica do Ernani na <strong>Rua Herculano de Freitas, 273</strong>, estruturamos o projeto ideal para o prédio comercial de 3 andares: <strong>eclusa intertravada entre a porta de vidro externa e a de madeira interna</strong>, leitura facial rápida sem toque, biometria com acionamento de pânico silencioso para a sua central de monitoramento, 3 câmeras com alarme sonoro/luz e cerca elétrica frontal em tubulação de aço galvanizado.
+                    Pedro, projeto sob medida para sua casa comercial: <strong>eclusa intertravada (vidro + madeira)</strong>, reconhecimento facial com <strong>biometria de pânico</strong> para a central, 3 câmeras ativas com sirene/luz e cerca elétrica frontal em tubulação zincada.
                 </p>
 
                 <div class="mt-8 flex flex-wrap items-center justify-center lg:justify-start gap-4">
@@ -1110,10 +1110,6 @@
                 <button type="button" id="btn-pay-card" onclick="selectPayment('card')" class="px-5 py-2 rounded-full text-xs font-bold bg-transparent text-gray-500 hover:text-gray-800 transition-all">
                     12x no Cartão
                 </button>
-                <button type="button" id="btn-pay-loc" onclick="selectPayment('loc')" class="px-5 py-2 rounded-full text-xs font-bold bg-transparent text-gray-500 hover:text-gray-800 transition-all flex items-center gap-1.5">
-                    <i data-lucide="shield-check" class="w-3.5 h-3.5 text-brand-yellow"></i>
-                    Assinatura (Locação + Vision Care)
-                </button>
             </div>
         </div>
 
@@ -1143,12 +1139,12 @@
                             </ul>
                         </div>
 
-                        <!-- Vision Care -->
-                        <div id="vision-care-box" class="p-3.5 bg-amber-50/70 rounded-2xl border border-amber-200/70 text-xs text-amber-900 flex items-start gap-2.5 transition-all">
-                            <i data-lucide="shield" class="w-4 h-4 text-brand-yellow shrink-0 mt-0.5"></i>
+                        <!-- Suporte e Garantia -->
+                        <div class="p-3.5 bg-gray-50 rounded-2xl border border-gray-200/80 text-xs text-gray-700 flex items-center gap-2.5">
+                            <i data-lucide="shield-check" class="w-4 h-4 text-emerald-600 shrink-0"></i>
                             <div>
-                                <span class="font-bold block" id="vision-care-title">Plano de Manutenção Vision Care:</span>
-                                <span class="text-amber-800 text-[11px]" id="vision-care-desc">Visitas preventivas semestrais + suporte prioritário por R$ 150,00/mês (opcional na compra avulsa).</span>
+                                <span class="font-bold text-gray-900 block">Garantia Total de 12 Meses Vision</span>
+                                <span class="text-gray-500 text-[11px]">Suporte técnico direto, treinamento da equipe e reposição inclusos.</span>
                             </div>
                         </div>
                     </div>
@@ -1288,53 +1284,47 @@
 
 <!-- ===================== JAVASCRIPT LOGIC ===================== -->
 <script>
-    /* DADOS HOMOLOGADOS: OPÇÃO 1 (COM TVIP) vs OPÇÃO 2 (SEM TVIP) - AMBAS COM CERCA */
+    /* DADOS HOMOLOGADOS: OPÇÃO 1 (COM TVIP) vs OPÇÃO 2 (SEM TVIP) - ITENS TOTALMENTE LIMPOS SEM PARÊNTESES */
     const pricing = {
         opt1: {
-            title: "Opção 1: Completa (+ Tela TVIP na Recepção)",
-            desc: "Escopo total com tela física interna touch para atender visitas e liberar o acesso com um toque, além do aplicativo no celular.",
-            badge: "⭐ Escopo Completo: Eclusa + CFTV + Cerca + Tela TVIP",
+            title: "Segurança Total com Tela na Recepção",
+            desc: "Eclusa de 2 portas com facial e pânico silencioso, monitor touch interno, 3 câmeras ativas, cerca e tubulação zincada 3/4\".",
+            badge: "⭐ Opção 1: Completa (+ Tela TVIP)",
             pix: 14330.00,
             pixHalf: 7165.00,
             cardTotal: 17200.00,
             cardMonthly: 1433.33,
-            combo36: 750.00, // Locação (R$ 601,56) + Vision Care (R$ 150,00)
-            combo48: 665.00, // Locação (R$ 514,05) + Vision Care (R$ 150,00)
             items: [
-                "<strong>2x Leitores Faciais Intelbras:</strong> Liberação facial rápida (<0.5s), interfonia de vídeo e leitor biométrico com dedo de pânico silencioso para a sua central.",
-                "<strong>01x Terminal Interno Touch IP (TVIP):</strong> Tela física na recepção/mesa para atender chamadas em vídeo e liberar o portão com um toque.",
-                "<strong>Eclusa 2 Portas (Vidro + Madeira):</strong> 2 fechaduras eletroímã 150 kgf (suporte de pressão emborrachado sem furar vidro) + 2 molas aéreas hidráulicas suaves.",
-                "<strong>CFTV 3 Câmeras Intelbras:</strong> 2 externas e 1 interna com visão noturna colorida, sirene e holofote de luz ativa contra invasores.",
-                "<strong>Cerca Elétrica Frontal 6 Fios:</strong> Central Wi-Fi com app, 4 hastes industriais (6 isoladores), cabo de alta isolação e aterramento com barra de cobre.",
-                "<strong>Tubulação Zincada 3/4\" Aparente (30m):</strong> Eletrodutos de aço galvanizado, 20 caixas de passagem estanques, tampas cegas e switch Fast Intelbras.",
-                "<strong>Instalação e Montagem Vision:</strong> Passagem de cabos, integração lógica da eclusa, cadastro dos 30 usuários e 12 meses de garantia total."
+                "2x Leitores Faciais Intelbras",
+                "01x Terminal Interno Touch IP",
+                "Eclusa Intertravada para 2 Portas",
+                "CFTV com 3 Câmeras Intelbras",
+                "Cerca Elétrica Frontal de 6 Fios",
+                "Tubulação Zincada 3/4\" Aparente",
+                "Instalação Completa e Garantia 12 Meses"
             ]
         },
         opt2: {
-            title: "Opção 2: Sem Tela Física (Atendimento pelo Celular)",
-            desc: "Mesma estrutura de eclusa, pânico, cerca e câmeras, com atendimento dos visitantes e abertura do portão feitos pelo aplicativo no smartphone.",
-            badge: "🚀 Escopo Sem Tela: Eclusa + CFTV + Cerca + App",
+            title: "Controle de Acesso Colaboradores (Sem Tela)",
+            desc: "Eclusa intertravada, facial e biometria com pânico silencioso para colaboradores, câmeras e cerca, com atendimento direto no celular.",
+            badge: "🚀 Opção 2: Sem Tela (Via Celular)",
             pix: 12860.00,
             pixHalf: 6430.00,
             cardTotal: 15430.00,
             cardMonthly: 1285.83,
-            combo36: 685.00, // Locação (R$ 539,85) + Vision Care (~R$ 145,00)
-            combo48: 595.00, // Locação (R$ 461,31) + Vision Care (~R$ 135,00)
             items: [
-                "<strong>2x Leitores Faciais Intelbras:</strong> Liberação facial rápida (<0.5s), vídeo porteiro e biometria digital de pânico silencioso para a sua central.",
-                "<strong>Atendimento Móvel pelo Celular:</strong> Chamadas de vídeo e liberação do acesso diretamente no smartphone da equipe via aplicativo.",
-                "<strong>Eclusa 2 Portas (Vidro + Madeira):</strong> 2 fechaduras eletroímã 150 kgf (sem perfuração do vidro) + 2 molas aéreas de fechamento suave.",
-                "<strong>CFTV 3 Câmeras Intelbras:</strong> Dissuasão ativa com sirene/luz, cores 24h e áudio bidirecional para falar com entregadores.",
-                "<strong>Cerca Elétrica Frontal 6 Fios:</strong> Central perimetral Wi-Fi, 4 hastes de 1m (6 isoladores) e aterramento dedicado.",
-                "<strong>Tubulação Zincada 3/4\" Aparente (30m):</strong> Infraestrutura galvanizada anti-vandalismo, caixas estanques, conexões e switch Intelbras.",
-                "<strong>Instalação e Montagem Vision:</strong> Configuração dos 30 usuários, alinhamento técnico e 12 meses de garantia total."
+                "2x Leitores Faciais Intelbras",
+                "Eclusa Intertravada para 2 Portas",
+                "CFTV com 3 Câmeras Intelbras",
+                "Cerca Elétrica Frontal de 6 Fios",
+                "Tubulação Zincada 3/4\" Aparente",
+                "Instalação Completa e Garantia 12 Meses"
             ]
         }
     };
 
-    let selectedScope = 1; // 1 = Com TVIP (Completa), 2 = Sem TVIP (App)
-    let selectedPayment = 'pix'; // 'pix', 'card', 'loc'
-    let selectedLocTerm = 36; // 36 ou 48 meses
+    let selectedScope = 1; // 1 = Com TVIP (Completa), 2 = Sem TVIP
+    let selectedPayment = 'pix'; // 'pix' ou 'card'
 
     function formatBRL(val) {
         return val.toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
@@ -1358,53 +1348,23 @@
         if (window.clarity) window.clarity("event", "Mudou_Escopo_Opcao_" + scopeNum);
     }
 
-    function setLocTerm(term) {
-        selectedLocTerm = term;
-        renderPriceDisplay();
-        if (window.clarity) window.clarity("event", "Mudou_Prazo_Locacao_" + term);
-    }
-
     function selectPayment(paymentMode) {
         selectedPayment = paymentMode;
         const btnPix = document.getElementById('btn-pay-pix');
         const btnCard = document.getElementById('btn-pay-card');
-        const btnLoc = document.getElementById('btn-pay-loc');
 
-        [btnPix, btnCard, btnLoc].forEach(b => {
+        [btnPix, btnCard].forEach(b => {
             if (b) b.className = "px-5 py-2 rounded-full text-xs font-bold bg-transparent text-gray-500 hover:text-gray-800 transition-all";
         });
 
-        const careBox = document.getElementById('vision-care-box');
-        const careDesc = document.getElementById('vision-care-desc');
         const labelMode = document.getElementById('label-pricing-mode');
 
         if (paymentMode === 'pix') {
             btnPix.className = "px-5 py-2 rounded-full text-xs font-bold bg-brand-yellow text-black shadow-md transition-all flex items-center gap-1.5";
             if (labelMode) labelMode.textContent = "Condição com Desconto no PIX";
-            if (careBox) {
-                careBox.className = "p-3.5 bg-amber-50/70 rounded-2xl border border-amber-200/70 text-xs text-amber-900 flex items-start gap-2.5 transition-all";
-            }
-            if (careDesc) {
-                careDesc.innerHTML = "Visitas preventivas semestrais + suporte prioritário por R$ 150,00/mês (opcional na compra avulsa).";
-            }
-        } else if (paymentMode === 'card') {
+        } else {
             btnCard.className = "px-5 py-2 rounded-full text-xs font-bold bg-brand-yellow text-black shadow-md transition-all";
             if (labelMode) labelMode.textContent = "Parcelamento em 12x no Cartão";
-            if (careBox) {
-                careBox.className = "p-3.5 bg-amber-50/70 rounded-2xl border border-amber-200/70 text-xs text-amber-900 flex items-start gap-2.5 transition-all";
-            }
-            if (careDesc) {
-                careDesc.innerHTML = "Visitas preventivas semestrais + suporte prioritário por R$ 150,00/mês (opcional na compra avulsa).";
-            }
-        } else {
-            btnLoc.className = "px-5 py-2 rounded-full text-xs font-bold bg-brand-yellow text-black shadow-md transition-all flex items-center gap-1.5";
-            if (labelMode) labelMode.textContent = "Assinatura (Hardware + Suporte Incluso)";
-            if (careBox) {
-                careBox.className = "p-3.5 bg-emerald-50 rounded-2xl border border-emerald-200 text-xs text-emerald-950 flex items-start gap-2.5 transition-all shadow-sm";
-            }
-            if (careDesc) {
-                careDesc.innerHTML = "<strong>Plano Vision Care já 100% incluso na mensalidade:</strong> Suporte prioritário, visitas preventivas semestrais e substituição de peças sob garantia durante todo o contrato.";
-            }
         }
 
         renderPriceDisplay();
@@ -1424,8 +1384,8 @@
 
         if (ul) {
             ul.innerHTML = data.items.map(item => `
-                <li class="flex items-start gap-2.5 text-xs md:text-sm text-gray-700 leading-snug">
-                    <i data-lucide="check-circle-2" class="w-4 h-4 text-brand-yellow shrink-0 mt-0.5"></i>
+                <li class="flex items-center gap-2.5 text-xs md:text-sm font-bold text-gray-900 bg-gray-50/70 p-2.5 rounded-xl border border-gray-100">
+                    <i data-lucide="check-circle-2" class="w-4 h-4 text-emerald-600 shrink-0"></i>
                     <span>${item}</span>
                 </li>
             `).join('');
@@ -1470,95 +1430,43 @@
                         <i data-lucide="zap" class="w-3 h-3"></i> Pagamento com desconto no PIX
                     </div>
                     
-                    <div class="w-full mt-6 space-y-2 text-left">
-                        <div class="bg-white border border-gray-200 rounded-xl p-3 shadow-sm relative overflow-hidden">
+                    <div class="w-full max-w-md mx-auto mt-6 grid grid-cols-1 sm:grid-cols-2 gap-2.5 text-left">
+                        <div class="bg-white border border-gray-200 rounded-xl p-3.5 shadow-sm relative overflow-hidden">
                             <div class="absolute top-0 left-0 w-1.5 h-full bg-emerald-400"></div>
                             <div class="pl-2">
-                                <span class="text-[10px] font-bold uppercase tracking-widest text-gray-500 block">Sinal (Aprovação e Agendamento)</span>
-                                <span class="font-bold text-gray-900 text-sm">R$ ${formatBRL(data.pixHalf)}</span>
+                                <span class="text-[9px] font-bold uppercase tracking-widest text-gray-500 block">Sinal (Aprovação)</span>
+                                <span class="font-bold text-gray-900 text-sm sm:text-base">R$ ${formatBRL(data.pixHalf)}</span>
                             </div>
                         </div>
-                        <div class="bg-white border border-gray-200 rounded-xl p-3 shadow-sm relative overflow-hidden">
+                        <div class="bg-white border border-gray-200 rounded-xl p-3.5 shadow-sm relative overflow-hidden">
                             <div class="absolute top-0 left-0 w-1.5 h-full bg-brand-yellow"></div>
                             <div class="pl-2">
-                                <span class="text-[10px] font-bold uppercase tracking-widest text-gray-500 block">Finalização (Entrega &amp; Testes Operacionais)</span>
-                                <span class="font-bold text-gray-900 text-sm">R$ ${formatBRL(data.pixHalf)}</span>
+                                <span class="text-[9px] font-bold uppercase tracking-widest text-gray-500 block">Entrega &amp; Testes</span>
+                                <span class="font-bold text-gray-900 text-sm sm:text-base">R$ ${formatBRL(data.pixHalf)}</span>
                             </div>
                         </div>
                     </div>
                 </div>
             `;
-            whatsappMsg = `Fala Gabriel! Analisei a proposta para o nosso prédio na Rua Herculano de Freitas, 273 (Bela Vista) após a visita do Ernani. Aproveitando a condição no PIX (de R$ ${formatBRL(data.cardTotal)} por R$ ${formatBRL(data.pix)} à vista), gostaríamos de aprovar a *${data.title}* para programarmos o início na semana que vem. Como formalizamos?`;
-            if (ctaText) ctaText.textContent = `Aprovar ${selectedScope === 1 ? 'Opção 1 (+ TVIP)' : 'Opção 2 (Via App)'} no PIX`;
+            whatsappMsg = `Fala Gabriel! Analisei a proposta para o nosso prédio na Rua Herculano de Freitas, 273 (Bela Vista). Aproveitando a condição no PIX (de R$ ${formatBRL(data.cardTotal)} por R$ ${formatBRL(data.pix)} à vista), gostaríamos de aprovar a *${data.badge}* para programarmos o início na semana que vem. Como formalizamos?`;
+            if (ctaText) ctaText.textContent = `Aprovar ${selectedScope === 1 ? 'Opção 1 (+ TVIP)' : 'Opção 2 (Sem Tela)'} no PIX`;
 
-        } else if (selectedPayment === 'card') {
+        } else {
             html = `
                 <div class="flex flex-col items-center justify-center w-full animate-fade-in">
                     <span class="text-xs font-bold text-gray-400 mb-1">Parcelamento Facilitado</span>
-                    <div class="flex items-baseline justify-center gap-1.5 mb-3">
+                    <div class="flex items-baseline justify-center gap-1.5 mb-2">
                         <span class="text-2xl font-bold text-[#111827]">12x de R$</span>
                         <span class="text-5xl md:text-6xl font-extrabold text-[#111827] tracking-tighter leading-none">${formatBRL(data.cardMonthly).split(',')[0]}<span class="text-3xl text-gray-400">,${formatBRL(data.cardMonthly).split(',')[1]}</span></span>
                     </div>
                     <div class="inline-flex items-center gap-1.5 bg-blue-50 border border-blue-200 text-blue-700 px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-widest mt-1">
                         <i data-lucide="credit-card" class="w-3 h-3"></i> Cartão de Crédito Corporativo
                     </div>
-                    <p class="text-xs text-gray-500 font-medium mt-4">Valor total no cartão: R$ ${formatBRL(data.cardTotal)}</p>
+                    <p class="text-xs sm:text-sm text-gray-500 font-medium mt-3">Valor total no cartão: R$ ${formatBRL(data.cardTotal)}</p>
                 </div>
             `;
-            whatsappMsg = `Fala Gabriel! Analisei a proposta do prédio na Bela Vista e queremos aprovar a *${data.title}* em *12x de R$ ${formatBRL(data.cardMonthly)} no cartão* para iniciar a equipe técnica na semana que vem.`;
+            whatsappMsg = `Fala Gabriel! Analisei a proposta do prédio na Bela Vista e queremos aprovar a *${data.badge}* em *12x de R$ ${formatBRL(data.cardMonthly)} no cartão* para iniciar a equipe técnica na semana que vem.`;
             if (ctaText) ctaText.textContent = `Aprovar ${selectedScope === 1 ? 'Opção 1' : 'Opção 2'} (12x Cartão)`;
-
-        } else {
-            const is36 = selectedLocTerm === 36;
-            const currentCombo = is36 ? data.combo36 : data.combo48;
-
-            html = `
-                <div class="flex flex-col items-center justify-center w-full animate-fade-in">
-                    
-                    <div class="inline-flex bg-gray-200/80 p-1 rounded-xl mb-3 border border-gray-300/50">
-                        <button type="button" onclick="setLocTerm(36)" class="px-3 py-1 rounded-lg text-[11px] font-bold transition-all ${is36 ? 'bg-zinc-900 text-white shadow-sm' : 'text-gray-600 hover:text-gray-900'}">
-                            Plano 36 Meses
-                        </button>
-                        <button type="button" onclick="setLocTerm(48)" class="px-3 py-1 rounded-lg text-[11px] font-bold transition-all ${!is36 ? 'bg-zinc-900 text-white shadow-sm' : 'text-gray-600 hover:text-gray-900'}">
-                            Plano 48 Meses
-                        </button>
-                    </div>
-
-                    <div class="flex items-baseline justify-center gap-1.5 mb-2">
-                        <span class="text-2xl font-bold text-gray-500">R$</span>
-                        <span class="text-5xl md:text-6xl font-extrabold text-[#111827] tracking-tighter leading-none">${formatBRL(currentCombo).split(',')[0]}<span class="text-3xl text-gray-400">,${formatBRL(currentCombo).split(',')[1]}</span></span>
-                        <span class="text-xs font-bold text-gray-500">/mês</span>
-                    </div>
-
-                    <div class="inline-flex items-center gap-1.5 bg-emerald-50 border border-emerald-200 text-emerald-800 px-3.5 py-1 rounded-full text-[10px] font-bold uppercase tracking-widest mt-1 shadow-sm">
-                        <i data-lucide="shield-check" class="w-3.5 h-3.5 text-emerald-600"></i> Assinatura com Suporte Incluso
-                    </div>
-                    
-                    <div class="mt-5 p-4 bg-white rounded-2xl border border-gray-200 w-full text-xs text-left shadow-sm space-y-2">
-                        <span class="text-[10px] font-extrabold uppercase tracking-wider text-gray-400 block pb-1 border-b border-gray-100">Incluso na mensalidade:</span>
-                        <div class="flex items-start gap-2 text-gray-700">
-                            <i data-lucide="check-circle-2" class="w-3.5 h-3.5 text-emerald-600 shrink-0 mt-0.5"></i>
-                            <span><strong>Locação de Hardware:</strong> leitores faciais, travas, CFTV, cerca e tubulação zincada.</span>
-                        </div>
-                        <div class="flex items-start gap-2 text-gray-700">
-                            <i data-lucide="check-circle-2" class="w-3.5 h-3.5 text-emerald-600 shrink-0 mt-0.5"></i>
-                            <span><strong>Instalação &amp; Configuração:</strong> sem taxa de implantação inicial.</span>
-                        </div>
-                        <div class="flex items-start gap-2 text-gray-700">
-                            <i data-lucide="check-circle-2" class="w-3.5 h-3.5 text-emerald-600 shrink-0 mt-0.5"></i>
-                            <span><strong>Plano Vision Care:</strong> suporte prioritário, visitas preventivas semestrais e substituição de peças sob garantia.</span>
-                        </div>
-                    </div>
-
-                    <div class="mt-3 flex items-center justify-center gap-2 text-[10px] text-gray-500">
-                        <i data-lucide="badge-percent" class="w-3.5 h-3.5 text-brand-yellow"></i>
-                        <span>Zero descapitalização · Mensalidade dedutível como OPEX</span>
-                    </div>
-                </div>
-            `;
-
-            whatsappMsg = `Fala Gabriel! Decidimos seguir no modelo de *Assinatura (Hardware + Suporte Vision Care)* para a *${data.title}* em *${selectedLocTerm} meses (R$ ${formatBRL(currentCombo)}/mês)* no nosso prédio na Herculano de Freitas. Vamos alinhar para iniciar na semana que vem?`;
-            if (ctaText) ctaText.textContent = `Aprovar Assinatura (${selectedLocTerm}x R$ ${formatBRL(currentCombo)})`;
         }
 
         box.innerHTML = html;
