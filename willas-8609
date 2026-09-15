@@ -1,0 +1,1341 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth overflow-x-hidden" id="html-root">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projeto Executivo Acesso Facial Mini Mercado | Willas – Vision Tecnologia</title>
+    <meta name="description" content="Controle de Acesso Facial Externo IP65 com QR Code de Auto-Cadastro e Validação de Maioridade para Mini Mercado Autônomo – Vision Tecnologia">
+    <meta name="theme-color" content="#b9880e">
+    <meta name="robots" content="noindex, nofollow">
+
+    <!-- Fonts & CDN Tailwind -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@700;800&family=Quicksand:wght@500;600;700&family=Outfit:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <!-- Google Analytics 4 -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-KTGEL92B0F"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-KTGEL92B0F');
+    </script>
+
+    <!-- Microsoft Clarity -->
+    <script type="text/javascript">
+        (function(c,l,a,r,i,t,y){
+            c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+            t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+            y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+        })(window, document, "clarity", "script", "vifq10es5o");
+    </script>
+
+    <!-- Tailwind Configuração -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"Outfit"', 'sans-serif'],
+                        logo: ['"League Spartan"', 'sans-serif'],
+                        tech: ['"Quicksand"', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            yellow: '#b9880e',
+                            goldLight: '#FFDE59',
+                            goldDark: '#8a6208',
+                            black: '#09090b',
+                        }
+                    },
+                    boxShadow: {
+                        'glass': '0 4px 24px 0 rgba(0,0,0,0.04)',
+                        'premium': '0 16px 50px -10px rgba(0,0,0,0.08)',
+                        'glow': '0 0 20px rgba(185,136,14,0.18)',
+                        'glow-md': '0 0 35px rgba(185,136,14,0.28)',
+                    },
+                    animation: {
+                        'slide-up': 'slideUp 0.9s cubic-bezier(0.16,1,0.3,1) forwards',
+                        'float': 'float 6s ease-in-out infinite',
+                        'fade-in': 'fadeIn 0.4s ease forwards',
+                    },
+                    keyframes: {
+                        slideUp: {
+                            '0%': { opacity: '0', transform: 'translateY(35px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' }
+                        },
+                        float: {
+                            '0%,100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-10px)' }
+                        },
+                        fadeIn: {
+                            '0%': { opacity: '0' },
+                            '100%': { opacity: '1' }
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: #f9fafb; }
+        ::-webkit-scrollbar-thumb { background: #d1d5db; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #b9880e; }
+
+        .text-gold-shine {
+            background: linear-gradient(to right, #b9880e 20%, #FFDE59 50%, #b9880e 80%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-size: 200% auto;
+            animation: shine 4s linear infinite;
+        }
+        @keyframes shine { to { background-position: 200% center; } }
+
+        .bg-grid {
+            background-image: linear-gradient(rgba(185,136,14,0.04) 1px, transparent 1px),
+                              linear-gradient(90deg, rgba(185,136,14,0.04) 1px, transparent 1px);
+            background-size: 40px 40px;
+        }
+        .bg-dots {
+            background-image: radial-gradient(#b9880e 1.2px, transparent 1.2px);
+            background-size: 22px 22px;
+            opacity: 0.035;
+        }
+
+        .lock-input {
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.1);
+            color: #b9880e;
+            font-family: 'League Spartan', sans-serif;
+            font-size: 1.35rem;
+            text-align: center;
+            outline: none;
+            transition: all 0.3s;
+            letter-spacing: 0.18em;
+            border-radius: 14px;
+            text-transform: uppercase;
+        }
+        .lock-input:focus {
+            border-color: #b9880e;
+            background: rgba(255,255,255,0.08);
+            box-shadow: 0 0 20px rgba(185,136,14,0.25);
+        }
+        .lock-input::placeholder {
+            color: #71717a;
+            font-size: 0.8rem;
+            font-family: 'Outfit', sans-serif;
+            font-weight: 400;
+            letter-spacing: 0.05em;
+            text-transform: none;
+        }
+
+        .reveal { opacity: 0; transform: translateY(30px); transition: all 0.8s cubic-bezier(0.16,1,0.3,1); }
+        .reveal.active { opacity: 1; transform: translateY(0); }
+
+        .accordion-content { max-height: 0; overflow: hidden; transition: max-height 0.45s cubic-bezier(0.4,0,0.2,1); }
+        .accordion-item.open .accordion-content { max-height: 600px; }
+        .accordion-item.open .acc-arrow { transform: rotate(180deg); }
+        .acc-arrow { transition: transform 0.3s; }
+
+        @keyframes marqueeReviews {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+        .reviews-marquee-track {
+            display: flex;
+            width: max-content;
+            animation: marqueeReviews 55s linear infinite;
+            will-change: transform;
+        }
+        .reviews-marquee-container:hover .reviews-marquee-track,
+        .reviews-marquee-track.paused {
+            animation-play-state: paused !important;
+        }
+
+        .premium-border-glow {
+            position: relative;
+            border-radius: 2rem;
+            padding: 2px;
+            background-color: #b9880e;
+            overflow: hidden;
+            box-shadow: 0 0 35px rgba(185,136,14,0.15);
+            transition: transform 0.3s cubic-bezier(0.4,0,0.2,1);
+        }
+        .premium-border-glow:hover { transform: scale(1.006); }
+        .premium-border-glow::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: conic-gradient(
+                from 0deg, 
+                transparent 0deg, 
+                transparent 175deg, 
+                rgba(255, 222, 89, 0.6) 178deg, 
+                #ffffff 180deg, 
+                rgba(255, 222, 89, 0.6) 182deg, 
+                transparent 185deg, 
+                transparent 360deg
+            );
+            animation: rotate-border 12s linear infinite;
+            z-index: 0;
+        }
+        @keyframes rotate-border {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        .premium-border-inner {
+            position: relative;
+            z-index: 1;
+            background-color: #ffffff;
+            border-radius: calc(2rem - 2px);
+            height: 100%;
+        }
+
+        @media print {
+            #lock-screen, #navbar, #cta-float { display: none !important; }
+            .reveal { opacity: 1 !important; transform: none !important; }
+        }
+    </style>
+</head>
+<body class="bg-[#fafafa] text-gray-800 antialiased overflow-hidden h-screen" id="body-root">
+
+<!-- ===================== LOCK SCREEN ===================== -->
+<div id="lock-screen" class="fixed inset-0 z-[100] bg-[#09090b] flex flex-col items-center justify-center text-center p-4 transition-opacity duration-700 ease-out overflow-y-auto">
+    <div class="bg-grid absolute inset-0 opacity-10 pointer-events-none"></div>
+    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-brand-yellow/5 rounded-full blur-[100px] pointer-events-none"></div>
+
+    <!-- Logo -->
+    <div class="relative flex flex-col items-center mb-8 z-10">
+        <div class="relative flex items-baseline leading-none">
+            <span class="font-logo font-bold text-[5rem] md:text-[5.5rem] text-gold-shine lowercase tracking-[-0.05em] leading-none">vısıon</span>
+            <span class="absolute -right-5 top-4 text-[1.1rem] text-brand-yellow font-bold">®</span>
+        </div>
+        <span class="font-tech text-[1.0rem] font-bold text-zinc-500 lowercase -mt-4 ml-2.5 text-center w-full" style="letter-spacing:0.53em;">tecnologia</span>
+    </div>
+
+    <div class="w-full max-w-sm space-y-5 z-10">
+        <div class="space-y-1.5">
+            <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-brand-yellow/30 bg-brand-yellow/10 mb-2">
+                <i data-lucide="lock" class="w-3.5 h-3.5 text-brand-yellow"></i>
+                <span class="text-brand-yellow text-[10px] font-bold uppercase tracking-widest">Acesso Corporativo Restrito</span>
+            </div>
+            <h2 class="text-white font-bold text-2xl">Mini Mercado Autônomo</h2>
+            <p class="text-zinc-400 text-xs">A/C Willas • Modelo de Expansão de Acesso</p>
+        </div>
+
+        <div>
+            <!-- SENHAS: WILLAS2026, MERCADO2026, WILLAS, MERCADO, VISION -->
+            <input type="password" id="password-input" class="lock-input w-full py-4 px-4" placeholder="Digite sua senha de acesso" autocomplete="off">
+            <p id="error-msg" class="text-red-400 text-xs mt-2 hidden">
+                <span class="flex items-center justify-center gap-1"><i data-lucide="x-circle" class="w-4 h-4"></i> Senha incorreta. Tente novamente.</span>
+            </p>
+        </div>
+
+        <button onclick="checkPassword()" id="btn-unlock" class="w-full bg-brand-yellow hover:bg-brand-goldLight text-black font-bold py-4 rounded-2xl transition-all shadow-glow flex items-center justify-center gap-2 group relative overflow-hidden">
+            <div class="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-300 rounded-2xl"></div>
+            <i data-lucide="shield-check" class="w-5 h-5 relative z-10" id="unlock-icon"></i>
+            <span class="relative z-10 text-sm uppercase tracking-widest font-bold" id="unlock-text">Acessar Proposta Técnica</span>
+            <i data-lucide="arrow-right" class="w-4 h-4 relative z-10 group-hover:translate-x-1 transition-transform" id="unlock-arrow"></i>
+        </button>
+
+        <p class="text-zinc-600 text-xs">Documento Confidencial B2B · Vision Tecnologia © 2026</p>
+    </div>
+</div>
+
+<!-- ===================== NAVBAR ===================== -->
+<nav id="navbar" class="fixed w-full z-50 top-0 bg-white/95 backdrop-blur-xl border-b border-gray-200/50 shadow-sm transition-all duration-300">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-between h-20 items-center">
+            
+            <div class="flex items-center gap-4 cursor-pointer" onclick="window.scrollTo({top:0, behavior:'smooth'})">
+                <div class="flex flex-col items-center justify-center">
+                    <div class="relative flex items-baseline leading-none">
+                        <span class="font-logo font-bold text-[2.4rem] text-gold-shine lowercase tracking-[-0.05em] leading-none">vısıon</span>
+                        <span class="absolute -right-2.5 top-1.5 text-[0.6rem] text-brand-yellow font-bold">®</span>
+                    </div>
+                    <span class="font-tech text-[0.55rem] font-bold text-gray-400 lowercase -mt-2 ml-1" style="letter-spacing:0.53em;">tecnologia</span>
+                </div>
+                <div class="h-7 w-px bg-gray-200 hidden sm:block"></div>
+                <span class="text-zinc-400 text-xs uppercase tracking-widest font-bold hidden sm:block">Mini Mercado · Willas</span>
+            </div>
+
+            <div class="hidden md:flex items-center space-x-7 text-xs font-semibold text-gray-500 uppercase tracking-wider">
+                <a href="#diagnostico" class="hover:text-brand-yellow transition-colors">Estrutura &amp; Local</a>
+                <a href="#fluxo-cadastro" class="hover:text-brand-yellow transition-colors">Fluxo QR Code</a>
+                <a href="#solucao" class="hover:text-brand-yellow transition-colors">Equipamentos</a>
+                <a href="#avaliacoes" class="hover:text-brand-yellow transition-colors">Reputação</a>
+                <a href="#investimento" class="hover:text-brand-yellow transition-colors">Investimento</a>
+                <a href="#faq" class="hover:text-brand-yellow transition-colors">Dúvidas</a>
+            </div>
+
+            <div class="flex items-center gap-4">
+                <button onclick="window.print()" class="text-gray-400 hover:text-brand-yellow transition-colors flex items-center gap-1.5" title="Salvar em PDF">
+                    <i data-lucide="download" class="w-4 h-4"></i>
+                    <span class="text-[10px] font-bold uppercase tracking-widest hidden sm:block">PDF</span>
+                </button>
+                <a href="#investimento" class="bg-zinc-900 text-white px-5 py-2.5 rounded-full text-[10px] font-bold uppercase tracking-widest hover:bg-brand-yellow hover:text-black transition-all shadow-md">
+                    Ver Investimento
+                </a>
+            </div>
+
+        </div>
+    </div>
+</nav>
+
+<!-- ===================== HERO COM VÍDEO ===================== -->
+<header class="pt-32 pb-20 lg:pt-40 relative overflow-hidden bg-[#f8f9fa]">
+    <div class="absolute inset-0 bg-grid pointer-events-none"></div>
+    <div class="absolute right-0 top-0 w-1/2 h-full bg-gradient-to-l from-white to-transparent z-0 pointer-events-none hidden lg:block"></div>
+    
+    <div class="max-w-7xl mx-auto px-4 relative z-10">
+        <div class="flex flex-col lg:flex-row items-center gap-12 lg:gap-16">
+            
+            <!-- Text Column -->
+            <div class="w-full lg:w-[55%] text-center lg:text-left animate-slide-up">
+                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-white border border-gray-200 text-gray-600 text-[10px] font-bold uppercase tracking-widest mb-6 mx-auto lg:mx-0 shadow-sm">
+                    <div class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></div>
+                    Projeto Piloto &amp; Expansão | Cliente <span class="text-brand-yellow font-black">Willas</span>
+                </div>
+                
+                <h1 class="text-4xl md:text-5xl lg:text-[3.4rem] font-extrabold text-gray-900 leading-[1.05] tracking-tight mb-6">
+                    Acesso Facial Externo &amp; Cadastro QR Code para <span class="text-gold-shine">Mini Mercado Autônomo.</span>
+                </h1>
+                
+                <p class="text-base md:text-lg text-gray-500 max-w-xl mx-auto lg:mx-0 font-medium leading-relaxed">
+                    Willas, analisamos os vídeos e fotos da sua estrutura metálica móvel (container). Como o ambiente interno já conta com tubulação metálica aparente, dimensionamos uma engenharia limpa e ágil: <strong>leitor facial com proteção externa IP65 contra chuva e sol</strong>, plaqueta QR Code para auto-cadastro de clientes (com filtro de maioridade), botoeira inox interna e backup ininterrupto por bateria.
+                </p>
+
+                <div class="mt-8 flex flex-wrap items-center justify-center lg:justify-start gap-4">
+                    <div class="flex -space-x-3">
+                        <div class="w-10 h-10 rounded-full border-2 border-white bg-gray-100 flex items-center justify-center text-gray-600 shadow-sm"><i data-lucide="scan-face" class="w-4 h-4"></i></div>
+                        <div class="w-10 h-10 rounded-full border-2 border-white bg-gray-100 flex items-center justify-center text-gray-600 shadow-sm"><i data-lucide="qr-code" class="w-4 h-4"></i></div>
+                        <div class="w-10 h-10 rounded-full border-2 border-white bg-brand-yellow/20 flex items-center justify-center text-brand-goldDark shadow-sm"><i data-lucide="cloud-rain" class="w-4 h-4"></i></div>
+                    </div>
+                    <span class="text-xs font-bold text-gray-500 uppercase tracking-widest">Solução Replicável para Próximas Unidades</span>
+                </div>
+            </div>
+
+            <!-- Video Player Column -->
+            <div class="w-full lg:w-[45%] mt-4 lg:mt-0 reveal animate-slide-up" style="animation-delay: 200ms;">
+                <div class="relative w-full max-w-lg mx-auto group z-10">
+                    <div class="relative w-full aspect-video bg-black border-[6px] md:border-[10px] border-zinc-800 rounded-t-[1rem] md:rounded-t-[1.5rem] overflow-hidden shadow-2xl">
+                        
+                        <video id="vision-video" class="w-full h-full object-cover cursor-pointer opacity-90" autoplay muted loop playsinline>
+                            <source src="https://res.cloudinary.com/dptcuckhf/video/upload/v1771711323/Vict%C3%B3ria_-_Vision_gdqnrk.mp4" type="video/mp4">
+                        </video>
+                        
+                        <div id="unmute-overlay" class="absolute inset-0 bg-black/50 backdrop-blur-sm flex flex-col items-center justify-center cursor-pointer transition-opacity duration-500 z-30 hover:bg-black/40">
+                            <div class="bg-brand-yellow text-black font-bold px-6 py-3 rounded-full flex items-center gap-2 shadow-glow animate-pulse transform group-hover:scale-105 transition-all">
+                                <i data-lucide="volume-2" class="w-4 h-4 fill-black"></i>
+                                <span class="text-[10px] tracking-wide uppercase">Clique para Ouvir Apresentação</span>
+                            </div>
+                        </div>
+
+                        <div class="absolute top-1.5 md:top-2 left-1/2 -translate-x-1/2 w-1.5 h-1.5 md:w-2 md:h-2 bg-zinc-950 rounded-full z-20"></div>
+                    </div>
+                    <div class="relative w-[114%] -ml-[7%] h-3 md:h-5 bg-gradient-to-b from-zinc-300 to-zinc-400 rounded-b-xl md:rounded-b-2xl shadow-[0_20px_40px_rgba(0,0,0,0.5)] flex justify-center border-t border-zinc-200">
+                        <div class="w-1/5 h-1.5 md:h-2 bg-zinc-300 rounded-b-md shadow-inner"></div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Quick Stats -->
+        <div class="mt-14 lg:mt-20 grid grid-cols-2 md:grid-cols-4 gap-4 max-w-4xl mx-auto reveal">
+            <div class="bg-white rounded-2xl p-5 shadow-glass border border-gray-100 text-center animate-float" style="animation-delay:0s;">
+                <div class="w-9 h-9 bg-brand-yellow/10 rounded-xl flex items-center justify-center mx-auto mb-2 text-brand-goldDark">
+                    <i data-lucide="cloud-rain" class="w-4 h-4"></i>
+                </div>
+                <div class="text-2xl font-extrabold text-gray-900">IP65</div>
+                <div class="text-[10px] text-gray-500 font-bold uppercase tracking-wider">Proteção Externa</div>
+            </div>
+            <div class="bg-white rounded-2xl p-5 shadow-glass border border-gray-100 text-center animate-float" style="animation-delay:0.8s;">
+                <div class="w-9 h-9 bg-brand-yellow/10 rounded-xl flex items-center justify-center mx-auto mb-2 text-brand-goldDark">
+                    <i data-lucide="qr-code" class="w-4 h-4"></i>
+                </div>
+                <div class="text-2xl font-extrabold text-gray-900">100% Web</div>
+                <div class="text-[10px] text-gray-500 font-bold uppercase tracking-wider">Cadastro QR Code</div>
+            </div>
+            <div class="bg-white rounded-2xl p-5 shadow-glass border border-gray-100 text-center animate-float" style="animation-delay:0.4s;">
+                <div class="w-9 h-9 bg-brand-yellow/10 rounded-xl flex items-center justify-center mx-auto mb-2 text-brand-goldDark">
+                    <i data-lucide="battery-charging" class="w-4 h-4"></i>
+                </div>
+                <div class="text-2xl font-extrabold text-gray-900">Bateria 7Ah</div>
+                <div class="text-[10px] text-gray-500 font-bold uppercase tracking-wider">Segurança em Queda de Luz</div>
+            </div>
+            <div class="bg-white rounded-2xl p-5 shadow-glass border border-gray-100 text-center animate-float" style="animation-delay:1.2s;">
+                <div class="w-9 h-9 bg-brand-yellow/10 rounded-xl flex items-center justify-center mx-auto mb-2 text-brand-goldDark">
+                    <i data-lucide="user-check" class="w-4 h-4"></i>
+                </div>
+                <div class="text-2xl font-extrabold text-gray-900">+18 Anos</div>
+                <div class="text-[10px] text-gray-500 font-bold uppercase tracking-wider">Filtro de Maioridade</div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- ===================== DIAGNÓSTICO DO CENÁRIO ===================== -->
+<section id="diagnostico" class="py-24 bg-white border-y border-gray-200/60 relative">
+    <div class="max-w-7xl mx-auto px-4">
+        <div class="text-center mb-16 reveal">
+            <span class="text-brand-yellow font-bold uppercase tracking-widest text-xs">Engenharia Prática de Implantação</span>
+            <h2 class="text-3xl md:text-5xl font-bold text-gray-900 mt-3 leading-tight">Análise do Espaço: Container &amp; Mini Mercado Móvel</h2>
+            <p class="text-gray-500 mt-4 max-w-3xl mx-auto text-base md:text-lg leading-relaxed">
+                <strong>Willas</strong>, analisamos as fotos e vídeos da estrutura metálica. Identificamos exatamente os pontos-chave para entregar o sistema enxuto, robusto e financeiramente viável que você busca:
+            </p>
+        </div>
+
+        <div class="grid md:grid-cols-3 gap-8 reveal">
+            <!-- Pilar 1 -->
+            <div class="bg-[#fafafa] rounded-[2rem] p-8 border border-gray-100 shadow-sm flex flex-col justify-between hover:border-brand-yellow/40 transition-all">
+                <div>
+                    <div class="w-12 h-12 bg-amber-100 rounded-2xl flex items-center justify-center mb-6 text-brand-goldDark">
+                        <i data-lucide="sun" class="w-6 h-6"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">Leitor Facial Externo Homologado IP65</h3>
+                    <p class="text-gray-600 text-xs md:text-sm leading-relaxed mb-6">
+                        Como você destacou que o leitor ficará no ambiente externo, o hardware especificado é o <strong>Intelbras SS 3532 MF com certificação IP65</strong>. Ele suporta intempéries (sol direto, chuva e poeira) e conta com sensor biométrico anti-fake com reconhecimento em menos de 0.5s.
+                    </p>
+                </div>
+                <div class="p-3.5 bg-emerald-50 rounded-xl border border-emerald-100 text-xs text-emerald-800 flex items-center gap-2">
+                    <i data-lucide="check-circle-2" class="w-4 h-4 text-emerald-600 shrink-0"></i>
+                    <span>Resistência climática real para fachadas abertas.</span>
+                </div>
+            </div>
+
+            <!-- Pilar 2 -->
+            <div class="bg-[#fafafa] rounded-[2rem] p-8 border border-gray-100 shadow-sm flex flex-col justify-between hover:border-brand-yellow/40 transition-all">
+                <div>
+                    <div class="w-12 h-12 bg-amber-100 rounded-2xl flex items-center justify-center mb-6 text-brand-goldDark">
+                        <i data-lucide="magnet" class="w-6 h-6"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">Fixação na Estrutura Metálica &amp; Saída Inox</h3>
+                    <p class="text-gray-600 text-xs md:text-sm leading-relaxed mb-6">
+                        Aproveitamos a tubulação metálica aparente existente no container para ancorar a <strong>Fechadura Eletroímã de 150 kgf</strong> e o <strong>Botão de Saída em Aço Inox BT 3000</strong>. Fechamento seguro, silencioso e sem partes móveis que quebram com facilidade.
+                    </p>
+                </div>
+                <div class="p-3.5 bg-emerald-50 rounded-xl border border-emerald-100 text-xs text-emerald-800 flex items-center gap-2">
+                    <i data-lucide="check-circle-2" class="w-4 h-4 text-emerald-600 shrink-0"></i>
+                    <span>Instalação limpa integrada aos eletrodutos existentes.</span>
+                </div>
+            </div>
+
+            <!-- Pilar 3 -->
+            <div class="bg-[#fafafa] rounded-[2rem] p-8 border border-gray-100 shadow-sm flex flex-col justify-between hover:border-brand-yellow/40 transition-all">
+                <div>
+                    <div class="w-12 h-12 bg-amber-100 rounded-2xl flex items-center justify-center mb-6 text-brand-goldDark">
+                        <i data-lucide="zap-off" class="w-6 h-6"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">Autonomia Nobreak com Bateria 12V</h3>
+                    <p class="text-gray-600 text-xs md:text-sm leading-relaxed mb-6">
+                        Em um mini mercado sem funcionários presenciais, oscilações na rede elétrica local não podem destravar a loja ou desligar o leitor. O sistema inclui fonte metálica dedicada e <strong>bateria selada VRLA 12V 7Ah</strong>, garantindo autonomia contínua.
+                    </p>
+                </div>
+                <div class="p-3.5 bg-emerald-50 rounded-xl border border-emerald-100 text-xs text-emerald-800 flex items-center gap-2">
+                    <i data-lucide="check-circle-2" class="w-4 h-4 text-emerald-600 shrink-0"></i>
+                    <span>Loja sempre travada e operando mesmo sem luz.</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ===================== FLUXO DE AUTO-CADASTRO QR CODE ===================== -->
+<section id="fluxo-cadastro" class="py-20 bg-gradient-to-b from-[#f8f9fa] to-white border-b border-gray-200/60 relative">
+    <div class="max-w-5xl mx-auto px-4 relative z-10">
+        <div class="text-center mb-14 reveal">
+            <span class="text-brand-yellow font-bold uppercase tracking-widest text-xs">Experiência do Seu Cliente</span>
+            <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mt-2">Como Funciona o Auto-Cadastro na Entrada</h2>
+            <p class="text-gray-500 mt-3 max-w-2xl mx-auto text-sm md:text-base">
+                Exatamente o fluxo simples e direto que você solicitou, sem filas nem complexidade técnica:
+            </p>
+        </div>
+
+        <div class="grid md:grid-cols-4 gap-6 reveal">
+            <div class="bg-white rounded-2xl p-6 border border-gray-200 shadow-sm text-center relative group hover:border-brand-yellow transition-all">
+                <div class="w-12 h-12 rounded-2xl bg-amber-100 text-brand-goldDark flex items-center justify-center mx-auto mb-4 font-black text-lg">1</div>
+                <h4 class="font-bold text-gray-900 text-sm mb-2">Plaqueta QR Code</h4>
+                <p class="text-xs text-gray-500 leading-relaxed">
+                    Instalada ao lado do leitor facial externo. O cliente aponta a câmera do próprio smartphone.
+                </p>
+            </div>
+
+            <div class="bg-white rounded-2xl p-6 border border-gray-200 shadow-sm text-center relative group hover:border-brand-yellow transition-all">
+                <div class="w-12 h-12 rounded-2xl bg-amber-100 text-brand-goldDark flex items-center justify-center mx-auto mb-4 font-black text-lg">2</div>
+                <h4 class="font-bold text-gray-900 text-sm mb-2">Dados Básicos</h4>
+                <p class="text-xs text-gray-500 leading-relaxed">
+                    O usuário preenche Nome Completo, CPF e Telefone (WhatsApp) em uma interface web rápida.
+                </p>
+            </div>
+
+            <div class="bg-white rounded-2xl p-6 border border-gray-200 shadow-sm text-center relative group hover:border-brand-yellow transition-all">
+                <div class="w-12 h-12 rounded-2xl bg-amber-100 text-brand-goldDark flex items-center justify-center mx-auto mb-4 font-black text-lg">3</div>
+                <h4 class="font-bold text-gray-900 text-sm mb-2">Filtro +18 Anos</h4>
+                <p class="text-xs text-gray-500 leading-relaxed">
+                    Validação da data de nascimento/termo obrigatório para garantir que apenas maiores de idade tenham acesso liberado.
+                </p>
+            </div>
+
+            <div class="bg-white rounded-2xl p-6 border border-gray-200 shadow-sm text-center relative group hover:border-brand-yellow transition-all">
+                <div class="w-12 h-12 rounded-2xl bg-emerald-100 text-emerald-800 flex items-center justify-center mx-auto mb-4 font-black text-lg">4</div>
+                <h4 class="font-bold text-gray-900 text-sm mb-2">Selfie &amp; Acesso</h4>
+                <p class="text-xs text-gray-500 leading-relaxed">
+                    O cliente tira uma selfie, o sistema sincroniza a biometria com o leitor e a porta é destravada imediatamente.
+                </p>
+            </div>
+        </div>
+
+        <div class="mt-8 p-4 rounded-2xl bg-emerald-50 border border-emerald-200 text-emerald-900 text-xs md:text-sm flex items-center gap-3 reveal">
+            <i data-lucide="shield-check" class="w-5 h-5 text-emerald-600 shrink-0"></i>
+            <span><strong>Pronto para Replicar:</strong> Quando você abrir seu 2º e 3º mercado, o cadastro do cliente é único na nuvem — ele se cadastra uma vez e tem acesso livre a todas as suas unidades.</span>
+        </div>
+    </div>
+</section>
+
+<!-- ===================== VITRINE TECNOLÓGICA ===================== -->
+<section id="solucao" class="py-24 bg-[#f8f9fa] border-b border-gray-200/60 relative">
+    <div class="max-w-7xl mx-auto px-4 relative z-10">
+        <div class="text-center mb-16 reveal">
+            <span class="text-brand-yellow font-bold uppercase tracking-widest text-xs">Especificação Homologada</span>
+            <h2 class="text-3xl md:text-5xl font-bold text-gray-900 mt-3">Hardware Intelbras Corporativo</h2>
+            <p class="text-gray-500 mt-4 max-w-2xl mx-auto text-sm md:text-base">
+                Equipamentos de alta resistência com garantia direta e suporte da engenharia da Vision:
+            </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 reveal">
+            <!-- Equipamento 1: Facial Externo IP65 -->
+            <div class="bg-white rounded-3xl p-6 border border-gray-200 shadow-sm flex flex-col justify-between hover:border-brand-yellow hover:shadow-md transition-all group">
+                <div>
+                    <div class="w-full aspect-video bg-gradient-to-br from-amber-50 to-orange-50/40 rounded-2xl flex items-center justify-center p-4 mb-4 border border-amber-100/80 relative overflow-hidden">
+                        <span class="absolute top-2.5 right-3 text-[9px] font-extrabold uppercase tracking-wider px-2.5 py-0.5 rounded-full bg-amber-500/10 text-amber-800 border border-amber-500/20">IP65 Externo</span>
+                        <img src="https://res.cloudinary.com/dptcuckhf/image/upload/v1770745467/ss-3532-mf-w-frontal_2_c82tua.png" alt="Intelbras SS 3532 MF" class="max-h-32 object-contain group-hover:scale-105 transition-transform" onerror="this.src='https://placehold.co/200x200/f3f4f6/111827?text=Facial+SS3532'">
+                    </div>
+                    <h4 class="font-bold text-gray-900 text-base mb-1.5 flex items-center gap-2">
+                        <span class="w-2 h-2 rounded-full bg-amber-500"></span>
+                        Leitor Facial SS 3532 MF (Intelbras)
+                    </h4>
+                    <p class="text-xs text-gray-600 leading-relaxed">
+                        Controlador de acesso biométrico facial para área externa. Câmera dupla anti-fake, leitor de cartões Mifare integrado e conexão de rede TCP/IP com a nuvem.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Equipamento 2: Plaqueta QR Code -->
+            <div class="bg-white rounded-3xl p-6 border border-gray-200 shadow-sm flex flex-col justify-between hover:border-blue-400 hover:shadow-md transition-all group">
+                <div>
+                    <div class="w-full aspect-video bg-gradient-to-br from-blue-50 to-indigo-50/40 rounded-2xl flex items-center justify-center p-4 mb-4 border border-blue-100/80 relative overflow-hidden">
+                        <span class="absolute top-2.5 right-3 text-[9px] font-extrabold uppercase tracking-wider px-2.5 py-0.5 rounded-full bg-blue-500/10 text-blue-800 border border-blue-500/20">Auto-Cadastro</span>
+                        <div class="w-20 h-20 bg-white rounded-xl border-2 border-dashed border-blue-300 flex items-center justify-center text-blue-600 shadow-sm">
+                            <i data-lucide="qr-code" class="w-10 h-10"></i>
+                        </div>
+                    </div>
+                    <h4 class="font-bold text-gray-900 text-base mb-1.5 flex items-center gap-2">
+                        <span class="w-2 h-2 rounded-full bg-blue-500"></span>
+                        Plaqueta Externa com QR Code
+                    </h4>
+                    <p class="text-xs text-gray-600 leading-relaxed">
+                        Placa acrílica/metálica personalizada com instrução de leitura para o cliente: auto-cadastro de dados (Nome, CPF, Tel), filtro +18 anos e selfie.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Equipamento 3: Eletroímã 150 kgf -->
+            <div class="bg-white rounded-3xl p-6 border border-gray-200 shadow-sm flex flex-col justify-between hover:border-rose-400 hover:shadow-md transition-all group">
+                <div>
+                    <div class="w-full aspect-video bg-gradient-to-br from-rose-50 to-red-50/40 rounded-2xl flex items-center justify-center p-4 mb-4 border border-rose-100/80 relative overflow-hidden">
+                        <span class="absolute top-2.5 right-3 text-[9px] font-extrabold uppercase tracking-wider px-2.5 py-0.5 rounded-full bg-rose-500/10 text-rose-800 border border-rose-500/20">150 kgf Silencioso</span>
+                        <img src="https://res.cloudinary.com/dptcuckhf/image/upload/v1776122154/Fechadura_eletro%C3%ADm%C3%A3_150_kgf_com_sensor_q8sphm.png" alt="Fechadura FE 20150 Intelbras" class="max-h-32 object-contain group-hover:scale-105 transition-transform" onerror="this.src='https://placehold.co/200x200/f3f4f6/111827?text=Eletroima+FE20150'">
+                    </div>
+                    <h4 class="font-bold text-gray-900 text-base mb-1.5 flex items-center gap-2">
+                        <span class="w-2 h-2 rounded-full bg-rose-500"></span>
+                        Fechadura Eletroímã FE 20150 (Intelbras)
+                    </h4>
+                    <p class="text-xs text-gray-600 leading-relaxed">
+                        Força de tração magnética de 150 kgf. Fixação robusta no perfil da porta do container, sem peças mecânicas sujeitas a desgaste por uso diário.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Equipamento 4: Botão de Saída Inox BT 3000 -->
+            <div class="bg-white rounded-3xl p-6 border border-gray-200 shadow-sm flex flex-col justify-between hover:border-indigo-400 hover:shadow-md transition-all group">
+                <div>
+                    <div class="w-full aspect-video bg-gradient-to-br from-indigo-50 to-slate-50 rounded-2xl flex items-center justify-center p-4 mb-4 border border-indigo-100/80 relative overflow-hidden">
+                        <span class="absolute top-2.5 right-3 text-[9px] font-extrabold uppercase tracking-wider px-2.5 py-0.5 rounded-full bg-indigo-500/10 text-indigo-800 border border-indigo-500/20">Inox Anti-Vandalismo</span>
+                        <div class="w-20 h-20 bg-zinc-800 rounded-2xl flex items-center justify-center text-white shadow-md">
+                            <i data-lucide="log-out" class="w-9 h-9 text-brand-yellow"></i>
+                        </div>
+                    </div>
+                    <h4 class="font-bold text-gray-900 text-base mb-1.5 flex items-center gap-2">
+                        <span class="w-2 h-2 rounded-full bg-indigo-500"></span>
+                        Botão de Saída Inox BT 3000 (Intelbras)
+                    </h4>
+                    <p class="text-xs text-gray-600 leading-relaxed">
+                        Botão metálico de sobrepor em aço inoxidável para liberação interna da porta ao sair. Durabilidade extrema para alto fluxo de clientes.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Equipamento 5: Fonte Caixa Metálica EFM 1210 G2 -->
+            <div class="bg-white rounded-3xl p-6 border border-gray-200 shadow-sm flex flex-col justify-between hover:border-emerald-400 hover:shadow-md transition-all group">
+                <div>
+                    <div class="w-full aspect-video bg-gradient-to-br from-emerald-50 to-teal-50/40 rounded-2xl flex items-center justify-center p-4 mb-4 border border-emerald-100/80 relative overflow-hidden">
+                        <span class="absolute top-2.5 right-3 text-[9px] font-extrabold uppercase tracking-wider px-2.5 py-0.5 rounded-full bg-emerald-500/10 text-emerald-800 border border-emerald-500/20">10A Industrial</span>
+                        <div class="w-20 h-20 bg-zinc-100 rounded-2xl border border-zinc-300 flex items-center justify-center text-zinc-700 shadow-sm">
+                            <i data-lucide="cpu" class="w-9 h-9 text-emerald-600"></i>
+                        </div>
+                    </div>
+                    <h4 class="font-bold text-gray-900 text-base mb-1.5 flex items-center gap-2">
+                        <span class="w-2 h-2 rounded-full bg-emerald-500"></span>
+                        Fonte 12,8V 10A EFM 1210 G2 (Intelbras)
+                    </h4>
+                    <p class="text-xs text-gray-600 leading-relaxed">
+                        Gabinete metálico com proteção contra surtos elétricos, alimentação estabilizada e chaveamento para carregamento e flutuação da bateria.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Equipamento 6: Bateria VRLA XB 1270 -->
+            <div class="bg-white rounded-3xl p-6 border border-gray-200 shadow-sm flex flex-col justify-between hover:border-amber-400 hover:shadow-md transition-all group">
+                <div>
+                    <div class="w-full aspect-video bg-gradient-to-br from-amber-50 to-yellow-50/40 rounded-2xl flex items-center justify-center p-4 mb-4 border border-amber-100/80 relative overflow-hidden">
+                        <span class="absolute top-2.5 right-3 text-[9px] font-extrabold uppercase tracking-wider px-2.5 py-0.5 rounded-full bg-amber-500/10 text-amber-800 border border-amber-500/20">Backup 12V 7Ah</span>
+                        <div class="w-20 h-20 bg-zinc-900 rounded-2xl flex items-center justify-center text-white shadow-md">
+                            <i data-lucide="battery-charging" class="w-9 h-9 text-amber-400"></i>
+                        </div>
+                    </div>
+                    <h4 class="font-bold text-gray-900 text-base mb-1.5 flex items-center gap-2">
+                        <span class="w-2 h-2 rounded-full bg-amber-500"></span>
+                        Bateria Chumbo-Ácido XB 1270 (Intelbras)
+                    </h4>
+                    <p class="text-xs text-gray-600 leading-relaxed">
+                        Bateria selada livre de manutenção. Mantém a porta travada com segurança e o leitor ativo em qualquer oscilação ou interrupção de energia.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ===================== AVALIAÇÕES GOOGLE ===================== -->
+<section id="avaliacoes" class="py-24 bg-gradient-to-b from-[#f8f9fa] via-white to-[#fafafa] border-b border-gray-200/60 relative overflow-hidden">
+    <div class="absolute -top-24 left-1/4 w-96 h-96 bg-brand-yellow/10 rounded-full blur-[110px] pointer-events-none"></div>
+    <div class="absolute -bottom-24 right-1/4 w-96 h-96 bg-blue-500/5 rounded-full blur-[120px] pointer-events-none"></div>
+    <div class="absolute inset-0 bg-grid opacity-60 pointer-events-none"></div>
+
+    <div class="max-w-7xl mx-auto px-4 relative z-10">
+        
+        <div class="max-w-4xl mx-auto text-center mb-16 reveal">
+            <div class="inline-flex items-center gap-3 px-5 py-2 rounded-full bg-white/80 backdrop-blur-md border border-gray-200 shadow-glass mb-6">
+                <svg class="w-5 h-5 shrink-0" viewBox="0 0 24 24">
+                    <path fill="#4285F4" d="M23.745 12.27c0-.7-.06-1.4-.19-2.07H12v4.51h6.6c-.29 1.52-1.14 2.82-2.4 3.68v3.05h3.88c2.27-2.09 3.66-5.17 3.66-9.17z"/>
+                    <path fill="#34A853" d="M12 24c3.24 0 5.95-1.08 7.93-2.91l-3.88-3.05c-1.08.72-2.45 1.16-4.05 1.16-3.12 0-5.77-2.1-6.72-4.93H1.25v3.15C3.26 21.36 7.34 24 12 24z"/>
+                    <path fill="#FBBC05" d="M5.28 14.27c-.25-.72-.38-1.49-.38-2.27s.13-1.55.38-2.27V6.58H1.25C.45 8.18 0 9.98 0 12s.45 3.82 1.25 5.42l4.03-3.15z"/>
+                    <path fill="#EA4335" d="M12 4.75c1.77 0 3.35.61 4.6 1.8l3.42-3.42C17.95 1.19 15.24 0 12 0 7.34 0 3.26 2.64 1.25 6.58l4.03 3.15c.95-2.83 3.6-4.98 6.72-4.98z"/>
+                </svg>
+                <span class="text-xs font-bold text-gray-700 uppercase tracking-wider">Avaliações Verificadas no Google</span>
+                <span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
+                <span class="text-[11px] font-extrabold text-emerald-700">Nota 5.0 Máxima</span>
+            </div>
+
+            <h2 class="text-3xl md:text-5xl font-extrabold text-gray-900 tracking-tight leading-tight">
+                Engenharia de Confiança para <span class="text-gold-shine">o Seu Negócio</span>
+            </h2>
+            
+            <p class="text-gray-500 mt-4 max-w-2xl mx-auto text-sm md:text-base leading-relaxed">
+                Willas, atendimento rápido, acabamento profissional e pós-venda sério são os nossos compromissos. Veja o que clientes reais dizem sobre o trabalho da Vision:
+            </p>
+
+            <div class="mt-8 grid grid-cols-1 sm:grid-cols-3 gap-4 max-w-2xl mx-auto">
+                <div class="bg-white/70 backdrop-blur-xl rounded-2xl p-4 border border-white/80 shadow-glass flex flex-col items-center justify-center">
+                    <div class="flex items-center gap-1.5 mb-1">
+                        <span class="text-3xl font-black text-gray-900">5.0</span>
+                        <div class="flex text-amber-400">
+                            <i data-lucide="star" class="w-4 h-4 fill-amber-400 text-amber-400"></i>
+                            <i data-lucide="star" class="w-4 h-4 fill-amber-400 text-amber-400"></i>
+                            <i data-lucide="star" class="w-4 h-4 fill-amber-400 text-amber-400"></i>
+                            <i data-lucide="star" class="w-4 h-4 fill-amber-400 text-amber-400"></i>
+                            <i data-lucide="star" class="w-4 h-4 fill-amber-400 text-amber-400"></i>
+                        </div>
+                    </div>
+                    <span class="text-[10px] font-bold text-gray-500 uppercase tracking-wider">Score Perfeito</span>
+                </div>
+
+                <div class="bg-white/70 backdrop-blur-xl rounded-2xl p-4 border border-white/80 shadow-glass flex flex-col items-center justify-center">
+                    <div class="flex items-baseline gap-1 mb-0.5">
+                        <span class="text-2xl font-black text-brand-goldDark">126</span>
+                        <span class="text-xs font-bold text-gray-500">avaliações</span>
+                    </div>
+                    <span class="text-[10px] font-extrabold text-gray-700 uppercase tracking-widest flex items-center gap-1">
+                        <i data-lucide="map-pin" class="w-3 h-3 text-brand-yellow"></i> Região do ABC
+                    </span>
+                </div>
+
+                <div class="bg-white/70 backdrop-blur-xl rounded-2xl p-4 border border-white/80 shadow-glass flex flex-col items-center justify-center">
+                    <div class="flex items-baseline gap-1 mb-0.5">
+                        <span class="text-2xl font-black text-brand-goldDark">85</span>
+                        <span class="text-xs font-bold text-gray-500">avaliações</span>
+                    </div>
+                    <span class="text-[10px] font-extrabold text-gray-700 uppercase tracking-widest flex items-center gap-1">
+                        <i data-lucide="map-pin" class="w-3 h-3 text-brand-yellow"></i> São Paulo Capital
+                    </span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Carrossel Infinito de Depoimentos -->
+        <div class="relative w-full overflow-hidden py-4 select-none reviews-marquee-container reveal" id="reviews-container">
+            <div class="pointer-events-none absolute left-0 top-0 bottom-0 w-12 sm:w-28 bg-gradient-to-r from-[#f8f9fa] to-transparent z-20"></div>
+            <div class="pointer-events-none absolute right-0 top-0 bottom-0 w-12 sm:w-28 bg-gradient-to-l from-[#fafafa] to-transparent z-20"></div>
+
+            <div id="reviews-track" class="reviews-marquee-track flex gap-6 items-stretch">
+                <!-- Review 1: CE Paraiso -->
+                <div class="w-[320px] sm:w-[380px] md:w-[410px] shrink-0 bg-white/75 backdrop-blur-xl rounded-3xl p-6 md:p-7 border border-white/80 shadow-glass hover:shadow-premium hover:border-brand-yellow/50 transition-all duration-300 flex flex-col justify-between group relative overflow-hidden ring-1 ring-brand-yellow/20">
+                    <div class="absolute top-0 right-0 bg-brand-yellow text-black text-[8px] font-extrabold uppercase tracking-widest px-3 py-1 rounded-bl-xl shadow-sm">
+                        Projeto Facial
+                    </div>
+                    <div>
+                        <div class="flex items-center justify-between gap-3 mb-4">
+                            <div class="flex items-center gap-3">
+                                <div class="w-11 h-11 rounded-full bg-gradient-to-tr from-zinc-900 to-zinc-700 text-brand-yellow font-black flex items-center justify-center text-sm shadow-sm ring-2 ring-white">CP</div>
+                                <div>
+                                    <h4 class="font-bold text-gray-900 text-sm leading-tight">CE Paraiso</h4>
+                                    <div class="flex items-center gap-1.5 mt-0.5">
+                                        <span class="inline-flex items-center gap-1 text-[9px] font-bold bg-blue-100 text-blue-800 px-2 py-0.5 rounded-full">
+                                            <i data-lucide="building" class="w-2.5 h-2.5"></i> Cliente Corporativo
+                                        </span>
+                                        <span class="text-[10px] text-gray-400">· 7 avaliações</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <span class="text-[10px] text-gray-400 font-medium whitespace-nowrap">Há 11 meses</span>
+                        </div>
+                        <div class="flex text-amber-400 mb-3 gap-0.5">
+                            <i data-lucide="star" class="w-4 h-4 fill-amber-400 text-amber-400"></i>
+                            <i data-lucide="star" class="w-4 h-4 fill-amber-400 text-amber-400"></i>
+                            <i data-lucide="star" class="w-4 h-4 fill-amber-400 text-amber-400"></i>
+                            <i data-lucide="star" class="w-4 h-4 fill-amber-400 text-amber-400"></i>
+                            <i data-lucide="star" class="w-4 h-4 fill-amber-400 text-amber-400"></i>
+                        </div>
+                        <p class="text-gray-700 text-xs md:text-sm leading-relaxed mb-5 italic">
+                            "A Vision esteve aqui em nosso condomínio renovando e atualizando todos os nossos acessos para Facial. Um atendimento incrível, técnicos altamente capacitados, material de primeira linha, orientação e acompanhamento, preços mais do que justo..."
+                        </p>
+                    </div>
+                    <div class="pt-4 border-t border-gray-100/80">
+                        <div class="flex flex-wrap gap-1.5">
+                            <span class="text-[10px] bg-amber-50 text-amber-900 border border-amber-200 font-bold px-2.5 py-0.5 rounded-md">Migração Acesso Facial</span>
+                            <span class="text-[10px] bg-gray-100 text-gray-700 font-medium px-2.5 py-0.5 rounded-md">Hardware de 1ª linha</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Review 2: Amanda Marques -->
+                <div class="w-[320px] sm:w-[380px] md:w-[410px] shrink-0 bg-white/75 backdrop-blur-xl rounded-3xl p-6 md:p-7 border border-white/80 shadow-glass hover:shadow-premium hover:border-brand-yellow/50 transition-all duration-300 flex flex-col justify-between group relative overflow-hidden">
+                    <div>
+                        <div class="flex items-center justify-between gap-3 mb-4">
+                            <div class="flex items-center gap-3">
+                                <div class="w-11 h-11 rounded-full bg-gradient-to-tr from-amber-500 to-amber-300 text-white font-bold flex items-center justify-center text-sm shadow-sm ring-2 ring-white">AM</div>
+                                <div>
+                                    <h4 class="font-bold text-gray-900 text-sm leading-tight">Amanda Marques Mumme</h4>
+                                    <span class="text-[10px] text-gray-400 block">Local Guide · 72 avaliações</span>
+                                </div>
+                            </div>
+                            <span class="text-[10px] text-gray-400 font-medium whitespace-nowrap">Há 8 meses</span>
+                        </div>
+                        <div class="flex text-amber-400 mb-3 gap-0.5">
+                            <i data-lucide="star" class="w-4 h-4 fill-amber-400 text-amber-400"></i>
+                            <i data-lucide="star" class="w-4 h-4 fill-amber-400 text-amber-400"></i>
+                            <i data-lucide="star" class="w-4 h-4 fill-amber-400 text-amber-400"></i>
+                            <i data-lucide="star" class="w-4 h-4 fill-amber-400 text-amber-400"></i>
+                            <i data-lucide="star" class="w-4 h-4 fill-amber-400 text-amber-400"></i>
+                        </div>
+                        <p class="text-gray-700 text-xs md:text-sm leading-relaxed mb-5 italic">
+                            "O atendimento no WhatsApp é diferenciado, rápido, sem enrolação. Mesmo de recesso o Gabriel me atendeu e conseguimos agendar a instalação... Foi nota 10 do começo ao fim. Obrigada meninos!"
+                        </p>
+                    </div>
+                    <div class="pt-4 border-t border-gray-100/80">
+                        <div class="flex flex-wrap gap-1.5">
+                            <span class="text-[10px] bg-gray-100 text-gray-700 font-medium px-2.5 py-0.5 rounded-md">Atendimento Rápido</span>
+                            <span class="text-[10px] bg-gray-100 text-gray-700 font-medium px-2.5 py-0.5 rounded-md">Instalação Impecável</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Review 3: João Pedro Alencar -->
+                <div class="w-[320px] sm:w-[380px] md:w-[410px] shrink-0 bg-white/75 backdrop-blur-xl rounded-3xl p-6 md:p-7 border border-white/80 shadow-glass hover:shadow-premium hover:border-brand-yellow/50 transition-all duration-300 flex flex-col justify-between group relative overflow-hidden">
+                    <div>
+                        <div class="flex items-center justify-between gap-3 mb-4">
+                            <div class="flex items-center gap-3">
+                                <div class="w-11 h-11 rounded-full bg-gradient-to-tr from-violet-500 to-indigo-300 text-white font-bold flex items-center justify-center text-sm shadow-sm ring-2 ring-white">JP</div>
+                                <div>
+                                    <h4 class="font-bold text-gray-900 text-sm leading-tight">João Pedro Alencar</h4>
+                                    <span class="text-[10px] text-gray-400 block">5 avaliações · 1 foto</span>
+                                </div>
+                            </div>
+                            <span class="text-[10px] text-gray-400 font-medium whitespace-nowrap">Há 1 ano</span>
+                        </div>
+                        <div class="flex text-amber-400 mb-3 gap-0.5">
+                            <i data-lucide="star" class="w-4 h-4 fill-amber-400 text-amber-400"></i>
+                            <i data-lucide="star" class="w-4 h-4 fill-amber-400 text-amber-400"></i>
+                            <i data-lucide="star" class="w-4 h-4 fill-amber-400 text-amber-400"></i>
+                            <i data-lucide="star" class="w-4 h-4 fill-amber-400 text-amber-400"></i>
+                            <i data-lucide="star" class="w-4 h-4 fill-amber-400 text-amber-400"></i>
+                        </div>
+                        <p class="text-gray-700 text-xs md:text-sm leading-relaxed mb-5 italic">
+                            "Procurei a empresa e o Gabriel foi muito atencioso desde o primeiro contato. Me recomendou o modelo certo e conseguiu a instalação com urgência... Recomendo a todos o serviço!"
+                        </p>
+                    </div>
+                    <div class="pt-4 border-t border-gray-100/80">
+                        <div class="flex flex-wrap gap-1.5">
+                            <span class="text-[10px] bg-gray-100 text-gray-700 font-medium px-2.5 py-0.5 rounded-md">Atendimento Consultivo</span>
+                            <span class="text-[10px] bg-gray-100 text-gray-700 font-medium px-2.5 py-0.5 rounded-md">Agilidade de Entrega</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Duplicações para Scroll Contínuo -->
+                <div class="w-[320px] sm:w-[380px] md:w-[410px] shrink-0 bg-white/75 backdrop-blur-xl rounded-3xl p-6 md:p-7 border border-white/80 shadow-glass hover:shadow-premium hover:border-brand-yellow/50 transition-all duration-300 flex flex-col justify-between group relative overflow-hidden ring-1 ring-brand-yellow/20">
+                    <div class="absolute top-0 right-0 bg-brand-yellow text-black text-[8px] font-extrabold uppercase tracking-widest px-3 py-1 rounded-bl-xl shadow-sm">
+                        Projeto Facial
+                    </div>
+                    <div>
+                        <div class="flex items-center justify-between gap-3 mb-4">
+                            <div class="flex items-center gap-3">
+                                <div class="w-11 h-11 rounded-full bg-gradient-to-tr from-zinc-900 to-zinc-700 text-brand-yellow font-black flex items-center justify-center text-sm shadow-sm ring-2 ring-white">CP</div>
+                                <div>
+                                    <h4 class="font-bold text-gray-900 text-sm leading-tight">CE Paraiso</h4>
+                                    <div class="flex items-center gap-1.5 mt-0.5">
+                                        <span class="inline-flex items-center gap-1 text-[9px] font-bold bg-blue-100 text-blue-800 px-2 py-0.5 rounded-full">
+                                            <i data-lucide="building" class="w-2.5 h-2.5"></i> Cliente Corporativo
+                                        </span>
+                                        <span class="text-[10px] text-gray-400">· 7 avaliações</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <span class="text-[10px] text-gray-400 font-medium whitespace-nowrap">Há 11 meses</span>
+                        </div>
+                        <div class="flex text-amber-400 mb-3 gap-0.5">
+                            <i data-lucide="star" class="w-4 h-4 fill-amber-400 text-amber-400"></i>
+                            <i data-lucide="star" class="w-4 h-4 fill-amber-400 text-amber-400"></i>
+                            <i data-lucide="star" class="w-4 h-4 fill-amber-400 text-amber-400"></i>
+                            <i data-lucide="star" class="w-4 h-4 fill-amber-400 text-amber-400"></i>
+                            <i data-lucide="star" class="w-4 h-4 fill-amber-400 text-amber-400"></i>
+                        </div>
+                        <p class="text-gray-700 text-xs md:text-sm leading-relaxed mb-5 italic">
+                            "A Vision esteve aqui em nosso condomínio renovando e atualizando todos os nossos acessos para Facial. Um atendimento incrível, técnicos altamente capacitados, material de primeira linha, orientação e acompanhamento, preços mais do que justo..."
+                        </p>
+                    </div>
+                    <div class="pt-4 border-t border-gray-100/80">
+                        <div class="flex flex-wrap gap-1.5">
+                            <span class="text-[10px] bg-amber-50 text-amber-900 border border-amber-200 font-bold px-2.5 py-0.5 rounded-md">Migração Acesso Facial</span>
+                            <span class="text-[10px] bg-gray-100 text-gray-700 font-medium px-2.5 py-0.5 rounded-md">Hardware de 1ª linha</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ===================== PROPOSTA DE INVESTIMENTO ===================== -->
+<section id="investimento" class="py-24 bg-[#fafafa] relative overflow-hidden">
+    <div class="absolute inset-0 bg-dots pointer-events-none z-0"></div>
+    <div class="max-w-5xl mx-auto px-4 relative z-10">
+
+        <div class="text-center mb-10 reveal">
+            <span class="text-brand-yellow font-bold uppercase tracking-widest text-xs">Valores Atualizados Conforme Distribuidor (Speed)</span>
+            <h2 class="text-3xl md:text-5xl font-extrabold text-gray-900 mt-2">Investimento no Ponto de Acesso</h2>
+            <p class="text-gray-500 mt-3 max-w-2xl mx-auto text-sm md:text-base">
+                Willas, reajustamos a proposta com o menor custo de fornecedor para viabilizar esse projeto piloto e sua expansão:
+            </p>
+        </div>
+
+        <!-- SELETOR DE FORMA DE PAGAMENTO: PIX vs CARTÃO -->
+        <div class="flex justify-center mb-10 reveal">
+            <div class="bg-gray-100 p-1.5 rounded-full inline-flex border border-gray-200 shadow-inner flex-wrap justify-center gap-1">
+                <button type="button" id="btn-pay-pix" onclick="selectPayment('pix')" class="px-6 py-2.5 rounded-full text-xs font-bold bg-brand-yellow text-black shadow-md transition-all">
+                    À Vista (PIX)
+                </button>
+                <button type="button" id="btn-pay-card" onclick="selectPayment('card')" class="px-6 py-2.5 rounded-full text-xs font-bold bg-transparent text-gray-500 hover:text-gray-800 transition-all">
+                    12x no Cartão de Crédito
+                </button>
+            </div>
+        </div>
+
+        <!-- CARD PRINCIPAL DE INVESTIMENTO -->
+        <div class="grid lg:grid-cols-1 gap-8 reveal items-stretch max-w-4xl mx-auto">
+            
+            <div class="premium-border-glow group relative z-20">
+                <div class="premium-border-inner flex flex-col lg:flex-row relative overflow-hidden bg-white p-0">
+                    <div class="absolute top-0 left-0 w-64 h-64 bg-brand-yellow/5 rounded-full blur-[80px] pointer-events-none"></div>
+                    
+                    <!-- Lado Esquerdo: Detalhes do Escopo -->
+                    <div class="w-full lg:w-7/12 p-8 md:p-10 relative z-10 border-b lg:border-b-0 lg:border-r border-gray-100 flex flex-col justify-between">
+                        <div>
+                            <div class="mb-4">
+                                <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-zinc-900 text-brand-yellow text-[10px] font-bold uppercase tracking-widest shadow-sm">
+                                    ⭐ Kit Completo: Facial Externo + Travamento + QR Code
+                                </span>
+                                <h3 class="text-2xl md:text-3xl font-bold text-gray-900 mt-3">Mini Mercado Autônomo (1 Porta)</h3>
+                                <p class="text-xs md:text-sm text-gray-500 mt-2 leading-relaxed">
+                                    Solução homologada para ambientes externos e containers móveis, com auto-cadastro online e trava de segurança para maiores de idade.
+                                </p>
+                            </div>
+
+                            <ul class="space-y-3 mb-6" id="scope-items">
+                                <li class="flex items-start gap-2.5 text-xs md:text-sm text-gray-700">
+                                    <i data-lucide="check-circle-2" class="w-4 h-4 text-brand-yellow shrink-0 mt-0.5"></i>
+                                    <span><strong>01x Leitor Facial Intelbras SS 3532 MF:</strong> IP65 para área externa com câmera dupla anti-fake (&lt;0.5s).</span>
+                                </li>
+                                <li class="flex items-start gap-2.5 text-xs md:text-sm text-gray-700">
+                                    <i data-lucide="check-circle-2" class="w-4 h-4 text-brand-yellow shrink-0 mt-0.5"></i>
+                                    <span><strong>01x Fechadura Eletroímã FE 20150 (150 kgf):</strong> Fechamento magnético silencioso e de alta segurança.</span>
+                                </li>
+                                <li class="flex items-start gap-2.5 text-xs md:text-sm text-gray-700">
+                                    <i data-lucide="check-circle-2" class="w-4 h-4 text-brand-yellow shrink-0 mt-0.5"></i>
+                                    <span><strong>01x Botão de Saída em Aço Inox BT 3000:</strong> Dispositivo metálico reforçado de sobrepor para saída interna.</span>
+                                </li>
+                                <li class="flex items-start gap-2.5 text-xs md:text-sm text-gray-700">
+                                    <i data-lucide="check-circle-2" class="w-4 h-4 text-brand-yellow shrink-0 mt-0.5"></i>
+                                    <span><strong>01x Fonte Caixa Metálica EFM 1210 G2 (10A) + Bateria VRLA 12V 7Ah:</strong> Proteção ininterrupta se faltar energia.</span>
+                                </li>
+                                <li class="flex items-start gap-2.5 text-xs md:text-sm text-gray-700">
+                                    <i data-lucide="check-circle-2" class="w-4 h-4 text-brand-yellow shrink-0 mt-0.5"></i>
+                                    <span><strong>Plaqueta Externa com QR Code:</strong> Link direto para página de cadastro web (Nome, CPF, Tel e filtro +18).</span>
+                                </li>
+                                <li class="flex items-start gap-2.5 text-xs md:text-sm text-gray-700">
+                                    <i data-lucide="check-circle-2" class="w-4 h-4 text-brand-yellow shrink-0 mt-0.5"></i>
+                                    <span><strong>Mão de Obra Técnica Especializada Vision:</strong> Fixação mecânica na estrutura do container, cabeamento e 12 meses de garantia.</span>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <!-- Card de Transparência de Preço -->
+                        <div class="p-3.5 bg-amber-50/70 rounded-2xl border border-amber-200/70 text-xs text-amber-900 flex items-start gap-2.5">
+                            <i data-lucide="shield" class="w-4 h-4 text-brand-yellow shrink-0 mt-0.5"></i>
+                            <div>
+                                <span class="font-bold block">Condição Especial para Parceria e Volume:</span>
+                                <span class="text-amber-800 text-[11px]">Valor ajustado do patamar inicial (R$ 4.550,00) diretamente para a tabela oficial Tier 1 com peças Speed Distribuidora, viabilizando a expansão para suas próximas lojas.</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Lado Direito: Preço Dinâmico & Ação -->
+                    <div class="w-full lg:w-5/12 bg-[#f8f9fa] p-8 md:p-10 flex flex-col items-center justify-center text-center relative z-10 min-h-[360px]">
+                        
+                        <p class="text-[11px] font-bold text-gray-400 uppercase tracking-widest mb-3" id="label-pricing-mode">Investimento no PIX</p>
+
+                        <!-- Bloco de Preço -->
+                        <div id="price-display-box" class="w-full transition-opacity duration-300">
+                            <!-- Injetado dinamicamente via JS -->
+                        </div>
+
+                        <!-- Botão CTA Aprovação -->
+                        <a id="btn-whatsapp-cta" href="#" target="_blank" onclick="if(window.clarity) window.clarity('event', 'Clique_Aprovacao_Willas');" class="mt-8 w-full bg-brand-yellow hover:bg-brand-goldLight text-black font-bold py-4 px-6 rounded-2xl transition-all shadow-glow flex items-center justify-center gap-2 group">
+                            <i data-lucide="check-circle" class="w-5 h-5"></i>
+                            <span class="text-xs md:text-sm uppercase tracking-wider font-extrabold" id="cta-btn-text">Aprovar Proposta no WhatsApp</span>
+                            <i data-lucide="arrow-right" class="w-4 h-4 group-hover:translate-x-1 transition-transform"></i>
+                        </a>
+
+                        <p class="text-[11px] text-gray-400 mt-4 flex items-center gap-1.5 justify-center">
+                            <i data-lucide="calendar" class="w-3.5 h-3.5 text-brand-yellow"></i>
+                            Disponibilidade imediata para instalação
+                        </p>
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+</section>
+
+<!-- ===================== FAQ ===================== -->
+<section id="faq" class="py-24 bg-[#f8f9fa] border-t border-gray-200/60">
+    <div class="max-w-3xl mx-auto px-4">
+        <div class="text-center mb-14 reveal">
+            <span class="text-brand-yellow font-bold uppercase tracking-widest text-xs">Perguntas Frequentes</span>
+            <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mt-3">Dúvidas Técnicas do Projeto</h2>
+        </div>
+        
+        <div class="space-y-4 reveal" id="accordion">
+
+            <div class="accordion-item bg-white rounded-2xl border border-gray-100 shadow-sm overflow-hidden transition-all hover:border-brand-yellow/50">
+                <button type="button" onclick="toggleAccordion(this)" class="w-full flex items-center justify-between p-6 text-left font-bold text-gray-900 focus:outline-none">
+                    <span>O leitor facial suporta chuva, sol direto e poeira na fachada?</span>
+                    <i data-lucide="chevron-down" class="w-5 h-5 text-brand-yellow acc-arrow shrink-0"></i>
+                </button>
+                <div class="accordion-content">
+                    <p class="px-6 pb-6 text-gray-600 text-sm leading-relaxed">
+                        Sim! O leitor Intelbras SS 3532 MF possui grau de proteção <strong>IP65</strong>, com vedação projetada especificamente para ambientes externos expostos a sol e chuva. Além disso, conta com compensação de luz infravermelha adaptativa para reconhecer clientes com precisão tanto sob sol forte quanto à noite.
+                    </p>
+                </div>
+            </div>
+
+            <div class="accordion-item bg-white rounded-2xl border border-gray-100 shadow-sm overflow-hidden transition-all hover:border-brand-yellow/50">
+                <button type="button" onclick="toggleAccordion(this)" class="w-full flex items-center justify-between p-6 text-left font-bold text-gray-900 focus:outline-none">
+                    <span>Como o sistema garante que só maiores de idade entrem no mercado?</span>
+                    <i data-lucide="chevron-down" class="w-5 h-5 text-brand-yellow acc-arrow shrink-0"></i>
+                </button>
+                <div class="accordion-content">
+                    <p class="px-6 pb-6 text-gray-600 text-sm leading-relaxed">
+                        No fluxo de auto-cadastro aberto pelo QR Code da plaqueta externa, o cliente deve obrigatoriamente preencher Nome, CPF, Telefone e data de nascimento, além de dar aceite nos termos de uso. O sistema bloqueia automaticamente cadastros com idade inferior a 18 anos, impedindo que a face seja autorizada no leitor.
+                    </p>
+                </div>
+            </div>
+
+            <div class="accordion-item bg-white rounded-2xl border border-gray-100 shadow-sm overflow-hidden transition-all hover:border-brand-yellow/50">
+                <button type="button" onclick="toggleAccordion(this)" class="w-full flex items-center justify-between p-6 text-left font-bold text-gray-900 focus:outline-none">
+                    <span>E se o cliente cadastrado for para outra unidade minha no futuro?</span>
+                    <i data-lucide="chevron-down" class="w-5 h-5 text-brand-yellow acc-arrow shrink-0"></i>
+                </button>
+                <div class="accordion-content">
+                    <p class="px-6 pb-6 text-gray-600 text-sm leading-relaxed">
+                        Como os leitores trabalham sincronizados com o software em nuvem, a base de clientes é unificada. Quando você inaugurar suas próximas lojas/containers, o mesmo cliente já cadastrado poderá entrar em qualquer unidade sem precisar fazer novo cadastro.
+                    </p>
+                </div>
+            </div>
+
+            <div class="accordion-item bg-white rounded-2xl border border-gray-100 shadow-sm overflow-hidden transition-all hover:border-brand-yellow/50">
+                <button type="button" onclick="toggleAccordion(this)" class="w-full flex items-center justify-between p-6 text-left font-bold text-gray-900 focus:outline-none">
+                    <span>O que acontece se faltar energia elétrica no local do mini mercado?</span>
+                    <i data-lucide="chevron-down" class="w-5 h-5 text-brand-yellow acc-arrow shrink-0"></i>
+                </button>
+                <div class="accordion-content">
+                    <p class="px-6 pb-6 text-gray-600 text-sm leading-relaxed">
+                        O kit inclui uma fonte estabilizada em caixa metálica acompanhada de bateria selada 12V 7Ah Intelbras. Se a energia da concessionária cair, o sistema assume automaticamente a bateria, mantendo o eletroímã fechado e o leitor facial totalmente operacional por horas.
+                    </p>
+                </div>
+            </div>
+
+            <div class="accordion-item bg-white rounded-2xl border border-gray-100 shadow-sm overflow-hidden transition-all hover:border-brand-yellow/50">
+                <button type="button" onclick="toggleAccordion(this)" class="w-full flex items-center justify-between p-6 text-left font-bold text-gray-900 focus:outline-none">
+                    <span>A instalação na chapa de container fica firme e segura?</span>
+                    <i data-lucide="chevron-down" class="w-5 h-5 text-brand-yellow acc-arrow shrink-0"></i>
+                </button>
+                <div class="accordion-content">
+                    <p class="px-6 pb-6 text-gray-600 text-sm leading-relaxed">
+                        Sim! Utilizamos fixadores mecânicos apropriados para perfis e chapas metálicas, aproveitando as tubulações já aparentes no container. O botão de saída é inox de sobrepor, e o leitor externo conta com base reforçada para resistir ao uso contínuo do comércio.
+                    </p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<!-- ===================== FOOTER ===================== -->
+<footer class="bg-black py-16 text-center border-t border-zinc-900 group">
+    <div class="max-w-4xl mx-auto px-4">
+        
+        <div class="flex flex-col items-center justify-center leading-none opacity-40 group-hover:opacity-100 transition-opacity duration-500 cursor-default mb-10">
+            <div class="flex flex-col items-center">
+                <div class="relative flex items-baseline leading-none">
+                    <span class="font-logo font-bold text-[3.5rem] text-white lowercase tracking-[-0.05em] leading-none">vısıon</span>
+                    <span class="absolute -right-3.5 top-2.5 text-[0.75rem] text-brand-yellow font-bold">®</span>
+                </div>
+                <span class="font-tech text-[0.75rem] font-bold text-zinc-500 lowercase -mt-3 ml-1.5 text-center w-full" style="letter-spacing: 0.53em;">tecnologia</span>
+            </div>
+        </div>
+
+        <div class="text-zinc-500 text-xs md:text-sm leading-relaxed space-y-1 mb-8 opacity-60">
+            <p><strong>Mini Mercado Autônomo (A/C Willas)</strong> | Contato: +55 11 97874-8609</p>
+            <p>Proposta Técnica Comercial #WILLAS-MERCADO-2026 | Emitida em 2026</p>
+        </div>
+
+        <div class="inline-flex items-center justify-center gap-2 border border-zinc-800 bg-zinc-900/50 px-5 py-2.5 rounded-full mb-6 shadow-sm">
+            <i data-lucide="lock" class="w-3.5 h-3.5 text-brand-yellow"></i>
+            <span class="text-[10px] md:text-xs text-zinc-400 uppercase tracking-widest font-bold">Documento confidencial corporativo</span>
+        </div>
+        
+        <p class="text-[10px] text-zinc-700 uppercase tracking-widest font-bold mt-6">Engenharia de Segurança &amp; Controle de Acesso para Mercados Autônomos</p>
+    </div>
+</footer>
+
+<!-- ===================== JAVASCRIPT LOGIC ===================== -->
+<script>
+    // DADOS FINANCEIROS EXATOS REVISADOS (CTD R$ 2.398,95 | DIVISOR 0,635 TIER 1)
+    const pricingData = {
+        title: "Kit Acesso Facial Externo + QR Code + Nobreak",
+        pixTotal: 3790.00,
+        pixHalf: 1895.00,
+        cardTotal: 4548.00,
+        cardMonthly: 379.00
+    };
+
+    let selectedPayment = 'pix'; // 'pix' ou 'card'
+
+    function formatBRL(val) {
+        return val.toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+    }
+
+    function selectPayment(mode) {
+        selectedPayment = mode;
+        const btnPix = document.getElementById('btn-pay-pix');
+        const btnCard = document.getElementById('btn-pay-card');
+        const labelMode = document.getElementById('label-pricing-mode');
+
+        if (mode === 'pix') {
+            btnPix.className = "px-6 py-2.5 rounded-full text-xs font-bold bg-brand-yellow text-black shadow-md transition-all";
+            btnCard.className = "px-6 py-2.5 rounded-full text-xs font-bold bg-transparent text-gray-500 hover:text-gray-800 transition-all";
+            if (labelMode) labelMode.textContent = "Investimento no PIX";
+        } else {
+            btnCard.className = "px-6 py-2.5 rounded-full text-xs font-bold bg-brand-yellow text-black shadow-md transition-all";
+            btnPix.className = "px-6 py-2.5 rounded-full text-xs font-bold bg-transparent text-gray-500 hover:text-gray-800 transition-all";
+            if (labelMode) labelMode.textContent = "Investimento Parcelado no Cartão";
+        }
+
+        renderPriceDisplay();
+        if (window.clarity) window.clarity("event", "Mudou_Pagamento_Willas_" + mode);
+    }
+
+    function renderPriceDisplay() {
+        const box = document.getElementById('price-display-box');
+        const ctaBtn = document.getElementById('btn-whatsapp-cta');
+        const ctaText = document.getElementById('cta-btn-text');
+
+        if (!box) return;
+
+        let html = '';
+        let whatsappMsg = '';
+
+        if (selectedPayment === 'pix') {
+            html = `
+                <div class="flex flex-col items-center justify-center w-full animate-fade-in">
+                    <div class="flex items-baseline justify-center gap-1.5 mb-2">
+                        <span class="text-2xl font-bold text-gray-400">R$</span>
+                        <span class="text-5xl md:text-6xl font-extrabold text-[#111827] tracking-tighter leading-none">${formatBRL(pricingData.pixTotal).split(',')[0]}<span class="text-3xl text-gray-400">,${formatBRL(pricingData.pixTotal).split(',')[1]}</span></span>
+                    </div>
+                    <div class="inline-flex items-center gap-1.5 bg-emerald-50 border border-emerald-200 text-emerald-700 px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-widest mt-2">
+                        <i data-lucide="zap" class="w-3 h-3"></i> Pagamento à vista (PIX)
+                    </div>
+                    
+                    <div class="w-full mt-6 space-y-2 text-left">
+                        <div class="bg-white border border-gray-200 rounded-xl p-3 shadow-sm relative overflow-hidden">
+                            <div class="absolute top-0 left-0 w-1.5 h-full bg-emerald-400"></div>
+                            <div class="pl-2">
+                                <span class="text-[10px] font-bold uppercase tracking-widest text-gray-500 block">Sinal (Aprovação e Separação dos Equipamentos)</span>
+                                <span class="font-bold text-gray-900 text-sm">R$ ${formatBRL(pricingData.pixHalf)}</span>
+                            </div>
+                        </div>
+                        <div class="bg-white border border-gray-200 rounded-xl p-3 shadow-sm relative overflow-hidden">
+                            <div class="absolute top-0 left-0 w-1.5 h-full bg-brand-yellow"></div>
+                            <div class="pl-2">
+                                <span class="text-[10px] font-bold uppercase tracking-widest text-gray-500 block">Finalização (Entrega &amp; Testes do QR Code no Local)</span>
+                                <span class="font-bold text-gray-900 text-sm">R$ ${formatBRL(pricingData.pixHalf)}</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `;
+            whatsappMsg = `Fala Gabriel! Analisei a proposta do leitor facial externo com QR Code para o mini mercado. Fechado no valor de *R$ ${formatBRL(pricingData.pixTotal)} no PIX* pra gente rodar essa primeira unidade e deixar tudo pronto para expandir pros próximos mercados. Como formalizamos?`;
+            if (ctaText) ctaText.textContent = `Aprovar no PIX (R$ ${formatBRL(pricingData.pixTotal)})`;
+
+        } else {
+            html = `
+                <div class="flex flex-col items-center justify-center w-full animate-fade-in">
+                    <span class="text-xs font-bold text-gray-400 mb-1">Parcelamento Facilitado</span>
+                    <div class="flex items-baseline justify-center gap-1.5 mb-3">
+                        <span class="text-2xl font-bold text-[#111827]">12x de R$</span>
+                        <span class="text-5xl md:text-6xl font-extrabold text-[#111827] tracking-tighter leading-none">${formatBRL(pricingData.cardMonthly).split(',')[0]}<span class="text-3xl text-gray-400">,${formatBRL(pricingData.cardMonthly).split(',')[1]}</span></span>
+                    </div>
+                    <div class="inline-flex items-center gap-1.5 bg-blue-50 border border-blue-200 text-blue-700 px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-widest mt-1">
+                        <i data-lucide="credit-card" class="w-3 h-3"></i> Cartão de Crédito em 12x
+                    </div>
+                    <p class="text-xs text-gray-500 font-medium mt-4">Valor total no cartão: R$ ${formatBRL(pricingData.cardTotal)}</p>
+                </div>
+            `;
+            whatsappMsg = `Fala Gabriel! Analisei a proposta do leitor facial externo para o mini mercado e quero aprovar em *12x de R$ ${formatBRL(pricingData.cardMonthly)} no cartão* para agendarmos a instalação do container.`;
+            if (ctaText) ctaText.textContent = `Aprovar em 12x de R$ ${formatBRL(pricingData.cardMonthly)}`;
+        }
+
+        box.innerHTML = html;
+        if (ctaBtn) ctaBtn.href = "https://wa.me/5511930816696?text=" + encodeURIComponent(whatsappMsg);
+        
+        if (window.lucide && typeof window.lucide.createIcons === 'function') {
+            window.lucide.createIcons();
+        }
+    }
+
+    // ACCORDION TOGGLE
+    function toggleAccordion(button) {
+        const item = button.closest('.accordion-item');
+        if (!item) return;
+        const isOpen = item.classList.contains('open');
+        document.querySelectorAll('.accordion-item').forEach(i => i.classList.remove('open'));
+        if (!isOpen) item.classList.add('open');
+        if (window.lucide && typeof window.lucide.createIcons === 'function') {
+            window.lucide.createIcons();
+        }
+    }
+
+    // CONTROLE DE ACESSO (LOCK SCREEN)
+    function checkPassword() {
+        const inputEl = document.getElementById('password-input');
+        if (!inputEl) return;
+
+        const input = inputEl.value.trim().toUpperCase();
+        const errorMsg = document.getElementById('error-msg');
+        const btnUnlock = document.getElementById('btn-unlock');
+        const unlockIcon = document.getElementById('unlock-icon');
+        const unlockText = document.getElementById('unlock-text');
+        const unlockArrow = document.getElementById('unlock-arrow');
+
+        const validPasswords = ['WILLAS2026', 'MERCADO2026', 'WILLAS', 'MERCADO', 'VISION'];
+
+        if (validPasswords.includes(input)) {
+            if (btnUnlock) btnUnlock.disabled = true;
+            if (unlockText) unlockText.textContent = "Validando Acesso...";
+            if (unlockIcon) unlockIcon.className = "w-5 h-5 animate-spin text-black";
+            if (unlockArrow) unlockArrow.style.display = 'none';
+
+            setTimeout(() => {
+                const lockScreen = document.getElementById('lock-screen');
+                if (lockScreen) lockScreen.style.opacity = '0';
+
+                const video = document.getElementById("vision-video");
+                if (video && video.paused) {
+                    video.muted = true;
+                    video.play().catch(() => {});
+                }
+
+                if (window.clarity) {
+                    try {
+                        window.clarity("consent");
+                        window.clarity("identify", "willas-minimercado", undefined, undefined, "Willas (Mini Mercado)");
+                        window.clarity("set", "Proposta", "Projeto_Facial_MiniMercado");
+                        window.clarity("event", "Proposta_Desbloqueada_Willas");
+                    } catch(e) {}
+                }
+
+                // Log silencioso de abertura
+                fetch('https://api.staticforms.dev/submit', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+                    body: JSON.stringify({
+                        accessKey: "sf_077ej49gjha153gk3m6ceecf",
+                        subject: "🚨 ALERTA: Proposta Acessada (Willas - Mini Mercado)",
+                        name: "Sistema Vision",
+                        email: "diretoria@visionsp.com.br",
+                        message: "O cliente Willas acessou a proposta do controle facial do mini mercado!\n\n🔑 Senha Utilizada: " + input + "\n🕒 Horário: " + new Date().toLocaleString('pt-BR')
+                    })
+                }).catch(() => {});
+
+                setTimeout(() => {
+                    if (lockScreen) lockScreen.style.display = 'none';
+                    const htmlRoot = document.getElementById('html-root');
+                    if (htmlRoot) {
+                        htmlRoot.classList.remove('overflow-hidden', 'h-screen');
+                        htmlRoot.classList.add('overflow-x-hidden');
+                    }
+                    document.body.classList.remove('overflow-hidden', 'h-screen');
+                    document.body.classList.add('overflow-x-hidden');
+                }, 700);
+
+            }, 600);
+
+        } else {
+            if (errorMsg) errorMsg.classList.remove('hidden');
+            inputEl.style.borderColor = 'rgba(239,68,68,0.5)';
+            setTimeout(() => {
+                if (errorMsg) errorMsg.classList.add('hidden');
+                inputEl.style.borderColor = '';
+            }, 3000);
+        }
+    }
+
+    // EVENT LISTENERS & INICIALIZAÇÃO
+    document.addEventListener("DOMContentLoaded", function() {
+        if (window.lucide && typeof window.lucide.createIcons === 'function') {
+            window.lucide.createIcons();
+        }
+
+        const pwdInput = document.getElementById('password-input');
+        if (pwdInput) {
+            pwdInput.addEventListener('keypress', function(e) {
+                if (e.key === 'Enter') {
+                    e.preventDefault();
+                    checkPassword();
+                }
+            });
+        }
+
+        try {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) entry.target.classList.add('active');
+                });
+            }, { threshold: 0.08 });
+            document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+        } catch(e) {
+            document.querySelectorAll('.reveal').forEach(el => el.classList.add('active'));
+        }
+
+        const videoHero = document.getElementById("vision-video");
+        const overlayHero = document.getElementById("unmute-overlay");
+
+        if (videoHero && overlayHero) {
+            overlayHero.addEventListener("click", function(e) {
+                e.stopPropagation();
+                videoHero.muted = false;
+                videoHero.loop = true;
+                videoHero.currentTime = 0;
+                videoHero.play().catch(() => {});
+                overlayHero.style.opacity = "0";
+                setTimeout(() => { overlayHero.style.display = "none"; }, 400);
+
+                if (window.clarity) {
+                    try { window.clarity("event", "Video_Assistido_Willas"); } catch(err) {}
+                }
+            });
+
+            videoHero.addEventListener("click", function() {
+                if (overlayHero.style.display === "none") {
+                    if (videoHero.paused) { videoHero.play(); } else { videoHero.pause(); }
+                }
+            });
+        }
+
+        renderPriceDisplay();
+
+        const reviewsTrack = document.getElementById('reviews-track');
+        const reviewsContainer = document.getElementById('reviews-container');
+        if (reviewsTrack && reviewsContainer) {
+            reviewsContainer.addEventListener('touchstart', function() {
+                reviewsTrack.classList.add('paused');
+            }, { passive: true });
+
+            reviewsContainer.addEventListener('touchend', function() {
+                reviewsTrack.classList.remove('paused');
+            }, { passive: true });
+
+            reviewsContainer.addEventListener('touchcancel', function() {
+                reviewsTrack.classList.remove('paused');
+            }, { passive: true });
+        }
+    });
+
+    // Navbar Scroll Shadow
+    window.addEventListener('scroll', () => {
+        const navbar = document.getElementById('navbar');
+        if (navbar) {
+            if (window.scrollY > 40) {
+                navbar.classList.add('shadow-md');
+            } else {
+                navbar.classList.remove('shadow-md');
+            }
+        }
+    });
+</script>
+</body>
+</html>
