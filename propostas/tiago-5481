@@ -1,0 +1,1403 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth overflow-x-hidden" id="html-root">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projeto CFTV IP & Rede Wi-Fi 6 Mesh | Tiago – Vision Tecnologia</title>
+    <meta name="description" content="Implantação de 10 Câmeras IP Intelbras, 2 Switches PoE, Rede Wi-Fi 6 Mesh e Mini Rack para Apartamento de 300 m² no Morumbi – Vision Tecnologia">
+    <meta name="theme-color" content="#b9880e">
+    <meta name="robots" content="noindex, nofollow">
+
+    <!-- Fonts & CDN Tailwind -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@700;800&family=Quicksand:wght@500;600;700&family=Outfit:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <!-- Google Analytics 4 -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-KTGEL92B0F"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-KTGEL92B0F');
+    </script>
+
+    <!-- Microsoft Clarity -->
+    <script type="text/javascript">
+        (function(c,l,a,r,i,t,y){
+            c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+            t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+            y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+        })(window, document, "clarity", "script", "vifq10es5o");
+    </script>
+
+    <!-- Tailwind Configuração -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"Outfit"', 'sans-serif'],
+                        logo: ['"League Spartan"', 'sans-serif'],
+                        tech: ['"Quicksand"', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            yellow: '#b9880e',
+                            goldLight: '#FFDE59',
+                            goldDark: '#8a6208',
+                            black: '#09090b',
+                        }
+                    },
+                    boxShadow: {
+                        'glass': '0 4px 24px 0 rgba(0,0,0,0.04)',
+                        'premium': '0 16px 50px -10px rgba(0,0,0,0.08)',
+                        'glow': '0 0 20px rgba(185,136,14,0.18)',
+                        'glow-md': '0 0 35px rgba(185,136,14,0.28)',
+                    },
+                    animation: {
+                        'slide-up': 'slideUp 0.9s cubic-bezier(0.16,1,0.3,1) forwards',
+                        'float': 'float 6s ease-in-out infinite',
+                        'fade-in': 'fadeIn 0.4s ease forwards',
+                    },
+                    keyframes: {
+                        slideUp: {
+                            '0%': { opacity: '0', transform: 'translateY(35px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' }
+                        },
+                        float: {
+                            '0%,100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-10px)' }
+                        },
+                        fadeIn: {
+                            '0%': { opacity: '0' },
+                            '100%': { opacity: '1' }
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: #f9fafb; }
+        ::-webkit-scrollbar-thumb { background: #d1d5db; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #b9880e; }
+
+        .text-gold-shine {
+            background: linear-gradient(to right, #b9880e 20%, #FFDE59 50%, #b9880e 80%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-size: 200% auto;
+            animation: shine 4s linear infinite;
+        }
+        @keyframes shine { to { background-position: 200% center; } }
+
+        .bg-grid {
+            background-image: linear-gradient(rgba(185,136,14,0.04) 1px, transparent 1px),
+                              linear-gradient(90deg, rgba(185,136,14,0.04) 1px, transparent 1px);
+            background-size: 40px 40px;
+        }
+        .bg-dots {
+            background-image: radial-gradient(#b9880e 1.2px, transparent 1.2px);
+            background-size: 22px 22px;
+            opacity: 0.035;
+        }
+
+        .lock-input {
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.1);
+            color: #b9880e;
+            font-family: 'League Spartan', sans-serif;
+            font-size: 1.35rem;
+            text-align: center;
+            outline: none;
+            transition: all 0.3s;
+            letter-spacing: 0.18em;
+            border-radius: 14px;
+            text-transform: uppercase;
+        }
+        .lock-input:focus {
+            border-color: #b9880e;
+            background: rgba(255,255,255,0.08);
+            box-shadow: 0 0 20px rgba(185,136,14,0.25);
+        }
+        .lock-input::placeholder {
+            color: #71717a;
+            font-size: 0.8rem;
+            font-family: 'Outfit', sans-serif;
+            font-weight: 400;
+            letter-spacing: 0.05em;
+            text-transform: none;
+        }
+
+        .reveal { opacity: 0; transform: translateY(30px); transition: all 0.8s cubic-bezier(0.16,1,0.3,1); }
+        .reveal.active { opacity: 1; transform: translateY(0); }
+
+        .accordion-content { max-height: 0; overflow: hidden; transition: max-height 0.45s cubic-bezier(0.4,0,0.2,1); }
+        .accordion-item.open .accordion-content { max-height: 600px; }
+        .accordion-item.open .acc-arrow { transform: rotate(180deg); }
+        .acc-arrow { transition: transform 0.3s; }
+
+        @keyframes marqueeReviews {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+        .reviews-marquee-track {
+            display: flex;
+            width: max-content;
+            animation: marqueeReviews 55s linear infinite;
+            will-change: transform;
+        }
+        .reviews-marquee-container:hover .reviews-marquee-track,
+        .reviews-marquee-track.paused {
+            animation-play-state: paused !important;
+        }
+
+        .premium-border-glow {
+            position: relative;
+            border-radius: 2rem;
+            padding: 2px;
+            background-color: #b9880e;
+            overflow: hidden;
+            box-shadow: 0 0 35px rgba(185,136,14,0.15);
+            transition: transform 0.3s cubic-bezier(0.4,0,0.2,1);
+        }
+        .premium-border-glow:hover { transform: scale(1.006); }
+        .premium-border-glow::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: conic-gradient(
+                from 0deg, 
+                transparent 0deg, 
+                transparent 175deg, 
+                rgba(255, 222, 89, 0.6) 178deg, 
+                #ffffff 180deg, 
+                rgba(255, 222, 89, 0.6) 182deg, 
+                transparent 185deg, 
+                transparent 360deg
+            );
+            animation: rotate-border 12s linear infinite;
+            z-index: 0;
+        }
+        @keyframes rotate-border {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        .premium-border-inner {
+            position: relative;
+            z-index: 1;
+            background-color: #ffffff;
+            border-radius: calc(2rem - 2px);
+            height: 100%;
+        }
+
+        @media print {
+            #lock-screen, #navbar { display: none !important; }
+            .reveal { opacity: 1 !important; transform: none !important; }
+        }
+    </style>
+</head>
+<body class="bg-[#fafafa] text-gray-800 antialiased overflow-hidden h-screen" id="body-root">
+
+<!-- ===================== LOCK SCREEN ===================== -->
+<div id="lock-screen" class="fixed inset-0 z-[100] bg-[#09090b] flex flex-col items-center justify-center text-center p-4 transition-opacity duration-700 ease-out overflow-y-auto">
+    <div class="bg-grid absolute inset-0 opacity-10 pointer-events-none"></div>
+    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-brand-yellow/5 rounded-full blur-[100px] pointer-events-none"></div>
+
+    <!-- Logo -->
+    <div class="relative flex flex-col items-center mb-8 z-10">
+        <div class="relative flex items-baseline leading-none">
+            <span class="font-logo font-bold text-[5rem] md:text-[5.5rem] text-gold-shine lowercase tracking-[-0.05em] leading-none">vısıon</span>
+            <span class="absolute -right-5 top-4 text-[1.1rem] text-brand-yellow font-bold">®</span>
+        </div>
+        <span class="font-tech text-[1.0rem] font-bold text-zinc-500 lowercase -mt-4 ml-2.5 text-center w-full" style="letter-spacing:0.53em;">tecnologia</span>
+    </div>
+
+    <div class="w-full max-w-sm space-y-5 z-10">
+        <div class="space-y-1.5">
+            <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-brand-yellow/30 bg-brand-yellow/10 mb-2">
+                <i data-lucide="lock" class="w-3.5 h-3.5 text-brand-yellow"></i>
+                <span class="text-brand-yellow text-[10px] font-bold uppercase tracking-widest">Projeto Residencial Exclusivo</span>
+            </div>
+            <h2 class="text-white font-bold text-2xl">Tiago</h2>
+            <p class="text-zinc-400 text-xs">Rua Visconde de Nacar, 150 – Apto 81 • Morumbi (300 m²)</p>
+        </div>
+
+        <div>
+            <!-- SENHAS VÁLIDAS: TIAGO2026, TIAGO, MORUMBI, VISION -->
+            <input type="password" id="password-input" class="lock-input w-full py-4 px-4" placeholder="Digite sua senha de acesso" autocomplete="off">
+            <p id="error-msg" class="text-red-400 text-xs mt-2 hidden">
+                <span class="flex items-center justify-center gap-1"><i data-lucide="x-circle" class="w-4 h-4"></i> Senha incorreta. Tente novamente.</span>
+            </p>
+        </div>
+
+        <button onclick="checkPassword()" id="btn-unlock" class="w-full bg-brand-yellow hover:bg-brand-goldLight text-black font-bold py-4 rounded-2xl transition-all shadow-glow flex items-center justify-center gap-2 group relative overflow-hidden">
+            <div class="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-300 rounded-2xl"></div>
+            <i data-lucide="shield-check" class="w-5 h-5 relative z-10" id="unlock-icon"></i>
+            <span class="relative z-10 text-sm uppercase tracking-widest font-bold" id="unlock-text">Acessar Proposta Executiva</span>
+            <i data-lucide="arrow-right" class="w-4 h-4 relative z-10 group-hover:translate-x-1 transition-transform" id="unlock-arrow"></i>
+        </button>
+
+        <p class="text-zinc-600 text-xs">Documento Confidencial · Vision Tecnologia © 2026</p>
+    </div>
+</div>
+
+<!-- ===================== NAVBAR ===================== -->
+<nav id="navbar" class="fixed w-full z-50 top-0 bg-white/95 backdrop-blur-xl border-b border-gray-200/50 shadow-sm transition-all duration-300">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-between h-20 items-center">
+            
+            <div class="flex items-center gap-4 cursor-pointer" onclick="window.scrollTo({top:0, behavior:'smooth'})">
+                <div class="flex flex-col items-center justify-center">
+                    <div class="relative flex items-baseline leading-none">
+                        <span class="font-logo font-bold text-[2.4rem] text-gold-shine lowercase tracking-[-0.05em] leading-none">vısıon</span>
+                        <span class="absolute -right-2.5 top-1.5 text-[0.6rem] text-brand-yellow font-bold">®</span>
+                    </div>
+                    <span class="font-tech text-[0.55rem] font-bold text-gray-400 lowercase -mt-2 ml-1" style="letter-spacing:0.53em;">tecnologia</span>
+                </div>
+                <div class="h-7 w-px bg-gray-200 hidden sm:block"></div>
+                <span class="text-zinc-400 text-xs uppercase tracking-widest font-bold hidden sm:block">Tiago • Morumbi 300 m²</span>
+            </div>
+
+            <div class="hidden md:flex items-center space-x-7 text-xs font-semibold text-gray-500 uppercase tracking-wider">
+                <a href="#diagnostico" class="hover:text-brand-yellow transition-colors">Diagnóstico</a>
+                <a href="#solucao" class="hover:text-brand-yellow transition-colors">Equipamentos</a>
+                <a href="#arquitetura" class="hover:text-brand-yellow transition-colors">Arquitetura de Rede</a>
+                <a href="#avaliacoes" class="hover:text-brand-yellow transition-colors">Avaliações</a>
+                <a href="#investimento" class="hover:text-brand-yellow transition-colors">Investimento</a>
+                <a href="#faq" class="hover:text-brand-yellow transition-colors">Dúvidas</a>
+            </div>
+
+            <div class="flex items-center gap-4">
+                <button onclick="window.print()" class="text-gray-400 hover:text-brand-yellow transition-colors flex items-center gap-1.5" title="Salvar em PDF">
+                    <i data-lucide="download" class="w-4 h-4"></i>
+                    <span class="text-[10px] font-bold uppercase tracking-widest hidden sm:block">PDF</span>
+                </button>
+                <a href="#investimento" class="bg-zinc-900 text-white px-5 py-2.5 rounded-full text-[10px] font-bold uppercase tracking-widest hover:bg-brand-yellow hover:text-black transition-all shadow-md">
+                    Ver Investimento
+                </a>
+            </div>
+
+        </div>
+    </div>
+</nav>
+
+<!-- ===================== HERO COM VÍDEO ===================== -->
+<header class="pt-32 pb-20 lg:pt-40 relative overflow-hidden bg-[#f8f9fa]">
+    <div class="absolute inset-0 bg-grid pointer-events-none"></div>
+    <div class="absolute right-0 top-0 w-1/2 h-full bg-gradient-to-l from-white to-transparent z-0 pointer-events-none hidden lg:block"></div>
+    
+    <div class="max-w-7xl mx-auto px-4 relative z-10">
+        <div class="flex flex-col lg:flex-row items-center gap-12 lg:gap-16">
+            
+            <!-- Coluna de Texto -->
+            <div class="w-full lg:w-[55%] text-center lg:text-left animate-slide-up">
+                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-white border border-gray-200 text-gray-600 text-[10px] font-bold uppercase tracking-widest mb-6 mx-auto lg:mx-0 shadow-sm">
+                    <div class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></div>
+                    Projeto Residencial Premium • <span class="text-brand-yellow font-black">Morumbi (300 m²)</span>
+                </div>
+                
+                <h1 class="text-4xl md:text-5xl lg:text-[3.2rem] font-extrabold text-gray-900 leading-[1.08] tracking-tight mb-6">
+                    CFTV IP Inteligente &amp; Rede Wi-Fi 6 Mesh para o <span class="text-gold-shine">Apto Morumbi.</span>
+                </h1>
+                
+                <p class="text-base md:text-lg text-gray-500 max-w-xl mx-auto lg:mx-0 font-medium leading-relaxed">
+                    Tiago, elaboramos o projeto executivo para a <strong>Rua Visconde de Nacar, 150 (Apto 81)</strong>. Como os cabos de rede já estão passados no teto de gesso, a implantação foca em conectorização de alta precisão, montagem do mini rack de parede, 10 câmeras IP Intelbras (com áudio bidirecional e microfones nas áreas prioritárias) e cobertura Wi-Fi 6 sem áreas de sombra em toda a área de 300 m².
+                </p>
+
+                <div class="mt-8 flex flex-wrap items-center justify-center lg:justify-start gap-4">
+                    <div class="flex -space-x-3">
+                        <div class="w-10 h-10 rounded-full border-2 border-white bg-gray-100 flex items-center justify-center text-gray-600 shadow-sm"><i data-lucide="video" class="w-4 h-4"></i></div>
+                        <div class="w-10 h-10 rounded-full border-2 border-white bg-gray-100 flex items-center justify-center text-gray-600 shadow-sm"><i data-lucide="wifi" class="w-4 h-4"></i></div>
+                        <div class="w-10 h-10 rounded-full border-2 border-white bg-brand-yellow/20 flex items-center justify-center text-brand-goldDark shadow-sm"><i data-lucide="server" class="w-4 h-4"></i></div>
+                    </div>
+                    <span class="text-xs font-bold text-gray-500 uppercase tracking-widest">10 Câmeras IP + 2x PoE + 3x Wi-Fi 6 Mesh + Mini Rack</span>
+                </div>
+            </div>
+
+            <!-- Coluna de Vídeo -->
+            <div class="w-full lg:w-[45%] mt-4 lg:mt-0 reveal animate-slide-up" style="animation-delay: 200ms;">
+                <div class="relative w-full max-w-lg mx-auto group z-10">
+                    <div class="relative w-full aspect-video bg-black border-[6px] md:border-[10px] border-zinc-800 rounded-t-[1rem] md:rounded-t-[1.5rem] overflow-hidden shadow-2xl">
+                        
+                        <video id="vision-video" class="w-full h-full object-cover cursor-pointer opacity-90" autoplay muted loop playsinline>
+                            <source src="https://res.cloudinary.com/dptcuckhf/video/upload/v1771711323/Vict%C3%B3ria_-_Vision_gdqnrk.mp4" type="video/mp4">
+                        </video>
+                        
+                        <div id="unmute-overlay" class="absolute inset-0 bg-black/50 backdrop-blur-sm flex flex-col items-center justify-center cursor-pointer transition-opacity duration-500 z-30 hover:bg-black/40">
+                            <div class="bg-brand-yellow text-black font-bold px-6 py-3 rounded-full flex items-center gap-2 shadow-glow animate-pulse transform group-hover:scale-105 transition-all">
+                                <i data-lucide="volume-2" class="w-4 h-4 fill-black"></i>
+                                <span class="text-[10px] tracking-wide uppercase">Clique para Ouvir Apresentação</span>
+                            </div>
+                        </div>
+
+                        <div class="absolute top-1.5 md:top-2 left-1/2 -translate-x-1/2 w-1.5 h-1.5 md:w-2 md:h-2 bg-zinc-950 rounded-full z-20"></div>
+                    </div>
+                    <div class="relative w-[114%] -ml-[7%] h-3 md:h-5 bg-gradient-to-b from-zinc-300 to-zinc-400 rounded-b-xl md:rounded-b-2xl shadow-[0_20px_40px_rgba(0,0,0,0.5)] flex justify-center border-t border-zinc-200">
+                        <div class="w-1/5 h-1.5 md:h-2 bg-zinc-300 rounded-b-md shadow-inner"></div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Quick Stats Cards -->
+        <div class="mt-14 lg:mt-20 grid grid-cols-2 md:grid-cols-4 gap-4 max-w-4xl mx-auto reveal">
+            <div class="bg-white rounded-2xl p-5 shadow-glass border border-gray-100 text-center animate-float" style="animation-delay:0s;">
+                <div class="w-9 h-9 bg-brand-yellow/10 rounded-xl flex items-center justify-center mx-auto mb-2 text-brand-goldDark">
+                    <i data-lucide="video" class="w-4 h-4"></i>
+                </div>
+                <div class="text-2xl font-extrabold text-gray-900">10 Câmeras</div>
+                <div class="text-[10px] text-gray-500 font-bold uppercase tracking-wider">7 Domes + 2 Mic + 1 Talk</div>
+            </div>
+            <div class="bg-white rounded-2xl p-5 shadow-glass border border-gray-100 text-center animate-float" style="animation-delay:0.8s;">
+                <div class="w-9 h-9 bg-brand-yellow/10 rounded-xl flex items-center justify-center mx-auto mb-2 text-brand-goldDark">
+                    <i data-lucide="wifi" class="w-4 h-4"></i>
+                </div>
+                <div class="text-2xl font-extrabold text-gray-900">3x Wi-Fi 6</div>
+                <div class="text-[10px] text-gray-500 font-bold uppercase tracking-wider">Mesh RW 6181 Empresarial</div>
+            </div>
+            <div class="bg-white rounded-2xl p-5 shadow-glass border border-gray-100 text-center animate-float" style="animation-delay:0.4s;">
+                <div class="w-9 h-9 bg-brand-yellow/10 rounded-xl flex items-center justify-center mx-auto mb-2 text-brand-goldDark">
+                    <i data-lucide="hard-drive" class="w-4 h-4"></i>
+                </div>
+                <div class="text-2xl font-extrabold text-gray-900">2 TB Purple</div>
+                <div class="text-[10px] text-gray-500 font-bold uppercase tracking-wider">Gravação 24/7 WD Purple</div>
+            </div>
+            <div class="bg-white rounded-2xl p-5 shadow-glass border border-gray-100 text-center animate-float" style="animation-delay:1.2s;">
+                <div class="w-9 h-9 bg-brand-yellow/10 rounded-xl flex items-center justify-center mx-auto mb-2 text-brand-goldDark">
+                    <i data-lucide="shield-check" class="w-4 h-4"></i>
+                </div>
+                <div class="text-2xl font-extrabold text-gray-900">12 Meses</div>
+                <div class="text-[10px] text-gray-500 font-bold uppercase tracking-wider">Garantia Vision Total</div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- ===================== DIAGNÓSTICO DO CENÁRIO ===================== -->
+<section id="diagnostico" class="py-24 bg-white border-y border-gray-200/60 relative">
+    <div class="max-w-7xl mx-auto px-4">
+        <div class="text-center mb-16 reveal">
+            <span class="text-brand-yellow font-bold uppercase tracking-widest text-xs">Engenharia Consultiva &amp; Estrutura</span>
+            <h2 class="text-3xl md:text-5xl font-bold text-gray-900 mt-3 leading-tight">Diagnóstico Técnico: Apartamento 300 m² Morumbi</h2>
+            <p class="text-gray-500 mt-4 max-w-3xl mx-auto text-base md:text-lg leading-relaxed">
+                <strong>Tiago</strong>, alinhamos a engenharia para aproveitar a infraestrutura existente de cabeamento já passado no teto de gesso, garantindo eficiência de custo e máxima performance de rede:
+            </p>
+        </div>
+
+        <!-- Banner de Eficiência de Mão de Obra -->
+        <div class="mb-10 max-w-4xl mx-auto p-4 md:p-5 rounded-2xl bg-amber-500/10 border border-amber-500/30 flex items-center gap-4 reveal">
+            <div class="w-12 h-12 rounded-xl bg-brand-yellow text-black flex items-center justify-center shrink-0 shadow-sm">
+                <i data-lucide="sparkles" class="w-6 h-6"></i>
+            </div>
+            <div class="text-left text-xs md:text-sm text-gray-800 leading-relaxed">
+                <strong class="text-gray-950 block text-sm md:text-base font-bold mb-0.5">Otimização de Custos pelo Cabeamento Passado:</strong>
+                Como os cabos UTP já estão distribuídos pelo forro de gesso, a mão de obra foi recalibrada especificamente para conectorização RJ45 vazada de alto contato, fixação embutida dos domes, montagem do mini rack 3U de parede e configuração lógica completa de rede e NVR.
+            </div>
+        </div>
+
+        <div class="grid md:grid-cols-3 gap-8 reveal">
+            <!-- Pilar 1 -->
+            <div class="bg-[#fafafa] rounded-[2rem] p-8 border border-gray-100 shadow-sm flex flex-col justify-between hover:border-brand-yellow/40 transition-all">
+                <div>
+                    <div class="w-12 h-12 bg-amber-100 rounded-2xl flex items-center justify-center mb-6 text-brand-goldDark">
+                        <i data-lucide="camera" class="w-6 h-6"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">Segmentação das 10 Câmeras IP</h3>
+                    <p class="text-gray-600 text-xs md:text-sm leading-relaxed mb-6">
+                        Para otimizar o orçamento conforme seu pedido, selecionamos 7 câmeras IP domes convencionais Full HD (discretas e embutidas), 2 câmeras Full Color com microfone embutido para monitorar áreas nobres e 1 câmera com áudio bidirecional para interação por voz.
+                    </p>
+                </div>
+                <div class="p-3.5 bg-emerald-50 rounded-xl border border-emerald-100 text-xs text-emerald-800 flex items-center gap-2">
+                    <i data-lucide="check-circle-2" class="w-4 h-4 text-emerald-600 shrink-0"></i>
+                    <span>Equilíbrio entre custo inteligente e alta qualidade de imagem.</span>
+                </div>
+            </div>
+
+            <!-- Pilar 2 -->
+            <div class="bg-[#fafafa] rounded-[2rem] p-8 border border-gray-100 shadow-sm flex flex-col justify-between hover:border-brand-yellow/40 transition-all">
+                <div>
+                    <div class="w-12 h-12 bg-amber-100 rounded-2xl flex items-center justify-center mb-6 text-brand-goldDark">
+                        <i data-lucide="wifi" class="w-6 h-6"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">Rede Wi-Fi 6 Mesh para 300 m²</h3>
+                    <p class="text-gray-600 text-xs md:text-sm leading-relaxed mb-6">
+                        Ambientes amplos com diversas divisórias sofrem com atenuação de sinal. A implantação de 3 roteadores empresariais RW 6181 em topologia Mesh com backhaul cabeado entrega roaming perfeito sem quedas ou travamentos em chamadas e streaming.
+                    </p>
+                </div>
+                <div class="p-3.5 bg-emerald-50 rounded-xl border border-emerald-100 text-xs text-emerald-800 flex items-center gap-2">
+                    <i data-lucide="check-circle-2" class="w-4 h-4 text-emerald-600 shrink-0"></i>
+                    <span>Cobertura unificada com uma única rede (SSID) de alta vazão.</span>
+                </div>
+            </div>
+
+            <!-- Pilar 3 -->
+            <div class="bg-[#fafafa] rounded-[2rem] p-8 border border-gray-100 shadow-sm flex flex-col justify-between hover:border-brand-yellow/40 transition-all">
+                <div>
+                    <div class="w-12 h-12 bg-amber-100 rounded-2xl flex items-center justify-center mb-6 text-brand-goldDark">
+                        <i data-lucide="server" class="w-6 h-6"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">Organização em Mini Rack 3U</h3>
+                    <p class="text-gray-600 text-xs md:text-sm leading-relaxed mb-6">
+                        Dois switches PoE de 8 portas distribuem dados e energia para os pontos, convergindo no mini rack 3U de parede com régua de tomadas profissional, deixando a fiação oculta, ventilada e com padrão corporativo de acabamento.
+                    </p>
+                </div>
+                <div class="p-3.5 bg-emerald-50 rounded-xl border border-emerald-100 text-xs text-emerald-800 flex items-center gap-2">
+                    <i data-lucide="check-circle-2" class="w-4 h-4 text-emerald-600 shrink-0"></i>
+                    <span>Centralização segura com proteção mecânica e ventilação.</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ===================== VITRINE TECNOLÓGICA ===================== -->
+<section id="solucao" class="py-24 bg-[#f8f9fa] border-b border-gray-200/60 relative">
+    <div class="max-w-7xl mx-auto px-4 relative z-10">
+        <div class="text-center mb-16 reveal">
+            <span class="text-brand-yellow font-bold uppercase tracking-widest text-xs">Especificação Homologada</span>
+            <h2 class="text-3xl md:text-5xl font-bold text-gray-900 mt-3">Equipamentos Oficiais Intelbras</h2>
+            <p class="text-gray-500 mt-4 max-w-2xl mx-auto text-sm md:text-base">
+                Hardware profissional cotado sob a Tabela Oficial Speed Distribuidora (Orçamento Nº 181.840) com 12 meses de garantia direta da Vision:
+            </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 reveal">
+            
+            <!-- Equipamento 1: 7x Câmeras Domes IP VIPC 1230 D G2 -->
+            <div class="bg-white rounded-3xl p-6 border border-gray-200 shadow-sm flex flex-col justify-between hover:border-brand-yellow hover:shadow-md transition-all group">
+                <div>
+                    <div class="w-full aspect-video bg-gradient-to-br from-amber-50 to-orange-50/40 rounded-2xl flex items-center justify-center p-3 mb-4 border border-amber-100/80 relative overflow-hidden">
+                        <span class="absolute top-2.5 right-3 text-[9px] font-extrabold uppercase tracking-wider px-2 py-0.5 rounded-full bg-amber-500/10 text-amber-800 border border-amber-500/20">7 Unidades</span>
+                        <img src="https://res.cloudinary.com/dptcuckhf/image/upload/v1770981167/vip-1230-d-g5-front-1_df8d6l.png" alt="Câmera IP Dome VIPC 1230 D G2" class="max-h-28 object-contain group-hover:scale-105 transition-transform" onerror="this.src='https://placehold.co/200x200/f3f4f6/111827?text=VIPC+1230+D'">
+                    </div>
+                    <h4 class="font-bold text-gray-900 text-sm mb-1.5 flex items-center gap-2">
+                        <span class="w-2 h-2 rounded-full bg-amber-500"></span>
+                        7x Domes IP VIPC 1230 D G2
+                    </h4>
+                    <p class="text-xs text-gray-600 leading-relaxed">
+                        Resolução Full HD 1080p, visão noturna IR inteligente até 30m e design dome discreto para teto de gesso, otimizando o investimento com alta nitidez.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Equipamento 2: 2x Câmeras Full Color com Mic VIP 1230 FC+ -->
+            <div class="bg-white rounded-3xl p-6 border border-gray-200 shadow-sm flex flex-col justify-between hover:border-amber-400 hover:shadow-md transition-all group">
+                <div>
+                    <div class="w-full aspect-video bg-gradient-to-br from-yellow-50 to-amber-50 rounded-2xl flex items-center justify-center p-3 mb-4 border border-yellow-100/80 relative overflow-hidden">
+                        <span class="absolute top-2.5 right-3 text-[9px] font-extrabold uppercase tracking-wider px-2 py-0.5 rounded-full bg-yellow-500/10 text-yellow-800 border border-yellow-500/20">2 Unidades</span>
+                        <img src="https://res.cloudinary.com/dptcuckhf/image/upload/v1777380050/vip-1220-d-fc_-esq_mnjcds.png" alt="Câmera IP Full Color com Mic" class="max-h-28 object-contain group-hover:scale-105 transition-transform" onerror="this.src='https://placehold.co/200x200/f3f4f6/111827?text=VIP+FC%2B+Mic'">
+                    </div>
+                    <h4 class="font-bold text-gray-900 text-sm mb-1.5 flex items-center gap-2">
+                        <span class="w-2 h-2 rounded-full bg-yellow-500"></span>
+                        2x IP Full Color c/ Microfone
+                    </h4>
+                    <p class="text-xs text-gray-600 leading-relaxed">
+                        Tecnologia Full Color 24h (imagens coloridas mesmo em escuridão total) com microfone embutido de alta sensibilidade para as áreas prioritárias do apto.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Equipamento 3: 1x Câmera Wi-Fi/IP com Áudio Bidirecional VIPW 1210 C -->
+            <div class="bg-white rounded-3xl p-6 border border-gray-200 shadow-sm flex flex-col justify-between hover:border-emerald-400 hover:shadow-md transition-all group">
+                <div>
+                    <div class="w-full aspect-video bg-gradient-to-br from-emerald-50 to-teal-50 rounded-2xl flex items-center justify-center p-3 mb-4 border border-emerald-100/80 relative overflow-hidden">
+                        <span class="absolute top-2.5 right-3 text-[9px] font-extrabold uppercase tracking-wider px-2 py-0.5 rounded-full bg-emerald-500/10 text-emerald-800 border border-emerald-500/20">Áudio Bidirecional</span>
+                        <img src="https://res.cloudinary.com/dptcuckhf/image/upload/v1789582139/vipw-1210-c-01_vbkksw.png" alt="Câmera com Áudio Bidirecional VIPW 1210 C" class="max-h-28 object-contain group-hover:scale-105 transition-transform" onerror="this.src='https://placehold.co/200x200/f3f4f6/111827?text=VIPW+1210+C'">
+                    </div>
+                    <h4 class="font-bold text-gray-900 text-sm mb-1.5 flex items-center gap-2">
+                        <span class="w-2 h-2 rounded-full bg-emerald-500"></span>
+                        1x Câmera Áudio Bidirecional
+                    </h4>
+                    <p class="text-xs text-gray-600 leading-relaxed">
+                        Permite falar e ouvir em tempo real pelo smartphone através do alto-falante e microfone integrados. Ideal para interação direta no ambiente de acesso ou serviço.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Equipamento 4: 1x Gravador NVR 16ch NVD 1516 -->
+            <div class="bg-white rounded-3xl p-6 border border-gray-200 shadow-sm flex flex-col justify-between hover:border-blue-400 hover:shadow-md transition-all group">
+                <div>
+                    <div class="w-full aspect-video bg-gradient-to-br from-blue-50 to-indigo-50 rounded-2xl flex items-center justify-center p-3 mb-4 border border-blue-100/80 relative overflow-hidden">
+                        <span class="absolute top-2.5 right-3 text-[9px] font-extrabold uppercase tracking-wider px-2 py-0.5 rounded-full bg-blue-500/10 text-blue-800 border border-blue-500/20">16 Canais</span>
+                        <img src="https://res.cloudinary.com/dptcuckhf/image/upload/v1770981166/nvd-1408-esquerda_znmlxz.png" alt="NVR Intelbras NVD 1516" class="max-h-28 object-contain group-hover:scale-105 transition-transform" onerror="this.src='https://placehold.co/200x200/f3f4f6/111827?text=NVR+NVD+1516'">
+                    </div>
+                    <h4 class="font-bold text-gray-900 text-sm mb-1.5 flex items-center gap-2">
+                        <span class="w-2 h-2 rounded-full bg-blue-500"></span>
+                        Gravador NVR 16ch NVD 1516
+                    </h4>
+                    <p class="text-xs text-gray-600 leading-relaxed">
+                        Processamento dedicado para 16 câmeras IP em alta resolução, compressão inteligente H.265+ e aplicativo Intelbras ISIC Lite no celular sem cobrança mensal.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Equipamento 5: HD 2TB WD Purple Surveillance -->
+            <div class="bg-white rounded-3xl p-6 border border-gray-200 shadow-sm flex flex-col justify-between hover:border-purple-400 hover:shadow-md transition-all group">
+                <div>
+                    <div class="w-full aspect-video bg-gradient-to-br from-purple-50 to-indigo-50 rounded-2xl flex items-center justify-center p-3 mb-4 border border-purple-100/80 relative overflow-hidden">
+                        <span class="absolute top-2.5 right-3 text-[9px] font-extrabold uppercase tracking-wider px-2 py-0.5 rounded-full bg-purple-500/10 text-purple-800 border border-purple-500/20">24/7 Contínuo</span>
+                        <img src="https://res.cloudinary.com/dptcuckhf/image/upload/v1771880502/WD-PURPLE_2TB-removebg-preview_f1micz.png" alt="HD 2TB WD Purple" class="max-h-28 object-contain group-hover:scale-105 transition-transform" onerror="this.src='https://placehold.co/200x200/f3f4f6/111827?text=WD+Purple+2TB'">
+                    </div>
+                    <h4 class="font-bold text-gray-900 text-sm mb-1.5 flex items-center gap-2">
+                        <span class="w-2 h-2 rounded-full bg-purple-500"></span>
+                        HD 2TB WD Purple Surveillance
+                    </h4>
+                    <p class="text-xs text-gray-600 leading-relaxed">
+                        Disco rígido especializado para segurança eletrônica com tecnologia AllFrame, suportando gravação ininterrupta sob vibração e calor sem perda de quadros.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Equipamento 6: 2x Switches 8p PoE S1110F-P -->
+            <div class="bg-white rounded-3xl p-6 border border-gray-200 shadow-sm flex flex-col justify-between hover:border-cyan-400 hover:shadow-md transition-all group">
+                <div>
+                    <div class="w-full aspect-video bg-gradient-to-br from-cyan-50 to-blue-50 rounded-2xl flex items-center justify-center p-3 mb-4 border border-cyan-100/80 relative overflow-hidden">
+                        <span class="absolute top-2.5 right-3 text-[9px] font-extrabold uppercase tracking-wider px-2 py-0.5 rounded-full bg-cyan-500/10 text-cyan-800 border border-cyan-500/20">2 Unidades</span>
+                        <img src="https://res.cloudinary.com/dptcuckhf/image/upload/v1770981167/s1010f-p-front_vplwq9.png" alt="Switch PoE S1110F-P" class="max-h-28 object-contain group-hover:scale-105 transition-transform" onerror="this.src='https://placehold.co/200x200/f3f4f6/111827?text=Switch+PoE'">
+                    </div>
+                    <h4 class="font-bold text-gray-900 text-sm mb-1.5 flex items-center gap-2">
+                        <span class="w-2 h-2 rounded-full bg-cyan-500"></span>
+                        2x Switches 8p PoE S1110F-P
+                    </h4>
+                    <p class="text-xs text-gray-600 leading-relaxed">
+                        Alimentam as câmeras e access points diretamente pelo próprio cabo de rede UTP (Power over Ethernet), eliminando fontes individuais espalhadas pelo forro.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Equipamento 7: 3x Roteadores Wi-Fi 6 Mesh RW 6181 -->
+            <div class="bg-white rounded-3xl p-6 border border-gray-200 shadow-sm flex flex-col justify-between hover:border-indigo-400 hover:shadow-md transition-all group">
+                <div>
+                    <div class="w-full aspect-video bg-gradient-to-br from-indigo-50 to-slate-50 rounded-2xl flex items-center justify-center p-3 mb-4 border border-indigo-100/80 relative overflow-hidden">
+                        <span class="absolute top-2.5 right-3 text-[9px] font-extrabold uppercase tracking-wider px-2 py-0.5 rounded-full bg-indigo-500/10 text-indigo-800 border border-indigo-500/20">3 Unidades</span>
+                        <img src="https://res.cloudinary.com/dptcuckhf/image/upload/v1789582583/rw-6181-02_dysikw.webp" alt="Roteador Wi-Fi 6 RW 6181" class="max-h-28 object-contain group-hover:scale-105 transition-transform" onerror="this.src='https://placehold.co/200x200/f3f4f6/111827?text=RW+6181+Mesh'">
+                    </div>
+                    <h4 class="font-bold text-gray-900 text-sm mb-1.5 flex items-center gap-2">
+                        <span class="w-2 h-2 rounded-full bg-indigo-500"></span>
+                        3x Roteadores Wi-Fi 6 Mesh
+                    </h4>
+                    <p class="text-xs text-gray-600 leading-relaxed">
+                        Intelbras RW 6181 de alto desempenho com protocolo AX3000. Cobertura unificada que distribui conexão de altíssima velocidade para todos os cômodos do apto.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Equipamento 8: Mini Rack 3U MRM 337 + Régua 8T -->
+            <div class="bg-white rounded-3xl p-6 border border-gray-200 shadow-sm flex flex-col justify-between hover:border-zinc-400 hover:shadow-md transition-all group">
+                <div>
+                    <div class="w-full aspect-video bg-gradient-to-br from-zinc-100 to-gray-50 rounded-2xl flex items-center justify-center p-3 mb-4 border border-zinc-200 relative overflow-hidden">
+                        <span class="absolute top-2.5 right-3 text-[9px] font-extrabold uppercase tracking-wider px-2 py-0.5 rounded-full bg-zinc-200 text-zinc-800 border border-zinc-300">Gabinete 3U</span>
+                        <img src="https://res.cloudinary.com/dptcuckhf/image/upload/v1789583130/mini-rack-montado-mrm-337-front_sxbqz6.webp" alt="Mini Rack 3U Parede" class="max-h-28 object-contain group-hover:scale-105 transition-transform" onerror="this.src='https://placehold.co/200x200/f3f4f6/111827?text=Mini+Rack+3U'">
+                    </div>
+                    <h4 class="font-bold text-gray-900 text-sm mb-1.5 flex items-center gap-2">
+                        <span class="w-2 h-2 rounded-full bg-zinc-700"></span>
+                        Mini Rack 3U + Régua 8T
+                    </h4>
+                    <p class="text-xs text-gray-600 leading-relaxed">
+                        Gabinete metálico de parede MRM 337 com visor em acrílico, régua EPR 208 de 8 tomadas e 100 conectores RJ45 vazados de crimpagem de precisão.
+                    </p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<!-- ===================== ARQUITETURA DE REDE ===================== -->
+<section id="arquitetura" class="py-20 bg-white border-b border-gray-200/60">
+    <div class="max-w-5xl mx-auto px-4 reveal">
+        <div class="text-center mb-14">
+            <span class="text-brand-yellow font-bold uppercase tracking-widest text-xs">Engenharia de Conexão</span>
+            <h2 class="text-3xl font-bold text-gray-900 mt-2">Como Ficará Estruturado no Apartamento</h2>
+            <p class="text-gray-500 mt-2 max-w-2xl mx-auto text-sm">
+                Topologia desenhada para garantir estabilidade máxima no tráfego de vídeo e alta velocidade nos dispositivos residenciais:
+            </p>
+        </div>
+
+        <div class="grid md:grid-cols-3 gap-6 text-left">
+            <div class="p-6 rounded-3xl bg-[#fafafa] border border-gray-200 shadow-sm flex flex-col justify-between">
+                <div>
+                    <div class="w-10 h-10 rounded-xl bg-amber-100 text-brand-goldDark flex items-center justify-center font-bold mb-4">1</div>
+                    <h3 class="font-bold text-gray-900 text-base mb-2">Convergência no Mini Rack</h3>
+                    <p class="text-xs text-gray-600 leading-relaxed">
+                        O cabeamento vindo do gesso converge no Mini Rack 3U. O NVR NVD 1516 com HD 2TB grava localmente 24 horas por dia, com os 2 switches PoE alimentando e organizando todos os pontos de dados.
+                    </p>
+                </div>
+                <span class="mt-4 text-[11px] font-bold text-brand-yellow uppercase tracking-wider">Gravação Local &amp; Nuvem</span>
+            </div>
+
+            <div class="p-6 rounded-3xl bg-[#fafafa] border border-gray-200 shadow-sm flex flex-col justify-between">
+                <div>
+                    <div class="w-10 h-10 rounded-xl bg-amber-100 text-brand-goldDark flex items-center justify-center font-bold mb-4">2</div>
+                    <h3 class="font-bold text-gray-900 text-base mb-2">Câmeras IP Integradas</h3>
+                    <p class="text-xs text-gray-600 leading-relaxed">
+                        As 7 câmeras domes vigiam corredores e áreas sociais, enquanto as 2 Full Color com microfone e a câmera com áudio bidirecional oferecem monitoramento acústico e interativo no app sem gargalo de rede.
+                    </p>
+                </div>
+                <span class="mt-4 text-[11px] font-bold text-brand-yellow uppercase tracking-wider">Full HD 1080p + Áudio</span>
+            </div>
+
+            <div class="p-6 rounded-3xl bg-[#fafafa] border border-gray-200 shadow-sm flex flex-col justify-between">
+                <div>
+                    <div class="w-10 h-10 rounded-xl bg-amber-100 text-brand-goldDark flex items-center justify-center font-bold mb-4">3</div>
+                    <h3 class="font-bold text-gray-900 text-base mb-2">Wi-Fi 6 Mesh 300 m²</h3>
+                    <p class="text-xs text-gray-600 leading-relaxed">
+                        Os 3 roteadores RW 6181 eliminam áreas de sombra nas suítes, varanda e salas. Ao caminhar pelo apartamento, seu celular conecta automaticamente ao ponto mais próximo sem interrupções.
+                    </p>
+                </div>
+                <span class="mt-4 text-[11px] font-bold text-brand-yellow uppercase tracking-wider">Fast Roaming 802.11k/v</span>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ===================== AVALIAÇÕES GOOGLE (REPUTAÇÃO VERIFICADA) ===================== -->
+<section id="avaliacoes" class="py-24 bg-gradient-to-b from-[#f8f9fa] via-white to-[#fafafa] border-b border-gray-200/60 relative overflow-hidden">
+    <div class="absolute -top-24 left-1/4 w-96 h-96 bg-brand-yellow/10 rounded-full blur-[110px] pointer-events-none"></div>
+    <div class="absolute -bottom-24 right-1/4 w-96 h-96 bg-blue-500/5 rounded-full blur-[120px] pointer-events-none"></div>
+    <div class="absolute inset-0 bg-grid opacity-60 pointer-events-none"></div>
+
+    <div class="max-w-7xl mx-auto px-4 relative z-10">
+        
+        <div class="max-w-4xl mx-auto text-center mb-16 reveal">
+            <div class="inline-flex items-center gap-3 px-5 py-2 rounded-full bg-white/80 backdrop-blur-md border border-gray-200 shadow-glass mb-6">
+                <svg class="w-5 h-5 shrink-0" viewBox="0 0 24 24">
+                    <path fill="#4285F4" d="M23.745 12.27c0-.7-.06-1.4-.19-2.07H12v4.51h6.6c-.29 1.52-1.14 2.82-2.4 3.68v3.05h3.88c2.27-2.09 3.66-5.17 3.66-9.17z"/>
+                    <path fill="#34A853" d="M12 24c3.24 0 5.95-1.08 7.93-2.91l-3.88-3.05c-1.08.72-2.45 1.16-4.05 1.16-3.12 0-5.77-2.1-6.72-4.93H1.25v3.15C3.26 21.36 7.34 24 12 24z"/>
+                    <path fill="#FBBC05" d="M5.28 14.27c-.25-.72-.38-1.49-.38-2.27s.13-1.55.38-2.27V6.58H1.25C.45 8.18 0 9.98 0 12s.45 3.82 1.25 5.42l4.03-3.15z"/>
+                    <path fill="#EA4335" d="M12 4.75c1.77 0 3.35.61 4.6 1.8l3.42-3.42C17.95 1.19 15.24 0 12 0 7.34 0 3.26 2.64 1.25 6.58l4.03 3.15c.95-2.83 3.6-4.98 6.72-4.98z"/>
+                </svg>
+                <span class="text-xs font-bold text-gray-700 uppercase tracking-wider">Avaliações Verificadas no Google</span>
+                <span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
+                <span class="text-[11px] font-extrabold text-emerald-700">Nota 5.0 Máxima</span>
+            </div>
+
+            <h2 class="text-3xl md:text-5xl font-extrabold text-gray-900 tracking-tight leading-tight">
+                Padrão Ouro Comprovado por <span class="text-gold-shine">Quem Já Contratou</span>
+            </h2>
+            
+            <p class="text-gray-500 mt-4 max-w-2xl mx-auto text-sm md:text-base leading-relaxed">
+                Tiago, organização impecável e zelo no acabamento são marcas registradas da Vision. Veja depoimentos reais deixados por nossos clientes residenciais e corporativos:
+            </p>
+
+            <div class="mt-8 grid grid-cols-1 sm:grid-cols-3 gap-4 max-w-2xl mx-auto">
+                <div class="bg-white/70 backdrop-blur-xl rounded-2xl p-4 border border-white/80 shadow-glass flex flex-col items-center justify-center">
+                    <div class="flex items-center gap-1.5 mb-1">
+                        <span class="text-3xl font-black text-gray-900">5.0</span>
+                        <div class="flex text-amber-400">
+                            <i data-lucide="star" class="w-4 h-4 fill-amber-400 text-amber-400"></i>
+                            <i data-lucide="star" class="w-4 h-4 fill-amber-400 text-amber-400"></i>
+                            <i data-lucide="star" class="w-4 h-4 fill-amber-400 text-amber-400"></i>
+                            <i data-lucide="star" class="w-4 h-4 fill-amber-400 text-amber-400"></i>
+                            <i data-lucide="star" class="w-4 h-4 fill-amber-400 text-amber-400"></i>
+                        </div>
+                    </div>
+                    <span class="text-[10px] font-bold text-gray-500 uppercase tracking-wider">Score Perfeito</span>
+                </div>
+
+                <div class="bg-white/70 backdrop-blur-xl rounded-2xl p-4 border border-white/80 shadow-glass flex flex-col items-center justify-center">
+                    <div class="flex items-baseline gap-1 mb-0.5">
+                        <span class="text-2xl font-black text-brand-goldDark">85</span>
+                        <span class="text-xs font-bold text-gray-500">avaliações</span>
+                    </div>
+                    <span class="text-[10px] font-extrabold text-gray-700 uppercase tracking-widest flex items-center gap-1">
+                        <i data-lucide="map-pin" class="w-3 h-3 text-brand-yellow"></i> São Paulo Capital
+                    </span>
+                </div>
+
+                <div class="bg-white/70 backdrop-blur-xl rounded-2xl p-4 border border-white/80 shadow-glass flex flex-col items-center justify-center">
+                    <div class="flex items-baseline gap-1 mb-0.5">
+                        <span class="text-2xl font-black text-brand-goldDark">126</span>
+                        <span class="text-xs font-bold text-gray-500">avaliações</span>
+                    </div>
+                    <span class="text-[10px] font-extrabold text-gray-700 uppercase tracking-widest flex items-center gap-1">
+                        <i data-lucide="map-pin" class="w-3 h-3 text-brand-yellow"></i> Região do ABC
+                    </span>
+                </div>
+            </div>
+
+            <p class="text-[11px] font-bold text-gray-400 uppercase tracking-widest mt-4">
+                Total de 211 avaliações 5 estrelas verificadas · 100% de recomendação
+            </p>
+        </div>
+
+        <!-- Carrossel Infinito -->
+        <div class="relative w-full overflow-hidden py-4 select-none reviews-marquee-container reveal" id="reviews-container">
+            <div class="pointer-events-none absolute left-0 top-0 bottom-0 w-12 sm:w-28 bg-gradient-to-r from-[#f8f9fa] to-transparent z-20"></div>
+            <div class="pointer-events-none absolute right-0 top-0 bottom-0 w-12 sm:w-28 bg-gradient-to-l from-[#fafafa] to-transparent z-20"></div>
+
+            <div id="reviews-track" class="reviews-marquee-track flex gap-6 items-stretch">
+                <!-- Review 1: Renata Jábali -->
+                <div class="w-[320px] sm:w-[380px] md:w-[410px] shrink-0 bg-white/75 backdrop-blur-xl rounded-3xl p-6 md:p-7 border border-white/80 shadow-glass hover:shadow-premium hover:border-brand-yellow/50 transition-all duration-300 flex flex-col justify-between group relative overflow-hidden">
+                    <div>
+                        <div class="flex items-center justify-between gap-3 mb-4">
+                            <div class="flex items-center gap-3">
+                                <div class="w-11 h-11 rounded-full bg-gradient-to-tr from-rose-500 to-rose-300 text-white font-bold flex items-center justify-center text-sm shadow-sm ring-2 ring-white">RJ</div>
+                                <div>
+                                    <h4 class="font-bold text-gray-900 text-sm leading-tight">Renata Jábali</h4>
+                                    <div class="flex items-center gap-1.5 mt-0.5">
+                                        <span class="inline-flex items-center gap-1 text-[9px] font-bold bg-amber-100/80 text-amber-800 px-2 py-0.5 rounded-full">
+                                            <i data-lucide="shield-check" class="w-2.5 h-2.5"></i> Local Guide
+                                        </span>
+                                        <span class="text-[10px] text-gray-400">· 18 avaliações</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <span class="text-[10px] text-gray-400 font-medium whitespace-nowrap">Há 4 meses</span>
+                        </div>
+                        <div class="flex text-amber-400 mb-3 gap-0.5">
+                            <i data-lucide="star" class="w-4 h-4 fill-amber-400 text-amber-400"></i>
+                            <i data-lucide="star" class="w-4 h-4 fill-amber-400 text-amber-400"></i>
+                            <i data-lucide="star" class="w-4 h-4 fill-amber-400 text-amber-400"></i>
+                            <i data-lucide="star" class="w-4 h-4 fill-amber-400 text-amber-400"></i>
+                            <i data-lucide="star" class="w-4 h-4 fill-amber-400 text-amber-400"></i>
+                        </div>
+                        <p class="text-gray-700 text-xs md:text-sm leading-relaxed mb-5 italic">
+                            "O trabalho foi ótimo, desde o primeiro atendimento e recebimento dos projetos. Os técnicos foram atenciosos, pontuais e respeitaram a dinâmica do local. A explicação do aplicativo foi muito completa. Recomendo de olhos fechados!"
+                        </p>
+                    </div>
+                    <div class="pt-4 border-t border-gray-100/80">
+                        <span class="text-[10px] font-extrabold uppercase tracking-wider text-gray-400 block mb-1.5">Destaques:</span>
+                        <div class="flex flex-wrap gap-1.5">
+                            <span class="text-[10px] bg-gray-100 text-gray-700 font-medium px-2.5 py-0.5 rounded-md">Pontualidade</span>
+                            <span class="text-[10px] bg-gray-100 text-gray-700 font-medium px-2.5 py-0.5 rounded-md">Zelo no imóvel</span>
+                            <span class="text-[10px] bg-gray-100 text-gray-700 font-medium px-2.5 py-0.5 rounded-md">Configuração didática</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Review 2: Erik Sarnauskas -->
+                <div class="w-[320px] sm:w-[380px] md:w-[410px] shrink-0 bg-white/75 backdrop-blur-xl rounded-3xl p-6 md:p-7 border border-white/80 shadow-glass hover:shadow-premium hover:border-brand-yellow/50 transition-all duration-300 flex flex-col justify-between group relative overflow-hidden">
+                    <div>
+                        <div class="flex items-center justify-between gap-3 mb-4">
+                            <div class="flex items-center gap-3">
+                                <div class="w-11 h-11 rounded-full bg-gradient-to-tr from-sky-500 to-sky-300 text-white font-bold flex items-center justify-center text-sm shadow-sm ring-2 ring-white">ES</div>
+                                <div>
+                                    <h4 class="font-bold text-gray-900 text-sm leading-tight">Erik Sarnauskas</h4>
+                                    <div class="flex items-center gap-1.5 mt-0.5">
+                                        <span class="inline-flex items-center gap-1 text-[9px] font-bold bg-amber-100/80 text-amber-800 px-2 py-0.5 rounded-full">
+                                            <i data-lucide="shield-check" class="w-2.5 h-2.5"></i> Local Guide
+                                        </span>
+                                        <span class="text-[10px] text-gray-400">· 13 avaliações</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <span class="text-[10px] text-gray-400 font-medium whitespace-nowrap">Há 7 meses</span>
+                        </div>
+                        <div class="flex text-amber-400 mb-3 gap-0.5">
+                            <i data-lucide="star" class="w-4 h-4 fill-amber-400 text-amber-400"></i>
+                            <i data-lucide="star" class="w-4 h-4 fill-amber-400 text-amber-400"></i>
+                            <i data-lucide="star" class="w-4 h-4 fill-amber-400 text-amber-400"></i>
+                            <i data-lucide="star" class="w-4 h-4 fill-amber-400 text-amber-400"></i>
+                            <i data-lucide="star" class="w-4 h-4 fill-amber-400 text-amber-400"></i>
+                        </div>
+                        <p class="text-gray-700 text-xs md:text-sm leading-relaxed mb-5 italic">
+                            "Gostei muito do serviço. Foi rápido, organizado e feito com bastante cuidado, principalmente no acabamento e na limpeza do local. O instalador explicou tudo com clareza sobre o funcionamento e configurações."
+                        </p>
+                    </div>
+                    <div class="pt-4 border-t border-gray-100/80">
+                        <span class="text-[10px] font-extrabold uppercase tracking-wider text-gray-400 block mb-1.5">Destaques:</span>
+                        <div class="flex flex-wrap gap-1.5">
+                            <span class="text-[10px] bg-gray-100 text-gray-700 font-medium px-2.5 py-0.5 rounded-md">Acabamento limpo</span>
+                            <span class="text-[10px] bg-gray-100 text-gray-700 font-medium px-2.5 py-0.5 rounded-md">Organização do rack</span>
+                            <span class="text-[10px] bg-gray-100 text-gray-700 font-medium px-2.5 py-0.5 rounded-md">Pós-venda impecável</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Review 3: Amanda Marques Mumme -->
+                <div class="w-[320px] sm:w-[380px] md:w-[410px] shrink-0 bg-white/75 backdrop-blur-xl rounded-3xl p-6 md:p-7 border border-white/80 shadow-glass hover:shadow-premium hover:border-brand-yellow/50 transition-all duration-300 flex flex-col justify-between group relative overflow-hidden">
+                    <div>
+                        <div class="flex items-center justify-between gap-3 mb-4">
+                            <div class="flex items-center gap-3">
+                                <div class="w-11 h-11 rounded-full bg-gradient-to-tr from-amber-500 to-amber-300 text-white font-bold flex items-center justify-center text-sm shadow-sm ring-2 ring-white">AM</div>
+                                <div>
+                                    <h4 class="font-bold text-gray-900 text-sm leading-tight">Amanda Marques Mumme</h4>
+                                    <div class="flex items-center gap-1.5 mt-0.5">
+                                        <span class="inline-flex items-center gap-1 text-[9px] font-bold bg-amber-100/80 text-amber-800 px-2 py-0.5 rounded-full">
+                                            <i data-lucide="shield-check" class="w-2.5 h-2.5"></i> Local Guide
+                                        </span>
+                                        <span class="text-[10px] text-gray-400">· 72 avaliações</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <span class="text-[10px] text-gray-400 font-medium whitespace-nowrap">Há 8 meses</span>
+                        </div>
+                        <div class="flex text-amber-400 mb-3 gap-0.5">
+                            <i data-lucide="star" class="w-4 h-4 fill-amber-400 text-amber-400"></i>
+                            <i data-lucide="star" class="w-4 h-4 fill-amber-400 text-amber-400"></i>
+                            <i data-lucide="star" class="w-4 h-4 fill-amber-400 text-amber-400"></i>
+                            <i data-lucide="star" class="w-4 h-4 fill-amber-400 text-amber-400"></i>
+                            <i data-lucide="star" class="w-4 h-4 fill-amber-400 text-amber-400"></i>
+                        </div>
+                        <p class="text-gray-700 text-xs md:text-sm leading-relaxed mb-5 italic">
+                            "Atendimento diferenciado, ágil e sem enrolação. O Gabriel e os técnicos atenderam de prontidão. Instalação e treinamento nota 10 do início ao fim. Recomendo muito!"
+                        </p>
+                    </div>
+                    <div class="pt-4 border-t border-gray-100/80">
+                        <span class="text-[10px] font-extrabold uppercase tracking-wider text-gray-400 block mb-1.5">Destaques:</span>
+                        <div class="flex flex-wrap gap-1.5">
+                            <span class="text-[10px] bg-gray-100 text-gray-700 font-medium px-2.5 py-0.5 rounded-md">Atendimento Gabriel</span>
+                            <span class="text-[10px] bg-gray-100 text-gray-700 font-medium px-2.5 py-0.5 rounded-md">Agilidade</span>
+                            <span class="text-[10px] bg-gray-100 text-gray-700 font-medium px-2.5 py-0.5 rounded-md">Qualidade técnica</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Duplicações para Scroll Infinito -->
+                <div class="w-[320px] sm:w-[380px] md:w-[410px] shrink-0 bg-white/75 backdrop-blur-xl rounded-3xl p-6 md:p-7 border border-white/80 shadow-glass hover:shadow-premium hover:border-brand-yellow/50 transition-all duration-300 flex flex-col justify-between group relative overflow-hidden">
+                    <div>
+                        <div class="flex items-center justify-between gap-3 mb-4">
+                            <div class="flex items-center gap-3">
+                                <div class="w-11 h-11 rounded-full bg-gradient-to-tr from-rose-500 to-rose-300 text-white font-bold flex items-center justify-center text-sm shadow-sm ring-2 ring-white">RJ</div>
+                                <div>
+                                    <h4 class="font-bold text-gray-900 text-sm leading-tight">Renata Jábali</h4>
+                                    <div class="flex items-center gap-1.5 mt-0.5">
+                                        <span class="inline-flex items-center gap-1 text-[9px] font-bold bg-amber-100/80 text-amber-800 px-2 py-0.5 rounded-full">
+                                            <i data-lucide="shield-check" class="w-2.5 h-2.5"></i> Local Guide
+                                        </span>
+                                        <span class="text-[10px] text-gray-400">· 18 avaliações</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <span class="text-[10px] text-gray-400 font-medium whitespace-nowrap">Há 4 meses</span>
+                        </div>
+                        <div class="flex text-amber-400 mb-3 gap-0.5">
+                            <i data-lucide="star" class="w-4 h-4 fill-amber-400 text-amber-400"></i>
+                            <i data-lucide="star" class="w-4 h-4 fill-amber-400 text-amber-400"></i>
+                            <i data-lucide="star" class="w-4 h-4 fill-amber-400 text-amber-400"></i>
+                            <i data-lucide="star" class="w-4 h-4 fill-amber-400 text-amber-400"></i>
+                            <i data-lucide="star" class="w-4 h-4 fill-amber-400 text-amber-400"></i>
+                        </div>
+                        <p class="text-gray-700 text-xs md:text-sm leading-relaxed mb-5 italic">
+                            "O trabalho foi ótimo, desde o primeiro atendimento e recebimento dos projetos. Os técnicos foram atenciosos, pontuais e respeitaram a dinâmica do local. A explicação do aplicativo foi muito completa. Recomendo de olhos fechados!"
+                        </p>
+                    </div>
+                    <div class="pt-4 border-t border-gray-100/80">
+                        <span class="text-[10px] font-extrabold uppercase tracking-wider text-gray-400 block mb-1.5">Destaques:</span>
+                        <div class="flex flex-wrap gap-1.5">
+                            <span class="text-[10px] bg-gray-100 text-gray-700 font-medium px-2.5 py-0.5 rounded-md">Pontualidade</span>
+                            <span class="text-[10px] bg-gray-100 text-gray-700 font-medium px-2.5 py-0.5 rounded-md">Zelo no imóvel</span>
+                            <span class="text-[10px] bg-gray-100 text-gray-700 font-medium px-2.5 py-0.5 rounded-md">Configuração didática</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="flex items-center justify-center gap-2 mt-4 text-[11px] font-semibold text-gray-400 uppercase tracking-widest reveal">
+            <i data-lucide="hand" class="w-3.5 h-3.5 text-brand-yellow"></i>
+            <span>Passe o mouse ou toque para pausar o carrossel</span>
+        </div>
+
+    </div>
+</section>
+
+<!-- ===================== PROPOSTA DE INVESTIMENTO ===================== -->
+<section id="investimento" class="py-24 bg-[#fafafa] relative overflow-hidden">
+    <div class="absolute inset-0 bg-dots pointer-events-none z-0"></div>
+    <div class="max-w-5xl mx-auto px-4 relative z-10">
+
+        <div class="text-center mb-10 reveal">
+            <span class="text-brand-yellow font-bold uppercase tracking-widest text-xs">Simulador Executivo Oficial</span>
+            <h2 class="text-3xl md:text-5xl font-extrabold text-gray-900 mt-2">Investimento na Solução</h2>
+            <p class="text-gray-500 mt-3 max-w-2xl mx-auto text-sm md:text-base">
+                Valores calculados sobre a Tabela Oficial Speed Distribuidora (Orçamento Nº 181.840) com mão de obra técnica especializada:
+            </p>
+        </div>
+
+        <!-- Seletor de Pagamento -->
+        <div class="flex justify-center mb-10 reveal">
+            <div class="bg-gray-100 p-1.5 rounded-full inline-flex border border-gray-200 shadow-inner flex-wrap justify-center gap-1">
+                <button type="button" id="btn-pay-pix" onclick="selectPayment('pix')" class="px-6 py-2.5 rounded-full text-xs font-bold bg-brand-yellow text-black shadow-md transition-all">
+                    À Vista (PIX com Desconto)
+                </button>
+                <button type="button" id="btn-pay-card" onclick="selectPayment('card')" class="px-6 py-2.5 rounded-full text-xs font-bold bg-transparent text-gray-500 hover:text-gray-800 transition-all">
+                    12x no Cartão de Crédito
+                </button>
+            </div>
+        </div>
+
+        <!-- Card Principal de Investimento -->
+        <div class="grid lg:grid-cols-1 gap-8 reveal items-stretch max-w-4xl mx-auto">
+            
+            <div class="premium-border-glow group relative z-20">
+                <div class="premium-border-inner flex flex-col lg:flex-row relative overflow-hidden bg-white p-0">
+                    <div class="absolute top-0 left-0 w-64 h-64 bg-brand-yellow/5 rounded-full blur-[80px] pointer-events-none"></div>
+                    
+                    <!-- Lado Esquerdo: Escopo Detalhado -->
+                    <div class="w-full lg:w-7/12 p-8 md:p-10 relative z-10 border-b lg:border-b-0 lg:border-r border-gray-100 flex flex-col justify-between">
+                        <div>
+                            <div class="mb-4">
+                                <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-zinc-900 text-brand-yellow text-[10px] font-bold uppercase tracking-widest shadow-sm">
+                                    ⭐ Solução Completa CFTV IP + Rede Mesh
+                                </span>
+                                <h3 class="text-2xl md:text-3xl font-bold text-gray-900 mt-3">Implantação Residencial Morumbi</h3>
+                                <p class="text-xs md:text-sm text-gray-500 mt-2 leading-relaxed">
+                                    10 Câmeras IP Intelbras, centralização em Mini Rack 3U, Switches PoE e Cobertura Wi-Fi 6 Mesh de 300 m² sem pontos cegos.
+                                </p>
+                            </div>
+
+                            <ul class="space-y-3 mb-6">
+                                <li class="flex items-start gap-2.5 text-xs md:text-sm text-gray-700">
+                                    <i data-lucide="check-circle-2" class="w-4 h-4 text-brand-yellow shrink-0 mt-0.5"></i>
+                                    <span><strong>07x Câmeras IP Domes Full HD (VIPC 1230 D G2):</strong> Fixação embutida e acabamento limpo no forro de gesso.</span>
+                                </li>
+                                <li class="flex items-start gap-2.5 text-xs md:text-sm text-gray-700">
+                                    <i data-lucide="check-circle-2" class="w-4 h-4 text-brand-yellow shrink-0 mt-0.5"></i>
+                                    <span><strong>02x Câmeras IP Full Color c/ Microfone (VIP 1230 FC+):</strong> Cores 24h e áudio embutido nas áreas prioritárias.</span>
+                                </li>
+                                <li class="flex items-start gap-2.5 text-xs md:text-sm text-gray-700">
+                                    <i data-lucide="check-circle-2" class="w-4 h-4 text-brand-yellow shrink-0 mt-0.5"></i>
+                                    <span><strong>01x Câmera Wi-Fi/IP com Áudio Bidirecional (VIPW 1210 C):</strong> Falar e ouvir pelo app em tempo real.</span>
+                                </li>
+                                <li class="flex items-start gap-2.5 text-xs md:text-sm text-gray-700">
+                                    <i data-lucide="check-circle-2" class="w-4 h-4 text-brand-yellow shrink-0 mt-0.5"></i>
+                                    <span><strong>01x NVR 16ch NVD 1516 + HD 2TB WD Purple:</strong> Gravação contínua 24/7 sem perda de quadros e sem mensalidade.</span>
+                                </li>
+                                <li class="flex items-start gap-2.5 text-xs md:text-sm text-gray-700">
+                                    <i data-lucide="check-circle-2" class="w-4 h-4 text-brand-yellow shrink-0 mt-0.5"></i>
+                                    <span><strong>02x Switches 8p PoE S1110F-P:</strong> Alimentação e dados integrados no cabo de rede sem fontes soltas.</span>
+                                </li>
+                                <li class="flex items-start gap-2.5 text-xs md:text-sm text-gray-700">
+                                    <i data-lucide="check-circle-2" class="w-4 h-4 text-brand-yellow shrink-0 mt-0.5"></i>
+                                    <span><strong>03x Roteadores Wi-Fi 6 Mesh RW 6181:</strong> Cobertura unificada de 300 m² sem áreas de sombra.</span>
+                                </li>
+                                <li class="flex items-start gap-2.5 text-xs md:text-sm text-gray-700">
+                                    <i data-lucide="check-circle-2" class="w-4 h-4 text-brand-yellow shrink-0 mt-0.5"></i>
+                                    <span><strong>01x Mini Rack 3U Parede MRM 337 + Régua 8T + 100 Conectores RJ45 Vazados.</strong></span>
+                                </li>
+                                <li class="flex items-start gap-2.5 text-xs md:text-sm text-gray-700">
+                                    <i data-lucide="check-circle-2" class="w-4 h-4 text-brand-yellow shrink-0 mt-0.5"></i>
+                                    <span><strong>Mão de Obra Especializada Vision:</strong> Conectorização das 10 câmeras e 3 APs, montagem do rack, setup do NVR e rede + 12 meses de garantia total.</span>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <div class="p-3.5 bg-emerald-50/80 rounded-2xl border border-emerald-200/80 text-xs text-emerald-950 flex items-start gap-2.5">
+                            <i data-lucide="shield-check" class="w-4 h-4 text-emerald-600 shrink-0 mt-0.5"></i>
+                            <div>
+                                <span class="font-bold block">Garantia Vision Tecnologia de 12 Meses:</span>
+                                <span class="text-emerald-800 text-[11px]">Suporte técnico direto da nossa equipe, peças originais Intelbras e alinhamento prévio agendado na visita de sexta-feira.</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Lado Direito: Preço Dinâmico & Ação -->
+                    <div class="w-full lg:w-5/12 bg-[#f8f9fa] p-8 md:p-10 flex flex-col items-center justify-center text-center relative z-10 min-h-[380px]">
+                        
+                        <p class="text-[11px] font-bold text-gray-400 uppercase tracking-widest mb-3" id="label-pricing-mode">Investimento à Vista (PIX)</p>
+
+                        <!-- Display de Preço -->
+                        <div id="price-display-box" class="w-full transition-opacity duration-300">
+                            <!-- Renderizado via JS -->
+                        </div>
+
+                        <!-- Botão CTA WhatsApp -->
+                        <a id="btn-whatsapp-cta" href="#" target="_blank" onclick="if(window.clarity) window.clarity('event', 'Clique_Aprovacao_Tiago');" class="mt-8 w-full bg-brand-yellow hover:bg-brand-goldLight text-black font-bold py-4 px-6 rounded-2xl transition-all shadow-glow flex items-center justify-center gap-2 group">
+                            <i data-lucide="check-circle" class="w-5 h-5"></i>
+                            <span class="text-xs md:text-sm uppercase tracking-wider font-extrabold" id="cta-btn-text">Aprovar Proposta no WhatsApp</span>
+                            <i data-lucide="arrow-right" class="w-4 h-4 group-hover:translate-x-1 transition-transform"></i>
+                        </a>
+
+                        <p class="text-[11px] text-gray-400 mt-4 flex items-center gap-1.5 justify-center">
+                            <i data-lucide="calendar-check" class="w-3.5 h-3.5 text-brand-yellow"></i>
+                            Visita técnica agendada para sexta-feira de manhã
+                        </p>
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+</section>
+
+<!-- ===================== FAQ ===================== -->
+<section id="faq" class="py-24 bg-[#f8f9fa] border-t border-gray-200/60">
+    <div class="max-w-3xl mx-auto px-4">
+        <div class="text-center mb-14 reveal">
+            <span class="text-brand-yellow font-bold uppercase tracking-widest text-xs">Perguntas Frequentes</span>
+            <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mt-3">Dúvidas Técnicas do Projeto</h2>
+        </div>
+        
+        <div class="space-y-4 reveal" id="accordion">
+
+            <div class="accordion-item bg-white rounded-2xl border border-gray-100 shadow-sm overflow-hidden transition-all hover:border-brand-yellow/50">
+                <button type="button" onclick="toggleAccordion(this)" class="w-full flex items-center justify-between p-6 text-left font-bold text-gray-900 focus:outline-none">
+                    <span>Por que a infraestrutura IP com Switches PoE e Wi-Fi 6 é superior ao analógico?</span>
+                    <i data-lucide="chevron-down" class="w-5 h-5 text-brand-yellow acc-arrow shrink-0"></i>
+                </button>
+                <div class="accordion-content">
+                    <p class="px-6 pb-6 text-gray-600 text-sm leading-relaxed">
+                        Sistemas analógicos HDCVI requerem cabos coaxiais pesados, fontes 12V separadas e não integram redes de computadores. O sistema IP transmite dados de altíssima definição e alimenta cada câmera pelo próprio cabo de rede (PoE). Além disso, os 3 roteadores RW 6181 criam uma malha Wi-Fi 6 que atende tanto as câmeras quanto seus notebooks, TVs e celulares com máxima velocidade em 300 m².
+                    </p>
+                </div>
+            </div>
+
+            <div class="accordion-item bg-white rounded-2xl border border-gray-100 shadow-sm overflow-hidden transition-all hover:border-brand-yellow/50">
+                <button type="button" onclick="toggleAccordion(this)" class="w-full flex items-center justify-between p-6 text-left font-bold text-gray-900 focus:outline-none">
+                    <span>Como funcionam as câmeras com microfone e áudio bidirecional?</span>
+                    <i data-lucide="chevron-down" class="w-5 h-5 text-brand-yellow acc-arrow shrink-0"></i>
+                </button>
+                <div class="accordion-content">
+                    <p class="px-6 pb-6 text-gray-600 text-sm leading-relaxed">
+                        Para otimizar seu orçamento, mantivemos 7 câmeras dome padrão Full HD de alta nitidez. As 2 câmeras Full Color possuem microfone integrado para capturar o áudio ambiente junto ao vídeo. Já a câmera com áudio bidirecional (VIPW 1210 C) conta com microfone e alto-falante, permitindo que você converse em tempo real com quem estiver no cômodo diretamente pelo aplicativo.
+                    </p>
+                </div>
+            </div>
+
+            <div class="accordion-item bg-white rounded-2xl border border-gray-100 shadow-sm overflow-hidden transition-all hover:border-brand-yellow/50">
+                <button type="button" onclick="toggleAccordion(this)" class="w-full flex items-center justify-between p-6 text-left font-bold text-gray-900 focus:outline-none">
+                    <span>Por quanto tempo o HD de 2TB armazena as gravações?</span>
+                    <i data-lucide="chevron-down" class="w-5 h-5 text-brand-yellow acc-arrow shrink-0"></i>
+                </button>
+                <div class="accordion-content">
+                    <p class="px-6 pb-6 text-gray-600 text-sm leading-relaxed">
+                        O HD WD Purple de 2TB combinado à compressão inteligente H.265+ do NVR NVD 1516 armazena em média de 15 a 25 dias de gravação contínua das 10 câmeras. Quando o disco enche, o sistema faz o loop automático, gravando por cima das filmagens mais antigas sem necessidade de intervenção manual.
+                    </p>
+                </div>
+            </div>
+
+            <div class="accordion-item bg-white rounded-2xl border border-gray-100 shadow-sm overflow-hidden transition-all hover:border-brand-yellow/50">
+                <button type="button" onclick="toggleAccordion(this)" class="w-full flex items-center justify-between p-6 text-left font-bold text-gray-900 focus:outline-none">
+                    <span>O que será validado na visita técnica desta sexta-feira de manhã?</span>
+                    <i data-lucide="chevron-down" class="w-5 h-5 text-brand-yellow acc-arrow shrink-0"></i>
+                </button>
+                <div class="accordion-content">
+                    <p class="px-6 pb-6 text-gray-600 text-sm leading-relaxed">
+                        Na visita na Rua Visconde de Nacar, 150 (Apto 81), checaremos os 10 pontos de cabos existentes no gesso, a melhor posição para a fixação do mini rack de parede e o ponto ideal para cada um dos 3 roteadores Wi-Fi 6 Mesh, garantindo que o cronograma de instalação seja executado com 100% de precisão.
+                    </p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<!-- ===================== FOOTER ===================== -->
+<footer class="bg-black py-16 text-center border-t border-zinc-900 group">
+    <div class="max-w-4xl mx-auto px-4">
+        
+        <div class="flex flex-col items-center justify-center leading-none opacity-40 group-hover:opacity-100 transition-opacity duration-500 cursor-default mb-10">
+            <div class="flex flex-col items-center">
+                <div class="relative flex items-baseline leading-none">
+                    <span class="font-logo font-bold text-[3.5rem] text-white lowercase tracking-[-0.05em] leading-none">vısıon</span>
+                    <span class="absolute -right-3.5 top-2.5 text-[0.75rem] text-brand-yellow font-bold">®</span>
+                </div>
+                <span class="font-tech text-[0.75rem] font-bold text-zinc-500 lowercase -mt-3 ml-1.5 text-center w-full" style="letter-spacing: 0.53em;">tecnologia</span>
+            </div>
+        </div>
+
+        <div class="text-zinc-500 text-xs md:text-sm leading-relaxed space-y-1 mb-8 opacity-60">
+            <p><strong>Tiago</strong> | Rua Visconde de Nacar, 150 – Apto 81, Morumbi, São Paulo - SP</p>
+            <p>Proposta Técnica Definitiva #TIAGO-MORUMBI-2026 | Base Speed Distribuidora Nº 181.840</p>
+        </div>
+
+        <div class="inline-flex items-center justify-center gap-2 border border-zinc-800 bg-zinc-900/50 px-5 py-2.5 rounded-full mb-6 shadow-sm">
+            <i data-lucide="lock" class="w-3.5 h-3.5 text-brand-yellow"></i>
+            <span class="text-[10px] md:text-xs text-zinc-400 uppercase tracking-widest font-bold">Documento confidencial residencial</span>
+        </div>
+        
+        <p class="text-[10px] text-zinc-700 uppercase tracking-widest font-bold mt-6">Engenharia de Segurança &amp; Infraestrutura de Redes</p>
+    </div>
+</footer>
+
+<!-- ===================== JAVASCRIPT LOGIC ===================== -->
+<script>
+    // DADOS FINANCEIROS EXATOS (ORÇAMENTO DEFINITIVO TIAGO - BASE SPEED Nº 181.840)
+    // CTD: R$ 10.109,63 (Materiais R$ 8.349,63 + Repasse M.O. R$ 1.760,00)
+    // DIVISOR TIER 3: 0,745
+    const pricing = {
+        title: "Solução Completa CFTV IP + Rede Wi-Fi 6 Mesh (Apto 300 m²)",
+        pix: 13570.00,
+        pixHalf: 6785.00,
+        cardTotal: 16282.69,
+        cardMonthly: 1356.89
+    };
+
+    let selectedPayment = 'pix'; // 'pix' ou 'card'
+
+    function formatBRL(val) {
+        return val.toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+    }
+
+    function selectPayment(paymentMode) {
+        selectedPayment = paymentMode;
+        const btnPix = document.getElementById('btn-pay-pix');
+        const btnCard = document.getElementById('btn-pay-card');
+        const labelMode = document.getElementById('label-pricing-mode');
+
+        if (btnPix && btnCard) {
+            btnPix.className = "px-6 py-2.5 rounded-full text-xs font-bold bg-transparent text-gray-500 hover:text-gray-800 transition-all";
+            btnCard.className = "px-6 py-2.5 rounded-full text-xs font-bold bg-transparent text-gray-500 hover:text-gray-800 transition-all";
+        }
+
+        if (paymentMode === 'pix') {
+            if (btnPix) btnPix.className = "px-6 py-2.5 rounded-full text-xs font-bold bg-brand-yellow text-black shadow-md transition-all";
+            if (labelMode) labelMode.textContent = "Investimento à Vista (PIX com Desconto)";
+        } else {
+            if (btnCard) btnCard.className = "px-6 py-2.5 rounded-full text-xs font-bold bg-brand-yellow text-black shadow-md transition-all";
+            if (labelMode) labelMode.textContent = "Investimento Parcelado no Cartão";
+        }
+
+        renderPriceDisplay();
+        if (window.clarity) window.clarity("event", "Mudou_Pagamento_Tiago_" + paymentMode);
+    }
+
+    function renderPriceDisplay() {
+        const box = document.getElementById('price-display-box');
+        const ctaBtn = document.getElementById('btn-whatsapp-cta');
+        const ctaText = document.getElementById('cta-btn-text');
+
+        if (!box) return;
+
+        let html = '';
+        let whatsappMsg = '';
+
+        if (selectedPayment === 'pix') {
+            html = `
+                <div class="flex flex-col items-center justify-center w-full animate-fade-in">
+                    <div class="flex items-baseline justify-center gap-1.5 mb-2">
+                        <span class="text-2xl font-bold text-gray-400">R$</span>
+                        <span class="text-5xl md:text-6xl font-extrabold text-[#111827] tracking-tighter leading-none">${formatBRL(pricing.pix).split(',')[0]}<span class="text-3xl text-gray-400">,${formatBRL(pricing.pix).split(',')[1]}</span></span>
+                    </div>
+                    <div class="inline-flex items-center gap-1.5 bg-emerald-50 border border-emerald-200 text-emerald-700 px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-widest mt-2">
+                        <i data-lucide="zap" class="w-3 h-3"></i> Pagamento à vista (PIX)
+                    </div>
+                    
+                    <div class="w-full mt-6 space-y-2 text-left">
+                        <div class="bg-white border border-gray-200 rounded-xl p-3 shadow-sm relative overflow-hidden">
+                            <div class="absolute top-0 left-0 w-1.5 h-full bg-emerald-400"></div>
+                            <div class="pl-2">
+                                <span class="text-[10px] font-bold uppercase tracking-widest text-gray-500 block">Sinal (Aprovação e Pedido de Equipamentos)</span>
+                                <span class="font-bold text-gray-900 text-sm">R$ ${formatBRL(pricing.pixHalf)}</span>
+                            </div>
+                        </div>
+                        <div class="bg-white border border-gray-200 rounded-xl p-3 shadow-sm relative overflow-hidden">
+                            <div class="absolute top-0 left-0 w-1.5 h-full bg-brand-yellow"></div>
+                            <div class="pl-2">
+                                <span class="text-[10px] font-bold uppercase tracking-widest text-gray-500 block">Entrega (Finalização, Testes no App &amp; Garantia)</span>
+                                <span class="font-bold text-gray-900 text-sm">R$ ${formatBRL(pricing.pixHalf)}</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `;
+            whatsappMsg = `Fala Gabriel! Vi a proposta técnica completa do apartamento na Rua Visconde de Nacar (10 Câmeras IP, Switches PoE, Wi-Fi 6 Mesh e NVR com 2TB). Gostaria de aprovar a proposta no valor de *R$ ${formatBRL(pricing.pix)} no PIX*. Vamos alinhar os detalhes da nossa visita de sexta de manhã!`;
+            if (ctaText) ctaText.textContent = `Aprovar no PIX (R$ ${formatBRL(pricing.pix)})`;
+
+        } else {
+            html = `
+                <div class="flex flex-col items-center justify-center w-full animate-fade-in">
+                    <span class="text-xs font-bold text-gray-400 mb-1">Parcelamento Facilitado</span>
+                    <div class="flex items-baseline justify-center gap-1.5 mb-3">
+                        <span class="text-2xl font-bold text-[#111827]">12x de R$</span>
+                        <span class="text-5xl md:text-6xl font-extrabold text-[#111827] tracking-tighter leading-none">${formatBRL(pricing.cardMonthly).split(',')[0]}<span class="text-3xl text-gray-400">,${formatBRL(pricing.cardMonthly).split(',')[1]}</span></span>
+                    </div>
+                    <div class="inline-flex items-center gap-1.5 bg-blue-50 border border-blue-200 text-blue-700 px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-widest mt-1">
+                        <i data-lucide="credit-card" class="w-3 h-3"></i> Cartão de Crédito
+                    </div>
+                    <p class="text-xs text-gray-500 font-medium mt-4">Valor total parcelado: R$ ${formatBRL(pricing.cardTotal)}</p>
+                </div>
+            `;
+            whatsappMsg = `Fala Gabriel! Analisei a proposta dos 10 pontos de CFTV IP e rede Wi-Fi 6 Mesh para o apartamento do Morumbi. Gostaria de aprovar o projeto em *12x de R$ ${formatBRL(pricing.cardMonthly)} no cartão*. Vamos combinar os detalhes para a visita de sexta de manhã!`;
+            if (ctaText) ctaText.textContent = `Aprovar em 12x no Cartão`;
+        }
+
+        box.innerHTML = html;
+        if (ctaBtn) ctaBtn.href = "https://wa.me/5511930816696?text=" + encodeURIComponent(whatsappMsg);
+        
+        if (window.lucide && typeof window.lucide.createIcons === 'function') {
+            window.lucide.createIcons();
+        }
+    }
+
+    // ACCORDION TOGGLE
+    function toggleAccordion(button) {
+        const item = button.closest('.accordion-item');
+        if (!item) return;
+        const isOpen = item.classList.contains('open');
+        document.querySelectorAll('.accordion-item').forEach(i => i.classList.remove('open'));
+        if (!isOpen) item.classList.add('open');
+        if (window.lucide && typeof window.lucide.createIcons === 'function') {
+            window.lucide.createIcons();
+        }
+    }
+
+    // CONTROLE DE ACESSO (LOCK SCREEN)
+    function checkPassword() {
+        const inputEl = document.getElementById('password-input');
+        if (!inputEl) return;
+
+        const input = inputEl.value.trim().toUpperCase();
+        const errorMsg = document.getElementById('error-msg');
+        const btnUnlock = document.getElementById('btn-unlock');
+        const unlockIcon = document.getElementById('unlock-icon');
+        const unlockText = document.getElementById('unlock-text');
+        const unlockArrow = document.getElementById('unlock-arrow');
+
+        const validPasswords = ['TIAGO2026', 'TIAGO', 'MORUMBI', 'VISION'];
+
+        if (validPasswords.includes(input)) {
+            if (btnUnlock) btnUnlock.disabled = true;
+            if (unlockText) unlockText.textContent = "Validando Acesso...";
+            if (unlockIcon) unlockIcon.className = "w-5 h-5 animate-spin text-black";
+            if (unlockArrow) unlockArrow.style.display = 'none';
+
+            setTimeout(() => {
+                const lockScreen = document.getElementById('lock-screen');
+                if (lockScreen) lockScreen.style.opacity = '0';
+
+                const video = document.getElementById("vision-video");
+                if (video && video.paused) {
+                    video.muted = true;
+                    video.play().catch(() => {});
+                }
+
+                if (window.clarity) {
+                    try {
+                        window.clarity("consent");
+                        window.clarity("identify", "tiago-morumbi", undefined, undefined, "Tiago (Morumbi 300m2)");
+                        window.clarity("set", "Proposta", "Projeto_CFTV_IP_Tiago");
+                        window.clarity("event", "Proposta_Desbloqueada");
+                    } catch(e) {}
+                }
+
+                // Notificação silenciosa de abertura
+                fetch('https://api.staticforms.dev/submit', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+                    body: JSON.stringify({
+                        accessKey: "sf_077ej49gjha153gk3m6ceecf",
+                        subject: "🚨 ALERTA: Proposta Acessada (Tiago - Morumbi 300 m²)",
+                        name: "Sistema Vision",
+                        email: "diretoria@visionsp.com.br",
+                        message: "O cliente Tiago acessou a proposta técnica definitiva de 10 Câmeras IP + Wi-Fi 6 Mesh no Morumbi!\n\n🔑 Senha Utilizada: " + input + "\n🕒 Horário: " + new Date().toLocaleString('pt-BR')
+                    })
+                }).catch(() => {});
+
+                setTimeout(() => {
+                    if (lockScreen) lockScreen.style.display = 'none';
+                    const htmlRoot = document.getElementById('html-root');
+                    if (htmlRoot) {
+                        htmlRoot.classList.remove('overflow-hidden', 'h-screen');
+                        htmlRoot.classList.add('overflow-x-hidden');
+                    }
+                    document.body.classList.remove('overflow-hidden', 'h-screen');
+                    document.body.classList.add('overflow-x-hidden');
+                }, 700);
+
+            }, 600);
+
+        } else {
+            if (errorMsg) errorMsg.classList.remove('hidden');
+            inputEl.style.borderColor = 'rgba(239,68,68,0.5)';
+            setTimeout(() => {
+                if (errorMsg) errorMsg.classList.add('hidden');
+                inputEl.style.borderColor = '';
+            }, 3000);
+        }
+    }
+
+    // INICIALIZAÇÃO
+    document.addEventListener("DOMContentLoaded", function() {
+        if (window.lucide && typeof window.lucide.createIcons === 'function') {
+            window.lucide.createIcons();
+        }
+
+        const pwdInput = document.getElementById('password-input');
+        if (pwdInput) {
+            pwdInput.addEventListener('keypress', function(e) {
+                if (e.key === 'Enter') {
+                    e.preventDefault();
+                    checkPassword();
+                }
+            });
+        }
+
+        // Scroll Reveal
+        try {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) entry.target.classList.add('active');
+                });
+            }, { threshold: 0.08 });
+            document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+        } catch(e) {
+            document.querySelectorAll('.reveal').forEach(el => el.classList.add('active'));
+        }
+
+        // Vídeo e Áudio
+        const videoHero = document.getElementById("vision-video");
+        const overlayHero = document.getElementById("unmute-overlay");
+
+        if (videoHero && overlayHero) {
+            overlayHero.addEventListener("click", function(e) {
+                e.stopPropagation();
+                videoHero.muted = false;
+                videoHero.loop = true;
+                videoHero.currentTime = 0;
+                videoHero.play().catch(() => {});
+                overlayHero.style.opacity = "0";
+                setTimeout(() => { overlayHero.style.display = "none"; }, 400);
+
+                if (window.clarity) {
+                    try { window.clarity("event", "Video_Assistido_Tiago"); } catch(err) {}
+                }
+            });
+
+            videoHero.addEventListener("click", function() {
+                if (overlayHero.style.display === "none") {
+                    if (videoHero.paused) { videoHero.play(); } else { videoHero.pause(); }
+                }
+            });
+        }
+
+        // Renderização inicial
+        renderPriceDisplay();
+
+        // Pausa no Carrossel com Touch
+        const reviewsTrack = document.getElementById('reviews-track');
+        const reviewsContainer = document.getElementById('reviews-container');
+        if (reviewsTrack && reviewsContainer) {
+            reviewsContainer.addEventListener('touchstart', function() {
+                reviewsTrack.classList.add('paused');
+            }, { passive: true });
+
+            reviewsContainer.addEventListener('touchend', function() {
+                reviewsTrack.classList.remove('paused');
+            }, { passive: true });
+
+            reviewsContainer.addEventListener('touchcancel', function() {
+                reviewsTrack.classList.remove('paused');
+            }, { passive: true });
+        }
+    });
+
+    // Navbar Scroll Shadow
+    window.addEventListener('scroll', () => {
+        const navbar = document.getElementById('navbar');
+        if (navbar) {
+            if (window.scrollY > 40) {
+                navbar.classList.add('shadow-md');
+            } else {
+                navbar.classList.remove('shadow-md');
+            }
+        }
+    });
+</script>
+</body>
+</html>
