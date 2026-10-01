@@ -929,7 +929,23 @@
 
                     <div class="mb-4 md:mb-6 p-4 md:p-8 bg-brand-yellow/5 border border-brand-yellow/20 rounded-xl md:rounded-2xl min-h-[120px] md:min-h-[160px] flex flex-col items-center justify-center text-center relative z-10">
                         <div class="w-full" id="price-opt1">
-                            <!-- Injetado dinamicamente via JS -->
+                            <div class="flex flex-col items-center w-full animate-fade-in font-sans">
+                                <p class="text-[8px] md:text-[10px] text-[#8a6208] uppercase tracking-widest font-bold mb-1">À Vista no PIX (Sem Juros)</p>
+                                <span class="text-4xl md:text-5xl font-black text-gray-900 tracking-tight mb-4">R$ 12.000,00</span>
+                                
+                                <div class="w-full space-y-2">
+                                    <div class="bg-white border border-gray-200 rounded-xl py-2.5 flex flex-col items-center justify-center relative overflow-hidden shadow-xs">
+                                        <div class="absolute top-0 left-0 w-1 h-full bg-[#34d399] rounded-l-lg"></div>
+                                        <span class="text-[8px] font-bold uppercase tracking-widest text-brand-goldDark mb-0.5 font-sans">Sinal para Compra dos Equipamentos (50%)</span>
+                                        <span class="text-sm font-bold text-gray-900">R$ 6.000,00</span>
+                                    </div>
+                                    <div class="bg-white border border-gray-200 rounded-xl py-2.5 flex flex-col items-center justify-center relative overflow-hidden shadow-xs">
+                                        <div class="absolute top-0 left-0 w-1.5 h-full bg-[#c8a048] rounded-l-lg"></div>
+                                        <span class="text-[8px] font-bold uppercase tracking-widest text-brand-goldDark mb-0.5 font-sans">Saldo na Entrega e Treinamento da Zeladoria (50%)</span>
+                                        <span class="text-sm font-bold text-gray-900">R$ 6.000,00</span>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
 
@@ -967,7 +983,7 @@
                         </div>
                     </div>
 
-                    <a id="btn-aprova-link" href="#" target="_blank" class="w-full bg-brand-yellow hover:bg-brand-goldLight text-black font-bold py-3 md:py-4 rounded-xl md:rounded-2xl flex items-center justify-center gap-1.5 md:gap-2 transition-all shadow-glow-md text-[10px] md:text-[12px] uppercase tracking-widest group relative overflow-hidden mt-auto z-10 font-sans">
+                    <a id="btn-aprova-link" href="https://wa.me/5511930816696?text=Ol%C3%A1%20Gabriel,%20analisei%20a%20proposta%20de%20reconhecimento%20facial%20para%20os%204%20pontos%20do%20Edif%C3%ADcio%20Garden%20Plaza%20e%20gostar%C3%ADamos%20de%20aprovar%20o%20projeto%20com%20pagamento%20%C3%A0%20Vista%20de%20R$%2012.000,00%20via%20PIX." target="_blank" class="w-full bg-brand-yellow hover:bg-brand-goldLight text-black font-bold py-3 md:py-4 rounded-xl md:rounded-2xl flex items-center justify-center gap-1.5 md:gap-2 transition-all shadow-glow-md text-[10px] md:text-[12px] uppercase tracking-widest group relative overflow-hidden mt-auto z-10 font-sans">
                         <div class="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-300 rounded-xl md:rounded-2xl"></div>
                         <span id="btn-text-aprova" class="relative z-10">Aprovar Projeto (Falar com Gabriel)</span>
                         <i data-lucide="arrow-right" class="w-4 h-4 md:w-5 md:h-5 relative z-10 group-hover:translate-x-1 transition-transform"></i>
@@ -1142,14 +1158,15 @@
 
         const input = inputEl.value;
         const errorMsg = document.getElementById('error-msg');
-        const formattedInput = input.trim().toUpperCase();
+        // Normaliza removendo acentos e espaços
+        const formattedInput = input.trim().toUpperCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
         
         const btnUnlock = document.getElementById('btn-unlock');
         const unlockIcon = document.getElementById('unlock-icon');
         const unlockText = document.getElementById('unlock-text');
         const unlockArrow = document.getElementById('unlock-arrow');
         
-        const validPasswords = ['MIRO2026', 'GARDEN2026', 'MIRO', 'VALERIA', 'GARDEN', 'VISION'];
+        const validPasswords = ['MIRO2026', 'GARDEN2026', 'MIRO', 'VALERIA', 'GARDEN', 'VISION', '1234'];
 
         if (validPasswords.includes(formattedInput)) {
             if (btnUnlock) btnUnlock.disabled = true;
@@ -1176,6 +1193,15 @@
                     } catch(e){}
                 }
 
+                if (window.gtag) {
+                    try {
+                        gtag('event', 'proposta_desbloqueada', {
+                            'event_category': 'Engajamento',
+                            'event_label': 'Miro - Garden Plaza'
+                        });
+                    } catch(e){}
+                }
+
                 fetch('https://api.staticforms.dev/submit', {
                     method: 'POST',
                     headers: { 
@@ -1199,6 +1225,7 @@
                         htmlRoot.classList.add('overflow-x-hidden');
                     }
                     document.body.classList.remove('overflow-hidden', 'h-screen');
+                    updatePrices();
                 }, 700);
 
             }, 800);
@@ -1424,8 +1451,12 @@
         initIcons();
     }
 
-    window.addEventListener("load", () => {
+    // Executa imediatamente para garantir exibição mesmo antes do load de vídeos pesados
+    document.addEventListener("DOMContentLoaded", () => {
         setPaymentMode('avista');
+    });
+    window.addEventListener("load", () => {
+        updatePrices();
     });
 
     try {
