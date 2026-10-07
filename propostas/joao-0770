@@ -280,6 +280,7 @@
                 <a href="#solucao" class="hover:text-brand-yellow transition-colors">Tecnologia</a>
                 <a href="#engenharia" class="hover:text-brand-yellow transition-colors">Porta de Vidro</a>
                 <a href="#equipamentos" class="hover:text-brand-yellow transition-colors">Equipamentos</a>
+                <a href="#demonstracao-video" class="hover:text-brand-yellow transition-colors">Vídeo Real</a>
                 <a href="#composicao" class="hover:text-brand-yellow transition-colors">Composição</a>
                 <a href="#investimento" class="hover:text-brand-yellow transition-colors">Investimento</a>
                 <a href="#faq" class="hover:text-brand-yellow transition-colors">FAQ</a>
@@ -499,7 +500,7 @@
     </div>
 </section>
 
-<section id="engenharia" class="py-20 bg-white relative">
+<section id="engenharia" class="py-20 bg-white border-b border-gray-200/60 relative">
     <div class="max-w-7xl mx-auto px-4 relative z-10">
         
         <div class="text-center mb-12 reveal">
@@ -587,7 +588,7 @@
     </div>
 </section>
 
-<section id="equipamentos" class="py-20 bg-zinc-950 text-white relative overflow-hidden border-y border-zinc-800">
+<section id="equipamentos" class="py-20 bg-zinc-950 text-white relative overflow-hidden border-b border-zinc-800">
     <div class="bg-grid absolute inset-0 opacity-10 pointer-events-none"></div>
     <div class="max-w-7xl mx-auto px-4 relative z-10">
         
@@ -609,7 +610,7 @@
 
                     <h3 class="text-base font-bold text-white mb-1.5">Controlador Facial Inteligente</h3>
                     <p class="text-xs text-zinc-400 leading-relaxed mb-4">
-                        Tela touch colorida de alta resolução. Suporta reconhecimento facial com algoritmo anti-fake (bloqueia fotos e vídeos na tela do celular), leitura de QR Code direto do smartphone e tags RFID.
+                        Tela touch colorida de alta resolução. Suporta reconhecimento facial com algoritmo anti-fake (bloqueia fotos e vídeos na tela do celular), leitura de QR Code direto do smartphone e tags RFID Mifare.
                     </p>
                 </div>
                 <div class="pt-3 border-t border-zinc-800 flex items-center justify-between text-[11px] font-bold text-brand-yellow">
@@ -695,7 +696,62 @@
     </div>
 </section>
 
-<section id="composicao" class="py-20 bg-[#f8f9fa] border-t border-gray-200/60 relative">
+<section id="demonstracao-video" class="py-20 bg-zinc-950 text-white relative overflow-hidden border-b border-zinc-800">
+    <div class="bg-grid absolute inset-0 opacity-10 pointer-events-none"></div>
+    <div class="max-w-4xl mx-auto px-4 relative z-10">
+        
+        <div class="text-center mb-10 reveal">
+            <span class="text-brand-yellow text-[9px] font-extrabold uppercase tracking-widest bg-brand-yellow/10 border border-brand-yellow/30 px-3.5 py-1.5 rounded-full inline-block">
+                Demonstração em Vídeo Real
+            </span>
+            <h2 class="text-2xl md:text-4xl font-extrabold text-white mt-3">
+                Veja o Leitor Facial em Ação
+            </h2>
+            <p class="text-zinc-400 text-xs md:text-sm mt-2 max-w-lg mx-auto">
+                Reconhecimento facial com velocidade de 0,2s, verificação antifraude e validação instantânea.
+            </p>
+        </div>
+
+        <!-- Mockup Smartphone Vertical 9:16 -->
+        <div class="flex justify-center reveal">
+            <div class="w-full max-w-[320px] sm:max-w-[340px] bg-zinc-900 border-2 border-zinc-800 rounded-[2.5rem] p-3 shadow-2xl relative group">
+                <div class="relative w-full aspect-[9/16] rounded-[2rem] overflow-hidden bg-black flex items-center justify-center border border-zinc-800">
+                    <video id="video-facial" 
+                           src="https://res.cloudinary.com/dptcuckhf/video/upload/v1779472606/YTDown_Shorts_Controle-de-acesso-facial-Intelbras-SS35_Media_1dvh4e3mdL8_001_1080p_smpeil.mp4" 
+                           class="w-full h-full object-cover" 
+                           autoplay muted loop playsinline preload="metadata">
+                    </video>
+
+                    <!-- Overlay Interativo -->
+                    <div id="overlay-facial" class="absolute inset-0 bg-black/45 backdrop-blur-[2px] flex flex-col items-center justify-center text-center p-4 transition-all duration-300">
+                        <button onclick="playFullVideo('video-facial', 'overlay-facial', 'btn-facial-text')" class="w-16 h-16 rounded-full bg-brand-yellow text-black flex items-center justify-center shadow-glow-md hover:scale-110 active:scale-95 transition-all cursor-pointer">
+                            <i data-lucide="play" class="w-7 h-7 fill-current ml-1 text-black"></i>
+                        </button>
+                        <span id="btn-facial-text" class="text-xs font-bold text-white uppercase tracking-wider mt-3 drop-shadow-md">
+                            Assistir Demonstração com Som
+                        </span>
+                        <span class="text-[10px] text-zinc-300 mt-1 font-medium">Toque para ouvir a apresentação</span>
+                    </div>
+
+                    <span class="absolute top-3 left-3 bg-brand-yellow text-black px-2.5 py-0.5 rounded-full text-[9px] font-black uppercase tracking-wider shadow-sm">
+                        0.2s Resposta Real
+                    </span>
+                </div>
+
+                <div class="mt-3.5 px-2 pb-1 flex items-center justify-between text-xs">
+                    <span class="font-bold text-white flex items-center gap-1.5">
+                        <i data-lucide="check-circle" class="w-3.5 h-3.5 text-emerald-400"></i>
+                        Leitura Facial Fluida
+                    </span>
+                    <span class="text-brand-yellow text-[11px] font-bold">QR Code &amp; RFID</span>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<section id="composicao" class="py-20 bg-[#f8f9fa] border-b border-gray-200/60 relative">
     <div class="max-w-5xl mx-auto px-4 relative z-10">
         
         <div class="text-center mb-12 reveal">
@@ -928,11 +984,11 @@
 
             <div class="accordion-item bg-white rounded-2xl border border-gray-100 shadow-sm overflow-hidden transition-all hover:border-brand-yellow/50">
                 <button onclick="toggleAccordion(this)" class="w-full flex items-center justify-between p-5 text-left font-bold text-gray-900 text-sm focus:outline-none cursor-pointer">
-                    <span>Como funciona a entrada com a Carteira Digital (Wallet)?</span>
+                    <span>Como é feita a configuração de regras de dias e horários?</span>
                     <i data-lucide="chevron-down" class="w-4 h-4 text-brand-yellow acc-arrow shrink-0"></i>
                 </button>
                 <div class="accordion-content text-left">
-                    <p class="px-5 pb-5 text-gray-600 text-xs leading-relaxed">O leitor é compatível com tecnologia NFC e credenciais digitais. Colaboradores podem aproximar seus smartphones (Apple Wallet ou Google Wallet) para validar o acesso rapidamente, além de poderem usar a biometria facial.</p>
+                    <p class="px-5 pb-5 text-gray-600 text-xs leading-relaxed">O sistema permite cadastrar perfis com janelas de horários autorizadas (ex: equipe operacional das 08h às 18h de segunda a sexta). Fora desses horários ou em finais de semana não autorizados, a porta não liberará a entrada e registrará a tentativa no log de auditoria.</p>
                 </div>
             </div>
 
@@ -1021,6 +1077,36 @@
         document.addEventListener('DOMContentLoaded', initIcons);
     } else {
         initIcons();
+    }
+
+    // Controle do player de vídeo vertical interativo
+    function playFullVideo(videoId, overlayId, textId) {
+        const video = document.getElementById(videoId);
+        const overlay = document.getElementById(overlayId);
+        const textLabel = textId ? document.getElementById(textId) : null;
+        if (!video || !overlay) return;
+
+        video.loop = false;
+        video.muted = false;
+        video.currentTime = 0;
+        video.controls = true;
+
+        video.play().then(() => {
+            overlay.classList.add('opacity-0', 'pointer-events-none');
+        }).catch(err => {
+            video.muted = false;
+            video.play();
+            overlay.classList.add('opacity-0', 'pointer-events-none');
+        });
+
+        video.onended = function() {
+            video.pause();
+            video.controls = false;
+            overlay.classList.remove('opacity-0', 'pointer-events-none');
+            if (textLabel) {
+                textLabel.textContent = "Reproduzir Novamente";
+            }
+        };
     }
 
     // Rastreamento de conversão GA4 & Clarity
