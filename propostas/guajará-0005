@@ -1,0 +1,1512 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth overflow-x-hidden" id="html-root">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modernização e Segurança Condominial | Edifício Guajará – Vision Tecnologia</title>
+    <meta name="description" content="Projeto Integrado de Controle de Acesso Facial Intelbras SS 3532, Interfonia Predial, CFTV IP Haiz 5MP Full Color e Backup de Energia para o Condomínio Edifício Guajará.">
+    <meta name="theme-color" content="#b9880e">
+    <meta name="robots" content="noindex, nofollow">
+
+    <!-- Fonts & Tailwind CDN -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@700;800&family=Quicksand:wght@500;600;700&family=Outfit:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <!-- Google Analytics 4 -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-KTGEL92B0F"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-KTGEL92B0F');
+    </script>
+
+    <!-- Microsoft Clarity -->
+    <script type="text/javascript">
+        (function(c,l,a,r,i,t,y){
+            c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+            t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+            y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+        })(window, document, "clarity", "script", "vifq10es5o");
+    </script>
+
+    <!-- Tailwind Configuration -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"Outfit"', 'sans-serif'],
+                        logo: ['"League Spartan"', 'sans-serif'],
+                        tech: ['"Quicksand"', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            yellow: '#b9880e',
+                            goldLight: '#FFDE59',
+                            goldDark: '#8a6208',
+                            black: '#09090b',
+                        }
+                    },
+                    boxShadow: {
+                        'glass': '0 4px 24px 0 rgba(0,0,0,0.04)',
+                        'premium': '0 16px 50px -10px rgba(0,0,0,0.08)',
+                        'glow': '0 0 20px rgba(185,136,14,0.18)',
+                        'glow-md': '0 0 35px rgba(185,136,14,0.28)',
+                    },
+                    animation: {
+                        'slide-up': 'slideUp 0.9s cubic-bezier(0.16,1,0.3,1) forwards',
+                        'float': 'float 6s ease-in-out infinite',
+                        'fade-in': 'fadeIn 0.4s ease forwards',
+                    },
+                    keyframes: {
+                        slideUp: {
+                            '0%': { opacity: '0', transform: 'translateY(35px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' }
+                        },
+                        float: {
+                            '0%,100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-10px)' }
+                        },
+                        fadeIn: {
+                            '0%': { opacity: '0' },
+                            '100%': { opacity: '1' }
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: #f9fafb; }
+        ::-webkit-scrollbar-thumb { background: #d1d5db; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #b9880e; }
+
+        .text-gold-shine {
+            background: linear-gradient(to right, #b9880e 20%, #FFDE59 50%, #b9880e 80%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-size: 200% auto;
+            animation: shine 4s linear infinite;
+        }
+        @keyframes shine { to { background-position: 200% center; } }
+
+        .bg-grid {
+            background-image: linear-gradient(rgba(185,136,14,0.04) 1px, transparent 1px),
+                              linear-gradient(90deg, rgba(185,136,14,0.04) 1px, transparent 1px);
+            background-size: 40px 40px;
+        }
+        .bg-dots {
+            background-image: radial-gradient(#b9880e 1.2px, transparent 1.2px);
+            background-size: 22px 22px;
+            opacity: 0.035;
+        }
+
+        .lock-input {
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.1);
+            color: #b9880e;
+            font-family: 'League Spartan', sans-serif;
+            font-size: 1.35rem;
+            text-align: center;
+            outline: none;
+            transition: all 0.3s;
+            letter-spacing: 0.18em;
+            border-radius: 14px;
+            text-transform: uppercase;
+        }
+        .lock-input:focus {
+            border-color: #b9880e;
+            background: rgba(255,255,255,0.08);
+            box-shadow: 0 0 20px rgba(185,136,14,0.25);
+        }
+        .lock-input::placeholder {
+            color: #71717a;
+            font-size: 0.8rem;
+            font-family: 'Outfit', sans-serif;
+            font-weight: 400;
+            letter-spacing: 0.05em;
+            text-transform: none;
+        }
+
+        .reveal { opacity: 0; transform: translateY(30px); transition: all 0.8s cubic-bezier(0.16,1,0.3,1); }
+        .reveal.active { opacity: 1; transform: translateY(0); }
+
+        .accordion-content { max-height: 0; overflow: hidden; transition: max-height 0.45s cubic-bezier(0.4,0,0.2,1); }
+        .accordion-item.open .accordion-content { max-height: 600px; }
+        .accordion-item.open .acc-arrow { transform: rotate(180deg); }
+        .acc-arrow { transition: transform 0.3s; }
+
+        @keyframes marqueeReviews {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+        .reviews-marquee-track {
+            display: flex;
+            width: max-content;
+            animation: marqueeReviews 55s linear infinite;
+            will-change: transform;
+        }
+        .reviews-marquee-container:hover .reviews-marquee-track,
+        .reviews-marquee-track.paused {
+            animation-play-state: paused !important;
+        }
+
+        .premium-border-glow {
+            position: relative;
+            border-radius: 2rem;
+            padding: 2px;
+            background-color: #b9880e;
+            overflow: hidden;
+            box-shadow: 0 0 35px rgba(185,136,14,0.15);
+            transition: transform 0.3s cubic-bezier(0.4,0,0.2,1);
+        }
+        .premium-border-glow:hover { transform: scale(1.006); }
+        .premium-border-glow::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: conic-gradient(
+                from 0deg, 
+                transparent 0deg, 
+                transparent 175deg, 
+                rgba(255, 222, 89, 0.6) 178deg, 
+                #ffffff 180deg, 
+                rgba(255, 222, 89, 0.6) 182deg, 
+                transparent 185deg, 
+                transparent 360deg
+            );
+            animation: rotate-border 12s linear infinite;
+            z-index: 0;
+        }
+        @keyframes rotate-border {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        .premium-border-inner {
+            position: relative;
+            z-index: 1;
+            background-color: #ffffff;
+            border-radius: calc(2rem - 2px);
+            height: 100%;
+        }
+
+        @media print {
+            #lock-screen, #navbar { display: none !important; }
+            html, body {
+                overflow: visible !important;
+                height: auto !important;
+                background: white !important;
+            }
+            .reveal { opacity: 1 !important; transform: none !important; }
+        }
+    </style>
+</head>
+<body class="bg-[#fafafa] text-gray-800 antialiased overflow-hidden h-screen" id="body-root">
+
+<!-- ===================== LOCK SCREEN ===================== -->
+<div id="lock-screen" class="fixed inset-0 z-[100] bg-[#09090b] flex flex-col items-center justify-center text-center p-4 transition-opacity duration-700 ease-out overflow-y-auto">
+    <div class="bg-grid absolute inset-0 opacity-10 pointer-events-none"></div>
+    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-brand-yellow/5 rounded-full blur-[100px] pointer-events-none"></div>
+
+    <!-- Logo -->
+    <div class="relative flex flex-col items-center mb-8 z-10">
+        <div class="relative flex items-baseline leading-none">
+            <span class="font-logo font-bold text-[5rem] md:text-[5.5rem] text-gold-shine lowercase tracking-[-0.05em] leading-none">vısıon</span>
+            <span class="absolute -right-5 top-4 text-[1.1rem] text-brand-yellow font-bold">®</span>
+        </div>
+        <span class="font-tech text-[1.0rem] font-bold text-zinc-500 lowercase -mt-4 ml-2.5 text-center w-full" style="letter-spacing:0.53em;">tecnologia</span>
+    </div>
+
+    <div class="w-full max-w-sm space-y-5 z-10">
+        <div class="space-y-1.5">
+            <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-brand-yellow/30 bg-brand-yellow/10 mb-2">
+                <i data-lucide="shield-check" class="w-3.5 h-3.5 text-brand-yellow"></i>
+                <span class="text-brand-yellow text-[10px] font-bold uppercase tracking-widest">Projeto Condominial Exclusivo</span>
+            </div>
+            <h2 class="text-white font-bold text-2xl">Condomínio Edifício Guajará</h2>
+            <p class="text-zinc-400 text-xs">A/C Síndica Gianella • Rua Guaianases, 195 – Santa Ifigênia (56 Aptos)</p>
+        </div>
+
+        <div>
+            <!-- SENHAS VÁLIDAS: GUAJARA, GUAJARA2026, GIANELLA, SANTAIFIGENIA, VISION -->
+            <input type="password" id="password-input" class="lock-input w-full py-4 px-4" placeholder="Digite sua senha de acesso" autocomplete="off">
+            <p id="error-msg" class="text-red-400 text-xs mt-2 hidden">
+                <span class="flex items-center justify-center gap-1"><i data-lucide="x-circle" class="w-4 h-4"></i> Senha incorreta. Tente novamente.</span>
+            </p>
+        </div>
+
+        <button onclick="checkPassword()" id="btn-unlock" class="w-full bg-brand-yellow hover:bg-brand-goldLight text-black font-bold py-4 rounded-2xl transition-all shadow-glow flex items-center justify-center gap-2 group relative overflow-hidden">
+            <div class="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-300 rounded-2xl"></div>
+            <i data-lucide="shield-check" class="w-5 h-5 relative z-10" id="unlock-icon"></i>
+            <span class="relative z-10 text-sm uppercase tracking-widest font-bold" id="unlock-text">Acessar Proposta Executiva</span>
+            <i data-lucide="arrow-right" class="w-4 h-4 relative z-10 group-hover:translate-x-1 transition-transform" id="unlock-arrow"></i>
+        </button>
+
+        <p class="text-zinc-600 text-xs">Documento Confidencial · Vision Tecnologia © 2026</p>
+    </div>
+</div>
+
+<!-- ===================== NAVBAR ===================== -->
+<nav id="navbar" class="fixed w-full z-50 top-0 bg-white/95 backdrop-blur-xl border-b border-gray-200/50 shadow-sm transition-all duration-300">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-between h-20 items-center">
+            
+            <div class="flex items-center gap-4 cursor-pointer" onclick="window.scrollTo({top:0, behavior:'smooth'})">
+                <div class="flex flex-col items-center justify-center">
+                    <div class="relative flex items-baseline leading-none">
+                        <span class="font-logo font-bold text-[2.4rem] text-gold-shine lowercase tracking-[-0.05em] leading-none">vısıon</span>
+                        <span class="absolute -right-2.5 top-1.5 text-[0.6rem] text-brand-yellow font-bold">®</span>
+                    </div>
+                    <span class="font-tech text-[0.55rem] font-bold text-gray-400 lowercase -mt-2 ml-1" style="letter-spacing:0.53em;">tecnologia</span>
+                </div>
+                <div class="h-7 w-px bg-gray-200 hidden sm:block"></div>
+                <span class="text-zinc-400 text-xs uppercase tracking-widest font-bold hidden sm:block">Edifício Guajará • 56 Aptos</span>
+            </div>
+
+            <div class="hidden md:flex items-center space-x-7 text-xs font-semibold text-gray-500 uppercase tracking-wider">
+                <a href="#diagnostico" class="hover:text-brand-yellow transition-colors">Diagnóstico</a>
+                <a href="#video-demo" class="hover:text-brand-yellow transition-colors">Qualidade 5MP</a>
+                <a href="#solucao" class="hover:text-brand-yellow transition-colors">Equipamentos</a>
+                <a href="#arquitetura" class="hover:text-brand-yellow transition-colors">Arquitetura</a>
+                <a href="#avaliacoes" class="hover:text-brand-yellow transition-colors">Avaliações</a>
+                <a href="#investimento" class="hover:text-brand-yellow transition-colors">Investimento</a>
+                <a href="#faq" class="hover:text-brand-yellow transition-colors">Dúvidas</a>
+            </div>
+
+            <div class="flex items-center gap-4">
+                <button onclick="window.print()" class="text-gray-400 hover:text-brand-yellow transition-colors flex items-center gap-1.5" title="Salvar em PDF">
+                    <i data-lucide="download" class="w-4 h-4"></i>
+                    <span class="text-[10px] font-bold uppercase tracking-widest hidden sm:block">PDF</span>
+                </button>
+                <a href="#investimento" class="bg-zinc-900 text-white px-5 py-2.5 rounded-full text-[10px] font-bold uppercase tracking-widest hover:bg-brand-yellow hover:text-black transition-all shadow-md">
+                    Ver Investimento
+                </a>
+            </div>
+
+        </div>
+    </div>
+</nav>
+
+<!-- ===================== HERO COM APRESENTAÇÃO ===================== -->
+<header class="pt-32 pb-20 lg:pt-40 relative overflow-hidden bg-[#f8f9fa]">
+    <div class="absolute inset-0 bg-grid pointer-events-none"></div>
+    <div class="absolute right-0 top-0 w-1/2 h-full bg-gradient-to-l from-white to-transparent z-0 pointer-events-none hidden lg:block"></div>
+    
+    <div class="max-w-7xl mx-auto px-4 relative z-10">
+        <div class="flex flex-col lg:flex-row items-center gap-12 lg:gap-16">
+            
+            <!-- Coluna de Texto -->
+            <div class="w-full lg:w-[55%] text-center lg:text-left animate-slide-up">
+                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-white border border-gray-200 text-gray-600 text-[10px] font-bold uppercase tracking-widest mb-6 mx-auto lg:mx-0 shadow-sm">
+                    <div class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></div>
+                    Modernização Predial • <span class="text-brand-yellow font-black">Edifício Guajará (56 Aptos)</span>
+                </div>
+                
+                <h1 class="text-4xl md:text-5xl lg:text-[3.2rem] font-extrabold text-gray-900 leading-[1.08] tracking-tight mb-6">
+                    Acesso Facial Intelbras &amp; CFTV 5MP para o <span class="text-gold-shine">Edifício Guajará.</span>
+                </h1>
+                
+                <p class="text-base md:text-lg text-gray-500 max-w-xl mx-auto lg:mx-0 font-medium leading-relaxed">
+                    Gianella, estruturamos a engenharia definitiva para a <strong>Rua Guaianases, 195 (Santa Ifigênia)</strong>: 2 Leitores Faciais Intelbras SS 3532 MF Wi-Fi anti-clonagem, fechadura eletroímã com mola e nobreak ininterrupto, 5 Câmeras IP Haiz 5MP Full Color dia e noite com switch PoE em tubulação metálica pré-zincada e revitalização da interfonia para os 18 apartamentos.
+                </p>
+
+                <div class="mt-8 flex flex-wrap items-center justify-center lg:justify-start gap-4">
+                    <div class="flex -space-x-3">
+                        <div class="w-10 h-10 rounded-full border-2 border-white bg-gray-100 flex items-center justify-center text-gray-600 shadow-sm"><i data-lucide="scan-face" class="w-4 h-4"></i></div>
+                        <div class="w-10 h-10 rounded-full border-2 border-white bg-gray-100 flex items-center justify-center text-gray-600 shadow-sm"><i data-lucide="phone-call" class="w-4 h-4"></i></div>
+                        <div class="w-10 h-10 rounded-full border-2 border-white bg-brand-yellow/20 flex items-center justify-center text-brand-goldDark shadow-sm"><i data-lucide="video" class="w-4 h-4"></i></div>
+                    </div>
+                    <span class="text-xs font-bold text-gray-500 uppercase tracking-widest">2x Faciais Intelbras + 18x Interfones + 5x Câmeras 5MP + Infra Zincada</span>
+                </div>
+            </div>
+
+            <!-- Coluna de Vídeo Hero -->
+            <div class="w-full lg:w-[45%] mt-4 lg:mt-0 reveal animate-slide-up" style="animation-delay: 200ms;">
+                <div class="relative w-full max-w-lg mx-auto group z-10">
+                    <div class="relative w-full aspect-video bg-black border-[6px] md:border-[10px] border-zinc-800 rounded-t-[1rem] md:rounded-t-[1.5rem] overflow-hidden shadow-2xl">
+                        
+                        <video id="vision-video" class="w-full h-full object-cover cursor-pointer opacity-90" autoplay muted loop playsinline>
+                            <source src="https://res.cloudinary.com/dptcuckhf/video/upload/v1771711323/Vict%C3%B3ria_-_Vision_gdqnrk.mp4" type="video/mp4">
+                        </video>
+                        
+                        <div id="unmute-overlay" class="absolute inset-0 bg-black/50 backdrop-blur-sm flex flex-col items-center justify-center cursor-pointer transition-opacity duration-500 z-30 hover:bg-black/40">
+                            <div class="bg-brand-yellow text-black font-bold px-6 py-3 rounded-full flex items-center gap-2 shadow-glow animate-pulse transform group-hover:scale-105 transition-all">
+                                <i data-lucide="volume-2" class="w-4 h-4 fill-black"></i>
+                                <span class="text-[10px] tracking-wide uppercase">Clique para Ouvir Apresentação</span>
+                            </div>
+                        </div>
+
+                        <div class="absolute top-1.5 md:top-2 left-1/2 -translate-x-1/2 w-1.5 h-1.5 md:w-2 md:h-2 bg-zinc-950 rounded-full z-20"></div>
+                    </div>
+                    <div class="relative w-[114%] -ml-[7%] h-3 md:h-5 bg-gradient-to-b from-zinc-300 to-zinc-400 rounded-b-xl md:rounded-b-2xl shadow-[0_20px_40px_rgba(0,0,0,0.5)] flex justify-center border-t border-zinc-200">
+                        <div class="w-1/5 h-1.5 md:h-2 bg-zinc-300 rounded-b-md shadow-inner"></div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Quick Stats Cards -->
+        <div class="mt-14 lg:mt-20 grid grid-cols-2 md:grid-cols-4 gap-4 max-w-4xl mx-auto reveal">
+            <div class="bg-white rounded-2xl p-5 shadow-glass border border-gray-100 text-center animate-float" style="animation-delay:0s;">
+                <div class="w-9 h-9 bg-brand-yellow/10 rounded-xl flex items-center justify-center mx-auto mb-2 text-brand-goldDark">
+                    <i data-lucide="scan-face" class="w-4 h-4"></i>
+                </div>
+                <div class="text-2xl font-extrabold text-gray-900">2 Faciais</div>
+                <div class="text-[10px] text-gray-500 font-bold uppercase tracking-wider">Intelbras SS 3532 Wi-Fi</div>
+            </div>
+            <div class="bg-white rounded-2xl p-5 shadow-glass border border-gray-100 text-center animate-float" style="animation-delay:0.8s;">
+                <div class="w-9 h-9 bg-brand-yellow/10 rounded-xl flex items-center justify-center mx-auto mb-2 text-brand-goldDark">
+                    <i data-lucide="phone-forwarded" class="w-4 h-4"></i>
+                </div>
+                <div class="text-2xl font-extrabold text-gray-900">18 Aptos</div>
+                <div class="text-[10px] text-gray-500 font-bold uppercase tracking-wider">Placa + 18x TDMI-300</div>
+            </div>
+            <div class="bg-white rounded-2xl p-5 shadow-glass border border-gray-100 text-center animate-float" style="animation-delay:0.4s;">
+                <div class="w-9 h-9 bg-brand-yellow/10 rounded-xl flex items-center justify-center mx-auto mb-2 text-brand-goldDark">
+                    <i data-lucide="video" class="w-4 h-4"></i>
+                </div>
+                <div class="text-2xl font-extrabold text-gray-900">5 Câmeras</div>
+                <div class="text-[10px] text-gray-500 font-bold uppercase tracking-wider">Haiz 5MP Full Color PoE</div>
+            </div>
+            <div class="bg-white rounded-2xl p-5 shadow-glass border border-gray-100 text-center animate-float" style="animation-delay:1.2s;">
+                <div class="w-9 h-9 bg-brand-yellow/10 rounded-xl flex items-center justify-center mx-auto mb-2 text-brand-goldDark">
+                    <i data-lucide="battery-charging" class="w-4 h-4"></i>
+                </div>
+                <div class="text-2xl font-extrabold text-gray-900">Nobreak 24/7</div>
+                <div class="text-[10px] text-gray-500 font-bold uppercase tracking-wider">FA1220S + 2x Baterias 7Ah</div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- ===================== DIAGNÓSTICO DO CENÁRIO ===================== -->
+<section id="diagnostico" class="py-24 bg-white border-y border-gray-200/60 relative">
+    <div class="max-w-7xl mx-auto px-4">
+        <div class="text-center mb-16 reveal">
+            <span class="text-brand-yellow font-bold uppercase tracking-widest text-xs">Engenharia Consultiva &amp; Solução Predial</span>
+            <h2 class="text-3xl md:text-5xl font-bold text-gray-900 mt-3 leading-tight">Diagnóstico Técnico: Edifício Guajará</h2>
+            <p class="text-gray-500 mt-4 max-w-3xl mx-auto text-base md:text-lg leading-relaxed">
+                <strong>Gianella</strong>, resolvemos simultaneamente os 4 gargalos de segurança do prédio (7 andares e 56 apartamentos) através de uma arquitetura centralizada e sem improvisos:
+            </p>
+        </div>
+
+        <!-- Banner de Eficiência de Engenharia -->
+        <div class="mb-10 max-w-4xl mx-auto p-4 md:p-5 rounded-2xl bg-amber-500/10 border border-amber-500/30 flex items-center gap-4 reveal">
+            <div class="w-12 h-12 rounded-xl bg-brand-yellow text-black flex items-center justify-center shrink-0 shadow-sm">
+                <i data-lucide="wrench" class="w-6 h-6"></i>
+            </div>
+            <div class="text-left text-xs md:text-sm text-gray-800 leading-relaxed">
+                <strong class="text-gray-950 block text-sm md:text-base font-bold mb-0.5">Infraestrutura Industrial em Tubulação Pré-Zincada 3/4":</strong>
+                Para evitar cabos expostos ou suscetíveis a cortes no hall de entrada e áreas comuns da Santa Ifigênia, todo o cabeamento de acesso e dados passará em eletrodutos e conduletes metálicos Condu Pro com abraçadeiras tipo D e uniduts cônicos, garantindo padrão predial de alta durabilidade mecânica.
+            </div>
+        </div>
+
+        <div class="grid md:grid-cols-3 gap-8 reveal">
+            <!-- Pilar 1 -->
+            <div class="bg-[#fafafa] rounded-[2rem] p-8 border border-gray-100 shadow-sm flex flex-col justify-between hover:border-brand-yellow/40 transition-all">
+                <div>
+                    <div class="w-12 h-12 bg-amber-100 rounded-2xl flex items-center justify-center mb-6 text-brand-goldDark">
+                        <i data-lucide="scan-face" class="w-6 h-6"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">Reconhecimento Facial Anti-Clonagem</h3>
+                    <p class="text-gray-600 text-xs md:text-sm leading-relaxed mb-6">
+                        Substituição das tags antigas vulneráveis a clonagens por 2 controladores faciais Intelbras SS 3532 MF com autenticação ultrarrápida (0,2s), leitura precisa sob qualquer luminosidade e gestão cadastral integrada em computador.
+                    </p>
+                </div>
+                <div class="p-3.5 bg-emerald-50 rounded-xl border border-emerald-100 text-xs text-emerald-800 flex items-center gap-2">
+                    <i data-lucide="check-circle-2" class="w-4 h-4 text-emerald-600 shrink-0"></i>
+                    <span>Bloqueio de 150kg com fechadura FE20150 e mola aérea MH 103.</span>
+                </div>
+            </div>
+
+            <!-- Pilar 2 -->
+            <div class="bg-[#fafafa] rounded-[2rem] p-8 border border-gray-100 shadow-sm flex flex-col justify-between hover:border-brand-yellow/40 transition-all">
+                <div>
+                    <div class="w-12 h-12 bg-amber-100 rounded-2xl flex items-center justify-center mb-6 text-brand-goldDark">
+                        <i data-lucide="phone-call" class="w-6 h-6"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">Revitalização da Interfonia nos 18 Aptos</h3>
+                    <p class="text-gray-600 text-xs md:text-sm leading-relaxed mb-6">
+                        Instalação de uma nova placa desbalanceada de 16 ramais na central Intelbras, substituição de 18 telefones TDMI-300 com fiação de par trançado de alta condutividade e teste ponta a ponta em cada apartamento com falha.
+                    </p>
+                </div>
+                <div class="p-3.5 bg-emerald-50 rounded-xl border border-emerald-100 text-xs text-emerald-800 flex items-center gap-2">
+                    <i data-lucide="check-circle-2" class="w-4 h-4 text-emerald-600 shrink-0"></i>
+                    <span>Áudio cristalino e abertura da portaria sem ruídos ou chiados.</span>
+                </div>
+            </div>
+
+            <!-- Pilar 3 -->
+            <div class="bg-[#fafafa] rounded-[2rem] p-8 border border-gray-100 shadow-sm flex flex-col justify-between hover:border-brand-yellow/40 transition-all">
+                <div>
+                    <div class="w-12 h-12 bg-amber-100 rounded-2xl flex items-center justify-center mb-6 text-brand-goldDark">
+                        <i data-lucide="eye" class="w-6 h-6"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">CFTV IP 5MP com Backup de Energia</h3>
+                    <p class="text-gray-600 text-xs md:text-sm leading-relaxed mb-6">
+                        5 câmeras Haiz POE 5MP Full Color cobrindo pontos cegos críticos com imagens coloridas mesmo no breu, switch PoE dedicado, nobreak inteligente com baterias para fechos e central, além da liberação do acesso online.
+                    </p>
+                </div>
+                <div class="p-3.5 bg-emerald-50 rounded-xl border border-emerald-100 text-xs text-emerald-800 flex items-center gap-2">
+                    <i data-lucide="check-circle-2" class="w-4 h-4 text-emerald-600 shrink-0"></i>
+                    <span>Portão e interfones continuam funcionando em quedas de luz.</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ===================== DEMO QUALIDADE CÂMERAS HAIZ 5MP ===================== -->
+<section id="video-demo" class="py-24 bg-[#09090b] text-white relative overflow-hidden">
+    <div class="absolute inset-0 bg-grid opacity-15 pointer-events-none"></div>
+    <div class="max-w-6xl mx-auto px-4 relative z-10">
+        
+        <div class="text-center mb-12 reveal">
+            <span class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-brand-yellow/20 text-brand-yellow text-[11px] font-bold uppercase tracking-widest border border-brand-yellow/30 mb-3">
+                <i data-lucide="sparkles" class="w-3.5 h-3.5"></i> Tecnologia Full Color 5 Megapixels
+            </span>
+            <h2 class="text-3xl md:text-5xl font-extrabold tracking-tight mt-2 text-white">
+                Veja a Qualidade Real das Câmeras <span class="text-gold-shine">Haiz Full Color</span>
+            </h2>
+            <p class="text-zinc-400 mt-3 max-w-2xl mx-auto text-sm md:text-base leading-relaxed">
+                Gianella, compare o desempenho de altíssima definição das câmeras que serão instaladas nos pontos cegos do Edifício Guajará:
+            </p>
+
+            <!-- Seletor Dia / Noite -->
+            <div class="flex justify-center gap-3 mt-6">
+                <button type="button" id="btn-video-day" onclick="switchVideoSource('day')" class="px-5 py-2.5 rounded-full text-xs font-bold bg-brand-yellow text-black shadow-glow flex items-center gap-2 transition-all">
+                    <i data-lucide="sun" class="w-4 h-4"></i> Teste de Dia (Resolução 5MP)
+                </button>
+                <button type="button" id="btn-video-night" onclick="switchVideoSource('night')" class="px-5 py-2.5 rounded-full text-xs font-bold bg-zinc-800 text-zinc-300 hover:text-white border border-zinc-700 flex items-center gap-2 transition-all">
+                    <i data-lucide="moon" class="w-4 h-4"></i> Teste Noturno (Full Color 24h)
+                </button>
+            </div>
+        </div>
+
+        <!-- Player Interativo de Demonstração -->
+        <div class="relative w-full max-w-4xl mx-auto rounded-3xl overflow-hidden border border-zinc-700/80 shadow-2xl bg-black reveal">
+            <div class="relative aspect-video">
+                <video id="demo-haiz-video" class="w-full h-full object-cover" autoplay muted loop playsinline>
+                    <source id="demo-video-source" src="https://res.cloudinary.com/dptcuckhf/video/upload/v1791303986/V%C3%ADdeo_Haiz_Full_Color_-_DIa_pl7en9.mp4" type="video/mp4">
+                </video>
+                
+                <div class="absolute top-4 left-4 z-20 bg-black/70 backdrop-blur-md px-3.5 py-1.5 rounded-xl border border-white/10 flex items-center gap-2 text-xs font-semibold">
+                    <span class="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-pulse"></span>
+                    <span id="demo-video-badge" class="text-zinc-200">Demonstração Real: Modo Diurno 5MP</span>
+                </div>
+
+                <div class="absolute bottom-4 right-4 z-20 bg-black/70 backdrop-blur-md px-3 py-1 rounded-lg border border-white/10 text-[11px] text-zinc-300 flex items-center gap-1.5">
+                    <i data-lucide="shield-check" class="w-3.5 h-3.5 text-brand-yellow"></i>
+                    <span>Câmera Haiz HZ-B36IPPOE / HZ-C320N</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="mt-8 grid grid-cols-1 md:grid-cols-3 gap-4 max-w-4xl mx-auto text-center reveal">
+            <div class="p-4 rounded-2xl bg-zinc-900/60 border border-zinc-800 text-xs text-zinc-400">
+                <strong class="text-white block font-bold text-sm mb-1">5 Megapixels (Ultra HD)</strong>
+                Reconhecimento nítido de rostos e placas nas áreas de acesso e portaria.
+            </div>
+            <div class="p-4 rounded-2xl bg-zinc-900/60 border border-zinc-800 text-xs text-zinc-400">
+                <strong class="text-white block font-bold text-sm mb-1">Cores 24 Horas no Breu</strong>
+                Sensores de luz estelar que impedem imagens preto e branco borradas à noite.
+            </div>
+            <div class="p-4 rounded-2xl bg-zinc-900/60 border border-zinc-800 text-xs text-zinc-400">
+                <strong class="text-white block font-bold text-sm mb-1">PoE Integrado (Cabo Único)</strong>
+                Dados e eletricidade no mesmo cabo de rede, sem transformadores expostos.
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<!-- ===================== VITRINE TECNOLÓGICA ===================== -->
+<section id="solucao" class="py-24 bg-[#f8f9fa] border-b border-gray-200/60 relative">
+    <div class="max-w-7xl mx-auto px-4 relative z-10">
+        <div class="text-center mb-16 reveal">
+            <span class="text-brand-yellow font-bold uppercase tracking-widest text-xs">Especificação Homologada</span>
+            <h2 class="text-3xl md:text-5xl font-bold text-gray-900 mt-3">Equipamentos do Projeto Guajará</h2>
+            <p class="text-gray-500 mt-4 max-w-2xl mx-auto text-sm md:text-base">
+                Hardware homologado cotado com distribuidores oficiais (Speed Orçamento Nº 182.508 &amp; Catálogo Haiz) com 12 meses de garantia direta da Vision:
+            </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 reveal">
+            
+            <!-- Equipamento 1: 2x Facial Intelbras SS 3532 MF -->
+            <div class="bg-white rounded-3xl p-6 border border-gray-200 shadow-sm flex flex-col justify-between hover:border-brand-yellow hover:shadow-md transition-all group">
+                <div>
+                    <div class="w-full aspect-video bg-gradient-to-br from-amber-50 to-orange-50/40 rounded-2xl flex items-center justify-center p-3 mb-4 border border-amber-100/80 relative overflow-hidden">
+                        <span class="absolute top-2.5 right-3 text-[9px] font-extrabold uppercase tracking-wider px-2 py-0.5 rounded-full bg-amber-500/10 text-amber-800 border border-amber-500/20">2 Unidades</span>
+                        <img src="https://res.cloudinary.com/dptcuckhf/image/upload/v1770745467/ss-3532-mf-w-frontal_2_c82tua.png" alt="Leitor Facial Intelbras SS 3532 MF" class="max-h-28 object-contain group-hover:scale-105 transition-transform" onerror="this.src='https://placehold.co/200x200/f3f4f6/111827?text=SS+3532+MF'">
+                    </div>
+                    <h4 class="font-bold text-gray-900 text-sm mb-1.5 flex items-center gap-2">
+                        <span class="w-2 h-2 rounded-full bg-amber-500"></span>
+                        2x Faciais Intelbras SS 3532 MF Wi-Fi
+                    </h4>
+                    <p class="text-xs text-gray-600 leading-relaxed">
+                        Reconhecimento facial com inteligência anti-fraude (detecta fotos e vídeos), comunicação Wi-Fi/IP e leitura rápida para os moradores dos 56 aptos.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Equipamento 2: 5x Câmeras IP Haiz 5MP Full Color -->
+            <div class="bg-white rounded-3xl p-6 border border-gray-200 shadow-sm flex flex-col justify-between hover:border-amber-400 hover:shadow-md transition-all group">
+                <div>
+                    <div class="w-full aspect-video bg-gradient-to-br from-yellow-50 to-amber-50 rounded-2xl flex items-center justify-center p-3 mb-4 border border-yellow-100/80 relative overflow-hidden">
+                        <span class="absolute top-2.5 right-3 text-[9px] font-extrabold uppercase tracking-wider px-2 py-0.5 rounded-full bg-yellow-500/10 text-yellow-800 border border-yellow-500/20">5 Unidades</span>
+                        <img src="https://res.cloudinary.com/dptcuckhf/image/upload/v1791301568/HZ-C320N-01-scaled.png_gvtref.webp" alt="Câmera IP Haiz 5MP Full Color" class="max-h-28 object-contain group-hover:scale-105 transition-transform" onerror="this.src='https://placehold.co/200x200/f3f4f6/111827?text=Haiz+5MP+FullColor'">
+                    </div>
+                    <h4 class="font-bold text-gray-900 text-sm mb-1.5 flex items-center gap-2">
+                        <span class="w-2 h-2 rounded-full bg-yellow-500"></span>
+                        5x Câmeras IP Haiz 5MP Full Color
+                    </h4>
+                    <p class="text-xs text-gray-600 leading-relaxed">
+                        Resolução 5MP de altíssima definição com tecnologia Full Color para imagens coloridas 24 horas, proteção IP66 e alimentação PoE.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Equipamento 3: Trava FE20150 + Mola MH 103 + Botão BT 3000 -->
+            <div class="bg-white rounded-3xl p-6 border border-gray-200 shadow-sm flex flex-col justify-between hover:border-emerald-400 hover:shadow-md transition-all group">
+                <div>
+                    <div class="w-full aspect-video bg-gradient-to-br from-emerald-50 to-teal-50 rounded-2xl flex items-center justify-center p-3 mb-4 border border-emerald-100/80 relative overflow-hidden">
+                        <span class="absolute top-2.5 right-3 text-[9px] font-extrabold uppercase tracking-wider px-2 py-0.5 rounded-full bg-emerald-500/10 text-emerald-800 border border-emerald-500/20">Kit Bloqueio</span>
+                        <div class="flex items-center gap-2 text-emerald-700">
+                            <i data-lucide="lock" class="w-9 h-9"></i>
+                            <i data-lucide="door-closed" class="w-8 h-8"></i>
+                        </div>
+                    </div>
+                    <h4 class="font-bold text-gray-900 text-sm mb-1.5 flex items-center gap-2">
+                        <span class="w-2 h-2 rounded-full bg-emerald-500"></span>
+                        Trava 150kg + Mola Aérea + Botão Inox
+                    </h4>
+                    <p class="text-xs text-gray-600 leading-relaxed">
+                        Fechadura eletroímã FE20150 (força de tração de 150kg), mola aérea hidráulica MH 103 A para fechamento suave e botão em inox BT 3000 IN.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Equipamento 4: 18x TDMI-300 + Placa 16 Ramais Desbalanceada -->
+            <div class="bg-white rounded-3xl p-6 border border-gray-200 shadow-sm flex flex-col justify-between hover:border-blue-400 hover:shadow-md transition-all group">
+                <div>
+                    <div class="w-full aspect-video bg-gradient-to-br from-blue-50 to-indigo-50 rounded-2xl flex items-center justify-center p-3 mb-4 border border-blue-100/80 relative overflow-hidden">
+                        <span class="absolute top-2.5 right-3 text-[9px] font-extrabold uppercase tracking-wider px-2 py-0.5 rounded-full bg-blue-500/10 text-blue-800 border border-blue-500/20">18 Aptos</span>
+                        <div class="flex items-center gap-2 text-blue-600">
+                            <i data-lucide="phone" class="w-9 h-9"></i>
+                            <i data-lucide="cpu" class="w-8 h-8"></i>
+                        </div>
+                    </div>
+                    <h4 class="font-bold text-gray-900 text-sm mb-1.5 flex items-center gap-2">
+                        <span class="w-2 h-2 rounded-full bg-blue-500"></span>
+                        Placa 16 Ramais + 18x TDMI-300
+                    </h4>
+                    <p class="text-xs text-gray-600 leading-relaxed">
+                        Placa Intelbras para a central existente CP48/CP112 + 18 terminais dedicados TDMI-300 novos para sanar todas as falhas nos 18 apartamentos.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Equipamento 5: Nobreak FA1220S + 2x Baterias 12V 7Ah XB 1270 -->
+            <div class="bg-white rounded-3xl p-6 border border-gray-200 shadow-sm flex flex-col justify-between hover:border-purple-400 hover:shadow-md transition-all group">
+                <div>
+                    <div class="w-full aspect-video bg-gradient-to-br from-purple-50 to-indigo-50 rounded-2xl flex items-center justify-center p-3 mb-4 border border-purple-100/80 relative overflow-hidden">
+                        <span class="absolute top-2.5 right-3 text-[9px] font-extrabold uppercase tracking-wider px-2 py-0.5 rounded-full bg-purple-500/10 text-purple-800 border border-purple-500/20">Autonomia 24/7</span>
+                        <div class="flex items-center gap-2 text-purple-600">
+                            <i data-lucide="battery-charging" class="w-9 h-9"></i>
+                            <i data-lucide="zap" class="w-8 h-8"></i>
+                        </div>
+                    </div>
+                    <h4 class="font-bold text-gray-900 text-sm mb-1.5 flex items-center gap-2">
+                        <span class="w-2 h-2 rounded-full bg-purple-500"></span>
+                        Fonte FA1220S + 2x Baterias VRLA 7Ah
+                    </h4>
+                    <p class="text-xs text-gray-600 leading-relaxed">
+                        Fonte carregadora ininterrupta com temporizador e 2 baterias de alta densidade para manter as portas e interfonia ativas durante falta de energia da concessionária.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Equipamento 6: Switch PoE Haiz HZ-1006P-EA2 + Caixas VBOX -->
+            <div class="bg-white rounded-3xl p-6 border border-gray-200 shadow-sm flex flex-col justify-between hover:border-cyan-400 hover:shadow-md transition-all group">
+                <div>
+                    <div class="w-full aspect-video bg-gradient-to-br from-cyan-50 to-blue-50 rounded-2xl flex items-center justify-center p-3 mb-4 border border-cyan-100/80 relative overflow-hidden">
+                        <span class="absolute top-2.5 right-3 text-[9px] font-extrabold uppercase tracking-wider px-2 py-0.5 rounded-full bg-cyan-500/10 text-cyan-800 border border-cyan-500/20">PoE Ativo</span>
+                        <div class="flex items-center gap-2 text-cyan-600">
+                            <i data-lucide="network" class="w-9 h-9"></i>
+                            <i data-lucide="box" class="w-8 h-8"></i>
+                        </div>
+                    </div>
+                    <h4 class="font-bold text-gray-900 text-sm mb-1.5 flex items-center gap-2">
+                        <span class="w-2 h-2 rounded-full bg-cyan-500"></span>
+                        Switch PoE Haiz + 5x Caixas VBOX
+                    </h4>
+                    <p class="text-xs text-gray-600 leading-relaxed">
+                        Switch de 4 portas PoE + 2 Uplink dedicado e 5 caixas VBOX 1100 BR para vedação hermética contra poeira e intempéries na fiação dos pontos.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Equipamento 7: Tubulação Pré-Zincada 3/4" Condu Pro Completa -->
+            <div class="bg-white rounded-3xl p-6 border border-gray-200 shadow-sm flex flex-col justify-between hover:border-indigo-400 hover:shadow-md transition-all group">
+                <div>
+                    <div class="w-full aspect-video bg-gradient-to-br from-indigo-50 to-slate-50 rounded-2xl flex items-center justify-center p-3 mb-4 border border-indigo-100/80 relative overflow-hidden">
+                        <span class="absolute top-2.5 right-3 text-[9px] font-extrabold uppercase tracking-wider px-2 py-0.5 rounded-full bg-indigo-500/10 text-indigo-800 border border-indigo-500/20">Infra Metálica</span>
+                        <div class="flex items-center gap-2 text-indigo-600">
+                            <i data-lucide="hammer" class="w-9 h-9"></i>
+                            <i data-lucide="shield" class="w-8 h-8"></i>
+                        </div>
+                    </div>
+                    <h4 class="font-bold text-gray-900 text-sm mb-1.5 flex items-center gap-2">
+                        <span class="w-2 h-2 rounded-full bg-indigo-500"></span>
+                        Infraestrutura Zincada Condu Pro 3/4"
+                    </h4>
+                    <p class="text-xs text-gray-600 leading-relaxed">
+                        10 eletrodutos pré-zincados leves, 20 conduletes modelo X com tampas, 60 uniduts, 30 abraçadeiras tipo D com cunha e 5 curvas 90°.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Equipamento 8: Cabeamento Predial Landutti + Condutti -->
+            <div class="bg-white rounded-3xl p-6 border border-gray-200 shadow-sm flex flex-col justify-between hover:border-zinc-400 hover:shadow-md transition-all group">
+                <div>
+                    <div class="w-full aspect-video bg-gradient-to-br from-zinc-100 to-gray-50 rounded-2xl flex items-center justify-center p-3 mb-4 border border-zinc-200 relative overflow-hidden">
+                        <span class="absolute top-2.5 right-3 text-[9px] font-extrabold uppercase tracking-wider px-2 py-0.5 rounded-full bg-zinc-200 text-zinc-800 border border-zinc-300">Norma ABNT</span>
+                        <div class="flex items-center gap-2 text-zinc-700">
+                            <i data-lucide="git-commit" class="w-9 h-9"></i>
+                            <i data-lucide="check" class="w-8 h-8"></i>
+                        </div>
+                    </div>
+                    <h4 class="font-bold text-gray-900 text-sm mb-1.5 flex items-center gap-2">
+                        <span class="w-2 h-2 rounded-full bg-zinc-700"></span>
+                        Cabos CAT5e + Paralelo 1,5mm + 2 Pares
+                    </h4>
+                    <p class="text-xs text-gray-600 leading-relaxed">
+                        100m CAT5e Landutti, 100m paralelo flexível 2x1,5mm para alimentação, 200m cabo de interfone 2 pares e 100 conectores Conex 1000.
+                    </p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<!-- ===================== ARQUITETURA PREDIAL ===================== -->
+<section id="arquitetura" class="py-20 bg-white border-b border-gray-200/60">
+    <div class="max-w-5xl mx-auto px-4 reveal">
+        <div class="text-center mb-14">
+            <span class="text-brand-yellow font-bold uppercase tracking-widest text-xs">Topologia Integrada</span>
+            <h2 class="text-3xl font-bold text-gray-900 mt-2">Como Operará no Edifício Guajará</h2>
+            <p class="text-gray-500 mt-2 max-w-2xl mx-auto text-sm">
+                Desenho de fluxo projetado para blindar os acessos e garantir manutenção simples e organizada:
+            </p>
+        </div>
+
+        <div class="grid md:grid-cols-3 gap-6 text-left">
+            <div class="p-6 rounded-3xl bg-[#fafafa] border border-gray-200 shadow-sm flex flex-col justify-between">
+                <div>
+                    <div class="w-10 h-10 rounded-xl bg-amber-100 text-brand-goldDark flex items-center justify-center font-bold mb-4">1</div>
+                    <h3 class="font-bold text-gray-900 text-base mb-2">Entrada Principal Blindada</h3>
+                    <p class="text-xs text-gray-600 leading-relaxed">
+                        Os 2 leitores faciais SS 3532 controlam a portaria. Ao aproximar o rosto, a fechadura de 150kg destrava em 0,2s e a mola aérea fecha a porta automaticamente sem batidas, com botão de saída inox interno.
+                    </p>
+                </div>
+                <span class="mt-4 text-[11px] font-bold text-brand-yellow uppercase tracking-wider">Acesso 100% Anti-Clonagem</span>
+            </div>
+
+            <div class="p-6 rounded-3xl bg-[#fafafa] border border-gray-200 shadow-sm flex flex-col justify-between">
+                <div>
+                    <div class="w-10 h-10 rounded-xl bg-amber-100 text-brand-goldDark flex items-center justify-center font-bold mb-4">2</div>
+                    <h3 class="font-bold text-gray-900 text-base mb-2">Prumada de Interfonia Sanada</h3>
+                    <p class="text-xs text-gray-600 leading-relaxed">
+                        A nova placa de 16 ramais atende a expansão, e os novos cabos de interfone restauram a comunicação limpa e sem chiados para os 18 apartamentos que hoje sofrem com problemas de chamada.
+                    </p>
+                </div>
+                <span class="mt-4 text-[11px] font-bold text-brand-yellow uppercase tracking-wider">Comunicação e Abertura Segura</span>
+            </div>
+
+            <div class="p-6 rounded-3xl bg-[#fafafa] border border-gray-200 shadow-sm flex flex-col justify-between">
+                <div>
+                    <div class="w-10 h-10 rounded-xl bg-amber-100 text-brand-goldDark flex items-center justify-center font-bold mb-4">3</div>
+                    <h3 class="font-bold text-gray-900 text-base mb-2">Monitoramento 5MP &amp; Energia</h3>
+                    <p class="text-xs text-gray-600 leading-relaxed">
+                        As 5 câmeras Haiz 5MP gravam em cores reais mesmo no breu total, com switch PoE e acesso remoto configurado no computador do condomínio e celulares autorizados, sustentados pelo nobreak com baterias VRLA.
+                    </p>
+                </div>
+                <span class="mt-4 text-[11px] font-bold text-brand-yellow uppercase tracking-wider">Visualização Online &amp; Nobreak</span>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ===================== AVALIAÇÕES GOOGLE ===================== -->
+<section id="avaliacoes" class="py-24 bg-gradient-to-b from-[#f8f9fa] via-white to-[#fafafa] border-b border-gray-200/60 relative overflow-hidden">
+    <div class="absolute -top-24 left-1/4 w-96 h-96 bg-brand-yellow/10 rounded-full blur-[110px] pointer-events-none"></div>
+    <div class="absolute -bottom-24 right-1/4 w-96 h-96 bg-blue-500/5 rounded-full blur-[120px] pointer-events-none"></div>
+    <div class="absolute inset-0 bg-grid opacity-60 pointer-events-none"></div>
+
+    <div class="max-w-7xl mx-auto px-4 relative z-10">
+        
+        <div class="max-w-4xl mx-auto text-center mb-16 reveal">
+            <div class="inline-flex items-center gap-3 px-5 py-2 rounded-full bg-white/80 backdrop-blur-md border border-gray-200 shadow-glass mb-6">
+                <svg class="w-5 h-5 shrink-0" viewBox="0 0 24 24">
+                    <path fill="#4285F4" d="M23.745 12.27c0-.7-.06-1.4-.19-2.07H12v4.51h6.6c-.29 1.52-1.14 2.82-2.4 3.68v3.05h3.88c2.27-2.09 3.66-5.17 3.66-9.17z"/>
+                    <path fill="#34A853" d="M12 24c3.24 0 5.95-1.08 7.93-2.91l-3.88-3.05c-1.08.72-2.45 1.16-4.05 1.16-3.12 0-5.77-2.1-6.72-4.93H1.25v3.15C3.26 21.36 7.34 24 12 24z"/>
+                    <path fill="#FBBC05" d="M5.28 14.27c-.25-.72-.38-1.49-.38-2.27s.13-1.55.38-2.27V6.58H1.25C.45 8.18 0 9.98 0 12s.45 3.82 1.25 5.42l4.03-3.15z"/>
+                    <path fill="#EA4335" d="M12 4.75c1.77 0 3.35.61 4.6 1.8l3.42-3.42C17.95 1.19 15.24 0 12 0 7.34 0 3.26 2.64 1.25 6.58l4.03 3.15c.95-2.83 3.6-4.98 6.72-4.98z"/>
+                </svg>
+                <span class="text-xs font-bold text-gray-700 uppercase tracking-wider">Avaliações Verificadas no Google</span>
+                <span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
+                <span class="text-[11px] font-extrabold text-emerald-700">Nota 5.0 Máxima</span>
+            </div>
+
+            <h2 class="text-3xl md:text-5xl font-extrabold text-gray-900 tracking-tight leading-tight">
+                Padrão Ouro Comprovado por <span class="text-gold-shine">Condomínios em SP</span>
+            </h2>
+            
+            <p class="text-gray-500 mt-4 max-w-2xl mx-auto text-sm md:text-base leading-relaxed">
+                Gianella, seriedade no cronograma, limpeza das áreas comuns e suporte técnico pontual são as prioridades da Vision em cada edifício atendido:
+            </p>
+
+            <div class="mt-8 grid grid-cols-1 sm:grid-cols-3 gap-4 max-w-2xl mx-auto">
+                <div class="bg-white/70 backdrop-blur-xl rounded-2xl p-4 border border-white/80 shadow-glass flex flex-col items-center justify-center">
+                    <div class="flex items-center gap-1.5 mb-1">
+                        <span class="text-3xl font-black text-gray-900">5.0</span>
+                        <div class="flex text-amber-400">
+                            <i data-lucide="star" class="w-4 h-4 fill-amber-400 text-amber-400"></i>
+                            <i data-lucide="star" class="w-4 h-4 fill-amber-400 text-amber-400"></i>
+                            <i data-lucide="star" class="w-4 h-4 fill-amber-400 text-amber-400"></i>
+                            <i data-lucide="star" class="w-4 h-4 fill-amber-400 text-amber-400"></i>
+                            <i data-lucide="star" class="w-4 h-4 fill-amber-400 text-amber-400"></i>
+                        </div>
+                    </div>
+                    <span class="text-[10px] font-bold text-gray-500 uppercase tracking-wider">Score Perfeito</span>
+                </div>
+
+                <div class="bg-white/70 backdrop-blur-xl rounded-2xl p-4 border border-white/80 shadow-glass flex flex-col items-center justify-center">
+                    <div class="flex items-baseline gap-1 mb-0.5">
+                        <span class="text-2xl font-black text-brand-goldDark">85</span>
+                        <span class="text-xs font-bold text-gray-500">avaliações</span>
+                    </div>
+                    <span class="text-[10px] font-extrabold text-gray-700 uppercase tracking-widest flex items-center gap-1">
+                        <i data-lucide="map-pin" class="w-3 h-3 text-brand-yellow"></i> São Paulo Capital
+                    </span>
+                </div>
+
+                <div class="bg-white/70 backdrop-blur-xl rounded-2xl p-4 border border-white/80 shadow-glass flex flex-col items-center justify-center">
+                    <div class="flex items-baseline gap-1 mb-0.5">
+                        <span class="text-2xl font-black text-brand-goldDark">126</span>
+                        <span class="text-xs font-bold text-gray-500">avaliações</span>
+                    </div>
+                    <span class="text-[10px] font-extrabold text-gray-700 uppercase tracking-widest flex items-center gap-1">
+                        <i data-lucide="map-pin" class="w-3 h-3 text-brand-yellow"></i> Região do ABC
+                    </span>
+                </div>
+            </div>
+
+            <p class="text-[11px] font-bold text-gray-400 uppercase tracking-widest mt-4">
+                Total de 211 avaliações 5 estrelas verificadas · 100% de recomendação
+            </p>
+        </div>
+
+        <!-- Carrossel Infinito -->
+        <div class="relative w-full overflow-hidden py-4 select-none reviews-marquee-container reveal" id="reviews-container">
+            <div class="pointer-events-none absolute left-0 top-0 bottom-0 w-12 sm:w-28 bg-gradient-to-r from-[#f8f9fa] to-transparent z-20"></div>
+            <div class="pointer-events-none absolute right-0 top-0 bottom-0 w-12 sm:w-28 bg-gradient-to-l from-[#fafafa] to-transparent z-20"></div>
+
+            <div id="reviews-track" class="reviews-marquee-track flex gap-6 items-stretch">
+                <!-- Review 1: Renata Jábali -->
+                <div class="w-[320px] sm:w-[380px] md:w-[410px] shrink-0 bg-white/75 backdrop-blur-xl rounded-3xl p-6 md:p-7 border border-white/80 shadow-glass hover:shadow-premium hover:border-brand-yellow/50 transition-all duration-300 flex flex-col justify-between group relative overflow-hidden">
+                    <div>
+                        <div class="flex items-center justify-between gap-3 mb-4">
+                            <div class="flex items-center gap-3">
+                                <div class="w-11 h-11 rounded-full bg-gradient-to-tr from-rose-500 to-rose-300 text-white font-bold flex items-center justify-center text-sm shadow-sm ring-2 ring-white">RJ</div>
+                                <div>
+                                    <h4 class="font-bold text-gray-900 text-sm leading-tight">Renata Jábali</h4>
+                                    <div class="flex items-center gap-1.5 mt-0.5">
+                                        <span class="inline-flex items-center gap-1 text-[9px] font-bold bg-amber-100/80 text-amber-800 px-2 py-0.5 rounded-full">
+                                            <i data-lucide="shield-check" class="w-2.5 h-2.5"></i> Local Guide
+                                        </span>
+                                        <span class="text-[10px] text-gray-400">· 18 avaliações</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <span class="text-[10px] text-gray-400 font-medium whitespace-nowrap">Há 4 meses</span>
+                        </div>
+                        <div class="flex text-amber-400 mb-3 gap-0.5">
+                            <i data-lucide="star" class="w-4 h-4 fill-amber-400 text-amber-400"></i>
+                            <i data-lucide="star" class="w-4 h-4 fill-amber-400 text-amber-400"></i>
+                            <i data-lucide="star" class="w-4 h-4 fill-amber-400 text-amber-400"></i>
+                            <i data-lucide="star" class="w-4 h-4 fill-amber-400 text-amber-400"></i>
+                            <i data-lucide="star" class="w-4 h-4 fill-amber-400 text-amber-400"></i>
+                        </div>
+                        <p class="text-gray-700 text-xs md:text-sm leading-relaxed mb-5 italic">
+                            "O trabalho foi ótimo, desde o primeiro atendimento e recebimento dos projetos. Os técnicos foram atenciosos, pontuais e respeitaram a dinâmica do condomínio. A explicação do sistema foi muito completa. Recomendo de olhos fechados!"
+                        </p>
+                    </div>
+                    <div class="pt-4 border-t border-gray-100/80">
+                        <span class="text-[10px] font-extrabold uppercase tracking-wider text-gray-400 block mb-1.5">Destaques:</span>
+                        <div class="flex flex-wrap gap-1.5">
+                            <span class="text-[10px] bg-gray-100 text-gray-700 font-medium px-2.5 py-0.5 rounded-md">Pontualidade</span>
+                            <span class="text-[10px] bg-gray-100 text-gray-700 font-medium px-2.5 py-0.5 rounded-md">Zelo nas áreas comuns</span>
+                            <span class="text-[10px] bg-gray-100 text-gray-700 font-medium px-2.5 py-0.5 rounded-md">Treinamento didático</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Review 2: Erik Sarnauskas -->
+                <div class="w-[320px] sm:w-[380px] md:w-[410px] shrink-0 bg-white/75 backdrop-blur-xl rounded-3xl p-6 md:p-7 border border-white/80 shadow-glass hover:shadow-premium hover:border-brand-yellow/50 transition-all duration-300 flex flex-col justify-between group relative overflow-hidden">
+                    <div>
+                        <div class="flex items-center justify-between gap-3 mb-4">
+                            <div class="flex items-center gap-3">
+                                <div class="w-11 h-11 rounded-full bg-gradient-to-tr from-sky-500 to-sky-300 text-white font-bold flex items-center justify-center text-sm shadow-sm ring-2 ring-white">ES</div>
+                                <div>
+                                    <h4 class="font-bold text-gray-900 text-sm leading-tight">Erik Sarnauskas</h4>
+                                    <div class="flex items-center gap-1.5 mt-0.5">
+                                        <span class="inline-flex items-center gap-1 text-[9px] font-bold bg-amber-100/80 text-amber-800 px-2 py-0.5 rounded-full">
+                                            <i data-lucide="shield-check" class="w-2.5 h-2.5"></i> Local Guide
+                                        </span>
+                                        <span class="text-[10px] text-gray-400">· 13 avaliações</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <span class="text-[10px] text-gray-400 font-medium whitespace-nowrap">Há 7 meses</span>
+                        </div>
+                        <div class="flex text-amber-400 mb-3 gap-0.5">
+                            <i data-lucide="star" class="w-4 h-4 fill-amber-400 text-amber-400"></i>
+                            <i data-lucide="star" class="w-4 h-4 fill-amber-400 text-amber-400"></i>
+                            <i data-lucide="star" class="w-4 h-4 fill-amber-400 text-amber-400"></i>
+                            <i data-lucide="star" class="w-4 h-4 fill-amber-400 text-amber-400"></i>
+                            <i data-lucide="star" class="w-4 h-4 fill-amber-400 text-amber-400"></i>
+                        </div>
+                        <p class="text-gray-700 text-xs md:text-sm leading-relaxed mb-5 italic">
+                            "Gostei muito do serviço. Foi rápido, organizado e feito com bastante cuidado, principalmente no acabamento da tubulação e na limpeza do local. O instalador explicou tudo com clareza sobre o funcionamento dos controles e câmeras."
+                        </p>
+                    </div>
+                    <div class="pt-4 border-t border-gray-100/80">
+                        <span class="text-[10px] font-extrabold uppercase tracking-wider text-gray-400 block mb-1.5">Destaques:</span>
+                        <div class="flex flex-wrap gap-1.5">
+                            <span class="text-[10px] bg-gray-100 text-gray-700 font-medium px-2.5 py-0.5 rounded-md">Tubulação limpa</span>
+                            <span class="text-[10px] bg-gray-100 text-gray-700 font-medium px-2.5 py-0.5 rounded-md">Organização técnica</span>
+                            <span class="text-[10px] bg-gray-100 text-gray-700 font-medium px-2.5 py-0.5 rounded-md">Pós-venda impecável</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Review 3: Amanda Marques Mumme -->
+                <div class="w-[320px] sm:w-[380px] md:w-[410px] shrink-0 bg-white/75 backdrop-blur-xl rounded-3xl p-6 md:p-7 border border-white/80 shadow-glass hover:shadow-premium hover:border-brand-yellow/50 transition-all duration-300 flex flex-col justify-between group relative overflow-hidden">
+                    <div>
+                        <div class="flex items-center justify-between gap-3 mb-4">
+                            <div class="flex items-center gap-3">
+                                <div class="w-11 h-11 rounded-full bg-gradient-to-tr from-amber-500 to-amber-300 text-white font-bold flex items-center justify-center text-sm shadow-sm ring-2 ring-white">AM</div>
+                                <div>
+                                    <h4 class="font-bold text-gray-900 text-sm leading-tight">Amanda Marques Mumme</h4>
+                                    <div class="flex items-center gap-1.5 mt-0.5">
+                                        <span class="inline-flex items-center gap-1 text-[9px] font-bold bg-amber-100/80 text-amber-800 px-2 py-0.5 rounded-full">
+                                            <i data-lucide="shield-check" class="w-2.5 h-2.5"></i> Local Guide
+                                        </span>
+                                        <span class="text-[10px] text-gray-400">· 72 avaliações</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <span class="text-[10px] text-gray-400 font-medium whitespace-nowrap">Há 8 meses</span>
+                        </div>
+                        <div class="flex text-amber-400 mb-3 gap-0.5">
+                            <i data-lucide="star" class="w-4 h-4 fill-amber-400 text-amber-400"></i>
+                            <i data-lucide="star" class="w-4 h-4 fill-amber-400 text-amber-400"></i>
+                            <i data-lucide="star" class="w-4 h-4 fill-amber-400 text-amber-400"></i>
+                            <i data-lucide="star" class="w-4 h-4 fill-amber-400 text-amber-400"></i>
+                            <i data-lucide="star" class="w-4 h-4 fill-amber-400 text-amber-400"></i>
+                        </div>
+                        <p class="text-gray-700 text-xs md:text-sm leading-relaxed mb-5 italic">
+                            "Atendimento diferenciado, ágil e sem enrolação. O Gabriel e os técnicos atenderam prontamente todas as solicitações do condomínio. Instalação nota 10 do início ao fim. Recomendo muito!"
+                        </p>
+                    </div>
+                    <div class="pt-4 border-t border-gray-100/80">
+                        <span class="text-[10px] font-extrabold uppercase tracking-wider text-gray-400 block mb-1.5">Destaques:</span>
+                        <div class="flex flex-wrap gap-1.5">
+                            <span class="text-[10px] bg-gray-100 text-gray-700 font-medium px-2.5 py-0.5 rounded-md">Atendimento Gabriel</span>
+                            <span class="text-[10px] bg-gray-100 text-gray-700 font-medium px-2.5 py-0.5 rounded-md">Agilidade</span>
+                            <span class="text-[10px] bg-gray-100 text-gray-700 font-medium px-2.5 py-0.5 rounded-md">Qualidade técnica</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Duplicação para loop suave -->
+                <div class="w-[320px] sm:w-[380px] md:w-[410px] shrink-0 bg-white/75 backdrop-blur-xl rounded-3xl p-6 md:p-7 border border-white/80 shadow-glass hover:shadow-premium hover:border-brand-yellow/50 transition-all duration-300 flex flex-col justify-between group relative overflow-hidden">
+                    <div>
+                        <div class="flex items-center justify-between gap-3 mb-4">
+                            <div class="flex items-center gap-3">
+                                <div class="w-11 h-11 rounded-full bg-gradient-to-tr from-rose-500 to-rose-300 text-white font-bold flex items-center justify-center text-sm shadow-sm ring-2 ring-white">RJ</div>
+                                <div>
+                                    <h4 class="font-bold text-gray-900 text-sm leading-tight">Renata Jábali</h4>
+                                    <div class="flex items-center gap-1.5 mt-0.5">
+                                        <span class="inline-flex items-center gap-1 text-[9px] font-bold bg-amber-100/80 text-amber-800 px-2 py-0.5 rounded-full">
+                                            <i data-lucide="shield-check" class="w-2.5 h-2.5"></i> Local Guide
+                                        </span>
+                                        <span class="text-[10px] text-gray-400">· 18 avaliações</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <span class="text-[10px] text-gray-400 font-medium whitespace-nowrap">Há 4 meses</span>
+                        </div>
+                        <div class="flex text-amber-400 mb-3 gap-0.5">
+                            <i data-lucide="star" class="w-4 h-4 fill-amber-400 text-amber-400"></i>
+                            <i data-lucide="star" class="w-4 h-4 fill-amber-400 text-amber-400"></i>
+                            <i data-lucide="star" class="w-4 h-4 fill-amber-400 text-amber-400"></i>
+                            <i data-lucide="star" class="w-4 h-4 fill-amber-400 text-amber-400"></i>
+                            <i data-lucide="star" class="w-4 h-4 fill-amber-400 text-amber-400"></i>
+                        </div>
+                        <p class="text-gray-700 text-xs md:text-sm leading-relaxed mb-5 italic">
+                            "O trabalho foi ótimo, desde o primeiro atendimento e recebimento dos projetos. Os técnicos foram atenciosos, pontuais e respeitaram a dinâmica do condomínio. A explicação do sistema foi muito completa. Recomendo de olhos fechados!"
+                        </p>
+                    </div>
+                    <div class="pt-4 border-t border-gray-100/80">
+                        <span class="text-[10px] font-extrabold uppercase tracking-wider text-gray-400 block mb-1.5">Destaques:</span>
+                        <div class="flex flex-wrap gap-1.5">
+                            <span class="text-[10px] bg-gray-100 text-gray-700 font-medium px-2.5 py-0.5 rounded-md">Pontualidade</span>
+                            <span class="text-[10px] bg-gray-100 text-gray-700 font-medium px-2.5 py-0.5 rounded-md">Zelo nas áreas comuns</span>
+                            <span class="text-[10px] bg-gray-100 text-gray-700 font-medium px-2.5 py-0.5 rounded-md">Treinamento didático</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="flex items-center justify-center gap-2 mt-4 text-[11px] font-semibold text-gray-400 uppercase tracking-widest reveal">
+            <i data-lucide="hand" class="w-3.5 h-3.5 text-brand-yellow"></i>
+            <span>Passe o mouse ou toque para pausar o carrossel</span>
+        </div>
+
+    </div>
+</section>
+
+<!-- ===================== PROPOSTA DE INVESTIMENTO ===================== -->
+<section id="investimento" class="py-24 bg-[#fafafa] relative overflow-hidden">
+    <div class="absolute inset-0 bg-dots pointer-events-none z-0"></div>
+    <div class="max-w-5xl mx-auto px-4 relative z-10">
+
+        <div class="text-center mb-10 reveal">
+            <span class="text-brand-yellow font-bold uppercase tracking-widest text-xs">Simulador Executivo Oficial</span>
+            <h2 class="text-3xl md:text-5xl font-extrabold text-gray-900 mt-2">Investimento na Solução Integrada</h2>
+            <p class="text-gray-500 mt-3 max-w-2xl mx-auto text-sm md:text-base">
+                Valores calculados sobre cotações oficiais de distribuidor (Speed Proposta 182.508 + Catálogo Haiz) com mão de obra técnica especializada:
+            </p>
+        </div>
+
+        <!-- Seletor de Pagamento -->
+        <div class="flex justify-center mb-10 reveal">
+            <div class="bg-gray-100 p-1.5 rounded-full inline-flex border border-gray-200 shadow-inner flex-wrap justify-center gap-1">
+                <button type="button" id="btn-pay-pix" onclick="selectPayment('pix')" class="px-6 py-2.5 rounded-full text-xs font-bold bg-brand-yellow text-black shadow-md transition-all">
+                    À Vista (PIX com Desconto)
+                </button>
+                <button type="button" id="btn-pay-card" onclick="selectPayment('card')" class="px-6 py-2.5 rounded-full text-xs font-bold bg-transparent text-gray-500 hover:text-gray-800 transition-all">
+                    12x no Cartão de Crédito
+                </button>
+            </div>
+        </div>
+
+        <!-- Card Principal de Investimento -->
+        <div class="grid lg:grid-cols-1 gap-8 reveal items-stretch max-w-4xl mx-auto">
+            
+            <div class="premium-border-glow group relative z-20">
+                <div class="premium-border-inner flex flex-col lg:flex-row relative overflow-hidden bg-white p-0">
+                    <div class="absolute top-0 left-0 w-64 h-64 bg-brand-yellow/5 rounded-full blur-[80px] pointer-events-none"></div>
+                    
+                    <!-- Lado Esquerdo: Escopo Detalhado -->
+                    <div class="w-full lg:w-7/12 p-8 md:p-10 relative z-10 border-b lg:border-b-0 lg:border-r border-gray-100 flex flex-col justify-between">
+                        <div>
+                            <div class="mb-4">
+                                <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-zinc-900 text-brand-yellow text-[10px] font-bold uppercase tracking-widest shadow-sm">
+                                    ⭐ Solução Completa Guajará: Acesso + Interfonia + CFTV
+                                </span>
+                                <h3 class="text-2xl md:text-3xl font-bold text-gray-900 mt-3">Modernização Predial Edifício Guajará</h3>
+                                <p class="text-xs md:text-sm text-gray-500 mt-2 leading-relaxed">
+                                    2 Leitores Faciais Intelbras SS 3532, 5 Câmeras Haiz 5MP Full Color, Placa + 18 Telefones de Interfonia, Backup de Energia e Tubulação Metálica Zincada 3/4".
+                                </p>
+                            </div>
+
+                            <ul class="space-y-3 mb-6">
+                                <li class="flex items-start gap-2.5 text-xs md:text-sm text-gray-700">
+                                    <i data-lucide="check-circle-2" class="w-4 h-4 text-brand-yellow shrink-0 mt-0.5"></i>
+                                    <span><strong>02x Controladores Faciais Intelbras SS 3532 MF Wi-Fi:</strong> Reconhecimento biométrico facial ultrarrápido anti-clonagem para o acesso do condomínio.</span>
+                                </li>
+                                <li class="flex items-start gap-2.5 text-xs md:text-sm text-gray-700">
+                                    <i data-lucide="check-circle-2" class="w-4 h-4 text-brand-yellow shrink-0 mt-0.5"></i>
+                                    <span><strong>01x Kit Universal Fechadura Eletroímã FE20150 (150kg) + Mola MH 103 A + Botão Inox BT 3000 IN:</strong> Fechamento robusto e seguro.</span>
+                                </li>
+                                <li class="flex items-start gap-2.5 text-xs md:text-sm text-gray-700">
+                                    <i data-lucide="check-circle-2" class="w-4 h-4 text-brand-yellow shrink-0 mt-0.5"></i>
+                                    <span><strong>05x Câmeras IP POE Haiz 5MP Full Color + Switch POE Haiz:</strong> Monitoramento com imagens coloridas 24h cobrindo pontos cegos.</span>
+                                </li>
+                                <li class="flex items-start gap-2.5 text-xs md:text-sm text-gray-700">
+                                    <i data-lucide="check-circle-2" class="w-4 h-4 text-brand-yellow shrink-0 mt-0.5"></i>
+                                    <span><strong>01x Placa 16 Ramais Desbalanceada + 18x Telefones TDMI-300 + 200m Cabo Interfone:</strong> Resolução dos 18 apartamentos com problema de comunicação.</span>
+                                </li>
+                                <li class="flex items-start gap-2.5 text-xs md:text-sm text-gray-700">
+                                    <i data-lucide="check-circle-2" class="w-4 h-4 text-brand-yellow shrink-0 mt-0.5"></i>
+                                    <span><strong>01x Fonte Nobreak FA1220S G2 + 02x Baterias 12V 7Ah XB 1270 VRLA:</strong> Suporte contínuo de energia para fechaduras e central de interfonia.</span>
+                                </li>
+                                <li class="flex items-start gap-2.5 text-xs md:text-sm text-gray-700">
+                                    <i data-lucide="check-circle-2" class="w-4 h-4 text-brand-yellow shrink-0 mt-0.5"></i>
+                                    <span><strong>Infraestrutura Industrial Zincada Condu Pro 3/4":</strong> Eletrodutos pré-zincados, conduletes tipo X, uniduts, curvas, tampas e abraçadeiras tipo D.</span>
+                                </li>
+                                <li class="flex items-start gap-2.5 text-xs md:text-sm text-gray-700">
+                                    <i data-lucide="check-circle-2" class="w-4 h-4 text-brand-yellow shrink-0 mt-0.5"></i>
+                                    <span><strong>Mão de Obra Especializada Vision:</strong> Fixação de toda tubulação, instalação dos faciais, substituição e testes dos 18 ramais, configuração de rede/acesso remoto + 12 meses de garantia total.</span>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <div class="p-3.5 bg-emerald-50/80 rounded-2xl border border-emerald-200/80 text-xs text-emerald-950 flex items-start gap-2.5">
+                            <i data-lucide="shield-check" class="w-4 h-4 text-emerald-600 shrink-0 mt-0.5"></i>
+                            <div>
+                                <span class="font-bold block">Garantia Vision Tecnologia de 12 Meses:</span>
+                                <span class="text-emerald-800 text-[11px]">Suporte técnico direto da nossa equipe de engenharia para o Edifício Guajará com reposição de peças e atendimento prioritário.</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Lado Direito: Preço Dinâmico & Ação -->
+                    <div class="w-full lg:w-5/12 bg-[#f8f9fa] p-8 md:p-10 flex flex-col items-center justify-center text-center relative z-10 min-h-[380px]">
+                        
+                        <p class="text-[11px] font-bold text-gray-400 uppercase tracking-widest mb-3" id="label-pricing-mode">Investimento à Vista (PIX com Desconto)</p>
+
+                        <!-- Display de Preço -->
+                        <div id="price-display-box" class="w-full transition-opacity duration-300">
+                            <!-- Renderizado via JS -->
+                        </div>
+
+                        <!-- Botão CTA WhatsApp -->
+                        <a id="btn-whatsapp-cta" href="#" target="_blank" onclick="if(window.clarity) window.clarity('event', 'Clique_Aprovacao_Guajara');" class="mt-8 w-full bg-brand-yellow hover:bg-brand-goldLight text-black font-bold py-4 px-6 rounded-2xl transition-all shadow-glow flex items-center justify-center gap-2 group">
+                            <i data-lucide="check-circle" class="w-5 h-5"></i>
+                            <span class="text-xs md:text-sm uppercase tracking-wider font-extrabold" id="cta-btn-text">Aprovar Proposta no WhatsApp</span>
+                            <i data-lucide="arrow-right" class="w-4 h-4 group-hover:translate-x-1 transition-transform"></i>
+                        </a>
+
+                        <p class="text-[11px] text-gray-400 mt-4 flex items-center gap-1.5 justify-center">
+                            <i data-lucide="calendar-check" class="w-3.5 h-3.5 text-brand-yellow"></i>
+                            Início das obras programado para a próxima semana
+                        </p>
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+</section>
+
+<!-- ===================== FAQ ===================== -->
+<section id="faq" class="py-24 bg-[#f8f9fa] border-t border-gray-200/60">
+    <div class="max-w-3xl mx-auto px-4">
+        <div class="text-center mb-14 reveal">
+            <span class="text-brand-yellow font-bold uppercase tracking-widest text-xs">Perguntas Frequentes</span>
+            <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mt-3">Dúvidas Técnicas do Condomínio</h2>
+        </div>
+        
+        <div class="space-y-4 reveal" id="accordion">
+
+            <div class="accordion-item bg-white rounded-2xl border border-gray-100 shadow-sm overflow-hidden transition-all hover:border-brand-yellow/50">
+                <button type="button" onclick="toggleAccordion(this)" class="w-full flex items-center justify-between p-6 text-left font-bold text-gray-900 focus:outline-none">
+                    <span>Como é feito o cadastro dos moradores no leitor facial SS 3532?</span>
+                    <i data-lucide="chevron-down" class="w-5 h-5 text-brand-yellow acc-arrow shrink-0"></i>
+                </button>
+                <div class="accordion-content">
+                    <p class="px-6 pb-6 text-gray-600 text-sm leading-relaxed">
+                        O cadastro pode ser feito diretamente na tela do leitor ou pelo computador do condomínio através do software Intelbras. É possível capturar a foto do morador no momento ou enviar fotos previamente registradas. O sistema possui inteligência anti-fraude, impedindo a liberação com fotos impressas ou vídeos exibidos na tela do celular.
+                    </p>
+                </div>
+            </div>
+
+            <div class="accordion-item bg-white rounded-2xl border border-gray-100 shadow-sm overflow-hidden transition-all hover:border-brand-yellow/50">
+                <button type="button" onclick="toggleAccordion(this)" class="w-full flex items-center justify-between p-6 text-left font-bold text-gray-900 focus:outline-none">
+                    <span>Como o sistema de interfonia dos 18 apartamentos será corrigido?</span>
+                    <i data-lucide="chevron-down" class="w-5 h-5 text-brand-yellow acc-arrow shrink-0"></i>
+                </button>
+                <div class="accordion-content">
+                    <p class="px-6 pb-6 text-gray-600 text-sm leading-relaxed">
+                        Instalaremos a nova placa de 16 ramais desbalanceada na central de interfonia existente (CP48/CP112) e substituiremos os 18 aparelhos antigos pelos novos terminais TDMI-300. Nossa equipe testará caso a caso a integridade do par de fiação na prumada, refazendo as conexões oxidadas para que o morador fale e destrave a portaria com perfeição.
+                    </p>
+                </div>
+            </div>
+
+            <div class="accordion-item bg-white rounded-2xl border border-gray-100 shadow-sm overflow-hidden transition-all hover:border-brand-yellow/50">
+                <button type="button" onclick="toggleAccordion(this)" class="w-full flex items-center justify-between p-6 text-left font-bold text-gray-900 focus:outline-none">
+                    <span>O que acontece com os portões e interfones se faltar energia no prédio?</span>
+                    <i data-lucide="chevron-down" class="w-5 h-5 text-brand-yellow acc-arrow shrink-0"></i>
+                </button>
+                <div class="accordion-content">
+                    <p class="px-6 pb-6 text-gray-600 text-sm leading-relaxed">
+                        O projeto inclui a fonte nobreak inteligente FA1220S G2 com duas baterias de 12V 7Ah XB 1270. Em caso de blackout na rede elétrica da Santa Ifigênia, as baterias assumem instantaneamente sem reiniciar a central de interfones ou soltar a fechadura eletroímã, mantendo o condomínio trancado e seguro por horas.
+                    </p>
+                </div>
+            </div>
+
+            <div class="accordion-item bg-white rounded-2xl border border-gray-100 shadow-sm overflow-hidden transition-all hover:border-brand-yellow/50">
+                <button type="button" onclick="toggleAccordion(this)" class="w-full flex items-center justify-between p-6 text-left font-bold text-gray-900 focus:outline-none">
+                    <span>Qual o diferencial das câmeras Haiz 5MP Full Color com PoE?</span>
+                    <i data-lucide="chevron-down" class="w-5 h-5 text-brand-yellow acc-arrow shrink-0"></i>
+                </button>
+                <div class="accordion-content">
+                    <p class="px-6 pb-6 text-gray-600 text-sm leading-relaxed">
+                        A resolução de 5 Megapixels entrega mais que o dobro de detalhes de uma câmera Full HD comum. Graças ao sensor Full Color com abertura sensível, a câmera mantém imagens coloridas e nítidas mesmo à noite, facilitando a identificação de cores de roupas, rostos e veículos. O switch PoE alimenta as câmeras pelo próprio cabo de rede, sem transformadores individuais soltos.
+                    </p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<!-- ===================== FOOTER ===================== -->
+<footer class="bg-black py-16 text-center border-t border-zinc-900 group">
+    <div class="max-w-4xl mx-auto px-4">
+        
+        <div class="flex flex-col items-center justify-center leading-none opacity-40 group-hover:opacity-100 transition-opacity duration-500 cursor-default mb-10">
+            <div class="flex flex-col items-center">
+                <div class="relative flex items-baseline leading-none">
+                    <span class="font-logo font-bold text-[3.5rem] text-white lowercase tracking-[-0.05em] leading-none">vısıon</span>
+                    <span class="absolute -right-3.5 top-2.5 text-[0.75rem] text-brand-yellow font-bold">®</span>
+                </div>
+                <span class="font-tech text-[0.75rem] font-bold text-zinc-500 lowercase -mt-3 ml-1.5 text-center w-full" style="letter-spacing: 0.53em;">tecnologia</span>
+            </div>
+        </div>
+
+        <div class="text-zinc-500 text-xs md:text-sm leading-relaxed space-y-1 mb-8 opacity-60">
+            <p><strong>Condomínio Edifício Guajará</strong> (56 Apartamentos · 7 Andares)</p>
+            <p>Rua Guaianases, 195 – Santa Ifigênia, São Paulo - SP · CEP 01204-001</p>
+            <p>Proposta Técnica Definitiva #GUAJARA-2026 | Base Speed Distribuidora Nº 182.508 &amp; Haiz</p>
+        </div>
+
+        <div class="inline-flex items-center justify-center gap-2 border border-zinc-800 bg-zinc-900/50 px-5 py-2.5 rounded-full mb-6 shadow-sm">
+            <i data-lucide="lock" class="w-3.5 h-3.5 text-brand-yellow"></i>
+            <span class="text-[10px] md:text-xs text-zinc-400 uppercase tracking-widest font-bold">Documento confidencial condominial</span>
+        </div>
+        
+        <p class="text-[10px] text-zinc-700 uppercase tracking-widest font-bold mt-6">Engenharia de Segurança &amp; Infraestrutura Predial</p>
+    </div>
+</footer>
+
+<!-- ===================== JAVASCRIPT LOGIC ===================== -->
+<script>
+    // DADOS FINANCEIROS EXATOS (ORÇAMENTO DEFINITIVO CONDOMÍNIO EDIFÍCIO GUAJARÁ)
+    // CTD: R$ 10.759,67 (Materiais R$ 6.959,67 + M.O. Global R$ 3.800,00)
+    // DIVISOR TIER 3 NORMAL: 0,745
+    const pricing = {
+        title: "Solução Completa Acesso Facial + CFTV 5MP + Interfonia (Edifício Guajará)",
+        pix: 14450.00,
+        pixHalf: 7225.00,
+        cardTotal: 17330.00,
+        cardMonthly: 1444.16
+    };
+
+    let selectedPayment = 'pix'; // 'pix' ou 'card'
+
+    function formatBRL(val) {
+        return val.toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+    }
+
+    function selectPayment(paymentMode) {
+        selectedPayment = paymentMode;
+        const btnPix = document.getElementById('btn-pay-pix');
+        const btnCard = document.getElementById('btn-pay-card');
+        const labelMode = document.getElementById('label-pricing-mode');
+
+        if (btnPix && btnCard) {
+            btnPix.className = "px-6 py-2.5 rounded-full text-xs font-bold bg-transparent text-gray-500 hover:text-gray-800 transition-all";
+            btnCard.className = "px-6 py-2.5 rounded-full text-xs font-bold bg-transparent text-gray-500 hover:text-gray-800 transition-all";
+        }
+
+        if (paymentMode === 'pix') {
+            if (btnPix) btnPix.className = "px-6 py-2.5 rounded-full text-xs font-bold bg-brand-yellow text-black shadow-md transition-all";
+            if (labelMode) labelMode.textContent = "Investimento à Vista (PIX com Desconto)";
+        } else {
+            if (btnCard) btnCard.className = "px-6 py-2.5 rounded-full text-xs font-bold bg-brand-yellow text-black shadow-md transition-all";
+            if (labelMode) labelMode.textContent = "Investimento Parcelado no Cartão";
+        }
+
+        renderPriceDisplay();
+        if (window.clarity) window.clarity("event", "Mudou_Pagamento_Guajara_" + paymentMode);
+    }
+
+    function renderPriceDisplay() {
+        const box = document.getElementById('price-display-box');
+        const ctaBtn = document.getElementById('btn-whatsapp-cta');
+        const ctaText = document.getElementById('cta-btn-text');
+
+        if (!box) return;
+
+        let html = '';
+        let whatsappMsg = '';
+
+        if (selectedPayment === 'pix') {
+            html = `
+                <div class="flex flex-col items-center justify-center w-full animate-fade-in">
+                    <div class="flex items-baseline justify-center gap-1.5 mb-2">
+                        <span class="text-2xl font-bold text-gray-400">R$</span>
+                        <span class="text-5xl md:text-6xl font-extrabold text-[#111827] tracking-tighter leading-none">${formatBRL(pricing.pix).split(',')[0]}<span class="text-3xl text-gray-400">,${formatBRL(pricing.pix).split(',')[1]}</span></span>
+                    </div>
+                    <div class="inline-flex items-center gap-1.5 bg-emerald-50 border border-emerald-200 text-emerald-700 px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-widest mt-2">
+                        <i data-lucide="zap" class="w-3 h-3"></i> Pagamento à vista (PIX)
+                    </div>
+                    
+                    <div class="w-full mt-6 space-y-2 text-left">
+                        <div class="bg-white border border-gray-200 rounded-xl p-3 shadow-sm relative overflow-hidden">
+                            <div class="absolute top-0 left-0 w-1.5 h-full bg-emerald-400"></div>
+                            <div class="pl-2">
+                                <span class="text-[10px] font-bold uppercase tracking-widest text-gray-500 block">Sinal (Aprovação e Pedido de Equipamentos)</span>
+                                <span class="font-bold text-gray-900 text-sm">R$ ${formatBRL(pricing.pixHalf)}</span>
+                            </div>
+                        </div>
+                        <div class="bg-white border border-gray-200 rounded-xl p-3 shadow-sm relative overflow-hidden">
+                            <div class="absolute top-0 left-0 w-1.5 h-full bg-brand-yellow"></div>
+                            <div class="pl-2">
+                                <span class="text-[10px] font-bold uppercase tracking-widest text-gray-500 block">Entrega (Finalização, Testes nos Aptos &amp; Garantia)</span>
+                                <span class="font-bold text-gray-900 text-sm">R$ ${formatBRL(pricing.pixHalf)}</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `;
+            whatsappMsg = `Fala Gabriel! Vi a proposta completa para o Condomínio Edifício Guajará na Rua Guaianases (2 Faciais Intelbras SS 3532, 5 Câmeras Haiz 5MP Full Color, Interfonia nos 18 aptos, nobreak e tubulação zincada). Gostaria de aprovar o projeto no valor de *R$ ${formatBRL(pricing.pix)} no PIX*. Vamos alinhar o cronograma de instalação para a próxima semana!`;
+            if (ctaText) ctaText.textContent = `Aprovar no PIX (R$ ${formatBRL(pricing.pix)})`;
+
+        } else {
+            html = `
+                <div class="flex flex-col items-center justify-center w-full animate-fade-in">
+                    <span class="text-xs font-bold text-gray-400 mb-1">Parcelamento Condominial Facilitado</span>
+                    <div class="flex items-baseline justify-center gap-1.5 mb-3">
+                        <span class="text-2xl font-bold text-[#111827]">12x de R$</span>
+                        <span class="text-5xl md:text-6xl font-extrabold text-[#111827] tracking-tighter leading-none">${formatBRL(pricing.cardMonthly).split(',')[0]}<span class="text-3xl text-gray-400">,${formatBRL(pricing.cardMonthly).split(',')[1]}</span></span>
+                    </div>
+                    <div class="inline-flex items-center gap-1.5 bg-blue-50 border border-blue-200 text-blue-700 px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-widest mt-1">
+                        <i data-lucide="credit-card" class="w-3 h-3"></i> Cartão de Crédito
+                    </div>
+                    <p class="text-xs text-gray-500 font-medium mt-4">Valor total parcelado: R$ ${formatBRL(pricing.cardTotal)}</p>
+                </div>
+            `;
+            whatsappMsg = `Fala Gabriel! Analisei a proposta do Condomínio Edifício Guajará com os 2 Faciais Intelbras, 5 Câmeras Haiz 5MP, a revisão da interfonia e o nobreak. Gostaria de aprovar a proposta em *12x de R$ ${formatBRL(pricing.cardMonthly)} no cartão*. Vamos programar a data de início da equipe!`;
+            if (ctaText) ctaText.textContent = `Aprovar em 12x no Cartão`;
+        }
+
+        box.innerHTML = html;
+        if (ctaBtn) ctaBtn.href = "https://wa.me/5511930816696?text=" + encodeURIComponent(whatsappMsg);
+        
+        if (window.lucide && typeof window.lucide.createIcons === 'function') {
+            window.lucide.createIcons();
+        }
+    }
+
+    // ALTERNÂNCIA DE VÍDEO DIA / NOITE HAIZ
+    function switchVideoSource(mode) {
+        const video = document.getElementById('demo-haiz-video');
+        const badge = document.getElementById('demo-video-badge');
+        const btnDay = document.getElementById('btn-video-day');
+        const btnNight = document.getElementById('btn-video-night');
+
+        if (!video) return;
+
+        if (mode === 'day') {
+            video.src = "https://res.cloudinary.com/dptcuckhf/video/upload/v1791303986/V%C3%ADdeo_Haiz_Full_Color_-_DIa_pl7en9.mp4";
+            if (badge) badge.textContent = "Demonstração Real: Modo Diurno 5MP";
+            if (btnDay) btnDay.className = "px-5 py-2.5 rounded-full text-xs font-bold bg-brand-yellow text-black shadow-glow flex items-center gap-2 transition-all";
+            if (btnNight) btnNight.className = "px-5 py-2.5 rounded-full text-xs font-bold bg-zinc-800 text-zinc-300 hover:text-white border border-zinc-700 flex items-center gap-2 transition-all";
+        } else {
+            video.src = "https://res.cloudinary.com/dptcuckhf/video/upload/v1791303986/V%C3%ADdeo_Haiz_Full_Color_-_Noite_il95al.mp4";
+            if (badge) badge.textContent = "Demonstração Real: Modo Noturno Full Color 24h";
+            if (btnNight) btnNight.className = "px-5 py-2.5 rounded-full text-xs font-bold bg-brand-yellow text-black shadow-glow flex items-center gap-2 transition-all";
+            if (btnDay) btnDay.className = "px-5 py-2.5 rounded-full text-xs font-bold bg-zinc-800 text-zinc-300 hover:text-white border border-zinc-700 flex items-center gap-2 transition-all";
+        }
+        video.currentTime = 0;
+        video.play().catch(() => {});
+    }
+
+    // ACCORDION TOGGLE
+    function toggleAccordion(button) {
+        const item = button.closest('.accordion-item');
+        if (!item) return;
+        const isOpen = item.classList.contains('open');
+        document.querySelectorAll('.accordion-item').forEach(i => i.classList.remove('open'));
+        if (!isOpen) item.classList.add('open');
+        if (window.lucide && typeof window.lucide.createIcons === 'function') {
+            window.lucide.createIcons();
+        }
+    }
+
+    // CONTROLE DE ACESSO (LOCK SCREEN)
+    function checkPassword() {
+        const inputEl = document.getElementById('password-input');
+        if (!inputEl) return;
+
+        const input = inputEl.value.trim().toUpperCase();
+        const errorMsg = document.getElementById('error-msg');
+        const btnUnlock = document.getElementById('btn-unlock');
+        const unlockIcon = document.getElementById('unlock-icon');
+        const unlockText = document.getElementById('unlock-text');
+        const unlockArrow = document.getElementById('unlock-arrow');
+
+        const validPasswords = ['GUAJARA', 'GUAJARA2026', 'GIANELLA', 'SANTAIFIGENIA', 'VISION'];
+
+        if (validPasswords.includes(input)) {
+            if (btnUnlock) btnUnlock.disabled = true;
+            if (unlockText) unlockText.textContent = "Validando Acesso...";
+            if (unlockIcon) unlockIcon.className = "w-5 h-5 animate-spin text-black";
+            if (unlockArrow) unlockArrow.style.display = 'none';
+
+            setTimeout(() => {
+                const lockScreen = document.getElementById('lock-screen');
+                if (lockScreen) lockScreen.style.opacity = '0';
+
+                const video = document.getElementById("vision-video");
+                if (video && video.paused) {
+                    video.muted = true;
+                    video.play().catch(() => {});
+                }
+
+                if (window.clarity) {
+                    try {
+                        window.clarity("consent");
+                        window.clarity("identify", "gianella-guajara", undefined, undefined, "Gianella (Edifício Guajará)");
+                        window.clarity("set", "Proposta", "Projeto_Condominio_Guajara");
+                        window.clarity("event", "Proposta_Desbloqueada_Guajara");
+                    } catch(e) {}
+                }
+
+                // Notificação de abertura
+                fetch('https://api.staticforms.dev/submit', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+                    body: JSON.stringify({
+                        accessKey: "sf_077ej49gjha153gk3m6ceecf",
+                        subject: "🚨 ALERTA: Proposta Acessada (Condomínio Edifício Guajará - Gianella)",
+                        name: "Sistema Vision",
+                        email: "diretoria@visionsp.com.br",
+                        message: "A cliente Gianella (ou membro do Edifício Guajará) acessou a proposta de Acesso Facial + CFTV Haiz 5MP + Interfonia!\n\n🔑 Senha Utilizada: " + input + "\n🕒 Horário: " + new Date().toLocaleString('pt-BR')
+                    })
+                }).catch(() => {});
+
+                setTimeout(() => {
+                    if (lockScreen) lockScreen.style.display = 'none';
+                    const htmlRoot = document.getElementById('html-root');
+                    if (htmlRoot) {
+                        htmlRoot.classList.remove('overflow-hidden', 'h-screen');
+                        htmlRoot.classList.add('overflow-x-hidden');
+                    }
+                    document.body.classList.remove('overflow-hidden', 'h-screen');
+                    document.body.classList.add('overflow-x-hidden');
+                }, 700);
+
+            }, 600);
+
+        } else {
+            if (errorMsg) errorMsg.classList.remove('hidden');
+            inputEl.style.borderColor = 'rgba(239,68,68,0.5)';
+            setTimeout(() => {
+                if (errorMsg) errorMsg.classList.add('hidden');
+                inputEl.style.borderColor = '';
+            }, 3000);
+        }
+    }
+
+    // INICIALIZAÇÃO
+    document.addEventListener("DOMContentLoaded", function() {
+        if (window.lucide && typeof window.lucide.createIcons === 'function') {
+            window.lucide.createIcons();
+        }
+
+        const pwdInput = document.getElementById('password-input');
+        if (pwdInput) {
+            pwdInput.addEventListener('keydown', function(e) {
+                if (e.key === 'Enter') {
+                    e.preventDefault();
+                    checkPassword();
+                }
+            });
+        }
+
+        // Scroll Reveal
+        try {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) entry.target.classList.add('active');
+                });
+            }, { threshold: 0.08 });
+            document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+        } catch(e) {
+            document.querySelectorAll('.reveal').forEach(el => el.classList.add('active'));
+        }
+
+        // Vídeo e Áudio Apresentação Hero
+        const videoHero = document.getElementById("vision-video");
+        const overlayHero = document.getElementById("unmute-overlay");
+
+        if (videoHero && overlayHero) {
+            overlayHero.addEventListener("click", function(e) {
+                e.stopPropagation();
+                videoHero.muted = false;
+                videoHero.loop = true;
+                videoHero.currentTime = 0;
+                videoHero.play().catch(() => {});
+                overlayHero.style.opacity = "0";
+                setTimeout(() => { overlayHero.style.display = "none"; }, 400);
+
+                if (window.clarity) {
+                    try { window.clarity("event", "Video_Assistido_Guajara"); } catch(err) {}
+                }
+            });
+
+            videoHero.addEventListener("click", function() {
+                if (overlayHero.style.display === "none") {
+                    if (videoHero.paused) { videoHero.play(); } else { videoHero.pause(); }
+                }
+            });
+        }
+
+        // Renderização inicial de preço
+        renderPriceDisplay();
+
+        // Pausa no Carrossel com Touch
+        const reviewsTrack = document.getElementById('reviews-track');
+        const reviewsContainer = document.getElementById('reviews-container');
+        if (reviewsTrack && reviewsContainer) {
+            reviewsContainer.addEventListener('touchstart', function() {
+                reviewsTrack.classList.add('paused');
+            }, { passive: true });
+
+            reviewsContainer.addEventListener('touchend', function() {
+                reviewsTrack.classList.remove('paused');
+            }, { passive: true });
+
+            reviewsContainer.addEventListener('touchcancel', function() {
+                reviewsTrack.classList.remove('paused');
+            }, { passive: true });
+        }
+    });
+
+    // Sombra da Navbar no Scroll
+    window.addEventListener('scroll', () => {
+        const navbar = document.getElementById('navbar');
+        if (navbar) {
+            if (window.scrollY > 40) {
+                navbar.classList.add('shadow-md');
+            } else {
+                navbar.classList.remove('shadow-md');
+            }
+        }
+    });
+</script>
+</body>
+</html>
