@@ -1,0 +1,1740 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth overflow-x-hidden" id="html-root">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Proposta de Controle de Acesso Facial | Escola de Yoga – Rua Cônego Eugênio Leite, 881 – Vision Tecnologia</title>
+    <meta name="description" content="Projeto de Controle de Acesso Facial Intelbras com Gestão InControl Web no PC e Fechadura Eletroímã para a Escola de Yoga do Vinicius – Rua Cônego Eugênio Leite, 881 – Pinheiros / SP.">
+    <meta name="theme-color" content="#b9880e">
+    <meta name="robots" content="noindex, nofollow">
+
+    <!-- Open Graph / Link Preview Tags -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Projeto Facial Inteligente | Escola de Yoga Pinheiros – Vision">
+    <meta property="og:description" content="Acesso facial para 50 alunos, gestão e abertura por Botoeira Virtual via InControl Web no computador da recepção, eletroímã e nobreak com bateria.">
+    <meta property="og:image" content="https://res.cloudinary.com/dptcuckhf/image/upload/v1772152427/C%C3%B3pia_de_LOGO_VISION_2025_cpcpuh.png">
+    <meta property="og:locale" content="pt_BR">
+
+    <!-- Fonts & Icons -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script src="https://www.youtube.com/iframe_api"></script>
+
+    <!-- Google Analytics 4 -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-KTGEL92B0F"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-KTGEL92B0F');
+    </script>
+
+    <!-- Microsoft Clarity -->
+    <script type="text/javascript">
+        (function(c,l,a,r,i,t,y){
+            c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+            t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+            y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+        })(window, document, "clarity", "script", "vifq10es5o");
+    </script>
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"Outfit"', 'sans-serif'],
+                        logo: ['"Outfit"', 'sans-serif'],
+                        tech: ['"Outfit"', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            yellow: '#b9880e',
+                            goldLight: '#FFDE59',
+                            goldDark: '#8a6208',
+                            black: '#09090b',
+                        }
+                    },
+                    boxShadow: {
+                        'glass': '0 4px 24px 0 rgba(0,0,0,0.04)',
+                        'premium': '0 16px 50px -10px rgba(0,0,0,0.08)',
+                        'glow': '0 0 20px rgba(185,136,14,0.15)',
+                        'glow-md': '0 0 35px rgba(185,136,14,0.25)',
+                    },
+                    animation: {
+                        'slide-up': 'slideUp 0.9s cubic-bezier(0.16,1,0.3,1) forwards',
+                        'float': 'float 6s ease-in-out infinite',
+                        'fade-in': 'fadeIn 0.6s ease forwards',
+                        'marquee': 'marquee 35s linear infinite',
+                    },
+                    keyframes: {
+                        slideUp: {
+                            '0%': { opacity: '0', transform: 'translateY(40px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' }
+                        },
+                        float: {
+                            '0%,100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-12px)' }
+                        },
+                        fadeIn: {
+                            '0%': { opacity: '0' },
+                            '100%': { opacity: '1' }
+                        },
+                        marquee: {
+                            '0%': { transform: 'translateX(0%)' },
+                            '100%': { transform: 'translateX(-50%)' }
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: #f9fafb; }
+        ::-webkit-scrollbar-thumb { background: #d1d5db; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #b9880e; }
+
+        .text-gold-shine {
+            background: linear-gradient(to right, #b9880e 20%, #FFDE59 50%, #b9880e 80%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-size: 200% auto;
+            animation: shine 4s linear infinite;
+        }
+        @keyframes shine { to { background-position: 200% center; } }
+
+        .bg-grid {
+            background-image: linear-gradient(rgba(185,136,14,0.04) 1px, transparent 1px),
+                              linear-gradient(90deg, rgba(185,136,14,0.04) 1px, transparent 1px);
+            background-size: 40px 40px;
+        }
+        .bg-dots {
+            background-image: radial-gradient(#b9880e 1.2px, transparent 1.2px);
+            background-size: 22px 22px;
+            opacity: 0.035;
+        }
+
+        .lock-input {
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.1);
+            color: #b9880e;
+            font-size: 1.25rem;
+            text-align: center;
+            outline: none;
+            transition: all 0.3s;
+            letter-spacing: 0.15em;
+            border-radius: 14px;
+            text-transform: uppercase;
+        }
+        .lock-input:focus {
+            border-color: #b9880e;
+            background: rgba(255,255,255,0.08);
+            box-shadow: 0 0 20px rgba(185,136,14,0.25);
+        }
+        .lock-input::placeholder {
+            font-size: 0.75rem;
+            font-weight: 300;
+            letter-spacing: 0.05em;
+            text-transform: none;
+            color: #71717a;
+            opacity: 0.7;
+        }
+
+        .reveal { opacity: 0; transform: translateY(30px); transition: all 0.8s cubic-bezier(0.16,1,0.3,1); }
+        .reveal.active { opacity: 1; transform: translateY(0); }
+
+        .premium-border-glow {
+            position: relative;
+            border-radius: 2rem;
+            padding: 2px;
+            background-color: #b9880e;
+            overflow: hidden;
+            box-shadow: 0 0 35px rgba(185,136,14,0.15);
+            transition: transform 0.3s cubic-bezier(0.4,0,0.2,1);
+        }
+        .premium-border-glow:hover { transform: scale(1.003); }
+        .premium-border-glow::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: conic-gradient(
+                from 0deg, 
+                transparent 0deg, 
+                transparent 175deg, 
+                rgba(255, 222, 89, 0.6) 178deg, 
+                #ffffff 180deg, 
+                rgba(255, 222, 89, 0.6) 182deg, 
+                transparent 185deg, 
+                transparent 360deg
+            );
+            animation: rotate-border 12s linear infinite;
+            z-index: 0;
+        }
+        @keyframes rotate-border {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        .premium-border-inner {
+            position: relative;
+            z-index: 1;
+            background-color: #ffffff;
+            border-radius: calc(2rem - 2px);
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+        }
+
+        .accordion-content { 
+            max-height: 0; 
+            overflow: hidden; 
+            transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1), padding 0.3s ease; 
+        }
+        .accordion-item.open .accordion-content { 
+            max-height: 500px; 
+        }
+        .accordion-item.open .acc-arrow { transform: rotate(180deg); }
+        .acc-arrow { transition: transform 0.3s; }
+
+        @media print {
+            #lock-screen, #navbar, #cta-float, .no-print { display: none !important; }
+            .reveal { opacity: 1 !important; transform: none !important; }
+            body { background: #ffffff !important; color: #000000 !important; overflow: visible !important; height: auto !important; }
+            .premium-border-glow { background: #e5e7eb !important; border: 1px solid #d1d5db !important; border-radius: 12px !important; box-shadow: none !important; }
+            .premium-border-glow::before { display: none !important; }
+            .premium-border-inner { background: #ffffff !important; border-radius: 12px !important; }
+        }
+    </style>
+</head>
+<body class="bg-[#fafafa] text-gray-800 antialiased overflow-hidden h-screen" id="body-root">
+
+<!-- ===================== TELA DE BLOQUEIO (LOCK SCREEN) ===================== -->
+<div id="lock-screen" class="fixed inset-0 z-[100] bg-[#09090b] flex flex-col items-center justify-center text-center p-4 transition-opacity duration-700 ease-out overflow-y-auto">
+    <div class="bg-grid absolute inset-0 opacity-10 pointer-events-none"></div>
+    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-brand-yellow/5 rounded-full blur-[100px] pointer-events-none"></div>
+
+    <div class="relative w-20 h-20 border border-zinc-800 rounded-2xl flex items-center justify-center mb-8 bg-zinc-900/50">
+        <i data-lucide="shield-check" class="w-10 h-10 text-brand-yellow"></i>
+    </div>
+
+    <!-- Logo -->
+    <div class="relative flex flex-col items-center mb-6 z-10">
+        <div class="relative flex items-baseline leading-none">
+            <span class="font-bold text-[4.5rem] md:text-[5rem] text-gold-shine lowercase tracking-[-0.05em] leading-none">vısıon</span>
+            <span class="absolute -right-5 top-4 text-[1.1rem] text-brand-yellow font-bold">®</span>
+        </div>
+        <span class="text-[1.0rem] font-bold text-zinc-500 lowercase -mt-4 ml-2.5 text-center w-full" style="letter-spacing:0.53em;">tecnologia</span>
+    </div>
+
+    <div class="w-full max-w-sm space-y-5 z-10">
+        <div class="space-y-1.5">
+            <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-brand-yellow/30 bg-brand-yellow/10 mb-2">
+                <i data-lucide="lock" class="w-3.5 h-3.5 text-brand-yellow"></i>
+                <span class="text-brand-yellow text-[10px] font-bold uppercase tracking-widest">Acesso Exclusivo ao Projeto</span>
+            </div>
+            <h2 class="text-white font-bold text-2xl uppercase tracking-tight">Escola de Yoga • Pinheiros</h2>
+            <p class="text-zinc-400 text-sm">A/C: Vinicius • Novo Espaço Físico<br><span class="text-xs text-zinc-500">Rua Cônego Eugênio Leite, 881 • Pinheiros / SP</span></p>
+        </div>
+
+        <div>
+            <!-- SENHAS CONFIGURADAS: VINICIUS, YOGA, PINHEIROS, VINICIUS2026, VISION, 1234 -->
+            <input type="password" id="password-input" class="lock-input w-full py-4 px-4" placeholder="digite sua senha" autocomplete="off">
+            <p id="error-msg" class="text-red-400 text-xs mt-2 hidden">
+                <span class="flex items-center justify-center gap-1"><i data-lucide="x-circle" class="w-4 h-4"></i> Credencial incorreta. Tente "VINICIUS" ou "YOGA".</span>
+            </p>
+        </div>
+
+        <button onclick="checkPassword()" id="btn-unlock" class="w-full bg-brand-yellow hover:bg-brand-goldLight text-black font-bold py-4 rounded-2xl transition-all shadow-glow flex items-center justify-center gap-2 group relative overflow-hidden">
+            <div class="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-300 rounded-2xl"></div>
+            <i data-lucide="shield-check" class="w-5 h-5 relative z-10" id="unlock-icon"></i>
+            <span class="relative z-10 text-sm uppercase tracking-widest font-bold" id="unlock-text">Acessar Proposta Técnica</span>
+            <i data-lucide="arrow-right" class="w-4 h-4 relative z-10 group-hover:translate-x-1 transition-transform" id="unlock-arrow"></i>
+        </button>
+
+        <p class="text-zinc-600 text-[10px] uppercase tracking-wider">Documento Executivo de Engenharia e Controle de Acesso · Vision Tecnologia © 2026</p>
+    </div>
+</div>
+
+<!-- ===================== NAVBAR ===================== -->
+<nav id="navbar" class="fixed w-full z-50 top-0 bg-white/95 backdrop-blur-xl border-b border-gray-200/50 shadow-sm transition-all duration-300">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-between h-20 items-center">
+            
+            <div class="flex items-center gap-4">
+                <div class="flex flex-col items-center justify-center cursor-pointer" onclick="window.scrollTo({top:0, behavior:'smooth'})">
+                    <div class="relative flex items-baseline leading-none">
+                        <span class="font-bold text-[2.6rem] text-gold-shine lowercase tracking-[-0.05em] leading-none">vısıon</span>
+                        <span class="absolute -right-2.5 top-1.5 text-[0.6rem] text-brand-yellow font-bold">®</span>
+                    </div>
+                    <span class="text-[0.6rem] font-bold text-gray-400 lowercase -mt-2 ml-1.5" style="letter-spacing:0.53em;">tecnologia</span>
+                </div>
+                <div class="h-8 w-px bg-gray-200"></div>
+                <div class="flex items-center">
+                    <span class="text-zinc-400 text-xs uppercase tracking-widest font-bold">Pinheiros — SP</span>
+                </div>
+            </div>
+
+            <div class="hidden md:flex items-center space-x-7 text-xs font-semibold text-gray-500 uppercase tracking-wider">
+                <a href="#diagnostico" class="hover:text-brand-yellow transition-colors">Operação &amp; Obra</a>
+                <a href="#demonstracao" class="hover:text-brand-yellow transition-colors">Vídeo Demo</a>
+                <a href="#ficha-tecnica" class="hover:text-brand-yellow transition-colors">Ficha Técnica</a>
+                <a href="#mapeamento" class="hover:text-brand-yellow transition-colors">Portão &amp; Mureta</a>
+                <a href="#tecnologia" class="hover:text-brand-yellow transition-colors">Equipamentos</a>
+                <a href="#comparativo" class="hover:text-brand-yellow transition-colors">Comparativo</a>
+                <a href="#cronograma" class="hover:text-brand-yellow transition-colors">Cronograma</a>
+                <a href="#investimento" class="hover:text-brand-yellow transition-colors">Orçamento</a>
+                <a href="#faq" class="hover:text-brand-yellow transition-colors">FAQ</a>
+            </div>
+            <div class="flex items-center gap-4">
+                <button onclick="safePrint()" class="text-gray-400 hover:text-brand-yellow transition-colors flex items-center gap-1.5" title="Salvar em PDF">
+                    <i data-lucide="download" class="w-4 h-4"></i>
+                    <span class="text-[10px] font-bold uppercase tracking-widest hidden sm:block">PDF</span>
+                </button>
+                <a href="#investimento" class="bg-zinc-900 text-white px-5 py-2.5 rounded-full text-[10px] font-bold uppercase tracking-widest hover:bg-brand-yellow hover:text-black transition-all shadow-md">
+                    Ver Investimento
+                </a>
+            </div>
+        </div>
+    </div>
+</nav>
+
+<!-- ===================== HERO (FOCO NA PROPOSTA DE VALOR & ARQUITETURA) ===================== -->
+<header class="pt-24 sm:pt-28 md:pt-32 lg:pt-36 xl:pt-40 pb-12 sm:pb-16 lg:pb-20 relative overflow-hidden bg-white">
+    <div class="absolute inset-0 bg-grid pointer-events-none"></div>
+    <div class="absolute right-0 top-0 -translate-y-1/4 translate-x-1/4 w-[500px] lg:w-[800px] h-[500px] lg:h-[800px] bg-brand-yellow/5 rounded-full blur-[90px] lg:blur-[120px] pointer-events-none"></div>
+    
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <div class="flex flex-col lg:flex-row items-center justify-between gap-8 sm:gap-10 lg:gap-12 xl:gap-16">
+            
+            <!-- Coluna Texto -->
+            <div class="w-full lg:w-7/12 text-center lg:text-left animate-slide-up">
+                
+                <div class="flex items-center justify-center lg:justify-start mb-3 sm:mb-4 lg:mb-6">
+                    <div class="inline-flex items-center gap-1.5 sm:gap-2 px-3 sm:px-4 py-1 sm:py-1.5 rounded-full border border-brand-yellow/30 bg-brand-yellow/5 text-brand-yellow text-[8.5px] sm:text-[9.5px] font-bold uppercase tracking-widest shadow-xs">
+                        <i data-lucide="scan-face" class="w-3 h-3 sm:w-3.5 sm:h-3.5"></i>
+                        PROJETO CONTROLE FACIAL #YOGA-PINHEIROS-2026
+                    </div>
+                </div>
+                
+                <h1 class="text-[1.65rem] xs:text-3xl sm:text-4xl md:text-5xl lg:text-5xl xl:text-6xl font-extrabold text-gray-950 leading-[1.18] sm:leading-[1.12] lg:leading-[1.08] tracking-tight mb-3 sm:mb-4 lg:mb-6">
+                    <span class="block">Biometria Facial Intelbras Outdoor</span>
+                    <span class="text-gold-shine block mt-1 lg:mt-0 lg:inline">com gestão e liberação via InControl Web na recepção.</span>
+                </h1>
+                
+                <p class="text-xs sm:text-sm md:text-base text-gray-600 max-w-xl mx-auto lg:mx-0 font-normal sm:font-medium leading-relaxed">
+                    Vinicius, estruturamos a solução pontual e robusta para o sobrado na <strong class="font-bold text-gray-900">Rua Cônego Eugênio Leite, 881</strong>: reconhecimento facial instantâneo dos <strong class="font-bold text-gray-900">50 alunos</strong> pelo leitor externo IP65 na mureta, trava eletroímã silenciosa na porta de metal, nobreak com bateria dedicada e controle de acesso via <strong class="font-bold text-gray-900">software InControl Web no computador da recepção</strong> — com botoeira virtual para liberar o portão com 1 clique do mouse lá de cima, sem mensalidades.
+                </p>
+
+                <!-- Micro-Destaques Técnicos -->
+                <div class="flex flex-wrap items-center justify-center lg:justify-start gap-1.5 sm:gap-2 pt-3 sm:pt-4">
+                    <span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-lg bg-gray-100 border border-gray-200/80 text-[10px] sm:text-[11px] font-semibold text-gray-700">
+                        <i data-lucide="users" class="w-3 h-3 text-brand-yellow"></i> 50 Alunos e Instrutores
+                    </span>
+                    <span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-lg bg-gray-100 border border-gray-200/80 text-[10px] sm:text-[11px] font-semibold text-gray-700">
+                        <i data-lucide="monitor" class="w-3 h-3 text-brand-yellow"></i> Botoeira Virtual no PC (InControl)
+                    </span>
+                    <span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-lg bg-emerald-50 border border-emerald-200 text-[10px] sm:text-[11px] font-semibold text-emerald-800">
+                        <i data-lucide="zap" class="w-3 h-3 text-emerald-600"></i> Autonomia sem Luz (Nobreak)
+                    </span>
+                </div>
+
+                <!-- Botões de Ação Imediata -->
+                <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-3 pt-5 sm:pt-6">
+                    <a href="#investimento" class="w-full sm:w-auto bg-brand-yellow hover:bg-brand-goldLight text-black font-bold px-6 py-3.5 rounded-xl transition-all shadow-glow text-center text-xs uppercase tracking-widest flex items-center justify-center gap-2 group">
+                        <span>Ver Valores e Condições</span>
+                        <i data-lucide="arrow-down" class="w-4 h-4 group-hover:translate-y-0.5 transition-transform"></i>
+                    </a>
+                    <a href="#demonstracao" class="w-full sm:w-auto border border-gray-300 hover:border-brand-yellow bg-white text-gray-800 px-5 py-3.5 rounded-xl transition-all text-center text-xs font-semibold tracking-wider flex items-center justify-center gap-2 shadow-xs group">
+                        <i data-lucide="play-circle" class="w-4 h-4 text-brand-yellow group-hover:scale-110 transition-transform"></i>
+                        <span>Ver Vídeo de Demonstração</span>
+                    </a>
+                </div>
+
+            </div>
+
+            <!-- Coluna Card Arquitetura da Solução -->
+            <div class="w-full lg:w-5/12 reveal animate-slide-up" style="animation-delay: 150ms;">
+                <div class="bg-gradient-to-b from-zinc-900 to-zinc-950 p-6 sm:p-8 rounded-3xl border border-zinc-800 shadow-2xl relative overflow-hidden group">
+                    <div class="absolute top-0 right-0 w-48 h-48 bg-brand-yellow/10 rounded-full blur-[60px] pointer-events-none"></div>
+                    
+                    <div class="flex items-center justify-between pb-5 border-b border-zinc-800">
+                        <div class="flex items-center gap-2.5">
+                            <div class="w-9 h-9 rounded-xl bg-brand-yellow/10 border border-brand-yellow/30 flex items-center justify-center text-brand-yellow">
+                                <i data-lucide="layers" class="w-4 h-4"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-white text-sm font-bold tracking-tight">Arquitetura Integrada</h3>
+                                <p class="text-zinc-500 text-[10px] uppercase tracking-wider">Escola de Yoga • Pinheiros</p>
+                            </div>
+                        </div>
+                        <span class="bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 text-[9px] font-bold px-2.5 py-1 rounded-full uppercase tracking-wider">
+                            Plug &amp; Play
+                        </span>
+                    </div>
+
+                    <div class="space-y-3 pt-5">
+                        <div class="bg-zinc-900/90 border border-zinc-800/90 rounded-2xl p-3.5 flex items-start gap-3 hover:border-brand-yellow/30 transition-colors">
+                            <div class="w-7 h-7 rounded-lg bg-brand-yellow/10 text-brand-yellow flex items-center justify-center shrink-0 mt-0.5">
+                                <i data-lucide="scan-face" class="w-3.5 h-3.5"></i>
+                            </div>
+                            <div>
+                                <span class="text-white text-xs font-bold block">1. Entrada Facial na Mureta</span>
+                                <span class="text-zinc-400 text-[11px] leading-relaxed block">Intelbras SS 3532 MF W IP65 (50 alunos com biometria ultrarrápida &lt;0,2s).</span>
+                            </div>
+                        </div>
+
+                        <div class="bg-zinc-900/90 border border-zinc-800/90 rounded-2xl p-3.5 flex items-start gap-3 hover:border-brand-yellow/30 transition-colors">
+                            <div class="w-7 h-7 rounded-lg bg-blue-500/10 text-blue-400 flex items-center justify-center shrink-0 mt-0.5">
+                                <i data-lucide="lock" class="w-3.5 h-3.5"></i>
+                            </div>
+                            <div>
+                                <span class="text-white text-xs font-bold block">2. Travamento Magnético Silencioso</span>
+                                <span class="text-zinc-400 text-[11px] leading-relaxed block">Eletroímã FE 20150 (150 kgf) na porta de metal. Sem batidas e sem barulho.</span>
+                            </div>
+                        </div>
+
+                        <div class="bg-zinc-900/90 border border-zinc-800/90 rounded-2xl p-3.5 flex items-start gap-3 hover:border-brand-yellow/30 transition-colors">
+                            <div class="w-7 h-7 rounded-lg bg-emerald-500/10 text-emerald-400 flex items-center justify-center shrink-0 mt-0.5">
+                                <i data-lucide="monitor" class="w-3.5 h-3.5"></i>
+                            </div>
+                            <div>
+                                <span class="text-white text-xs font-bold block">3. InControl Web na Recepção Superior</span>
+                                <span class="text-zinc-400 text-[11px] leading-relaxed block">Botoeira Virtual no PC para destrave com 1 clique, cadastro por foto e zero mensalidades.</span>
+                            </div>
+                        </div>
+
+                        <div class="bg-zinc-900/90 border border-zinc-800/90 rounded-2xl p-3.5 flex items-start gap-3 hover:border-brand-yellow/30 transition-colors">
+                            <div class="w-7 h-7 rounded-lg bg-amber-500/10 text-amber-400 flex items-center justify-center shrink-0 mt-0.5">
+                                <i data-lucide="battery-charging" class="w-3.5 h-3.5"></i>
+                            </div>
+                            <div>
+                                <span class="text-white text-xs font-bold block">4. Autonomia Nobreak 12V 7Ah</span>
+                                <span class="text-zinc-400 text-[11px] leading-relaxed block">Fonte FA 1220S + bateria Intelbras para funcionamento pleno mesmo durante apagões.</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="pt-5 mt-4 border-t border-zinc-800 flex items-center justify-between text-[11px] text-zinc-500">
+                        <span class="flex items-center gap-1.5"><i data-lucide="check" class="w-3.5 h-3.5 text-emerald-500"></i> Aproveitamento da pintura atual</span>
+                        <a href="#mapeamento" class="text-brand-yellow hover:underline flex items-center gap-1 font-bold">Ver Mapeamento <i data-lucide="chevron-right" class="w-3 h-3"></i></a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</header>
+
+<!-- ===================== PARCERIA E CREDIBILIDADE ===================== -->
+<section class="py-8 bg-gray-50 border-y border-gray-200/50 no-print">
+    <div class="max-w-7xl mx-auto px-4 flex flex-col sm:flex-row items-center justify-between gap-6">
+        
+        <div class="flex items-center gap-4">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/2/2f/Google_2015_logo.svg" alt="Google Logo" class="h-6 md:h-7 w-auto object-contain shrink-0" />
+            <div class="h-8 w-px bg-gray-300"></div>
+            <div class="flex flex-col text-left">
+                <span class="text-gray-900 font-extrabold text-sm tracking-tight leading-none">Excelência em Projetos de Segurança</span>
+                <span class="text-[10px] text-gray-500 font-bold uppercase tracking-wider mt-1">Pinheiros, Jardins &amp; Região da Paulista</span>
+            </div>
+        </div>
+
+        <div class="flex items-center gap-3">
+            <span class="text-3xl font-black text-gray-900">5.0</span>
+            <div class="flex text-amber-500 gap-0.5">
+                <i data-lucide="star" class="w-5 h-5 fill-current"></i>
+                <i data-lucide="star" class="w-5 h-5 fill-current"></i>
+                <i data-lucide="star" class="w-5 h-5 fill-current"></i>
+                <i data-lucide="star" class="w-5 h-5 fill-current"></i>
+                <i data-lucide="star" class="w-5 h-5 fill-current"></i>
+            </div>
+            <div class="h-6 w-px bg-gray-300 hidden sm:block"></div>
+            <p class="text-xs font-bold text-gray-500 uppercase tracking-widest hidden sm:block">Controle de acesso corporativo e comercial especializado</p>
+        </div>
+
+    </div>
+</section>
+
+<!-- ===================== DIAGNÓSTICO E OPERAÇÃO NA CASINHA ===================== -->
+<section id="diagnostico" class="py-24 bg-gradient-to-b from-[#fbfbfb] to-white border-b border-gray-200/60 relative">
+    <div class="absolute inset-0 bg-dots pointer-events-none"></div>
+    <div class="max-w-7xl mx-auto px-4 relative z-10">
+        <div class="text-center mb-16 reveal">
+            <span class="text-brand-yellow font-bold uppercase tracking-widest text-xs">Análise Detalhada da Foto e do Vídeo</span>
+            <h2 class="text-3xl md:text-5xl font-extrabold text-gray-900 mt-3 font-sans leading-tight">Engenharia Sob Medida para o Sobrado Comercial</h2>
+            <p class="text-gray-500 mt-4 max-w-2xl mx-auto text-lg leading-relaxed font-sans">
+                A casinha de rua tem características específicas que um instalador comum ignora. Projetamos a solução para resolver 3 pontos cruciais do seu dia a dia:
+            </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 reveal">
+            
+            <!-- Pilar 1: O Ponto Cego da Escada Resolvido com InControl Web -->
+            <div class="bg-white border border-gray-200 rounded-3xl p-8 text-left shadow-sm flex flex-col group hover:border-brand-yellow/30 transition-all duration-300 justify-between">
+                <div>
+                    <div class="w-12 h-12 rounded-2xl bg-amber-50 flex items-center justify-center text-brand-goldDark mb-6 border border-amber-200">
+                        <i data-lucide="monitor" class="w-6 h-6"></i>
+                    </div>
+                    <h4 class="font-bold text-gray-950 text-xl mb-4 font-sans">1. Recepção no Piso Superior (InControl Web no PC)</h4>
+                    
+                    <p class="font-sans text-sm text-gray-600 leading-relaxed">
+                        Como a sua recepção fica no andar de cima, instalamos o software corporativo <strong>InControl Web</strong> no computador do balcão. Ele conta com <strong>Botoeira Virtual</strong> para você destravar a porta com 1 clique do mouse, monitorar acessos em tempo real e gerenciar alunos sem mensalidades e sem descer escadas.
+                    </p>
+                </div>
+                <div class="pt-4 border-t border-gray-100 text-[11px] font-semibold text-gray-500 flex items-center gap-1.5 mt-4">
+                    <i data-lucide="check" class="w-4 h-4 text-emerald-600"></i> Gestão centralizada sem mensalidades
+                </div>
+            </div>
+
+            <!-- Pilar 2: Momento Perfeito da Obra -->
+            <div class="bg-white border border-gray-200 rounded-3xl p-8 text-left shadow-sm flex flex-col group hover:border-brand-yellow/30 transition-all duration-300 justify-between">
+                <div>
+                    <div class="w-12 h-12 rounded-2xl bg-emerald-50 flex items-center justify-center text-emerald-600 mb-6 border border-emerald-200">
+                        <i data-lucide="paint-brush" class="w-6 h-6"></i>
+                    </div>
+                    <h4 class="font-bold text-gray-950 text-xl mb-4 font-sans">2. Janela da Obra: Tubulação 100% Embutida</h4>
+                    
+                    <p class="font-sans text-sm text-gray-600 leading-relaxed">
+                        Seus pintores estão trabalhando agora no corredor e no piso superior. Passando o cabeamento UTP de 20m esta semana, toda a fiação fica camuflada e embutida antes da demão final. Se esperar inaugurar, a tubulação ficaria aparente na parede.
+                    </p>
+                </div>
+                <div class="pt-4 border-t border-gray-100 text-[11px] font-semibold text-gray-500 flex items-center gap-1.5 mt-4">
+                    <i data-lucide="check" class="w-4 h-4 text-emerald-600"></i> Acabamento impecável e arquitetônico
+                </div>
+            </div>
+
+            <!-- Pilar 3: Autonomia e Resistência Externa -->
+            <div class="bg-white border border-gray-200 rounded-3xl p-8 text-left shadow-sm flex flex-col group hover:border-brand-yellow/30 transition-all duration-300 justify-between">
+                <div>
+                    <div class="w-12 h-12 rounded-2xl bg-blue-50 flex items-center justify-center text-blue-600 mb-6 border border-blue-200">
+                        <i data-lucide="shield-check" class="w-6 h-6"></i>
+                    </div>
+                    <h4 class="font-bold text-gray-950 text-xl mb-4 font-sans">3. Leitor Outdoor IP65 + Nobreak com Bateria</h4>
+                    
+                    <p class="font-sans text-sm text-gray-600 leading-relaxed">
+                        O leitor fica fixado na muretinha da calçada exposto a sol e chuva torrencial (grau de proteção IP65). Acompanha fonte nobreak e bateria de emergência XB 1270: se faltar energia em Pinheiros, a porta de metal continua trancada e funcionando normalmente.
+                    </p>
+                </div>
+                <div class="pt-4 border-t border-gray-100 text-[11px] font-semibold text-gray-500 flex items-center gap-1.5 mt-4">
+                    <i data-lucide="check" class="w-4 h-4 text-emerald-600"></i> Ninguém preso e nem porta aberta por apagão
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<!-- ===================== CAMPO ESPECÍFICO: DEMONSTRAÇÃO PRÁTICA EM VÍDEO (MOCKUP SMARTPHONE 9:16) ===================== -->
+<section id="demonstracao" class="py-20 md:py-28 bg-[#09090b] text-white relative overflow-hidden border-y border-zinc-800">
+    <div class="bg-grid absolute inset-0 opacity-10 pointer-events-none"></div>
+    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[700px] bg-brand-yellow/5 rounded-full blur-[140px] pointer-events-none"></div>
+
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        
+        <div class="text-center mb-14 md:mb-16 reveal">
+            <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-brand-yellow/30 bg-brand-yellow/10 mb-3">
+                <i data-lucide="video" class="w-3.5 h-3.5 text-brand-yellow"></i>
+                <span class="text-brand-yellow text-[10px] font-bold uppercase tracking-widest">Demonstração Prática de Campo</span>
+            </div>
+            <h2 class="text-3xl md:text-5xl font-extrabold text-white mt-2 font-sans tracking-tight">
+                Veja o Leitor Intelbras em Operação Real
+            </h2>
+            <p class="text-zinc-400 mt-3 max-w-2xl mx-auto text-sm md:text-base font-sans">
+                Apresentação do leitor facial biométrico que será instalado na mureta externa da Cônego Eugênio Leite:
+            </p>
+        </div>
+
+        <div class="flex flex-col lg:flex-row items-center justify-center gap-10 lg:gap-16 max-w-5xl mx-auto reveal">
+            
+            <!-- Mockup do Celular com o Vídeo Shorts 9:16 -->
+            <div class="w-full max-w-[280px] xs:max-w-[300px] sm:max-w-[320px] shrink-0">
+                <div class="relative w-full group z-10">
+                    
+                    <!-- Botões Físicos Laterais do Smartphone -->
+                    <div class="absolute -left-[3px] top-20 w-[3px] h-7 bg-zinc-600 rounded-l-sm"></div>
+                    <div class="absolute -left-[3px] top-32 w-[3px] h-12 bg-zinc-600 rounded-l-sm"></div>
+                    <div class="absolute -left-[3px] top-48 w-[3px] h-12 bg-zinc-600 rounded-l-sm"></div>
+                    <div class="absolute -right-[3px] top-28 w-[3px] h-16 bg-zinc-600 rounded-r-sm"></div>
+
+                    <!-- Chassis do Smartphone -->
+                    <div class="relative w-full bg-zinc-950 p-3 rounded-[2.8rem] shadow-[0_25px_60px_-15px_rgba(0,0,0,0.8),0_0_35px_rgba(185,136,14,0.22)] ring-1 ring-white/10 ring-inset border border-zinc-700/80">
+                        
+                        <!-- Dynamic Island (Topo da Tela) -->
+                        <div class="absolute top-4 left-1/2 -translate-x-1/2 w-24 h-4 bg-black rounded-full z-30 flex items-center justify-end pr-2 border border-white/10 pointer-events-none">
+                            <div class="w-2 h-2 rounded-full bg-[#05051a] border border-zinc-800"></div>
+                        </div>
+
+                        <!-- Tela do Celular (Formato Vertical 9:16 para YouTube Shorts) -->
+                        <div class="relative w-full aspect-[9/16] bg-black rounded-[2.2rem] overflow-hidden border border-zinc-800 shadow-inner">
+                            
+                            <!-- Iframe do YouTube Shorts -->
+                            <iframe 
+                                id="youtube-player"
+                                class="w-full h-full object-cover" 
+                                src="https://www.youtube-nocookie.com/embed/1dvh4e3mdL8?enablejsapi=1&autoplay=1&mute=1&loop=1&playlist=1dvh4e3mdL8&playsinline=1&controls=1&rel=0&modestbranding=1" 
+                                title="Demonstração do Leitor Facial Intelbras SS 3532 MF W" 
+                                frameborder="0" 
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                                referrerpolicy="strict-origin-when-cross-origin" 
+                                allowfullscreen>
+                            </iframe>
+                            
+                            <!-- Overlay de Desmutar / Assistir com Áudio -->
+                            <div id="unmute-overlay" onclick="unmuteYoutube()" class="absolute inset-0 bg-black/50 backdrop-blur-[2px] flex flex-col items-center justify-center cursor-pointer transition-opacity duration-300 z-20 hover:bg-black/40 p-3 text-center">
+                                <div class="bg-brand-yellow text-black font-bold px-5 py-3 rounded-full flex items-center gap-2 shadow-glow animate-pulse transform group-hover:scale-105 transition-all">
+                                    <i data-lucide="volume-2" class="w-4 h-4 fill-black shrink-0"></i>
+                                    <span class="text-[10px] sm:text-xs font-bold tracking-wide uppercase">Assistir com Áudio</span>
+                                </div>
+                                <span class="text-[10px] text-zinc-300 mt-2 font-medium">Toque para ouvir a explicação técnica</span>
+                            </div>
+
+                            <!-- Barra Home Inferior -->
+                            <div class="absolute bottom-1.5 left-1/2 -translate-x-1/2 w-24 h-1 bg-white/40 rounded-full z-30 pointer-events-none"></div>
+                        </div>
+                    </div>
+
+                    <!-- Reflexo e Brilho Inferior -->
+                    <div class="w-3/4 h-3 bg-brand-yellow/20 blur-md mx-auto rounded-full mt-2 pointer-events-none"></div>
+
+                    <!-- Legenda do Mockup -->
+                    <div class="flex items-center justify-center gap-1.5 mt-3 text-center">
+                        <span class="relative flex h-2 w-2">
+                            <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+                            <span class="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
+                        </span>
+                        <span class="text-[11px] font-bold text-zinc-300 tracking-wide">
+                            Intelbras SS 3532 MF W em Ação
+                        </span>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- Coluna de Benefícios Visualizados no Vídeo -->
+            <div class="w-full lg:w-7/12 space-y-4">
+                <div class="bg-zinc-900/80 border border-zinc-800 rounded-2xl p-5 text-left">
+                    <div class="flex items-center gap-3 mb-2">
+                        <div class="w-8 h-8 rounded-xl bg-brand-yellow/10 text-brand-yellow flex items-center justify-center font-bold text-sm">
+                            <i data-lucide="zap" class="w-4 h-4"></i>
+                        </div>
+                        <h4 class="text-white font-bold text-base font-sans">Leitura Instantânea (&lt; 0,2s)</h4>
+                    </div>
+                    <p class="text-zinc-400 text-xs sm:text-sm leading-relaxed font-sans">
+                        Como demonstrado no vídeo, o aluno não precisa parar ou encostar na tela. Basta se aproximar da mureta e o eletroímã destrava instantaneamente o portão de metal.
+                    </p>
+                </div>
+
+                <div class="bg-zinc-900/80 border border-zinc-800 rounded-2xl p-5 text-left">
+                    <div class="flex items-center gap-3 mb-2">
+                        <div class="w-8 h-8 rounded-xl bg-emerald-500/10 text-emerald-400 flex items-center justify-center font-bold text-sm">
+                            <i data-lucide="shield-alert" class="w-4 h-4"></i>
+                        </div>
+                        <h4 class="text-white font-bold text-base font-sans">Tecnologia Anti-Fake com IA</h4>
+                    </div>
+                    <p class="text-zinc-400 text-xs sm:text-sm leading-relaxed font-sans">
+                        O algoritmo 3D inteligente recusa tentativas de liberação com fotos impressas ou vídeos na tela de celulares. Apenas pessoas reais têm o acesso concedido.
+                    </p>
+                </div>
+
+                <div class="bg-zinc-900/80 border border-zinc-800 rounded-2xl p-5 text-left">
+                    <div class="flex items-center gap-3 mb-2">
+                        <div class="w-8 h-8 rounded-xl bg-blue-500/10 text-blue-400 flex items-center justify-center font-bold text-sm">
+                            <i data-lucide="cloud-rain" class="w-4 h-4"></i>
+                        </div>
+                        <h4 class="text-white font-bold text-base font-sans">Blindagem IP65 para Áreas Externas</h4>
+                    </div>
+                    <p class="text-zinc-400 text-xs sm:text-sm leading-relaxed font-sans">
+                        Construído especificamente para calçadas e muretas abertas, resistente a sol forte direto, calor e chuvas torrenciais sem embaçar as lentes.
+                    </p>
+                </div>
+
+                <div class="pt-2">
+                    <a href="#investimento" class="inline-flex items-center gap-2 bg-brand-yellow hover:bg-brand-goldLight text-black text-xs font-bold uppercase tracking-widest px-6 py-3.5 rounded-xl transition-all shadow-glow">
+                        <span>Aprovar Este Sistema para a Casinha</span>
+                        <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                    </a>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+</section>
+
+<!-- ===================== FICHA TÉCNICA DO PROJETO ===================== -->
+<section id="ficha-tecnica" class="py-20 bg-zinc-950 text-white relative overflow-hidden border-b border-zinc-800">
+    <div class="bg-grid absolute inset-0 opacity-10 pointer-events-none"></div>
+    <div class="max-w-7xl mx-auto px-4 relative z-10">
+        
+        <div class="text-center mb-14 reveal">
+            <span class="text-brand-yellow font-bold uppercase tracking-widest text-xs">Especificações do Projeto</span>
+            <h2 class="text-3xl md:text-5xl font-extrabold text-white mt-2 font-sans">Ficha Técnica da Escola de Yoga</h2>
+            <p class="text-zinc-400 mt-3 max-w-2xl mx-auto text-sm md:text-base font-sans">
+                Parâmetros estruturais e operacionais calibrados para o imóvel na Cônego Eugênio Leite:
+            </p>
+        </div>
+
+        <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4 reveal">
+            
+            <div class="bg-zinc-900/80 border border-zinc-800 rounded-2xl p-4 text-center flex flex-col items-center justify-center">
+                <i data-lucide="building" class="w-6 h-6 text-brand-yellow mb-2"></i>
+                <span class="text-[10px] text-zinc-500 font-bold uppercase tracking-wider mb-1">Local</span>
+                <span class="text-xs font-bold text-white font-sans">Sobrado Comercial</span>
+            </div>
+
+            <div class="bg-zinc-900/80 border border-zinc-800 rounded-2xl p-4 text-center flex flex-col items-center justify-center">
+                <i data-lucide="map-pin" class="w-6 h-6 text-brand-yellow mb-2"></i>
+                <span class="text-[10px] text-zinc-500 font-bold uppercase tracking-wider mb-1">Endereço</span>
+                <span class="text-xs font-bold text-white font-sans">Cônego Eugênio Leite, 881</span>
+            </div>
+
+            <div class="bg-zinc-900/80 border border-zinc-800 rounded-2xl p-4 text-center flex flex-col items-center justify-center">
+                <i data-lucide="door-closed" class="w-6 h-6 text-brand-yellow mb-2"></i>
+                <span class="text-[10px] text-zinc-500 font-bold uppercase tracking-wider mb-1">Tipo de Porta</span>
+                <span class="text-xs font-bold text-white font-sans">Portão de Metal</span>
+            </div>
+
+            <div class="bg-zinc-900/80 border border-zinc-800 rounded-2xl p-4 text-center flex flex-col items-center justify-center">
+                <i data-lucide="scan-face" class="w-6 h-6 text-brand-yellow mb-2"></i>
+                <span class="text-[10px] text-zinc-500 font-bold uppercase tracking-wider mb-1">Ponto de Entrada</span>
+                <span class="text-xs font-bold text-emerald-400 font-sans">Facial Outdoor IP65</span>
+            </div>
+
+            <div class="bg-zinc-900/80 border border-zinc-800 rounded-2xl p-4 text-center flex flex-col items-center justify-center">
+                <i data-lucide="users" class="w-6 h-6 text-brand-yellow mb-2"></i>
+                <span class="text-[10px] text-zinc-500 font-bold uppercase tracking-wider mb-1">Capacidade</span>
+                <span class="text-xs font-bold text-white font-sans">50 Alunos Iniciais</span>
+            </div>
+
+            <div class="bg-zinc-900/80 border border-zinc-800 rounded-2xl p-4 text-center flex flex-col items-center justify-center">
+                <i data-lucide="clock" class="w-6 h-6 text-brand-yellow mb-2"></i>
+                <span class="text-[10px] text-zinc-500 font-bold uppercase tracking-wider mb-1">Instalação</span>
+                <span class="text-xs font-bold text-white font-sans">1 a 2 Dias Úteis</span>
+            </div>
+
+        </div>
+
+    </div>
+</section>
+
+<!-- ===================== MAPEAMENTO DA ENTRADA ===================== -->
+<section id="mapeamento" class="py-24 bg-white relative">
+    <div class="max-w-7xl mx-auto px-4 relative z-10">
+        
+        <div class="text-center mb-16 reveal">
+            <span class="text-brand-yellow font-bold uppercase tracking-widest text-xs font-sans">Engenharia de Fixação</span>
+            <h2 class="text-3xl md:text-5xl font-extrabold text-gray-900 mt-3 font-sans">Instalação na Mureta &amp; Travamento da Porta</h2>
+            <p class="text-gray-500 mt-4 max-w-2xl mx-auto text-base md:text-lg leading-relaxed font-sans">
+                Validamos tecnicamente a marcação na mureta da direita que você enviou na foto:
+            </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto reveal">
+            
+            <!-- Bloco 1: Leitor Facial na Mureta Externa -->
+            <div class="bg-[#fafafa] border border-gray-200 rounded-3xl p-8 hover:border-brand-yellow/40 transition-all shadow-sm flex flex-col justify-between">
+                <div>
+                    <div class="flex items-center justify-between mb-4">
+                        <span class="text-[10px] font-extrabold bg-brand-yellow/10 text-brand-goldDark px-3 py-1 rounded-full uppercase tracking-wider font-sans">PONTO EXTERNO — CALÇADA</span>
+                        <i data-lucide="scan-face" class="w-5 h-5 text-brand-yellow"></i>
+                    </div>
+                    <h3 class="font-extrabold text-gray-900 text-xl mb-2 font-sans">Mureta de Alvenaria à Direita</h3>
+                    <p class="text-xs text-gray-500 mb-6 font-sans">Local exato da sua marcação em rosa. Altura e ângulo perfeitos para leitura biométrica.</p>
+
+                    <ul class="space-y-3 font-sans text-xs text-gray-700 mb-6">
+                        <li class="flex items-start gap-2.5">
+                            <i data-lucide="check-circle" class="w-4 h-4 text-emerald-600 shrink-0 mt-0.5"></i>
+                            <span><strong>Altura Padrão 1,35m:</strong> Enquadramento facial instantâneo (&lt;0,2s) conforme o aluno se aproxima do portão.</span>
+                        </li>
+                        <li class="flex items-start gap-2.5">
+                            <i data-lucide="check-circle" class="w-4 h-4 text-emerald-600 shrink-0 mt-0.5"></i>
+                            <span><strong>Blindagem IP65:</strong> Vedação completa contra água da chuva, umidade e raios UV solares diretos.</span>
+                        </li>
+                        <li class="flex items-start gap-2.5">
+                            <i data-lucide="check-circle" class="w-4 h-4 text-emerald-600 shrink-0 mt-0.5"></i>
+                            <span><strong>Comunicação IP Nativa:</strong> Conexão direta com o software InControl Web na recepção do andar de cima.</span>
+                        </li>
+                    </ul>
+                </div>
+                <div class="pt-4 border-t border-gray-200 text-[11px] font-bold text-gray-500 flex items-center gap-1.5 font-sans">
+                    <i data-lucide="sparkles" class="w-3.5 h-3.5 text-brand-yellow"></i> Reconhecimento sem tocar em maçanetas ou chaves
+                </div>
+            </div>
+
+            <!-- Bloco 2: Porta de Metal e Saída Rápida -->
+            <div class="bg-[#fafafa] border border-gray-200 rounded-3xl p-8 hover:border-brand-yellow/40 transition-all shadow-sm flex flex-col justify-between">
+                <div>
+                    <div class="flex items-center justify-between mb-4">
+                        <span class="text-[10px] font-extrabold bg-brand-yellow/10 text-brand-goldDark px-3 py-1 rounded-full uppercase tracking-wider font-sans">TRAVAMENTO &amp; SAÍDA INTERNA</span>
+                        <i data-lucide="lock" class="w-5 h-5 text-brand-yellow"></i>
+                    </div>
+                    <h3 class="font-extrabold text-gray-900 text-xl mb-2 font-sans">Portão de Metal &amp; Eletroímã</h3>
+                    <p class="text-xs text-gray-500 mb-6 font-sans">Segurança física sem peças móveis mecânicas que quebram com o tempo.</p>
+
+                    <ul class="space-y-3 font-sans text-xs text-gray-700 mb-6">
+                        <li class="flex items-start gap-2.5">
+                            <i data-lucide="check-circle" class="w-4 h-4 text-emerald-600 shrink-0 mt-0.5"></i>
+                            <span><strong>Fechadura Eletroímã FE 20150 (150 kgf):</strong> Trava magnética silenciosa de alta força. Não emperra portão de ferro.</span>
+                        </li>
+                        <li class="flex items-start gap-2.5">
+                            <i data-lucide="check-circle" class="w-4 h-4 text-emerald-600 shrink-0 mt-0.5"></i>
+                            <span><strong>Suporte ZL Especial:</strong> Fixação rígida e alinhada milimetricamente na estrutura metálica do portão.</span>
+                        </li>
+                        <li class="flex items-start gap-2.5">
+                            <i data-lucide="check-circle" class="w-4 h-4 text-emerald-600 shrink-0 mt-0.5"></i>
+                            <span><strong>Botoeira Inox BT 3000 de Saída:</strong> Saída prática por dentro com botão robusto em inox escovado.</span>
+                        </li>
+                        <li class="flex items-start gap-2.5">
+                            <i data-lucide="check-circle" class="w-4 h-4 text-emerald-600 shrink-0 mt-0.5"></i>
+                            <span><strong>Alimentação Nobreak Ininterrupta:</strong> Fonte FA 1220S com bateria selada VRLA 12V 7Ah XB 1270 Intelbras.</span>
+                        </li>
+                    </ul>
+                </div>
+                <div class="pt-4 border-t border-gray-200 text-[11px] font-bold text-gray-500 flex items-center gap-1.5 font-sans">
+                    <i data-lucide="sparkles" class="w-3.5 h-3.5 text-brand-yellow"></i> Fechamento magnético suave que não faz barulho de ferro
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+</section>
+
+<!-- ===================== VITRINE TECNOLÓGICA ===================== -->
+<section id="tecnologia" class="py-24 bg-[#f8f9fa] border-t border-gray-200/60 relative">
+    <div class="max-w-7xl mx-auto px-4 relative z-10">
+        
+        <div class="text-center mb-16 reveal">
+            <span class="text-brand-yellow font-bold uppercase tracking-widest text-xs font-sans">100% Homologado Intelbras</span>
+            <h2 class="text-3xl md:text-5xl font-extrabold text-gray-900 mt-3 font-sans">Equipamentos do Seu Projeto</h2>
+            <p class="text-gray-500 mt-4 max-w-2xl mx-auto text-base md:text-lg leading-relaxed font-sans">
+                Linha corporativa oficial Intelbras com garantia, durabilidade para áreas externas e facilidade operacional:
+            </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 reveal">
+            
+            <!-- Equipamento 1: Facial Outdoor IP65 -->
+            <div class="bg-white border border-gray-200 rounded-3xl p-6 text-left shadow-sm flex flex-col group hover:border-brand-yellow/30 transition-all duration-300 justify-between">
+                <div>
+                    <div class="w-full aspect-video bg-[#fafafa] rounded-2xl overflow-hidden flex items-center justify-center mb-6 relative border border-gray-200 shadow-inner p-2">
+                        <img src="https://res.cloudinary.com/dptcuckhf/image/upload/v1770745467/ss-3532-mf-w-frontal_2_c82tua.png" alt="Leitor Facial Outdoor Intelbras" class="w-28 h-28 object-contain filter drop-shadow-md">
+                        <span class="absolute bottom-2 right-3 text-[9px] text-gray-400 font-medium">Outdoor IP65</span>
+                    </div>
+                    <h4 class="font-bold text-gray-950 text-base mb-2 font-sans">Leitor Facial Outdoor Intelbras IP65</h4>
+                    <p class="text-xs text-gray-500 leading-relaxed font-sans">
+                        Reconhecimento biométrico ultrarrápido em menos de 0,2s com inteligência artificial anti-fake. Estrutura blindada contra intempéries para montagem na calçada.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Equipamento 2: Fechadura Eletroímã FE 20150 -->
+            <div class="bg-white border border-gray-200 rounded-3xl p-6 text-left shadow-sm flex flex-col group hover:border-brand-yellow/30 transition-all duration-300 justify-between">
+                <div>
+                    <div class="w-full aspect-video bg-[#fafafa] rounded-2xl overflow-hidden flex items-center justify-center mb-6 relative border border-gray-200 shadow-inner p-2">
+                        <div class="w-20 h-20 rounded-xl bg-zinc-900 border border-zinc-700 flex flex-col items-center justify-center text-brand-yellow">
+                            <i data-lucide="lock" class="w-10 h-10"></i>
+                        </div>
+                        <span class="absolute bottom-2 right-3 text-[9px] text-gray-400 font-medium">150 kgf Tração</span>
+                    </div>
+                    <h4 class="font-bold text-gray-950 text-base mb-2 font-sans">Fechadura Eletroímã FE 20150 + Suporte ZL</h4>
+                    <p class="text-xs text-gray-500 leading-relaxed font-sans">
+                        Força de retenção magnética de 150 kgf. Sem engrenagens mecânicas, não dá tranco, não quebra com batida de vento e oferece fechamento silencioso para a escola de yoga.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Equipamento 3: Fonte Nobreak FA 1220S + Bateria XB 1270 -->
+            <div class="bg-white border border-gray-200 rounded-3xl p-6 text-left shadow-sm flex flex-col group hover:border-brand-yellow/30 transition-all duration-300 justify-between">
+                <div>
+                    <div class="w-full aspect-video bg-[#fafafa] rounded-2xl overflow-hidden flex items-center justify-center mb-6 relative border border-gray-200 shadow-inner p-2">
+                        <img src="https://res.cloudinary.com/dptcuckhf/image/upload/v1771601853/FlyerDigital_FA_1220_S_bateria_03-removebg-preview_bunqno.png" alt="Fonte Nobreak FA 1220S com Bateria" class="w-28 h-28 object-contain filter drop-shadow-md">
+                        <span class="absolute bottom-2 right-3 text-[9px] text-gray-400 font-medium">Bateria Inclusa</span>
+                    </div>
+                    <h4 class="font-bold text-gray-950 text-base mb-2 font-sans">Fonte Nobreak FA 1220S + Bateria Selada 12V</h4>
+                    <p class="text-xs text-gray-500 leading-relaxed font-sans">
+                        Fonte ininterrupta automática com bateria selada VRLA 12V 7Ah XB 1270 Intelbras nova. Mantém o eletroímã e o leitor operando sem desligar se a energia da rua oscilar.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Equipamento 4: Botoeira Inox BT 3000 + Infra de Cabos -->
+            <div class="bg-white border border-gray-200 rounded-3xl p-6 text-left shadow-sm flex flex-col group hover:border-brand-yellow/30 transition-all duration-300 justify-between">
+                <div>
+                    <div class="w-full aspect-video bg-[#fafafa] rounded-2xl overflow-hidden flex items-center justify-center mb-6 relative border border-gray-200 shadow-inner p-2">
+                        <img src="https://res.cloudinary.com/dptcuckhf/image/upload/v1770745467/bt_3000_in-02_0_hufak8.png" alt="Botoeira Inox BT 3000" class="w-28 h-28 object-contain filter drop-shadow-md">
+                        <span class="absolute bottom-2 right-3 text-[9px] text-gray-400 font-medium">Inox Escovado</span>
+                    </div>
+                    <h4 class="font-bold text-gray-950 text-base mb-2 font-sans">Botoeira Inox BT 3000 + Cabeamento UTP</h4>
+                    <p class="text-xs text-gray-500 leading-relaxed font-sans">
+                        Botão interno em aço inox escovado de alta resistência mecânica para liberação de saída dos alunos, acompanhado de cabeamento de rede homologado e conectores blindados.
+                    </p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<!-- ===================== COMPARATIVO: IMPROVISO VS VISION ===================== -->
+<section id="comparativo" class="py-24 bg-white border-b border-gray-200/60 relative">
+    <div class="max-w-7xl mx-auto px-4 relative z-10">
+        
+        <div class="text-center mb-16 reveal">
+            <span class="text-brand-yellow font-bold uppercase tracking-widest text-xs font-sans">Análise Operacional</span>
+            <h2 class="text-3xl md:text-5xl font-extrabold text-gray-900 mt-3 font-sans">Soluções Tradicionais vs. Controle Facial Vision</h2>
+            <p class="text-gray-500 mt-4 max-w-2xl mx-auto text-base md:text-lg leading-relaxed font-sans">
+                Por que soluções amadoras de fechadura de pilha ou interfones cabeados antigos falham em um espaço de yoga:
+            </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto reveal mb-12">
+            
+            <!-- Coluna Tradicional / Improvisado -->
+            <div class="bg-rose-50/50 border border-rose-200 rounded-3xl p-8 text-left flex flex-col justify-between relative overflow-hidden">
+                <div class="absolute top-0 right-0 bg-rose-200 text-rose-800 text-[9px] font-bold px-4 py-1 rounded-bl-2xl uppercase tracking-wider">Fechadura de Pilha / Interfone Antigo</div>
+                <div>
+                    <div class="w-12 h-12 rounded-2xl bg-rose-100 flex items-center justify-center text-rose-600 mb-6">
+                        <i data-lucide="x-circle" class="w-6 h-6"></i>
+                    </div>
+                    <h3 class="font-extrabold text-gray-900 text-2xl mb-2 font-sans">Improvisos Residenciais</h3>
+                    <p class="text-xs text-gray-500 mb-6 font-sans">Sistemas residenciais comuns instalados em comércios de fluxo contínuo.</p>
+
+                    <div class="space-y-4 font-sans text-sm text-gray-700 mb-6">
+                        <div class="flex items-start gap-2.5 py-1">
+                            <i data-lucide="alert-triangle" class="w-4 h-4 text-rose-600 shrink-0 mt-0.5"></i>
+                            <span><strong>Troca frequente de pilhas:</strong> Com o fluxo de 50 alunos entrando e saindo diariamente, as pilhas esgotam a cada dois meses e a fechadura para de responder.</span>
+                        </div>
+                        <div class="flex items-start gap-2.5 py-1">
+                            <i data-lucide="alert-triangle" class="w-4 h-4 text-rose-600 shrink-0 mt-0.5"></i>
+                            <span><strong>Obrigado a descer a escada:</strong> Se tocar o interfone para uma encomenda ou aluno novo, o instrutor tem que interromper a aula e descer a escadaria inteira correndo.</span>
+                        </div>
+                        <div class="flex items-start gap-2.5 py-1">
+                            <i data-lucide="alert-triangle" class="w-4 h-4 text-rose-600 shrink-0 mt-0.5"></i>
+                            <span><strong>Batidas de ferro barulhentas:</strong> Fechaduras mecânicas dão trancos altos que quebram o ambiente zen e silencioso da prática de yoga.</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-rose-100/80 text-rose-900 p-3.5 rounded-2xl text-xs font-semibold flex items-center gap-2">
+                    <i data-lucide="alert-circle" class="w-4 h-4 shrink-0 text-rose-700"></i>
+                    <span>Cria atritos diários de operação e distrai o foco dos alunos.</span>
+                </div>
+            </div>
+
+            <!-- Coluna Solução Vision Intelbras -->
+            <div class="bg-emerald-50/50 border border-emerald-300 rounded-3xl p-8 text-left flex flex-col justify-between relative overflow-hidden shadow-lg">
+                <div class="absolute top-0 right-0 bg-emerald-500 text-white text-[9px] font-bold px-4 py-1 rounded-bl-2xl uppercase tracking-wider shadow-sm">Padrão Profissional Vision</div>
+                <div>
+                    <div class="w-12 h-12 rounded-2xl bg-emerald-100 flex items-center justify-center text-emerald-700 mb-6 border border-emerald-200">
+                        <i data-lucide="shield-check" class="w-6 h-6"></i>
+                    </div>
+                    <h3 class="font-extrabold text-gray-900 text-2xl mb-2 font-sans">Acesso Facial &amp; InControl PC</h3>
+                    <p class="text-xs text-gray-500 mb-6 font-sans">Equipamentos industriais Intelbras homologados para áreas externas e operação remota no PC.</p>
+
+                    <div class="space-y-4 font-sans text-sm text-gray-700 mb-6">
+                        <div class="flex items-start gap-2.5 py-1">
+                            <i data-lucide="check-circle" class="w-4 h-4 text-emerald-700 shrink-0 mt-0.5"></i>
+                            <span><strong>Autonomia total para os alunos:</strong> Alunos cadastrados aproximam o rosto na calçada e entram em frações de segundo, sem precisar de ninguém na portaria.</span>
+                        </div>
+                        <div class="flex items-start gap-2.5 py-1">
+                            <i data-lucide="check-circle" class="w-4 h-4 text-emerald-700 shrink-0 mt-0.5"></i>
+                            <span><strong>Botoeira Virtual no PC da Recepção:</strong> Você destrava o portão com 1 clique do mouse pelo InControl Web no computador do balcão, sem mensalidades.</span>
+                        </div>
+                        <div class="flex items-start gap-2.5 py-1">
+                            <i data-lucide="check-circle" class="w-4 h-4 text-emerald-700 shrink-0 mt-0.5"></i>
+                            <span><strong>Eletroímã silencioso:</strong> Travamento magnético limpo, sem barulho de engrenagem e protegido contra falta de energia por nobreak dedicado.</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-emerald-200/80 text-emerald-950 p-3.5 rounded-2xl text-xs font-extrabold flex items-center gap-2">
+                    <i data-lucide="check-circle-2" class="w-4 h-4 shrink-0 text-emerald-700"></i>
+                    <span>Traz sofisticação imediata e valoriza o espaço da sua nova escola.</span>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+</section>
+
+<!-- ===================== CRONOGRAMA DE INSTALAÇÃO (OBRA & PINTURA) ===================== -->
+<section id="cronograma" class="py-24 bg-[#f8f9fa] border-b border-gray-200/60 relative">
+    <div class="max-w-7xl mx-auto px-4 relative z-10">
+        
+        <div class="text-center mb-16 reveal">
+            <span class="text-brand-yellow font-bold uppercase tracking-widest text-xs font-sans">Aproveitamento da Reforma</span>
+            <h2 class="text-3xl md:text-5xl font-extrabold text-gray-900 mt-3 font-sans">Cronograma de Instalação Rápida (1 a 2 Dias)</h2>
+            <p class="text-gray-500 mt-4 max-w-2xl mx-auto text-base md:text-lg leading-relaxed font-sans">
+                Planejamento alinhado com o trabalho dos seus pintores no local:
+            </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto reveal">
+            
+            <!-- Passo 1 -->
+            <div class="bg-white border border-gray-200 rounded-3xl p-8 text-left shadow-sm relative overflow-hidden flex flex-col justify-between">
+                <div class="absolute top-0 right-0 bg-brand-yellow/10 text-brand-goldDark text-xs font-extrabold px-4 py-2 rounded-bl-2xl">
+                    ETAPA 01
+                </div>
+                <div>
+                    <div class="w-12 h-12 bg-brand-yellow/10 rounded-2xl flex items-center justify-center text-brand-goldDark mb-6">
+                        <i data-lucide="network" class="w-6 h-6"></i>
+                    </div>
+                    <h4 class="font-extrabold text-gray-900 text-xl mb-3 font-sans">1. Passagem do Cabo pelo Corredor</h4>
+                    <p class="text-gray-600 text-xs leading-relaxed mb-4 font-sans">
+                        Passagem de ~20 metros de cabo UTP homologado do portão frontal até a subida da escada e ponto de energia. A fiação fica totalmente embutida e os pintores cobrem tudo com a massa e demão de tinta final.
+                    </p>
+                </div>
+                <div class="pt-4 border-t border-gray-100 text-[11px] font-semibold text-gray-500 flex items-center gap-1.5 font-sans">
+                    <i data-lucide="check" class="w-4 h-4 text-emerald-600"></i> Zero tubulações aparentes após a pintura
+                </div>
+            </div>
+
+            <!-- Passo 2 -->
+            <div class="bg-white border border-gray-200 rounded-3xl p-8 text-left shadow-sm relative overflow-hidden flex flex-col justify-between">
+                <div class="absolute top-0 right-0 bg-emerald-100 text-emerald-800 text-xs font-extrabold px-4 py-2 rounded-bl-2xl">
+                    ETAPA 02
+                </div>
+                <div>
+                    <div class="w-12 h-12 bg-emerald-100 rounded-2xl flex items-center justify-center text-emerald-700 mb-6">
+                        <i data-lucide="check-check" class="w-6 h-6"></i>
+                    </div>
+                    <h4 class="font-extrabold text-gray-900 text-xl mb-3 font-sans">2. Fixação, Eletroímã &amp; Ativação</h4>
+                    <p class="text-gray-600 text-xs leading-relaxed mb-4 font-sans">
+                        Fixação do leitor facial na muretinha externa (1,35m), instalação do eletroímã no portão de metal com suporte ZL, conexão da fonte nobreak com bateria, ativação do software InControl Web no seu PC e treinamento.
+                    </p>
+                </div>
+                <div class="pt-4 border-t border-gray-100 text-[11px] font-semibold text-gray-500 flex items-center gap-1.5 font-sans">
+                    <i data-lucide="check" class="w-4 h-4 text-emerald-600"></i> Sistema 100% testado e operando no seu computador
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+</section>
+
+<!-- ===================== PROPOSTA DE INVESTIMENTO ===================== -->
+<section id="investimento" class="py-20 md:py-28 bg-[#fafafa] relative overflow-hidden">
+    <div class="absolute inset-0 bg-dots pointer-events-none z-0"></div>
+    <div class="max-w-7xl mx-auto px-4 relative z-10">
+
+        <div class="text-center mb-10 md:mb-12 reveal">
+            <span class="text-brand-yellow font-bold uppercase tracking-widest text-xs font-sans">Orçamento Pontual &amp; Transparente</span>
+            <h2 class="text-2xl md:text-5xl font-extrabold text-gray-900 mt-2 md:mt-3 font-sans">Investimento do Projeto</h2>
+            <p class="text-gray-500 mt-3 md:mt-4 max-w-xl mx-auto text-sm md:text-lg leading-relaxed px-4 font-sans">
+                Solução enxuta e completa: leitor facial outdoor IP65, eletroímã para porta de metal, nobreak com bateria, botoeira inox, infraestrutura de cabos e instalação especializada:
+            </p>
+        </div>
+
+        <!-- TOGGLE DE PAGAMENTO (PIX VS CARTÃO VS ASSINATURA) -->
+        <div class="flex flex-col items-center justify-center mb-8 md:mb-10 reveal">
+            <p class="text-xs font-bold text-gray-400 uppercase tracking-widest mb-3 font-sans">Selecione o Formato de Pagamento:</p>
+            <div class="bg-gray-100 p-1.5 rounded-full inline-flex relative shadow-inner w-full max-w-xs sm:max-w-md">
+                <div id="toggle-bg" class="absolute top-1.5 bottom-1.5 w-[calc(33.333%-3px)] bg-white rounded-full shadow-sm transition-transform duration-300 ease-in-out" style="transform: translateX(0); left: 2px;"></div>
+                
+                <button onclick="setPaymentMode('avista')" id="btn-avista" class="relative z-10 flex-1 py-2.5 text-xs md:text-sm font-bold text-gray-900 transition-colors text-center rounded-full focus:outline-none font-sans">À Vista (PIX)</button>
+                <button onclick="setPaymentMode('parcelado')" id="btn-parcelado" class="relative z-10 flex-1 py-2.5 text-xs md:text-sm font-bold text-gray-500 transition-colors text-center rounded-full focus:outline-none hover:text-black font-sans">Cartão (Até 12x)</button>
+                <button onclick="setPaymentMode('assinatura')" id="btn-assinatura" class="relative z-10 flex-1 py-2.5 text-xs md:text-sm font-bold text-gray-500 transition-colors text-center rounded-full focus:outline-none hover:text-black font-sans">Assinatura / Mês</button>
+            </div>
+
+            <!-- Seletor de Parcelas Cartão -->
+            <div id="installment-container" class="mt-4 md:mt-6 flex flex-col items-center transition-all duration-300 opacity-0 pointer-events-none hidden">
+                <div class="relative">
+                    <select id="installment-select" class="appearance-none bg-white border border-gray-300 text-gray-950 text-xs md:text-sm font-bold rounded-xl focus:ring-brand-yellow focus:border-brand-yellow block w-48 md:w-64 p-2.5 md:p-3 pl-3 md:pl-4 pr-8 md:pr-10 shadow-sm outline-none cursor-pointer hover:border-gray-400 transition-colors font-sans" onchange="updatePrices()">
+                        <option value="1">1x no cartão</option>
+                        <option value="2">2x no cartão</option>
+                        <option value="3">3x no cartão</option>
+                        <option value="4">4x no cartão</option>
+                        <option value="6">6x no cartão</option>
+                        <option value="12" selected>12x no cartão</option>
+                    </select>
+                    <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 md:px-3 text-brand-yellow">
+                        <i data-lucide="chevron-down" class="w-3 h-3 md:w-4 md:h-4"></i>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Seletor de Prazo Assinatura -->
+            <div id="subscription-container" class="mt-4 md:mt-6 flex flex-col items-center transition-all duration-300 opacity-0 pointer-events-none hidden">
+                <div class="relative">
+                    <select id="subscription-select" class="appearance-none bg-white border border-gray-300 text-gray-950 text-xs md:text-sm font-bold rounded-xl focus:ring-brand-yellow focus:border-brand-yellow block w-60 md:w-72 p-2.5 md:p-3 pl-3 md:pl-4 pr-8 md:pr-10 shadow-sm outline-none cursor-pointer hover:border-gray-400 transition-colors font-sans" onchange="updatePrices()">
+                        <option value="24">24 meses (R$ 246,97 / mês)</option>
+                        <option value="36" selected>36 meses (R$ 186,90 / mês)</option>
+                        <option value="48">48 meses (R$ 159,70 / mês)</option>
+                        <option value="60">60 meses (R$ 143,30 / mês)</option>
+                    </select>
+                    <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 md:px-3 text-brand-yellow">
+                        <i data-lucide="chevron-down" class="w-3 h-3 md:w-4 md:h-4"></i>
+                    </div>
+                </div>
+                <span class="text-[10px] text-zinc-500 mt-2 font-medium">Equipamentos inclusos com suporte contínuo para o seu espaço</span>
+            </div>
+        </div>
+
+        <!-- CARD DE ORÇAMENTO -->
+        <div class="reveal items-stretch flex justify-center animate-fade-in">
+            
+            <div class="premium-border-glow group relative z-20 w-full max-w-2xl">
+                <div class="premium-border-inner flex flex-col relative bg-white p-4 md:p-8">
+                    <div class="absolute top-0 right-0 w-24 h-24 md:w-32 md:h-32 bg-brand-yellow/10 rounded-full blur-[30px] md:blur-[50px] pointer-events-none"></div>
+                    <div class="absolute top-2 right-2 md:top-4 md:right-4 z-20">
+                        <span class="bg-brand-yellow text-black text-[7px] md:text-[10px] font-extrabold px-2 py-0.5 md:px-3 md:py-1 rounded-full uppercase tracking-widest shadow-glow">Homologado Intelbras</span>
+                    </div>
+
+                    <div class="mb-4 md:mb-6 text-center md:text-left relative z-10">
+                        <p class="text-[8px] md:text-[10px] font-bold uppercase tracking-widest text-brand-yellow mb-1 md:mb-2 mt-1 md:mt-2 font-sans">FACIAL OUTDOOR + ELETROÍMÃ + NOBREAK + INCONTROL WEB PC</p>
+                        <h3 class="font-bold text-gray-900 text-xl md:text-3xl leading-tight font-sans">Escola de Yoga • Pinheiros</h3>
+                        <p class="text-xs text-zinc-500 mt-1">Rua Cônego Eugênio Leite, 881 • São Paulo / SP</p>
+                    </div>
+
+                    <div class="mb-4 md:mb-6 p-4 md:p-8 bg-brand-yellow/5 border border-brand-yellow/20 rounded-xl md:rounded-2xl min-h-[120px] md:min-h-[160px] flex flex-col items-center justify-center text-center relative z-10">
+                        <div class="w-full" id="price-opt1">
+                            <div class="flex flex-col items-center w-full animate-fade-in font-sans">
+                                <p class="text-[8px] md:text-[10px] text-[#8a6208] uppercase tracking-widest font-bold mb-1">À Vista no PIX (Sem Juros)</p>
+                                <span class="text-4xl md:text-5xl font-black text-gray-900 tracking-tight mb-4" id="main-price-display">R$ 4.450,00</span>
+                                
+                                <div class="w-full space-y-2">
+                                    <div class="bg-white border border-gray-200 rounded-xl py-2.5 flex flex-col items-center justify-center relative overflow-hidden shadow-sm">
+                                        <div class="absolute top-0 left-0 w-1 h-full bg-[#34d399] rounded-l-lg"></div>
+                                        <span class="text-[8px] font-bold uppercase tracking-widest text-brand-goldDark mb-0.5 font-sans">Sinal para Compra dos Equipamentos (50%)</span>
+                                        <span class="text-sm font-bold text-gray-900" id="signal-price-display">R$ 2.225,00</span>
+                                    </div>
+                                    <div class="bg-white border border-gray-200 rounded-xl py-2.5 flex flex-col items-center justify-center relative overflow-hidden shadow-sm">
+                                        <div class="absolute top-0 left-0 w-1.5 h-full bg-[#c8a048] rounded-l-lg"></div>
+                                        <span class="text-[8px] font-bold uppercase tracking-widest text-brand-goldDark mb-0.5 font-sans">Saldo na Entrega e Treinamento do InControl Web (50%)</span>
+                                        <span class="text-sm font-bold text-gray-900" id="balance-price-display">R$ 2.225,00</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Módulo Opcional de Conforto: TVIP no Balcão -->
+                    <div class="mb-4 md:mb-6 p-3 md:p-4 bg-zinc-50 border border-zinc-200 rounded-xl md:rounded-2xl relative z-10">
+                        <label class="flex items-start gap-3 cursor-pointer">
+                            <input type="checkbox" id="tvip-addon" onchange="toggleTvipAddon()" class="w-4 h-4 mt-1 text-brand-yellow rounded border-gray-300 focus:ring-brand-yellow cursor-pointer accent-[#b9880e]">
+                            <div class="text-left font-sans">
+                                <div class="flex items-center gap-2">
+                                    <span class="text-xs md:text-sm font-bold text-gray-900">Opcional de Conforto: Monitor TVIP Touch no Balcão</span>
+                                    <span class="bg-brand-yellow/10 text-brand-goldDark text-[8px] md:text-[9px] font-bold px-2 py-0.5 rounded-full uppercase">+ R$ 1.590 à vista</span>
+                                </div>
+                                <p class="text-[10px] md:text-xs text-gray-500 leading-relaxed mt-1">
+                                    Terminal de vídeo interno fixado na recepção lá em cima. Se você preferir uma tela touch de parede dedicada e independente do computador ligado para atender visitantes com vídeo e abrir o portão.
+                                </p>
+                            </div>
+                        </label>
+                    </div>
+
+                    <div class="space-y-2 md:space-y-3 mb-4 md:mb-8 flex-1 relative z-10 text-left font-sans">
+                        <h4 class="font-semibold text-gray-700 text-[10px] md:text-sm uppercase tracking-wider mb-2 md:mb-3">O que está 100% incluso:</h4>
+                        
+                        <div class="flex items-start gap-2 md:gap-3 p-3 bg-white border border-gray-200 rounded-lg md:rounded-xl shadow-sm">
+                            <i data-lucide="check-square" class="w-4 h-4 text-brand-yellow shrink-0 mt-0.5"></i>
+                            <p class="text-[10px] md:text-xs text-gray-800 leading-relaxed font-sans"><strong>01x Leitor Facial Outdoor Intelbras SS 3532 MF W (IP65):</strong> Reconhecimento biométrico ultrarrápido (&lt;0.2s) na mureta externa para os 50 alunos com inteligência artificial anti-fake.</p>
+                        </div>
+
+                        <div class="flex items-start gap-2 md:gap-3 p-3 bg-white border border-gray-200 rounded-lg md:rounded-xl shadow-sm">
+                            <i data-lucide="check-square" class="w-4 h-4 text-brand-yellow shrink-0 mt-0.5"></i>
+                            <p class="text-[10px] md:text-xs text-gray-800 leading-relaxed font-sans"><strong>Software InControl Web Instalado no Computador:</strong> Plataforma profissional no PC da recepção com Botoeira Virtual (destrave do portão com 1 clique do mouse), cadastro facilitado por foto e zero mensalidade.</p>
+                        </div>
+
+                        <div class="flex items-start gap-2 md:gap-3 p-3 bg-white border border-gray-200 rounded-lg md:rounded-xl shadow-sm">
+                            <i data-lucide="check-square" class="w-4 h-4 text-brand-yellow shrink-0 mt-0.5"></i>
+                            <p class="text-[10px] md:text-xs text-gray-800 leading-relaxed font-sans"><strong>01x Fechadura Eletroímã FE 20150 (150 kgf):</strong> Travamento magnético reforçado com suporte ZL especial para a porta de metal frontal.</p>
+                        </div>
+
+                        <div class="flex items-start gap-2 md:gap-3 p-3 bg-white border border-gray-200 rounded-lg md:rounded-xl shadow-sm">
+                            <i data-lucide="check-square" class="w-4 h-4 text-brand-yellow shrink-0 mt-0.5"></i>
+                            <p class="text-[10px] md:text-xs text-gray-800 leading-relaxed font-sans"><strong>01x Botoeira de Saída Inox BT 3000:</strong> Acionamento interno por botão de aço inox escovado durável para liberação rápida de saída.</p>
+                        </div>
+
+                        <div class="flex items-start gap-2 md:gap-3 p-3 bg-white border border-gray-200 rounded-lg md:rounded-xl shadow-sm">
+                            <i data-lucide="check-square" class="w-4 h-4 text-brand-yellow shrink-0 mt-0.5"></i>
+                            <p class="text-[10px] md:text-xs text-gray-800 leading-relaxed font-sans"><strong>01x Fonte Nobreak FA 1220S + Bateria 12V 7Ah XB 1270:</strong> Proteção e autonomia ininterrupta para a porta continuar operante se faltar energia na rua.</p>
+                        </div>
+
+                        <div class="flex items-start gap-2 md:gap-3 p-3 bg-white border border-gray-200 rounded-lg md:rounded-xl shadow-sm">
+                            <i data-lucide="check-square" class="w-4 h-4 text-brand-yellow shrink-0 mt-0.5"></i>
+                            <p class="text-[10px] md:text-xs text-gray-800 leading-relaxed font-sans"><strong>Infraestrutura Embutida (Cabo UTP 20m):</strong> Passagem de cabeamento pelo corredor aproveitando a presença dos pintores no local.</p>
+                        </div>
+
+                        <div class="flex items-start gap-2 md:gap-3 p-3 bg-white border border-gray-200 rounded-lg md:rounded-xl shadow-sm">
+                            <i data-lucide="wrench" class="w-4 h-4 text-brand-yellow shrink-0 mt-0.5"></i>
+                            <p class="text-[10px] md:text-xs text-gray-800 leading-relaxed font-sans"><strong>Mão de Obra Especializada Vision:</strong> Fixação física, instalação do InControl Web no computador, parametrização de rede, cadastro piloto e treinamento do Vinicius.</p>
+                        </div>
+
+                        <div class="mt-2 md:mt-4 bg-brand-yellow/10 border border-brand-yellow/30 p-2 md:p-3 rounded-lg md:rounded-xl flex items-center justify-center gap-2 shadow-sm text-center">
+                            <i data-lucide="award" class="w-4 h-4 text-brand-yellow shrink-0 animate-pulse"></i>
+                            <p class="text-[10px] md:text-xs text-gray-800 leading-tight"><strong>GARANTIA CORPORATIVA:</strong> 12 Meses de Garantia Total (Equipamentos + Instalação).</p>
+                        </div>
+                    </div>
+
+                    <a id="btn-aprova-link" href="https://wa.me/5511930816696?text=Fala%20Gabriel,%20analisei%20a%20proposta%20de%20reconhecimento%20facial%20da%20Escola%20de%20Yoga%20(C%C3%B4nego%20Eug%C3%AAnio%20Leite)%20e%20gostaria%20de%20aprovar%20o%20projeto%20com%20pagamento%20%C3%A0%20vista%20de%20R$%204.450,00%20no%20PIX." target="_blank" class="w-full bg-brand-yellow hover:bg-brand-goldLight text-black font-bold py-3 md:py-4 rounded-xl md:rounded-2xl flex items-center justify-center gap-1.5 md:gap-2 transition-all shadow-glow-md text-[10px] md:text-[12px] uppercase tracking-widest group relative overflow-hidden mt-auto z-10 font-sans">
+                        <div class="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-300 rounded-xl md:rounded-2xl"></div>
+                        <span id="btn-text-aprova" class="relative z-10">Aprovar Projeto (Falar com Gabriel)</span>
+                        <i data-lucide="arrow-right" class="w-4 h-4 md:w-5 md:h-5 relative z-10 group-hover:translate-x-1 transition-transform"></i>
+                    </a>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+</section>
+
+<!-- ===================== VISION CARE (SUPORTE OPCIONAL) ===================== -->
+<section class="py-16 bg-white border-y border-gray-200/60 font-sans">
+    <div class="max-w-4xl mx-auto px-4">
+        <div class="bg-gray-50 border border-gray-200 rounded-3xl p-6 md:p-8 flex flex-col md:flex-row items-center justify-between gap-6">
+            <div class="text-left space-y-2">
+                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-brand-yellow/10 border border-brand-yellow/20 text-brand-goldDark text-[10px] font-bold uppercase tracking-wider">
+                    <i data-lucide="shield-plus" class="w-3.5 h-3.5"></i> Suporte Especializado
+                </div>
+                <h3 class="text-xl md:text-2xl font-bold text-gray-900">Plano Vision Care Studio (Opcional)</h3>
+                <p class="text-xs md:text-sm text-gray-600 leading-relaxed max-w-xl">
+                    Visitas preventivas semestrais, limpeza técnica do sensor facial externo, backup do banco de fotos dos 50 alunos na nuvem e suporte técnico direto via WhatsApp para cadastros rápidos.
+                </p>
+            </div>
+            <div class="shrink-0 text-center md:text-right">
+                <span class="text-2xl md:text-3xl font-black text-gray-900">R$ 190,00</span>
+                <span class="text-xs text-gray-500 block">/mês (sem carência)</span>
+                <span class="text-[10px] text-emerald-600 font-bold block mt-1">(Tranquilidade total para o seu estúdio)</span>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ===================== FAQ ===================== -->
+<section id="faq" class="py-24 bg-[#f8f9fa] border-t border-gray-200/60 font-sans">
+    <div class="max-w-3xl mx-auto px-4">
+        <div class="text-center mb-14 reveal">
+            <span class="text-brand-yellow font-bold uppercase tracking-widest text-xs">Perguntas Frequentes</span>
+            <h2 class="text-3xl md:text-4xl font-extrabold text-gray-900 mt-3">Dúvidas Técnicas sobre a Escola</h2>
+        </div>
+        
+        <div class="space-y-4 reveal" id="accordion">
+            
+            <div class="accordion-item bg-white rounded-2xl border border-gray-100 shadow-sm overflow-hidden transition-all hover:border-brand-yellow/50">
+                <button onclick="toggleAccordion(this)" class="w-full flex items-center justify-between p-6 text-left font-bold text-gray-900 focus:outline-none font-sans">
+                    <span>Como funciona a liberação do portão lá do piso superior sem descer a escada?</span>
+                    <i data-lucide="chevron-down" class="w-5 h-5 text-brand-yellow acc-arrow shrink-0"></i>
+                </button>
+                <div class="accordion-content text-left">
+                    <p class="px-6 pb-6 text-gray-600 text-sm leading-relaxed font-sans">Nós instalamos e configuramos o software profissional <strong>InControl Web</strong> no computador da recepção no andar de cima. Na tela do computador, você tem a <strong>Botoeira Virtual</strong>: basta dar um clique no mouse para destrancar a porta de metal instantaneamente, além de acompanhar os registros de acesso. E caso você prefira ter uma tela touch de parede independente do computador para atender com vídeo, pode adicionar o monitor <strong>TVIP</strong> opcional.</p>
+                </div>
+            </div>
+
+            <div class="accordion-item bg-white rounded-2xl border border-gray-100 shadow-sm overflow-hidden transition-all hover:border-brand-yellow/50">
+                <button onclick="toggleAccordion(this)" class="w-full flex items-center justify-between p-6 text-left font-semibold text-gray-800 focus:outline-none font-sans">
+                    <span>O leitor aguenta chuva e sol forte na calçada de Pinheiros?</span>
+                    <i data-lucide="chevron-down" class="w-5 h-5 text-brand-yellow acc-arrow shrink-0"></i>
+                </button>
+                <div class="accordion-content text-left">
+                    <p class="px-6 pb-6 text-gray-600 text-sm leading-relaxed font-sans">Sim! O equipamento fornecido possui grau de proteção IP65 estrito, o que significa vedação total contra jatos de água de chuva forte e poeira urbana. Além disso, o sensor de luminosidade ajusta a câmera automaticamente mesmo sob sol intenso na calçada da Cônego Eugênio Leite.</p>
+                </div>
+            </div>
+
+            <div class="accordion-item bg-white rounded-2xl border border-gray-100 shadow-sm overflow-hidden transition-all hover:border-brand-yellow/50">
+                <button onclick="toggleAccordion(this)" class="w-full flex items-center justify-between p-6 text-left font-semibold text-gray-800 focus:outline-none font-sans">
+                    <span>E se faltar luz no bairro, o portão destrava sozinho ou trava fechado?</span>
+                    <i data-lucide="chevron-down" class="w-5 h-5 text-brand-yellow acc-arrow shrink-0"></i>
+                </button>
+                <div class="accordion-content text-left">
+                    <p class="px-6 pb-6 text-gray-600 text-sm leading-relaxed font-sans">Incluímos a fonte nobreak inteligente FA 1220S Intelbras com uma bateria selada 12V 7Ah XB 1270 nova. Se faltar energia na rede da rua, a bateria entra em milissegundos sem reiniciar o sistema. A porta de metal continua travada e os alunos cadastrados conseguem entrar normalmente pelo rosto.</p>
+                </div>
+            </div>
+
+            <div class="accordion-item bg-white rounded-2xl border border-gray-100 shadow-sm overflow-hidden transition-all hover:border-brand-yellow/50">
+                <button onclick="toggleAccordion(this)" class="w-full flex items-center justify-between p-6 text-left font-semibold text-gray-800 focus:outline-none font-sans">
+                    <span>Como é feito o cadastro dos 50 alunos? É demorado?</span>
+                    <i data-lucide="chevron-down" class="w-5 h-5 text-brand-yellow acc-arrow shrink-0"></i>
+                </button>
+                <div class="accordion-content text-left">
+                    <p class="px-6 pb-6 text-gray-600 text-sm leading-relaxed font-sans">É extremamente simples! O cadastro pode ser feito pelo próprio leitor facial (o aluno olha para a câmera e leva 3 segundos) ou pelo software InControl Web no computador importando a foto de perfil do aluno. No dia da entrega técnica, nós cadastramos os primeiros alunos junto com você e te deixamos 100% ambientado.</p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<!-- ===================== CTA FINAL ===================== -->
+<section class="py-28 bg-[#09090b] relative overflow-hidden font-sans">
+    <div class="bg-grid absolute inset-0 opacity-10 pointer-events-none z-0"></div>
+    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-brand-yellow/10 rounded-full blur-[100px] pointer-events-none z-0"></div>
+    
+    <div class="max-w-4xl mx-auto px-4 text-center relative z-10 reveal">
+        <span class="text-brand-yellow font-bold uppercase tracking-widest text-xs mb-4 block font-sans">Aproveite a Janela da Obra</span>
+        <h2 class="text-3xl md:text-5xl font-extrabold text-white leading-tight mb-6 font-sans">
+            Controle facial moderno e silencioso <br><span class="text-gold-shine">para a sua nova Escola de Yoga em Pinheiros.</span>
+        </h2>
+        <p class="text-zinc-400 text-lg mb-10 leading-relaxed max-w-2xl mx-auto font-sans">
+            Vinicius, como seus pintores estão no local esta semana, conseguimos agendar nossa equipe técnica para passar os cabos pelo corredor sem deixar tubulações aparentes após a pintura final.
+        </p>
+
+        <a href="https://wa.me/5511930816696?text=Fala%20Gabriel,%20quero%20dar%20o%20start%20no%20projeto%20da%20Escola%20de%20Yoga%20na%20C%C3%B4nego%20Eug%C3%AAnio%20Leite%20para%20aproveitar%20a%20equipe%20de%20pintura." target="_blank" class="inline-flex items-center gap-3 bg-brand-yellow hover:bg-brand-goldLight text-black font-bold px-10 py-5 rounded-full transition-all shadow-glow-md text-sm uppercase tracking-widest transform hover:scale-[1.03]">
+            <i data-lucide="check-circle" class="w-5 h-5"></i>
+            Aprovar Projeto (Falar com Gabriel)
+            <i data-lucide="arrow-right" class="w-4 h-4 ml-1"></i>
+        </a>
+    </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="bg-black py-16 text-center border-t border-zinc-900 group font-sans">
+    <div class="max-w-4xl mx-auto px-4 font-sans">
+        
+        <div class="flex flex-col items-center justify-center leading-none opacity-40 group-hover:opacity-100 transition-opacity duration-500 cursor-default mb-10">
+            <div class="flex flex-col items-center">
+                <div class="relative flex items-baseline leading-none">
+                    <span class="font-bold text-[3.5rem] text-white lowercase tracking-[-0.05em] leading-none">vısıon</span>
+                    <span class="absolute -right-3.5 top-2.5 text-[0.75rem] text-brand-yellow font-bold">®</span>
+                </div>
+                <span class="text-[0.75rem] font-bold text-zinc-500 lowercase -mt-3 ml-1.5 text-center w-full" style="letter-spacing: 0.53em;">tecnologia</span>
+            </div>
+        </div>
+
+        <div class="text-zinc-500 text-xs md:text-sm leading-relaxed space-y-1 mb-8 opacity-60">
+            <p><strong>A/C Vinicius</strong> | Escola de Yoga - Rua Cônego Eugênio Leite, 881 - Pinheiros - São Paulo / SP</p>
+            <p>WhatsApp: +55 11 99184-9933 | Proposta Comercial #YOGA-PINHEIROS-2026</p>
+        </div>
+
+        <div class="inline-flex items-center justify-center gap-2 border border-zinc-800 bg-zinc-900/50 px-5 py-2.5 rounded-full mb-6 shadow-sm">
+            <i data-lucide="lock" class="w-3.5 h-3.5 text-brand-yellow"></i>
+            <span class="text-[10px] md:text-xs text-zinc-400 uppercase tracking-widest font-bold">Documento executivo restrito ao contratante</span>
+        </div>
+        
+        <p class="text-[10px] text-zinc-700 uppercase tracking-widest font-bold mt-6 font-sans">Projetos de Controle de Acesso Facial, Redes e Segurança Eletrônica IP</p>
+    </div>
+</footer>
+
+<!-- WHATSAPP CTA FLUTUANTE -->
+<div id="cta-float" class="fixed bottom-6 right-6 z-40 hidden md:block opacity-0 translate-y-10 pointer-events-none transition-all duration-500">
+    <a href="https://wa.me/5511930816696?text=Fala%20Gabriel,%20tenho%20uma%20d%C3%BAvida%20sobre%20o%20projeto%20da%20Escola%20de%20Yoga%20na%20C%C3%B4nego%20Eug%C3%AAnio%20Leite." target="_blank" class="flex items-center gap-3 bg-brand-yellow text-black font-bold px-6 py-4 rounded-full shadow-glow-md hover:shadow-glow transition-all group font-sans">
+        <i data-lucide="message-circle" class="w-5 h-5"></i>
+        <span class="text-sm tracking-wide uppercase">Falar com Gabriel</span>
+        <i data-lucide="arrow-right" class="w-4 h-4 group-hover:translate-x-1 transition-transform"></i>
+    </a>
+</div>
+
+<!-- ===================== SCRIPTS ===================== -->
+<script>
+    function safePrint() {
+        try {
+            window.print();
+        } catch (err) {
+            console.warn('Impressão indisponível no ambiente:', err);
+        }
+    }
+
+    function initIcons() {
+        if (window.lucide && typeof window.lucide.createIcons === 'function') {
+            try {
+                window.lucide.createIcons();
+            } catch (err) {
+                console.warn('Erro ao carregar ícones:', err);
+            }
+        }
+    }
+    document.addEventListener("DOMContentLoaded", initIcons);
+
+    function checkPassword() {
+        const inputEl = document.getElementById('password-input');
+        if (!inputEl) return;
+
+        const input = inputEl.value;
+        const errorMsg = document.getElementById('error-msg');
+        const formattedInput = input.trim().toUpperCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+        
+        const btnUnlock = document.getElementById('btn-unlock');
+        const unlockIcon = document.getElementById('unlock-icon');
+        const unlockText = document.getElementById('unlock-text');
+        const unlockArrow = document.getElementById('unlock-arrow');
+        
+        const validPasswords = ['VINICIUS', 'YOGA', 'PINHEIROS', 'VINICIUS2026', 'VISION', '1234', 'EUGENIO'];
+
+        if (validPasswords.includes(formattedInput)) {
+            if (btnUnlock) btnUnlock.disabled = true;
+            if (unlockText) unlockText.textContent = "A Validar Acesso...";
+            if (unlockIcon) unlockIcon.className = "w-5 h-5 animate-spin text-black";
+            if (unlockArrow) unlockArrow.style.display = 'none';
+
+            setTimeout(() => {
+                const lockScreen = document.getElementById('lock-screen');
+                if (lockScreen) lockScreen.style.opacity = '0';
+
+                if (ytPlayer && typeof ytPlayer.playVideo === 'function') {
+                    try { ytPlayer.playVideo(); } catch(e){}
+                }
+
+                if (window.clarity) {
+                    try {
+                        window.clarity("consent");
+                        window.clarity("identify", "vinicius-yoga-pinheiros", undefined, undefined, "Vinicius (Escola de Yoga)");
+                        window.clarity("set", "Proposta", "Projeto_Facial_Yoga_Pinheiros");
+                        window.clarity("event", "Proposta_Desbloqueada");
+                    } catch(e){}
+                }
+
+                if (window.gtag) {
+                    try {
+                        gtag('event', 'proposta_desbloqueada', {
+                            'event_category': 'Engajamento',
+                            'event_label': 'Vinicius - Yoga Pinheiros'
+                        });
+                    } catch(e){}
+                }
+
+                fetch('https://api.staticforms.dev/submit', {
+                    method: 'POST',
+                    headers: { 
+                        'Content-Type': 'application/json',
+                        'Accept': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        accessKey: "sf_077ej49gjha153gk3m6ceecf",
+                        subject: "🚨 ALERTA: Proposta Acessada (Vinicius / Escola de Yoga - Pinheiros)",
+                        name: "Sistema Vision",
+                        email: "diretoria@visionsp.com.br",
+                        message: "O cliente Vinicius (Escola de Yoga Pinheiros) abriu a proposta de reconhecimento facial da Cônego Eugênio Leite!\n\n👤 Cliente: Vinicius\n🔑 Senha Utilizada: " + input + "\n📍 Local: Rua Cônego Eugênio Leite, 881\n🕒 Horário: " + new Date().toLocaleString('pt-BR')
+                    })
+                }).catch(() => console.log('Log local mantido.'));
+
+                setTimeout(() => { 
+                    if (lockScreen) lockScreen.style.display = 'none'; 
+                    const htmlRoot = document.getElementById('html-root');
+                    if (htmlRoot) {
+                        htmlRoot.classList.remove('overflow-hidden', 'h-screen');
+                        htmlRoot.classList.add('overflow-x-hidden');
+                    }
+                    document.body.classList.remove('overflow-hidden', 'h-screen');
+                    updatePrices();
+                }, 700);
+
+            }, 800);
+
+        } else {
+            if (errorMsg) errorMsg.classList.remove('hidden');
+            inputEl.style.borderColor = 'rgba(239,68,68,0.5)';
+            setTimeout(() => {
+                if (errorMsg) errorMsg.classList.add('hidden');
+                inputEl.style.borderColor = '';
+            }, 3000);
+        }
+    }
+
+    document.addEventListener("DOMContentLoaded", () => {
+        const pwdInput = document.getElementById('password-input');
+        if (pwdInput) {
+            pwdInput.addEventListener('keypress', function(e) {
+                if (e.key === 'Enter') {
+                    e.preventDefault();
+                    checkPassword();
+                }
+            });
+        }
+    });
+
+    function toggleAccordion(button) {
+        const item = button.closest('.accordion-item');
+        if (!item) return;
+        const isOpen = item.classList.contains('open');
+        document.querySelectorAll('.accordion-item').forEach(i => i.classList.remove('open'));
+        if (!isOpen) item.classList.add('open');
+    }
+
+    // CTD Yoga Pinheiros: R$ 3.050,00
+    // Tier 2: Divisor 0.685 -> PIX = R$ 4.450,00
+    // Parcelado Cartão 12x: R$ 4.450,00 * 1.1999 = R$ 5.339,55 -> R$ 5.340,00 (12x R$ 445,00)
+    // Opcional TVIP Balcão: R$ 1.590,00 PIX / R$ 1.908,00 Cartão (12x R$ 159,00)
+    const pricingData = {
+        pixBase: 4450.00,
+        cardTotalBase: 5340.00,
+        tvipPix: 1590.00,
+        tvipCard: 1908.00,
+        tvipSubscriptions: {
+            "24": 88.00,
+            "36": 66.00,
+            "48": 56.00,
+            "60": 51.00
+        },
+        subscriptions: {
+            "24": 246.97,
+            "36": 186.90,
+            "48": 159.70,
+            "60": 143.30
+        }
+    };
+
+    let currentPaymentMode = 'avista'; // 'avista' | 'parcelado' | 'assinatura'
+    let includeTvip = false;
+
+    function formatExactCurrency(val) {
+        return val.toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+    }
+
+    function toggleTvipAddon() {
+        const checkbox = document.getElementById('tvip-addon');
+        includeTvip = checkbox ? checkbox.checked : false;
+        updatePrices();
+    }
+
+    function setPaymentMode(mode) {
+        currentPaymentMode = mode;
+        const bg = document.getElementById('toggle-bg');
+        const btnPix = document.getElementById('btn-avista');
+        const btnParcelado = document.getElementById('btn-parcelado');
+        const btnAssinatura = document.getElementById('btn-assinatura');
+        const selectContainer = document.getElementById('installment-container');
+        const subContainer = document.getElementById('subscription-container');
+
+        [btnPix, btnParcelado, btnAssinatura].forEach(btn => {
+            if (btn) {
+                btn.classList.remove('text-gray-900', 'text-black');
+                btn.classList.add('text-gray-500');
+            }
+        });
+
+        if (mode === 'avista') {
+            if (bg) bg.style.transform = 'translateX(0%)';
+            if (btnPix) {
+                btnPix.classList.remove('text-gray-500');
+                btnPix.classList.add('text-gray-900');
+            }
+            if (selectContainer) {
+                selectContainer.classList.add('opacity-0', 'pointer-events-none');
+                setTimeout(() => { if(selectContainer) selectContainer.classList.add('hidden'); }, 200);
+            }
+            if (subContainer) {
+                subContainer.classList.add('opacity-0', 'pointer-events-none');
+                setTimeout(() => { if(subContainer) subContainer.classList.add('hidden'); }, 200);
+            }
+        } else if (mode === 'parcelado') {
+            if (bg) bg.style.transform = 'translateX(100%)';
+            if (btnParcelado) {
+                btnParcelado.classList.remove('text-gray-500');
+                btnParcelado.classList.add('text-gray-900');
+            }
+            if (subContainer) {
+                subContainer.classList.add('opacity-0', 'pointer-events-none');
+                setTimeout(() => { if(subContainer) subContainer.classList.add('hidden'); }, 200);
+            }
+            if (selectContainer) {
+                selectContainer.classList.remove('hidden');
+                setTimeout(() => { if(selectContainer) selectContainer.classList.remove('opacity-0', 'pointer-events-none'); }, 10);
+            }
+        } else if (mode === 'assinatura') {
+            if (bg) bg.style.transform = 'translateX(200%)';
+            if (btnAssinatura) {
+                btnAssinatura.classList.remove('text-gray-500');
+                btnAssinatura.classList.add('text-gray-900');
+            }
+            if (selectContainer) {
+                selectContainer.classList.add('opacity-0', 'pointer-events-none');
+                setTimeout(() => { if(selectContainer) selectContainer.classList.add('hidden'); }, 200);
+            }
+            if (subContainer) {
+                subContainer.classList.remove('hidden');
+                setTimeout(() => { if(subContainer) subContainer.classList.remove('opacity-0', 'pointer-events-none'); }, 10);
+            }
+        }
+
+        updatePrices();
+    }
+
+    function updateWhatsAppLink() {
+        const btnLink = document.getElementById('btn-aprova-link');
+        if (!btnLink) return;
+
+        let message = '';
+        const tvipTxt = includeTvip ? ' COM o Monitor TVIP no Balcão' : ' no formato enxuto com InControl Web no computador';
+
+        if (currentPaymentMode === 'avista') {
+            const finalPix = pricingData.pixBase + (includeTvip ? pricingData.tvipPix : 0);
+            message = `Fala Gabriel, analisei a proposta da Escola de Yoga (Cônego Eugênio Leite, 881)${tvipTxt} e gostaria de aprovar o projeto com pagamento à Vista de R$ ${formatExactCurrency(finalPix)} via PIX.`;
+        } else if (currentPaymentMode === 'parcelado') {
+            const select = document.getElementById('installment-select');
+            const installments = select ? parseInt(select.value) : 12;
+            
+            let totalVal = pricingData.cardTotalBase + (includeTvip ? pricingData.tvipCard : 0);
+            if (installments < 12) {
+                const pixVal = pricingData.pixBase + (includeTvip ? pricingData.tvipPix : 0);
+                const factor = 1 + ((1.1999 - 1) * (installments / 12));
+                totalVal = pixVal * factor;
+            }
+            const instVal = totalVal / installments;
+
+            message = `Fala Gabriel, analisei a proposta da Escola de Yoga (Cônego Eugênio Leite, 881)${tvipTxt} e gostaria de aprovar o projeto parcelado em ${installments}x de R$ ${formatExactCurrency(instVal)} no cartão.`;
+        } else {
+            const subSelect = document.getElementById('subscription-select');
+            const months = subSelect ? subSelect.value : '36';
+            const monthlyVal = (pricingData.subscriptions[months] || 186.90) + (includeTvip ? (pricingData.tvipSubscriptions[months] || 66.00) : 0);
+
+            message = `Fala Gabriel, analisei a proposta da Escola de Yoga (Cônego Eugênio Leite, 881)${tvipTxt} e temos interesse no modelo de Assinatura Tecnológica no plano de ${months} meses (R$ ${formatExactCurrency(monthlyVal)}/mês).`;
+        }
+
+        btnLink.href = "https://wa.me/5511930816696?text=" + encodeURIComponent(message);
+    }
+
+    function updatePrices() {
+        const priceContainer = document.getElementById('price-opt1');
+        const select = document.getElementById('installment-select');
+        const subSelect = document.getElementById('subscription-select');
+        if (!priceContainer) return;
+
+        const effectivePix = pricingData.pixBase + (includeTvip ? pricingData.tvipPix : 0);
+        const effectiveCardTotal = pricingData.cardTotalBase + (includeTvip ? pricingData.tvipCard : 0);
+
+        if (currentPaymentMode === 'avista') {
+            const signal = effectivePix / 2;
+            priceContainer.innerHTML = `
+                <div class="flex flex-col items-center w-full animate-fade-in font-sans">
+                    <p class="text-[8px] md:text-[10px] text-[#8a6208] uppercase tracking-widest font-bold mb-1">À Vista no PIX (Sem Juros)${includeTvip ? ' • COM TVIP' : ''}</p>
+                    <span class="text-4xl md:text-5xl font-black text-gray-900 tracking-tight mb-4">R$ ${formatExactCurrency(effectivePix)}</span>
+                    
+                    <div class="w-full space-y-2">
+                        <div class="bg-white border border-gray-200 rounded-xl py-2.5 flex flex-col items-center justify-center relative overflow-hidden shadow-sm">
+                            <div class="absolute top-0 left-0 w-1 h-full bg-[#34d399] rounded-l-lg"></div>
+                            <span class="text-[8px] font-bold uppercase tracking-widest text-brand-goldDark mb-0.5 font-sans">Sinal para Compra dos Equipamentos (50%)</span>
+                            <span class="text-sm font-bold text-gray-900">R$ ${formatExactCurrency(signal)}</span>
+                        </div>
+                        <div class="bg-white border border-gray-200 rounded-xl py-2.5 flex flex-col items-center justify-center relative overflow-hidden shadow-sm">
+                            <div class="absolute top-0 left-0 w-1.5 h-full bg-[#c8a048] rounded-l-lg"></div>
+                            <span class="text-[8px] font-bold uppercase tracking-widest text-brand-goldDark mb-0.5 font-sans">Saldo na Entrega e Treinamento do InControl Web (50%)</span>
+                            <span class="text-sm font-bold text-gray-900">R$ ${formatExactCurrency(signal)}</span>
+                        </div>
+                    </div>
+                </div>
+            `;
+        } else if (currentPaymentMode === 'parcelado') {
+            const inst = parseInt(select ? select.value : '12');
+            let totalVal = effectiveCardTotal;
+            if (inst < 12) {
+                const factor = 1 + ((1.1999 - 1) * (inst / 12));
+                totalVal = effectivePix * factor;
+            }
+            const instVal = totalVal / inst;
+
+            priceContainer.innerHTML = `
+                <div class="flex flex-col items-center w-full mt-2 mb-2 animate-fade-in font-sans">
+                    <div class="flex items-baseline justify-center gap-1.5 mb-2">
+                        <span class="text-xl md:text-2xl font-bold text-brand-yellow">${inst}x de R$</span> 
+                        <span class="text-4xl md:text-5xl font-black text-gray-900">${formatExactCurrency(instVal)}</span>
+                    </div>
+                    <div class="inline-flex items-center gap-1.5 bg-blue-50 border border-blue-200 text-blue-700 px-3 py-1 rounded-full w-fit shadow-sm mt-2 mb-3 font-sans">
+                        <i data-lucide="credit-card" class="w-4 h-4"></i>
+                        <span class="text-[10px] md:text-[11px] font-bold uppercase tracking-widest">Cartão de Crédito (Sem Imobilizar o Caixa)</span>
+                    </div>
+                    <p class="text-[10px] text-gray-500 font-medium font-sans">Total Parcelado: R$ ${formatExactCurrency(totalVal)}</p>
+                </div>
+            `;
+        } else {
+            const months = subSelect ? subSelect.value : '36';
+            const baseSub = pricingData.subscriptions[months] || 186.90;
+            const tvipSub = includeTvip ? (pricingData.tvipSubscriptions[months] || 66.00) : 0;
+            const monthlyVal = baseSub + tvipSub;
+
+            priceContainer.innerHTML = `
+                <div class="flex flex-col items-center w-full mt-2 mb-2 animate-fade-in font-sans">
+                    <p class="text-[8px] md:text-[10px] text-[#8a6208] uppercase tracking-widest font-bold mb-1">Locação Tecnológica (${months} Meses)</p>
+                    <div class="flex items-baseline justify-center gap-1.5 mb-2">
+                        <span class="text-4xl md:text-5xl font-black text-gray-900">R$ ${formatExactCurrency(monthlyVal)}</span>
+                        <span class="text-base md:text-xl font-bold text-gray-500">/mês</span>
+                    </div>
+                    <div class="inline-flex items-center gap-1.5 bg-emerald-50 border border-emerald-200 text-emerald-700 px-3 py-1 rounded-full w-fit shadow-sm mt-1 mb-2 font-sans">
+                        <i data-lucide="sparkles" class="w-4 h-4"></i>
+                        <span class="text-[10px] md:text-[11px] font-bold uppercase tracking-widest">Equipamentos + Suporte Integral Inclusos</span>
+                    </div>
+                    <p class="text-[10px] text-gray-500 font-medium font-sans">Zero descapitalização inicial da reforma da sua escola</p>
+                </div>
+            `;
+        }
+
+        updateWhatsAppLink();
+        initIcons();
+    }
+
+    document.addEventListener("DOMContentLoaded", () => {
+        setPaymentMode('avista');
+    });
+    window.addEventListener("load", () => {
+        updatePrices();
+    });
+
+    try {
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) entry.target.classList.add('active');
+            });
+        }, { threshold: 0.05 });
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+    } catch(e) {
+        document.querySelectorAll('.reveal').forEach(el => el.classList.add('active'));
+    }
+
+    window.addEventListener('scroll', () => {
+        const navbar = document.getElementById('navbar');
+        const ctaFloat = document.getElementById('cta-float');
+        
+        if (window.scrollY > 50) {
+            if(navbar) navbar.classList.add('shadow-md');
+        } else {
+            if(navbar) navbar.classList.remove('shadow-md');
+        }
+
+        if (window.scrollY > 400) {
+            if(ctaFloat) {
+                ctaFloat.classList.remove('opacity-100', 'translate-y-0');
+                ctaFloat.classList.add('opacity-0', 'translate-y-10', 'pointer-events-none');
+            }
+        }
+    });
+
+    let ytPlayer = null;
+
+    function onYouTubeIframeAPIReady() {
+        try {
+            ytPlayer = new YT.Player('youtube-player', {
+                events: {
+                    'onReady': onPlayerReady
+                }
+            });
+        } catch(e) {
+            console.log('YouTube API carregada com fallback direto.');
+        }
+    }
+
+    function onPlayerReady(event) {
+        try {
+            event.target.mute();
+            event.target.playVideo();
+        } catch(e) {}
+    }
+
+    function unmuteYoutube() {
+        const overlay = document.getElementById("unmute-overlay");
+        if (overlay) {
+            overlay.style.opacity = "0";
+            setTimeout(() => { overlay.style.display = "none"; }, 300);
+        }
+        if (ytPlayer && typeof ytPlayer.unMute === 'function') {
+            try {
+                ytPlayer.unMute();
+                ytPlayer.playVideo();
+            } catch(e) {}
+        }
+        if (window.clarity) {
+            try { window.clarity("event", "Video_Demonstracao_SS3532_Assistido"); } catch(err){}
+        }
+    }
+</script>
+</body>
+</html>
