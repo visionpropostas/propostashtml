@@ -1,0 +1,1165 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth overflow-x-hidden" id="html-root">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projeto CFTV IP & Controle Facial | Juliana – Vision Tecnologia</title>
+    <meta name="description" content="Implantação de CFTV IP Intelbras, Controle de Acesso Facial com Solenóide, Molas Hidráulicas e Rede Dedicada em 2 Andares na Av. Paulista – Vision Tecnologia">
+    <meta name="theme-color" content="#b9880e">
+    <meta name="robots" content="noindex, nofollow">
+
+    <!-- Fonts & CDN Tailwind -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@700;800&family=Quicksand:wght@500;600;700&family=Outfit:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <!-- Google Analytics 4 -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-KTGEL92B0F"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-KTGEL92B0F');
+    </script>
+
+    <!-- Microsoft Clarity -->
+    <script type="text/javascript">
+        (function(c,l,a,r,i,t,y){
+            c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+            t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+            y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+        })(window, document, "clarity", "script", "vifq10es5o");
+    </script>
+
+    <!-- Tailwind Configuração -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"Outfit"', 'sans-serif'],
+                        logo: ['"League Spartan"', 'sans-serif'],
+                        tech: ['"Quicksand"', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            yellow: '#b9880e',
+                            goldLight: '#FFDE59',
+                            goldDark: '#8a6208',
+                            black: '#09090b',
+                        }
+                    },
+                    boxShadow: {
+                        'glass': '0 4px 24px 0 rgba(0,0,0,0.04)',
+                        'premium': '0 16px 50px -10px rgba(0,0,0,0.08)',
+                        'glow': '0 0 20px rgba(185,136,14,0.18)',
+                        'glow-md': '0 0 35px rgba(185,136,14,0.28)',
+                    },
+                    animation: {
+                        'slide-up': 'slideUp 0.8s cubic-bezier(0.16,1,0.3,1) forwards',
+                        'float': 'float 6s ease-in-out infinite',
+                        'fade-in': 'fadeIn 0.3s ease forwards',
+                    },
+                    keyframes: {
+                        slideUp: {
+                            '0%': { opacity: '0', transform: 'translateY(25px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' }
+                        },
+                        float: {
+                            '0%,100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-8px)' }
+                        },
+                        fadeIn: {
+                            '0%': { opacity: '0' },
+                            '100%': { opacity: '1' }
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: #f9fafb; }
+        ::-webkit-scrollbar-thumb { background: #d1d5db; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #b9880e; }
+
+        .text-gold-shine {
+            background: linear-gradient(to right, #b9880e 20%, #FFDE59 50%, #b9880e 80%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-size: 200% auto;
+            animation: shine 4s linear infinite;
+        }
+        @keyframes shine { to { background-position: 200% center; } }
+
+        .bg-grid {
+            background-image: linear-gradient(rgba(185,136,14,0.04) 1px, transparent 1px),
+                              linear-gradient(90deg, rgba(185,136,14,0.04) 1px, transparent 1px);
+            background-size: 40px 40px;
+        }
+        .bg-dots {
+            background-image: radial-gradient(#b9880e 1.2px, transparent 1.2px);
+            background-size: 22px 22px;
+            opacity: 0.035;
+        }
+
+        .lock-input {
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.1);
+            color: #b9880e;
+            font-family: 'League Spartan', sans-serif;
+            font-size: 1.35rem;
+            text-align: center;
+            outline: none;
+            transition: all 0.3s;
+            letter-spacing: 0.18em;
+            border-radius: 14px;
+            text-transform: uppercase;
+        }
+        .lock-input:focus {
+            border-color: #b9880e;
+            background: rgba(255,255,255,0.08);
+            box-shadow: 0 0 20px rgba(185,136,14,0.25);
+        }
+        .lock-input::placeholder {
+            color: #71717a;
+            font-size: 0.8rem;
+            font-family: 'Outfit', sans-serif;
+            font-weight: 400;
+            letter-spacing: 0.05em;
+            text-transform: none;
+        }
+
+        .reveal { opacity: 0; transform: translateY(25px); transition: all 0.7s cubic-bezier(0.16,1,0.3,1); }
+        .reveal.active { opacity: 1; transform: translateY(0); }
+
+        .accordion-content { max-height: 0; overflow: hidden; transition: max-height 0.4s cubic-bezier(0.4,0,0.2,1); }
+        .accordion-item.open .accordion-content { max-height: 500px; }
+        .accordion-item.open .acc-arrow { transform: rotate(180deg); }
+        .acc-arrow { transition: transform 0.3s; }
+
+        @keyframes marqueeReviews {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+        .reviews-marquee-track {
+            display: flex;
+            width: max-content;
+            animation: marqueeReviews 50s linear infinite;
+            will-change: transform;
+        }
+        .reviews-marquee-container:hover .reviews-marquee-track,
+        .reviews-marquee-track.paused {
+            animation-play-state: paused !important;
+        }
+
+        .premium-border-glow {
+            position: relative;
+            border-radius: 1.75rem;
+            padding: 2px;
+            background-color: #b9880e;
+            overflow: hidden;
+            box-shadow: 0 0 35px rgba(185,136,14,0.15);
+            transition: transform 0.3s cubic-bezier(0.4,0,0.2,1);
+        }
+        .premium-border-glow:hover { transform: scale(1.004); }
+        .premium-border-glow::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: conic-gradient(
+                from 0deg,
+                transparent 0deg,
+                transparent 175deg,
+                rgba(255, 222, 89, 0.6) 178deg,
+                #ffffff 180deg,
+                rgba(255, 222, 89, 0.6) 182deg,
+                transparent 185deg,
+                transparent 360deg
+            );
+            animation: rotate-border 12s linear infinite;
+            z-index: 0;
+        }
+        @keyframes rotate-border {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        .premium-border-inner {
+            position: relative;
+            z-index: 1;
+            background-color: #ffffff;
+            border-radius: calc(1.75rem - 2px);
+            height: 100%;
+        }
+
+        @media print {
+            html, body {
+                overflow: visible !important;
+                height: auto !important;
+                background: #ffffff !important;
+            }
+            #lock-screen, #navbar, #unmute-overlay, .reviews-marquee-container {
+                display: none !important;
+            }
+            .reveal {
+                opacity: 1 !important;
+                transform: none !important;
+            }
+            .premium-border-glow {
+                box-shadow: none !important;
+                border: 1px solid #d1d5db !important;
+            }
+            .premium-border-glow::before {
+                display: none !important;
+            }
+        }
+    </style>
+</head>
+<body class="bg-[#fafafa] text-gray-800 antialiased overflow-hidden h-screen" id="body-root">
+
+<!-- ===================== LOCK SCREEN ===================== -->
+<div id="lock-screen" class="fixed inset-0 z-[100] bg-[#09090b] flex flex-col items-center justify-center text-center p-4 transition-opacity duration-700 ease-out overflow-y-auto">
+    <div class="bg-grid absolute inset-0 opacity-10 pointer-events-none"></div>
+    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[450px] h-[450px] bg-brand-yellow/5 rounded-full blur-[100px] pointer-events-none"></div>
+
+    <!-- Logo -->
+    <div class="relative flex flex-col items-center mb-8 z-10">
+        <div class="relative flex items-baseline leading-none">
+            <span class="font-logo font-bold text-[4.5rem] md:text-[5rem] text-gold-shine lowercase tracking-[-0.05em] leading-none">vısıon</span>
+            <span class="absolute -right-5 top-4 text-[1.1rem] text-brand-yellow font-bold">®</span>
+        </div>
+        <span class="font-tech text-[0.95rem] font-bold text-zinc-500 lowercase -mt-4 ml-2.5 text-center w-full" style="letter-spacing:0.53em;">tecnologia</span>
+    </div>
+
+    <div class="w-full max-w-sm space-y-4 z-10">
+        <div class="space-y-1">
+            <div class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full border border-brand-yellow/30 bg-brand-yellow/10 mb-2">
+                <i data-lucide="building-2" class="w-3.5 h-3.5 text-brand-yellow"></i>
+                <span class="text-brand-yellow text-[10px] font-bold uppercase tracking-widest">Proposta Corporativa Exclusiva</span>
+            </div>
+            <h2 class="text-white font-bold text-2xl">Juliana</h2>
+            <p class="text-zinc-400 text-xs">Av. Paulista, 326 • Bela Vista, SP (2 Andares Corporativos)</p>
+        </div>
+
+        <div>
+            <!-- SENHAS VÁLIDAS: JULIANA2026, JULIANA, PAULISTA, VISION -->
+            <input type="password" id="password-input" class="lock-input w-full py-3.5 px-4" placeholder="Digite sua senha de acesso" autocomplete="off">
+            <p id="error-msg" class="text-red-400 text-xs mt-2 hidden">
+                <span class="flex items-center justify-center gap-1"><i data-lucide="x-circle" class="w-4 h-4"></i> Senha incorreta. Tente novamente.</span>
+            </p>
+        </div>
+
+        <button onclick="checkPassword()" id="btn-unlock" class="w-full bg-brand-yellow hover:bg-brand-goldLight text-black font-bold py-3.5 rounded-2xl transition-all shadow-glow flex items-center justify-center gap-2 group relative overflow-hidden">
+            <div class="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-300 rounded-2xl"></div>
+            <i data-lucide="shield-check" class="w-5 h-5 relative z-10" id="unlock-icon"></i>
+            <span class="relative z-10 text-xs uppercase tracking-widest font-bold" id="unlock-text">Acessar Proposta Executiva</span>
+            <i data-lucide="arrow-right" class="w-4 h-4 relative z-10 group-hover:translate-x-1 transition-transform" id="unlock-arrow"></i>
+        </button>
+
+        <p class="text-zinc-600 text-[11px]">Documento Confidencial · Vision Tecnologia © 2026</p>
+    </div>
+</div>
+
+<!-- ===================== NAVBAR ===================== -->
+<nav id="navbar" class="fixed w-full z-50 top-0 bg-white/95 backdrop-blur-xl border-b border-gray-200/50 shadow-sm transition-all duration-300">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-between h-16 sm:h-20 items-center">
+            
+            <div class="flex items-center gap-3 cursor-pointer" onclick="window.scrollTo({top:0, behavior:'smooth'})">
+                <div class="flex flex-col items-center justify-center">
+                    <div class="relative flex items-baseline leading-none">
+                        <span class="font-logo font-bold text-[2.2rem] text-gold-shine lowercase tracking-[-0.05em] leading-none">vısıon</span>
+                        <span class="absolute -right-2 top-1 text-[0.55rem] text-brand-yellow font-bold">®</span>
+                    </div>
+                    <span class="font-tech text-[0.5rem] font-bold text-gray-400 lowercase -mt-1.5 ml-1" style="letter-spacing:0.53em;">tecnologia</span>
+                </div>
+                <div class="h-6 w-px bg-gray-200 hidden sm:block"></div>
+                <span class="text-zinc-500 text-xs uppercase tracking-wider font-bold hidden sm:block">Juliana • Av. Paulista, 326 (2 Andares)</span>
+            </div>
+
+            <div class="hidden md:flex items-center space-x-6 text-[11px] font-bold text-gray-500 uppercase tracking-wider">
+                <a href="#solucao" class="hover:text-brand-yellow transition-colors">Equipamentos</a>
+                <a href="#investimento" class="hover:text-brand-yellow transition-colors">Investimento</a>
+                <a href="#faq" class="hover:text-brand-yellow transition-colors">Dúvidas</a>
+            </div>
+
+            <div class="flex items-center gap-3">
+                <button onclick="window.print()" class="text-gray-400 hover:text-brand-yellow transition-colors flex items-center gap-1" title="Salvar em PDF">
+                    <i data-lucide="download" class="w-4 h-4"></i>
+                    <span class="text-[10px] font-bold uppercase tracking-widest hidden sm:block">PDF</span>
+                </button>
+                <a href="#investimento" class="bg-zinc-900 text-white px-4 py-2 sm:px-5 sm:py-2.5 rounded-full text-[10px] font-bold uppercase tracking-widest hover:bg-brand-yellow hover:text-black transition-all shadow-md">
+                    Ver Valores
+                </a>
+            </div>
+
+        </div>
+    </div>
+</nav>
+
+<!-- ===================== HERO COM VÍDEO ===================== -->
+<header class="pt-28 pb-16 lg:pt-36 relative overflow-hidden bg-[#f8f9fa]">
+    <div class="absolute inset-0 bg-grid pointer-events-none"></div>
+    <div class="absolute right-0 top-0 w-1/2 h-full bg-gradient-to-l from-white to-transparent z-0 pointer-events-none hidden lg:block"></div>
+    
+    <div class="max-w-7xl mx-auto px-4 relative z-10">
+        <div class="flex flex-col lg:flex-row items-center gap-10 lg:gap-14">
+            
+            <!-- Coluna de Texto (Direto e Rápido) -->
+            <div class="w-full lg:w-[56%] text-center lg:text-left animate-slide-up">
+                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-white border border-gray-200 text-gray-700 text-[10px] font-bold uppercase tracking-widest mb-4 mx-auto lg:mx-0 shadow-sm">
+                    <div class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></div>
+                    Corporativo • <span class="text-brand-yellow font-black">Pronto para Start Imediato</span>
+                </div>
+                
+                <h1 class="text-3xl sm:text-4xl lg:text-[2.9rem] font-extrabold text-gray-900 leading-[1.12] tracking-tight mb-4">
+                    CFTV IP Corporativo &amp; Acesso Facial para a <span class="text-gold-shine">Av. Paulista.</span>
+                </h1>
+                
+                <p class="text-sm sm:text-base text-gray-600 max-w-xl mx-auto lg:mx-0 font-normal leading-relaxed">
+                    Juliana, alinhamos a engenharia para os dois andares da clínica: 4 câmeras IP Full HD em rede dedicada com gravação contínua em HD de vigilância, 2 switches PoE distribuídos (1 por pavimento), 2 acessos faciais biométricos com fechadura solenóide embutida, molas hidráulicas de proteção para portas de madeira, nobreaks dedicados e integração das suas 2 leitoras existentes.
+                </p>
+
+                <div class="mt-6 flex flex-wrap items-center justify-center lg:justify-start gap-3">
+                    <span class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-amber-500/10 border border-amber-500/20 text-brand-goldDark text-xs font-bold">
+                        <i data-lucide="video" class="w-3.5 h-3.5"></i> 4 Câmeras IP Full HD + Gravador 1TB
+                    </span>
+                    <span class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-amber-500/10 border border-amber-500/20 text-brand-goldDark text-xs font-bold">
+                        <i data-lucide="scan-face" class="w-3.5 h-3.5"></i> 2 Faciais + Molas Hidráulicas
+                    </span>
+                    <span class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-amber-500/10 border border-amber-500/20 text-brand-goldDark text-xs font-bold">
+                        <i data-lucide="layers" class="w-3.5 h-3.5"></i> 2 Andares (1 Switch PoE p/ Andar)
+                    </span>
+                </div>
+            </div>
+
+            <!-- Coluna de Vídeo -->
+            <div class="w-full lg:w-[44%] mt-2 lg:mt-0 reveal">
+                <div class="relative w-full max-w-md mx-auto group z-10">
+                    <div class="relative w-full aspect-video bg-black border-[6px] md:border-[8px] border-zinc-800 rounded-t-[1rem] overflow-hidden shadow-2xl">
+                        
+                        <video id="vision-video" class="w-full h-full object-cover cursor-pointer opacity-90" autoplay muted loop playsinline>
+                            <source src="https://res.cloudinary.com/dptcuckhf/video/upload/v1771711323/Vict%C3%B3ria_-_Vision_gdqnrk.mp4" type="video/mp4">
+                        </video>
+                        
+                        <div id="unmute-overlay" class="absolute inset-0 bg-black/50 backdrop-blur-sm flex flex-col items-center justify-center cursor-pointer transition-opacity duration-500 z-30 hover:bg-black/40">
+                            <div class="bg-brand-yellow text-black font-bold px-5 py-2.5 rounded-full flex items-center gap-2 shadow-glow animate-pulse transform group-hover:scale-105 transition-all">
+                                <i data-lucide="volume-2" class="w-4 h-4 fill-black"></i>
+                                <span class="text-[10px] tracking-wide uppercase font-bold">Ouvir Apresentação (30s)</span>
+                            </div>
+                        </div>
+
+                        <div class="absolute top-1.5 left-1/2 -translate-x-1/2 w-1.5 h-1.5 bg-zinc-950 rounded-full z-20"></div>
+                    </div>
+                    <div class="relative w-[112%] -ml-[6%] h-3 bg-gradient-to-b from-zinc-300 to-zinc-400 rounded-b-xl shadow-md flex justify-center border-t border-zinc-200">
+                        <div class="w-1/4 h-1 bg-zinc-300 rounded-b shadow-inner"></div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- 4 Badges Rápidas -->
+        <div class="mt-12 grid grid-cols-2 md:grid-cols-4 gap-3 max-w-4xl mx-auto reveal">
+            <div class="bg-white rounded-2xl p-4 shadow-glass border border-gray-100 text-center">
+                <div class="text-xl font-black text-gray-900">4 Câmeras IP</div>
+                <div class="text-[10px] text-gray-500 font-bold uppercase tracking-wider mt-0.5">Full HD Intelbras</div>
+            </div>
+            <div class="bg-white rounded-2xl p-4 shadow-glass border border-gray-100 text-center">
+                <div class="text-xl font-black text-gray-900">2 Faciais</div>
+                <div class="text-[10px] text-gray-500 font-bold uppercase tracking-wider mt-0.5">Biometria Facial Intelbras</div>
+            </div>
+            <div class="bg-white rounded-2xl p-4 shadow-glass border border-gray-100 text-center">
+                <div class="text-xl font-black text-gray-900">2 Andares</div>
+                <div class="text-[10px] text-gray-500 font-bold uppercase tracking-wider mt-0.5">Rede &amp; Switches PoE</div>
+            </div>
+            <div class="bg-white rounded-2xl p-4 shadow-glass border border-gray-100 text-center">
+                <div class="text-xl font-black text-emerald-600">12 Meses</div>
+                <div class="text-[10px] text-gray-500 font-bold uppercase tracking-wider mt-0.5">Garantia Vision Total</div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- ===================== VITRINE DOS EQUIPAMENTOS ===================== -->
+<section id="solucao" class="py-16 bg-white border-y border-gray-200/60 relative">
+    <div class="max-w-7xl mx-auto px-4">
+        
+        <div class="text-center mb-12 reveal">
+            <span class="text-brand-yellow font-bold uppercase tracking-widest text-[11px]">Hardware Homologado 100% Intelbras</span>
+            <h2 class="text-2xl md:text-4xl font-extrabold text-gray-900 mt-1.5">Equipamentos da Solução</h2>
+            <p class="text-gray-500 text-xs sm:text-sm mt-2 max-w-xl mx-auto">
+                Ecossistema profissional corporativo com garantia oficial e suporte dedicado em São Paulo:
+            </p>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 reveal">
+            
+            <!-- Item 1: 4 Câmeras IP Full HD -->
+            <div class="bg-[#fafafa] rounded-2xl p-5 border border-gray-200 shadow-sm hover:border-brand-yellow transition-all flex flex-col justify-between group">
+                <div>
+                    <div class="w-full aspect-video bg-gradient-to-br from-amber-50 to-orange-50/40 rounded-xl flex items-center justify-center p-3 mb-4 border border-amber-100 relative overflow-hidden">
+                        <span class="absolute top-2.5 right-3 text-[9px] font-extrabold uppercase tracking-wider px-2 py-0.5 rounded-full bg-amber-500/10 text-amber-800 border border-amber-500/20">4 Unidades</span>
+                        <img src="https://res.cloudinary.com/dptcuckhf/image/upload/v1790901479/camera-ip-full-hd-da-serie-1000-vip-1230-d-g5_k84uet.webp" alt="Câmera IP Full HD Intelbras" class="max-h-24 sm:max-h-28 object-contain group-hover:scale-105 transition-transform" onerror="this.src='https://placehold.co/200x200/f3f4f6/111827?text=Camera+IP'">
+                    </div>
+                    <h3 class="font-bold text-gray-950 text-sm mb-1">Câmeras IP Intelbras Full HD</h3>
+                    <p class="text-xs text-gray-600 leading-relaxed">
+                        Resolução nítida para os ambientes do escritório, visão noturna inteligente e conexão em rede dedicada, garantindo transmissão estável e fluida.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Item 2: Gravador Digital + HD 1TB -->
+            <div class="bg-[#fafafa] rounded-2xl p-5 border border-gray-200 shadow-sm hover:border-brand-yellow transition-all flex flex-col justify-between group">
+                <div>
+                    <div class="w-full aspect-video bg-gradient-to-br from-blue-50 to-indigo-50/40 rounded-xl flex items-center justify-center p-3 mb-4 border border-blue-100 relative overflow-hidden">
+                        <span class="absolute top-2.5 right-3 text-[9px] font-extrabold uppercase tracking-wider px-2 py-0.5 rounded-full bg-blue-500/10 text-blue-800 border border-blue-500/20">Gravador + HD 1TB</span>
+                        <img src="https://res.cloudinary.com/dptcuckhf/image/upload/v1770981166/nvd-1408-esquerda_znmlxz.png" alt="Gravador Digital NVD Intelbras" class="max-h-24 sm:max-h-28 object-contain group-hover:scale-105 transition-transform" onerror="this.src='https://placehold.co/200x200/f3f4f6/111827?text=Gravador+NVD'">
+                    </div>
+                    <h3 class="font-bold text-gray-950 text-sm mb-1">Gravador Digital Intelbras + HD 1TB</h3>
+                    <p class="text-xs text-gray-600 leading-relaxed">
+                        Gravação contínua 24/7 em disco rígido especializado para segurança. Acesso remoto direto no smartphone pelo aplicativo corporativo sem cobrança mensal.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Item 3: 2 Terminais Faciais Biométricos -->
+            <div class="bg-[#fafafa] rounded-2xl p-5 border border-gray-200 shadow-sm hover:border-brand-yellow transition-all flex flex-col justify-between group">
+                <div>
+                    <div class="w-full aspect-video bg-gradient-to-br from-emerald-50 to-teal-50/40 rounded-xl flex items-center justify-center p-3 mb-4 border border-emerald-100 relative overflow-hidden">
+                        <span class="absolute top-2.5 right-3 text-[9px] font-extrabold uppercase tracking-wider px-2 py-0.5 rounded-full bg-emerald-500/10 text-emerald-800 border border-emerald-500/20">2 Unidades</span>
+                        <img src="https://res.cloudinary.com/dptcuckhf/image/upload/v1770745467/ss-3532-mf-w-frontal_2_c82tua.png" alt="Terminal Facial Intelbras" class="max-h-24 sm:max-h-28 object-contain group-hover:scale-105 transition-transform" onerror="this.src='https://placehold.co/200x200/f3f4f6/111827?text=Facial+Intelbras'">
+                    </div>
+                    <h3 class="font-bold text-gray-950 text-sm mb-1">Terminais de Reconhecimento Facial Intelbras</h3>
+                    <p class="text-xs text-gray-600 leading-relaxed">
+                        Linha corporativa de alta precisão. Leitura biométrica veloz (0,2s), sem contato físico e dimensionada com precisão para o fluxo da clínica.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Item 4: 2 Fechaduras Solenóide + 2 Molas Hidráulicas -->
+            <div class="bg-[#fafafa] rounded-2xl p-5 border border-gray-200 shadow-sm hover:border-brand-yellow transition-all flex flex-col justify-between">
+                <div>
+                    <div class="flex items-center justify-between mb-3">
+                        <span class="text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-md bg-purple-100 text-purple-800">Solenóide + Molas</span>
+                        <i data-lucide="lock" class="w-4 h-4 text-purple-600"></i>
+                    </div>
+                    <h3 class="font-bold text-gray-950 text-sm mb-1">Fechaduras Solenóide de Embutir + Molas Aéreas</h3>
+                    <p class="text-xs text-gray-600 leading-relaxed">
+                        Pino de alta retenção mecânica embutido no batente e 2 molas hidráulicas para portas de madeira, garantindo fechamento suave e alinhamento milimétrico do travamento.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Item 5: 2 Fontes Nobreak Ininterruptas -->
+            <div class="bg-[#fafafa] rounded-2xl p-5 border border-gray-200 shadow-sm hover:border-brand-yellow transition-all flex flex-col justify-between">
+                <div>
+                    <div class="flex items-center justify-between mb-3">
+                        <span class="text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-md bg-teal-100 text-teal-800">2 Nobreaks</span>
+                        <i data-lucide="battery-charging" class="w-4 h-4 text-teal-600"></i>
+                    </div>
+                    <h3 class="font-bold text-gray-950 text-sm mb-1">Fontes Nobreak 12V c/ Bateria</h3>
+                    <p class="text-xs text-gray-600 leading-relaxed">
+                        Alimentação contínua. Em caso de oscilação ou corte de energia no prédio da Paulista, as portas e a biometria continuam operando normalmente.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Item 6: Infraestrutura & Rede entre Andares -->
+            <div class="bg-[#fafafa] rounded-2xl p-5 border border-gray-200 shadow-sm hover:border-brand-yellow transition-all flex flex-col justify-between">
+                <div>
+                    <div class="flex items-center justify-between mb-3">
+                        <span class="text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-md bg-zinc-200 text-zinc-800">1 Switch p/ Andar</span>
+                        <i data-lucide="network" class="w-4 h-4 text-zinc-700"></i>
+                    </div>
+                    <h3 class="font-bold text-gray-950 text-sm mb-1">Rede &amp; Mão de Obra Especializada Vision</h3>
+                    <p class="text-xs text-gray-600 leading-relaxed">
+                        02 switches PoE dedicados (1 por pavimento interligando câmeras e faciais), cabeamento estruturado, canaletas, caixas, botoeiras inox e integração lógica.
+                    </p>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+</section>
+
+<!-- ===================== AVALIAÇÕES GOOGLE (REPUTAÇÃO VERIFICADA) ===================== -->
+<section class="py-16 bg-white border-b border-gray-200/60 overflow-hidden select-none">
+    <div class="max-w-7xl mx-auto px-4">
+        
+        <div class="text-center mb-10 reveal">
+            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-50 border border-emerald-200 text-emerald-800 text-[10px] font-bold uppercase tracking-wider mb-2">
+                <i data-lucide="star" class="w-3 h-3 fill-emerald-600 text-emerald-600"></i>
+                211 Avaliações Verificadas · Nota 5.0 Máxima no Google
+            </div>
+            <h2 class="text-2xl font-bold text-gray-900">Empresas e Clientes Recomendam</h2>
+        </div>
+
+        <!-- Marquee de Reviews -->
+        <div class="relative w-full overflow-hidden reviews-marquee-container" id="reviews-container">
+            <div class="pointer-events-none absolute left-0 top-0 bottom-0 w-12 bg-gradient-to-r from-white to-transparent z-10"></div>
+            <div class="pointer-events-none absolute right-0 top-0 bottom-0 w-12 bg-gradient-to-l from-white to-transparent z-10"></div>
+
+            <div id="reviews-track" class="reviews-marquee-track flex gap-5 items-stretch">
+                
+                <div class="w-[300px] sm:w-[340px] shrink-0 bg-[#fafafa] rounded-2xl p-5 border border-gray-200 flex flex-col justify-between">
+                    <div>
+                        <div class="flex text-amber-400 mb-2 gap-0.5">
+                            <i data-lucide="star" class="w-3.5 h-3.5 fill-amber-400 text-amber-400"></i>
+                            <i data-lucide="star" class="w-3.5 h-3.5 fill-amber-400 text-amber-400"></i>
+                            <i data-lucide="star" class="w-3.5 h-3.5 fill-amber-400 text-amber-400"></i>
+                            <i data-lucide="star" class="w-3.5 h-3.5 fill-amber-400 text-amber-400"></i>
+                            <i data-lucide="star" class="w-3.5 h-3.5 fill-amber-400 text-amber-400"></i>
+                        </div>
+                        <p class="text-gray-700 text-xs italic leading-relaxed mb-3">
+                            "Rápido, organizado e feito com bastante cuidado, principalmente no acabamento das portas e na limpeza do local."
+                        </p>
+                    </div>
+                    <div class="text-[11px] font-bold text-gray-900">Erik Sarnauskas <span class="text-gray-400 font-normal">· Local Guide</span></div>
+                </div>
+
+                <div class="w-[300px] sm:w-[340px] shrink-0 bg-[#fafafa] rounded-2xl p-5 border border-gray-200 flex flex-col justify-between">
+                    <div>
+                        <div class="flex text-amber-400 mb-2 gap-0.5">
+                            <i data-lucide="star" class="w-3.5 h-3.5 fill-amber-400 text-amber-400"></i>
+                            <i data-lucide="star" class="w-3.5 h-3.5 fill-amber-400 text-amber-400"></i>
+                            <i data-lucide="star" class="w-3.5 h-3.5 fill-amber-400 text-amber-400"></i>
+                            <i data-lucide="star" class="w-3.5 h-3.5 fill-amber-400 text-amber-400"></i>
+                            <i data-lucide="star" class="w-3.5 h-3.5 fill-amber-400 text-amber-400"></i>
+                        </div>
+                        <p class="text-gray-700 text-xs italic leading-relaxed mb-3">
+                            "Atendimento diferenciado, ágil e sem enrolação. O Gabriel e a equipe atenderam de prontidão. Instalação nota 10!"
+                        </p>
+                    </div>
+                    <div class="text-[11px] font-bold text-gray-900">Amanda Marques <span class="text-gray-400 font-normal">· 72 avaliações</span></div>
+                </div>
+
+                <div class="w-[300px] sm:w-[340px] shrink-0 bg-[#fafafa] rounded-2xl p-5 border border-gray-200 flex flex-col justify-between">
+                    <div>
+                        <div class="flex text-amber-400 mb-2 gap-0.5">
+                            <i data-lucide="star" class="w-3.5 h-3.5 fill-amber-400 text-amber-400"></i>
+                            <i data-lucide="star" class="w-3.5 h-3.5 fill-amber-400 text-amber-400"></i>
+                            <i data-lucide="star" class="w-3.5 h-3.5 fill-amber-400 text-amber-400"></i>
+                            <i data-lucide="star" class="w-3.5 h-3.5 fill-amber-400 text-amber-400"></i>
+                            <i data-lucide="star" class="w-3.5 h-3.5 fill-amber-400 text-amber-400"></i>
+                        </div>
+                        <p class="text-gray-700 text-xs italic leading-relaxed mb-3">
+                            "Os técnicos foram atenciosos, pontuais e respeitaram a dinâmica do local. A explicação do app foi muito completa."
+                        </p>
+                    </div>
+                    <div class="text-[11px] font-bold text-gray-900">Renata Jábali <span class="text-gray-400 font-normal">· Local Guide</span></div>
+                </div>
+
+                <!-- Clones para Marquee Contínuo -->
+                <div class="w-[300px] sm:w-[340px] shrink-0 bg-[#fafafa] rounded-2xl p-5 border border-gray-200 flex flex-col justify-between" aria-hidden="true">
+                    <div>
+                        <div class="flex text-amber-400 mb-2 gap-0.5">
+                            <i data-lucide="star" class="w-3.5 h-3.5 fill-amber-400 text-amber-400"></i>
+                            <i data-lucide="star" class="w-3.5 h-3.5 fill-amber-400 text-amber-400"></i>
+                            <i data-lucide="star" class="w-3.5 h-3.5 fill-amber-400 text-amber-400"></i>
+                            <i data-lucide="star" class="w-3.5 h-3.5 fill-amber-400 text-amber-400"></i>
+                            <i data-lucide="star" class="w-3.5 h-3.5 fill-amber-400 text-amber-400"></i>
+                        </div>
+                        <p class="text-gray-700 text-xs italic leading-relaxed mb-3">
+                            "Rápido, organizado e feito com bastante cuidado, principalmente no acabamento das portas e na limpeza do local."
+                        </p>
+                    </div>
+                    <div class="text-[11px] font-bold text-gray-900">Erik Sarnauskas <span class="text-gray-400 font-normal">· Local Guide</span></div>
+                </div>
+
+                <div class="w-[300px] sm:w-[340px] shrink-0 bg-[#fafafa] rounded-2xl p-5 border border-gray-200 flex flex-col justify-between" aria-hidden="true">
+                    <div>
+                        <div class="flex text-amber-400 mb-2 gap-0.5">
+                            <i data-lucide="star" class="w-3.5 h-3.5 fill-amber-400 text-amber-400"></i>
+                            <i data-lucide="star" class="w-3.5 h-3.5 fill-amber-400 text-amber-400"></i>
+                            <i data-lucide="star" class="w-3.5 h-3.5 fill-amber-400 text-amber-400"></i>
+                            <i data-lucide="star" class="w-3.5 h-3.5 fill-amber-400 text-amber-400"></i>
+                            <i data-lucide="star" class="w-3.5 h-3.5 fill-amber-400 text-amber-400"></i>
+                        </div>
+                        <p class="text-gray-700 text-xs italic leading-relaxed mb-3">
+                            "Atendimento diferenciado, ágil e sem enrolação. O Gabriel e a equipe atenderam de prontidão. Instalação nota 10!"
+                        </p>
+                    </div>
+                    <div class="text-[11px] font-bold text-gray-900">Amanda Marques <span class="text-gray-400 font-normal">· 72 avaliações</span></div>
+                </div>
+
+                <div class="w-[300px] sm:w-[340px] shrink-0 bg-[#fafafa] rounded-2xl p-5 border border-gray-200 flex flex-col justify-between" aria-hidden="true">
+                    <div>
+                        <div class="flex text-amber-400 mb-2 gap-0.5">
+                            <i data-lucide="star" class="w-3.5 h-3.5 fill-amber-400 text-amber-400"></i>
+                            <i data-lucide="star" class="w-3.5 h-3.5 fill-amber-400 text-amber-400"></i>
+                            <i data-lucide="star" class="w-3.5 h-3.5 fill-amber-400 text-amber-400"></i>
+                            <i data-lucide="star" class="w-3.5 h-3.5 fill-amber-400 text-amber-400"></i>
+                            <i data-lucide="star" class="w-3.5 h-3.5 fill-amber-400 text-amber-400"></i>
+                        </div>
+                        <p class="text-gray-700 text-xs italic leading-relaxed mb-3">
+                            "Os técnicos foram atenciosos, pontuais e respeitaram a dinâmica do local. A explicação do app foi muito completa."
+                        </p>
+                    </div>
+                    <div class="text-[11px] font-bold text-gray-900">Renata Jábali <span class="text-gray-400 font-normal">· Local Guide</span></div>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<!-- ===================== SIMULADOR EXECUTIVO DE INVESTIMENTO ===================== -->
+<section id="investimento" class="py-20 bg-[#fafafa] relative overflow-hidden">
+    <div class="absolute inset-0 bg-dots pointer-events-none z-0"></div>
+    <div class="max-w-4xl mx-auto px-4 relative z-10">
+
+        <div class="text-center mb-8 reveal">
+            <span class="text-brand-yellow font-bold uppercase tracking-widest text-xs">Simulador Oficial de Investimento</span>
+            <h2 class="text-3xl md:text-4xl font-extrabold text-gray-900 mt-1">Valores do Projeto</h2>
+            <p class="text-gray-500 text-xs sm:text-sm mt-1 max-w-xl mx-auto">
+                Selecione o formato de contratação que melhor atende à dinâmica da empresa hoje:
+            </p>
+        </div>
+
+        <!-- Seletor de Escopo (Completo vs Fase 1) -->
+        <div class="flex justify-center mb-4 reveal">
+            <div class="bg-gray-200/80 p-1.5 rounded-2xl inline-flex border border-gray-300/60 shadow-inner flex-wrap justify-center gap-1.5 w-full max-w-md">
+                <button type="button" id="btn-scope-full" onclick="selectScope('full')" class="flex-1 py-2.5 px-3 rounded-xl text-xs font-bold bg-white text-gray-900 shadow-sm transition-all flex items-center justify-center gap-1.5">
+                    <i data-lucide="check-circle" class="w-3.5 h-3.5 text-brand-goldDark"></i>
+                    <span>⭐ Projeto Completo</span>
+                </button>
+                <button type="button" id="btn-scope-cftv" onclick="selectScope('cftv')" class="flex-1 py-2.5 px-3 rounded-xl text-xs font-bold bg-transparent text-gray-600 hover:text-gray-900 transition-all flex items-center justify-center gap-1.5">
+                    <i data-lucide="zap" class="w-3.5 h-3.5 text-amber-600"></i>
+                    <span>⚡ Fase 1: Só CFTV IP</span>
+                </button>
+            </div>
+        </div>
+
+        <!-- Seletor de Pagamento (PIX vs Cartão) -->
+        <div class="flex justify-center mb-8 reveal">
+            <div class="bg-white p-1 rounded-full inline-flex border border-gray-200 shadow-sm gap-1">
+                <button type="button" id="btn-pay-pix" onclick="selectPayment('pix')" class="px-5 py-2 rounded-full text-xs font-bold bg-brand-yellow text-black shadow transition-all">
+                    À Vista (PIX c/ Desconto)
+                </button>
+                <button type="button" id="btn-pay-card" onclick="selectPayment('card')" class="px-5 py-2 rounded-full text-xs font-bold bg-transparent text-gray-500 hover:text-gray-800 transition-all">
+                    12x no Cartão
+                </button>
+            </div>
+        </div>
+
+        <!-- Card Principal com Borda Dourada Animada -->
+        <div class="premium-border-glow group relative z-20 reveal">
+            <div class="premium-border-inner flex flex-col md:flex-row relative overflow-hidden bg-white p-0">
+                
+                <!-- Escopo Selecionado (Lado Esquerdo) -->
+                <div class="w-full md:w-7/12 p-6 sm:p-8 border-b md:border-b-0 md:border-r border-gray-100 flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-center justify-between mb-3">
+                            <span id="scope-badge" class="px-2.5 py-1 rounded-full bg-zinc-900 text-brand-yellow text-[10px] font-bold uppercase tracking-wider">
+                                Solução Completa Integrada
+                            </span>
+                            <span class="text-[10px] font-bold text-gray-400 uppercase tracking-widest">Paulista • 2 Andares</span>
+                        </div>
+                        
+                        <h3 id="scope-title" class="text-xl sm:text-2xl font-bold text-gray-900 mb-3">
+                            CFTV IP Intelbras + 2 Faciais com Solenóide e Molas
+                        </h3>
+
+                        <ul id="scope-list" class="space-y-2.5 mb-6 text-xs text-gray-700">
+                            <!-- Injetado dinamicamente via JS -->
+                        </ul>
+                    </div>
+
+                    <div class="p-3 bg-emerald-50 rounded-xl border border-emerald-100 text-emerald-900 flex items-center gap-2.5 text-xs">
+                        <i data-lucide="shield-check" class="w-4 h-4 text-emerald-600 shrink-0"></i>
+                        <span><strong>Garantia Vision 12 Meses:</strong> Peças homologadas Intelbras e suporte técnico local em São Paulo.</span>
+                    </div>
+                </div>
+
+                <!-- Preço Dinâmico & Ação (Lado Direito) -->
+                <div class="w-full md:w-5/12 bg-[#f8f9fa] p-6 sm:p-8 flex flex-col items-center justify-center text-center relative z-10 min-h-[320px]">
+                    
+                    <span class="text-[10px] font-bold text-gray-400 uppercase tracking-widest mb-2" id="label-pricing-mode">
+                        Investimento à Vista (PIX)
+                    </span>
+
+                    <div id="price-display-box" class="w-full">
+                        <!-- Renderizado via JS -->
+                    </div>
+
+                    <!-- Botão WhatsApp com Texto Dinâmico -->
+                    <a id="btn-whatsapp-cta" href="#" target="_blank" onclick="if(window.clarity) window.clarity('event', 'Clique_Aprovacao_Juliana');" class="mt-6 w-full bg-brand-yellow hover:bg-brand-goldLight text-black font-bold py-3.5 px-4 rounded-xl transition-all shadow-glow flex items-center justify-center gap-2 group">
+                        <i data-lucide="check-circle" class="w-4 h-4"></i>
+                        <span class="text-xs uppercase tracking-wider font-extrabold" id="cta-btn-text">Aprovar Proposta no WhatsApp</span>
+                        <i data-lucide="arrow-right" class="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform"></i>
+                    </a>
+
+                    <p class="text-[10px] text-gray-400 mt-3 flex items-center gap-1 justify-center">
+                        <i data-lucide="clock" class="w-3 h-3 text-brand-yellow"></i>
+                        Instalação prioritária com equipe de SP
+                    </p>
+
+                </div>
+
+            </div>
+        </div>
+
+        <!-- Banner Opcional de Gestão em Nuvem (Vision Access) -->
+        <div class="mt-6 bg-gradient-to-r from-zinc-900 to-black text-white rounded-2xl p-5 sm:p-6 border border-zinc-800 shadow-md reveal">
+            <div class="flex flex-col sm:flex-row items-center justify-between gap-4">
+                <div class="flex items-center gap-3.5 text-left">
+                    <div class="w-10 h-10 rounded-xl bg-brand-yellow/20 border border-brand-yellow/30 text-brand-yellow flex items-center justify-center shrink-0">
+                        <i data-lucide="cloud" class="w-5 h-5"></i>
+                    </div>
+                    <div>
+                        <div class="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full bg-brand-yellow/10 text-brand-yellow text-[9px] font-bold uppercase tracking-wider mb-1">
+                            Opcional de Gestão em Nuvem
+                        </div>
+                        <h4 class="font-bold text-sm text-white">Plataforma Vision Access (Gestão Unificada das 4 Portas)</h4>
+                        <p class="text-xs text-zinc-400 leading-relaxed mt-0.5">
+                            Controle de acesso aos consultórios e áreas de descanso direto pelo celular ou computador, sem necessidade de comprar servidor físico local para a recepção.
+                        </p>
+                    </div>
+                </div>
+                <div class="sm:text-right shrink-0 w-full sm:w-auto pt-2 sm:pt-0 border-t sm:border-t-0 border-zinc-800 flex sm:flex-col justify-between sm:justify-center items-center sm:items-end">
+                    <span class="text-xs text-zinc-400 font-medium">Mensalidade:</span>
+                    <span class="text-lg font-black text-brand-goldLight">R$ 350,00<span class="text-xs text-zinc-400 font-normal">/mês</span></span>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<!-- ===================== FAQ ULTRA DIRETO ===================== -->
+<section id="faq" class="py-16 bg-white border-t border-gray-200/60">
+    <div class="max-w-3xl mx-auto px-4">
+        
+        <div class="text-center mb-10 reveal">
+            <span class="text-brand-yellow font-bold uppercase tracking-widest text-[10px]">Tire suas Dúvidas</span>
+            <h2 class="text-2xl font-bold text-gray-900 mt-1">Perguntas Frequentes</h2>
+        </div>
+        
+        <div class="space-y-3 reveal" id="accordion">
+
+            <div class="accordion-item bg-[#fafafa] rounded-2xl border border-gray-200 overflow-hidden transition-all hover:border-brand-yellow/50">
+                <button type="button" onclick="toggleAccordion(this)" class="w-full flex items-center justify-between p-4 sm:p-5 text-left font-bold text-gray-900 focus:outline-none text-xs sm:text-sm">
+                    <span>Por que as molas aéreas hidráulicas foram incluídas nas portas de madeira?</span>
+                    <i data-lucide="chevron-down" class="w-4 h-4 text-brand-yellow acc-arrow shrink-0"></i>
+                </button>
+                <div class="accordion-content">
+                    <p class="px-5 pb-5 text-gray-600 text-xs leading-relaxed">
+                        A fechadura solenóide exige o alinhamento exato do pino de travamento com o orifício do batente. Em portas de madeira, o fechamento manual sem mola pode deixar a folha entreaberta ou bater com força. A mola hidráulica conduz a porta de forma suave e automática até o ponto milimétrico de travamento, garantindo durabilidade e silêncio na clínica.
+                    </p>
+                </div>
+            </div>
+
+            <div class="accordion-item bg-[#fafafa] rounded-2xl border border-gray-200 overflow-hidden transition-all hover:border-brand-yellow/50">
+                <button type="button" onclick="toggleAccordion(this)" class="w-full flex items-center justify-between p-4 sm:p-5 text-left font-bold text-gray-900 focus:outline-none text-xs sm:text-sm">
+                    <span>Como funciona a integração das 2 leitoras que já possuímos?</span>
+                    <i data-lucide="chevron-down" class="w-4 h-4 text-brand-yellow acc-arrow shrink-0"></i>
+                </button>
+                <div class="accordion-content">
+                    <p class="px-5 pb-5 text-gray-600 text-xs leading-relaxed">
+                        As leitoras atuais são interligadas à mesma rede dos novos equipamentos através dos switches dedicados em cada andar. Todas as 4 portas passam a operar de forma unificada, com opção de gerenciamento em nuvem pela plataforma Vision Access sem exigir um computador servidor ligado na recepção.
+                    </p>
+                </div>
+            </div>
+
+            <div class="accordion-item bg-[#fafafa] rounded-2xl border border-gray-200 overflow-hidden transition-all hover:border-brand-yellow/50">
+                <button type="button" onclick="toggleAccordion(this)" class="w-full flex items-center justify-between p-4 sm:p-5 text-left font-bold text-gray-900 focus:outline-none text-xs sm:text-sm">
+                    <span>O que acontece se faltar energia no prédio da Paulista?</span>
+                    <i data-lucide="chevron-down" class="w-4 h-4 text-brand-yellow acc-arrow shrink-0"></i>
+                </button>
+                <div class="accordion-content">
+                    <p class="px-5 pb-5 text-gray-600 text-xs leading-relaxed">
+                        As fechaduras solenóide e os terminais faciais contam com fontes nobreak dedicadas e bateria 12V. O sistema segue travado e liberando colaboradores por biometria facial mesmo em oscilações ou quedas de energia.
+                    </p>
+                </div>
+            </div>
+
+            <div class="accordion-item bg-[#fafafa] rounded-2xl border border-gray-200 overflow-hidden transition-all hover:border-brand-yellow/50">
+                <button type="button" onclick="toggleAccordion(this)" class="w-full flex items-center justify-between p-4 sm:p-5 text-left font-bold text-gray-900 focus:outline-none text-xs sm:text-sm">
+                    <span>Podemos começar só pelas câmeras e fazer os faciais depois?</span>
+                    <i data-lucide="chevron-down" class="w-4 h-4 text-brand-yellow acc-arrow shrink-0"></i>
+                </button>
+                <div class="accordion-content">
+                    <p class="px-5 pb-5 text-gray-600 text-xs leading-relaxed">
+                        Sim! Para atender à sua urgência imediata, criamos a <strong>Fase 1 (CFTV IP nos 2 Andares por R$ 5.220 no PIX)</strong>, que instalamos em 24h a 48h com gravação contínua em disco de segurança, enquanto organizamos as portas.
+                    </p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<!-- ===================== FOOTER ===================== -->
+<footer class="bg-black py-12 text-center border-t border-zinc-900">
+    <div class="max-w-4xl mx-auto px-4">
+        
+        <div class="flex flex-col items-center justify-center leading-none opacity-40 hover:opacity-100 transition-opacity mb-6">
+            <div class="relative flex items-baseline leading-none">
+                <span class="font-logo font-bold text-[3rem] text-white lowercase tracking-[-0.05em] leading-none">vısıon</span>
+                <span class="absolute -right-3 top-2 text-[0.65rem] text-brand-yellow font-bold">®</span>
+            </div>
+            <span class="font-tech text-[0.65rem] font-bold text-zinc-500 lowercase -mt-2 ml-1" style="letter-spacing:0.53em;">tecnologia</span>
+        </div>
+
+        <div class="text-zinc-500 text-xs leading-relaxed mb-4">
+            <p><strong>Juliana</strong> | Av. Paulista, 326 – Bela Vista, São Paulo - SP (2 Andares)</p>
+            <p>Proposta Corporativa Definitiva #JULIANA-PAULISTA-2026</p>
+        </div>
+
+        <div class="inline-flex items-center gap-1.5 border border-zinc-800 bg-zinc-900/50 px-4 py-1.5 rounded-full text-[10px] text-zinc-400 uppercase tracking-widest font-bold">
+            <i data-lucide="lock" class="w-3 h-3 text-brand-yellow"></i>
+            Documento Corporativo Confidencial
+        </div>
+    </div>
+</footer>
+
+<!-- ===================== JAVASCRIPT ===================== -->
+<script>
+    // MATEMÁTICA DEFINITIVA VISION (BASE VOICEDATA + 2 ANDARES + MOLAS AÉREAS)
+    // PROJETO COMPLETO (CFTV IP + 2 FACIAIS INTELBRAS C/ SOLENÓIDE, 2 MOLAS E 2 ANDARES): CTD R$ 10.172,56 | DIVISOR ELEVADO 0.715
+    // FASE 1 (SÓ CFTV IP 4 CÂMERAS FULL HD + GRAVADOR 1TB + REDE 2 ANDARES): CTD R$ 3.894,06 | DIVISOR 0.745
+    const pricingData = {
+        full: {
+            badge: "⭐ Solução Completa Integrada (2 Andares)",
+            title: "CFTV IP 4 Câmeras + 2 Faciais com Solenóide e Molas",
+            items: [
+                "<strong>04x Câmeras IP Intelbras Full HD:</strong> Cabeamento em rede dedicada com conexão estável e fluida nos dois andares.",
+                "<strong>01x Gravador Digital em Rede + HD 1TB Vigilância:</strong> Gravação contínua 24/7 sem cobrança de mensalidades.",
+                "<strong>02x Terminais de Reconhecimento Facial Intelbras:</strong> Leitura biométrica veloz (0,2s) sem contato físico.",
+                "<strong>02x Fechaduras Solenóide de Embutir + 02 Molas Aéreas:</strong> Fechamento suave e travamento de alta segurança para portas de madeira.",
+                "<strong>02x Fontes Nobreak 12V com Bateria:</strong> Operação ininterrupta mesmo se faltar energia no prédio.",
+                "<strong>Rede Dedicada (02 Switches PoE - 1 p/ Andar):</strong> Alimentação e dados distribuídos por pavimento com integração das 2 leitoras existentes."
+            ],
+            pix: 14220.00,
+            pixHalf: 7110.00,
+            cardTotal: 17052.00,
+            cardMonthly: 1421.00,
+            whatsappText: "Fala Gabriel! Analisei a proposta da clínica na Paulista (2 andares). Quero aprovar o *Projeto Completo de CFTV IP + 2 Faciais com Solenóide, Molas Hidráulicas e Nobreak*."
+        },
+        cftv: {
+            badge: "⚡ Fase 1: Start Imediato",
+            title: "CFTV IP Intelbras 4 Câmeras + Gravador 1TB",
+            items: [
+                "<strong>04x Câmeras IP Intelbras Full HD:</strong> Cobertura dos ambientes prioritários da clínica com alta nitidez.",
+                "<strong>01x Gravador Digital em Rede Intelbras:</strong> Conexão cabeada estável e acesso remoto no celular sem mensalidade.",
+                "<strong>01x HD 1TB de Vigilância Contínua:</strong> Gravação contínua em loop automático sem perda de quadros.",
+                "<strong>02x Switches PoE (1 por Andar) + Cabeamento:</strong> Alimentação das câmeras pelo próprio cabo de rede entre os pavimentos.",
+                "<strong>Mão de Obra Rápida Vision:</strong> Instalação limpa, acabamento corporativo e entrega do aplicativo operando."
+            ],
+            pix: 5220.00,
+            pixHalf: 2610.00,
+            cardTotal: 6264.00,
+            cardMonthly: 522.00,
+            whatsappText: "Fala Gabriel! Vamos dar início imediato na *Fase 1 (CFTV IP 4 Câmeras + Gravador e HD 1TB nos 2 Andares)* para a clínica na Paulista."
+        }
+    };
+
+    let currentScope = 'full';     // 'full' ou 'cftv'
+    let currentPayment = 'pix';    // 'pix' ou 'card'
+
+    function formatBRL(val) {
+        return val.toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+    }
+
+    function selectScope(scope) {
+        currentScope = scope;
+        const btnFull = document.getElementById('btn-scope-full');
+        const btnCftv = document.getElementById('btn-scope-cftv');
+
+        if (scope === 'full') {
+            btnFull.className = "flex-1 py-2.5 px-3 rounded-xl text-xs font-bold bg-white text-gray-900 shadow-sm transition-all flex items-center justify-center gap-1.5";
+            btnCftv.className = "flex-1 py-2.5 px-3 rounded-xl text-xs font-bold bg-transparent text-gray-600 hover:text-gray-900 transition-all flex items-center justify-center gap-1.5";
+        } else {
+            btnCftv.className = "flex-1 py-2.5 px-3 rounded-xl text-xs font-bold bg-white text-gray-900 shadow-sm transition-all flex items-center justify-center gap-1.5";
+            btnFull.className = "flex-1 py-2.5 px-3 rounded-xl text-xs font-bold bg-transparent text-gray-600 hover:text-gray-900 transition-all flex items-center justify-center gap-1.5";
+        }
+
+        updateScopeContent();
+        renderPriceDisplay();
+        if (window.clarity) window.clarity("event", "Mudou_Escopo_Juliana_" + scope);
+    }
+
+    function selectPayment(paymentMode) {
+        currentPayment = paymentMode;
+        const btnPix = document.getElementById('btn-pay-pix');
+        const btnCard = document.getElementById('btn-pay-card');
+        const labelMode = document.getElementById('label-pricing-mode');
+
+        if (paymentMode === 'pix') {
+            btnPix.className = "px-5 py-2 rounded-full text-xs font-bold bg-brand-yellow text-black shadow transition-all";
+            btnCard.className = "px-5 py-2 rounded-full text-xs font-bold bg-transparent text-gray-500 hover:text-gray-800 transition-all";
+            if (labelMode) labelMode.textContent = "Investimento à Vista (PIX c/ Desconto)";
+        } else {
+            btnCard.className = "px-5 py-2 rounded-full text-xs font-bold bg-brand-yellow text-black shadow transition-all";
+            btnPix.className = "px-5 py-2 rounded-full text-xs font-bold bg-transparent text-gray-500 hover:text-gray-800 transition-all";
+            if (labelMode) labelMode.textContent = "Investimento Parcelado no Cartão";
+        }
+
+        renderPriceDisplay();
+        if (window.clarity) window.clarity("event", "Mudou_Pagamento_Juliana_" + paymentMode);
+    }
+
+    function updateScopeContent() {
+        const data = pricingData[currentScope];
+        const badgeEl = document.getElementById('scope-badge');
+        const titleEl = document.getElementById('scope-title');
+        const listEl = document.getElementById('scope-list');
+
+        if (badgeEl) badgeEl.textContent = data.badge;
+        if (titleEl) titleEl.textContent = data.title;
+
+        if (listEl) {
+            listEl.innerHTML = data.items.map(item => `
+                <li class="flex items-start gap-2">
+                    <i data-lucide="check" class="w-4 h-4 text-brand-yellow shrink-0 mt-0.5"></i>
+                    <span>${item}</span>
+                </li>
+            `).join('');
+        }
+    }
+
+    function renderPriceDisplay() {
+        const box = document.getElementById('price-display-box');
+        const ctaBtn = document.getElementById('btn-whatsapp-cta');
+        const ctaText = document.getElementById('cta-btn-text');
+        const data = pricingData[currentScope];
+
+        if (!box) return;
+
+        let html = '';
+        let whatsappMsg = '';
+
+        if (currentPayment === 'pix') {
+            html = `
+                <div class="flex flex-col items-center justify-center w-full animate-fade-in">
+                    <div class="flex items-baseline justify-center gap-1 mb-1">
+                        <span class="text-xl font-bold text-gray-400">R$</span>
+                        <span class="text-4xl sm:text-5xl font-extrabold text-[#111827] tracking-tight">${formatBRL(data.pix).split(',')[0]}<span class="text-2xl text-gray-400">,${formatBRL(data.pix).split(',')[1]}</span></span>
+                    </div>
+                    <div class="inline-flex items-center gap-1 bg-emerald-50 text-emerald-700 px-2.5 py-0.5 rounded-full text-[10px] font-bold uppercase tracking-wider mt-1">
+                        <i data-lucide="zap" class="w-3 h-3"></i> À vista no PIX com Desconto
+                    </div>
+                    
+                    <div class="w-full mt-4 space-y-1.5 text-left">
+                        <div class="bg-white border border-gray-200 rounded-lg p-2.5 shadow-sm text-xs flex justify-between items-center">
+                            <span class="text-gray-500 font-medium">Sinal (Pedido de Equipamentos):</span>
+                            <strong class="text-gray-900">R$ ${formatBRL(data.pixHalf)}</strong>
+                        </div>
+                        <div class="bg-white border border-gray-200 rounded-lg p-2.5 shadow-sm text-xs flex justify-between items-center">
+                            <span class="text-gray-500 font-medium">Entrega (Finalização &amp; App):</span>
+                            <strong class="text-gray-900">R$ ${formatBRL(data.pixHalf)}</strong>
+                        </div>
+                    </div>
+                </div>
+            `;
+            whatsappMsg = `${data.whatsappText} no valor de *R$ ${formatBRL(data.pix)} no PIX*. Vamos alinhar a liberação da equipe!`;
+            if (ctaText) ctaText.textContent = `Aprovar no PIX (R$ ${formatBRL(data.pix)})`;
+
+        } else {
+            html = `
+                <div class="flex flex-col items-center justify-center w-full animate-fade-in">
+                    <span class="text-[11px] font-bold text-gray-400 mb-0.5">Parcelamento em até 12x</span>
+                    <div class="flex items-baseline justify-center gap-1 mb-1">
+                        <span class="text-xl font-bold text-[#111827]">12x de R$</span>
+                        <span class="text-4xl sm:text-5xl font-extrabold text-[#111827] tracking-tight">${formatBRL(data.cardMonthly).split(',')[0]}<span class="text-2xl text-gray-400">,${formatBRL(data.cardMonthly).split(',')[1]}</span></span>
+                    </div>
+                    <div class="inline-flex items-center gap-1 bg-blue-50 text-blue-700 px-2.5 py-0.5 rounded-full text-[10px] font-bold uppercase tracking-wider mt-1">
+                        <i data-lucide="credit-card" class="w-3 h-3"></i> Cartão de Crédito
+                    </div>
+                    <p class="text-[11px] text-gray-500 font-medium mt-3">Total parcelado: R$ ${formatBRL(data.cardTotal)}</p>
+                </div>
+            `;
+            whatsappMsg = `${data.whatsappText} parcelado em *12x de R$ ${formatBRL(data.cardMonthly)} no cartão*. Vamos alinhar a liberação da equipe!`;
+            if (ctaText) ctaText.textContent = `Aprovar em 12x no Cartão`;
+        }
+
+        box.innerHTML = html;
+        if (ctaBtn) ctaBtn.href = "https://wa.me/5511930816696?text=" + encodeURIComponent(whatsappMsg);
+        
+        if (window.lucide && typeof window.lucide.createIcons === 'function') {
+            window.lucide.createIcons();
+        }
+    }
+
+    // ACCORDION
+    function toggleAccordion(button) {
+        const item = button.closest('.accordion-item');
+        if (!item) return;
+        const isOpen = item.classList.contains('open');
+        document.querySelectorAll('.accordion-item').forEach(i => i.classList.remove('open'));
+        if (!isOpen) item.classList.add('open');
+        if (window.lucide && typeof window.lucide.createIcons === 'function') {
+            window.lucide.createIcons();
+        }
+    }
+
+    // CONTROLE DE ACESSO
+    function checkPassword() {
+        const inputEl = document.getElementById('password-input');
+        if (!inputEl) return;
+
+        const input = inputEl.value.trim().toUpperCase();
+        const errorMsg = document.getElementById('error-msg');
+        const btnUnlock = document.getElementById('btn-unlock');
+        const unlockIcon = document.getElementById('unlock-icon');
+        const unlockText = document.getElementById('unlock-text');
+        const unlockArrow = document.getElementById('unlock-arrow');
+
+        const validPasswords = ['JULIANA2026', 'JULIANA', 'PAULISTA', 'VISION'];
+
+        if (validPasswords.includes(input)) {
+            if (btnUnlock) btnUnlock.disabled = true;
+            if (unlockText) unlockText.textContent = "Liberando Proposta...";
+            if (unlockIcon) unlockIcon.setAttribute('class', "w-5 h-5 animate-spin text-black");
+            if (unlockArrow) unlockArrow.style.display = 'none';
+
+            setTimeout(() => {
+                const lockScreen = document.getElementById('lock-screen');
+                if (lockScreen) lockScreen.style.opacity = '0';
+
+                const video = document.getElementById("vision-video");
+                if (video && video.paused) {
+                    video.muted = true;
+                    video.play().catch(() => {});
+                }
+
+                if (window.clarity) {
+                    try {
+                        window.clarity("consent");
+                        window.clarity("identify", "juliana-paulista", undefined, undefined, "Juliana (Paulista 18 Andar)");
+                        window.clarity("set", "Proposta", "CFTV_Facial_Juliana");
+                        window.clarity("event", "Proposta_Desbloqueada");
+                    } catch(e) {}
+                }
+
+                // Notificação silenciosa de abertura
+                fetch('https://api.staticforms.dev/submit', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+                    body: JSON.stringify({
+                        accessKey: "sf_077ej49gjha153gk3m6ceecf",
+                        subject: "🚨 ALERTA: Proposta Acessada (Juliana - Paulista 18º Andar)",
+                        name: "Sistema Vision",
+                        email: "diretoria@visionsp.com.br",
+                        message: "A cliente Juliana acessou a proposta corporativa na Av. Paulista!\n\n🔑 Senha Utilizada: " + input + "\n🕒 Horário: " + new Date().toLocaleString('pt-BR')
+                    })
+                }).catch(() => {});
+
+                setTimeout(() => {
+                    if (lockScreen) lockScreen.style.display = 'none';
+                    const htmlRoot = document.getElementById('html-root');
+                    if (htmlRoot) {
+                        htmlRoot.classList.remove('overflow-hidden', 'h-screen');
+                        htmlRoot.classList.add('overflow-x-hidden');
+                    }
+                    document.body.classList.remove('overflow-hidden', 'h-screen');
+                    document.body.classList.add('overflow-x-hidden');
+                }, 700);
+
+            }, 500);
+
+        } else {
+            if (errorMsg) errorMsg.classList.remove('hidden');
+            inputEl.style.borderColor = 'rgba(239,68,68,0.5)';
+            setTimeout(() => {
+                if (errorMsg) errorMsg.classList.add('hidden');
+                inputEl.style.borderColor = '';
+            }, 3000);
+        }
+    }
+
+    // INICIALIZAÇÃO
+    document.addEventListener("DOMContentLoaded", function() {
+        if (window.lucide && typeof window.lucide.createIcons === 'function') {
+            window.lucide.createIcons();
+        }
+
+        const pwdInput = document.getElementById('password-input');
+        if (pwdInput) {
+            pwdInput.addEventListener('keypress', function(e) {
+                if (e.key === 'Enter') {
+                    e.preventDefault();
+                    checkPassword();
+                }
+            });
+        }
+
+        // Scroll Reveal
+        try {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) entry.target.classList.add('active');
+                });
+            }, { threshold: 0.08 });
+            document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+        } catch(e) {
+            document.querySelectorAll('.reveal').forEach(el => el.classList.add('active'));
+        }
+
+        // Vídeo e Áudio
+        const videoHero = document.getElementById("vision-video");
+        const overlayHero = document.getElementById("unmute-overlay");
+
+        if (videoHero && overlayHero) {
+            overlayHero.addEventListener("click", function(e) {
+                e.stopPropagation();
+                videoHero.muted = false;
+                videoHero.loop = true;
+                videoHero.currentTime = 0;
+                videoHero.play().catch(() => {});
+                overlayHero.style.opacity = "0";
+                setTimeout(() => { overlayHero.style.display = "none"; }, 400);
+
+                if (window.clarity) {
+                    try { window.clarity("event", "Video_Assistido_Juliana"); } catch(err) {}
+                }
+            });
+
+            videoHero.addEventListener("click", function() {
+                if (overlayHero.style.display === "none") {
+                    if (videoHero.paused) { videoHero.play(); } else { videoHero.pause(); }
+                }
+            });
+        }
+
+        // Inicializa escopo e preços
+        updateScopeContent();
+        renderPriceDisplay();
+
+        // Pausa no Marquee com Touch
+        const reviewsTrack = document.getElementById('reviews-track');
+        const reviewsContainer = document.getElementById('reviews-container');
+        if (reviewsTrack && reviewsContainer) {
+            reviewsContainer.addEventListener('touchstart', function() {
+                reviewsTrack.classList.add('paused');
+            }, { passive: true });
+
+            reviewsContainer.addEventListener('touchend', function() {
+                reviewsTrack.classList.remove('paused');
+            }, { passive: true });
+        }
+    });
+
+    window.addEventListener('scroll', () => {
+        const navbar = document.getElementById('navbar');
+        if (navbar) {
+            if (window.scrollY > 30) {
+                navbar.classList.add('shadow-md');
+            } else {
+                navbar.classList.remove('shadow-md');
+            }
+        }
+    });
+</script>
+</body>
+</html>
