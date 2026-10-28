@@ -1,0 +1,1331 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth overflow-x-hidden" id="html-root">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Retrofit de CFTV, Alarmes &amp; Portas de Emergência | Unimed do Brasil – Vision Tecnologia</title>
+    <meta name="description" content="Proposta Executiva de Restabelecimento, Organização de Racks e Configuração de 7 DVRs e 7 Centrais de Alarme para a Unimed do Brasil – Alameda Santos, 1827.">
+    <meta name="theme-color" content="#b9880e">
+    <meta name="robots" content="noindex, nofollow">
+
+    <!-- Fonts & CDN Tailwind -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@700;800&family=Quicksand:wght@500;600;700&family=Outfit:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <!-- Google Analytics 4 -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-KTGEL92B0F"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-KTGEL92B0F');
+    </script>
+
+    <!-- Microsoft Clarity -->
+    <script type="text/javascript">
+        (function(c,l,a,r,i,t,y){
+            c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+            t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+            y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+        })(window, document, "clarity", "script", "vifq10es5o");
+    </script>
+
+    <!-- Tailwind Configuração -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"Outfit"', 'sans-serif'],
+                        logo: ['"League Spartan"', 'sans-serif'],
+                        tech: ['"Quicksand"', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            yellow: '#b9880e',
+                            goldLight: '#FFDE59',
+                            goldDark: '#8a6208',
+                            black: '#09090b',
+                        },
+                        unimed: {
+                            green: '#00995D',
+                            greenDark: '#00663e',
+                            greenLight: '#E8F5E9'
+                        }
+                    },
+                    boxShadow: {
+                        'glass': '0 4px 24px 0 rgba(0,0,0,0.04)',
+                        'premium': '0 16px 50px -10px rgba(0,0,0,0.08)',
+                        'glow': '0 0 20px rgba(185,136,14,0.18)',
+                        'glow-md': '0 0 35px rgba(185,136,14,0.28)',
+                    },
+                    animation: {
+                        'slide-up': 'slideUp 0.8s cubic-bezier(0.16,1,0.3,1) forwards',
+                        'float': 'float 6s ease-in-out infinite',
+                        'fade-in': 'fadeIn 0.3s ease forwards',
+                    },
+                    keyframes: {
+                        slideUp: {
+                            '0%': { opacity: '0', transform: 'translateY(25px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' }
+                        },
+                        float: {
+                            '0%,100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-8px)' }
+                        },
+                        fadeIn: {
+                            '0%': { opacity: '0' },
+                            '100%': { opacity: '1' }
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: #f9fafb; }
+        ::-webkit-scrollbar-thumb { background: #d1d5db; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #b9880e; }
+
+        .text-gold-shine {
+            background: linear-gradient(to right, #b9880e 20%, #FFDE59 50%, #b9880e 80%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-size: 200% auto;
+            animation: shine 4s linear infinite;
+        }
+        @keyframes shine { to { background-position: 200% center; } }
+
+        .bg-grid {
+            background-image: linear-gradient(rgba(185,136,14,0.04) 1px, transparent 1px),
+                              linear-gradient(90deg, rgba(185,136,14,0.04) 1px, transparent 1px);
+            background-size: 40px 40px;
+        }
+        .bg-dots {
+            background-image: radial-gradient(#b9880e 1.2px, transparent 1.2px);
+            background-size: 22px 22px;
+            opacity: 0.035;
+        }
+
+        .lock-input {
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.1);
+            color: #b9880e;
+            font-family: 'League Spartan', sans-serif;
+            font-size: 1.35rem;
+            text-align: center;
+            outline: none;
+            transition: all 0.3s;
+            letter-spacing: 0.18em;
+            border-radius: 14px;
+            text-transform: uppercase;
+        }
+        .lock-input:focus {
+            border-color: #b9880e;
+            background: rgba(255,255,255,0.08);
+            box-shadow: 0 0 20px rgba(185,136,14,0.25);
+        }
+        .lock-input::placeholder {
+            color: #71717a;
+            font-size: 0.8rem;
+            font-family: 'Outfit', sans-serif;
+            font-weight: 400;
+            letter-spacing: 0.05em;
+            text-transform: none;
+        }
+
+        .reveal { opacity: 0; transform: translateY(25px); transition: all 0.7s cubic-bezier(0.16,1,0.3,1); }
+        .reveal.active { opacity: 1; transform: translateY(0); }
+
+        .accordion-content { max-height: 0; overflow: hidden; transition: max-height 0.4s cubic-bezier(0.4,0,0.2,1); }
+        .accordion-item.open .accordion-content { max-height: 550px; }
+        .accordion-item.open .acc-arrow { transform: rotate(180deg); }
+        .acc-arrow { transition: transform 0.3s; }
+
+        @keyframes marqueeReviews {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+        .reviews-marquee-track {
+            display: flex;
+            width: max-content;
+            animation: marqueeReviews 50s linear infinite;
+            will-change: transform;
+        }
+        .reviews-marquee-container:hover .reviews-marquee-track,
+        .reviews-marquee-track.paused {
+            animation-play-state: paused !important;
+        }
+
+        .premium-border-glow {
+            position: relative;
+            border-radius: 1.75rem;
+            padding: 2px;
+            background-color: #b9880e;
+            overflow: hidden;
+            box-shadow: 0 0 35px rgba(185,136,14,0.15);
+            transition: transform 0.3s cubic-bezier(0.4,0,0.2,1);
+        }
+        .premium-border-glow:hover { transform: scale(1.004); }
+        .premium-border-glow::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: conic-gradient(
+                from 0deg,
+                transparent 0deg,
+                transparent 175deg,
+                rgba(255, 222, 89, 0.6) 178deg,
+                #ffffff 180deg,
+                rgba(255, 222, 89, 0.6) 182deg,
+                transparent 185deg,
+                transparent 360deg
+            );
+            animation: rotate-border 12s linear infinite;
+            z-index: 0;
+        }
+        @keyframes rotate-border {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        .premium-border-inner {
+            position: relative;
+            z-index: 1;
+            background-color: #ffffff;
+            border-radius: calc(1.75rem - 2px);
+            height: 100%;
+        }
+
+        @media print {
+            html, body {
+                overflow: visible !important;
+                height: auto !important;
+                background: #ffffff !important;
+            }
+            #lock-screen, #navbar, #unmute-overlay, .reviews-marquee-container {
+                display: none !important;
+            }
+            .reveal {
+                opacity: 1 !important;
+                transform: none !important;
+            }
+            .premium-border-glow {
+                box-shadow: none !important;
+                border: 1px solid #d1d5db !important;
+            }
+            .premium-border-glow::before {
+                display: none !important;
+            }
+        }
+    </style>
+</head>
+<body class="bg-[#fafafa] text-gray-800 antialiased overflow-hidden h-screen" id="body-root">
+
+<!-- ===================== LOCK SCREEN ===================== -->
+<div id="lock-screen" class="fixed inset-0 z-[100] bg-[#09090b] flex flex-col items-center justify-center text-center p-4 transition-opacity duration-700 ease-out overflow-y-auto">
+    <div class="bg-grid absolute inset-0 opacity-10 pointer-events-none"></div>
+    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[480px] h-[480px] bg-brand-yellow/5 rounded-full blur-[100px] pointer-events-none"></div>
+
+    <!-- Logo -->
+    <div class="relative flex flex-col items-center mb-8 z-10">
+        <div class="relative flex items-baseline leading-none">
+            <span class="font-logo font-bold text-[4.5rem] md:text-[5rem] text-gold-shine lowercase tracking-[-0.05em] leading-none">vısıon</span>
+            <span class="absolute -right-5 top-4 text-[1.1rem] text-brand-yellow font-bold">®</span>
+        </div>
+        <span class="font-tech text-[0.95rem] font-bold text-zinc-500 lowercase -mt-4 ml-2.5 text-center w-full" style="letter-spacing:0.53em;">tecnologia</span>
+    </div>
+
+    <div class="w-full max-w-sm space-y-4 z-10">
+        <div class="space-y-1">
+            <div class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full border border-emerald-500/30 bg-emerald-500/10 mb-2">
+                <i data-lucide="building-2" class="w-3.5 h-3.5 text-emerald-400"></i>
+                <span class="text-emerald-400 text-[10px] font-bold uppercase tracking-widest">Unimed do Brasil • Compras</span>
+            </div>
+            <h2 class="text-white font-bold text-2xl">Kathleen</h2>
+            <p class="text-zinc-400 text-xs">Alameda Santos, 1827 – Cerqueira César (7 Pavimentos)</p>
+        </div>
+
+        <div>
+            <!-- SENHAS VÁLIDAS: UNIMED, KATHLEEN, SANTOS, VISION -->
+            <input type="password" id="password-input" class="lock-input w-full py-3.5 px-4" placeholder="Digite sua senha de acesso" autocomplete="off">
+            <p id="error-msg" class="text-red-400 text-xs mt-2 hidden">
+                <span class="flex items-center justify-center gap-1"><i data-lucide="x-circle" class="w-4 h-4"></i> Senha incorreta. Tente novamente.</span>
+            </p>
+        </div>
+
+        <button onclick="checkPassword()" id="btn-unlock" class="w-full bg-brand-yellow hover:bg-brand-goldLight text-black font-bold py-3.5 rounded-2xl transition-all shadow-glow flex items-center justify-center gap-2 group relative overflow-hidden">
+            <div class="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-300 rounded-2xl"></div>
+            <i data-lucide="shield-check" class="w-5 h-5 relative z-10" id="unlock-icon"></i>
+            <span class="relative z-10 text-xs uppercase tracking-widest font-bold" id="unlock-text">Acessar Proposta Técnica</span>
+            <i data-lucide="arrow-right" class="w-4 h-4 relative z-10 group-hover:translate-x-1 transition-transform" id="unlock-arrow"></i>
+        </button>
+
+        <p class="text-zinc-600 text-[11px]">Documento Corporativo Confidencial · Vision Tecnologia © 2026</p>
+    </div>
+</div>
+
+<!-- ===================== NAVBAR ===================== -->
+<nav id="navbar" class="fixed w-full z-50 top-0 bg-white/95 backdrop-blur-xl border-b border-gray-200/50 shadow-sm transition-all duration-300">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-between h-16 sm:h-20 items-center">
+            
+            <div class="flex items-center gap-3 cursor-pointer" onclick="window.scrollTo({top:0, behavior:'smooth'})">
+                <div class="flex flex-col items-center justify-center">
+                    <div class="relative flex items-baseline leading-none">
+                        <span class="font-logo font-bold text-[2.2rem] text-gold-shine lowercase tracking-[-0.05em] leading-none">vısıon</span>
+                        <span class="absolute -right-2 top-1 text-[0.55rem] text-brand-yellow font-bold">®</span>
+                    </div>
+                    <span class="font-tech text-[0.5rem] font-bold text-gray-400 lowercase -mt-1.5 ml-1" style="letter-spacing:0.53em;">tecnologia</span>
+                </div>
+                <div class="h-6 w-px bg-gray-200 hidden sm:block"></div>
+                <span class="text-zinc-500 text-xs uppercase tracking-wider font-bold hidden sm:block">Unimed do Brasil • Alameda Santos, 1827</span>
+            </div>
+
+            <div class="hidden lg:flex items-center space-x-5 text-[11px] font-bold text-gray-500 uppercase tracking-wider">
+                <a href="#diagnostico" class="hover:text-brand-yellow transition-colors">Diagnóstico dos 7 Andares</a>
+                <a href="#escopo" class="hover:text-brand-yellow transition-colors">Escopo Técnico</a>
+                <a href="#comparativo" class="hover:text-brand-yellow transition-colors">Transparência</a>
+                <a href="#investimento" class="hover:text-brand-yellow transition-colors">Investimento</a>
+                <a href="#faq" class="hover:text-brand-yellow transition-colors">Dúvidas</a>
+            </div>
+
+            <div class="flex items-center gap-3">
+                <button onclick="window.print()" class="text-gray-400 hover:text-brand-yellow transition-colors flex items-center gap-1" title="Salvar em PDF">
+                    <i data-lucide="download" class="w-4 h-4"></i>
+                    <span class="text-[10px] font-bold uppercase tracking-widest hidden sm:block">PDF</span>
+                </button>
+                <a href="#investimento" class="bg-zinc-900 text-white px-4 py-2 sm:px-5 sm:py-2.5 rounded-full text-[10px] font-bold uppercase tracking-widest hover:bg-brand-yellow hover:text-black transition-all shadow-md">
+                    Ver Valores
+                </a>
+            </div>
+
+        </div>
+    </div>
+</nav>
+
+<!-- ===================== HERO COM VÍDEO ===================== -->
+<header class="pt-28 pb-16 lg:pt-36 relative overflow-hidden bg-[#f8f9fa]">
+    <div class="absolute inset-0 bg-grid pointer-events-none"></div>
+    <div class="absolute right-0 top-0 w-1/2 h-full bg-gradient-to-l from-white to-transparent z-0 pointer-events-none hidden lg:block"></div>
+    
+    <div class="max-w-7xl mx-auto px-4 relative z-10">
+        <div class="flex flex-col lg:flex-row items-center gap-10 lg:gap-14">
+            
+            <!-- Coluna de Texto -->
+            <div class="w-full lg:w-[56%] text-center lg:text-left animate-slide-up">
+                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-white border border-gray-200 text-gray-700 text-[10px] font-bold uppercase tracking-widest mb-4 mx-auto lg:mx-0 shadow-sm">
+                    <div class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></div>
+                    Unimed do Brasil • <span class="text-brand-yellow font-black">7 Pavimentos Corporativos</span>
+                </div>
+                
+                <h1 class="text-3xl sm:text-4xl lg:text-[2.85rem] font-extrabold text-gray-900 leading-[1.12] tracking-tight mb-4">
+                    Restabelecimento de CFTV, Alarmes &amp; Portas de Emergência para a <span class="text-gold-shine">Unimed.</span>
+                </h1>
+                
+                <p class="text-sm sm:text-base text-gray-600 max-w-xl mx-auto lg:mx-0 font-normal leading-relaxed">
+                    Kathleen, consolidamos a engenharia para os andares <strong>2º, 5º, 8º, 10º, 12º, 14º e 15º</strong> na Alameda Santos, 1827. O projeto cobre o saneamento físico dos 7 mini-racks, a reconfiguração dos 7 DVRs Intelbras e 7 centrais de alarme, a troca das baterias dos sensores sem fio, a reposição do sensor de porta de emergência avariado e a parametrização junto à sua equipe de TI para restaurar o acesso remoto definitivo em celulares e notebooks.
+                </p>
+
+                <div class="mt-6 flex flex-wrap items-center justify-center lg:justify-start gap-3">
+                    <span class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-amber-500/10 border border-amber-500/20 text-brand-goldDark text-xs font-bold">
+                        <i data-lucide="server" class="w-3.5 h-3.5"></i> 7 DVRs &amp; Racks Saneados
+                    </span>
+                    <span class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-amber-500/10 border border-amber-500/20 text-brand-goldDark text-xs font-bold">
+                        <i data-lucide="shield-alert" class="w-3.5 h-3.5"></i> 7 Centrais &amp; Sirenes
+                    </span>
+                    <span class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-amber-500/10 border border-amber-500/20 text-brand-goldDark text-xs font-bold">
+                        <i data-lucide="door-closed" class="w-3.5 h-3.5"></i> Portas de Saída de Emergência
+                    </span>
+                </div>
+            </div>
+
+            <!-- Coluna de Vídeo -->
+            <div class="w-full lg:w-[44%] mt-2 lg:mt-0 reveal">
+                <div class="relative w-full max-w-md mx-auto group z-10">
+                    <div class="relative w-full aspect-video bg-black border-[6px] md:border-[8px] border-zinc-800 rounded-t-[1rem] overflow-hidden shadow-2xl">
+                        
+                        <video id="vision-video" class="w-full h-full object-cover cursor-pointer opacity-90" autoplay muted loop playsinline>
+                            <source src="https://res.cloudinary.com/dptcuckhf/video/upload/v1771711323/Vict%C3%B3ria_-_Vision_gdqnrk.mp4" type="video/mp4">
+                        </video>
+                        
+                        <div id="unmute-overlay" class="absolute inset-0 bg-black/50 backdrop-blur-sm flex flex-col items-center justify-center cursor-pointer transition-opacity duration-500 z-30 hover:bg-black/40">
+                            <div class="bg-brand-yellow text-black font-bold px-5 py-2.5 rounded-full flex items-center gap-2 shadow-glow animate-pulse transform group-hover:scale-105 transition-all">
+                                <i data-lucide="volume-2" class="w-4 h-4 fill-black"></i>
+                                <span class="text-[10px] tracking-wide uppercase font-bold">Ouvir Apresentação (30s)</span>
+                            </div>
+                        </div>
+
+                        <div class="absolute top-1.5 left-1/2 -translate-x-1/2 w-1.5 h-1.5 bg-zinc-950 rounded-full z-20"></div>
+                    </div>
+                    <div class="relative w-[112%] -ml-[6%] h-3 bg-gradient-to-b from-zinc-300 to-zinc-400 rounded-b-xl shadow-md flex justify-center border-t border-zinc-200">
+                        <div class="w-1/4 h-1 bg-zinc-300 rounded-b shadow-inner"></div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- 4 Badges Rápidas -->
+        <div class="mt-12 grid grid-cols-2 md:grid-cols-4 gap-3 max-w-4xl mx-auto reveal">
+            <div class="bg-white rounded-2xl p-4 shadow-glass border border-gray-100 text-center">
+                <div class="text-xl font-black text-gray-900">7 Andares</div>
+                <div class="text-[10px] text-gray-500 font-bold uppercase tracking-wider mt-0.5">2º, 5º, 8º, 10º, 12º, 14º e 15º</div>
+            </div>
+            <div class="bg-white rounded-2xl p-4 shadow-glass border border-gray-100 text-center">
+                <div class="text-xl font-black text-gray-900">7 DVRs + Racks</div>
+                <div class="text-[10px] text-gray-500 font-bold uppercase tracking-wider mt-0.5">Saneamento Físico &amp; IP</div>
+            </div>
+            <div class="bg-white rounded-2xl p-4 shadow-glass border border-gray-100 text-center">
+                <div class="text-xl font-black text-gray-900">Alarmes &amp; Rotas</div>
+                <div class="text-[10px] text-gray-500 font-bold uppercase tracking-wider mt-0.5">Baterias &amp; Sensor Emergência</div>
+            </div>
+            <div class="bg-white rounded-2xl p-4 shadow-glass border border-gray-100 text-center">
+                <div class="text-xl font-black text-emerald-600">Alinhamento TI</div>
+                <div class="text-[10px] text-gray-500 font-bold uppercase tracking-wider mt-0.5">Liberação de Portas e IPs</div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- ===================== DIAGNÓSTICO DOS 7 ANDARES ===================== -->
+<section id="diagnostico" class="py-16 bg-[#ffffff] border-b border-gray-200/60 relative">
+    <div class="max-w-7xl mx-auto px-4">
+        
+        <div class="text-center mb-12 reveal">
+            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-50 border border-emerald-200 text-emerald-800 text-[10px] font-bold uppercase tracking-wider mb-2">
+                <i data-lucide="check-check" class="w-3.5 h-3.5 text-emerald-600"></i>
+                Vistoria Realizada em 27/10
+            </div>
+            <h2 class="text-2xl md:text-4xl font-extrabold text-gray-900 mt-1">
+                Diagnóstico Técnico: Os 4 Pilares do Restabelecimento
+            </h2>
+            <p class="text-gray-500 text-xs sm:text-sm mt-2 max-w-2xl mx-auto leading-relaxed">
+                Kathleen, a vistoria presencial do Rodrigo identificou com precisão a causa raiz das instabilidades. Abaixo detalhamos como saneamos a operação sem custos desnecessários:
+            </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 reveal">
+            
+            <!-- Pilar 1: Bloqueio Lógico de TI -->
+            <div class="bg-[#fafafa] rounded-2xl p-6 border border-gray-200 shadow-sm flex flex-col justify-between hover:border-brand-yellow transition-all">
+                <div>
+                    <div class="flex items-center justify-between mb-3">
+                        <span class="px-2.5 py-1 rounded-md bg-blue-100 text-blue-900 text-[10px] font-extrabold uppercase tracking-wider flex items-center gap-1.5">
+                            <i data-lucide="network" class="w-3.5 h-3.5"></i> Causa 1: Acesso Remoto Bloqueado
+                        </span>
+                        <span class="text-[10px] text-gray-400 font-bold uppercase tracking-widest">Rede Corporativa</span>
+                    </div>
+                    <h3 class="font-bold text-gray-900 text-base mb-2">Por que o App das Câmeras Parou de Funcionar?</h3>
+                    <p class="text-xs text-gray-600 leading-relaxed mb-4">
+                        O aplicativo móvel e o acesso no notebook caíram devido a alterações na política de segurança e firewall da TI interna da Unimed, que bloquearam as portas de comunicação e os endereços IP dos gravadores.
+                    </p>
+                    <div class="p-3.5 bg-emerald-50 rounded-xl border border-emerald-100 text-xs text-emerald-900 leading-relaxed flex items-start gap-2.5">
+                        <i data-lucide="check-circle-2" class="w-4 h-4 text-emerald-600 shrink-0 mt-0.5"></i>
+                        <div>
+                            <strong>A Solução Vision:</strong> Mapeamos e reconfiguramos os 7 DVRs com IPs fixos e parâmetros de portas documentados, alinhando a liberação diretamente com a equipe de TI da Unimed para restabelecer o acesso seguro.
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Pilar 2: Rotas de Fuga e Saídas de Emergência -->
+            <div class="bg-[#fafafa] rounded-2xl p-6 border border-gray-200 shadow-sm flex flex-col justify-between hover:border-brand-yellow transition-all">
+                <div>
+                    <div class="flex items-center justify-between mb-3">
+                        <span class="px-2.5 py-1 rounded-md bg-amber-100 text-amber-900 text-[10px] font-extrabold uppercase tracking-wider flex items-center gap-1.5">
+                            <i data-lucide="door-closed" class="w-3.5 h-3.5"></i> Causa 2: Sensores de Emergência
+                        </span>
+                        <span class="text-[10px] text-gray-400 font-bold uppercase tracking-widest">Segurança &amp; Brigada</span>
+                    </div>
+                    <h3 class="font-bold text-gray-900 text-base mb-2">Por que as Portas de Saída Falham no Alarme?</h3>
+                    <p class="text-xs text-gray-600 leading-relaxed mb-4">
+                        Identificamos sensores magnéticos com baterias esgotadas e um sensor que se desprendeu fisicamente da folha da porta corta-fogo, deixando a central sem o retorno de fechamento correto.
+                    </p>
+                    <div class="p-3.5 bg-emerald-50 rounded-xl border border-emerald-100 text-xs text-emerald-900 leading-relaxed flex items-start gap-2.5">
+                        <i data-lucide="check-circle-2" class="w-4 h-4 text-emerald-600 shrink-0 mt-0.5"></i>
+                        <div>
+                            <strong>A Solução Vision:</strong> Troca do lote completo de baterias dos sensores sem fio, substituição do sensor avariado por modelo magnético reforçado e reprogramação das zonas em todas as 7 centrais.
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Pilar 3: Saneamento Físico dos Racks -->
+            <div class="bg-[#fafafa] rounded-2xl p-6 border border-gray-200 shadow-sm flex flex-col justify-between hover:border-brand-yellow transition-all">
+                <div>
+                    <div class="flex items-center justify-between mb-3">
+                        <span class="px-2.5 py-1 rounded-md bg-purple-100 text-purple-900 text-[10px] font-extrabold uppercase tracking-wider flex items-center gap-1.5">
+                            <i data-lucide="server" class="w-3.5 h-3.5"></i> Causa 3: Desorganização nos Racks
+                        </span>
+                        <span class="text-[10px] text-gray-400 font-bold uppercase tracking-widest">Infraestrutura</span>
+                    </div>
+                    <h3 class="font-bold text-gray-900 text-base mb-2">Por que Cabos Soltos Geram Falhas Intermitentes?</h3>
+                    <p class="text-xs text-gray-600 leading-relaxed mb-4">
+                        O acúmulo de intervenções anteriores deixou fontes, baluns e cabos de rede embolados dentro dos gabinetes dos 7 andares. O peso da fiação puxa os conectores, gerando mau contato nas câmeras e desligamentos acidentais.
+                    </p>
+                    <div class="p-3.5 bg-emerald-50 rounded-xl border border-emerald-100 text-xs text-emerald-900 leading-relaxed flex items-start gap-2.5">
+                        <i data-lucide="check-circle-2" class="w-4 h-4 text-emerald-600 shrink-0 mt-0.5"></i>
+                        <div>
+                            <strong>A Solução Vision:</strong> Reorganização física completa com velcros industriais, fixação segura das fontes e reorganização do cabeamento para garantir ventilação e estabilidade mecânica.
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Pilar 4: Cláusula de Transparência Total -->
+            <div class="bg-[#fafafa] rounded-2xl p-6 border border-gray-200 shadow-sm flex flex-col justify-between hover:border-brand-yellow transition-all">
+                <div>
+                    <div class="flex items-center justify-between mb-3">
+                        <span class="px-2.5 py-1 rounded-md bg-emerald-100 text-emerald-900 text-[10px] font-extrabold uppercase tracking-wider flex items-center gap-1.5">
+                            <i data-lucide="file-check" class="w-3.5 h-3.5"></i> Causa 4: Transparência em Compras
+                        </span>
+                        <span class="text-[10px] text-gray-400 font-bold uppercase tracking-widest">Sem Custos Ocultos</span>
+                    </div>
+                    <h3 class="font-bold text-gray-900 text-base mb-2">Como Evitar Surpresas com Câmeras ou Peças Queimadas?</h3>
+                    <p class="text-xs text-gray-600 leading-relaxed mb-4">
+                        Dar um preço fechado cego para conserto de dezenas de câmeras antigas é uma armadilha que encarece o contrato ou gera retrabalho.
+                    </p>
+                    <div class="p-3.5 bg-emerald-50 rounded-xl border border-emerald-100 text-xs text-emerald-900 leading-relaxed flex items-start gap-2.5">
+                        <i data-lucide="check-circle-2" class="w-4 h-4 text-emerald-600 shrink-0 mt-0.5"></i>
+                        <div>
+                            <strong>A Solução Vision:</strong> Testamos conector por conector durante a organização. Se alguma câmera ou fonte estiver fisicamente queimada, emitimos laudo com foto e orçamos a substituição à parte a preço de reposição, com aprovação prévia de Compras.
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+</section>
+
+<!-- ===================== ESCOPO TÉCNICO DETALHADO ===================== -->
+<section id="escopo" class="py-16 bg-[#f8f9fa] border-b border-gray-200/60 relative">
+    <div class="max-w-7xl mx-auto px-4">
+        
+        <div class="text-center mb-12 reveal">
+            <span class="text-brand-yellow font-bold uppercase tracking-widest text-[11px]">Estruturação de Engenharia</span>
+            <h2 class="text-2xl md:text-4xl font-extrabold text-gray-900 mt-1.5">O que Está Contemplado no Restabelecimento</h2>
+            <p class="text-gray-500 text-xs sm:text-sm mt-2 max-w-xl mx-auto">
+                Serviço de alta precisão executado em todos os 7 pavimentos (2º, 5º, 8º, 10º, 12º, 14º e 15º):
+            </p>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 reveal">
+            
+            <div class="bg-white rounded-2xl p-6 border border-gray-200 shadow-sm flex flex-col justify-between">
+                <div>
+                    <div class="w-10 h-10 rounded-xl bg-amber-500/10 text-brand-goldDark flex items-center justify-center font-bold text-sm mb-4">
+                        <i data-lucide="server" class="w-5 h-5"></i>
+                    </div>
+                    <h3 class="font-bold text-gray-900 text-sm mb-1.5">Saneamento dos 7 Racks</h3>
+                    <p class="text-xs text-gray-600 leading-relaxed">
+                        Reorganização física dos cabos de sinal, fontes e réguas em cada um dos 7 andares com velcros e abraçadeiras, eliminando fios soltos e sobreaquecimento.
+                    </p>
+                </div>
+                <div class="mt-4 pt-3 border-t border-gray-100 text-[10px] font-bold text-gray-400 uppercase tracking-wider">
+                    7 Pavimentos Organizados
+                </div>
+            </div>
+
+            <div class="bg-white rounded-2xl p-6 border border-gray-200 shadow-sm flex flex-col justify-between">
+                <div>
+                    <div class="w-10 h-10 rounded-xl bg-blue-500/10 text-blue-700 flex items-center justify-center font-bold text-sm mb-4">
+                        <i data-lucide="video" class="w-5 h-5"></i>
+                    </div>
+                    <h3 class="font-bold text-gray-900 text-sm mb-1.5">Reconfiguração dos 7 DVRs Intelbras</h3>
+                    <p class="text-xs text-gray-600 leading-relaxed">
+                        Reprogramação lógica de rede, alinhamento de portas e IPs junto à TI e restabelecimento do acesso remoto contínuo no aplicativo de celulares e computadores.
+                    </p>
+                </div>
+                <div class="mt-4 pt-3 border-t border-gray-100 text-[10px] font-bold text-gray-400 uppercase tracking-wider">
+                    Acesso Mobile &amp; Web Seguro
+                </div>
+            </div>
+
+            <div class="bg-white rounded-2xl p-6 border border-gray-200 shadow-sm flex flex-col justify-between">
+                <div>
+                    <div class="w-10 h-10 rounded-xl bg-emerald-500/10 text-emerald-700 flex items-center justify-center font-bold text-sm mb-4">
+                        <i data-lucide="bell-ring" class="w-5 h-5"></i>
+                    </div>
+                    <h3 class="font-bold text-gray-900 text-sm mb-1.5">7 Centrais de Alarme &amp; Sirenes</h3>
+                    <p class="text-xs text-gray-600 leading-relaxed">
+                        Reprogramação das zonas, testes funcionais de disparo das sirenes nas recepções e calibração dos sensores de presença para evitar disparos em falso.
+                    </p>
+                </div>
+                <div class="mt-4 pt-3 border-t border-gray-100 text-[10px] font-bold text-gray-400 uppercase tracking-wider">
+                    Recepções 100% Protegidas
+                </div>
+            </div>
+
+            <div class="bg-white rounded-2xl p-6 border border-gray-200 shadow-sm flex flex-col justify-between">
+                <div>
+                    <div class="w-10 h-10 rounded-xl bg-purple-500/10 text-purple-700 flex items-center justify-center font-bold text-sm mb-4">
+                        <i data-lucide="battery-charging" class="w-5 h-5"></i>
+                    </div>
+                    <h3 class="font-bold text-gray-900 text-sm mb-1.5">Troca de Baterias dos Sensores</h3>
+                    <p class="text-xs text-gray-600 leading-relaxed">
+                        Substituição preventiva de todo o lote de baterias dos sensores sem fio dos 7 andares, assegurando comunicação estável e sem alertas de perda de sinal.
+                    </p>
+                </div>
+                <div class="mt-4 pt-3 border-t border-gray-100 text-[10px] font-bold text-gray-400 uppercase tracking-wider">
+                    Lote Novo Incluso
+                </div>
+            </div>
+
+            <div class="bg-white rounded-2xl p-6 border border-gray-200 shadow-sm flex flex-col justify-between">
+                <div>
+                    <div class="w-10 h-10 rounded-xl bg-rose-500/10 text-rose-700 flex items-center justify-center font-bold text-sm mb-4">
+                        <i data-lucide="shield-alert" class="w-5 h-5"></i>
+                    </div>
+                    <h3 class="font-bold text-gray-900 text-sm mb-1.5">Substituição do Sensor de Emergência</h3>
+                    <p class="text-xs text-gray-600 leading-relaxed">
+                        Fornecimento e fixação de novo sensor magnético reforçado para a porta de saída de emergência avariada, restabelecendo a sinalização de rota de fuga.
+                    </p>
+                </div>
+                <div class="mt-4 pt-3 border-t border-gray-100 text-[10px] font-bold text-gray-400 uppercase tracking-wider">
+                    Conformidade com Normas
+                </div>
+            </div>
+
+            <div class="bg-white rounded-2xl p-6 border border-gray-200 shadow-sm flex flex-col justify-between">
+                <div>
+                    <div class="w-10 h-10 rounded-xl bg-zinc-500/10 text-zinc-700 flex items-center justify-center font-bold text-sm mb-4">
+                        <i data-lucide="clipboard-check" class="w-5 h-5"></i>
+                    </div>
+                    <h3 class="font-bold text-gray-900 text-sm mb-1.5">Mapeamento Individual de Câmeras</h3>
+                    <p class="text-xs text-gray-600 leading-relaxed">
+                        Checagem ponto a ponto de conectores e cabos durante a organização. Câmeras com conectores soltos são recuperadas na bancada no próprio dia.
+                    </p>
+                </div>
+                <div class="mt-4 pt-3 border-t border-gray-100 text-[10px] font-bold text-gray-400 uppercase tracking-wider">
+                    Relatório Técnico por Andar
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+</section>
+
+<!-- ===================== MATRIZ ESTRATÉGICA: TRANSPARÊNCIA TOTAL ===================== -->
+<section id="comparativo" class="py-16 bg-[#ffffff] border-b border-gray-200/60 relative">
+    <div class="max-w-7xl mx-auto px-4">
+        
+        <div class="text-center mb-12 reveal">
+            <span class="text-brand-yellow font-bold uppercase tracking-widest text-[11px]">Transparência com o Setor de Compras</span>
+            <h2 class="text-2xl md:text-4xl font-extrabold text-gray-900 mt-1.5">Comparativo: Modelo Vision vs. Mercado</h2>
+            <p class="text-gray-500 text-xs sm:text-sm mt-2 max-w-xl mx-auto">
+                Kathleen, desenhamos esta proposta para garantir previsibilidade orçamentária e blindar o setor de compras:
+            </p>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 reveal mb-10">
+            
+            <!-- Abordagem Tradicional do Mercado -->
+            <div class="bg-white rounded-3xl p-6 sm:p-7 border border-gray-200 shadow-sm flex flex-col justify-between">
+                <div>
+                    <div class="flex items-center gap-2 mb-2">
+                        <span class="w-2.5 h-2.5 rounded-full bg-rose-500"></span>
+                        <h3 class="text-lg sm:text-xl font-bold text-gray-900">Prestador Tradicional (Conserto Avulso)</h3>
+                    </div>
+                    <p class="text-xs text-gray-500 mb-5 leading-relaxed">
+                        Intervenção paliativa pontual sem diagnóstico de causa raiz e sem alinhamento com a infraestrutura corporativa.
+                    </p>
+
+                    <ul class="space-y-2.5 text-xs text-gray-600 leading-relaxed">
+                        <li class="flex items-start gap-2">
+                            <i data-lucide="x" class="w-4 h-4 text-rose-500 shrink-0 mt-0.5"></i>
+                            <span><strong>Sem Alinhamento com TI:</strong> Tenta gambiarras que voltam a cair na primeira atualização de rede da Unimed.</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <i data-lucide="x" class="w-4 h-4 text-rose-500 shrink-0 mt-0.5"></i>
+                            <span><strong>Custos Imprevisíveis:</strong> Condena peças boas alegando que estão queimadas para vender equipamentos novos.</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <i data-lucide="x" class="w-4 h-4 text-rose-500 shrink-0 mt-0.5"></i>
+                            <span><strong>Racks Embolados:</strong> Fiação permanece sem identificação, gerando novo mau contato em semanas.</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <i data-lucide="x" class="w-4 h-4 text-rose-500 shrink-0 mt-0.5"></i>
+                            <span><strong>Dependência Constante:</strong> A empresa fica refém de novos chamados avulsos a cada sensor que descarregar.</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="mt-6 pt-4 border-t border-gray-100 text-xs text-rose-700 font-bold flex items-center gap-1.5">
+                    <i data-lucide="alert-triangle" class="w-4 h-4"></i>
+                    <span>Risco de retrabalho constante e gastos imprevisíveis.</span>
+                </div>
+            </div>
+
+            <!-- Abordagem Vision Engenharia -->
+            <div class="bg-white rounded-3xl p-6 sm:p-7 border-2 border-brand-yellow/50 shadow-sm flex flex-col justify-between relative overflow-hidden">
+                <div class="absolute top-0 right-0 bg-brand-yellow text-black text-[9px] font-extrabold uppercase px-3 py-1 rounded-bl-xl tracking-wider">
+                    Padrão Corporativo Homologado
+                </div>
+
+                <div>
+                    <div class="flex items-center gap-2 mb-2">
+                        <span class="w-2.5 h-2.5 rounded-full bg-emerald-500"></span>
+                        <h3 class="text-lg sm:text-xl font-bold text-gray-900">Engenharia de Restabelecimento Vision</h3>
+                    </div>
+                    <p class="text-xs text-gray-500 mb-5 leading-relaxed">
+                        Saneamento integral da infraestrutura com parametrização técnica definitiva e clareza documental.
+                    </p>
+
+                    <ul class="space-y-2.5 text-xs text-gray-700 leading-relaxed">
+                        <li class="flex items-start gap-2">
+                            <i data-lucide="check" class="w-4 h-4 text-emerald-600 shrink-0 mt-0.5"></i>
+                            <span><strong>Alinhamento Formal com TI:</strong> Liberação de portas e IPs fixos documentados para acesso perene sem quedas.</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <i data-lucide="check" class="w-4 h-4 text-emerald-600 shrink-0 mt-0.5"></i>
+                            <span><strong>Saneamento Físico de 7 Racks:</strong> Cabeamento amarrado, identificado e ventilado com padrão profissional.</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <i data-lucide="check" class="w-4 h-4 text-emerald-600 shrink-0 mt-0.5"></i>
+                            <span><strong>Recuperação em Bancada:</strong> Conectores com mau contato são restaurados no próprio dia sem cobrar peça nova.</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <i data-lucide="check" class="w-4 h-4 text-emerald-600 shrink-0 mt-0.5"></i>
+                            <span><strong>Opção de Continuidade (Vision Care):</strong> Contrato mensal opcional com chamados inclusos e manutenções preventivas periódicas.</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="mt-6 pt-4 border-t border-gray-100 text-xs text-emerald-700 font-bold flex items-center gap-1.5">
+                    <i data-lucide="check-circle-2" class="w-4 h-4"></i>
+                    <span>Relatório detalhado andar por andar entregue ao setor de Compras.</span>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+</section>
+
+<!-- ===================== AVALIAÇÕES GOOGLE (REPUTAÇÃO VERIFICADA) ===================== -->
+<section class="py-16 bg-white border-b border-gray-200/60 overflow-hidden select-none">
+    <div class="max-w-7xl mx-auto px-4">
+        
+        <div class="text-center mb-10 reveal">
+            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-50 border border-emerald-200 text-emerald-800 text-[10px] font-bold uppercase tracking-wider mb-2">
+                <i data-lucide="star" class="w-3 h-3 fill-emerald-600 text-emerald-600"></i>
+                211 Avaliações Verificadas · Nota 5.0 Máxima no Google
+            </div>
+            <h2 class="text-2xl font-bold text-gray-900">Grandes Empresas e Instituições Recomendam</h2>
+        </div>
+
+        <!-- Marquee de Reviews -->
+        <div class="relative w-full overflow-hidden reviews-marquee-container" id="reviews-container">
+            <div class="pointer-events-none absolute left-0 top-0 bottom-0 w-12 bg-gradient-to-r from-white to-transparent z-10"></div>
+            <div class="pointer-events-none absolute right-0 top-0 bottom-0 w-12 bg-gradient-to-l from-white to-transparent z-10"></div>
+
+            <div id="reviews-track" class="reviews-marquee-track flex gap-5 items-stretch">
+                
+                <div class="w-[300px] sm:w-[340px] shrink-0 bg-[#fafafa] rounded-2xl p-5 border border-gray-200 flex flex-col justify-between">
+                    <div>
+                        <div class="flex text-amber-400 mb-2 gap-0.5">
+                            <i data-lucide="star" class="w-3.5 h-3.5 fill-amber-400 text-amber-400"></i>
+                            <i data-lucide="star" class="w-3.5 h-3.5 fill-amber-400 text-amber-400"></i>
+                            <i data-lucide="star" class="w-3.5 h-3.5 fill-amber-400 text-amber-400"></i>
+                            <i data-lucide="star" class="w-3.5 h-3.5 fill-amber-400 text-amber-400"></i>
+                            <i data-lucide="star" class="w-3.5 h-3.5 fill-amber-400 text-amber-400"></i>
+                        </div>
+                        <p class="text-gray-700 text-xs italic leading-relaxed mb-3">
+                            "Rápido, organizado e feito com bastante cuidado, principalmente no cabeamento dos racks e na limpeza dos ambientes."
+                        </p>
+                    </div>
+                    <div class="text-[11px] font-bold text-gray-900">Erik Sarnauskas <span class="text-gray-400 font-normal">· Local Guide</span></div>
+                </div>
+
+                <div class="w-[300px] sm:w-[340px] shrink-0 bg-[#fafafa] rounded-2xl p-5 border border-gray-200 flex flex-col justify-between">
+                    <div>
+                        <div class="flex text-amber-400 mb-2 gap-0.5">
+                            <i data-lucide="star" class="w-3.5 h-3.5 fill-amber-400 text-amber-400"></i>
+                            <i data-lucide="star" class="w-3.5 h-3.5 fill-amber-400 text-amber-400"></i>
+                            <i data-lucide="star" class="w-3.5 h-3.5 fill-amber-400 text-amber-400"></i>
+                            <i data-lucide="star" class="w-3.5 h-3.5 fill-amber-400 text-amber-400"></i>
+                            <i data-lucide="star" class="w-3.5 h-3.5 fill-amber-400 text-amber-400"></i>
+                        </div>
+                        <p class="text-gray-700 text-xs italic leading-relaxed mb-3">
+                            "Atendimento diferenciado, ágil e sem enrolação. O Gabriel e a equipe técnica atenderam com padrão impecável de TI."
+                        </p>
+                    </div>
+                    <div class="text-[11px] font-bold text-gray-900">Amanda Marques <span class="text-gray-400 font-normal">· 72 avaliações</span></div>
+                </div>
+
+                <div class="w-[300px] sm:w-[340px] shrink-0 bg-[#fafafa] rounded-2xl p-5 border border-gray-200 flex flex-col justify-between">
+                    <div>
+                        <div class="flex text-amber-400 mb-2 gap-0.5">
+                            <i data-lucide="star" class="w-3.5 h-3.5 fill-amber-400 text-amber-400"></i>
+                            <i data-lucide="star" class="w-3.5 h-3.5 fill-amber-400 text-amber-400"></i>
+                            <i data-lucide="star" class="w-3.5 h-3.5 fill-amber-400 text-amber-400"></i>
+                            <i data-lucide="star" class="w-3.5 h-3.5 fill-amber-400 text-amber-400"></i>
+                            <i data-lucide="star" class="w-3.5 h-3.5 fill-amber-400 text-amber-400"></i>
+                        </div>
+                        <p class="text-gray-700 text-xs italic leading-relaxed mb-3">
+                            "Os técnicos foram pontuais, respeitaram as normas da instituição e a explicação da plataforma central foi muito clara."
+                        </p>
+                    </div>
+                    <div class="text-[11px] font-bold text-gray-900">Renata Jábali <span class="text-gray-400 font-normal">· Local Guide</span></div>
+                </div>
+
+                <!-- Clones para Marquee Contínuo -->
+                <div class="w-[300px] sm:w-[340px] shrink-0 bg-[#fafafa] rounded-2xl p-5 border border-gray-200 flex flex-col justify-between" aria-hidden="true">
+                    <div>
+                        <div class="flex text-amber-400 mb-2 gap-0.5">
+                            <i data-lucide="star" class="w-3.5 h-3.5 fill-amber-400 text-amber-400"></i>
+                            <i data-lucide="star" class="w-3.5 h-3.5 fill-amber-400 text-amber-400"></i>
+                            <i data-lucide="star" class="w-3.5 h-3.5 fill-amber-400 text-amber-400"></i>
+                            <i data-lucide="star" class="w-3.5 h-3.5 fill-amber-400 text-amber-400"></i>
+                            <i data-lucide="star" class="w-3.5 h-3.5 fill-amber-400 text-amber-400"></i>
+                        </div>
+                        <p class="text-gray-700 text-xs italic leading-relaxed mb-3">
+                            "Rápido, organizado e feito com bastante cuidado, principalmente no cabeamento dos racks e na limpeza dos ambientes."
+                        </p>
+                    </div>
+                    <div class="text-[11px] font-bold text-gray-900">Erik Sarnauskas <span class="text-gray-400 font-normal">· Local Guide</span></div>
+                </div>
+
+                <div class="w-[300px] sm:w-[340px] shrink-0 bg-[#fafafa] rounded-2xl p-5 border border-gray-200 flex flex-col justify-between" aria-hidden="true">
+                    <div>
+                        <div class="flex text-amber-400 mb-2 gap-0.5">
+                            <i data-lucide="star" class="w-3.5 h-3.5 fill-amber-400 text-amber-400"></i>
+                            <i data-lucide="star" class="w-3.5 h-3.5 fill-amber-400 text-amber-400"></i>
+                            <i data-lucide="star" class="w-3.5 h-3.5 fill-amber-400 text-amber-400"></i>
+                            <i data-lucide="star" class="w-3.5 h-3.5 fill-amber-400 text-amber-400"></i>
+                            <i data-lucide="star" class="w-3.5 h-3.5 fill-amber-400 text-amber-400"></i>
+                        </div>
+                        <p class="text-gray-700 text-xs italic leading-relaxed mb-3">
+                            "Atendimento diferenciado, ágil e sem enrolação. O Gabriel e a equipe técnica atenderam com padrão impecável de TI."
+                        </p>
+                    </div>
+                    <div class="text-[11px] font-bold text-gray-900">Amanda Marques <span class="text-gray-400 font-normal">· 72 avaliações</span></div>
+                </div>
+
+                <div class="w-[300px] sm:w-[340px] shrink-0 bg-[#fafafa] rounded-2xl p-5 border border-gray-200 flex flex-col justify-between" aria-hidden="true">
+                    <div>
+                        <div class="flex text-amber-400 mb-2 gap-0.5">
+                            <i data-lucide="star" class="w-3.5 h-3.5 fill-amber-400 text-amber-400"></i>
+                            <i data-lucide="star" class="w-3.5 h-3.5 fill-amber-400 text-amber-400"></i>
+                            <i data-lucide="star" class="w-3.5 h-3.5 fill-amber-400 text-amber-400"></i>
+                            <i data-lucide="star" class="w-3.5 h-3.5 fill-amber-400 text-amber-400"></i>
+                            <i data-lucide="star" class="w-3.5 h-3.5 fill-amber-400 text-amber-400"></i>
+                        </div>
+                        <p class="text-gray-700 text-xs italic leading-relaxed mb-3">
+                            "Os técnicos foram pontuais, respeitaram as normas da instituição e a explicação da plataforma central foi muito clara."
+                        </p>
+                    </div>
+                    <div class="text-[11px] font-bold text-gray-900">Renata Jábali <span class="text-gray-400 font-normal">· Local Guide</span></div>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<!-- ===================== SIMULADOR EXECUTIVO DE INVESTIMENTO ===================== -->
+<section id="investimento" class="py-20 bg-[#fafafa] relative overflow-hidden">
+    <div class="absolute inset-0 bg-dots pointer-events-none z-0"></div>
+    <div class="max-w-4xl mx-auto px-4 relative z-10">
+
+        <div class="text-center mb-8 reveal">
+            <span class="text-brand-yellow font-bold uppercase tracking-widest text-xs">Simulador Oficial de Compras</span>
+            <h2 class="text-3xl md:text-4xl font-extrabold text-gray-900 mt-1">Investimento na Solução</h2>
+            <p class="text-gray-500 text-xs sm:text-sm mt-1 max-w-xl mx-auto">
+                Selecione a condição de pagamento adequada para o faturamento corporativo:
+            </p>
+        </div>
+
+        <!-- Seletor de Pagamento (PIX vs Cartão) -->
+        <div class="flex justify-center mb-8 reveal">
+            <div class="bg-white p-1 rounded-full inline-flex border border-gray-200 shadow-sm gap-1">
+                <button type="button" id="btn-pay-pix" onclick="selectPayment('pix')" class="px-5 py-2 rounded-full text-xs font-bold bg-brand-yellow text-black shadow transition-all">
+                    À Vista (PIX com Desconto)
+                </button>
+                <button type="button" id="btn-pay-card" onclick="selectPayment('card')" class="px-5 py-2 rounded-full text-xs font-bold bg-transparent text-gray-500 hover:text-gray-800 transition-all">
+                    12x no Cartão Corporativo
+                </button>
+            </div>
+        </div>
+
+        <!-- Card Principal com Borda Dourada Animada -->
+        <div class="premium-border-glow group relative z-20 reveal">
+            <div class="premium-border-inner flex flex-col md:flex-row relative overflow-hidden bg-white p-0">
+                
+                <!-- Escopo Selecionado (Lado Esquerdo) -->
+                <div class="w-full md:w-7/12 p-6 sm:p-8 border-b md:border-b-0 md:border-r border-gray-100 flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-center justify-between mb-3">
+                            <span class="px-2.5 py-1 rounded-full bg-zinc-900 text-brand-yellow text-[10px] font-bold uppercase tracking-wider">
+                                Retrofit &amp; Restabelecimento Completo
+                            </span>
+                            <span class="text-[10px] font-bold text-gray-400 uppercase tracking-widest">7 Pavimentos</span>
+                        </div>
+                        
+                        <h3 class="text-xl sm:text-2xl font-bold text-gray-900 mb-3">
+                            Saneamento de Racks, 7 DVRs, 7 Centrais de Alarme &amp; Portas de Emergência
+                        </h3>
+
+                        <ul class="space-y-2.5 mb-6 text-xs text-gray-700">
+                            <li class="flex items-start gap-2">
+                                <i data-lucide="check" class="w-4 h-4 text-brand-yellow shrink-0 mt-0.5"></i>
+                                <span><strong>Saneamento Físico de 7 Racks:</strong> Organização e amarração de cabos nos andares 2º, 5º, 8º, 10º, 12º, 14º e 15º.</span>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <i data-lucide="check" class="w-4 h-4 text-brand-yellow shrink-0 mt-0.5"></i>
+                                <span><strong>Reconfiguração Lógica de 7 DVRs Intelbras:</strong> Parametrização de portas e IPs para acesso no celular e notebook.</span>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <i data-lucide="check" class="w-4 h-4 text-brand-yellow shrink-0 mt-0.5"></i>
+                                <span><strong>7 Centrais de Alarme e Sirenes:</strong> Reprogramação de zonas, sensores de presença e testes de disparo nas recepções.</span>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <i data-lucide="check" class="w-4 h-4 text-brand-yellow shrink-0 mt-0.5"></i>
+                                <span><strong>Substituição de Sensor de Emergência:</strong> Novo sensor magnético reforçado para a porta de saída avariada.</span>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <i data-lucide="check" class="w-4 h-4 text-brand-yellow shrink-0 mt-0.5"></i>
+                                <span><strong>Troca Preventiva de Baterias:</strong> Lote novo de baterias instalado nos sensores sem fio dos 7 andares.</span>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <i data-lucide="check" class="w-4 h-4 text-brand-yellow shrink-0 mt-0.5"></i>
+                                <span><strong>Mão de Obra Especializada Vision:</strong> Equipe técnica dedicada para atuação ágil na Alameda Santos.</span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="p-3 bg-emerald-50 rounded-xl border border-emerald-100 text-emerald-900 flex items-center gap-2.5 text-xs">
+                        <i data-lucide="shield-check" class="w-4 h-4 text-emerald-600 shrink-0"></i>
+                        <span><strong>Garantia Vision de 12 Meses:</strong> Cobertura total sobre as configurações e componentes fornecidos, com emissão de nota fiscal para a Unimed do Brasil.</span>
+                    </div>
+                </div>
+
+                <!-- Preço Dinâmico & Ação (Lado Direito) -->
+                <div class="w-full md:w-5/12 bg-[#f8f9fa] p-6 sm:p-8 flex flex-col items-center justify-center text-center relative z-10 min-h-[340px]">
+                    
+                    <span class="text-[10px] font-bold text-gray-400 uppercase tracking-widest mb-2" id="label-pricing-mode">
+                        Investimento à Vista (PIX)
+                    </span>
+
+                    <div id="price-display-box" class="w-full">
+                        <!-- Renderizado via JS -->
+                    </div>
+
+                    <!-- Botão WhatsApp com Texto Dinâmico -->
+                    <a id="btn-whatsapp-cta" href="#" target="_blank" onclick="if(window.clarity) window.clarity('event', 'Clique_Aprovacao_Unimed');" class="mt-6 w-full bg-brand-yellow hover:bg-brand-goldLight text-black font-bold py-3.5 px-4 rounded-xl transition-all shadow-glow flex items-center justify-center gap-2 group">
+                        <i data-lucide="check-circle" class="w-4 h-4"></i>
+                        <span class="text-xs uppercase tracking-wider font-extrabold" id="cta-btn-text">Aprovar Proposta no WhatsApp</span>
+                        <i data-lucide="arrow-right" class="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform"></i>
+                    </a>
+
+                    <p class="text-[10px] text-gray-400 mt-3 flex items-center gap-1 justify-center">
+                        <i data-lucide="check-circle" class="w-3 h-3 text-emerald-600"></i>
+                        Início imediato após emissão da Ordem de Serviço
+                    </p>
+
+                </div>
+
+            </div>
+        </div>
+
+        <!-- Opcional de Continuidade: Vision Care Corporativo -->
+        <div class="mt-6 bg-gradient-to-r from-zinc-900 to-black text-white rounded-2xl p-5 sm:p-6 border border-zinc-800 shadow-md reveal">
+            <div class="flex flex-col sm:flex-row items-center justify-between gap-4">
+                <div class="flex items-center gap-3.5 text-left">
+                    <div class="w-10 h-10 rounded-xl bg-brand-yellow/20 border border-brand-yellow/30 text-brand-yellow flex items-center justify-center shrink-0">
+                        <i data-lucide="shield-check" class="w-5 h-5"></i>
+                    </div>
+                    <div>
+                        <div class="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full bg-brand-yellow/10 text-brand-yellow text-[9px] font-bold uppercase tracking-wider mb-1">
+                            Cobertura Contínua de Manutenção · OPEX
+                        </div>
+                        <h4 class="font-bold text-sm text-white">Contrato Mensal Vision Care (Opcional)</h4>
+                        <p class="text-xs text-zinc-400 leading-relaxed mt-0.5">
+                            Visitas preventivas programadas para os 7 andares, chamados corretivos prioritários inclusos, auditoria periódica das portas de saída de emergência e suporte direto de engenharia.
+                        </p>
+                    </div>
+                </div>
+                <div class="sm:text-right shrink-0 w-full sm:w-auto pt-2 sm:pt-0 border-t sm:border-t-0 border-zinc-800 flex sm:flex-col justify-between sm:justify-center items-center sm:items-end">
+                    <span class="text-xs text-zinc-400 font-medium">Investimento Mensal:</span>
+                    <span class="text-lg font-black text-brand-goldLight">R$ 1.890,00<span class="text-xs text-zinc-400 font-normal">/mês</span></span>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<!-- ===================== FAQ CORPORATIVO ===================== -->
+<section id="faq" class="py-16 bg-white border-t border-gray-200/60">
+    <div class="max-w-3xl mx-auto px-4">
+        
+        <div class="text-center mb-10 reveal">
+            <span class="text-brand-yellow font-bold uppercase tracking-widest text-[10px]">Perguntas Frequentes</span>
+            <h2 class="text-2xl font-bold text-gray-900 mt-1">Dúvidas Técnicas do Projeto</h2>
+        </div>
+        
+        <div class="space-y-3 reveal" id="accordion">
+
+            <div class="accordion-item bg-[#fafafa] rounded-2xl border border-gray-200 overflow-hidden transition-all hover:border-brand-yellow/50">
+                <button type="button" onclick="toggleAccordion(this)" class="w-full flex items-center justify-between p-4 sm:p-5 text-left font-bold text-gray-900 focus:outline-none text-xs sm:text-sm">
+                    <span>O que será necessário da equipe de TI da Unimed para o acesso remoto?</span>
+                    <i data-lucide="chevron-down" class="w-4 h-4 text-brand-yellow acc-arrow shrink-0"></i>
+                </button>
+                <div class="accordion-content">
+                    <p class="px-5 pb-5 text-gray-600 text-xs leading-relaxed">
+                        Nossa equipe técnica configurará os 7 DVRs com faixas de IP fixas e portas dedicadas. O setor de TI da Unimed precisará apenas liberar o roteamento dessas portas específicas no firewall corporativo para que os aplicativos de celular e notebook transmitam com alta velocidade e estabilidade.
+                    </p>
+                </div>
+            </div>
+
+            <div class="accordion-item bg-[#fafafa] rounded-2xl border border-gray-200 overflow-hidden transition-all hover:border-brand-yellow/50">
+                <button type="button" onclick="toggleAccordion(this)" class="w-full flex items-center justify-between p-4 sm:p-5 text-left font-bold text-gray-900 focus:outline-none text-xs sm:text-sm">
+                    <span>E se alguma câmera antiga estiver queimada durante a organização?</span>
+                    <i data-lucide="chevron-down" class="w-4 h-4 text-brand-yellow acc-arrow shrink-0"></i>
+                </button>
+                <div class="accordion-content">
+                    <p class="px-5 pb-5 text-gray-600 text-xs leading-relaxed">
+                        Nossa prioridade é recuperar o equipamento na bancada refazendo conectores e testando a alimentação. Caso alguma câmera ou fonte esteja fisicamente danificada ou queimada, emitiremos um laudo fotográfico imediato para o setor de Compras, e a peça de reposição será orçada à parte a preço de custo, sem nenhuma surpresa na fatura.
+                    </p>
+                </div>
+            </div>
+
+            <div class="accordion-item bg-[#fafafa] rounded-2xl border border-gray-200 overflow-hidden transition-all hover:border-brand-yellow/50">
+                <button type="button" onclick="toggleAccordion(this)" class="w-full flex items-center justify-between p-4 sm:p-5 text-left font-bold text-gray-900 focus:outline-none text-xs sm:text-sm">
+                    <span>Qual o prazo de execução nos 7 andares?</span>
+                    <i data-lucide="chevron-down" class="w-4 h-4 text-brand-yellow acc-arrow shrink-0"></i>
+                </button>
+                <div class="accordion-content">
+                    <p class="px-5 pb-5 text-gray-600 text-xs leading-relaxed">
+                        Como nossa base operacional fica vizinha de quarteirão à Alameda Santos, alocamos equipe técnica dedicada para concluir a reorganização física dos 7 racks, troca das baterias, reprogramação das centrais e testes de DVR em uma janela ágil e programada, respeitando a rotina dos colaboradores nos andares.
+                    </p>
+                </div>
+            </div>
+
+            <div class="accordion-item bg-[#fafafa] rounded-2xl border border-gray-200 overflow-hidden transition-all hover:border-brand-yellow/50">
+                <button type="button" onclick="toggleAccordion(this)" class="w-full flex items-center justify-between p-4 sm:p-5 text-left font-bold text-gray-900 focus:outline-none text-xs sm:text-sm">
+                    <span>Como funciona a contratação do Vision Care mensal?</span>
+                    <i data-lucide="chevron-down" class="w-4 h-4 text-brand-yellow acc-arrow shrink-0"></i>
+                </button>
+                <div class="accordion-content">
+                    <p class="px-5 pb-5 text-gray-600 text-xs leading-relaxed">
+                        O contrato mensal Vision Care (R$ 1.890,00/mês) é 100% opcional. Ele transforma os custos de reparos imprevisíveis em uma despesa operacional fixa (OPEX), cobrindo manutenções preventivas mensais nos 7 pavimentos, testes periódicos das portas de rota de fuga e atendimento corretivo prioritário com SLA reduzido.
+                    </p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<!-- ===================== FOOTER ===================== -->
+<footer class="bg-black py-12 text-center border-t border-zinc-900">
+    <div class="max-w-4xl mx-auto px-4">
+        
+        <div class="flex flex-col items-center justify-center leading-none opacity-40 hover:opacity-100 transition-opacity mb-6">
+            <div class="relative flex items-baseline leading-none">
+                <span class="font-logo font-bold text-[3rem] text-white lowercase tracking-[-0.05em] leading-none">vısıon</span>
+                <span class="absolute -right-3 top-2 text-[0.65rem] text-brand-yellow font-bold">®</span>
+            </div>
+            <span class="font-tech text-[0.65rem] font-bold text-zinc-500 lowercase -mt-2 ml-1" style="letter-spacing:0.53em;">tecnologia</span>
+        </div>
+
+        <div class="text-zinc-500 text-xs leading-relaxed mb-4">
+            <p><strong>Kathleen</strong> | Compras – Unimed do Brasil (CNPJ: 48.090.146/0001-00)</p>
+            <p>Alameda Santos, 1827 – 15° andar (Conjunto José Bonifácio), Cerqueira César, São Paulo - SP</p>
+            <p>Proposta Corporativa Oficial #UNIMED-SANTOS-2026</p>
+        </div>
+
+        <div class="inline-flex items-center gap-1.5 border border-zinc-800 bg-zinc-900/50 px-4 py-1.5 rounded-full text-[10px] text-zinc-400 uppercase tracking-widest font-bold">
+            <i data-lucide="lock" class="w-3 h-3 text-brand-yellow"></i>
+            Documento Corporativo Confidencial
+        </div>
+    </div>
+</footer>
+
+<!-- ===================== JAVASCRIPT ===================== -->
+<script>
+    // DADOS FINANCEIROS OFICIAIS UNIMED DO BRASIL (7 PAVIMENTOS)
+    // CTD TOTAL: R$ 2.950,00 (M.O. 7 DVRs R$ 1.400 + 7 Centrais R$ 1.050 + Insumos/Sensor R$ 500)
+    // DIVISOR ELEVADO TIER 1: 0.605 -> R$ 4.880,00 PIX
+    // PARCELADO (PIX * 1.1999) -> 12x R$ 488,00
+    // OPCIONAL RECORRENTE VISION CARE: R$ 1.890,00/mês
+    const pricingData = {
+        pix: 4880.00,
+        pixHalf: 2440.00,
+        cardTotal: 5856.00,
+        cardMonthly: 488.00,
+        monthlyCare: 1890.00
+    };
+
+    let currentPayment = 'pix'; // 'pix' ou 'card'
+
+    function formatBRL(val) {
+        return val.toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+    }
+
+    function selectPayment(paymentMode) {
+        currentPayment = paymentMode;
+        const btnPix = document.getElementById('btn-pay-pix');
+        const btnCard = document.getElementById('btn-pay-card');
+        const labelMode = document.getElementById('label-pricing-mode');
+
+        if (paymentMode === 'pix') {
+            btnPix.className = "px-5 py-2 rounded-full text-xs font-bold bg-brand-yellow text-black shadow transition-all";
+            btnCard.className = "px-5 py-2 rounded-full text-xs font-bold bg-transparent text-gray-500 hover:text-gray-800 transition-all";
+            if (labelMode) labelMode.textContent = "Investimento à Vista (PIX com Desconto)";
+        } else {
+            btnCard.className = "px-5 py-2 rounded-full text-xs font-bold bg-brand-yellow text-black shadow transition-all";
+            btnPix.className = "px-5 py-2 rounded-full text-xs font-bold bg-transparent text-gray-500 hover:text-gray-800 transition-all";
+            if (labelMode) labelMode.textContent = "Investimento Parcelado no Cartão Corporativo";
+        }
+
+        renderPriceDisplay();
+        if (window.clarity) window.clarity("event", "Mudou_Pagamento_Unimed_" + paymentMode);
+    }
+
+    function renderPriceDisplay() {
+        const box = document.getElementById('price-display-box');
+        const ctaBtn = document.getElementById('btn-whatsapp-cta');
+        const ctaText = document.getElementById('cta-btn-text');
+
+        if (!box) return;
+
+        let html = '';
+        let whatsappMsg = '';
+
+        if (currentPayment === 'pix') {
+            html = `
+                <div class="flex flex-col items-center justify-center w-full animate-fade-in">
+                    <div class="flex items-baseline justify-center gap-1 mb-1">
+                        <span class="text-xl font-bold text-gray-400">R$</span>
+                        <span class="text-4xl sm:text-5xl font-extrabold text-[#111827] tracking-tight">${formatBRL(pricingData.pix).split(',')[0]}<span class="text-2xl text-gray-400">,${formatBRL(pricingData.pix).split(',')[1]}</span></span>
+                    </div>
+                    <div class="inline-flex items-center gap-1 bg-emerald-50 text-emerald-700 px-2.5 py-0.5 rounded-full text-[10px] font-bold uppercase tracking-wider mt-1">
+                        <i data-lucide="zap" class="w-3 h-3"></i> À vista no PIX com Desconto
+                    </div>
+                    
+                    <div class="w-full mt-4 space-y-1.5 text-left">
+                        <div class="bg-white border border-gray-200 rounded-lg p-2.5 shadow-sm text-xs flex justify-between items-center">
+                            <span class="text-gray-500 font-medium">Sinal de Entrada (Emissão de OS e Insumos):</span>
+                            <strong class="text-gray-900">R$ ${formatBRL(pricingData.pixHalf)}</strong>
+                        </div>
+                        <div class="bg-white border border-gray-200 rounded-lg p-2.5 shadow-sm text-xs flex justify-between items-center">
+                            <span class="text-gray-500 font-medium">Conclusão (Homologação dos 7 Andares):</span>
+                            <strong class="text-gray-900">R$ ${formatBRL(pricingData.pixHalf)}</strong>
+                        </div>
+                    </div>
+                </div>
+            `;
+            whatsappMsg = `Olá Gabriel! Analisei a proposta executiva da Unimed do Brasil para os 7 andares (organização de racks, 7 DVRs, 7 centrais e portas de emergência). Queremos aprovar o serviço no valor de *R$ ${formatBRL(pricingData.pix)} no PIX*. Vamos alinhar a emissão da Ordem de Serviço!`;
+            if (ctaText) ctaText.textContent = `Aprovar no PIX (R$ ${formatBRL(pricingData.pix)})`;
+
+        } else {
+            html = `
+                <div class="flex flex-col items-center justify-center w-full animate-fade-in">
+                    <span class="text-[11px] font-bold text-gray-400 mb-0.5">Parcelamento em até 12x</span>
+                    <div class="flex items-baseline justify-center gap-1 mb-1">
+                        <span class="text-xl font-bold text-[#111827]">12x de R$</span>
+                        <span class="text-4xl sm:text-5xl font-extrabold text-[#111827] tracking-tight">${formatBRL(pricingData.cardMonthly).split(',')[0]}<span class="text-2xl text-gray-400">,${formatBRL(pricingData.cardMonthly).split(',')[1]}</span></span>
+                    </div>
+                    <div class="inline-flex items-center gap-1 bg-blue-50 text-blue-700 px-2.5 py-0.5 rounded-full text-[10px] font-bold uppercase tracking-wider mt-1">
+                        <i data-lucide="credit-card" class="w-3 h-3"></i> Cartão Corporativo
+                    </div>
+                    <p class="text-[11px] text-gray-500 font-medium mt-3">Total parcelado: R$ ${formatBRL(pricingData.cardTotal)}</p>
+                </div>
+            `;
+            whatsappMsg = `Olá Gabriel! Analisei a proposta da Unimed do Brasil para os 7 andares corporativos e gostaríamos de aprovar parcelado em *12x de R$ ${formatBRL(pricingData.cardMonthly)} no cartão*. Vamos prosseguir com a formalização!`;
+            if (ctaText) ctaText.textContent = `Aprovar em 12x no Cartão`;
+        }
+
+        box.innerHTML = html;
+        if (ctaBtn) ctaBtn.href = "https://wa.me/5511930816696?text=" + encodeURIComponent(whatsappMsg);
+        
+        if (window.lucide && typeof window.lucide.createIcons === 'function') {
+            window.lucide.createIcons();
+        }
+    }
+
+    // ACCORDION
+    function toggleAccordion(button) {
+        const item = button.closest('.accordion-item');
+        if (!item) return;
+        const isOpen = item.classList.contains('open');
+        document.querySelectorAll('.accordion-item').forEach(i => i.classList.remove('open'));
+        if (!isOpen) item.classList.add('open');
+        if (window.lucide && typeof window.lucide.createIcons === 'function') {
+            window.lucide.createIcons();
+        }
+    }
+
+    // CONTROLE DE ACESSO
+    function checkPassword() {
+        const inputEl = document.getElementById('password-input');
+        if (!inputEl) return;
+
+        const input = inputEl.value.trim().toUpperCase();
+        const errorMsg = document.getElementById('error-msg');
+        const btnUnlock = document.getElementById('btn-unlock');
+        const unlockIcon = document.getElementById('unlock-icon');
+        const unlockText = document.getElementById('unlock-text');
+        const unlockArrow = document.getElementById('unlock-arrow');
+
+        const validPasswords = ['UNIMED', 'KATHLEEN', 'SANTOS', 'VISION'];
+
+        if (validPasswords.includes(input)) {
+            if (btnUnlock) btnUnlock.disabled = true;
+            if (unlockText) unlockText.textContent = "Liberando Proposta...";
+            if (unlockIcon) unlockIcon.setAttribute('class', "w-5 h-5 animate-spin text-black");
+            if (unlockArrow) unlockArrow.style.display = 'none';
+
+            setTimeout(() => {
+                const lockScreen = document.getElementById('lock-screen');
+                if (lockScreen) lockScreen.style.opacity = '0';
+
+                const video = document.getElementById("vision-video");
+                if (video && video.paused) {
+                    video.muted = true;
+                    video.play().catch(() => {});
+                }
+
+                if (window.clarity) {
+                    try {
+                        window.clarity("consent");
+                        window.clarity("identify", "kathleen-unimed", undefined, undefined, "Kathleen (Unimed do Brasil)");
+                        window.clarity("set", "Proposta", "Unimed_Brasil_7Andares");
+                        window.clarity("event", "Proposta_Desbloqueada");
+                    } catch(e) {}
+                }
+
+                // Notificação silenciosa de abertura
+                fetch('https://api.staticforms.dev/submit', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+                    body: JSON.stringify({
+                        accessKey: "sf_077ej49gjha153gk3m6ceecf",
+                        subject: "🚨 ALERTA: Proposta Acessada (Kathleen - Unimed do Brasil)",
+                        name: "Sistema Vision",
+                        email: "diretoria@visionsp.com.br",
+                        message: "A cliente Kathleen (Compras Unimed do Brasil) acessou a proposta técnica de 7 Andares na Alameda Santos!\n\n🔑 Senha Utilizada: " + input + "\n🕒 Horário: " + new Date().toLocaleString('pt-BR')
+                    })
+                }).catch(() => {});
+
+                setTimeout(() => {
+                    if (lockScreen) lockScreen.style.display = 'none';
+                    const htmlRoot = document.getElementById('html-root');
+                    if (htmlRoot) {
+                        htmlRoot.classList.remove('overflow-hidden', 'h-screen');
+                        htmlRoot.classList.add('overflow-x-hidden');
+                    }
+                    document.body.classList.remove('overflow-hidden', 'h-screen');
+                    document.body.classList.add('overflow-x-hidden');
+                }, 700);
+
+            }, 500);
+
+        } else {
+            if (errorMsg) errorMsg.classList.remove('hidden');
+            inputEl.style.borderColor = 'rgba(239,68,68,0.5)';
+            setTimeout(() => {
+                if (errorMsg) errorMsg.classList.add('hidden');
+                inputEl.style.borderColor = '';
+            }, 3000);
+        }
+    }
+
+    // INICIALIZAÇÃO
+    document.addEventListener("DOMContentLoaded", function() {
+        if (window.lucide && typeof window.lucide.createIcons === 'function') {
+            window.lucide.createIcons();
+        }
+
+        const pwdInput = document.getElementById('password-input');
+        if (pwdInput) {
+            pwdInput.addEventListener('keypress', function(e) {
+                if (e.key === 'Enter') {
+                    e.preventDefault();
+                    checkPassword();
+                }
+            });
+        }
+
+        // Scroll Reveal
+        try {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) entry.target.classList.add('active');
+                });
+            }, { threshold: 0.08 });
+            document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+        } catch(e) {
+            document.querySelectorAll('.reveal').forEach(el => el.classList.add('active'));
+        }
+
+        // Vídeo e Áudio
+        const videoHero = document.getElementById("vision-video");
+        const overlayHero = document.getElementById("unmute-overlay");
+
+        if (videoHero && overlayHero) {
+            overlayHero.addEventListener("click", function(e) {
+                e.stopPropagation();
+                videoHero.muted = false;
+                videoHero.loop = true;
+                videoHero.currentTime = 0;
+                videoHero.play().catch(() => {});
+                overlayHero.style.opacity = "0";
+                setTimeout(() => { overlayHero.style.display = "none"; }, 400);
+
+                if (window.clarity) {
+                    try { window.clarity("event", "Video_Assistido_Unimed"); } catch(err) {}
+                }
+            });
+
+            videoHero.addEventListener("click", function() {
+                if (overlayHero.style.display === "none") {
+                    if (videoHero.paused) { videoHero.play(); } else { videoHero.pause(); }
+                }
+            });
+        }
+
+        // Renderiza exibição inicial de preços
+        renderPriceDisplay();
+
+        // Pausa no Marquee com Touch
+        const reviewsTrack = document.getElementById('reviews-track');
+        const reviewsContainer = document.getElementById('reviews-container');
+        if (reviewsTrack && reviewsContainer) {
+            reviewsContainer.addEventListener('touchstart', function() {
+                reviewsTrack.classList.add('paused');
+            }, { passive: true });
+
+            reviewsContainer.addEventListener('touchend', function() {
+                reviewsTrack.classList.remove('paused');
+            }, { passive: true });
+        }
+    });
+
+    window.addEventListener('scroll', () => {
+        const navbar = document.getElementById('navbar');
+        if (navbar) {
+            if (window.scrollY > 30) {
+                navbar.classList.add('shadow-md');
+            } else {
+                navbar.classList.remove('shadow-md');
+            }
+        }
+    });
+</script>
+</body>
+</html>
