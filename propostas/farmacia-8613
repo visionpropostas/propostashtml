@@ -1,0 +1,1311 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth overflow-x-hidden" id="html-root">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projeto de Controle de Acesso Facial e Automação | Farmácia de Manipulação Moema – Vision</title>
+    <meta name="description" content="Ecossistema de Controle de Acesso Facial IP e Automação de Porta de Vidro – Vision Tecnologia">
+    <meta name="theme-color" content="#b9880e">
+    <meta name="robots" content="noindex, nofollow">
+
+    <!-- Open Graph / WhatsApp Preview -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Projeto de Automação e Acesso Facial | Farmácia Moema – Vision">
+    <meta property="og:description" content="Engenharia de Acesso Facial IP, Vídeo Porteiro Touch e Automação de Porta Deslizante – Vision Tecnologia">
+    <meta property="og:image" content="https://res.cloudinary.com/dptcuckhf/image/upload/v1772152427/C%C3%B3pia_de_LOGO_VISION_2025_cpcpuh.png">
+    <meta property="og:locale" content="pt_BR">
+
+    <!-- Fonts & Icons -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@700;800&family=Quicksand:wght@500;600;700&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <!-- Google Analytics 4 -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-KTGEL92B0F"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-KTGEL92B0F');
+    </script>
+
+    <!-- Microsoft Clarity -->
+    <script type="text/javascript">
+        (function(c,l,a,r,i,t,y){
+            c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+            t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+            y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+        })(window, document, "clarity", "script", "vifq10es5o");
+    </script>
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"Outfit"', 'sans-serif'],
+                        logo: ['"League Spartan"', 'sans-serif'],
+                        tech: ['"Quicksand"', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            yellow: '#b9880e',
+                            goldLight: '#FFDE59',
+                            goldDark: '#8a6208',
+                            black: '#09090b',
+                        }
+                    },
+                    boxShadow: {
+                        'glass': '0 4px 24px 0 rgba(0,0,0,0.04)',
+                        'premium': '0 16px 50px -10px rgba(0,0,0,0.08)',
+                        'premium-card': '0 16px 50px -10px rgba(0, 0, 0, 0.08)',
+                        'glow': '0 0 20px rgba(185,136,14,0.18)',
+                        'glow-md': '0 0 35px rgba(185,136,14,0.28)',
+                        'glow-strong': '0 0 40px rgba(185,136,14,0.5)',
+                    },
+                    animation: {
+                        'slide-up': 'slideUp 0.9s cubic-bezier(0.16,1,0.3,1) forwards',
+                        'float': 'float 6s ease-in-out infinite',
+                        'fade-in': 'fadeIn 0.6s ease forwards',
+                        'shine-pulse': 'shinePulse 3s ease-in-out infinite',
+                    },
+                    keyframes: {
+                        slideUp: {
+                            '0%': { opacity: '0', transform: 'translateY(40px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' }
+                        },
+                        float: {
+                            '0%,100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-12px)' }
+                        },
+                        fadeIn: {
+                            '0%': { opacity: '0' },
+                            '100%': { opacity: '1' }
+                        },
+                        shinePulse: {
+                            '0%,100%': { opacity: '0.6' },
+                            '50%': { opacity: '1' }
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: #f9fafb; }
+        ::-webkit-scrollbar-thumb { background: #d1d5db; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #b9880e; }
+
+        .text-gold-shine {
+            background: linear-gradient(to right, #b9880e 20%, #FFDE59 50%, #b9880e 80%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-size: 200% auto;
+            animation: shine 4s linear infinite;
+        }
+        @keyframes shine { to { background-position: 200% center; } }
+
+        .bg-grid {
+            background-image: linear-gradient(rgba(185,136,14,0.04) 1px, transparent 1px),
+                              linear-gradient(90deg, rgba(185,136,14,0.04) 1px, transparent 1px);
+            background-size: 40px 40px;
+        }
+        .bg-dots {
+            background-image: radial-gradient(#b9880e 1.2px, transparent 1.2px);
+            background-size: 22px 22px;
+            opacity: 0.035;
+        }
+        .bg-tech-pattern {
+            background-image: radial-gradient(rgba(185,136,14,0.09) 1px, transparent 1px);
+            background-size: 24px 24px;
+        }
+
+        .lock-input {
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.1);
+            color: #b9880e;
+            font-family: 'League Spartan', sans-serif;
+            font-size: 1.5rem;
+            text-align: center;
+            outline: none;
+            transition: all 0.3s;
+            letter-spacing: 0.2em;
+            border-radius: 14px;
+        }
+        .lock-input:focus {
+            border-color: #b9880e;
+            background: rgba(255,255,255,0.08);
+            box-shadow: 0 0 20px rgba(185,136,14,0.25);
+        }
+        .lock-input::placeholder {
+            color: #52525b;
+            font-size: 0.85rem;
+            font-family: 'Outfit', sans-serif;
+            font-weight: 300;
+            letter-spacing: normal;
+        }
+
+        .reveal { opacity: 0; transform: translateY(30px); transition: all 0.8s cubic-bezier(0.16,1,0.3,1); }
+        .reveal.active { opacity: 1; transform: translateY(0); }
+
+        .service-card:hover { transform: translateY(-4px); box-shadow: 0 20px 40px -8px rgba(0,0,0,0.1); }
+        .service-card { transition: all 0.3s cubic-bezier(0.4,0,0.2,1); }
+
+        .accordion-content { max-height: 0; overflow: hidden; transition: max-height 0.45s cubic-bezier(0.4,0,0.2,1); }
+        .accordion-item.open .accordion-content { max-height: 700px; }
+        .accordion-item.open .acc-arrow { transform: rotate(180deg); }
+        .acc-arrow { transition: transform 0.3s; }
+
+        .premium-border-glow {
+            position: relative;
+            border-radius: 2rem;
+            padding: 2px;
+            background-color: #b9880e;
+            overflow: hidden;
+            box-shadow: 0 0 35px rgba(185,136,14,0.15);
+            transition: transform 0.3s cubic-bezier(0.4,0,0.2,1);
+        }
+        .premium-border-glow:hover { transform: scale(1.008); }
+        .premium-border-glow::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: conic-gradient(
+                from 0deg, 
+                transparent 0deg, 
+                transparent 175deg, 
+                rgba(255, 222, 89, 0.6) 178deg, 
+                #ffffff 180deg, 
+                rgba(255, 222, 89, 0.6) 182deg, 
+                transparent 185deg, 
+                transparent 360deg
+            );
+            animation: rotate-border 12s linear infinite;
+            z-index: 0;
+        }
+        @keyframes rotate-border {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        .premium-border-inner {
+            position: relative;
+            z-index: 1;
+            background-color: #ffffff;
+            border-radius: calc(2rem - 2px);
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+        }
+
+        .counter-num { font-variant-numeric: tabular-nums; }
+        details > summary { list-style: none; }
+        details > summary::-webkit-details-marker { display: none; }
+        
+        @media print {
+            #lock-screen, #navbar, #cta-float { display: none !important; }
+            .reveal { opacity: 1 !important; transform: none !important; }
+        }
+    </style>
+</head>
+<body class="bg-[#fafafa] text-gray-800 antialiased selection:bg-brand-yellow selection:text-white overflow-hidden h-screen" id="body-root">
+
+<!-- ===================== LOCK SCREEN ===================== -->
+<div id="lock-screen" class="fixed inset-0 z-[100] bg-[#09090b] flex flex-col items-center justify-center text-center p-4 transition-opacity duration-700 ease-out touch-none" style="overscroll-behavior: none;">
+    <div class="bg-grid absolute inset-0 opacity-10 pointer-events-none"></div>
+    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-brand-yellow/5 rounded-full blur-[100px] pointer-events-none"></div>
+
+    <!-- Logo -->
+    <div class="relative flex flex-col items-center mb-10 z-10">
+        <div class="relative flex items-baseline leading-none">
+            <span class="font-logo font-bold text-[5.5rem] md:text-[6rem] text-gold-shine lowercase tracking-[-0.05em] leading-none">vısıon</span>
+            <span class="absolute -right-5 top-4 text-[1.1rem] text-brand-yellow font-bold">®</span>
+        </div>
+        <span class="font-tech text-[1.1rem] font-bold text-zinc-500 lowercase -mt-4 ml-2.5 text-center w-full" style="letter-spacing:0.53em;">tecnologia</span>
+    </div>
+
+    <div class="w-full max-w-sm space-y-5 z-10">
+        <div class="space-y-1.5">
+            <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-brand-yellow/30 bg-brand-yellow/10 mb-3">
+                <i data-lucide="lock" class="w-3.5 h-3.5 text-brand-yellow"></i>
+                <span class="text-brand-yellow text-[10px] font-bold uppercase tracking-widest">Documento Restrito</span>
+            </div>
+            <h2 class="text-white font-bold text-2xl">Projeto de Acesso e Automação</h2>
+            <p class="text-zinc-400 text-sm">Sandra & Responsável Técnico · Farmácia de Manipulação Moema</p>
+        </div>
+
+        <div>
+            <!-- SENHAS ACEITAS: SANDRA2026, MOEMA, VISION -->
+            <input type="password" id="password-input" class="lock-input w-full py-4 px-4" placeholder="SENHA DE ACESSO" autocomplete="off" onkeydown="if(event.key==='Enter') checkPassword()">
+            <p id="error-msg" class="text-red-400 text-xs mt-2 hidden">
+                <span class="flex items-center justify-center gap-1"><i data-lucide="x-circle" class="w-4 h-4"></i> Credencial inválida. Tente novamente.</span>
+            </p>
+        </div>
+
+        <button onclick="checkPassword()" class="w-full bg-brand-yellow hover:bg-brand-goldLight text-black font-bold py-4 rounded-2xl transition-all shadow-glow flex items-center justify-center gap-2 group relative overflow-hidden">
+            <div class="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-300 rounded-2xl"></div>
+            <i data-lucide="shield-check" class="w-5 h-5 relative z-10"></i>
+            <span class="relative z-10 text-sm uppercase tracking-widest">Acessar Proposta Técnica</span>
+            <i data-lucide="arrow-right" class="w-4 h-4 relative z-10 group-hover:translate-x-1 transition-transform"></i>
+        </button>
+
+        <p class="text-zinc-600 text-xs">Av. Moaci, 492 - Moema · Válido por 15 dias · Vision Tecnologia © 2026</p>
+    </div>
+</div>
+
+<!-- ===================== NAVBAR ===================== -->
+<nav id="navbar" class="fixed w-full z-50 top-0 bg-white/90 backdrop-blur-xl border-b border-gray-200/50 shadow-sm transition-all duration-300">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-between h-20 items-center">
+            <div class="flex flex-col items-center justify-center cursor-pointer" onclick="window.scrollTo(0,0)">
+                <div class="relative flex items-baseline leading-none">
+                    <span class="font-logo font-bold text-[2.6rem] text-gold-shine lowercase tracking-[-0.05em] leading-none">vısıon</span>
+                    <span class="absolute -right-2.5 top-1.5 text-[0.6rem] text-brand-yellow font-bold">®</span>
+                </div>
+                <span class="font-tech text-[0.6rem] font-bold text-gray-400 lowercase -mt-2 ml-1.5" style="letter-spacing:0.53em;">tecnologia</span>
+            </div>
+            <div class="hidden md:flex items-center space-x-7 text-xs font-semibold text-gray-500 uppercase tracking-wider">
+                <a href="#diagnostico" class="hover:text-brand-yellow transition-colors">Diagnóstico Clínico</a>
+                <a href="#solucoes" class="hover:text-brand-yellow transition-colors">Tecnologia</a>
+                <a href="#investimento" class="hover:text-brand-yellow transition-colors">Investimento</a>
+                <a href="#faq" class="hover:text-brand-yellow transition-colors">FAQ do Doutor</a>
+            </div>
+            <div class="flex items-center gap-4">
+                <button onclick="window.print()" class="text-gray-400 hover:text-brand-yellow transition-colors flex items-center gap-1.5" title="Salvar em PDF">
+                    <i data-lucide="download" class="w-4 h-4"></i>
+                    <span class="text-[10px] font-bold uppercase tracking-widest hidden sm:block">PDF</span>
+                </button>
+                <a href="#investimento" class="bg-zinc-900 text-white px-5 py-2.5 rounded-full text-[10px] font-bold uppercase tracking-widest hover:bg-brand-yellow hover:text-black transition-all shadow-md">
+                    Ver Opções
+                </a>
+            </div>
+        </div>
+    </div>
+</nav>
+
+<!-- ===================== HERO COM VÍDEO ===================== -->
+<header class="pt-32 pb-20 lg:pt-40 relative overflow-hidden bg-white">
+    <div class="absolute inset-0 bg-tech-pattern pointer-events-none"></div>
+    <div class="absolute right-0 top-0 -translate-y-1/4 translate-x-1/4 w-[800px] h-[800px] bg-brand-yellow/5 rounded-full blur-[120px] pointer-events-none"></div>
+    
+    <div class="max-w-7xl mx-auto px-4 relative z-10">
+        <div class="flex flex-col lg:flex-row items-center gap-12 lg:gap-16">
+            
+            <!-- Coluna Texto -->
+            <div class="w-full lg:w-1/2 text-center lg:text-left animate-slide-up">
+                <div class="inline-flex items-center gap-2 px-5 py-2 rounded-full border border-brand-yellow/30 bg-brand-yellow/5 text-brand-yellow text-[10px] font-bold uppercase tracking-widest mb-8 mx-auto lg:mx-0 shadow-sm">
+                    <i data-lucide="shield" class="w-4 h-4"></i>
+                    ENGENHARIA DE ACESSO CORPORATIVO & CLÍNICAS
+                </div>
+                
+                <h1 class="text-4xl md:text-5xl lg:text-6xl font-extrabold text-gray-900 leading-[1.05] tracking-tight mb-6">
+                    Acesso inteligente e porta automática <br>
+                    <span class="text-gold-shine">no padrão que a farmácia exige.</span>
+                </h1>
+                
+                <h2 class="text-base md:text-lg text-gray-500 max-w-xl mx-auto lg:mx-0 font-medium mt-6 leading-relaxed">
+                    <strong>Sandra e Doutor</strong>, estruturamos a engenharia para o imóvel da <strong>Av. Moaci, 492 (Moema)</strong>. Unimos o Reconhecimento Facial IP com vídeo na calçada à automação suave da porta de vidro, garantindo fluxo seguro e sem contato manual para clientes e equipe.
+                </h2>
+            </div>
+
+            <!-- Coluna Mockup de Notebook com Vídeo Vision -->
+            <div class="w-full lg:w-1/2 mt-4 lg:mt-0 reveal animate-slide-up" style="animation-delay: 200ms;">
+                <div class="relative w-full max-w-lg mx-auto group z-10 mt-4">
+                    <div class="relative w-full aspect-video bg-black border-[6px] md:border-[10px] border-zinc-800 rounded-t-[1rem] md:rounded-t-[1.5rem] overflow-hidden shadow-2xl">
+                        <video id="vision-video" class="w-full h-full object-cover cursor-pointer opacity-90" autoplay muted loop playsinline>
+                            <source src="https://res.cloudinary.com/dptcuckhf/video/upload/v1771711323/Vict%C3%B3ria_-_Vision_gdqnrk.mp4" type="video/mp4">
+                        </video>
+                        
+                        <div id="unmute-overlay" class="absolute inset-0 bg-black/50 backdrop-blur-sm flex flex-col items-center justify-center cursor-pointer transition-opacity duration-500 z-30 hover:bg-black/40">
+                            <div class="bg-brand-yellow text-black font-bold px-6 py-3 md:px-8 md:py-4 rounded-full flex items-center gap-2 md:gap-3 shadow-glow animate-pulse transform group-hover:scale-105 transition-all">
+                                <i data-lucide="volume-2" class="w-4 h-4 fill-black"></i>
+                                <span class="text-[10px] font-bold tracking-wide uppercase">Clique para Ouvir Apresentação</span>
+                            </div>
+                        </div>
+                        <div class="absolute top-1.5 md:top-2 left-1/2 -translate-x-1/2 w-1.5 h-1.5 md:w-2 md:h-2 bg-zinc-950 rounded-full z-20"></div>
+                    </div>
+                    <div class="relative w-[114%] -ml-[7%] h-3 md:h-5 bg-gradient-to-b from-zinc-300 to-zinc-400 rounded-b-xl md:rounded-b-2xl shadow-[0_20px_40px_rgba(0,0,0,0.5)] flex justify-center border-t border-zinc-200">
+                        <div class="w-1/5 h-1.5 md:h-2 bg-zinc-300 rounded-b-md shadow-inner"></div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Floating Quick Stats -->
+        <div class="mt-16 lg:mt-24 grid grid-cols-2 md:grid-cols-4 gap-5 max-w-4xl mx-auto reveal">
+            <div class="bg-white rounded-2xl p-6 shadow-glass border border-gray-100 text-center hover:border-brand-yellow/40 transition-all animate-float" style="animation-delay:0s;">
+                <div class="w-10 h-10 bg-brand-yellow/10 rounded-xl flex items-center justify-center mx-auto mb-3">
+                    <i data-lucide="scan-face" class="w-5 h-5 text-brand-yellow"></i>
+                </div>
+                <div class="text-3xl font-extrabold text-gray-900">0.2s</div>
+                <div class="text-xs text-gray-500 font-medium mt-1 uppercase tracking-wider">Acesso Facial Instantâneo</div>
+            </div>
+            <div class="bg-white rounded-2xl p-6 shadow-glass border border-gray-100 text-center hover:border-brand-yellow/40 transition-all animate-float" style="animation-delay:0.8s;">
+                <div class="w-10 h-10 bg-brand-yellow/10 rounded-xl flex items-center justify-center mx-auto mb-3">
+                    <i data-lucide="sparkles" class="w-5 h-5 text-brand-yellow"></i>
+                </div>
+                <div class="text-3xl font-extrabold text-gray-900">100%</div>
+                <div class="text-xs text-gray-500 font-medium mt-1 uppercase tracking-wider">Sem Toque no Vidro</div>
+            </div>
+            <div class="bg-white rounded-2xl p-6 shadow-glass border border-gray-100 text-center hover:border-brand-yellow/40 transition-all animate-float" style="animation-delay:0.4s;">
+                <div class="w-10 h-10 bg-brand-yellow/10 rounded-xl flex items-center justify-center mx-auto mb-3">
+                    <i data-lucide="monitor" class="w-5 h-5 text-brand-yellow"></i>
+                </div>
+                <div class="text-3xl font-extrabold text-gray-900">Touch</div>
+                <div class="text-xs text-gray-500 font-medium mt-1 uppercase tracking-wider">Terminal TVIP na Recepção</div>
+            </div>
+            <div class="bg-white rounded-2xl p-6 shadow-glass border border-gray-100 text-center hover:border-brand-yellow/40 transition-all animate-float" style="animation-delay:1.2s;">
+                <div class="w-10 h-10 bg-brand-yellow/10 rounded-xl flex items-center justify-center mx-auto mb-3">
+                    <i data-lucide="battery-charging" class="w-5 h-5 text-brand-yellow"></i>
+                </div>
+                <div class="text-3xl font-extrabold text-gray-900">Nobreak</div>
+                <div class="text-xs text-gray-500 font-medium mt-1 uppercase tracking-wider">Operação na Falta de Luz</div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- ===================== DIAGNÓSTICO DO CENÁRIO ===================== -->
+<section id="diagnostico" class="py-28 bg-gradient-to-b from-gray-50 to-white border-y border-gray-200/60 relative">
+    <div class="max-w-7xl mx-auto px-4">
+        <div class="text-center mb-16 reveal active">
+            <span class="text-brand-yellow font-bold uppercase tracking-widest text-xs">Pente-Fino de Engenharia</span>
+            <h2 class="text-3xl md:text-5xl font-bold text-gray-900 mt-3 leading-tight">Os 3 pontos críticos analisados<br class="hidden md:block">na Farmácia da Av. Moaci</h2>
+            <p class="text-gray-500 mt-5 max-w-3xl mx-auto text-lg leading-relaxed">
+                Farmácia de manipulação exige assepsia, fluxo ágil de matérias-primas e controle rigoroso de quem entra. Avaliamos o recuo externo da calçada e o trilho de vidro interno para eliminar retrabalho e riscos de segurança.
+            </p>
+        </div>
+
+        <div class="grid md:grid-cols-3 gap-8 reveal active">
+            <!-- Card 1 -->
+            <div class="bg-white rounded-[2rem] p-8 shadow-premium border border-zinc-200/80 relative overflow-hidden group hover:-translate-y-1 hover:border-brand-yellow/40 transition-all duration-300 flex flex-col text-left">
+                <div class="absolute top-0 right-0 w-32 h-32 bg-brand-yellow/5 rounded-full blur-3xl transition-colors"></div>
+                <div class="w-14 h-14 bg-zinc-900 border border-brand-yellow/20 rounded-2xl flex items-center justify-center mb-6 relative z-10 shadow-sm">
+                    <i data-lucide="users" class="w-7 h-7 text-brand-yellow"></i>
+                </div>
+                <h3 class="text-xl font-bold text-gray-900 mb-3 relative z-10">A Limitação do Interfone Comum</h3>
+                <p class="text-gray-600 text-sm mb-6 relative z-10 leading-relaxed flex-1">
+                    <strong>O Problema:</strong> Se instalássemos apenas um interfone comum na rua, a recepção teria que interromper o atendimento aos clientes a cada 5 minutos para atender e abrir a porta manualmente para funcionários e entregadores.
+                </p>
+                <div class="mt-auto p-5 bg-zinc-950 rounded-xl border border-brand-yellow/25 relative z-10 shadow-inner">
+                    <p class="text-xs text-brand-yellow leading-relaxed mb-2 font-bold uppercase tracking-wider flex items-center gap-1.5">
+                        <i data-lucide="shield-check" class="w-3.5 h-3.5"></i> Padrão Vision Tecnologia:
+                    </p>
+                    <ul class="space-y-1.5 text-xs text-zinc-300">
+                        <li class="flex items-start gap-1.5"><i data-lucide="check" class="w-3.5 h-3.5 text-brand-yellow shrink-0 mt-0.5"></i> <strong>Leitor Facial Intelbras</strong> no batente da porta de enrolar.</li>
+                        <li class="flex items-start gap-1.5"><i data-lucide="check" class="w-3.5 h-3.5 text-brand-yellow shrink-0 mt-0.5"></i> A equipe bate o rosto e entra direto. Clientes tocam e chamam em vídeo na recepção.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Card 2 -->
+            <div class="bg-white rounded-[2rem] p-8 shadow-premium border border-zinc-200/80 relative overflow-hidden group hover:-translate-y-1 hover:border-brand-yellow/40 transition-all duration-300 flex flex-col text-left">
+                <div class="absolute top-0 right-0 w-32 h-32 bg-brand-yellow/5 rounded-full blur-3xl transition-colors"></div>
+                <div class="w-14 h-14 bg-zinc-900 border border-brand-yellow/20 rounded-2xl flex items-center justify-center mb-6 relative z-10 shadow-sm">
+                    <i data-lucide="panel-left-close" class="w-7 h-7 text-brand-yellow"></i>
+                </div>
+                <h3 class="text-xl font-bold text-gray-900 mb-3 relative z-10">A Porta de Vidro de Correr</h3>
+                <p class="text-gray-600 text-sm mb-6 relative z-10 leading-relaxed flex-1">
+                    <strong>O Problema:</strong> Como a folha é de vidro temperado de correr (deslizante), fechadura a pilha tradicional ou eletroímã comum ficam com acabamento grosseiro e perdem a retenção por esforço lateral de cisalhamento.
+                </p>
+                <div class="mt-auto p-5 bg-zinc-950 rounded-xl border border-brand-yellow/25 relative z-10 shadow-inner">
+                    <p class="text-xs text-brand-yellow leading-relaxed mb-2 font-bold uppercase tracking-wider flex items-center gap-1.5">
+                        <i data-lucide="shield-check" class="w-3.5 h-3.5"></i> Padrão Vision Tecnologia:
+                    </p>
+                    <ul class="space-y-1.5 text-xs text-zinc-300">
+                        <li class="flex items-start gap-1.5"><i data-lucide="check" class="w-3.5 h-3.5 text-brand-yellow shrink-0 mt-0.5"></i> <strong>Opção 1:</strong> Automatizador Deslizante PPA com pinças especiais para vidro.</li>
+                        <li class="flex items-start gap-1.5"><i data-lucide="check" class="w-3.5 h-3.5 text-brand-yellow shrink-0 mt-0.5"></i> <strong>Opção 2:</strong> Fechadura Solenoide própria para travamento em vidro.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Card 3 -->
+            <div class="bg-white rounded-[2rem] p-8 shadow-premium border border-zinc-200/80 relative overflow-hidden group hover:-translate-y-1 hover:border-brand-yellow/40 transition-all duration-300 flex flex-col text-left">
+                <div class="absolute top-0 right-0 w-32 h-32 bg-brand-yellow/5 rounded-full blur-3xl transition-colors"></div>
+                <div class="w-14 h-14 bg-zinc-900 border border-brand-yellow/20 rounded-2xl flex items-center justify-center mb-6 relative z-10 shadow-sm">
+                    <i data-lucide="shield-alert" class="w-7 h-7 text-brand-yellow"></i>
+                </div>
+                <h3 class="text-xl font-bold text-gray-900 mb-3 relative z-10">Segurança Noturna & Rota de Fuga</h3>
+                <p class="text-gray-600 text-sm mb-6 relative z-10 leading-relaxed flex-1">
+                    <strong>O Problema:</strong> Motores de porta de correr sozinhos apenas movimentam a folha; sem trava dedicada, qualquer pessoa empurra o vidro à noite. Além disso, se faltar luz, a porta não pode prender ninguém dentro.
+                </p>
+                <div class="mt-auto p-5 bg-zinc-950 rounded-xl border border-brand-yellow/25 relative z-10 shadow-inner">
+                    <p class="text-xs text-brand-yellow leading-relaxed mb-2 font-bold uppercase tracking-wider flex items-center gap-1.5">
+                        <i data-lucide="shield-check" class="w-3.5 h-3.5"></i> Padrão Vision Tecnologia:
+                    </p>
+                    <ul class="space-y-1.5 text-xs text-zinc-300">
+                        <li class="flex items-start gap-1.5"><i data-lucide="check" class="w-3.5 h-3.5 text-brand-yellow shrink-0 mt-0.5"></i> Trava eletromecânica de bloqueio integrada + sensor anti-esmagamento.</li>
+                        <li class="flex items-start gap-1.5"><i data-lucide="check" class="w-3.5 h-3.5 text-brand-yellow shrink-0 mt-0.5"></i> Nobreak de baterias dedicado para garantir abertura imediata de emergência.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ===================== VITRINE TECNOLÓGICA ===================== -->
+<section id="solucoes" class="py-28 bg-[#f8f9fa] border-b border-gray-200/60 relative overflow-hidden">
+    <div class="max-w-7xl mx-auto px-4 relative z-10">
+        
+        <div class="text-center mb-20 reveal active">
+            <span class="text-brand-yellow font-bold uppercase tracking-widest text-xs">Equipamentos Homologados</span>
+            <h2 class="text-3xl md:text-5xl font-bold text-gray-900 mt-3">Tecnologia Corporativa Homologada</h2>
+            <p class="text-gray-500 mt-4 max-w-2xl mx-auto text-lg">
+                Equipamentos de alto desempenho das marcas líderes Intelbras e PPA com proteção nobreak contra oscilações de energia em Moema.
+            </p>
+        </div>
+
+        <div class="grid lg:grid-cols-2 gap-8 reveal active">
+            
+            <!-- Card 1: Facial Intelbras -->
+            <div class="bg-white rounded-[2rem] p-6 md:p-8 border border-gray-200 shadow-sm flex flex-col md:flex-row items-center md:items-start gap-8 relative overflow-hidden group hover:border-brand-yellow/40 hover:shadow-premium-card transition-all">
+                <div class="absolute top-0 right-0 w-48 h-48 bg-brand-yellow/10 rounded-full blur-3xl transition-transform group-hover:scale-150"></div>
+                
+                <div class="w-36 h-36 shrink-0 bg-white rounded-2xl p-4 flex flex-col items-center justify-center border border-gray-100 shadow-sm relative z-10">
+                    <img src="https://res.cloudinary.com/dptcuckhf/image/upload/v1770745467/ss-3532-mf-w-frontal_2_c82tua.png" alt="Leitor Facial Intelbras" class="w-full h-full object-contain transform group-hover:scale-105 transition-transform duration-500 drop-shadow-md">
+                </div>
+                
+                <div class="flex-1 text-left relative z-10">
+                    <div class="inline-flex items-center gap-2 px-3 py-1 bg-white border border-brand-yellow/30 text-brand-goldDark rounded-full text-[10px] font-bold uppercase tracking-widest mb-3">
+                        <i data-lucide="scan-face" class="w-3 h-3"></i> Controle de Acesso & Interfonia
+                    </div>
+                    <h3 class="font-bold text-gray-900 text-xl md:text-2xl mb-3">Controlador de Acesso Facial Intelbras</h3>
+                    <ul class="space-y-2.5 text-xs text-gray-600">
+                        <li class="flex items-start gap-2"><i data-lucide="check" class="w-3.5 h-3.5 text-brand-yellow shrink-0 mt-0.5"></i> <strong>Reconhecimento Ultra Rápido:</strong> Libera a portinhola externa para a equipe em fração de segundo mesmo com máscara ou óculos.</li>
+                        <li class="flex items-start gap-2"><i data-lucide="check" class="w-3.5 h-3.5 text-brand-yellow shrink-0 mt-0.5"></i> <strong>Câmera com Vídeo Porteiro:</strong> Visitantes e entregadores tocam no botão físico e chamam diretamente o monitor interno da recepção.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Card 2: Terminal Interno Touch Intelbras -->
+            <div class="bg-white rounded-[2rem] p-6 md:p-8 border border-gray-200 shadow-sm flex flex-col md:flex-row items-center md:items-start gap-8 relative overflow-hidden group hover:border-brand-yellow/40 hover:shadow-premium-card transition-all">
+                <div class="absolute top-0 right-0 w-48 h-48 bg-brand-yellow/10 rounded-full blur-3xl transition-transform group-hover:scale-150"></div>
+                
+                <div class="w-36 h-36 shrink-0 bg-white rounded-2xl p-4 flex flex-col items-center justify-center border border-gray-100 shadow-sm relative z-10">
+                    <img src="https://res.cloudinary.com/dptcuckhf/image/upload/v1777408533/Terminal-de-video-IP-TVIP_2221_ynnumd.png" alt="Terminal de Vídeo Touch Intelbras" class="w-full h-full object-contain transform group-hover:scale-105 transition-transform duration-500 drop-shadow-md">
+                </div>
+                
+                <div class="flex-1 text-left relative z-10">
+                    <div class="inline-flex items-center gap-2 px-3 py-1 bg-white border border-brand-yellow/30 text-brand-goldDark rounded-full text-[10px] font-bold uppercase tracking-widest mb-3">
+                        <i data-lucide="monitor" class="w-3 h-3"></i> Recepção & Central de Atendimento
+                    </div>
+                    <h3 class="font-bold text-gray-900 text-xl md:text-2xl mb-3">Terminal Touch Screen Intelbras</h3>
+                    <ul class="space-y-2.5 text-xs text-gray-600">
+                        <li class="flex items-start gap-2"><i data-lucide="check" class="w-3.5 h-3.5 text-brand-yellow shrink-0 mt-0.5"></i> <strong>Tela Touch Screen 7":</strong> Imagem nítida de quem está na calçada, sem chiados ou falhas de áudio.</li>
+                        <li class="flex items-start gap-2"><i data-lucide="check" class="w-3.5 h-3.5 text-brand-yellow shrink-0 mt-0.5"></i> <strong>Abertura no Monitor:</strong> A recepcionista conversa e destrava o acesso com apenas um toque na tela.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Card 3: Automatizador PPA -->
+            <div class="bg-white rounded-[2rem] p-6 md:p-8 border border-gray-200 shadow-sm flex flex-col md:flex-row items-center md:items-start gap-8 relative overflow-hidden group hover:border-brand-yellow/40 hover:shadow-premium-card transition-all lg:col-span-2">
+                <div class="absolute top-0 right-0 w-48 h-48 bg-brand-yellow/10 rounded-full blur-3xl transition-transform group-hover:scale-150"></div>
+                
+                <div class="w-36 h-36 shrink-0 bg-white rounded-2xl p-4 flex items-center justify-center border border-gray-100 shadow-sm relative z-10">
+                    <img src="https://res.cloudinary.com/dptcuckhf/image/upload/v1793901509/confiavel-para_todo-tipo-de-porta-pd-300_xi5619.webp" alt="Automatizador de Portas Deslizantes PPA" class="w-full h-full object-contain transform group-hover:scale-105 transition-transform duration-500 drop-shadow-md">
+                </div>
+                
+                <div class="flex-1 text-left relative z-10">
+                    <div class="inline-flex items-center gap-2 px-3 py-1 bg-brand-yellow/10 border border-brand-yellow/30 text-brand-goldDark rounded-full text-[10px] font-bold uppercase tracking-widest mb-3">
+                        <i data-lucide="sliders" class="w-3 h-3"></i> Automação Hospitalar & Comercial
+                    </div>
+                    <h3 class="font-bold text-gray-900 text-xl md:text-2xl mb-3">Sistema de Porta Deslizante Automatizada PPA</h3>
+                    <ul class="space-y-2 text-xs text-gray-600">
+                        <li class="flex items-start gap-2"><i data-lucide="check" class="w-3.5 h-3.5 text-brand-yellow shrink-0 mt-0.5"></i> <strong>Kit Completo PPA para Vidro Temperado:</strong> Acompanha pinças de aço (mordentes) que abraçam a folha sem necessitar de nova furação mecânica.</li>
+                        <li class="flex items-start gap-2"><i data-lucide="check" class="w-3.5 h-3.5 text-brand-yellow shrink-0 mt-0.5"></i> <strong>Segurança Anti-Esmagamento:</strong> Fotocélulas ativas no vão impedem que o vidro feche sobre qualquer pessoa.</li>
+                        <li class="flex items-start gap-2"><i data-lucide="check" class="w-3.5 h-3.5 text-brand-yellow shrink-0 mt-0.5"></i> <strong>Trava Eletromecânica Noturna:</strong> Garante que a porta fique fisicamente trancada e inviolável fora do horário de funcionamento.</li>
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<!-- ===================== VÍDEOS DEMONSTRATIVOS (DUPLA VITRINE) ===================== -->
+<section class="py-24 bg-[#fafafa] border-b border-gray-200/60">
+    <div class="max-w-5xl mx-auto px-4 text-center reveal">
+        <div class="inline-block bg-brand-yellow/10 text-brand-yellow text-xs font-bold px-4 py-1.5 rounded-full uppercase tracking-widest mb-4 border border-brand-yellow/20">
+            Veja em Funcionamento
+        </div>
+        <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-3">A Tecnologia em Ação Prática</h2>
+        <p class="text-gray-500 mb-14 max-w-xl mx-auto text-sm md:text-base leading-relaxed">
+            Confira a agilidade do Reconhecimento Facial integrado ao monitor touch e o deslocamento suave da porta automática para a farmácia.
+        </p>
+        
+        <div class="grid md:grid-cols-2 gap-8 lg:gap-12 items-stretch max-w-4xl mx-auto">
+            
+            <!-- Vídeo 1: Facial + Monitor Touch Intelbras -->
+            <div class="bg-white rounded-[2rem] p-6 lg:p-8 border border-gray-200/80 shadow-premium flex flex-col items-center justify-between transition-all hover:shadow-2xl">
+                <!-- Mockup de Smartphone Discreto -->
+                <div class="relative w-full max-w-[260px] sm:max-w-[280px] aspect-[9/16] rounded-[2.2rem] p-1.5 bg-zinc-950 border-[3px] border-zinc-700/50 shadow-xl overflow-hidden group">
+                    <!-- Notch discreto -->
+                    <div class="absolute top-2.5 left-1/2 -translate-x-1/2 w-16 h-3 bg-zinc-900 rounded-full z-20 flex items-center justify-center">
+                        <div class="w-1.5 h-1.5 bg-zinc-700 rounded-full"></div>
+                    </div>
+
+                    <!-- Tela do Vídeo -->
+                    <div class="relative w-full h-full rounded-[1.8rem] overflow-hidden bg-black flex items-center justify-center">
+                        <video id="video-facial" class="w-full h-full object-cover opacity-95 cursor-pointer" autoplay muted loop playsinline>
+                            <source src="https://res.cloudinary.com/dptcuckhf/video/upload/v1779472606/YTDown_Shorts_Controle-de-acesso-facial-Intelbras-SS35_Media_1dvh4e3mdL8_001_1080p_smpeil.mp4" type="video/mp4">
+                        </video>
+                        
+                        <div id="overlay-facial" class="absolute inset-0 bg-black/45 backdrop-blur-sm flex flex-col items-center justify-center cursor-pointer transition-opacity duration-400 z-30 hover:bg-black/35">
+                            <div class="bg-brand-yellow text-black font-bold px-5 py-2.5 rounded-full flex items-center gap-2 shadow-glow animate-pulse transform group-hover:scale-105 transition-all">
+                                <i data-lucide="volume-2" class="w-4 h-4 fill-black"></i>
+                                <span class="text-[10px] font-bold tracking-wide uppercase">Clique para Ouvir</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mt-6 text-center w-full">
+                    <span class="inline-block px-3 py-1 bg-brand-yellow/10 border border-brand-yellow/20 text-brand-goldDark rounded-full text-[10px] font-bold uppercase tracking-widest mb-2">
+                        Controle de Acesso Intelbras
+                    </span>
+                    <h3 class="text-base md:text-lg font-bold text-gray-900">Leitor Facial & Monitor de Atendimento</h3>
+                    <p class="text-xs text-gray-500 mt-1.5 leading-relaxed max-w-xs mx-auto">
+                        Leitura facial ágil na calçada e chamada em vídeo na recepção para liberação no monitor touch com um toque.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Vídeo 2: Automatizador PPA (100% Silencioso) -->
+            <div class="bg-white rounded-[2rem] p-6 lg:p-8 border border-gray-200/80 shadow-premium flex flex-col items-center justify-between transition-all hover:shadow-2xl">
+                <!-- Mockup de Smartphone Discreto -->
+                <div class="relative w-full max-w-[260px] sm:max-w-[280px] aspect-[9/16] rounded-[2.2rem] p-1.5 bg-zinc-950 border-[3px] border-zinc-700/50 shadow-xl overflow-hidden group">
+                    <!-- Notch discreto -->
+                    <div class="absolute top-2.5 left-1/2 -translate-x-1/2 w-16 h-3 bg-zinc-900 rounded-full z-20 flex items-center justify-center">
+                        <div class="w-1.5 h-1.5 bg-zinc-700 rounded-full"></div>
+                    </div>
+
+                    <!-- Tela do Vídeo -->
+                    <div class="relative w-full h-full rounded-[1.8rem] overflow-hidden bg-black flex items-center justify-center">
+                        <video id="video-ppa" class="w-full h-full object-cover opacity-95 cursor-pointer" autoplay muted loop playsinline>
+                            <source src="https://res.cloudinary.com/dptcuckhf/video/upload/v1793901515/YTDown.com_Shorts_Media_aMl7niRz4SI_Automatizador-para-Portas-Sociais-Deslizante-Existentes-PPA-gilbertoppa_001_480p_lm52if.mp4" type="video/mp4">
+                        </video>
+                        
+                        <div id="overlay-ppa" class="absolute inset-0 bg-black/45 backdrop-blur-sm flex flex-col items-center justify-center cursor-pointer transition-opacity duration-400 z-30 hover:bg-black/35">
+                            <div class="bg-brand-yellow text-black font-bold px-5 py-2.5 rounded-full flex items-center gap-2 shadow-glow animate-pulse transform group-hover:scale-105 transition-all">
+                                <i data-lucide="play" class="w-4 h-4 fill-black"></i>
+                                <span class="text-[10px] font-bold tracking-wide uppercase">Ver Demonstração</span>
+                            </div>
+                            <span class="text-[9px] text-zinc-300 font-medium mt-2 bg-black/60 px-2.5 py-0.5 rounded-full">Vídeo sem áudio</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mt-6 text-center w-full">
+                    <span class="inline-block px-3 py-1 bg-brand-yellow/10 border border-brand-yellow/20 text-brand-goldDark rounded-full text-[10px] font-bold uppercase tracking-widest mb-2">
+                        Automação de Porta PPA
+                    </span>
+                    <h3 class="text-base md:text-lg font-bold text-gray-900">Porta Social Deslizante em Vidro</h3>
+                    <p class="text-xs text-gray-500 mt-1.5 leading-relaxed max-w-xs mx-auto">
+                        Trilho motorizado PPA adaptado à folha de vidro temperado existente, com deslocamento suave, contínuo e silencioso.
+                    </p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<!-- ===================== PROPOSTA COMERCIAL & COMPARAÇÃO ===================== -->
+<section id="investimento" class="py-28 bg-[#fafafa] relative overflow-hidden">
+    <div class="absolute inset-0 bg-dots pointer-events-none z-0"></div>
+    <div class="max-w-6xl mx-auto px-4 relative z-10">
+
+        <div class="text-center mb-12 reveal">
+            <span class="text-brand-yellow font-bold uppercase tracking-widest text-xs">Comparativo Oficial para o Doutor</span>
+            <h2 class="text-3xl md:text-5xl font-bold text-gray-900 mt-3">Investimento do Projeto</h2>
+            <p class="text-gray-500 mt-4 max-w-2xl mx-auto text-base md:text-lg leading-relaxed">
+                Mapeamos duas abordagens técnicas completas. Ambas garantem o Facial na rua e a tela Touch na recepção. O que muda é o nível de automação mecânica da porta de vidro.
+            </p>
+        </div>
+
+        <!-- SELETOR DE CENÁRIO (OPÇÃO 1 vs OPÇÃO 2) -->
+        <div class="flex justify-center mb-8 reveal">
+            <div class="bg-white p-1.5 rounded-full inline-flex border border-gray-200 shadow-sm">
+                <button id="btn-opt1" onclick="switchOption(1)" class="px-6 py-3 rounded-full text-xs md:text-sm font-bold bg-brand-yellow text-black shadow-md transition-all flex items-center gap-2">
+                    <i data-lucide="sparkles" class="w-4 h-4"></i>
+                    <span>Opção 1: Automação Total (PPA)</span>
+                </button>
+                <button id="btn-opt2" onclick="switchOption(2)" class="px-6 py-3 rounded-full text-xs md:text-sm font-bold bg-transparent text-gray-500 hover:text-gray-700 transition-all flex items-center gap-2">
+                    <i data-lucide="lock" class="w-4 h-4"></i>
+                    <span>Opção 2: Abertura Remota (Sem Motor)</span>
+                </button>
+            </div>
+        </div>
+
+        <!-- TOGGLE DE PAGAMENTO (PIX vs CARTÃO) -->
+        <div class="flex justify-center mb-12 reveal">
+            <div class="bg-gray-100 p-1.5 rounded-full inline-flex border border-gray-200 shadow-inner">
+                <button id="btn-pix" onclick="togglePayment(true)" class="px-6 py-2 rounded-full text-xs font-bold bg-brand-yellow text-black shadow-sm transition-all">
+                    À Vista no PIX
+                </button>
+                <button id="btn-card" onclick="togglePayment(false)" class="px-6 py-2 rounded-full text-xs font-bold bg-transparent text-gray-500 hover:text-gray-700 transition-all">
+                    Parcelado no Cartão (12x)
+                </button>
+            </div>
+        </div>
+
+        <!-- CARD PRINCIPAL DINÂMICO -->
+        <div class="reveal items-stretch max-w-3xl mx-auto">
+            <div class="premium-border-glow group relative z-20 shadow-premium">
+                <div class="premium-border-inner flex flex-col relative overflow-hidden bg-white p-8 md:p-12">
+                    <div class="absolute top-0 left-0 w-full h-1.5 bg-gradient-to-r from-brand-yellow to-brand-goldLight rounded-t-[calc(2rem-2px)]"></div>
+                    <div class="absolute top-0 right-0 w-64 h-64 bg-brand-yellow/5 rounded-full blur-[80px] pointer-events-none"></div>
+                    
+                    <!-- Cabeçalho da Opção Selecionada -->
+                    <div class="mb-6 mt-2 text-center relative z-10">
+                        <span id="badge-option" class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-black text-brand-yellow text-[10px] font-bold uppercase tracking-widest mb-4 shadow-md">
+                            ⭐ Padrão Hospitalar / Clínica Classe A
+                        </span>
+                        <h3 id="title-option" class="text-3xl md:text-4xl font-extrabold text-gray-900 leading-tight">
+                            Automação Total da Porta Deslizante
+                        </h3>
+                        <p id="desc-option" class="text-sm text-gray-500 mt-3 font-medium max-w-xl mx-auto leading-relaxed">
+                            A porta corre e abre sozinha com o Leitor Facial ou pelo monitor da recepção. Na saída interna, o sensor detecta aproximação e abre sem ninguém tocar no vidro.
+                        </p>
+                    </div>
+
+                    <!-- Bloco de Preço -->
+                    <div class="bg-[#faf8f0] border border-[#e8dcc4] rounded-[1.5rem] p-6 md:p-8 w-full flex flex-col items-center relative shadow-sm mb-8 z-10">
+                        <p class="text-[11px] font-bold text-brand-goldDark uppercase tracking-widest mb-3" id="label-price">Investimento Estimado Oficial</p>
+
+                        <!-- Preço PIX -->
+                        <div id="price-pix-block" class="flex flex-col items-center justify-center w-full transition-opacity duration-300">
+                            <div class="flex items-baseline justify-center gap-1.5 mb-6">
+                                <span class="text-2xl font-bold text-gray-400">R$</span>
+                                <span class="text-4xl md:text-6xl font-extrabold text-[#111827] tracking-tighter leading-none" id="pix-value-display">12.490<span class="text-2xl md:text-3xl text-gray-400">,00</span></span>
+                            </div>
+                            
+                            <div class="w-full space-y-3 max-w-md">
+                                <div class="bg-white border border-gray-200 rounded-xl p-4 flex flex-col items-center justify-center relative overflow-hidden shadow-sm">
+                                    <div class="absolute top-0 left-0 w-1.5 h-full bg-brand-yellow rounded-l-xl"></div>
+                                    <span class="text-[9px] font-bold uppercase tracking-widest text-brand-goldDark mb-1">Sinal 50% (Aprovação / Vistoria & Insumos)</span>
+                                    <span class="font-extrabold text-gray-900 text-base" id="pix-half1">R$ 6.245,00</span>
+                                </div>
+                                <div class="bg-white border border-gray-200 rounded-xl p-4 flex flex-col items-center justify-center relative overflow-hidden shadow-sm">
+                                    <div class="absolute top-0 left-0 w-1.5 h-full bg-brand-goldDark rounded-l-xl"></div>
+                                    <span class="text-[9px] font-bold uppercase tracking-widest text-brand-goldDark mb-1">Finalização (Entrega & Treinamento da Equipe)</span>
+                                    <span class="font-extrabold text-gray-900 text-base" id="pix-half2">R$ 6.245,00</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Preço Cartão -->
+                        <div id="price-card-block" class="hidden flex-col items-center justify-center w-full transition-opacity duration-300 opacity-0">
+                            <span class="text-xs font-bold text-brand-goldDark uppercase tracking-widest mb-1">Parcelado em até</span>
+                            <div class="flex items-baseline justify-center gap-1.5 mb-4">
+                                <span class="text-2xl md:text-3xl font-bold text-[#111827]">12x de R$</span>
+                                <span class="text-4xl md:text-6xl font-extrabold text-[#111827] tracking-tighter leading-none" id="card-parcel-display">1.249<span class="text-2xl md:text-4xl text-gray-400">,00</span></span>
+                            </div>
+                            
+                            <div class="w-full space-y-3 max-w-md">
+                                <div class="bg-white border border-gray-200 rounded-xl p-4 flex items-center justify-between shadow-sm text-left relative overflow-hidden">
+                                    <div class="absolute top-0 left-0 w-1.5 h-full bg-zinc-300 rounded-l-xl"></div>
+                                    <div class="pl-2">
+                                        <span class="block text-[9px] uppercase font-bold text-gray-500 mb-0.5">Total Financiado em 12x no Cartão</span>
+                                        <span class="text-sm font-extrabold text-gray-900" id="card-total-display">R$ 14.986,75</span>
+                                    </div>
+                                    <div class="bg-zinc-50 border border-zinc-200 p-2 rounded-lg">
+                                        <i data-lucide="credit-card" class="w-4 h-4 text-brand-yellow"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="mt-4 flex items-center gap-2 text-[11px] text-zinc-600 bg-zinc-50 px-4 py-2 rounded-lg border border-zinc-200 max-w-md text-center">
+                            <i data-lucide="alert-circle" class="w-4 h-4 shrink-0 text-brand-goldDark"></i>
+                            <span>Estimativa oficial sujeita à vistoria técnica presencial para validação da viga de sustentação.</span>
+                        </div>
+                    </div>
+
+                    <!-- Lista de Itens Inclusos na Opção Ativa -->
+                    <div id="scope-list" class="space-y-3.5 mb-8 text-left w-full max-w-md mx-auto relative z-10 text-xs md:text-sm text-gray-700">
+                        <!-- Gerado dinamicamente via JS -->
+                    </div>
+
+                    <!-- Botão de Ação -->
+                    <a id="btn-cta-whatsapp" href="https://wa.me/5511930816696?text=Olá%20Gabriel,%20analisamos%20a%20proposta%20da%20farmácia%20na%20Moaci%20(Opção%201%20-%20PD%20300)%20e%20gostaríamos%20de%20agendar%20a%20visita%20técnica." target="_blank" class="w-full bg-brand-yellow hover:bg-brand-goldLight text-black font-bold py-4 rounded-xl flex items-center justify-center gap-2 transition-all shadow-glow text-xs md:text-sm uppercase tracking-widest mt-auto hover:-translate-y-0.5 relative z-10">
+                        <i data-lucide="calendar-check" class="w-5 h-5"></i>
+                        <span id="btn-cta-text">Validar com o Doutor & Agendar Vistoria</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ===================== O PADRÃO VISION DE ENGENHARIA ===================== -->
+<section id="diferenciais" class="py-24 bg-white relative border-b border-gray-100">
+    <div class="max-w-6xl mx-auto px-4">
+         <div class="text-center mb-16 reveal active">
+             <span class="text-brand-yellow font-bold uppercase tracking-widest text-xs">Padrão Ouro Vision</span>
+             <h2 class="text-3xl font-bold text-gray-900 mt-2 mb-4">Engenharia sem Gambiarras</h2>
+             <p class="text-gray-500 max-w-2xl mx-auto text-base">
+                 Automação de portas e controle de acesso exigem precisão mecânica milimétrica e parâmetros de segurança rígidos.
+             </p>
+         </div>
+
+         <div class="grid md:grid-cols-3 gap-8 reveal mb-16 active">
+             <!-- Card 1 -->
+             <div class="p-8 bg-[#fbfbfb] rounded-2xl border border-gray-100 shadow-sm hover:shadow-lg transition-all group text-left">
+                 <div class="w-14 h-14 bg-brand-black text-white rounded-xl flex items-center justify-center text-2xl mb-6 group-hover:bg-brand-yellow group-hover:text-brand-black transition-colors">
+                    📐
+                 </div>
+                 <h3 class="text-xl font-bold text-gray-900 mb-3">Vistoria e Alinhamento a Laser</h3>
+                 <p class="text-gray-600 text-sm leading-relaxed">
+                     Antes de bater o martelo na furação, checamos o prumo da viga superior e o peso real da folha de vidro. Garantimos que o automatizador opere macio e sem sobrecarga mecânica.
+                 </p>
+             </div>
+
+             <!-- Card 2 -->
+             <div class="p-8 bg-[#fbfbfb] rounded-2xl border border-gray-100 shadow-sm hover:shadow-lg transition-all group text-left">
+                <div class="w-14 h-14 bg-brand-black text-white rounded-xl flex items-center justify-center text-2xl mb-6 group-hover:bg-brand-yellow group-hover:text-brand-black transition-colors">
+                    ⚡
+                </div>
+                <h3 class="text-xl font-bold text-gray-900 mb-3">Proteção Contra Quedas de Energia</h3>
+                <p class="text-gray-600 text-sm leading-relaxed">
+                    Instalamos fontes e módulos de bateria nobreak. Se faltar luz na região de Moema, a fechadura não desliga de forma desprotegida e o sistema mantém o ciclo de abertura de emergência.
+                </p>
+            </div>
+
+            <!-- Card 3 -->
+            <div class="p-8 bg-[#fbfbfb] rounded-2xl border border-gray-100 shadow-sm hover:shadow-lg transition-all group text-left">
+                <div class="w-14 h-14 bg-brand-black text-white rounded-xl flex items-center justify-center text-2xl mb-6 group-hover:bg-brand-yellow group-hover:text-brand-black transition-colors">
+                    🧑‍🏫
+                </div>
+                <h3 class="text-xl font-bold text-gray-900 mb-3">Treinamento Presencial da Equipe</h3>
+                <p class="text-gray-600 text-sm leading-relaxed">
+                    Cadastramos as faces da equipe de farmacêuticas e ensinamos a recepcionista a operar o monitor TVIP, alternar modos de fechamento e gerenciar visitantes sem fricção.
+                </p>
+            </div>
+         </div>
+    </div>
+</section>
+
+<!-- ===================== FAQ DO DOUTOR ===================== -->
+<section id="faq" class="py-24 bg-[#f8f9fa] border-t border-gray-200/60">
+    <div class="max-w-3xl mx-auto px-4">
+        <div class="text-center mb-14 reveal">
+            <span class="text-brand-yellow font-bold uppercase tracking-widest text-xs">Tire as Dúvidas</span>
+            <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mt-3">Perguntas Frequentes do Doutor</h2>
+            <p class="text-gray-500 text-sm mt-3">Respostas diretas sobre o funcionamento e prazos na Av. Moaci.</p>
+        </div>
+        
+        <div class="space-y-4 reveal" id="accordion">
+            
+            <div class="accordion-item bg-white rounded-2xl border border-gray-200 shadow-sm overflow-hidden transition-all hover:border-brand-yellow/50">
+                <button onclick="toggleAccordion(this)" class="w-full flex items-center justify-between p-6 text-left font-bold text-gray-900 focus:outline-none">
+                    <span>A Vision precisa furar o vidro temperado da porta existente?</span>
+                    <i data-lucide="chevron-down" class="w-5 h-5 text-brand-yellow acc-arrow shrink-0"></i>
+                </button>
+                <div class="accordion-content text-left">
+                    <p class="px-6 pb-6 text-gray-600 text-sm leading-relaxed">
+                        Não! Vidro temperado já pronto não pode ser furado, pois quebraria instantaneamente. Nós utilizamos um conjunto de <strong>pinças mordentes de alta pressão</strong> especificamente projetadas para vidro de 10mm. Elas abraçam o topo da folha com perfeição, sem necessidade de furar ou trocar o vidro.
+                    </p>
+                </div>
+            </div>
+
+            <div class="accordion-item bg-white rounded-2xl border border-gray-200 shadow-sm overflow-hidden transition-all hover:border-brand-yellow/50">
+                <button onclick="toggleAccordion(this)" class="w-full flex items-center justify-between p-6 text-left font-bold text-gray-900 focus:outline-none">
+                    <span>A porta automática fica vulnerável a arrombamento à noite?</span>
+                    <i data-lucide="chevron-down" class="w-5 h-5 text-brand-yellow acc-arrow shrink-0"></i>
+                </button>
+                <div class="accordion-content text-left">
+                    <p class="px-6 pb-6 text-gray-600 text-sm leading-relaxed">
+                        De maneira alguma. Na nossa composição da Opção 1 está incluída a <strong>trava eletromecânica de bloqueio dedicada do sistema PPA</strong>. Quando o sistema entra em modo noturno, a trava é engatada com pino mecânico. Ninguém consegue empurrar ou abrir a porta pelo lado de fora.
+                    </p>
+                </div>
+            </div>
+
+            <div class="accordion-item bg-white rounded-2xl border border-gray-200 shadow-sm overflow-hidden transition-all hover:border-brand-yellow/50">
+                <button onclick="toggleAccordion(this)" class="w-full flex items-center justify-between p-6 text-left font-bold text-gray-900 focus:outline-none">
+                    <span>Se faltar luz, o que acontece com a porta e com o leitor facial?</span>
+                    <i data-lucide="chevron-down" class="w-5 h-5 text-brand-yellow acc-arrow shrink-0"></i>
+                </button>
+                <div class="accordion-content text-left">
+                    <p class="px-6 pb-6 text-gray-600 text-sm leading-relaxed">
+                        Incluímos bancos de bateria nobreak na alimentação. No caso do Leitor Facial e do Eletroímã, o nobreak mantém o controle de acesso ativo. No caso da porta automática PPA, o sistema opera de forma segura permitindo a abertura suave de rota de fuga de acordo com as normas dos Bombeiros.
+                    </p>
+                </div>
+            </div>
+
+            <div class="accordion-item bg-white rounded-2xl border border-gray-200 shadow-sm overflow-hidden transition-all hover:border-brand-yellow/50">
+                <button onclick="toggleAccordion(this)" class="w-full flex items-center justify-between p-6 text-left font-bold text-gray-900 focus:outline-none">
+                    <span>Por que precisamos da vistoria técnica no local antes do fechamento?</span>
+                    <i data-lucide="chevron-down" class="w-5 h-5 text-brand-yellow acc-arrow shrink-0"></i>
+                </button>
+                <div class="accordion-content text-left">
+                    <p class="px-6 pb-6 text-gray-600 text-sm leading-relaxed">
+                        A vistoria técnica é a segurança do Doutor e da Vision. Precisamos validar a altura livre acima da porta de vidro (são necessários 15 a 20 cm para fixação do trilho do motor) e a solidez da viga estrutural. Isso impede qualquer surpresa de obra ou custo extra após o início do trabalho.
+                    </p>
+                </div>
+            </div>
+
+            <div class="accordion-item bg-white rounded-2xl border border-gray-200 shadow-sm overflow-hidden transition-all hover:border-brand-yellow/50">
+                <button onclick="toggleAccordion(this)" class="w-full flex items-center justify-between p-6 text-left font-bold text-gray-900 focus:outline-none">
+                    <span>Qual a diferença prática da Opção 2 (R$ 5.890) para a Opção 1 (R$ 12.490)?</span>
+                    <i data-lucide="chevron-down" class="w-5 h-5 text-brand-yellow acc-arrow shrink-0"></i>
+                </button>
+                <div class="accordion-content text-left">
+                    <p class="px-6 pb-6 text-gray-600 text-sm leading-relaxed">
+                        Na <strong>Opção 1</strong>, você tem a experiência de clínica moderna com porta motorizada PPA: ninguém toca no vidro, o motor corre a folha suavemente ao bater o rosto ou acionar a recepção. Na <strong>Opção 2</strong>, a recepcionista aperta o botão touch no monitor, a trava elétrica solta com um bipe, mas a pessoa precisa empurrar a folha de vidro manualmente para entrar.
+                    </p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<!-- ===================== CTA FINAL ===================== -->
+<section class="py-28 bg-[#09090b] relative overflow-hidden">
+    <div class="bg-grid absolute inset-0 opacity-10 pointer-events-none z-0"></div>
+    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-brand-yellow/10 rounded-full blur-[100px] pointer-events-none"></div>
+    
+    <div class="max-w-4xl mx-auto px-4 text-center relative z-10 reveal">
+        <span class="text-brand-yellow font-bold uppercase tracking-widest text-xs mb-4 block">Decisão Executiva</span>
+        <h2 class="text-3xl md:text-5xl font-extrabold text-white leading-tight mb-6">
+            O padrão de segurança e sofisticação<br><span class="text-gold-shine">que a sua farmácia merece.</span>
+        </h2>
+        <p class="text-zinc-400 text-base md:text-lg mb-10 leading-relaxed max-w-2xl mx-auto">
+            Sandra, apresente esta proposta ao Doutor. Estamos prontos para realizar a vistoria técnica na Av. Moaci e colocar o cronograma de instalação em prioridade máxima.
+        </p>
+
+        <a href="https://wa.me/5511930816696?text=Olá%20Gabriel,%20alinhei%20com%20o%20doutor%20a%20proposta%20da%20farmácia%20em%20Moema%20e%20queremos%20agendar%20a%20visita%20técnica." target="_blank" class="inline-flex items-center gap-3 bg-brand-yellow hover:bg-brand-goldLight text-brand-black font-bold px-10 py-5 rounded-full transition-all shadow-glow-md text-sm uppercase tracking-widest transform hover:scale-[1.03]">
+            <i data-lucide="message-circle" class="w-5 h-5"></i>
+            Agendar Vistoria com o Gabriel
+            <i data-lucide="arrow-right" class="w-4 h-4 ml-1"></i>
+        </a>
+    </div>
+</section>
+
+<!-- ===================== FOOTER ===================== -->
+<footer class="bg-black py-16 text-center border-t border-zinc-900 group">
+    <div class="max-w-4xl mx-auto px-4">
+        
+        <div class="flex flex-col items-center justify-center leading-none opacity-40 group-hover:opacity-100 transition-opacity duration-500 cursor-default mb-10">
+            <div class="flex flex-col items-center">
+                <div class="relative flex items-baseline leading-none">
+                    <span class="font-logo font-bold text-[3.5rem] text-white lowercase tracking-[-0.05em] leading-none">vısıon</span>
+                    <span class="absolute -right-3.5 top-2.5 text-[0.75rem] text-brand-yellow font-bold">®</span>
+                </div>
+                <span class="font-tech text-[0.75rem] font-bold text-zinc-500 lowercase -mt-3 ml-1.5 text-center w-full" style="letter-spacing: 0.53em;">tecnologia</span>
+            </div>
+        </div>
+
+        <div class="text-zinc-500 text-xs md:text-sm leading-relaxed space-y-1 mb-8 opacity-75">
+            <p><strong>A/C Sandra & Responsável Técnico</strong> | Farmácia de Manipulação</p>
+            <p>Av. Moaci, 492 — Moema, São Paulo - SP (CEP: 04083-001)</p>
+            <p>Proposta Comercial de Engenharia | Emitida em Novembro de 2026</p>
+        </div>
+
+        <div class="inline-flex items-center justify-center gap-2 border border-zinc-800 bg-zinc-900/50 px-5 py-2.5 rounded-full mb-6 shadow-sm">
+            <i data-lucide="lock" class="w-3.5 h-3.5 text-brand-yellow"></i>
+            <span class="text-[10px] md:text-xs text-zinc-400 uppercase tracking-widest font-bold">Documento Corporativo Confidencial</span>
+        </div>
+        
+        <p class="text-[10px] text-zinc-700 uppercase tracking-widest font-bold mt-6">Vision Tecnologia — Controle de Acesso e Automação</p>
+    </div>
+</footer>
+
+<!-- WHATSAPP CTA FLUTUANTE -->
+<div id="cta-float" class="fixed bottom-6 right-6 z-40 hidden md:block opacity-0 translate-y-10 pointer-events-none transition-all duration-500">
+    <a href="https://wa.me/5511930816696?text=Olá%20Gabriel,%20gostaria%20de%20tirar%20uma%20dúvida%20sobre%20a%20proposta%20da%20farmácia%20em%20Moema." target="_blank" class="flex items-center gap-3 bg-brand-yellow text-black font-bold px-6 py-4 rounded-full shadow-glow-md hover:shadow-glow transition-all group">
+        <i data-lucide="message-circle" class="w-5 h-5"></i>
+        <span class="text-sm tracking-wide uppercase">Falar com o Gabriel</span>
+        <i data-lucide="arrow-right" class="w-4 h-4 group-hover:translate-x-1 transition-transform"></i>
+    </a>
+</div>
+
+<!-- ===================== SCRIPTS ===================== -->
+<script>
+    // INIT LUCIDE ICONS
+    lucide.createIcons();
+
+    // LOCK SCREEN
+    function checkPassword() {
+        const inputEl = document.getElementById('password-input');
+        const input = (inputEl.value || '').trim();
+        const errorMsg = document.getElementById('error-msg');
+        
+        // Senhas aceitas
+        const validPasswords = ['C', 'MOEMA', 'VISION', 'FARMACIA'];
+        if (validPasswords.includes(input.toUpperCase())) {
+            const lockScreen = document.getElementById('lock-screen');
+            lockScreen.style.opacity = '0';
+
+            // Clarity Event Tracking
+            if (window.clarity) {
+                window.clarity("consent");
+                window.clarity("identify", "sandra-moema", undefined, undefined, "Sandra (Farmácia Moema - PPA / Facial)");
+                window.clarity("set", "Proposta", "Projeto_Farmacia_Moema");
+                window.clarity("event", "Proposta_Desbloqueada");
+            }
+
+            // Alerta silencioso para a diretoria da Vision
+            fetch('https://api.staticforms.dev/submit', {
+                method: 'POST',
+                headers: { 
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json'
+                },
+                body: JSON.stringify({
+                    accessKey: "sf_077ej49gjha153gk3m6ceecf",
+                    subject: "🚨 ALERTA: Proposta Acessada (Sandra - Farmácia Moema)",
+                    name: "Sistema Vision",
+                    email: "diretoria@visionsp.com.br",
+                    message: "A Sandra e o Doutor acabaram de abrir a proposta de Moema!\n\n👤 Cliente: Sandra (Farmácia de Manipulação)\n📍 Endereço: Av. Moaci, 492\n🔑 Senha Utilizada: " + input + "\n🕒 Horário: " + new Date().toLocaleString('pt-BR')
+                })
+            }).catch(error => console.log('Log registrado silenciosamente.'));
+
+            setTimeout(() => { 
+                lockScreen.style.display = 'none'; 
+                const htmlRoot = document.getElementById('html-root');
+                if(htmlRoot) {
+                    htmlRoot.classList.remove('overflow-hidden', 'h-screen');
+                    htmlRoot.classList.add('overflow-x-hidden');
+                }
+                document.body.classList.remove('overflow-hidden', 'h-screen');
+            }, 700);
+        } else {
+            errorMsg.classList.remove('hidden');
+            inputEl.style.borderColor = 'rgba(239,68,68,0.5)';
+            setTimeout(() => {
+                errorMsg.classList.add('hidden');
+                inputEl.style.borderColor = '';
+            }, 3000);
+        }
+    }
+
+    // BASE DE DADOS DOS DOIS CENÁRIOS COMERCIAIS
+    const optionsData = {
+        1: {
+            title: "Automação Total da Porta Deslizante (PPA)",
+            badge: "⭐ Padrão Hospitalar / Clínica Classe A",
+            desc: "A porta de vidro corre e abre sozinha, sem contato físico. O funcionário bate o rosto na calçada ou a recepcionista clica no monitor Touch. Na saída, o sensor superior abre automaticamente.",
+            valPix: 12490.00,
+            valCardTotal: 14986.75,
+            valCardParc: 1249.00,
+            ctaText: "Validar Opção 1 (PPA Motorizada) & Agendar Vistoria",
+            ctaLink: "https://wa.me/5511930816696?text=Olá%20Gabriel,%20analisamos%20a%20proposta%20da%20farmácia%20em%20Moema%20e%20gostamos%20da%20Opção%201%20(Porta%20Automática%20PPA).%20Vamos%20agendar%20a%20vistoria%20técnica.",
+            items: [
+                "1x Kit Automatizador Deslizante PPA (motor, central de comando, trilho estrutural 2.2m e correia)",
+                "1x Kit de Pinças / Mordentes de fixação para folha de vidro temperado (sem furar o vidro)",
+                "1x Trava Eletromecânica de Bloqueio dedicada PPA para fechamento noturno",
+                "1x Sensor de Presença para abertura touchless na saída interna",
+                "1x Sensor Fotocélula de Segurança anti-esmagamento no vão da porta",
+                "1x Seletor de Funções (aberto, automático, somente saída, bloqueado)",
+                "1x Módulo Nobreak com Baterias de emergência para o automatizador",
+                "1x Leitor Facial Intelbras com Vídeo Porteiro (na calçada)",
+                "1x Fechadura Eletroímã Intelbras para travamento da portinhola de aço externa",
+                "1x Terminal de Vídeo Touch Intelbras para a bancada da recepção",
+                "1x Fonte Nobreak com Bateria Selada (para o facial e portinhola)",
+                "Infraestrutura de rede, conduletes, switch e cabos homologados",
+                "Mão de obra técnica especializada em automação e parametrização de acesso"
+            ]
+        },
+        2: {
+            title: "Sistema de Controle & Abertura Remota (Sem Motor)",
+            badge: "🔒 Eficiência de Acesso & Economia de Implantação",
+            desc: "Mantém toda a inteligência do Leitor Facial na calçada e da tela Touch na recepção. Na porta de vidro de correr, instalamos uma fechadura solenoide de pino. A recepcionista destrava pelo monitor e o cliente desliza a folha manualmente.",
+            valPix: 5890.00,
+            valCardTotal: 7067.41,
+            valCardParc: 589.00,
+            ctaText: "Validar Opção 2 (Abertura Remota) & Agendar Vistoria",
+            ctaLink: "https://wa.me/5511930816696?text=Olá%20Gabriel,%20analisamos%20a%20proposta%20da%20farmácia%20em%20Moema%20e%20gostamos%20da%20Opção%202%20(Abertura%20Remota).%20Vamos%20agendar%20a%20vistoria%20técnica.",
+            items: [
+                "1x Fechadura Solenoide Fail Safe com acabamento premium para porta de vidro de correr",
+                "1x Leitor Facial Intelbras com Vídeo Porteiro IP (na calçada)",
+                "1x Fechadura Eletroímã Intelbras para travamento da portinhola de aço externa",
+                "1x Terminal de Vídeo Touch Intelbras para atendimento na recepção",
+                "1x Botoeira de Saída em Inox para liberação interna ágil",
+                "1x Fonte Nobreak com Bateria Selada para segurança na falta de energia",
+                "Infraestrutura de rede, fiação, canaletas de proteção e conectores blindados",
+                "Mão de obra técnica de instalação, fixação de suportes e treinamento presencial"
+            ]
+        }
+    };
+
+    let currentOption = 1;
+    let isPix = true;
+
+    function formatNumber(val) {
+        return val.toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+    }
+
+    function renderPricing() {
+        const data = optionsData[currentOption];
+        const pixValDisplay = document.getElementById('pix-value-display');
+        const pixHalf1 = document.getElementById('pix-half1');
+        const pixHalf2 = document.getElementById('pix-half2');
+        const cardParcelDisplay = document.getElementById('card-parcel-display');
+        const cardTotalDisplay = document.getElementById('card-total-display');
+
+        const half = data.valPix / 2;
+
+        pixValDisplay.innerHTML = `${Math.floor(data.valPix).toLocaleString('pt-BR')}<span class="text-2xl md:text-3xl text-gray-400">,00</span>`;
+        pixHalf1.textContent = `R$ ${formatNumber(half)}`;
+        pixHalf2.textContent = `R$ ${formatNumber(half)}`;
+
+        cardParcelDisplay.innerHTML = `${Math.floor(data.valCardParc).toLocaleString('pt-BR')}<span class="text-2xl md:text-4xl text-gray-400">,${(data.valCardParc % 1).toFixed(2).split('.')[1] || '00'}</span>`;
+        cardTotalDisplay.textContent = `R$ ${formatNumber(data.valCardTotal)}`;
+
+        document.getElementById('title-option').textContent = data.title;
+        document.getElementById('badge-option').textContent = data.badge;
+        document.getElementById('desc-option').textContent = data.desc;
+        document.getElementById('btn-cta-text').textContent = data.ctaText;
+        document.getElementById('btn-cta-whatsapp').setAttribute('href', data.ctaLink);
+
+        // Renderizar lista de escopo
+        const scopeListEl = document.getElementById('scope-list');
+        scopeListEl.innerHTML = '';
+        data.items.forEach(item => {
+            const row = document.createElement('div');
+            row.className = 'flex items-start gap-3';
+            row.innerHTML = `<i data-lucide="check-circle-2" class="w-4 h-4 text-brand-yellow shrink-0 mt-0.5"></i><p class="leading-relaxed">${item}</p>`;
+            scopeListEl.appendChild(row);
+        });
+
+        lucide.createIcons();
+    }
+
+    function switchOption(opt) {
+        if (currentOption === opt) return;
+        currentOption = opt;
+
+        const btn1 = document.getElementById('btn-opt1');
+        const btn2 = document.getElementById('btn-opt2');
+
+        if (opt === 1) {
+            btn1.classList.add('bg-brand-yellow', 'text-black', 'shadow-md');
+            btn1.classList.remove('bg-transparent', 'text-gray-500');
+            btn2.classList.remove('bg-brand-yellow', 'text-black', 'shadow-md');
+            btn2.classList.add('bg-transparent', 'text-gray-500');
+        } else {
+            btn2.classList.add('bg-brand-yellow', 'text-black', 'shadow-md');
+            btn2.classList.remove('bg-transparent', 'text-gray-500');
+            btn1.classList.remove('bg-brand-yellow', 'text-black', 'shadow-md');
+            btn1.classList.add('bg-transparent', 'text-gray-500');
+        }
+
+        renderPricing();
+        if (window.clarity) window.clarity("event", `Selecionou_Opcao_${opt}`);
+    }
+
+    function togglePayment(toPix) {
+        if (isPix === toPix) return;
+        isPix = toPix;
+
+        const btnPix = document.getElementById('btn-pix');
+        const btnCard = document.getElementById('btn-card');
+        const pixBlock = document.getElementById('price-pix-block');
+        const cardBlock = document.getElementById('price-card-block');
+
+        if(pixBlock) pixBlock.classList.add('opacity-0');
+        if(cardBlock) cardBlock.classList.add('opacity-0');
+
+        setTimeout(() => {
+            if (isPix) {
+                btnPix.classList.add('bg-brand-yellow', 'text-black');
+                btnPix.classList.remove('bg-transparent', 'text-gray-500');
+                btnCard.classList.remove('bg-brand-yellow', 'text-black');
+                btnCard.classList.add('bg-transparent', 'text-gray-500');
+
+                pixBlock.classList.remove('hidden');
+                cardBlock.classList.add('hidden');
+                setTimeout(() => pixBlock.classList.remove('opacity-0'), 20);
+            } else {
+                btnCard.classList.add('bg-brand-yellow', 'text-black');
+                btnCard.classList.remove('bg-transparent', 'text-gray-500');
+                btnPix.classList.remove('bg-brand-yellow', 'text-black');
+                btnPix.classList.add('bg-transparent', 'text-gray-500');
+
+                pixBlock.classList.add('hidden');
+                cardBlock.classList.remove('hidden');
+                cardBlock.classList.add('flex');
+                setTimeout(() => cardBlock.classList.remove('opacity-0'), 20);
+            }
+            lucide.createIcons();
+        }, 200);
+
+        if (window.clarity) window.clarity("event", isPix ? "Modalidade_PIX" : "Modalidade_Cartao");
+    }
+
+    // ACCORDION
+    function toggleAccordion(btn) {
+        const item = btn.parentElement;
+        const isOpen = item.classList.contains('open');
+        document.querySelectorAll('.accordion-item').forEach(i => i.classList.remove('open'));
+        if (!isOpen) item.classList.add('open');
+        lucide.createIcons();
+    }
+
+    // REVEAL ON SCROLL
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('active');
+            }
+        });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+    // SCROLL NAVBAR & CTA
+    window.addEventListener('scroll', () => {
+        const navbar = document.getElementById('navbar');
+        const ctaFloat = document.getElementById('cta-float');
+        
+        if (window.scrollY > 50) {
+            if(navbar) navbar.classList.add('shadow-md');
+        } else {
+            if(navbar) navbar.classList.remove('shadow-md');
+        }
+
+        if (window.scrollY > 400) {
+            if(ctaFloat) {
+                ctaFloat.classList.remove('hidden', 'opacity-0', 'translate-y-10', 'pointer-events-none');
+                ctaFloat.classList.add('opacity-100', 'translate-y-0');
+            }
+        } else {
+            if(ctaFloat) {
+                ctaFloat.classList.remove('opacity-100', 'translate-y-0');
+                ctaFloat.classList.add('opacity-0', 'translate-y-10', 'pointer-events-none');
+            }
+        }
+    });
+
+    // VIDEO UNMUTE CONTROLLERS
+    document.addEventListener("DOMContentLoaded", function() {
+        renderPricing();
+
+        const videoFacial = document.getElementById('video-facial');
+        const overlayFacial = document.getElementById('overlay-facial');
+        const videoPpa = document.getElementById('video-ppa');
+        const overlayPpa = document.getElementById('overlay-ppa');
+
+        // Pausar o outro vídeo quando um começar a tocar
+        if (videoFacial && videoPpa) {
+            videoFacial.addEventListener('play', function() {
+                if (!videoPpa.paused) {
+                    videoPpa.pause();
+                }
+            });
+
+            videoPpa.addEventListener('play', function() {
+                if (!videoFacial.paused) {
+                    videoFacial.pause();
+                }
+            });
+        }
+
+        // Vídeo 1: Facial (com áudio ativável)
+        if (videoFacial && overlayFacial) {
+            overlayFacial.addEventListener('click', function(e) {
+                e.stopPropagation();
+                if (videoPpa) videoPpa.pause();
+                videoFacial.muted = false;
+                videoFacial.loop = false;
+                videoFacial.currentTime = 0;
+                videoFacial.play();
+                overlayFacial.style.opacity = '0';
+                setTimeout(() => { overlayFacial.style.display = 'none'; }, 400);
+
+                if (window.clarity) {
+                    window.clarity("event", "Video_Assistido_video-facial");
+                }
+            });
+
+            videoFacial.addEventListener('click', function() {
+                if (overlayFacial.style.display === 'none') {
+                    if (videoFacial.paused) {
+                        if (videoPpa) videoPpa.pause();
+                        videoFacial.play();
+                    } else {
+                        videoFacial.pause();
+                    }
+                }
+            });
+        }
+
+        // Vídeo 2: Porta Deslizante PPA (estritamente SEM SOM)
+        if (videoPpa && overlayPpa) {
+            videoPpa.muted = true; // Garante sem som sempre
+
+            overlayPpa.addEventListener('click', function(e) {
+                e.stopPropagation();
+                if (videoFacial) videoFacial.pause();
+                videoPpa.muted = true; // Permanece estritamente mudo
+                videoPpa.loop = true;
+                videoPpa.currentTime = 0;
+                videoPpa.play();
+                overlayPpa.style.opacity = '0';
+                setTimeout(() => { overlayPpa.style.display = 'none'; }, 400);
+
+                if (window.clarity) {
+                    window.clarity("event", "Video_Assistido_video-ppa");
+                }
+            });
+
+            videoPpa.addEventListener('click', function() {
+                if (overlayPpa.style.display === 'none') {
+                    if (videoPpa.paused) {
+                        if (videoFacial) videoFacial.pause();
+                        videoPpa.play();
+                    } else {
+                        videoPpa.pause();
+                    }
+                }
+            });
+        }
+
+        // Vídeo da Apresentadora do Topo
+        function setupHeroVideo(videoId, overlayId) {
+            const video = document.getElementById(videoId);
+            const overlay = document.getElementById(overlayId);
+            if (video && overlay) {
+                overlay.addEventListener("click", function(e) {
+                    e.stopPropagation(); 
+                    if (videoFacial) videoFacial.pause();
+                    if (videoPpa) videoPpa.pause();
+                    video.muted = false;
+                    video.loop = false; 
+                    video.currentTime = 0;
+                    video.play();
+                    overlay.style.opacity = "0";
+                    setTimeout(() => { overlay.style.display = "none"; }, 500); 
+
+                    if (window.clarity) {
+                        window.clarity("event", "Video_Assistido_" + videoId);
+                    }
+                });
+                video.addEventListener("click", function() {
+                    if (overlay.style.display === "none") {
+                        if (video.paused) { 
+                            if (videoFacial) videoFacial.pause();
+                            if (videoPpa) videoPpa.pause();
+                            video.play(); 
+                        } else { 
+                            video.pause(); 
+                        }
+                    }
+                });
+            }
+        }
+
+        setupHeroVideo("vision-video", "unmute-overlay");
+    });
+</script>
+</body>
+</html>
