@@ -1,0 +1,1327 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth overflow-x-hidden" id="html-root">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projeto de Segurança Familiar | Paula – Vision Home</title>
+    <meta name="description" content="Projeto Executivo de Monitoramento Wi-Fi 6 com Áudio Bidirecional e Gravação Autônoma – Vision Tecnologia">
+    <meta name="theme-color" content="#b9880e">
+
+    <!-- Open Graph / Link Preview Tags (WhatsApp, Telegram, LinkedIn) -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Projeto de Segurança Familiar | Paula – Vision Home">
+    <meta property="og:description" content="8 Câmeras Wi-Fi 6 Intelbras com áudio bidirecional, gravação contínua 24h e instalação limpa sem quebrar a laje. Entrega até sexta-feira.">
+    <meta property="og:image" content="https://res.cloudinary.com/dptcuckhf/image/upload/v1772152427/C%C3%B3pia_de_LOGO_VISION_2025_cpcpuh.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:locale" content="pt_BR">
+
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Projeto de Segurança Familiar | Paula – Vision Home">
+    <meta name="twitter:description" content="Projeto Executivo de Monitoramento Wi-Fi 6 e Cuidado Familiar – Brooklin/Campo Belo, SP.">
+    <meta name="twitter:image" content="https://res.cloudinary.com/dptcuckhf/image/upload/v1772152427/C%C3%B3pia_de_LOGO_VISION_2025_cpcpuh.png">
+
+    <!-- Fonts & Tailwind CSS -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@700;800&family=Quicksand:wght@500;600;700&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <!-- Google Analytics 4 -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-KTGEL92B0F"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-KTGEL92B0F');
+    </script>
+
+    <!-- Microsoft Clarity -->
+    <script type="text/javascript">
+        (function(c,l,a,r,i,t,y){
+            c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+            t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+            y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+        })(window, document, "clarity", "script", "vifq10es5o");
+    </script>
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"Outfit"', 'sans-serif'],
+                        logo: ['"League Spartan"', 'sans-serif'],
+                        tech: ['"Quicksand"', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            yellow: '#b9880e',
+                            goldLight: '#FFDE59',
+                            goldDark: '#8a6208',
+                            black: '#09090b',
+                        }
+                    },
+                    boxShadow: {
+                        'glass': '0 4px 24px 0 rgba(0,0,0,0.04)',
+                        'premium': '0 16px 50px -10px rgba(0,0,0,0.08)',
+                        'premium-card': '0 16px 50px -10px rgba(0, 0, 0, 0.08)',
+                        'glow': '0 0 20px rgba(185,136,14,0.15)',
+                        'glow-md': '0 0 35px rgba(185,136,14,0.25)',
+                    },
+                    animation: {
+                        'slide-up': 'slideUp 0.9s cubic-bezier(0.16,1,0.3,1) forwards',
+                        'float': 'float 6s ease-in-out infinite',
+                        'fade-in': 'fadeIn 0.6s ease forwards',
+                        'shine-pulse': 'shinePulse 3s ease-in-out infinite',
+                    },
+                    keyframes: {
+                        slideUp: {
+                            '0%': { opacity: '0', transform: 'translateY(40px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' }
+                        },
+                        float: {
+                            '0%,100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-10px)' }
+                        },
+                        fadeIn: {
+                            '0%': { opacity: '0' },
+                            '100%': { opacity: '1' }
+                        },
+                        shinePulse: {
+                            '0%,100%': { opacity: '0.6' },
+                            '50%': { opacity: '1' }
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        /* Fallback base para evitar flash sem estilo */
+        *, *::before, *::after { box-sizing: border-box; }
+        body {
+            margin: 0;
+            font-family: 'Outfit', -apple-system, BlinkMacSystemFont, sans-serif;
+            background-color: #fafafa;
+            color: #1f2937;
+        }
+        img, video { max-width: 100%; height: auto; }
+        #lock-screen {
+            position: fixed;
+            inset: 0;
+            z-index: 100;
+            background-color: #09090b;
+            color: #ffffff;
+        }
+
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: #f9fafb; }
+        ::-webkit-scrollbar-thumb { background: #d1d5db; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #b9880e; }
+
+        .text-gold-shine {
+            background: linear-gradient(to right, #b9880e 20%, #FFDE59 50%, #b9880e 80%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-size: 200% auto;
+            animation: shine 4s linear infinite;
+        }
+        @keyframes shine { to { background-position: 200% center; } }
+
+        .bg-grid, .bg-tech-pattern {
+            background-image: linear-gradient(rgba(185,136,14,0.04) 1px, transparent 1px),
+                              linear-gradient(90deg, rgba(185,136,14,0.04) 1px, transparent 1px);
+            background-size: 40px 40px;
+        }
+        .bg-dots {
+            background-image: radial-gradient(#b9880e 1.2px, transparent 1.2px);
+            background-size: 22px 22px;
+            opacity: 0.035;
+        }
+
+        .lock-input {
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.12);
+            color: #b9880e;
+            font-family: 'League Spartan', sans-serif;
+            font-size: 1.5rem;
+            text-align: center;
+            outline: none;
+            transition: all 0.3s;
+            letter-spacing: 0.2em;
+            border-radius: 14px;
+        }
+        .lock-input:focus {
+            border-color: #b9880e;
+            background: rgba(255,255,255,0.08);
+            box-shadow: 0 0 20px rgba(185,136,14,0.25);
+        }
+        .lock-input::placeholder {
+            color: #71717a;
+            font-size: 0.85rem;
+            font-family: 'Outfit', sans-serif;
+            font-weight: 400;
+            letter-spacing: normal;
+        }
+
+        .reveal { opacity: 0; transform: translateY(28px); transition: all 0.8s cubic-bezier(0.16,1,0.3,1); }
+        .reveal.active { opacity: 1; transform: translateY(0); }
+
+        .service-card:hover { transform: translateY(-4px); box-shadow: 0 20px 40px -8px rgba(0,0,0,0.1); }
+        .service-card { transition: all 0.3s cubic-bezier(0.4,0,0.2,1); }
+
+        .tier-card { transition: all 0.3s cubic-bezier(0.4,0,0.2,1); }
+        .tier-card:hover { transform: scale(1.01); }
+
+        .accordion-content { max-height: 0; overflow: hidden; transition: max-height 0.45s cubic-bezier(0.4,0,0.2,1); }
+        .accordion-item.open .accordion-content { max-height: 600px; }
+        .accordion-item.open .acc-arrow { transform: rotate(180deg); }
+        .acc-arrow { transition: transform 0.3s; }
+
+        /* Borda Animada Premium (Opção 2 - Combo Blindado) */
+        .premium-border-glow {
+            position: relative;
+            border-radius: 1.25rem;
+            padding: 2px;
+            background-color: #b9880e;
+            overflow: hidden;
+            box-shadow: 0 0 35px rgba(185,136,14,0.15);
+            transition: transform 0.3s cubic-bezier(0.4,0,0.2,1);
+        }
+        @media (min-width: 640px) {
+            .premium-border-glow {
+                border-radius: 2rem;
+            }
+        }
+        .premium-border-glow:hover {
+            transform: scale(1.01);
+        }
+        .premium-border-glow::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: conic-gradient(
+                from 0deg, 
+                transparent 0deg, 
+                transparent 175deg, 
+                rgba(255, 222, 89, 0.65) 178deg, 
+                #ffffff 180deg, 
+                rgba(255, 222, 89, 0.65) 182deg, 
+                transparent 185deg, 
+                transparent 360deg
+            );
+            animation: rotate-border 12s linear infinite;
+            z-index: 0;
+        }
+        @keyframes rotate-border {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        .premium-border-inner {
+            position: relative;
+            z-index: 1;
+            background-color: #ffffff;
+            border-radius: calc(1.25rem - 2px);
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            padding: 0.625rem;
+            overflow: hidden;
+        }
+        @media (min-width: 640px) {
+            .premium-border-inner {
+                border-radius: calc(2rem - 2px);
+                padding: 1.5rem;
+            }
+        }
+        @media (min-width: 1024px) {
+            .premium-border-inner {
+                padding: 2.5rem;
+            }
+        }
+
+        .product-card {
+            background: #ffffff;
+            border: 1px solid #e5e7eb;
+            border-radius: 20px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+        .product-card:hover {
+            border-color: #b9880e;
+            box-shadow: 0 12px 32px rgba(185, 136, 14, 0.14);
+            transform: translateY(-4px);
+        }
+
+        @media print {
+            #lock-screen, #navbar, #cta-float { display: none !important; }
+            .reveal { opacity: 1 !important; transform: none !important; }
+        }
+
+        .counter-num { font-variant-numeric: tabular-nums; }
+    </style>
+</head>
+<body class="bg-[#fafafa] text-gray-800 antialiased selection:bg-brand-yellow selection:text-white h-screen overflow-hidden">
+
+<!-- ===================== LOCK SCREEN ===================== -->
+<div id="lock-screen" class="fixed inset-0 z-[100] bg-[#09090b] flex flex-col items-center justify-center text-center p-4 transition-opacity duration-700 ease-out touch-none" style="overscroll-behavior: none;">
+    <div class="bg-grid absolute inset-0 opacity-10 pointer-events-none"></div>
+    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-brand-yellow/5 rounded-full blur-[100px] pointer-events-none"></div>
+
+    <!-- Logo -->
+    <div class="relative flex flex-col items-center mb-10 z-10">
+        <div class="relative flex items-baseline leading-none">
+            <span class="font-logo font-bold text-[5.5rem] md:text-[6rem] text-gold-shine lowercase tracking-[-0.05em] leading-none">vısıon</span>
+            <span class="absolute -right-5 top-4 text-[1.1rem] text-brand-yellow font-bold">®</span>
+        </div>
+        <span class="font-tech text-[1.1rem] font-bold text-zinc-500 lowercase -mt-4 ml-2.5 text-center w-full" style="letter-spacing:0.53em;">home</span>
+    </div>
+
+    <div class="w-full max-w-sm space-y-5 z-10">
+        <div class="space-y-1.5">
+            <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-brand-yellow/30 bg-brand-yellow/10 mb-3">
+                <i data-lucide="lock" class="w-3.5 h-3.5 text-brand-yellow"></i>
+                <span class="text-brand-yellow text-[10px] font-bold uppercase tracking-widest">Proposta Confidencial</span>
+            </div>
+            <h2 class="text-white font-bold text-2xl">Paula — Brooklin / Campo Belo (SP)</h2>
+            <p class="text-zinc-400 text-sm">Projeto Executivo de Monitoramento &amp; Cuidado Familiar</p>
+        </div>
+
+        <div>
+            <!-- SENHA CONFIGURADA: PAULA2026 -->
+            <input type="password" id="password-input" class="lock-input w-full py-4 px-4" placeholder="SENHA DE ACESSO" autocomplete="off" onkeydown="if(event.key==='Enter') checkPassword()">
+            <p id="error-msg" class="text-red-400 text-xs mt-2 hidden">
+                <span class="flex items-center justify-center gap-1"><i data-lucide="x-circle" class="w-4 h-4"></i> Credencial inválida.</span>
+            </p>
+        </div>
+
+        <button onclick="checkPassword()" class="w-full bg-brand-yellow hover:bg-brand-goldLight text-black font-bold py-4 rounded-2xl transition-all shadow-glow flex items-center justify-center gap-2 group relative overflow-hidden">
+            <div class="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-300 rounded-2xl"></div>
+            <i data-lucide="shield-check" class="w-5 h-5 relative z-10"></i>
+            <span class="relative z-10 text-sm uppercase tracking-widest">Acessar Proposta</span>
+            <i data-lucide="arrow-right" class="w-4 h-4 relative z-10 group-hover:translate-x-1 transition-transform"></i>
+        </button>
+
+        <p class="text-zinc-600 text-xs">Documento restrito · Instalação programada até sexta-feira · Vision Tecnologia © 2026</p>
+    </div>
+</div>
+
+<!-- ===================== NAVBAR ===================== -->
+<nav id="navbar" class="fixed w-full z-50 top-0 bg-white/90 backdrop-blur-xl border-b border-gray-200/50 shadow-sm transition-all duration-300">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-between h-20 items-center">
+            <a href="#" class="flex flex-col items-center justify-center cursor-pointer">
+                <div class="relative flex items-baseline leading-none">
+                    <span class="font-logo font-bold text-[2.6rem] text-gold-shine lowercase tracking-[-0.05em] leading-none">vısıon</span>
+                    <span class="absolute -right-2.5 top-1.5 text-[0.6rem] text-brand-yellow font-bold">®</span>
+                </div>
+                <span class="font-tech text-[0.6rem] font-bold text-gray-400 lowercase -mt-2 ml-1.5" style="letter-spacing:0.53em;">home</span>
+            </a>
+            <div class="hidden md:flex items-center space-x-7 text-xs font-semibold text-gray-500 uppercase tracking-wider">
+                <a href="#diagnostico" class="hover:text-brand-yellow transition-colors">Diagnóstico</a>
+                <a href="#solucao" class="hover:text-brand-yellow transition-colors">Engenharia</a>
+                <a href="#hardware" class="hover:text-brand-yellow transition-colors">Equipamentos</a>
+                <a href="#investimento" class="hover:text-brand-yellow transition-colors">Investimento</a>
+            </div>
+            <a href="#investimento" class="bg-zinc-900 text-white px-5 py-2.5 rounded-full text-[10px] font-bold uppercase tracking-widest hover:bg-brand-yellow hover:text-black transition-all shadow-md">
+                Ver Proposta
+            </a>
+        </div>
+    </div>
+</nav>
+
+<!-- ===================== HERO ===================== -->
+<header class="pt-32 pb-20 lg:pt-40 relative overflow-hidden bg-white">
+    <div class="absolute inset-0 bg-tech-pattern pointer-events-none"></div>
+    <div class="absolute right-0 top-0 -translate-y-1/4 translate-x-1/4 w-[800px] h-[800px] bg-brand-yellow/5 rounded-full blur-[120px] pointer-events-none"></div>
+    
+    <div class="max-w-7xl mx-auto px-4 relative z-10">
+        <div class="flex flex-col lg:flex-row items-center gap-12 lg:gap-16">
+            
+            <!-- Coluna Texto -->
+            <div class="w-full lg:w-1/2 text-center lg:text-left animate-slide-up">
+                <div class="inline-flex items-center gap-2 px-5 py-2 rounded-full border border-brand-yellow/30 bg-brand-yellow/5 text-brand-yellow text-[10px] font-bold uppercase tracking-widest mb-8 mx-auto lg:mx-0">
+                    <i data-lucide="heart-handshake" class="w-4 h-4"></i>
+                    PROPOSTA EXECUTIVA #VH-2026-11 | ENTREGA ATÉ SEXTA-FEIRA
+                </div>
+                
+                <h1 class="text-4xl md:text-5xl lg:text-6xl font-extrabold text-gray-900 leading-[1.06] tracking-tight mb-6">
+                    Cuidado e presença.<br>
+                    <span class="text-gold-shine">24h por dia.</span>
+                </h1>
+                
+                <h2 class="text-base md:text-lg text-gray-500 max-w-xl mx-auto lg:mx-0 font-medium mt-6 leading-relaxed">
+                    Projeto Executivo: <strong>Paula (Casa Térrea — Brooklin / Campo Belo)</strong>. Sistema com 8 câmeras Wi-Fi 6 Intelbras com áudio bidirecional e gravação autônoma para toda a família acompanhar os cuidados com total tranquilidade — sem quebrar a laje.
+                </h2>
+            </div>
+
+            <!-- Coluna Vídeo -->
+            <div class="w-full lg:w-1/2 mt-4 lg:mt-0 reveal animate-slide-up" style="animation-delay: 200ms;">
+                <div class="relative w-full rounded-[2rem] shadow-[0_20px_50px_-10px_rgba(0,0,0,0.3)] border-[3px] border-brand-yellow/80 group hover:shadow-[0_25px_60px_-10px_rgba(0,0,0,0.4)] transition-shadow duration-500 bg-black">
+                    <div class="relative w-full aspect-video rounded-[1.8rem] overflow-hidden bg-black shadow-inner">
+                        <video id="vision-video" class="w-full h-full object-cover cursor-pointer opacity-90" autoplay muted loop playsinline>
+                            <source src="https://res.cloudinary.com/dptcuckhf/video/upload/v1771711323/Vict%C3%B3ria_-_Vision_gdqnrk.mp4" type="video/mp4">
+                            Seu navegador não suporta o formato de vídeo.
+                        </video>
+
+                        <div id="unmute-overlay" class="absolute inset-0 bg-black/50 backdrop-blur-sm flex flex-col items-center justify-center cursor-pointer transition-opacity duration-500 z-10 hover:bg-black/40">
+                            <div class="bg-brand-yellow text-black font-bold px-6 py-3 md:px-8 md:py-4 rounded-full flex items-center gap-2 md:gap-3 shadow-glow animate-pulse transform group-hover:scale-105 transition-all">
+                                <i data-lucide="volume-2" class="w-5 h-5 md:w-6 md:h-6"></i>
+                                <span class="text-xs md:text-sm tracking-wide uppercase">Clique para Ouvir</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Floating Quick Stats -->
+        <div class="mt-16 lg:mt-24 grid grid-cols-2 md:grid-cols-4 gap-5 max-w-4xl mx-auto reveal">
+            <div class="bg-white rounded-2xl p-6 shadow-glass border border-gray-100 text-center hover:border-brand-yellow/40 transition-all animate-float" style="animation-delay:0s;">
+                <div class="w-10 h-10 bg-brand-yellow/10 rounded-xl flex items-center justify-center mx-auto mb-3">
+                    <i data-lucide="camera" class="w-5 h-5 text-brand-yellow"></i>
+                </div>
+                <div class="text-3xl font-extrabold text-gray-900 counter-num" data-target="8">0</div>
+                <div class="text-xs text-gray-500 font-medium mt-1 uppercase tracking-wider">Câmeras Wi-Fi 6</div>
+            </div>
+            <div class="bg-white rounded-2xl p-6 shadow-glass border border-gray-100 text-center hover:border-brand-yellow/40 transition-all animate-float" style="animation-delay:0.8s;">
+                <div class="w-10 h-10 bg-brand-yellow/10 rounded-xl flex items-center justify-center mx-auto mb-3">
+                    <i data-lucide="mic" class="w-5 h-5 text-brand-yellow"></i>
+                </div>
+                <div class="text-3xl font-extrabold text-gray-900">2 Vias</div>
+                <div class="text-xs text-gray-500 font-medium mt-1 uppercase tracking-wider">Áudio Bidirecional</div>
+            </div>
+            <div class="bg-white rounded-2xl p-6 shadow-glass border border-gray-100 text-center hover:border-brand-yellow/40 transition-all animate-float" style="animation-delay:0.4s;">
+                <div class="w-10 h-10 bg-brand-yellow/10 rounded-xl flex items-center justify-center mx-auto mb-3">
+                    <i data-lucide="hard-drive" class="w-5 h-5 text-brand-yellow"></i>
+                </div>
+                <div class="text-3xl font-extrabold text-gray-900">24/7</div>
+                <div class="text-xs text-gray-500 font-medium mt-1 uppercase tracking-wider">Gravação Autônoma</div>
+            </div>
+            <div class="bg-white rounded-2xl p-6 shadow-glass border border-gray-100 text-center hover:border-brand-yellow/40 transition-all animate-float" style="animation-delay:1.2s;">
+                <div class="w-10 h-10 bg-brand-yellow/10 rounded-xl flex items-center justify-center mx-auto mb-3">
+                    <i data-lucide="calendar-check" class="w-5 h-5 text-brand-yellow"></i>
+                </div>
+                <div class="text-3xl font-extrabold text-gray-900">Sexta</div>
+                <div class="text-xs text-gray-500 font-medium mt-1 uppercase tracking-wider">Entrega Garantida</div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- ===================== DIAGNÓSTICO DO CENÁRIO ===================== -->
+<section id="diagnostico" class="py-28 bg-[#f8f9fa] border-y border-gray-200/60 relative">
+    <div class="max-w-7xl mx-auto px-4">
+        <div class="text-center mb-16 reveal">
+            <span class="text-brand-yellow font-bold uppercase tracking-widest text-xs">Raio-X da Casa Térrea</span>
+            <h2 class="text-3xl md:text-5xl font-bold text-gray-900 mt-3 leading-tight">O que desenhamos para <br class="hidden md:block">a rotina da família</h2>
+            <p class="text-gray-500 mt-5 max-w-3xl mx-auto text-lg leading-relaxed">
+                Acompanhar o bem-estar e o atendimento de uma pessoa querida exige imagem clara, áudio limpo e registro contínuo — com instalação rápida e sem transtornos na casa:
+            </p>
+        </div>
+
+        <div class="grid md:grid-cols-3 gap-8 reveal">
+            
+            <!-- Card 1 -->
+            <div class="bg-white rounded-[2rem] p-8 shadow-premium border border-gray-100 relative overflow-hidden group hover:-translate-y-1 transition-transform duration-300 flex flex-col">
+                <div class="absolute top-0 right-0 w-32 h-32 bg-amber-50 rounded-full blur-3xl transition-colors"></div>
+                <div class="w-14 h-14 bg-amber-50 rounded-2xl flex items-center justify-center mb-6 relative z-10">
+                    <i data-lucide="volume-2" class="w-7 h-7 text-brand-yellow"></i>
+                </div>
+                <h3 class="text-xl font-bold text-gray-900 mb-3 relative z-10">Visibilidade e Áudio Claro</h3>
+                <p class="text-gray-600 text-sm mb-6 relative z-10 leading-relaxed flex-1">
+                    <strong>A Necessidade:</strong> Mais do que apenas imagem, os filhos precisam acompanhar de perto o dia a dia, ouvir o que acontece nos cômodos e falar rapidamente com quem está na casa.
+                </p>
+                <div class="p-4 bg-emerald-50 rounded-xl border border-emerald-100 relative z-10 mt-auto">
+                    <p class="text-xs text-emerald-800 leading-relaxed flex items-start gap-2">
+                        <i data-lucide="check-circle-2" class="w-4 h-4 shrink-0 mt-0.5"></i>
+                        <span><strong>A Solução Vision:</strong> 8 câmeras Wi-Fi 6 Intelbras com áudio bidirecional e detecção inteligente de pessoas, compartilhadas no celular de todos os filhos.</span>
+                    </p>
+                </div>
+            </div>
+
+            <!-- Card 2 -->
+            <div class="bg-white rounded-[2rem] p-8 shadow-premium border border-gray-100 relative overflow-hidden group hover:-translate-y-1 transition-transform duration-300 flex flex-col">
+                <div class="absolute top-0 right-0 w-32 h-32 bg-blue-50 rounded-full blur-3xl transition-colors"></div>
+                <div class="w-14 h-14 bg-blue-50 rounded-2xl flex items-center justify-center mb-6 relative z-10">
+                    <i data-lucide="layers" class="w-7 h-7 text-blue-500"></i>
+                </div>
+                <h3 class="text-xl font-bold text-gray-900 mb-3 relative z-10">Teto de Laje Sem Quebra</h3>
+                <p class="text-gray-600 text-sm mb-6 relative z-10 leading-relaxed flex-1">
+                    <strong>O Cenário:</strong> Como o teto da casa térrea é de laje e vocês não querem quebrar paredes nem gerar poeira, toda a alimentação elétrica precisa ser conduzida com capricho visual.
+                </p>
+                <div class="p-4 bg-emerald-50 rounded-xl border border-emerald-100 relative z-10 mt-auto">
+                    <p class="text-xs text-emerald-800 leading-relaxed flex items-start gap-2">
+                        <i data-lucide="check-circle-2" class="w-4 h-4 shrink-0 mt-0.5"></i>
+                        <span><strong>A Solução Vision:</strong> Derivação elétrica a partir das tomadas mais próximas usando canaletas plásticas finas e discretas rentes ao canto da parede.</span>
+                    </p>
+                </div>
+            </div>
+
+            <!-- Card 3 -->
+            <div class="bg-white rounded-[2rem] p-8 shadow-premium border border-gray-100 relative overflow-hidden group hover:-translate-y-1 transition-transform duration-300 flex flex-col">
+                <div class="absolute top-0 right-0 w-32 h-32 bg-purple-50 rounded-full blur-3xl transition-colors"></div>
+                <div class="w-14 h-14 bg-purple-50 rounded-2xl flex items-center justify-center mb-6 relative z-10">
+                    <i data-lucide="shield-check" class="w-7 h-7 text-purple-500"></i>
+                </div>
+                <h3 class="text-xl font-bold text-gray-900 mb-3 relative z-10">Registro Contínuo Sem Falhas</h3>
+                <p class="text-gray-600 text-sm mb-6 relative z-10 leading-relaxed flex-1">
+                    <strong>O Risco Evitado:</strong> Cartões comuns queimam rápido com gravação 24h e, se a internet oscilar ou faltar luz, sistemas comuns param de gravar exatamente na hora crítica.
+                </p>
+                <div class="p-4 bg-emerald-50 rounded-xl border border-emerald-100 relative z-10 mt-auto">
+                    <p class="text-xs text-emerald-800 leading-relaxed flex items-start gap-2">
+                        <i data-lucide="check-circle-2" class="w-4 h-4 shrink-0 mt-0.5"></i>
+                        <span><strong>A Solução Vision:</strong> 8 cartões MicroSD WD Purple High Endurance gravando 24h direto em cada câmera, com opção de blindagem via Mesh + Nobreaks individuais.</span>
+                    </p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<!-- ===================== A ENGENHARIA DA SOLUÇÃO ===================== -->
+<section id="solucao" class="py-28 bg-white relative overflow-hidden">
+    <div class="absolute inset-0 bg-dots pointer-events-none"></div>
+    <div class="max-w-7xl mx-auto px-4 relative z-10">
+        <div class="text-center mb-16 reveal">
+            <span class="text-brand-yellow font-bold uppercase tracking-widest text-xs">O Ecossistema Vision</span>
+            <h2 class="text-3xl md:text-5xl font-bold text-gray-900 mt-3">Arquitetura de Monitoramento Familiar</h2>
+            <p class="text-gray-500 mt-4 max-w-2xl mx-auto text-lg">Pensada para instalação ágil até sexta-feira, operação intuitiva no aplicativo e máxima confiabilidade.</p>
+        </div>
+
+        <div class="grid md:grid-cols-2 gap-6 reveal">
+            <!-- Card 1 -->
+            <div class="service-card bg-white rounded-2xl p-8 border border-gray-100 shadow-glass">
+                <div class="w-12 h-12 bg-brand-yellow/10 rounded-2xl flex items-center justify-center mb-5">
+                    <i data-lucide="camera" class="w-6 h-6 text-brand-yellow"></i>
+                </div>
+                <h3 class="font-bold text-gray-900 text-xl mb-3">8 Pontos Estratégicos com Wi-Fi 6</h3>
+                <p class="text-gray-500 text-sm leading-relaxed mb-4"><strong>Câmeras Wi-Fi 6 Intelbras com IA.</strong> Conexão rápida e estável sem passar cabos de rede pela casa. Detecção inteligente de pessoas que filtra alertas falsos e entrega imagem nítida dia e noite.</p>
+            </div>
+
+            <!-- Card 2 -->
+            <div class="service-card bg-white rounded-2xl p-8 border border-gray-100 shadow-glass">
+                <div class="w-12 h-12 bg-brand-yellow/10 rounded-2xl flex items-center justify-center mb-5">
+                    <i data-lucide="mic" class="w-6 h-6 text-brand-yellow"></i>
+                </div>
+                <h3 class="font-bold text-gray-900 text-xl mb-3">Comunicação Direta (Áudio Bidirecional)</h3>
+                <p class="text-gray-500 text-sm leading-relaxed mb-4"><strong>Ouça e fale em tempo real.</strong> Microfone e alto-falante integrados em todas as câmeras para acompanhar os cuidados com a senhora e conversar diretamente pelo aplicativo.</p>
+            </div>
+
+            <!-- Card 3 -->
+            <div class="service-card bg-white rounded-2xl p-8 border border-gray-100 shadow-glass">
+                <div class="w-12 h-12 bg-brand-yellow/10 rounded-2xl flex items-center justify-center mb-5">
+                    <i data-lucide="hard-drive" class="w-6 h-6 text-brand-yellow"></i>
+                </div>
+                <h3 class="font-bold text-gray-900 text-xl mb-3">Gravação Autônoma 24/7</h3>
+                <p class="text-gray-500 text-sm leading-relaxed mb-4"><strong>8x Cartões MicroSD WD Purple High Endurance.</strong> Desenvolvidos especificamente para CFTV contínuo. Mesmo se a internet cair, a gravação segue normalmente dentro de cada câmera.</p>
+            </div>
+
+            <!-- Card 4 -->
+            <div class="service-card bg-white rounded-2xl p-8 border border-gray-100 shadow-glass">
+                <div class="w-12 h-12 bg-brand-yellow/10 rounded-2xl flex items-center justify-center mb-5">
+                    <i data-lucide="users" class="w-6 h-6 text-brand-yellow"></i>
+                </div>
+                <h3 class="font-bold text-gray-900 text-xl mb-3">Acesso Compartilhado para Todos os Filhos</h3>
+                <p class="text-gray-500 text-sm leading-relaxed mb-4"><strong>Configuração completa no celular da família.</strong> Entregamos o aplicativo instalado, organizado por cômodo e compartilhado com todos os familiares autorizados, com 1 ano de garantia Vision.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ===================== HARDWARE - VITRINE ===================== -->
+<section id="hardware" class="py-24 bg-gray-50 border-t border-gray-200/60">
+    <div class="max-w-7xl mx-auto px-4">
+        <div class="text-center mb-14 reveal">
+            <span class="text-brand-yellow font-bold uppercase tracking-widest text-xs">Especificações Técnicas</span>
+            <h2 class="text-3xl md:text-5xl font-bold text-gray-900 mt-2">A Tecnologia Escolhida</h2>
+            <p class="text-gray-600 mt-3 max-w-2xl mx-auto">Equipamentos homologados para gravação contínua, estabilidade de rede e proteção elétrica.</p>
+        </div>
+
+        <!-- Grid 2x2 Limpo e Espaçoso -->
+        <div class="grid md:grid-cols-2 gap-8 mb-14">
+            
+            <!-- Item 1: Câmera Wi-Fi 6 Intelbras -->
+            <div class="product-card reveal flex flex-col">
+                <div class="px-6 pt-5 pb-3 flex items-center justify-between border-b border-gray-100">
+                    <span class="text-[10px] font-bold uppercase tracking-widest text-gray-400">Sistema Essencial</span>
+                    <span class="bg-brand-yellow text-black text-[10px] font-extrabold px-3 py-1 rounded-full uppercase tracking-wider">8 Unidades</span>
+                </div>
+                <div class="h-56 bg-white flex items-center justify-center p-6 border-b border-gray-100">
+                    <img src="https://res.cloudinary.com/dptcuckhf/image/upload/v1789577195/VIP_W_1210C_vtkymo.jpg" onerror="this.src='https://placehold.co/320x220/ffffff/b9880e?text=Camera+Wi-Fi+6+Intelbras'" alt="Câmera Wi-Fi 6 Intelbras" class="max-h-44 w-auto object-contain mix-blend-multiply hover:scale-105 transition-transform duration-300">
+                </div>
+                <div class="p-7 flex flex-col flex-1">
+                    <h3 class="text-xl font-bold text-gray-900 mb-1">Câmera Wi-Fi 6 Intelbras</h3>
+                    <p class="text-[11px] text-brand-yellow font-bold uppercase tracking-wider mb-5">IA + Áudio Bidirecional + H.265</p>
+                    <div class="space-y-3 text-sm text-gray-700 mt-auto">
+                        <div class="flex items-start gap-2.5"><i data-lucide="check-circle" class="w-4 h-4 text-brand-yellow shrink-0 mt-0.5"></i><span>Tecnologia Wi-Fi 6 de alta velocidade e baixa latência</span></div>
+                        <div class="flex items-start gap-2.5"><i data-lucide="check-circle" class="w-4 h-4 text-brand-yellow shrink-0 mt-0.5"></i><span>Detecção Inteligente de Pessoas integrada</span></div>
+                        <div class="flex items-start gap-2.5"><i data-lucide="check-circle" class="w-4 h-4 text-brand-yellow shrink-0 mt-0.5"></i><span>Áudio bidirecional para ver, ouvir e falar pelo App</span></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Item 2: Cartão MicroSD WD Purple High Endurance -->
+            <div class="product-card reveal flex flex-col" style="animation-delay: 80ms;">
+                <div class="px-6 pt-5 pb-3 flex items-center justify-between border-b border-gray-100">
+                    <span class="text-[10px] font-bold uppercase tracking-widest text-gray-400">Sistema Essencial</span>
+                    <span class="bg-brand-yellow text-black text-[10px] font-extrabold px-3 py-1 rounded-full uppercase tracking-wider">8 Unidades</span>
+                </div>
+                <div class="h-56 bg-white flex items-center justify-center p-6 border-b border-gray-100">
+                    <img src="https://res.cloudinary.com/dptcuckhf/image/upload/v1784597068/cartao-de-memoria-micro-sd-32-gb-wd-purple-micro-sd-32-gb_tho5os.webp" onerror="this.src='https://placehold.co/320x220/ffffff/b9880e?text=MicroSD+WD+Purple'" alt="Cartão MicroSD WD Purple High Endurance" class="max-h-44 w-auto object-contain hover:scale-105 transition-transform duration-300">
+                </div>
+                <div class="p-7 flex flex-col flex-1">
+                    <h3 class="text-xl font-bold text-gray-900 mb-1">MicroSD WD Purple High Endurance</h3>
+                    <p class="text-[11px] text-brand-yellow font-bold uppercase tracking-wider mb-5">Armazenamento Industrial CFTV 24/7</p>
+                    <div class="space-y-3 text-sm text-gray-700 mt-auto">
+                        <div class="flex items-start gap-2.5"><i data-lucide="check-circle" class="w-4 h-4 text-brand-yellow shrink-0 mt-0.5"></i><span>Projetado para gravação contínua sem falhas</span></div>
+                        <div class="flex items-start gap-2.5"><i data-lucide="check-circle" class="w-4 h-4 text-brand-yellow shrink-0 mt-0.5"></i><span>Grava localmente mesmo se a internet oscilar</span></div>
+                        <div class="flex items-start gap-2.5"><i data-lucide="check-circle" class="w-4 h-4 text-brand-yellow shrink-0 mt-0.5"></i><span>Sem mensalidade de nuvem obrigatória</span></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Item 3: Kit Wi-Fi 6 Mesh Twibi Force AX -->
+            <div class="product-card reveal flex flex-col border-brand-yellow/40" style="animation-delay: 160ms;">
+                <div class="px-6 pt-5 pb-3 flex items-center justify-between border-b border-gray-100 bg-brand-yellow/5">
+                    <span class="text-[10px] font-bold uppercase tracking-widest text-brand-goldDark">Módulo Blindagem</span>
+                    <span class="bg-zinc-900 text-brand-goldLight text-[10px] font-extrabold px-3 py-1 rounded-full uppercase tracking-wider">Kit 2 Torres</span>
+                </div>
+                <div class="h-56 bg-white flex items-center justify-center p-6 border-b border-gray-100">
+                    <img src="https://res.cloudinary.com/dptcuckhf/image/upload/v1773187758/Twibi_giga_force_conjunto_frontal_inclinado_leds_on_qtwznd.png" onerror="this.src='https://placehold.co/320x220/ffffff/b9880e?text=Kit+Twibi+Force+AX'" alt="Kit Wi-Fi 6 Mesh Intelbras Twibi Force AX" class="max-h-44 w-auto object-contain drop-shadow-lg hover:scale-105 transition-transform duration-300">
+                </div>
+                <div class="p-7 flex flex-col flex-1">
+                    <h3 class="text-xl font-bold text-gray-900 mb-1">Kit Wi-Fi 6 Mesh Twibi Force AX</h3>
+                    <p class="text-[11px] text-brand-yellow font-bold uppercase tracking-wider mb-5">Cobertura Dedicada na Casa Térrea</p>
+                    <div class="space-y-3 text-sm text-gray-700 mt-auto">
+                        <div class="flex items-start gap-2.5"><i data-lucide="check-circle" class="w-4 h-4 text-brand-yellow shrink-0 mt-0.5"></i><span>Alivia o modem da operadora com 8 vídeos simultâneos</span></div>
+                        <div class="flex items-start gap-2.5"><i data-lucide="check-circle" class="w-4 h-4 text-brand-yellow shrink-0 mt-0.5"></i><span>Elimina pontos cegos nos quartos mais distantes</span></div>
+                        <div class="flex items-start gap-2.5"><i data-lucide="check-circle" class="w-4 h-4 text-brand-yellow shrink-0 mt-0.5"></i><span>Inclui configuração e equalização completa</span></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Item 4: Fontes Nobreak Intelbras EFB 1201 -->
+            <div class="product-card reveal flex flex-col border-brand-yellow/40" style="animation-delay: 240ms;">
+                <div class="px-6 pt-5 pb-3 flex items-center justify-between border-b border-gray-100 bg-brand-yellow/5">
+                    <span class="text-[10px] font-bold uppercase tracking-widest text-brand-goldDark">Módulo Blindagem</span>
+                    <span class="bg-zinc-900 text-brand-goldLight text-[10px] font-extrabold px-3 py-1 rounded-full uppercase tracking-wider">8 Unidades</span>
+                </div>
+                <div class="h-56 bg-white flex items-center justify-center p-6 border-b border-gray-100">
+                    <img src="https://res.cloudinary.com/dptcuckhf/image/upload/v1777044434/efb_1202_persp_dir_pq6dkg.png" onerror="this.src='https://placehold.co/320x220/ffffff/b9880e?text=Fonte+Nobreak+EFB+1201'" alt="Fonte Nobreak Intelbras EFB 1201" class="max-h-44 w-auto object-contain drop-shadow-lg hover:scale-105 transition-transform duration-300">
+                </div>
+                <div class="p-7 flex flex-col flex-1">
+                    <h3 class="text-xl font-bold text-gray-900 mb-1">Fontes Nobreak Intelbras EFB 1201</h3>
+                    <p class="text-[11px] text-brand-yellow font-bold uppercase tracking-wider mb-5">Bateria Interna Individual por Câmera</p>
+                    <div class="space-y-3 text-sm text-gray-700 mt-auto">
+                        <div class="flex items-start gap-2.5"><i data-lucide="check-circle" class="w-4 h-4 text-brand-yellow shrink-0 mt-0.5"></i><span>Mantém as câmeras gravando mesmo se faltar luz</span></div>
+                        <div class="flex items-start gap-2.5"><i data-lucide="check-circle" class="w-4 h-4 text-brand-yellow shrink-0 mt-0.5"></i><span>Proteção ativa contra queda de disjuntor</span></div>
+                        <div class="flex items-start gap-2.5"><i data-lucide="check-circle" class="w-4 h-4 text-brand-yellow shrink-0 mt-0.5"></i><span>Design compacto com bateria selada integrada</span></div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Painel de Diferenciais da Câmera Wi-Fi 6 Intelbras (Grid Simétrico 3 + 2) -->
+        <div class="bg-white rounded-[2rem] p-7 sm:p-10 border border-gray-200/80 shadow-glass reveal">
+            <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 pb-6 mb-8 border-b border-gray-100">
+                <div>
+                    <span class="text-[10px] font-bold uppercase tracking-widest text-brand-yellow">Recursos Integrados em Todas as 8 Câmeras</span>
+                    <h3 class="text-2xl font-bold text-gray-900 mt-1">Diferenciais da Câmera Wi-Fi 6 Intelbras</h3>
+                </div>
+                <span class="text-[11px] text-gray-400 italic">Imagens meramente ilustrativas</span>
+            </div>
+
+            <!-- Linha Superior: 3 Cards -->
+            <div class="grid md:grid-cols-3 gap-6 mb-6">
+                <div class="p-6 rounded-2xl bg-gray-50/90 border border-gray-100 flex flex-col">
+                    <div class="w-10 h-10 rounded-xl bg-brand-yellow/10 flex items-center justify-center mb-4">
+                        <i data-lucide="wifi" class="w-5 h-5 text-brand-yellow"></i>
+                    </div>
+                    <h4 class="font-bold text-gray-900 text-base mb-2">Tecnologia Wi-Fi 6</h4>
+                    <p class="text-sm text-gray-600 leading-relaxed">A conexão com a câmera é rápida e estável, sem precisar de cabos na transmissão das imagens. Mais velocidade, menor latência e melhor desempenho.</p>
+                </div>
+
+                <div class="p-6 rounded-2xl bg-gray-50/90 border border-gray-100 flex flex-col">
+                    <div class="w-10 h-10 rounded-xl bg-brand-yellow/10 flex items-center justify-center mb-4">
+                        <i data-lucide="user-check" class="w-5 h-5 text-brand-yellow"></i>
+                    </div>
+                    <h4 class="font-bold text-gray-900 text-base mb-2">Detecção Inteligente de Pessoas</h4>
+                    <p class="text-sm text-gray-600 leading-relaxed">O modelo possui inteligência artificial capaz de fazer a detecção inteligente de pessoas, agregando assertividade ao sistema de CFTV.</p>
+                </div>
+
+                <div class="p-6 rounded-2xl bg-gray-50/90 border border-gray-100 flex flex-col">
+                    <div class="w-10 h-10 rounded-xl bg-brand-yellow/10 flex items-center justify-center mb-4">
+                        <i data-lucide="mic" class="w-5 h-5 text-brand-yellow"></i>
+                    </div>
+                    <h4 class="font-bold text-gray-900 text-base mb-2">Áudio bidirecional</h4>
+                    <p class="text-sm text-gray-600 leading-relaxed">É possível ver, ouvir e se comunicar com quem está no ambiente monitorado.</p>
+                </div>
+            </div>
+
+            <!-- Linha Inferior: 2 Cards Simétricos -->
+            <div class="grid md:grid-cols-2 gap-6">
+                <div class="p-6 rounded-2xl bg-gray-50/90 border border-gray-100 flex flex-col">
+                    <div class="w-10 h-10 rounded-xl bg-brand-yellow/10 flex items-center justify-center mb-4">
+                        <i data-lucide="gauge" class="w-5 h-5 text-brand-yellow"></i>
+                    </div>
+                    <h4 class="font-bold text-gray-900 text-base mb-2">Rede mais estável e espaço extra de armazenamento</h4>
+                    <p class="text-sm text-gray-600 leading-relaxed">A câmera realiza a compressão de vídeo (H.265) para que as imagens sejam visualizadas e transmitidas em alta resolução, sem gerar oscilação na rede.</p>
+                </div>
+
+                <div class="p-6 rounded-2xl bg-gray-50/90 border border-gray-100 flex flex-col">
+                    <div class="w-10 h-10 rounded-xl bg-brand-yellow/10 flex items-center justify-center mb-4">
+                        <i data-lucide="save" class="w-5 h-5 text-brand-yellow"></i>
+                    </div>
+                    <h4 class="font-bold text-gray-900 text-base mb-2">Não perca nenhum dado</h4>
+                    <p class="text-sm text-gray-600 leading-relaxed">Com entrada para cartão SD, grava informações na memória interna para funcionar de forma autônoma em locais isolados ou em casos de queda na rede.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ===================== COMPARATIVO DE MERCADO ===================== -->
+<section id="mercado" class="py-28 bg-[#f8f9fa] border-y border-gray-200/60">
+    <div class="max-w-5xl mx-auto px-4">
+        <div class="text-center mb-16 reveal">
+            <span class="text-brand-yellow font-bold uppercase tracking-widest text-xs">Análise Comparativa</span>
+            <h2 class="text-3xl md:text-5xl font-bold text-gray-900 mt-3">Por que a instalação comum<br>coloca o registro em risco?</h2>
+            <p class="text-gray-500 mt-5 max-w-xl mx-auto text-lg">Comparativo direto entre soluções improvisadas de varejo e o padrão de engenharia Vision Tecnologia.</p>
+        </div>
+
+        <div class="bg-white rounded-2xl shadow-premium-card border border-gray-100 reveal mt-12 relative overflow-hidden">
+            <div class="absolute top-0 right-0 w-64 h-64 bg-brand-yellow/5 rounded-full blur-3xl pointer-events-none"></div>
+            
+            <h3 class="font-bold text-gray-900 text-xl md:text-2xl mb-8 text-center relative z-10 pt-8 px-4">
+                Segurança Real para Cuidado Familiar
+            </h3>
+
+            <!-- Componente Grid Responsivo Mobile-First -->
+            <div class="relative z-10 pb-8 px-4 md:px-8">
+                <!-- Desktop Header -->
+                <div class="hidden md:grid grid-cols-3 bg-gray-50 rounded-t-xl border-b border-gray-200">
+                    <div class="py-4 px-6 font-bold text-gray-700">Critério Técnico</div>
+                    <div class="py-4 px-6 font-bold text-gray-500 text-center">Instalação Comum / Varejo</div>
+                    <div class="py-4 px-6 bg-brand-yellow/10 font-bold text-brand-goldDark text-center rounded-tr-xl text-lg">Padrão Vision</div>
+                </div>
+
+                <!-- Rows Container -->
+                <div class="flex flex-col gap-4 md:gap-0">
+                    
+                    <!-- Row 1 -->
+                    <div class="bg-white border border-gray-100 md:border-0 md:border-b md:border-gray-100 rounded-2xl md:rounded-none p-5 md:p-0 grid grid-cols-1 md:grid-cols-3 shadow-sm md:shadow-none items-center">
+                        <div class="font-bold text-gray-900 md:text-gray-800 text-center md:text-left text-lg md:text-sm mb-4 md:mb-0 md:py-5 md:px-6 border-b border-gray-100 md:border-0 pb-3 md:pb-0">Durabilidade da Gravação</div>
+                        <div class="grid grid-cols-2 md:grid-cols-2 md:col-span-2 gap-4 md:gap-0 h-full">
+                            <div class="flex flex-col items-center justify-center md:py-5 md:px-4">
+                                <span class="md:hidden text-[10px] font-bold uppercase tracking-widest text-gray-400 mb-2">Comum</span>
+                                <span class="text-gray-600 text-sm text-center">Usa cartão de celular comum que queima em poucas semanas e corrompe o histórico.</span>
+                            </div>
+                            <div class="flex flex-col items-center justify-center md:py-5 md:px-4 md:bg-brand-yellow/5">
+                                <span class="md:hidden text-[10px] font-bold uppercase tracking-widest text-brand-goldDark mb-2">Vision</span>
+                                <span class="text-gray-900 font-semibold text-sm text-center">8x Cartões WD Purple High Endurance industriais homologados para gravação contínua 24/7.</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Row 2 -->
+                    <div class="bg-white border border-gray-100 md:border-0 md:border-b md:border-gray-100 rounded-2xl md:rounded-none p-5 md:p-0 grid grid-cols-1 md:grid-cols-3 shadow-sm md:shadow-none items-center">
+                        <div class="font-bold text-gray-900 md:text-gray-800 text-center md:text-left text-lg md:text-sm mb-4 md:mb-0 md:py-5 md:px-6 border-b border-gray-100 md:border-0 pb-3 md:pb-0">Acabamento na Laje</div>
+                        <div class="grid grid-cols-2 md:grid-cols-2 md:col-span-2 gap-4 md:gap-0 h-full">
+                            <div class="flex flex-col items-center justify-center md:py-5 md:px-4">
+                                <span class="md:hidden text-[10px] font-bold uppercase tracking-widest text-gray-400 mb-2">Comum</span>
+                                <span class="text-gray-600 text-sm text-center">Deixa fios de fonte 12V soltos e pendurados pela parede até a tomada.</span>
+                            </div>
+                            <div class="flex flex-col items-center justify-center md:py-5 md:px-4 md:bg-brand-yellow/5">
+                                <span class="md:hidden text-[10px] font-bold uppercase tracking-widest text-brand-goldDark mb-2">Vision</span>
+                                <span class="text-gray-900 font-semibold text-sm text-center">Canaletas plásticas finas e discretas alinhadas ao canto da laje, sem quebrar nada.</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Row 3 -->
+                    <div class="bg-white border border-gray-100 md:border-0 rounded-2xl md:rounded-none p-5 md:p-0 grid grid-cols-1 md:grid-cols-3 shadow-sm md:shadow-none items-center md:rounded-b-xl">
+                        <div class="font-bold text-gray-900 md:text-gray-800 text-center md:text-left text-lg md:text-sm mb-4 md:mb-0 md:py-5 md:px-6 border-b border-gray-100 md:border-0 pb-3 md:pb-0">Queda de Energia / Wi-Fi</div>
+                        <div class="grid grid-cols-2 md:grid-cols-2 md:col-span-2 gap-4 md:gap-0 h-full">
+                            <div class="flex flex-col items-center justify-center md:py-5 md:px-4">
+                                <span class="md:hidden text-[10px] font-bold uppercase tracking-widest text-gray-400 mb-2">Comum</span>
+                                <span class="text-gray-600 text-sm text-center">Depende 100% da tomada e do modem da operadora; desligou a luz, para de gravar.</span>
+                            </div>
+                            <div class="flex flex-col items-center justify-center md:py-5 md:px-4 md:bg-brand-yellow/5 md:rounded-br-xl">
+                                <span class="md:hidden text-[10px] font-bold uppercase tracking-widest text-brand-goldDark mb-2">Vision</span>
+                                <span class="text-gray-900 font-semibold text-sm text-center">Opção Combo Blindado com Kit Wi-Fi 6 Mesh Twibi + 8 Fontes Nobreak com bateria interna.</span>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<!-- ===================== PROPOSTA DE INVESTIMENTO ===================== -->
+<section id="investimento" class="py-20 sm:py-28 bg-white relative overflow-hidden">
+    <div class="absolute inset-0 bg-dots pointer-events-none"></div>
+    <div class="max-w-6xl mx-auto px-2 sm:px-4 relative z-10">
+        <div class="text-center mb-10 sm:mb-12 reveal px-2">
+            <span class="text-brand-yellow font-bold uppercase tracking-widest text-xs">Opções de Investimento</span>
+            <h2 class="text-3xl md:text-5xl font-bold text-gray-900 mt-3">Escolha o Nível de Proteção</h2>
+            <p class="text-gray-500 mt-4 max-w-2xl mx-auto text-base sm:text-lg">Ambas as opções incluem instalação completa sem quebrar a laje, configuração no celular de todos os filhos, entrega até sexta-feira e 1 ano de garantia Vision.</p>
+        </div>
+
+        <!-- Botão Toggle de Pagamento (Pílula Elegante) -->
+        <div class="flex flex-col items-center justify-center mb-8 sm:mb-10 reveal">
+            <div class="bg-gray-100 p-1.5 rounded-full inline-flex relative shadow-inner">
+                <div id="toggle-bg" class="absolute top-1.5 bottom-1.5 w-[calc(50%-6px)] bg-white rounded-full shadow-sm transition-transform duration-300 ease-in-out" style="transform: translateX(100%); left: 6px;"></div>
+                
+                <button onclick="setPaymentMode('avista')" id="btn-avista" class="relative z-10 px-4 sm:px-8 py-2.5 text-xs sm:text-sm font-bold text-gray-500 transition-colors w-36 sm:w-40 text-center rounded-full focus:outline-none">À Vista (PIX)</button>
+                <button onclick="setPaymentMode('parcelado')" id="btn-parcelado" class="relative z-10 px-4 sm:px-8 py-2.5 text-xs sm:text-sm font-bold text-gray-900 transition-colors w-36 sm:w-40 text-center rounded-full focus:outline-none">Parcelado</button>
+            </div>
+            
+            <!-- Select de Parcelas (Oculto no PIX via JS) -->
+            <div id="installment-container" class="mt-5 sm:mt-6 flex flex-col items-center transition-all duration-300 opacity-100">
+                <div class="relative">
+                    <select id="installment-select" class="appearance-none bg-white border border-gray-200 text-gray-800 text-sm font-bold rounded-xl focus:ring-brand-yellow focus:border-brand-yellow block w-48 p-3 pl-4 pr-10 shadow-sm outline-none cursor-pointer hover:border-gray-300 transition-colors" onchange="updatePrices()">
+                        <option value="1">1x no Crédito</option>
+                        <option value="2">2x no Crédito</option>
+                        <option value="3">3x no Crédito</option>
+                        <option value="4">4x no Crédito</option>
+                        <option value="5">5x no Crédito</option>
+                        <option value="6">6x no Crédito</option>
+                        <option value="7">7x no Crédito</option>
+                        <option value="8">8x no Crédito</option>
+                        <option value="9">9x no Crédito</option>
+                        <option value="10">10x no Crédito</option>
+                        <option value="11">11x no Crédito</option>
+                        <option value="12" selected>12x no Crédito</option>
+                    </select>
+                    <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-3 text-gray-500">
+                        <i data-lucide="chevron-down" class="w-4 h-4"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Cards Principais Lado a Lado (Inclusive no Celular) -->
+        <div class="grid grid-cols-2 gap-2 sm:gap-5 lg:gap-8 reveal items-stretch">
+
+            <!-- OPÇÃO 1: Sistema Essencial (Base) -->
+            <div class="tier-card bg-white rounded-[1.25rem] sm:rounded-[2rem] p-2.5 sm:p-6 lg:p-10 border border-gray-200 shadow-glass relative overflow-hidden flex flex-col">
+                <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-gray-200 to-gray-300 rounded-t-[1.25rem] sm:rounded-t-[2rem]"></div>
+                <div class="mb-3 sm:mb-8">
+                    <div class="mb-1.5 sm:hidden">
+                        <span class="inline-block bg-gray-100 text-gray-500 text-[8px] font-bold px-2 py-0.5 rounded-full uppercase tracking-wider">Padrão</span>
+                    </div>
+                    <p class="text-[9px] sm:text-[10px] font-bold uppercase tracking-widest text-gray-400 mb-1 sm:mb-2">Opção 1</p>
+                    <h3 class="font-bold text-gray-900 text-xs min-[380px]:text-sm sm:text-xl lg:text-2xl leading-snug">Sistema Essencial Wi-Fi 6</h3>
+                </div>
+
+                <div class="mb-3.5 sm:mb-8 p-2.5 sm:p-5 lg:p-6 bg-gray-50 rounded-xl sm:rounded-2xl min-h-[104px] sm:min-h-[145px] flex flex-col justify-center">
+                    <p class="text-[8px] min-[380px]:text-[9px] sm:text-xs text-gray-500 uppercase tracking-wider sm:tracking-widest font-bold mb-1 sm:mb-2 leading-tight">Investimento Total</p>
+                    <div class="flex items-baseline gap-1 sm:gap-2 flex-nowrap" id="price-opt1">
+                        <!-- Conteúdo dinâmico JS -->
+                    </div>
+                    <p class="text-[10px] min-[380px]:text-[11px] sm:text-sm text-gray-600 mt-1.5 sm:mt-3 font-medium leading-snug" id="subtext-opt1"></p>
+                </div>
+
+                <div class="space-y-2 sm:space-y-3 mb-4 sm:mb-8 flex-1">
+                    <h4 class="font-semibold text-gray-700 text-[10px] sm:text-sm uppercase tracking-wider mb-1.5 sm:mb-3">O que está incluso:</h4>
+                    <div class="flex items-start gap-1.5 sm:gap-3 p-2 sm:p-3.5 bg-white border border-gray-100 rounded-lg sm:rounded-xl shadow-sm">
+                        <i data-lucide="check-circle-2" class="w-3.5 h-3.5 sm:w-5 sm:h-5 text-emerald-500 shrink-0 mt-0.5"></i>
+                        <p class="text-[11px] sm:text-sm text-gray-700 leading-snug sm:leading-relaxed"><strong>8x Câmeras Wi-Fi 6 Intelbras:</strong> Detecção inteligente de pessoas, áudio bidirecional e compressão H.265.</p>
+                    </div>
+                    <div class="flex items-start gap-1.5 sm:gap-3 p-2 sm:p-3.5 bg-white border border-gray-100 rounded-lg sm:rounded-xl shadow-sm">
+                        <i data-lucide="check-circle-2" class="w-3.5 h-3.5 sm:w-5 sm:h-5 text-emerald-500 shrink-0 mt-0.5"></i>
+                        <p class="text-[11px] sm:text-sm text-gray-700 leading-snug sm:leading-relaxed"><strong>8x Cartões MicroSD WD Purple High Endurance:</strong> Gravação autônoma 24h direto em cada câmera.</p>
+                    </div>
+                    <div class="flex items-start gap-1.5 sm:gap-3 p-2 sm:p-3.5 bg-white border border-gray-100 rounded-lg sm:rounded-xl shadow-sm">
+                        <i data-lucide="check-circle-2" class="w-3.5 h-3.5 sm:w-5 sm:h-5 text-emerald-500 shrink-0 mt-0.5"></i>
+                        <p class="text-[11px] sm:text-sm text-gray-700 leading-snug sm:leading-relaxed"><strong>Acabamento Limpo em Canaletas:</strong> Derivação elétrica discreta sem quebrar a laje + App para a família.</p>
+                    </div>
+                </div>
+
+                <div class="p-2.5 sm:p-4 bg-gray-100 rounded-lg sm:rounded-xl border border-gray-200 mb-4 sm:mb-6">
+                    <p class="text-[10px] sm:text-xs text-gray-700 flex items-start gap-1.5 sm:gap-2 leading-snug">
+                        <i data-lucide="info" class="w-3.5 h-3.5 sm:w-4 sm:h-4 shrink-0 mt-0.5 text-gray-500"></i>
+                        <span><strong>Obs.:</strong> Utiliza o roteador Wi-Fi atual da casa e a rede elétrica convencional.</span>
+                    </p>
+                </div>
+
+                <a href="https://wa.me/5511930816696?text=Ol%C3%A1%20Gabriel,%20vi%20a%20proposta!%20Quero%20aprovar%20a%20Op%C3%A7%C3%A3o%201%20(Sistema%20Essencial%20com%208%20C%C3%A2meras%20Wi-Fi%206%20Intelbras%20e%20Cart%C3%B5es%20High%20Endurance)%20para%20entrega%20at%C3%A9%20sexta-feira." target="_blank" rel="noopener noreferrer" class="w-full border-2 border-zinc-900 text-zinc-900 hover:bg-zinc-900 hover:text-white font-bold py-2.5 px-2 sm:py-4 sm:px-4 rounded-xl sm:rounded-2xl flex items-center justify-center gap-1.5 sm:gap-2 transition-all text-[10px] sm:text-xs lg:text-sm uppercase tracking-wider sm:tracking-widest mt-auto text-center leading-tight">
+                    <span>Aprovar Essencial</span>
+                    <i data-lucide="arrow-right" class="hidden sm:inline w-4 h-4 shrink-0"></i>
+                </a>
+            </div>
+
+            <!-- OPÇÃO 2: Combo Blindado Total (DESTAQUE) -->
+            <div class="premium-border-glow">
+                <div class="premium-border-inner">
+                    <div class="absolute top-0 left-0 w-full h-1.5 bg-gradient-to-r from-brand-yellow to-brand-goldLight rounded-t-[calc(1.25rem-3px)] sm:rounded-t-[calc(2rem-3px)]"></div>
+                    <div class="mb-1.5 sm:mb-0 sm:absolute sm:top-4 sm:right-4 z-20">
+                        <span class="inline-block bg-brand-yellow text-black text-[8px] sm:text-[10px] font-extrabold px-2 sm:px-4 py-0.5 sm:py-1.5 rounded-full uppercase tracking-wider sm:tracking-widest shadow-glow leading-tight">Economize R$ 970</span>
+                    </div>
+
+                    <div class="mb-3 sm:mb-8 sm:mt-2">
+                        <p class="text-[9px] sm:text-[10px] font-bold uppercase tracking-widest text-brand-yellow mb-1 sm:mb-2">Opção 2 · Recomendada</p>
+                        <h3 class="font-bold text-gray-900 text-xs min-[380px]:text-sm sm:text-xl lg:text-2xl leading-snug">Blindado Total: Twibi + 8 Nobreaks</h3>
+                    </div>
+
+                    <div class="mb-3.5 sm:mb-8 p-2.5 sm:p-5 lg:p-6 bg-brand-yellow/5 border border-brand-yellow/20 rounded-xl sm:rounded-2xl min-h-[104px] sm:min-h-[145px] flex flex-col justify-center relative z-10">
+                        <div class="flex items-center justify-between gap-1 mb-1 sm:mb-2">
+                            <p class="text-[8px] min-[380px]:text-[9px] sm:text-xs text-brand-goldDark uppercase tracking-wider sm:tracking-widest font-bold leading-tight">Combo</p>
+                            <span class="text-[9px] min-[380px]:text-[10px] sm:text-xs text-gray-400 line-through font-semibold leading-tight whitespace-nowrap" id="old-price-opt2">De R$ 9.820</span>
+                        </div>
+                        <div class="flex items-baseline gap-1 sm:gap-2 flex-nowrap" id="price-opt2">
+                            <!-- Conteúdo dinâmico JS -->
+                        </div>
+                        <p class="text-[10px] min-[380px]:text-[11px] sm:text-sm text-gray-700 mt-1.5 sm:mt-3 font-medium leading-snug" id="subtext-opt2"></p>
+                    </div>
+
+                    <div class="space-y-2 sm:space-y-3 mb-4 sm:mb-8 flex-1 relative z-10">
+                        <h4 class="font-semibold text-gray-700 text-[10px] sm:text-sm uppercase tracking-wider mb-1.5 sm:mb-3">Proteção Completa:</h4>
+                        <div class="flex items-start gap-1.5 sm:gap-3 p-2 sm:p-4 bg-white border border-brand-yellow/30 rounded-lg sm:rounded-xl shadow-sm">
+                            <i data-lucide="camera" class="w-3.5 h-3.5 sm:w-6 sm:h-6 text-brand-yellow shrink-0 mt-0.5"></i>
+                            <p class="text-[11px] sm:text-sm text-gray-800 leading-snug sm:leading-relaxed"><strong>Tudo do Sistema Essencial:</strong> 8 Câmeras Wi-Fi 6 Intelbras (IA + Áudio) + 8 MicroSD High Endurance + canaletas.</p>
+                        </div>
+                        <div class="flex items-start gap-1.5 sm:gap-3 p-2 sm:p-4 bg-white border border-brand-yellow/30 rounded-lg sm:rounded-xl shadow-sm">
+                            <i data-lucide="wifi" class="w-3.5 h-3.5 sm:w-6 sm:h-6 text-brand-yellow shrink-0 mt-0.5"></i>
+                            <p class="text-[11px] sm:text-sm text-gray-800 leading-snug sm:leading-relaxed"><strong>Kit Wi-Fi 6 Mesh Twibi Force AX (2 Torres):</strong> Rede dedicada na casa para os 8 vídeos e áudios sem travar.</p>
+                        </div>
+                        <div class="flex items-start gap-1.5 sm:gap-3 p-2 sm:p-4 bg-white border border-brand-yellow/30 rounded-lg sm:rounded-xl shadow-sm">
+                            <i data-lucide="battery-charging" class="w-3.5 h-3.5 sm:w-6 sm:h-6 text-brand-yellow shrink-0 mt-0.5"></i>
+                            <p class="text-[11px] sm:text-sm text-gray-800 leading-snug sm:leading-relaxed"><strong>8x Fontes Nobreak EFB 1201:</strong> Bateria interna em cada câmera para seguir gravando mesmo sem luz.</p>
+                        </div>
+                    </div>
+
+                    <a href="https://wa.me/5511930816696?text=Ol%C3%A1%20Gabriel,%20vi%20a%20proposta!%20Vamos%20aprovar%20o%20Combo%20Blindado%20Total%20(8%20C%C3%A2meras%20Wi-Fi%206%20Intelbras%20+%20Twibi%20Mesh%20+%208%20Fontes%20Nobreak)%20para%20concluir%20at%C3%A9%20sexta-feira." target="_blank" rel="noopener noreferrer" class="w-full bg-brand-yellow hover:bg-brand-goldLight text-black font-bold py-2.5 px-2 sm:py-4 sm:px-4 rounded-xl sm:rounded-2xl flex items-center justify-center gap-1.5 sm:gap-2 transition-all shadow-glow-md text-[10px] sm:text-xs lg:text-sm uppercase tracking-wider sm:tracking-widest group relative overflow-hidden mt-auto z-10 text-center leading-tight">
+                        <div class="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-300 rounded-xl sm:rounded-2xl"></div>
+                        <i data-lucide="check-circle" class="w-3.5 h-3.5 sm:w-5 sm:h-5 relative z-10 shrink-0"></i>
+                        <span class="relative z-10">Aprovar Blindado</span>
+                        <i data-lucide="arrow-right" class="hidden sm:inline w-4 h-4 relative z-10 group-hover:translate-x-1 transition-transform shrink-0"></i>
+                    </a>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Módulos Opcionais Avulsos (Lado a Lado também no celular) -->
+        <div class="mt-6 sm:mt-10 bg-gray-50 border border-gray-200/80 rounded-2xl sm:rounded-3xl p-3.5 sm:p-8 reveal">
+            <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-1 mb-4 sm:mb-6">
+                <div>
+                    <span class="text-[10px] font-bold uppercase tracking-widest text-brand-yellow">Personalização Sob Medida</span>
+                    <h3 class="text-base sm:text-xl font-bold text-gray-900">Opcionais Avulsos (caso prefira adicionar separadamente à Opção 1)</h3>
+                </div>
+                <span class="text-[11px] sm:text-xs text-gray-500">No Combo Blindado acima, você economiza <strong>R$ 970</strong> nos dois juntos.</span>
+            </div>
+
+            <div class="grid grid-cols-2 gap-2 sm:gap-5">
+                <!-- Opcional 1: Twibi -->
+                <div class="bg-white rounded-xl sm:rounded-2xl p-2.5 sm:p-5 border border-gray-200/90 shadow-sm flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-center gap-1.5 sm:gap-2 mb-1.5 sm:mb-2">
+                            <div class="w-6 h-6 sm:w-8 sm:h-8 rounded-lg bg-brand-yellow/10 flex items-center justify-center shrink-0">
+                                <i data-lucide="wifi" class="w-3.5 h-3.5 sm:w-4 sm:h-4 text-brand-yellow"></i>
+                            </div>
+                            <span class="text-[9px] sm:text-[10px] font-bold uppercase tracking-wider text-gray-400">Opcional 01</span>
+                        </div>
+                        <h4 class="font-bold text-gray-900 text-xs sm:text-base leading-snug mb-1">Kit Wi-Fi 6 Mesh Twibi Force AX</h4>
+                        <p class="text-[10px] sm:text-xs text-gray-500 leading-snug mb-2.5 sm:mb-4">2 torres Wi-Fi 6 + configuração e equalização de sinal.</p>
+                    </div>
+                    <div class="pt-2 sm:pt-3 border-t border-gray-100">
+                        <div class="flex items-baseline gap-1 flex-nowrap" id="price-opt-twibi"></div>
+                        <p class="text-[10px] sm:text-xs text-gray-500 mt-0.5" id="subtext-opt-twibi"></p>
+                    </div>
+                </div>
+
+                <!-- Opcional 2: 8 Fontes Nobreak -->
+                <div class="bg-white rounded-xl sm:rounded-2xl p-2.5 sm:p-5 border border-gray-200/90 shadow-sm flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-center gap-1.5 sm:gap-2 mb-1.5 sm:mb-2">
+                            <div class="w-6 h-6 sm:w-8 sm:h-8 rounded-lg bg-brand-yellow/10 flex items-center justify-center shrink-0">
+                                <i data-lucide="battery-charging" class="w-3.5 h-3.5 sm:w-4 sm:h-4 text-brand-yellow"></i>
+                            </div>
+                            <span class="text-[9px] sm:text-[10px] font-bold uppercase tracking-wider text-gray-400">Opcional 02</span>
+                        </div>
+                        <h4 class="font-bold text-gray-900 text-xs sm:text-base leading-snug mb-1">8x Fontes Nobreak EFB 1201</h4>
+                        <p class="text-[10px] sm:text-xs text-gray-500 leading-snug mb-2.5 sm:mb-4">Bateria interna individual para manter gravação sem luz.</p>
+                    </div>
+                    <div class="pt-2 sm:pt-3 border-t border-gray-100">
+                        <div class="flex items-baseline gap-1 flex-nowrap" id="price-opt-nobreak"></div>
+                        <p class="text-[10px] sm:text-xs text-gray-500 mt-0.5" id="subtext-opt-nobreak"></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ===================== FAQ ===================== -->
+<section class="py-24 bg-[#f8f9fa] border-t border-gray-200/60">
+    <div class="max-w-3xl mx-auto px-4">
+        <div class="text-center mb-14 reveal">
+            <span class="text-brand-yellow font-bold uppercase tracking-widest text-xs">Tire suas Dúvidas</span>
+            <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mt-3">Dúvidas Frequentes</h2>
+        </div>
+        <div class="space-y-4 reveal" id="accordion">
+            <div class="accordion-item bg-white rounded-2xl border border-gray-100 shadow-glass overflow-hidden">
+                <button onclick="toggleAccordion(this)" class="w-full flex items-center justify-between p-6 text-left font-semibold text-gray-800">
+                    <span>Vocês conseguem concluir a instalação até esta sexta-feira?</span>
+                    <i data-lucide="chevron-down" class="w-5 h-5 text-gray-400 acc-arrow shrink-0"></i>
+                </button>
+                <div class="accordion-content">
+                    <p class="px-6 pb-6 text-gray-500 text-sm leading-relaxed">Sim! O CEP 04635-080 (Brooklin / Campo Belo) está dentro da nossa rota prioritária. Assim que você aprovar a opção desejada, travamos a equipe técnica e separamos o estoque para concluir os 8 pontos em 1 dia de trabalho antes de sexta-feira.</p>
+                </div>
+            </div>
+            
+            <div class="accordion-item bg-white rounded-2xl border border-gray-100 shadow-glass overflow-hidden">
+                <button onclick="toggleAccordion(this)" class="w-full flex items-center justify-between p-6 text-left font-semibold text-gray-800">
+                    <span>Como fica a fiação já que o teto é de laje e não quero quebrar nada?</span>
+                    <i data-lucide="chevron-down" class="w-5 h-5 text-gray-400 acc-arrow shrink-0"></i>
+                </button>
+                <div class="accordion-content">
+                    <p class="px-6 pb-6 text-gray-500 text-sm leading-relaxed">As câmeras transmitem imagem e áudio via Wi-Fi 6, então não precisamos passar cabos de rede pela casa. Para alimentar cada câmera, derivamos energia da tomada mais próxima usando canaletas plásticas bem finas e discretas alinhadas no canto da parede com a laje, furando apenas o mínimo para fixação.</p>
+                </div>
+            </div>
+
+            <div class="accordion-item bg-white rounded-2xl border border-gray-100 shadow-glass overflow-hidden">
+                <button onclick="toggleAccordion(this)" class="w-full flex items-center justify-between p-6 text-left font-semibold text-gray-800">
+                    <span>Se a internet oscilar, perdemos o registro do atendimento?</span>
+                    <i data-lucide="chevron-down" class="w-5 h-5 text-gray-400 acc-arrow shrink-0"></i>
+                </button>
+                <div class="accordion-content">
+                    <p class="px-6 pb-6 text-gray-500 text-sm leading-relaxed">Não! Em todas as opções incluímos 8 cartões MicroSD WD Purple High Endurance (próprios para gravação contínua 24h) instalados dentro de cada câmera. Mesmo que a internet oscile, a gravação local continua normalmente e fica disponível para consulta no aplicativo.</p>
+                </div>
+            </div>
+
+            <div class="accordion-item bg-white rounded-2xl border border-gray-100 shadow-glass overflow-hidden">
+                <button onclick="toggleAccordion(this)" class="w-full flex items-center justify-between p-6 text-left font-semibold text-gray-800">
+                    <span>Vale a pena escolher o Combo Blindado (Twibi + 8 Fontes Nobreak)?</span>
+                    <i data-lucide="chevron-down" class="w-5 h-5 text-gray-400 acc-arrow shrink-0"></i>
+                </button>
+                <div class="accordion-content">
+                    <p class="px-6 pb-6 text-gray-500 text-sm leading-relaxed">Para monitoramento de cuidado familiar, é a proteção mais completa: o Kit Wi-Fi 6 Mesh Twibi Force AX evita que 8 câmeras simultâneas sobrecarreguem o roteador da operadora, e as 8 Fontes Nobreak EFB 1201 mantêm as câmeras gravando nos cartões mesmo em caso de falta de luz ou queda de disjuntor — com R$ 970 de desconto no combo.</p>
+                </div>
+            </div>
+            
+            <div class="accordion-item bg-white rounded-2xl border border-gray-100 shadow-glass overflow-hidden">
+                <button onclick="toggleAccordion(this)" class="w-full flex items-center justify-between p-6 text-left font-semibold text-gray-800">
+                    <span>Todos os filhos conseguem acessar as câmeras e falar pelo celular?</span>
+                    <i data-lucide="chevron-down" class="w-5 h-5 text-gray-400 acc-arrow shrink-0"></i>
+                </button>
+                <div class="accordion-content">
+                    <p class="px-6 pb-6 text-gray-500 text-sm leading-relaxed">Sim! Entregamos o aplicativo Intelbras configurado e compartilhado nos celulares de todos os filhos autorizados, com visualização ao vivo, histórico de gravações, alertas inteligentes de pessoas e áudio bidirecional em todos os 8 pontos.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ===================== CTA FINAL ===================== -->
+<section class="py-28 bg-white relative overflow-hidden">
+    <div class="absolute inset-0 bg-dots pointer-events-none"></div>
+    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-brand-yellow/5 rounded-full blur-[100px] pointer-events-none"></div>
+    <div class="max-w-3xl mx-auto px-4 text-center relative z-10 reveal">
+        <div class="inline-flex items-center gap-2 px-5 py-2 rounded-full border border-brand-yellow/30 bg-brand-yellow/5 text-brand-yellow text-[10px] font-bold uppercase tracking-widest mb-8">
+            <i data-lucide="clock-4" class="w-3.5 h-3.5"></i>
+            Agenda Prioritária · Sexta-Feira
+        </div>
+        <h2 class="text-3xl md:text-5xl font-extrabold text-gray-900 leading-tight mb-6">
+            Tranquilidade para toda a família. <span class="text-gold-shine">Sem quebrar nada.</span>
+        </h2>
+        <p class="text-gray-500 text-lg mb-10 leading-relaxed">
+            Equipamentos prontos em estoque para instalação rápida no Brooklin / Campo Belo, com acabamento discreto e 1 ano de garantia Vision Tecnologia.
+        </p>
+
+        <div class="flex flex-col sm:flex-row items-center justify-center gap-4 mb-4">
+            <a href="https://wa.me/5511930816696?text=Ol%C3%A1%20Gabriel,%20vi%20a%20proposta!%20Vamos%20aprovar%20o%20Combo%20Blindado%20Total%20e%20travar%20a%20agenda%20at%C3%A9%20sexta-feira." target="_blank" rel="noopener noreferrer" class="bg-brand-yellow hover:bg-brand-goldLight text-black font-bold px-10 py-5 rounded-full shadow-glow-md transition-all text-sm uppercase tracking-widest flex items-center gap-3 group w-full sm:w-auto justify-center">
+                <i data-lucide="check-circle" class="w-5 h-5"></i>
+                Aprovar Projeto e Travar Agenda
+                <i data-lucide="arrow-right" class="w-5 h-5 group-hover:translate-x-1 transition-transform"></i>
+            </a>
+        </div>
+        <p class="text-xs text-gray-400 mt-4">(Paula, clique acima para confirmarmos o melhor dia até sexta-feira).</p>
+    </div>
+</section>
+
+<!-- ===================== FOOTER CENTRALIZADO ===================== -->
+<footer class="bg-[#09090b] py-16 text-center border-t border-zinc-900 group">
+    <div class="max-w-4xl mx-auto px-4">
+        
+        <div class="flex flex-col items-center justify-center leading-none opacity-40 group-hover:opacity-100 transition-opacity duration-500 cursor-default mb-10">
+            <div class="flex flex-col items-center">
+                <div class="relative flex items-baseline leading-none">
+                    <span class="font-logo font-bold text-[3.5rem] text-white lowercase tracking-[-0.05em] leading-none">vısıon</span>
+                    <span class="absolute -right-3.5 top-2.5 text-[0.75rem] text-brand-yellow font-bold">®</span>
+                </div>
+                <span class="font-tech text-[0.75rem] font-bold text-zinc-500 lowercase -mt-3 ml-1.5 text-center w-full" style="letter-spacing: 0.53em;">home</span>
+            </div>
+        </div>
+
+        <div class="text-zinc-500 text-xs md:text-sm leading-relaxed space-y-1 mb-8 opacity-60">
+            <p>Av. Paulista, 1636 - Sala 1504 | Bela Vista, São Paulo SP - CEP 01310-200</p>
+            <p>CNPJ: 62.117.013/0001-00</p>
+        </div>
+
+        <div class="inline-flex items-center justify-center gap-2 border border-zinc-800 bg-zinc-900/50 px-5 py-2.5 rounded-full mb-6 shadow-sm">
+            <i data-lucide="lock" class="w-3.5 h-3.5 text-brand-yellow"></i>
+            <span class="text-[10px] md:text-xs text-zinc-400 uppercase tracking-widest font-bold">Documento Confidencial</span>
+        </div>
+        
+        <p class="text-[10px] text-zinc-700 uppercase tracking-widest font-bold mt-6">ID-VISION-HOME-26.NOV</p>
+    </div>
+</footer>
+
+<!-- ===================== CTA FLUTUANTE (WHATSAPP VISION) ===================== -->
+<div id="cta-float" class="fixed bottom-6 right-6 z-50 transition-all duration-500 opacity-0 translate-y-10 pointer-events-none">
+    <a href="https://wa.me/5511930816696?text=Ol%C3%A1%20Gabriel,%20fiquei%20com%20uma%20d%C3%BAvida%20aqui%20na%20proposta." target="_blank" rel="noopener noreferrer" class="flex items-center justify-center w-14 h-14 bg-brand-yellow text-black rounded-full shadow-glow-md hover:shadow-glow hover:scale-110 transition-transform group" aria-label="Falar pelo WhatsApp">
+        <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="currentColor" viewBox="0 0 16 16">
+            <path d="M13.601 2.326A7.854 7.854 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c0 1.399.366 2.76 1.057 3.965L0 16l4.204-1.102a7.933 7.933 0 0 0 3.79.965h.004c4.368 0 7.926-3.558 7.93-7.93A7.898 7.898 0 0 0 13.6 2.326zM7.994 14.521a6.573 6.573 0 0 1-3.356-.92l-.24-.144-2.494.654.666-2.433-.156-.251a6.56 6.56 0 0 1-1.007-3.505c0-3.626 2.957-6.584 6.591-6.584a6.56 6.56 0 0 1 4.66 1.931 6.557 6.557 0 0 1 1.928 4.66c-.004 3.639-2.961 6.592-6.592 6.592zm3.615-4.934c-.197-.099-1.17-.578-1.353-.646-.182-.065-.315-.099-.445.099-.133.197-.513.646-.627.775-.114.133-.232.148-.43.05-.197-.1-.836-.308-1.592-.985-.59-.525-.985-1.175-1.103-1.372-.114-.198-.011-.304.088-.403.087-.088.197-.232.296-.346.1-.114.133-.198.198-.33.065-.134.034-.248-.015-.347-.05-.099-.445-1.076-.612-1.47-.16-.389-.323-.335-.445-.34-.114-.005-.247-.007-.38-.007a.729.729 0 0 0-.529.247c-.182.198-.691.677-.691 1.654 0 .977.71 1.916.81 2.049.098.133 1.394 2.132 3.383 2.992.47.205.84.326 1.129.418.475.152.904.129 1.246.08.38-.058 1.171-.48 1.338-.943.164-.464.164-.86.114-.943-.049-.084-.182-.133-.38-.232z"/>
+        </svg>
+    </a>
+</div>
+
+<!-- ===================== SCRIPTS ===================== -->
+<script>
+    // VALORES FECHADOS AO CLIENTE (SEM MEMÓRIA DE CÁLCULO INTERNA)
+    const pricing = {
+        opt1: { pix: 7160, cardTotal: 8592 },
+        opt2: { pix: 8850, cardTotal: 10620, oldPix: 9820, oldCardTotal: 11784 },
+        twibi: { pix: 1060, cardTotal: 1272 },
+        nobreak: { pix: 1600, cardTotal: 1920 }
+    };
+
+    let currentMode = 'parcelado';
+
+    function setPaymentMode(mode) {
+        currentMode = mode;
+        const bg = document.getElementById('toggle-bg');
+        const btnAvista = document.getElementById('btn-avista');
+        const btnParcelado = document.getElementById('btn-parcelado');
+        const selectContainer = document.getElementById('installment-container');
+
+        if (mode === 'avista') {
+            bg.style.transform = 'translateX(0)';
+            btnAvista.classList.remove('text-gray-500');
+            btnAvista.classList.add('text-gray-900');
+            btnParcelado.classList.remove('text-gray-900');
+            btnParcelado.classList.add('text-gray-500');
+            
+            selectContainer.classList.add('opacity-0', 'pointer-events-none');
+            setTimeout(() => selectContainer.classList.add('hidden'), 300);
+        } else {
+            bg.style.transform = 'translateX(100%)';
+            btnParcelado.classList.remove('text-gray-500');
+            btnParcelado.classList.add('text-gray-900');
+            btnAvista.classList.remove('text-gray-900');
+            btnAvista.classList.add('text-gray-500');
+            
+            selectContainer.classList.remove('hidden');
+            setTimeout(() => selectContainer.classList.remove('opacity-0', 'pointer-events-none'), 10);
+        }
+        updatePrices();
+    }
+
+    function updatePrices() {
+        const elPrice1 = document.getElementById('price-opt1');
+        const elPrice2 = document.getElementById('price-opt2');
+        const elOld2 = document.getElementById('old-price-opt2');
+        const elSub1 = document.getElementById('subtext-opt1');
+        const elSub2 = document.getElementById('subtext-opt2');
+
+        const elTwibi = document.getElementById('price-opt-twibi');
+        const elSubTwibi = document.getElementById('subtext-opt-twibi');
+        const elNobreak = document.getElementById('price-opt-nobreak');
+        const elSubNobreak = document.getElementById('subtext-opt-nobreak');
+
+        const select = document.getElementById('installment-select');
+
+        if (currentMode === 'avista') {
+            elPrice1.innerHTML = `<span class="text-[19px] min-[380px]:text-[22px] sm:text-4xl lg:text-5xl font-extrabold text-gray-900 tracking-tight whitespace-nowrap">R$ ${pricing.opt1.pix.toLocaleString('pt-BR')}</span>`;
+            elPrice2.innerHTML = `<span class="text-[19px] min-[380px]:text-[22px] sm:text-4xl lg:text-5xl font-extrabold text-gray-900 tracking-tight whitespace-nowrap">R$ ${pricing.opt2.pix.toLocaleString('pt-BR')}</span>`;
+            if (elOld2) elOld2.textContent = `De R$ ${pricing.opt2.oldPix.toLocaleString('pt-BR')}`;
+            
+            elSub1.innerHTML = '<strong>PIX à vista</strong> (50% sinal + 50% entrega)';
+            elSub2.innerHTML = '<strong>PIX à vista</strong> (50% sinal + 50% entrega)';
+
+            if (elTwibi) elTwibi.innerHTML = `<span class="text-sm sm:text-xl font-extrabold text-gray-900 whitespace-nowrap">+ R$ ${pricing.twibi.pix.toLocaleString('pt-BR')}</span>`;
+            if (elSubTwibi) elSubTwibi.textContent = 'no PIX à vista';
+            if (elNobreak) elNobreak.innerHTML = `<span class="text-sm sm:text-xl font-extrabold text-gray-900 whitespace-nowrap">+ R$ ${pricing.nobreak.pix.toLocaleString('pt-BR')}</span>`;
+            if (elSubNobreak) elSubNobreak.textContent = 'no PIX à vista';
+        } else {
+            const inst = parseInt(select.value);
+            const val1 = Math.round(pricing.opt1.cardTotal / inst);
+            const val2 = Math.round(pricing.opt2.cardTotal / inst);
+            const oldVal2 = Math.round(pricing.opt2.oldCardTotal / inst);
+            const valTwibi = Math.round(pricing.twibi.cardTotal / inst);
+            const valNobreak = Math.round(pricing.nobreak.cardTotal / inst);
+
+            elPrice1.innerHTML = `<span class="text-[11px] min-[380px]:text-xs sm:text-xl lg:text-2xl font-bold text-gray-500 whitespace-nowrap">${inst}x</span><span class="text-[17px] min-[380px]:text-[20px] sm:text-4xl lg:text-5xl font-extrabold text-gray-900 tracking-tight whitespace-nowrap">R$ ${val1.toLocaleString('pt-BR')}</span>`;
+            elPrice2.innerHTML = `<span class="text-[11px] min-[380px]:text-xs sm:text-xl lg:text-2xl font-bold text-brand-yellow whitespace-nowrap">${inst}x</span><span class="text-[17px] min-[380px]:text-[20px] sm:text-4xl lg:text-5xl font-extrabold text-gray-900 tracking-tight whitespace-nowrap">R$ ${val2.toLocaleString('pt-BR')}</span>`;
+            if (elOld2) elOld2.textContent = `De ${inst}x R$ ${oldVal2.toLocaleString('pt-BR')}`;
+
+            elSub1.innerHTML = `Total: R$ ${pricing.opt1.cardTotal.toLocaleString('pt-BR')} no cartão`;
+            elSub2.innerHTML = `Total: R$ ${pricing.opt2.cardTotal.toLocaleString('pt-BR')} no cartão`;
+
+            if (elTwibi) elTwibi.innerHTML = `<span class="text-[11px] sm:text-sm font-bold text-brand-yellow whitespace-nowrap">+ ${inst}x</span><span class="text-sm sm:text-xl font-extrabold text-gray-900 whitespace-nowrap">R$ ${valTwibi.toLocaleString('pt-BR')}</span>`;
+            if (elSubTwibi) elSubTwibi.textContent = `no cartão de crédito`;
+            if (elNobreak) elNobreak.innerHTML = `<span class="text-[11px] sm:text-sm font-bold text-brand-yellow whitespace-nowrap">+ ${inst}x</span><span class="text-sm sm:text-xl font-extrabold text-gray-900 whitespace-nowrap">R$ ${valNobreak.toLocaleString('pt-BR')}</span>`;
+            if (elSubNobreak) elSubNobreak.textContent = `no cartão de crédito`;
+        }
+    }
+
+    // LOCK SCREEN + STATICFORMS
+    function checkPassword() {
+        const input = document.getElementById('password-input').value.trim();
+        const errorMsg = document.getElementById('error-msg');
+        
+        if (input.toUpperCase() === 'PAULA2026' || input.toUpperCase() === 'VISION') {
+            const lockScreen = document.getElementById('lock-screen');
+            lockScreen.style.opacity = '0';
+
+            const video = document.getElementById("vision-video");
+            if (video && video.paused) {
+                video.muted = true;
+                video.play().catch(e => {});
+            }
+
+            // Envio silencioso (Tracking)
+            fetch('https://api.staticforms.dev/submit', {
+                method: 'POST',
+                headers: { 
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json'
+                },
+                body: JSON.stringify({
+                    accessKey: "sf_077ej49gjha153gk3m6ceecf", 
+                    apiKey: "sf_077ej49gjha153gk3m6ceecf", 
+                    subject: "🚨 ALERTA: Proposta Acessada (Paula - Brooklin/Campo Belo SP)",
+                    name: "Sistema Vision",
+                    email: "diretoria@visionsp.com.br",
+                    message: `A cliente acabou de abrir a proposta!\n\n👤 Cliente: Paula - Casa Térrea (Brooklin/Campo Belo - CEP 04635-080)\n🔑 Senha Utilizada: ${input}\n🕒 Horário: ${new Date().toLocaleString('pt-BR')}`
+                })
+            }).catch(error => console.log('Log de acesso registrado.'));
+
+            setTimeout(() => { 
+                lockScreen.style.display = 'none'; 
+                const htmlRoot = document.getElementById('html-root');
+                if(htmlRoot) {
+                    htmlRoot.classList.remove('overflow-hidden', 'h-screen');
+                    htmlRoot.classList.add('overflow-x-hidden');
+                }
+                document.body.classList.remove('overflow-hidden', 'h-screen');
+            }, 700);
+        } else {
+            errorMsg.classList.remove('hidden');
+            document.getElementById('password-input').style.borderColor = 'rgba(239,68,68,0.5)';
+            setTimeout(() => {
+                errorMsg.classList.add('hidden');
+                document.getElementById('password-input').style.borderColor = '';
+            }, 3000);
+        }
+    }
+
+    // REVEAL ON SCROLL
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('active');
+            }
+        });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+    // ANIMATE COUNTERS
+    function animateCounter(el, target) {
+        let current = 0;
+        const increment = Math.ceil(target / 40) > 0 ? Math.ceil(target / 40) : 1; 
+        const interval = setInterval(() => {
+            current = Math.min(current + increment, target);
+            el.textContent = current + (el.textContent.includes('%') ? '%' : ''); 
+            if(target === 100) el.textContent = current + '%';
+            if (current === target) clearInterval(interval);
+        }, 30);
+    }
+    const counterObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const el = entry.target;
+                const target = parseInt(el.getAttribute('data-target'));
+                if(!isNaN(target)) {
+                     el.textContent = '0';
+                     animateCounter(el, target);
+                }
+                counterObserver.unobserve(el);
+            }
+        });
+    }, { threshold: 0.5 });
+    document.querySelectorAll('[data-target]').forEach(el => counterObserver.observe(el));
+
+    // NAVBAR E CTA SCROLL
+    window.addEventListener('scroll', () => {
+        const navbar = document.getElementById('navbar');
+        const ctaFloat = document.getElementById('cta-float');
+        
+        if (window.scrollY > 50) {
+            navbar.classList.add('shadow-md');
+        } else {
+            navbar.classList.remove('shadow-md');
+        }
+
+        if (window.scrollY > 400) {
+            ctaFloat.classList.remove('opacity-0', 'translate-y-10', 'pointer-events-none');
+            ctaFloat.classList.add('opacity-100', 'translate-y-0');
+        } else {
+            ctaFloat.classList.add('opacity-0', 'translate-y-10', 'pointer-events-none');
+            ctaFloat.classList.remove('opacity-100', 'translate-y-0');
+        }
+    });
+
+    // ACCORDION
+    function toggleAccordion(btn) {
+        const item = btn.parentElement;
+        const isOpen = item.classList.contains('open');
+        document.querySelectorAll('.accordion-item').forEach(i => i.classList.remove('open'));
+        if (!isOpen) item.classList.add('open');
+        if (window.lucide) lucide.createIcons();
+    }
+    
+    // INICIALIZAÇÃO GERAL E VÍDEO
+    document.addEventListener("DOMContentLoaded", function() {
+        if (window.lucide) lucide.createIcons();
+        setPaymentMode('parcelado');
+
+        const video = document.getElementById("vision-video");
+        const overlay = document.getElementById("unmute-overlay");
+        
+        if (video && overlay) {
+            overlay.addEventListener("click", function(e) {
+                e.stopPropagation(); 
+                video.muted = false;
+                video.loop = false; 
+                video.currentTime = 0;
+                video.play();
+                overlay.style.opacity = "0";
+                setTimeout(() => { overlay.style.display = "none"; }, 500); 
+            });
+
+            video.addEventListener("click", function() {
+                if (overlay.style.display === "none") {
+                    if (video.paused) { video.play(); } else { video.pause(); }
+                }
+            });
+        }
+    });
+</script>
+</body>
+</html>
