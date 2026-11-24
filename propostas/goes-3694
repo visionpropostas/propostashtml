@@ -3,14 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Estudo Técnico & Proposta | Góes & Nicoladelli – Vision Tecnologia</title>
-    <meta name="description" content="Proposta de Controle de Acesso Facial para Portas de Vidro (Sobreloja e 1º Andar) – Góes & Nicoladelli – República, São Paulo / SP – Vision Tecnologia">
+    <title>Estudo Técnico &amp; Proposta | Góes &amp; Nicoladelli – Vision Tecnologia</title>
+    <meta name="description" content="Proposta de Controle de Acesso Facial para Portas de Vidro (Sobreloja e 1º Andar) – Góes &amp; Nicoladelli – República, São Paulo / SP – Vision Tecnologia">
     <meta name="theme-color" content="#b9880e">
     <meta name="robots" content="noindex, nofollow">
 
     <!-- Open Graph / Link Preview Tags -->
     <meta property="og:type" content="website">
-    <meta property="og:title" content="Estudo Técnico Facial | Góes & Nicoladelli – Vision Tecnologia">
+    <meta property="og:title" content="Estudo Técnico Facial | Góes &amp; Nicoladelli – Vision Tecnologia">
     <meta property="og:description" content="Comparativo técnico e financeiro de Controle de Acesso Facial (Control iD e Intelbras) para as 2 portas duplas de vidro na República / SP.">
     <meta property="og:image" content="https://res.cloudinary.com/dptcuckhf/image/upload/v1772152427/C%C3%B3pia_de_LOGO_VISION_2025_cpcpuh.png">
     <meta property="og:locale" content="pt_BR">
@@ -19,7 +19,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@500;700&family=Outfit:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <script src="https://unpkg.com/lucide@latest"></script>
 
     <!-- Google Analytics 4 -->
@@ -40,6 +40,7 @@
         })(window, document, "clarity", "script", "vifq10es5o");
     </script>
 
+    <!-- Configuração do Tailwind para tokens de marca e tipografia -->
     <script>
         tailwind.config = {
             theme: {
@@ -48,6 +49,7 @@
                         sans: ['"Outfit"', 'sans-serif'],
                         logo: ['"Outfit"', 'sans-serif'],
                         tech: ['"Outfit"', 'sans-serif'],
+                        mono: ['"JetBrains Mono"', 'monospace'],
                     },
                     colors: {
                         brand: {
@@ -88,6 +90,7 @@
     </script>
 
     <style>
+        /* Barra de rolagem customizada */
         ::-webkit-scrollbar { width: 6px; height: 4px; }
         ::-webkit-scrollbar-track { background: #f9fafb; }
         ::-webkit-scrollbar-thumb { background: #d1d5db; border-radius: 4px; }
@@ -96,6 +99,7 @@
         .no-scrollbar::-webkit-scrollbar { display: none; }
         .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
 
+        /* Gradiente metálico dourado animado */
         .text-gold-shine {
             background: linear-gradient(to right, #b9880e 20%, #FFDE59 50%, #b9880e 80%);
             -webkit-background-clip: text;
@@ -105,6 +109,7 @@
         }
         @keyframes shine { to { background-position: 200% center; } }
 
+        /* Padrões decorativos de fundo */
         .bg-grid {
             background-image: linear-gradient(rgba(185,136,14,0.04) 1px, transparent 1px),
                               linear-gradient(90deg, rgba(185,136,14,0.04) 1px, transparent 1px);
@@ -116,6 +121,7 @@
             opacity: 0.035;
         }
 
+        /* Estilo do input da tela de bloqueio */
         .lock-input {
             background: rgba(255,255,255,0.05);
             border: 1px solid rgba(255,255,255,0.1);
@@ -142,9 +148,11 @@
             opacity: 0.7;
         }
 
+        /* Revelação ao rolar a página */
         .reveal { opacity: 0; transform: translateY(30px); transition: all 0.8s cubic-bezier(0.16,1,0.3,1); }
         .reveal.active { opacity: 1; transform: translateY(0); }
 
+        /* Borda iluminada rotativa no card de orçamento */
         .premium-border-glow {
             position: relative;
             border-radius: 2rem;
@@ -190,6 +198,7 @@
             overflow: hidden;
         }
 
+        /* Acordeão de dúvidas frequentes */
         .accordion-content { 
             max-height: 0; 
             overflow: hidden; 
@@ -201,6 +210,7 @@
         .accordion-item.open .acc-arrow { transform: rotate(180deg); }
         .acc-arrow { transition: transform 0.3s; }
 
+        /* Ajustes de impressão / exportação em PDF */
         @media print {
             #lock-screen, #navbar, #cta-float, .no-print { display: none !important; }
             .reveal { opacity: 1 !important; transform: none !important; }
@@ -224,7 +234,7 @@
         <i data-lucide="shield-check" class="w-10 h-10 text-brand-yellow"></i>
     </div>
 
-    <!-- Logo -->
+    <!-- Marca Vision -->
     <div class="relative flex flex-col items-center mb-6 z-10">
         <div class="relative flex items-baseline leading-none">
             <span class="font-bold text-[4.5rem] md:text-[5rem] text-gold-shine lowercase tracking-[-0.05em] leading-none">vısıon</span>
@@ -287,7 +297,6 @@
                 <a href="#mapeamento" class="hover:text-brand-yellow transition-colors">Sobreloja &amp; 1º Andar</a>
                 <a href="#tecnologia" class="hover:text-brand-yellow transition-colors">Equipamentos</a>
                 <a href="#comparativo" class="hover:text-brand-yellow transition-colors">Comparativo</a>
-                <a href="#cronograma" class="hover:text-brand-yellow transition-colors">Etapas</a>
                 <a href="#investimento" class="hover:text-brand-yellow transition-colors">Investimento</a>
                 <a href="#faq" class="hover:text-brand-yellow transition-colors">Dúvidas</a>
             </div>
@@ -312,7 +321,6 @@
             <a href="#mapeamento" class="hover:text-brand-yellow transition-colors">Sobreloja &amp; 1º Andar</a>
             <a href="#tecnologia" class="hover:text-brand-yellow transition-colors">Equipamentos</a>
             <a href="#comparativo" class="hover:text-brand-yellow transition-colors">Comparativo</a>
-            <a href="#cronograma" class="hover:text-brand-yellow transition-colors">Etapas</a>
             <a href="#investimento" class="hover:text-brand-yellow transition-colors">Investimento</a>
             <a href="#faq" class="hover:text-brand-yellow transition-colors">Dúvidas</a>
         </div>
@@ -418,7 +426,7 @@
 
         <div class="grid grid-cols-1 md:grid-cols-3 gap-8 reveal">
             
-            <!-- Pillar 1 -->
+            <!-- Pilar 1 -->
             <div class="bg-white border border-gray-200/80 rounded-3xl p-8 text-left shadow-sm flex flex-col group hover:border-brand-yellow/30 transition-all duration-300 justify-between">
                 <div>
                     <div class="w-12 h-12 rounded-2xl bg-emerald-50 flex items-center justify-center text-emerald-600 mb-6 border border-emerald-200">
@@ -432,7 +440,7 @@
                 </div>
             </div>
 
-            <!-- Pillar 2 -->
+            <!-- Pilar 2 -->
             <div class="bg-white border border-gray-200/80 rounded-3xl p-8 text-left shadow-sm flex flex-col group hover:border-brand-yellow/40 transition-all duration-300 justify-between">
                 <div>
                     <div class="w-12 h-12 rounded-2xl bg-brand-yellow/10 flex items-center justify-center text-brand-goldDark mb-6 border border-brand-yellow/20">
@@ -446,7 +454,7 @@
                 </div>
             </div>
 
-            <!-- Pillar 3 -->
+            <!-- Pilar 3 -->
             <div class="bg-white border border-gray-200/80 rounded-3xl p-8 text-left shadow-sm flex flex-col group hover:border-brand-yellow/40 transition-all duration-300 justify-between">
                 <div>
                     <div class="w-12 h-12 rounded-2xl bg-emerald-50 flex items-center justify-center text-emerald-600 mb-6 border border-emerald-200">
@@ -461,149 +469,6 @@
             </div>
 
         </div>
-    </div>
-</section>
-
-<!-- ===================== FICHA TÉCNICA DO PROJETO ===================== -->
-<section id="ficha-tecnica" class="py-20 bg-gradient-to-b from-amber-50/50 via-white to-gray-50/70 text-gray-900 relative overflow-hidden border-y border-gray-200/70">
-    <div class="bg-grid absolute inset-0 opacity-60 pointer-events-none"></div>
-    <div class="max-w-7xl mx-auto px-4 relative z-10">
-        
-        <div class="text-center mb-14 reveal">
-            <span class="text-brand-yellow font-bold uppercase tracking-widest text-xs">Resumo do Projeto</span>
-            <h2 class="text-3xl md:text-5xl font-extrabold text-gray-900 mt-2 font-sans">O Que Foi Previsto para o Escritório</h2>
-            <p class="text-gray-600 mt-3 max-w-2xl mx-auto text-sm md:text-base font-sans">
-                Informações principais levantadas para a unidade da Góes &amp; Nicoladelli na República:
-            </p>
-        </div>
-
-        <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4 reveal">
-            
-            <div class="bg-white border border-gray-200/90 rounded-2xl p-4 text-center flex flex-col items-center justify-center shadow-sm">
-                <i data-lucide="building-2" class="w-6 h-6 text-brand-yellow mb-2"></i>
-                <span class="text-[10px] text-gray-400 font-bold uppercase tracking-wider mb-1">Escritório</span>
-                <span class="text-xs font-bold text-gray-900 font-sans">Góes &amp; Nicoladelli</span>
-            </div>
-
-            <div class="bg-white border border-gray-200/90 rounded-2xl p-4 text-center flex flex-col items-center justify-center shadow-sm">
-                <i data-lucide="map-pin" class="w-6 h-6 text-brand-yellow mb-2"></i>
-                <span class="text-[10px] text-gray-400 font-bold uppercase tracking-wider mb-1">Região</span>
-                <span class="text-xs font-bold text-gray-900 font-sans">República • 01045-010</span>
-            </div>
-
-            <div class="bg-white border border-gray-200/90 rounded-2xl p-4 text-center flex flex-col items-center justify-center shadow-sm">
-                <i data-lucide="layers" class="w-6 h-6 text-brand-yellow mb-2"></i>
-                <span class="text-[10px] text-gray-400 font-bold uppercase tracking-wider mb-1">Andares</span>
-                <span class="text-xs font-bold text-gray-900 font-sans">Sobreloja e 1º Andar</span>
-            </div>
-
-            <div class="bg-white border border-gray-200/90 rounded-2xl p-4 text-center flex flex-col items-center justify-center shadow-sm">
-                <i data-lucide="scan-face" class="w-6 h-6 text-brand-yellow mb-2"></i>
-                <span class="text-[10px] text-gray-400 font-bold uppercase tracking-wider mb-1">Acesso</span>
-                <span class="text-xs font-bold text-gray-900 font-sans">2 Leitores Faciais</span>
-            </div>
-
-            <div class="bg-white border border-gray-200/90 rounded-2xl p-4 text-center flex flex-col items-center justify-center shadow-sm">
-                <i data-lucide="shield-check" class="w-6 h-6 text-brand-yellow mb-2"></i>
-                <span class="text-[10px] text-gray-400 font-bold uppercase tracking-wider mb-1">Travamento</span>
-                <span class="text-xs font-bold text-emerald-700 font-sans">Eletroímã p/ Vidro</span>
-            </div>
-
-            <div class="bg-white border border-gray-200/90 rounded-2xl p-4 text-center flex flex-col items-center justify-center shadow-sm">
-                <i data-lucide="clock" class="w-6 h-6 text-brand-yellow mb-2"></i>
-                <span class="text-[10px] text-gray-400 font-bold uppercase tracking-wider mb-1">Instalação</span>
-                <span class="text-xs font-bold text-gray-900 font-sans">1 a 2 Dias Úteis</span>
-            </div>
-
-        </div>
-
-    </div>
-</section>
-
-<!-- ===================== MAPEAMENTO DOS 2 ACESSOS ===================== -->
-<section id="mapeamento" class="py-24 bg-white relative">
-    <div class="max-w-7xl mx-auto px-4 relative z-10">
-        
-        <div class="text-center mb-16 reveal">
-            <span class="text-brand-yellow font-bold uppercase tracking-widest text-xs font-sans">Escopo por Andar</span>
-            <h2 class="text-3xl md:text-5xl font-extrabold text-gray-900 mt-3 font-sans">Como Ficam as 2 Portas de Vidro</h2>
-            <p class="text-gray-600 mt-4 max-w-2xl mx-auto text-base md:text-lg leading-relaxed font-sans">
-                Cada andar terá seu conjunto completo para entrada facial, saída simples por dentro e autonomia elétrica:
-            </p>
-        </div>
-
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto reveal">
-            
-            <!-- Acesso 1: Sobreloja -->
-            <div class="bg-[#fafafa] border border-gray-200 rounded-3xl p-8 hover:border-brand-yellow/40 transition-all shadow-sm flex flex-col justify-between">
-                <div>
-                    <div class="flex items-center justify-between mb-4">
-                        <span class="text-[10px] font-extrabold bg-brand-yellow/10 text-brand-goldDark px-3 py-1 rounded-full uppercase tracking-wider font-sans">ACESSO 01 — SOBRELOJA</span>
-                        <i data-lucide="door-open" class="w-5 h-5 text-brand-yellow"></i>
-                    </div>
-                    <h3 class="font-extrabold text-gray-900 text-xl mb-2 font-sans">Porta Dupla de Vidro — Sobreloja</h3>
-                    <p class="text-xs text-gray-600 mb-6 font-sans">Entrada facial rápida para a equipe e saída interna descomplicada.</p>
-
-                    <ul class="space-y-3 font-sans text-xs text-gray-700 mb-6">
-                        <li class="flex items-start gap-2.5">
-                            <i data-lucide="check-circle" class="w-4 h-4 text-emerald-600 shrink-0 mt-0.5"></i>
-                            <span><strong>01x Leitor Facial:</strong> Reconhecimento rápido sem contato, com proteção contra fotos ou vídeos.</span>
-                        </li>
-                        <li class="flex items-start gap-2.5">
-                            <i data-lucide="check-circle" class="w-4 h-4 text-emerald-600 shrink-0 mt-0.5"></i>
-                            <span><strong>01x Fechadura Eletroímã com Suporte p/ Vidro:</strong> Fixação segura e limpa na folha ativa de vidro temperado.</span>
-                        </li>
-                        <li class="flex items-start gap-2.5">
-                            <i data-lucide="check-circle" class="w-4 h-4 text-emerald-600 shrink-0 mt-0.5"></i>
-                            <span><strong>01x Botoeira de Saída em Inox:</strong> Acionamento interno resistente para sair com um toque.</span>
-                        </li>
-                        <li class="flex items-start gap-2.5">
-                            <i data-lucide="check-circle" class="w-4 h-4 text-emerald-600 shrink-0 mt-0.5"></i>
-                            <span><strong>01x Fonte Nobreak com Bateria:</strong> Mantém o sistema funcionando mesmo se a energia oscilar ou cair.</span>
-                        </li>
-                    </ul>
-                </div>
-                <div class="pt-4 border-t border-gray-200 text-[11px] font-bold text-gray-500 flex items-center gap-1.5 font-sans">
-                    <i data-lucide="sparkles" class="w-3.5 h-3.5 text-brand-yellow"></i> Visual discreto em harmonia com a porta de vidro
-                </div>
-            </div>
-
-            <!-- Acesso 2: 1º Andar -->
-            <div class="bg-[#fafafa] border border-gray-200 rounded-3xl p-8 hover:border-brand-yellow/40 transition-all shadow-sm flex flex-col justify-between">
-                <div>
-                    <div class="flex items-center justify-between mb-4">
-                        <span class="text-[10px] font-extrabold bg-brand-yellow/10 text-brand-goldDark px-3 py-1 rounded-full uppercase tracking-wider font-sans">ACESSO 02 — 1º ANDAR</span>
-                        <i data-lucide="door-closed" class="w-5 h-5 text-brand-yellow"></i>
-                    </div>
-                    <h3 class="font-extrabold text-gray-900 text-xl mb-2 font-sans">Porta Dupla de Vidro — 1º Andar</h3>
-                    <p class="text-xs text-gray-600 mb-6 font-sans">Mesma estrutura de segurança e praticidade, integrada à rotina do escritório.</p>
-
-                    <ul class="space-y-3 font-sans text-xs text-gray-700 mb-6">
-                        <li class="flex items-start gap-2.5">
-                            <i data-lucide="check-circle" class="w-4 h-4 text-emerald-600 shrink-0 mt-0.5"></i>
-                            <span><strong>01x Leitor Facial:</strong> Cadastro unificado com a Sobreloja para facilitar o dia a dia da equipe.</span>
-                        </li>
-                        <li class="flex items-start gap-2.5">
-                            <i data-lucide="check-circle" class="w-4 h-4 text-emerald-600 shrink-0 mt-0.5"></i>
-                            <span><strong>01x Fechadura Eletroímã com Suporte p/ Vidro:</strong> Travamento silencioso na folha principal do andar.</span>
-                        </li>
-                        <li class="flex items-start gap-2.5">
-                            <i data-lucide="check-circle" class="w-4 h-4 text-emerald-600 shrink-0 mt-0.5"></i>
-                            <span><strong>01x Botoeira de Saída em Inox:</strong> Liberação interna ágil e durável no dia a dia.</span>
-                        </li>
-                        <li class="flex items-start gap-2.5">
-                            <i data-lucide="check-circle" class="w-4 h-4 text-emerald-600 shrink-0 mt-0.5"></i>
-                            <span><strong>01x Fonte Nobreak com Bateria:</strong> Alimentação protegida ligada ao ponto elétrico interno próximo.</span>
-                        </li>
-                    </ul>
-                </div>
-                <div class="pt-4 border-t border-gray-200 text-[11px] font-bold text-gray-500 flex items-center gap-1.5 font-sans">
-                    <i data-lucide="sparkles" class="w-3.5 h-3.5 text-brand-yellow"></i> Gestão simples dos cadastros em um só lugar
-                </div>
-            </div>
-
-        </div>
-
     </div>
 </section>
 
@@ -704,7 +569,7 @@
                     </div>
                     <h3 class="text-lg md:text-xl font-bold text-gray-900 font-sans">Por que o facial costuma compensar mais que a biometria de digital?</h3>
                     <p class="text-xs md:text-sm text-gray-600 leading-relaxed font-sans">
-                        Hoje, leitores de impressão digital corporativos (em torno de <strong>R$ 8.075,00</strong> no projeto completo para as duas portas) ficam mais caros que os leitores faciais, dependem de encostar o dedo no sensor e podem falhar com mão seca ou creme. O facial dispensa contato e tem investimento menor.
+                        A biometria digital Control iD (iDFlex) sai por <strong>R$ 7.520,00</strong> no PIX para as duas portas, enquanto o Facial Intelbras fica em <strong>R$ 7.380,00</strong> e o Facial Control iD em <strong>R$ 8.590,00</strong> (economia de R$ 1.070,00 frente ao facial da marca, mas exigindo toque no sensor). No facial, não há contato físico e falhas por mão seca ou creme são evitadas.
                     </p>
                 </div>
             </div>
@@ -893,18 +758,18 @@
             <h2 class="text-2xl md:text-5xl font-extrabold text-gray-900 mt-2 md:mt-3 font-sans">Investimento para as 2 Portas</h2>
             <p class="text-gray-600 mt-3 md:mt-4 max-w-xl mx-auto text-sm md:text-lg leading-relaxed px-4 font-sans">
                 Simule abaixo entre a linha Intelbras e a linha Control iD e veja as condições de pagamento:
-            </p>
-        </div>
-
-        <!-- SELETOR DE MARCA (INTELBRAS VS CONTROL ID) -->
+        <!-- SELETOR DE MARCA (INTELBRAS VS CONTROL ID VS BIOMETRIA) -->
         <div class="flex flex-col items-center justify-center mb-6 reveal no-print">
-            <p class="text-xs font-bold text-gray-500 uppercase tracking-widest mb-3 font-sans">1. Escolha a marca:</p>
-            <div class="inline-flex bg-white border border-gray-200 p-1.5 rounded-2xl shadow-sm gap-1.5">
-                <button type="button" onclick="setBrand('intelbras')" id="brand-intelbras" class="px-4 sm:px-6 py-2.5 rounded-xl text-xs sm:text-sm font-bold transition-all bg-zinc-900 text-white shadow-sm font-sans">
+            <p class="text-xs font-bold text-gray-500 uppercase tracking-widest mb-3 font-sans">1. Escolha a opção:</p>
+            <div class="inline-flex flex-wrap justify-center bg-white border border-gray-200 p-1.5 rounded-2xl shadow-sm gap-1.5">
+                <button type="button" onclick="setBrand('intelbras')" id="brand-intelbras" class="px-4 sm:px-5 py-2.5 rounded-xl text-xs sm:text-sm font-bold transition-all bg-zinc-900 text-white shadow-sm font-sans">
                     Linha Intelbras
                 </button>
-                <button type="button" onclick="setBrand('controlid')" id="brand-controlid" class="px-4 sm:px-6 py-2.5 rounded-xl text-xs sm:text-sm font-bold transition-all text-gray-600 hover:text-gray-900 font-sans">
+                <button type="button" onclick="setBrand('controlid')" id="brand-controlid" class="px-4 sm:px-5 py-2.5 rounded-xl text-xs sm:text-sm font-bold transition-all text-gray-600 hover:text-gray-900 font-sans">
                     Linha Control iD
+                </button>
+                <button type="button" onclick="setBrand('biometria')" id="brand-biometria" class="px-4 sm:px-5 py-2.5 rounded-xl text-xs sm:text-sm font-bold transition-all text-gray-600 hover:text-gray-900 font-sans">
+                    Biometria Control iD (iDFlex)
                 </button>
             </div>
         </div>
@@ -1174,6 +1039,7 @@
 
 <!-- ===================== SCRIPTS ===================== -->
 <script>
+    // Dispara impressão/PDF com proteção contra bloqueios de ambiente
     function safePrint() {
         try {
             window.print();
@@ -1182,6 +1048,7 @@
         }
     }
 
+    // Renderiza os ícones Lucide com segurança
     function initIcons() {
         if (window.lucide && typeof window.lucide.createIcons === 'function') {
             try {
@@ -1192,6 +1059,7 @@
         }
     }
 
+    // Valida a credencial de acesso na tela de bloqueio
     function checkPassword() {
         const inputEl = document.getElementById('password-input');
         if (!inputEl) return;
@@ -1279,22 +1147,14 @@
         }
     }
 
-    function toggleAccordion(button) {
-        const item = button.closest('.accordion-item');
-        if (!item) return;
-        const isOpen = item.classList.contains('open');
-        document.querySelectorAll('.accordion-item').forEach(i => i.classList.remove('open'));
-        if (!isOpen) item.classList.add('open');
-    }
-
-    // Tabela de Valores das duas opções (Intelbras R$ 7.380,00 à vista | Control iD R$ 8.590,00 à vista)
+    // Tabela de valores das opções Intelbras, Control iD e Biometria Control iD (iDFlex)
     const brandPricing = {
         intelbras: {
             name: 'Linha Intelbras',
             badge: 'Linha Intelbras',
             controllerDesc: '<strong>02x Leitores Faciais Intelbras:</strong> 1 na Sobreloja e 1 no 1º Andar, com software de gestão sem mensalidade.',
             pixExact: 7380.00,
-            cardTotal: 8855.26, // 7380 * 1.1999
+            cardTotal: 8855.26,
             subscriptions: {
                 "24": 409.64,
                 "36": 309.81,
@@ -1307,23 +1167,38 @@
             badge: 'Linha Control iD',
             controllerDesc: '<strong>02x Leitores Faciais Control iD:</strong> 1 na Sobreloja e 1 no 1º Andar, com software de gestão sem mensalidade.',
             pixExact: 8590.00,
-            cardTotal: 10307.14, // 8590 * 1.1999
+            cardTotal: 10307.14,
             subscriptions: {
                 "24": 476.81,
                 "36": 360.61,
                 "48": 308.15,
                 "60": 276.77
             }
+        },
+        biometria: {
+            name: 'Biometria Control iD (iDFlex)',
+            badge: 'Biometria Control iD',
+            controllerDesc: '<strong>02x Leitores Biométricos Control iD iDFlex:</strong> 1 na Sobreloja e 1 no 1º Andar, com leitura por impressão digital, cartão e senha.',
+            pixExact: 7520.00,
+            cardTotal: 9023.25,
+            subscriptions: {
+                "24": 417.41,
+                "36": 315.68,
+                "48": 269.76,
+                "60": 242.29
+            }
         }
     };
 
-    let currentBrand = 'intelbras'; // 'intelbras' | 'controlid'
-    let currentPaymentMode = 'avista'; // 'avista' | 'parcelado' | 'assinatura'
+    let currentBrand = 'intelbras';
+    let currentPaymentMode = 'avista';
 
+    // Formata valores monetários no padrão brasileiro
     function formatExactCurrency(val) {
         return val.toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
     }
 
+    // Posiciona a pílula deslizante no seletor de modo de pagamento
     function positionTogglePill(activeBtn) {
         const bg = document.getElementById('toggle-bg');
         if (!bg || !activeBtn) return;
@@ -1333,25 +1208,24 @@
         }
     }
 
+    // Seleciona a opção (Intelbras, Control iD ou Biometria iDFlex) e atualiza os valores
     function setBrand(brand) {
         currentBrand = brand;
         const btnIntelbras = document.getElementById('brand-intelbras');
         const btnControlId = document.getElementById('brand-controlid');
+        const btnBiometria = document.getElementById('brand-biometria');
         const cardBadge = document.getElementById('card-badge');
         const controllerDesc = document.getElementById('item-controller-desc');
         const subSelect = document.getElementById('subscription-select');
 
-        if (btnIntelbras && btnControlId) {
-            if (brand === 'intelbras') {
-                btnIntelbras.className = 'px-4 sm:px-6 py-2.5 rounded-xl text-xs sm:text-sm font-bold transition-all bg-zinc-900 text-white shadow-sm font-sans';
-                btnControlId.className = 'px-4 sm:px-6 py-2.5 rounded-xl text-xs sm:text-sm font-bold transition-all text-gray-600 hover:text-gray-900 font-sans';
-            } else {
-                btnControlId.className = 'px-4 sm:px-6 py-2.5 rounded-xl text-xs sm:text-sm font-bold transition-all bg-zinc-900 text-white shadow-sm font-sans';
-                btnIntelbras.className = 'px-4 sm:px-6 py-2.5 rounded-xl text-xs sm:text-sm font-bold transition-all text-gray-600 hover:text-gray-900 font-sans';
-            }
-        }
+        const activeClass = 'px-4 sm:px-5 py-2.5 rounded-xl text-xs sm:text-sm font-bold transition-all bg-zinc-900 text-white shadow-sm font-sans';
+        const inactiveClass = 'px-4 sm:px-5 py-2.5 rounded-xl text-xs sm:text-sm font-bold transition-all text-gray-600 hover:text-gray-900 font-sans';
 
-        const data = brandPricing[brand];
+        if (btnIntelbras) btnIntelbras.className = brand === 'intelbras' ? activeClass : inactiveClass;
+        if (btnControlId) btnControlId.className = brand === 'controlid' ? activeClass : inactiveClass;
+        if (btnBiometria) btnBiometria.className = brand === 'biometria' ? activeClass : inactiveClass;
+
+        const data = brandPricing[brand] || brandPricing.intelbras;
         if (cardBadge) cardBadge.textContent = data.badge;
         if (controllerDesc) controllerDesc.innerHTML = data.controllerDesc;
 
@@ -1365,6 +1239,7 @@
         updatePrices();
     }
 
+    // Seleciona a forma de pagamento (PIX, Cartão ou Assinatura)
     function setPaymentMode(mode) {
         currentPaymentMode = mode;
         const btnPix = document.getElementById('btn-avista');
@@ -1415,45 +1290,47 @@
         updatePrices();
     }
 
+    // Atualiza a mensagem dinâmica do link de WhatsApp
     function updateWhatsAppLink() {
         const btnLink = document.getElementById('btn-aprova-link');
         if (!btnLink) return;
 
-        const data = brandPricing[currentBrand];
+        const data = brandPricing[currentBrand] || brandPricing.intelbras;
         let message = '';
 
         if (currentPaymentMode === 'avista') {
-            message = `Olá Gabriel, analisamos o estudo técnico do escritório Góes & Nicoladelli e gostaríamos de avançar para a visita técnica com a ${data.name} (pagamento à vista de R$ ${formatExactCurrency(data.pixExact)} via PIX).`;
+            message = `Olá Gabriel, analisamos o estudo técnico do escritório Góes & Nicoladelli e gostaríamos de avançar para a visita técnica com a opção ${data.name} (pagamento à vista de R$ ${formatExactCurrency(data.pixExact)} via PIX).`;
         } else if (currentPaymentMode === 'parcelado') {
             const select = document.getElementById('installment-select');
             const installments = select ? parseInt(select.value, 10) : 12;
             
             let totalVal = data.cardTotal;
             if (installments < 12) {
-                const factor = 1 + ((1.1999 - 1) * (installments / 12));
+                const factor = 1 + ((data.cardTotal / data.pixExact - 1) * (installments / 12));
                 totalVal = data.pixExact * factor;
             }
             const instVal = totalVal / installments;
 
-            message = `Olá Gabriel, analisamos o estudo técnico do escritório Góes & Nicoladelli e gostaríamos de avançar para a visita técnica com a ${data.name} (parcelado em ${installments}x de R$ ${formatExactCurrency(instVal)} no cartão).`;
+            message = `Olá Gabriel, analisamos o estudo técnico do escritório Góes & Nicoladelli e gostaríamos de avançar para a visita técnica com a opção ${data.name} (parcelado em ${installments}x de R$ ${formatExactCurrency(instVal)} no cartão).`;
         } else {
             const subSelect = document.getElementById('subscription-select');
             const months = subSelect ? subSelect.value : '36';
             const monthlyVal = data.subscriptions[months];
 
-            message = `Olá Gabriel, analisamos o estudo técnico do escritório Góes & Nicoladelli e temos interesse na ${data.name} pelo modelo de Assinatura em ${months} meses (R$ ${formatExactCurrency(monthlyVal)}/mês).`;
+            message = `Olá Gabriel, analisamos o estudo técnico do escritório Góes & Nicoladelli e temos interesse na opção ${data.name} pelo modelo de Assinatura em ${months} meses (R$ ${formatExactCurrency(monthlyVal)}/mês).`;
         }
 
         btnLink.href = "https://wa.me/5511930816696?text=" + encodeURIComponent(message);
     }
 
+    // Recalcula e exibe os valores de acordo com opção, modalidade e prazo
     function updatePrices() {
         const priceContainer = document.getElementById('price-opt1');
         const select = document.getElementById('installment-select');
         const subSelect = document.getElementById('subscription-select');
         if (!priceContainer) return;
 
-        const data = brandPricing[currentBrand];
+        const data = brandPricing[currentBrand] || brandPricing.intelbras;
 
         if (currentPaymentMode === 'avista') {
             priceContainer.innerHTML = `
@@ -1479,7 +1356,7 @@
             const inst = parseInt(select ? select.value : '12', 10);
             let totalVal = data.cardTotal;
             if (inst < 12) {
-                const factor = 1 + ((1.1999 - 1) * (inst / 12));
+                const factor = 1 + ((data.cardTotal / data.pixExact - 1) * (inst / 12));
                 totalVal = data.pixExact * factor;
             }
             const instVal = totalVal / inst;
@@ -1522,6 +1399,7 @@
         initIcons();
     }
 
+    // Inicialização de eventos e observadores de rolagem
     document.addEventListener("DOMContentLoaded", () => {
         initIcons();
         setBrand('intelbras');
